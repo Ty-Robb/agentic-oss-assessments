@@ -1,0 +1,412 @@
+{
+  "repo": "slopus/happy",
+  "meta": {
+    "description": "Orchestrate Claude, Codex and Grok in one app. Open-source (MIT), reuses the subscriptions you already pay for.",
+    "homepage": "https://happy.engineering/",
+    "license": "MIT",
+    "stars": 24822,
+    "forks": 2139,
+    "open_issues": 1154,
+    "archived": false,
+    "created_at": "2025-07-18T05:53:18Z",
+    "pushed_at": "2026-11-25T11:22:51Z",
+    "default_branch": "main",
+    "topics": [
+      "agent-orchestration",
+      "ai-agents",
+      "claude-code",
+      "claude-desktop",
+      "codex",
+      "codex-cli",
+      "coding-agents",
+      "grok",
+      "hacktoberfest"
+    ]
+  },
+  "languages": {
+    "Swift": 22292767,
+    "Kotlin": 14571956,
+    "TypeScript": 3233961,
+    "Rust": 627656,
+    "JavaScript": 553965,
+    "Python": 302348,
+    "HTML": 74269,
+    "Shell": 67328,
+    "Lean": 23525,
+    "C": 8116,
+    "CSS": 6220,
+    "Dockerfile": 2146,
+    "Go": 2143,
+    "PLpgSQL": 747,
+    "Java": 378,
+    "C#": 346,
+    "C++": 342,
+    "Scala": 323,
+    "PHP": 286,
+    "PowerShell": 286,
+    "Haskell": 283,
+    "Ruby": 278,
+    "HCL": 260,
+    "Dart": 259,
+    "Objective-C": 256,
+    "SCSS": 226,
+    "Perl": 225,
+    "R": 218,
+    "Nim": 217,
+    "Less": 216,
+    "Zig": 216,
+    "Elixir": 213,
+    "CMake": 207,
+    "Lua": 203,
+    "Erlang": 187,
+    "Makefile": 160,
+    "ShellSession": 97
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".dockerignore",
+      ".github/",
+      ".gitignore",
+      ".npmrc",
+      "AGENTS.md",
+      "Dockerfile",
+      "Dockerfile.server",
+      "LICENSE",
+      "PRIVACY.md",
+      "README.md",
+      "docs/",
+      "package.json",
+      "packages/",
+      "patches/",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "scripts/"
+    ],
+    "workflows": [
+      "release-happy-cli.yml"
+    ],
+    "docs": [
+      "3dparty.md",
+      "CONTRIBUTING.md",
+      "README.md",
+      "agent-voice-call.md",
+      "analytics-catalog.json",
+      "api.md",
+      "backend-architecture.md",
+      "chat-list-scrolling.md",
+      "cli-architecture.md",
+      "competition/",
+      "current-community.md",
+      "deployment.md",
+      "dev-environments.md",
+      "encryption.md",
+      "experimental/",
+      "happy-wire.md",
+      "layout-core.md",
+      "multi-process.md",
+      "paid-voice.md",
+      "permission-resolution.md",
+      "plans/",
+      "product-analytics.md",
+      "protocol.md",
+      "realtime-sync-and-rpc.md",
+      "research/",
+      "roadmap.md",
+      "session-protocol-claude.md",
+      "session-protocol.md",
+      "superpowers/",
+      "user-identity.md",
+      "voice-architecture.md"
+    ],
+    "docs_count": 31,
+    "agents_dir": [
+      "agents/",
+      "skills/"
+    ],
+    "agents_skills": [
+      "agent-browser/",
+      "control-flow/",
+      "dev/",
+      "maintain/",
+      "metrics-graphana/",
+      "office-hours/",
+      "release/",
+      "sessions/",
+      "terminal-emulator/"
+    ],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 1747,
+      "line_count": 40,
+      "truncated": false,
+      "excerpt": "# Agent Workflow\n\n## Releasing anything\n\nEvery release goes through the `release` skill: `.agents/skills/release/SKILL.md`.\nRead it in full before native release builds, store submissions, CLI\npublishes, or dispatching a release workflow. The former Expo/EAS app and\nOTA scripts have been removed; mobile clients are native iOS and Android.\n\nThe rule the skill opens with is the one that is never skipped: **release from\na local `main` that is exactly `origin/main`, checked against a fetch made right\nthen, with a clean tree.** Not from a worktree. Not from a branch. Not from a\n`main` that is ahead or behind. Perform these checks before every release.\n\nThe only exception is one the user asks for by name in the current\nconversation. A standing instruction from an earlier session is not that, and\nneither is your own judgement that it is probably fine. When they do ask, the\nskill says how: show what `main` commits the release will lack, get a yes,\nand say it was off-main in the report.\n\nWhy: an OTA channel serves whatever was published last, not whatever is on\n`main`. On 2026-09-20 a preview OTA from a stale worktree silently rolled four\nshipped fixes off every preview phone for hours. Git looked fine the whole time.\n\n## GitHub Actions\n\nNever create or add GitHub Actions workflows, or add automatic triggers\n(`push`, `pull_request`, `schedule`) to existing ones, without an explicit user\ninstruction. Actions minutes cost real money.\n\n## Sync To Main\n\nWhen the user says `sync to main` or `synt to main`, they mean:\n\n1. Fetch `origin/main`.\n2. Rebase the current branch on `origin/main`.\n3. Push the current HEAD directly to `main` with a normal push, for example:\n   `git push origin HEAD:main`\n\nDo not force push for this workflow.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 4719,
+      "line_count": 74,
+      "truncated": false,
+      "excerpt": "<div align=\"center\">\n\n<h1>Happy Engineering</h1>\n\n<p>The fun way of making things :D</p>\n\n</div>\n\nhttps://github.com/user-attachments/assets/deeeeaf5-e550-49bc-829f-1186898f441a\n\n<p align=\"center\">\n<a href=\"https://happy.engineering/#download\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/slopus/happy-desktop/main/.github/download-desktop-dark.svg\"><img width=\"212\" height=\"39\" alt=\"Download Desktop for macOS, Windows, and Linux\" src=\"https://raw.githubusercontent.com/slopus/happy-desktop/main/.github/download-desktop-light.svg\" /></picture></a>\n</p>\n\n<p align=\"center\">\n<a href=\"https://apps.apple.com/us/app/happy-codex-claude-code-app/id6748571505\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/slopus/happy-desktop/main/.github/app-store-rating-dark.svg\"><img width=\"150\" height=\"56\" alt=\"Download on the App Store. Rated 4.9 stars from 1,000+ ratings\" src=\"https://raw.githubusercontent.com/slopus/happy-desktop/main/.github/app-store-rating-light.svg\" /></picture></a>&nbsp;&nbsp;&nbsp;<a href=\"https://play.google.com/store/apps/details?id=com.ex3ndr.happy\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/slopus/happy-desktop/main/.github/google-play-rating-dark.svg\"><img width=\"150\" height=\"56\" alt=\"Get it on Google Play. Rated 5.0 stars from 3.1k+ reviews\" src=\"https://raw.githubusercontent.com/slopus/happy-desktop/main/.github/google-play-rating-light.svg\" /></picture></a>\n</p>\n\n## What you get\n\n1. **Any model: Claude, Codex, Grok, Gemini, and more.** Gemini runs through\n   Antigravity, and OpenCode or any Agent Client Protocol agent plugs in as a\n   harness. Give every task the model that fits, and delegate to subagents on\n   any of them.\n2. **Reuse your subscriptions.** Sign in with the Claude, Codex, and Grok\n   subscriptions you already pay for; Antigravity, OpenCode, and ACP agents\n   keep their own logins. Happy adds a harness, not another bill.\n3. **Open source MIT.** It runs on your own hardware and your projects stay\n   ordinary folders. Read the code, fork it, ship your own build.\n4. **End-to-end encrypted mobile app.** Left your desk? The same sessions are\n   already on your phone, and what moves between your devices is encrypted.\n5. **Natively multiplayer.** Invite a colleague or a friend into the session.\n   You both watch the same agent work, and either of you can steer it.\n\n#### Resources\n\n<p align=\"center\">\n<a href=\"https://happy.engineering/\">Website</a> \u00b7 <a href=\"https://happy.engineering/welcome/\">Documentation</a> \u00b7 <a href=\"https://discord.gg/fX9WBAhyfD\">Discord</a> \u00b7 <a href=\"docs/CONTRIBUTING.md\">Development guide</a> \u00b7 <a href=\"LICENSE\">MIT License</a>\n</p>\n\n## How Happy fits together\n\n| Repository                                                                            | What it is                                                                 |\n| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |\n| **[slopus/happy](https://github.com/slopus/happy)** \u2190 this repository | **The mobile app (iOS, Android, web), the original CLI, and the relay server** |\n| [slopus/happy-desktop](https://github.com/slopus/happy-desktop) | The desktop app for macOS, Windows, and Linux |\n| [slopus/happy-agent](https://github.com/slopus/happy-agent)                           | Happy Agent, the open-source agent runtime the desktop app runs on         |\n| [slopus/slopus.github.io](https://github.com/slopus/slopus.github.io)                 | The website and docs at happy.engineering                                  |\n\n## Original Happy CLI\n\nThe original CLI wraps the Claude Code and Codex harnesses directly in your\nterminal and lets you continue from your phone.\n\nFor multi-model sessions and teams, move to the desktop app and Happy Harness.\n\n```sh\nnpm install -g happy\n\n# Start Claude Code\nhappy claude\n\n# Or start Codex\nhappy codex\n```\n\n- [happy-ios](packages/happy-ios): native Swift/UIKit iOS app\n- [happy-android](packages/happy-android): native Kotlin/Jetpack Compose Android app\n- [happy-i18n](packages/happy-i18n): shared JSON translations\n- [happy-cli](packages/happy-cli): the original Happy CLI (`happy` on npm)\n- [happy-server](packages/happy-server): the relay server for encrypted sync\n- [happy-push-server](packages/happy-push-server): Cloudflare Worker that delivers push notifications via APNs/FCM (replaces the Expo push service)\n\nMigrated from the `happy-coder` package. Thanks to [@franciscop](https://github.com/franciscop) for donating the `happy` package name!\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 1872,
+      "line_count": 50,
+      "truncated": false,
+      "excerpt": "{\n    \"name\": \"monorepo\",\n    \"private\": true,\n    \"scripts\": {\n        \"cli\": \"pnpm --filter happy cli\",\n        \"release\": \"node ./scripts/release.cjs\",\n        \"postinstall\": \"node ./scripts/postinstall.cjs\",\n        \"env:new\": \"tsx packages/dev-environments/environments.ts new\",\n        \"env:list\": \"tsx packages/dev-environments/environments.ts list\",\n        \"env:use\": \"tsx packages/dev-environments/environments.ts use\",\n        \"env:remove\": \"tsx packages/dev-environments/environments.ts remove\",\n        \"env:current\": \"tsx packages/dev-environments/environments.ts current\",\n        \"env:server\": \"tsx packages/dev-environments/environments.ts run server\",\n        \"env:cli\": \"tsx packages/dev-environments/environments.ts run cli\",\n        \"env:seed\": \"tsx packages/dev-environments/environments.ts seed\",\n        \"env:up\": \"tsx packages/dev-environments/environments.ts up\",\n        \"env:up:authenticated\": \"pnpm env:up --template authenticated-empty\",\n        \"env:down\": \"tsx packages/dev-environments/environments.ts down\",\n        \"env:tailscale\": \"tsx packages/dev-environments/environments.ts tailscale\"\n    },\n    \"workspaces\": {\n        \"packages\": [\n            \"packages/happy-cli\",\n            \"packages/happy-server\",\n            \"packages/happy-server-self-host\",\n            \"packages/happy-wire\",\n            \"packages/happy-push-server\"\n        ]\n    },\n    \"pnpm\": {\n        \"overrides\": {\n            \"whatwg-url\": \"14.2.0\",\n            \"parse-path\": \"7.0.3\",\n            \"@types/parse-path\": \"7.0.3\"\n        },\n        \"onlyBuiltDependencies\": [\n            \"@prisma/client\",\n            \"@prisma/engines\",\n            \"better-sqlite3\",\n            \"esbuild\",\n            \"prisma\",\n            \"sharp\",\n            \"workerd\"\n        ]\n    },\n    \"devDependencies\": {\n        \"tsx\": \"^4.20.6\"\n    },\n    \"packageManager\": \"pnpm@10.11.0\"\n}\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 160,
+      "line_count": 6,
+      "truncated": false,
+      "excerpt": "packages:\n  - \"packages/happy-cli\"\n  - \"packages/happy-server\"\n  - \"packages/happy-server-self-host\"\n  - \"packages/happy-wire\"\n  - \"packages/happy-push-server\"\n"
+    }
+  },
+  "workflow_samples": {},
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T08:57:29Z",
+      "oldest": "2026-11-17T00:01:19Z"
+    },
+    "conventional_pct": 40.0,
+    "fix_revert_pct": 20.0,
+    "ai_coauthor_pct": 4.0,
+    "top_recent_authors": [
+      [
+        "bra1nDump",
+        35
+      ],
+      [
+        "ex3ndr",
+        13
+      ],
+      [
+        "github-actions[bot]",
+        1
+      ],
+      [
+        "mano7onam",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "164c3256",
+        "date": "2026-11-25T08:57:29Z",
+        "author": "github-actions[bot]",
+        "subject": "Release Happy CLI v1.2.7",
+        "ai_signal": false
+      },
+      {
+        "sha": "cd91953d",
+        "date": "2026-11-25T00:49:04Z",
+        "author": "ex3ndr",
+        "subject": "iOS sidebar: a hold lifts a bot or task at once, without its preview",
+        "ai_signal": false
+      },
+      {
+        "sha": "8386b4dd",
+        "date": "2026-11-25T00:25:17Z",
+        "author": "ex3ndr",
+        "subject": "iOS sidebar: drag to reorder tasks and bots, swipe to archive",
+        "ai_signal": false
+      },
+      {
+        "sha": "10fd4240",
+        "date": "2026-11-25T03:40:38Z",
+        "author": "ex3ndr",
+        "subject": "feat(ios): show pictures and play recordings that file links open",
+        "ai_signal": false
+      },
+      {
+        "sha": "57f31af2",
+        "date": "2026-11-25T01:49:10Z",
+        "author": "ex3ndr",
+        "subject": "feat(android): preview pictures and recordings in the file viewer",
+        "ai_signal": false
+      },
+      {
+        "sha": "51312b7e",
+        "date": "2026-11-24T23:01:11Z",
+        "author": "bra1nDump",
+        "subject": "Recover stale daemon ownership and warn on unsafe legacy permissions",
+        "ai_signal": false
+      },
+      {
+        "sha": "8f935dfa",
+        "date": "2026-11-24T22:09:19Z",
+        "author": "bra1nDump",
+        "subject": "Authenticate daemon control and confirm stop before changing credentials",
+        "ai_signal": false
+      },
+      {
+        "sha": "a4bada8b",
+        "date": "2026-11-24T21:56:58Z",
+        "author": "bra1nDump",
+        "subject": "Reject failed RPC decryption and protect local CLI state",
+        "ai_signal": false
+      },
+      {
+        "sha": "e7f4af13",
+        "date": "2026-11-25T00:20:01Z",
+        "author": "bra1nDump",
+        "subject": "android: version 2026.11.2 after the 2026.11.1 Play release",
+        "ai_signal": false
+      },
+      {
+        "sha": "e6ede672",
+        "date": "2026-11-24T21:26:01Z",
+        "author": "bra1nDump",
+        "subject": "feat(android): say \"agent restarting\u2026\" while the daemon drains, and resend refused sends on reconnect",
+        "ai_signal": false
+      },
+      {
+        "sha": "4daae8f8",
+        "date": "2026-11-24T21:26:01Z",
+        "author": "bra1nDump",
+        "subject": "feat(ios): say \"agent restarting\u2026\" while the daemon drains",
+        "ai_signal": false
+      },
+      {
+        "sha": "06bd6833",
+        "date": "2026-11-24T06:25:23Z",
+        "author": "bra1nDump",
+        "subject": "fix(ios): send queued messages as soon as the computer is verified again",
+        "ai_signal": false
+      },
+      {
+        "sha": "28827e1e",
+        "date": "2026-11-24T23:22:44Z",
+        "author": "bra1nDump",
+        "subject": "ios: version 2026.11.2 after the 2026.11.1 App Store release",
+        "ai_signal": false
+      },
+      {
+        "sha": "acdb9142",
+        "date": "2026-11-24T23:07:05Z",
+        "author": "bra1nDump",
+        "subject": "ios: production build 164",
+        "ai_signal": false
+      },
+      {
+        "sha": "43ee1eb8",
+        "date": "2026-11-24T22:49:36Z",
+        "author": "ex3ndr",
+        "subject": "fix(ios): keep a page's sticky bar under the browser's header",
+        "ai_signal": false
+      },
+      {
+        "sha": "3c065f8e",
+        "date": "2026-11-24T06:19:04Z",
+        "author": "bra1nDump",
+        "subject": "feat(android): keep agent home's place on the phone for an hour",
+        "ai_signal": false
+      },
+      {
+        "sha": "69338247",
+        "date": "2026-11-24T04:31:25Z",
+        "author": "bra1nDump",
+        "subject": "feat(android): open an agent conversation where it was left",
+        "ai_signal": false
+      },
+      {
+        "sha": "ae7fd36f",
+        "date": "2026-11-24T06:35:44Z",
+        "author": "bra1nDump",
+        "subject": "feat(ios): reopen the agents' home where it was left, within the hour",
+        "ai_signal": false
+      },
+      {
+        "sha": "4a592570",
+        "date": "2026-11-24T03:45:26Z",
+        "author": "bra1nDump",
+        "subject": "feat(ios): open an agent conversation where it was left",
+        "ai_signal": false
+      },
+      {
+        "sha": "7b5683b7",
+        "date": "2026-11-22T19:34:07Z",
+        "author": "ex3ndr",
+        "subject": "fix(android): keep the composer's chips as far from send as from each other",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "ex3ndr",
+      "contributions": 2841
+    },
+    {
+      "login": "bra1nDump",
+      "contributions": 1474
+    },
+    {
+      "login": "ahundt",
+      "contributions": 249
+    },
+    {
+      "login": "Scoteezy",
+      "contributions": 220
+    },
+    {
+      "login": "GrocerPublishAgent",
+      "contributions": 101
+    },
+    {
+      "login": "borisandcrispin",
+      "contributions": 34
+    },
+    {
+      "login": "chphch",
+      "contributions": 27
+    },
+    {
+      "login": "leeroybrun",
+      "contributions": 15
+    },
+    {
+      "login": "charliezong18",
+      "contributions": 12
+    },
+    {
+      "login": "CodingCanuck",
+      "contributions": 8
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "cli-1.2.6-beta.1",
+      "published_at": "2026-10-09T08:00:27Z",
+      "name": "Happy CLI v1.2.6-beta.1"
+    },
+    {
+      "tag": "cli-1.2.6-beta.0",
+      "published_at": "2026-10-09T02:43:05Z",
+      "name": "Happy CLI v1.2.6-beta.0"
+    },
+    {
+      "tag": "cli-1.2.5",
+      "published_at": "2026-09-22T10:11:19Z",
+      "name": "Happy CLI v1.2.5"
+    },
+    {
+      "tag": "cli-1.2.5-beta.2",
+      "published_at": "2026-09-20T05:17:10Z",
+      "name": "Happy CLI v1.2.5-beta.2"
+    },
+    {
+      "tag": "cli-1.2.5-beta.1",
+      "published_at": "2026-09-14T07:01:37Z",
+      "name": "Happy CLI v1.2.5-beta.1"
+    }
+  ]
+}

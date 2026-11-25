@@ -1,0 +1,406 @@
+{
+  "repo": "stackblitz-labs/bolt.diy",
+  "meta": {
+    "description": "Prompt, run, edit, and deploy full-stack web applications using any LLM you want!",
+    "homepage": "https://stackblitz-labs.github.io/bolt.diy/",
+    "license": "MIT",
+    "stars": 20135,
+    "forks": 10626,
+    "open_issues": 2,
+    "archived": false,
+    "created_at": "2024-10-13T18:40:54Z",
+    "pushed_at": "2026-11-21T22:49:33Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "TypeScript": 3432353,
+    "SCSS": 50824,
+    "JavaScript": 35649,
+    "Shell": 11585,
+    "Dockerfile": 2715,
+    "PowerShell": 2285,
+    "CSS": 1788
+  },
+  "structure": {
+    "root": [
+      ".depcheckrc.json",
+      ".dockerignore",
+      ".editorconfig",
+      ".env.example",
+      ".env.production",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".husky/",
+      ".lighthouserc.json",
+      ".performance-budgets.json",
+      ".prettierignore",
+      ".prettierrc",
+      "CHANGES.md",
+      "CONTRIBUTING.md",
+      "Dockerfile",
+      "FAQ.md",
+      "LICENSE",
+      "PROJECT.md",
+      "README.md",
+      "app/",
+      "assets/",
+      "changelog.md",
+      "docker-compose.yaml",
+      "docs/",
+      "e2e-tests/",
+      "electron-builder.yml",
+      "electron-update.yml",
+      "electron/",
+      "eslint.config.mjs",
+      "icons/",
+      "load-context.ts",
+      "notarize.cjs",
+      "package.json",
+      "playwright.config.e2e.ts",
+      "playwright.config.preview.ts",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "pre-start.cjs",
+      "public/",
+      "react-router.config.ts",
+      "run-e2e-tests.ps1",
+      "run-e2e-tests.sh",
+      "scripts/",
+      "test-workflows.sh",
+      "tests/",
+      "tsconfig.json",
+      "types/",
+      "uno.config.ts",
+      "vite-electron.config.ts",
+      "vite.config.ts",
+      "vitest.config.ts",
+      "worker-configuration.d.ts",
+      "workers/",
+      "wrangler.jsonc"
+    ],
+    "workflows": [
+      "ci.yaml",
+      "docker.yaml",
+      "docs.yaml",
+      "electron.yml",
+      "performance.yaml",
+      "pr-release-validation.yaml",
+      "preview.yaml",
+      "quality.yaml",
+      "security.yaml",
+      "semantic-pr.yaml",
+      "stale.yml",
+      "test-workflows.yaml",
+      "update-stable.yml"
+    ],
+    "docs": [
+      ".gitignore",
+      ".python-version",
+      "PERFORMANCE_OPTIMIZATION.md",
+      "README.md",
+      "docs/",
+      "images/",
+      "mcp-tool-migration.md",
+      "mkdocs.yml",
+      "performance-architecture.md",
+      "plugin-system-implementation-plan.markdown",
+      "poetry.lock",
+      "pyproject.toml"
+    ],
+    "docs_count": 12,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 6000,
+      "line_count": 260,
+      "truncated": false,
+      "excerpt": "# Contribution Guidelines\n\nWelcome! This guide provides all the details you need to contribute effectively to the project. Thank you for helping us make **bolt.diy** a better tool for developers worldwide. \ud83d\udca1\n\n---\n\n## \ud83d\udccb Table of Contents\n\n1. [Code of Conduct](#code-of-conduct)\n2. [How Can I Contribute?](#how-can-i-contribute)\n3. [Pull Request Guidelines](#pull-request-guidelines)\n4. [Coding Standards](#coding-standards)\n5. [Development Setup](#development-setup)\n6. [Testing](#testing)\n7. [Deployment](#deployment)\n8. [Docker Deployment](#docker-deployment)\n9. [VS Code Dev Containers Integration](#vs-code-dev-containers-integration)\n\n---\n\n## \ud83d\udee1\ufe0f Code of Conduct\n\nThis project is governed by our **Code of Conduct**. By participating, you agree to uphold this code. Report unacceptable behavior to the project maintainers.\n\n---\n\n## \ud83d\udee0\ufe0f How Can I Contribute?\n\n### 1\ufe0f\u20e3 Reporting Bugs or Feature Requests\n\n- Check the [issue tracker](https://github.com/stackblitz-labs/bolt.diy/issues) to avoid duplicates.\n- Use issue templates (if available).\n- Provide detailed, relevant information and steps to reproduce bugs.\n\n### 2\ufe0f\u20e3 Code Contributions\n\n1. Fork the repository.\n2. Create a feature or fix branch.\n3. Write and test your code.\n4. Submit a pull request (PR).\n\n### 3\ufe0f\u20e3 Join as a Core Contributor\n\nInterested in maintaining and growing the project? Fill out our [Contributor Application Form](https://forms.gle/TBSteXSDCtBDwr5m7).\n\n---\n\n## \u2705 Pull Request Guidelines\n\n### PR Checklist\n\n- Branch from the **main** branch.\n- Update documentation, if needed.\n- Test all functionality manually.\n- Focus on one feature/bug per PR.\n\n### Review Process\n\n1. Manual testing by reviewers.\n2. At least one maintainer review required.\n3. Address review comments.\n4. Maintain a clean commit history.\n\n---\n\n## \ud83d\udccf Coding Standards\n\n### General Guidelines\n\n- Follow existing code style.\n- Comment complex logic.\n- Keep functions small and focused.\n- Use meaningful variable names.\n\n---\n\n## \ud83d\udda5\ufe0f Development Setup\n\n### 1\ufe0f\u20e3 Initial Setup\n\n- Prerequisites: Node.js and pnpm versions listed under [`engines` in package.json](package.json).\n- Clone the repository:\n  ```bash\n  git clone https://github.com/stackblitz-labs/bolt.diy.git\n  cd bolt.diy\n  ```\n- Install dependencies:\n  ```bash\n  pnpm install\n  ```\n- Set up environment variables:\n  1. Copy `.env.example` to `.env.local`. Replace the placeholders for the providers you use, and remove or comment out the rest.\n  2. Add your API keys:\n     ```bash\n     GROQ_API_KEY=XXX\n     HuggingFace_API_KEY=XXX\n     OPENAI_API_KEY=XXX\n     ...\n     ```\n  3. **For Docker users**: Run the setup script or manually copy `.env.local` to `.env`:\n     ```bash\n     # Option 1: Use the setup script\n     ./scripts/setup-env.sh\n     \n     # Option 2: Manual copy\n     cp .env.local .env\n     ```\n     Docker Compose requires both files and uses `.env` for variable substitution. Repeat the copy after changing `.env.local`; shell environment variables can override substituted values.\n  4. Optionally set:\n     - Debug level: `VITE_LOG_LEVEL=debug`\n     - Context size: `DEFAULT_NUM_CTX=32768`\n\n**Note**: Never commit your `.env.local` or `.env` files to version control. They're already in `.gitignore`.\n\n### 2\ufe0f\u20e3 Run Development Server\n\n```bash\npnpm run dev\n```\n\nOpen http://localhost:5173 in a supported browser.\n\n---\n\n## \ud83e\uddea Testing\n\nRun the test suite with:\n\n```bash\n# Vitest suite, including unit, integration, and performance tests\npnpm test\n\n# End-to-end tests\npnpm run test:e2e\n\n# TypeScript type checking\npnpm run typecheck\n```\n\n---\n\n## \ud83d\ude80 Deployment\n\n### Deploy to Cloudflare Workers\n\n```bash\npnpm run deploy\n```\n\nEnsure you have required permissions and that Wrangler is configured.\n\n---\n\n## \ud83d\udc33 Docker Deployment\n\nThis section outlines the methods for deploying the application using Docker. The processes for **Development** and **Production** are provided separately for clarity.\n\n---\n\n### \ud83e\uddd1\u200d\ud83d\udcbb Development Environment\n\n#### Build Options\n\n**Option 1: Helper Scripts**\n\n```bash\n# Development build\npnpm run dockerbuild\n```\n\n**Option 2: Direct Docker Build Command**\n\n```bash\ndocker build -t bolt-ai:development . --target development\n```\n\n**Option 3: Docker Compose Profile**\n\n```bash\ndocker compose --profile development up\n```\n\n#### Running the Development Container\n\n```bash\ndocker run -p 5173:5173 --env-file .env.local bolt-ai:development\n```\n\n---\n\n### \ud83c\udfed Production Environment\n\n#### Build Options\n\n**Option 1: Helper Scripts**\n\n```bash\n# Production build\npnpm run dockerbuild:prod\n```\n\n**Option 2: Direct Docker Build Command**\n\n```bash\ndocker build . --target bolt-ai-production\n```\n\n**Option 3: Docker Compose Profile**\n\n```bash\ndocker compose --profile production up\n```\n\n#### Running the Production Container\n\n```bash\ndocker run -p 5173:5173 --env-file .env.local bolt-ai:production\n```\n\n---\n\n### Coolify Deployment\n\nFor an easy deployment process, use [Coolify](https://github.com/coollabsio/coolify):\n\n1. Import your Git repository into Coolify.\n2. Choose **Docker Compose** as the build pack.\n3. Configure environment variables (e.g., API keys).\n4. Set the start command:\n   ```bash\n   docker compose --profile production up\n   ```\n\n---\n\n## \ud83d\udee0\ufe0f VS Code Dev Containers Integration\n\nThe `docker-compose.yaml` configuration is compatible with **VS Code Dev Containers**, making it easy to set up a development environment directly in Visual Studio Code.\n\n### Steps to Use Dev Containers\n\n1. Open the command palette in VS Code (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS).\n2. Select **Dev Containers: Reopen in Container**.\n3. Choose the **development** profile when prompted.\n4. VS Code will rebuild the container and open it with the pre-configured environment.\n\n---\n\n## \ud83d\udd11 Environment Variables\n\nEnsure `.env.local` is configured correctly with:\n\n- API keys.\n- Context-specific configurations.\n\nExample for the `DEFAULT_NUM_CTX` variable:\n\n```bash\nDEFAULT_NUM_CTX=24576 # Uses 32GB VRAM\n```\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 8309,
+      "line_count": 172,
+      "truncated": true,
+      "excerpt": "# bolt.diy\n\n[![bolt.diy: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index(1).jpg)](https://bolt.diy)\n\nWelcome to **bolt.diy**, the open-source AI developer workspace that lets you select your preferred LLM for every prompt. Build full-stack web applications in the browser with support for 22+ model providers (OpenAI, Anthropic, Gemini, Groq, xAI, DeepSeek, Ollama, LM Studio, and more), or extend it with any provider supported by the Vercel AI SDK. OpenRouter, Anthropic, OpenAI, and Google are enabled by default; enable and configure other providers in Settings.\n\n[Documentation](https://stackblitz-labs.github.io/bolt.diy/) | [FAQ & Troubleshooting](FAQ.md)\n\n---\n\nbolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMedin) but has quickly grown into a massive community effort to build the BEST open source AI coding assistant!\n\n---\n\n## Table of Contents\n\n- [Quick Start](#quick-start)\n- [Running with Docker](#running-with-docker)\n- [Desktop App (Electron)](#desktop-app-electron)\n- [Configuring API Keys and Providers](#configuring-api-keys-and-providers)\n- [Features](#features)\n- [Recent Highlights](#recent-highlights)\n- [Available Scripts](#available-scripts)\n- [Contributing & Community](#contributing--community)\n- [Licensing](#licensing)\n\n---\n\n## Quick Start\n\n### Prerequisites\n- **Node.js** >= 22.12.0\n- **pnpm** >= 9.15.9 (`npm install -g pnpm`)\n\n### 1. Clone & Install\n\n```bash\ngit clone https://github.com/stackblitz-labs/bolt.diy.git\ncd bolt.diy\npnpm install\n```\n\n### 2. Run the Development Server\n\n```bash\npnpm run dev\n```\n\nOpen [http://localhost:5173](http://localhost:5173) in your browser.\n\n> **Pre-built Desktop Binaries**: Prefer a standalone app? Download binaries for Windows, macOS, and Linux from our [Latest Releases](https://github.com/stackblitz-labs/bolt.diy/releases/latest).\n\n---\n\n## Running with Docker\n\n1. **Configure Environment Variables**:\n   ```bash\n   cp .env.example .env.local\n   # Replace the placeholders for the providers you use; remove or comment out the others.\n   cp .env.local .env\n   ```\n\n   Compose requires both files. It reads `.env` for variable substitution and passes both files to the container. After changing `.env.local`, copy it to `.env` again so substituted values stay in sync. Do not commit either file.\n\n2. **Build and Run**:\n   ```bash\n   # Development mode with hot-reload:\n   docker compose --profile development up\n\n   # Production build:\n   pnpm run dockerbuild:prod\n   docker compose --profile production up\n   ```\n\n---\n\n## Desktop App (Electron)\n\nbolt.diy is also available as a cross-platform desktop application:\n\n- **Download**: Grab pre-built installers from [Latest Releases](https://github.com/stackblitz-labs/bolt.diy/releases/latest).\n- **Build from Source**: Select the target for your host platform:\n  ```bash\n  pnpm electron:build:win   # Windows\n  pnpm electron:build:mac   # macOS\n  pnpm electron:build:linux # Linux\n  ```\n\n  `pnpm electron:build:unpack` creates an unpacked build for testing. `pnpm electron:build:dist` requests all three platforms and may require platform-specific build tools or signing configuration. The `electron:dev` script checks for the development server with `lsof`, so it needs that command available and does not work in a standard Windows shell without it.\n\n---\n\n## Configuring API Keys and Providers\n\nYou can configure model providers either directly in the UI or via environment variables:\n\n### Option A: In the UI (Recommended)\nEnable providers and configure supported local endpoints under **Settings \u2192 Providers**. Select a provider in the chat composer, click **Edit API Key**, enter the key, and save it. Keys entered in the UI are stored in JavaScript-accessible browser cookies and sent to the application server with requests. The indicator shows that a key is set; it does not guarantee that the provider accepts it. Protect access to the browser and use HTTPS for remote deployments.\n\n### Option B: Environment Variables\nCopy `.env.example` to `.env.local` and add your keys or local endpoints:\n\n```bash\n# Cloud Providers\nANTHROPIC_API_KEY=your_key_here\nOPENAI_API_KEY=your_key_here\nGOOGLE_GENERATIVE_AI_API_KEY=your_key_here\nOPEN_ROUTER_API_KEY=your_key_here\n\n# Local Providers\nOLLAMA_API_BASE_URL=http://127.0.0.1:11434\nLMSTUDIO_API_BASE_URL=http://127.0.0.1:1234\n```\n\nReplace only the placeholders you need and remove or comment out the rest. To use OpenRouter's free router, select **OpenRouter** in the provider selector, then select **Free Models Router** (`openrouter/free`) in the model selector. Free-model availability and rate limits depend on OpenRouter. For Docker, `127.0.0.1` refers to the container; configure local provider endpoints to reach the host instead, for example with `host.docker.internal` where supported.\n\n---\n\n## Features\n\n- **In-Browser Web Development**: Full-stack Node.js development environment powered by WebContainers.\n- **22+ AI Providers**: Cloud (Anthropic, OpenAI, Google, DeepSeek, Groq, xAI, Mistral, etc.) and Local (Ollama, LM Studio). OpenRouter, Anthropic, OpenAI, and Google are enabled by default.\n- **Interactive Workbench**: Integrated code editor, terminal, visual diff viewer, and real-time live preview. Opens by default for a started chat and can be reopened after closing.\n- **Starter Setup**: Explicit framework requests select a matching starter in code. Starter files include detected install and development server commands before the first customization request.\n- **Prompt Library**: Choose a system prompt under Settings \u2192 Workspace \u2192 Features, including Simple Sal for concise guidance and Tiny Tim for smaller models.\n- **Project Workflows**: Git cloning/pushing, snapshot restoration, file conflict locking, and ZIP export.\n- **Deployments**: One-click deployment to Netlify, Vercel, and GitHub Pages.\n- **Database & Visuals**: Supabase integration, data visualization charts, and Model Context Protocol (MCP) tooling.\n\n---\n\n## Recent Highl"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 9397,
+      "line_count": 237,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"bolt\",\n  \"description\": \"An AI Agent\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"sideEffects\": false,\n  \"type\": \"module\",\n  \"version\": \"1.0.4\",\n  \"author\": {\n    \"name\": \"bolt.diy team\",\n    \"email\": \"maintainers@bolt.diy\"\n  },\n  \"scripts\": {\n    \"deploy\": \"pnpm run build && wrangler deploy\",\n    \"build\": \"react-router build\",\n    \"dev\": \"node pre-start.cjs  && react-router dev --host ::\",\n    \"test\": \"vitest --run\",\n    \"test:watch\": \"vitest\",\n    \"test:unit\": \"vitest --run tests/unit\",\n    \"test:integration\": \"vitest --run tests/integration\",\n    \"test:perf\": \"vitest --run tests/performance\",\n    \"test:coverage\": \"vitest --run --coverage\",\n    \"test:e2e\": \"playwright test --config=playwright.config.e2e.ts\",\n    \"test:e2e:ci\": \"playwright test --config=playwright.config.e2e.ts --project=ci\",\n    \"test:e2e:ui\": \"playwright test --config=playwright.config.e2e.ts --ui\",\n    \"test:e2e:headed\": \"playwright test --config=playwright.config.e2e.ts --headed\",\n    \"test:e2e:debug\": \"playwright test --config=playwright.config.e2e.ts --debug\",\n    \"test:e2e:report\": \"playwright show-report\",\n    \"benchmarks\": \"vitest bench\",\n    \"benchmarks:watch\": \"vitest bench --watch\",\n    \"perf:test\": \"vitest --run tests/performance\",\n    \"perf:analyze\": \"node scripts/analyze-bundle.js\",\n    \"perf:check\": \"node scripts/check-performance-budgets.js\",\n    \"perf:report\": \"pnpm run perf:test && pnpm run perf:analyze\",\n    \"perf:lighthouse\": \"lhci autorun\",\n    \"optimize:images\": \"node scripts/optimize-images.mjs\",\n    \"lint\": \"eslint --cache --cache-location ./node_modules/.cache/eslint app\",\n    \"lint:fix\": \"npm run lint -- --fix && prettier app --write\",\n    \"start\": \"vite preview --host :: --port 5173 --strictPort\",\n    \"dockerstart\": \"vite preview --host 0.0.0.0 --port 5173 --strictPort\",\n    \"dockerrun\": \"docker run -it -d --name bolt-ai-live -p 5173:5173 --env-file .env.local bolt-ai\",\n    \"dockerbuild:prod\": \"docker build -t bolt-ai:production -t bolt-ai:latest --target bolt-ai-production .\",\n    \"dockerbuild\": \"docker build -t bolt-ai:development -t bolt-ai:latest --target development .\",\n    \"typecheck\": \"tsc\",\n    \"update:ripgrep-wasm\": \"node scripts/update-ripgrep-wasm.mjs\",\n    \"typegen\": \"wrangler types\",\n    \"preview\": \"pnpm run build && pnpm run start\",\n    \"prepare\": \"husky\",\n    \"clean\": \"node scripts/clean.js\",\n    \"electron:dev\": \"node scripts/electron-dev.mjs\",\n    \"electron:dev:inspect\": \"NODE_ENV=development electron --inspect=9229 build/electron/main/index.mjs\",\n    \"electron:build:deps\": \"concurrently \\\"pnpm electron:build:main\\\" \\\"pnpm electron:build:preload\\\" --kill-others-on-fail\",\n    \"electron:build:main\": \"vite build --config ./electron/main/vite.config.ts\",\n    \"electron:build:preload\": \"vite build --config ./electron/preload/vite.config.ts\",\n    \"electron:build:renderer\": \"react-router build --config vite-electron.config.ts\",\n    \"electron:build:unpack\": \"rimraf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --dir\",\n    \"electron:build:mac\": \"rimraf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --mac\",\n    \"electron:build:win\": \"rimraf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --win\",\n    \"electron:build:linux\": \"rimraf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --linux\",\n    \"electron:build:dist\": \"rimraf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --mwl\"\n  },\n  \"engines\": {\n    \"node\": \">=22.12.0\",\n    \"pnpm\": \">=9.15.9\"\n  },\n  \"dependencies\": {\n    \"@ai-sdk/amazon-bedrock\": \"5.0.145\",\n    \"@ai-sdk/anthropic\": \"4.0.106\",\n    \"@ai-sdk/cerebras\": \"3.0.94\",\n    \"@ai-sdk/cohere\": \"4.0.85\",\n    \"@ai-sdk/deepseek\": \"3.0.88\",\n    \"@ai-sdk/fireworks\": \"3.0.97\",\n    \"@ai-sdk/google\": \"4.0.122\",\n    \"@ai-sdk/mcp\": \"2.0.101\",\n    \"@ai-sdk/mistral\": \"4.0.88\",\n    \"@ai-sdk/openai\": \"4.0.121\",\n    \"@ai-sdk/react\": \"4.0.180\",\n    \"@bjorn3/browser_wasi_shim\": \"^0.4.2\",\n    \"@codemirror/autocomplete\": \"^6.20.4\",\n    \"@codemirror/commands\": \"^6.11.1\",\n    \"@codemirror/lang-cpp\": \"^6.0.3\",\n    \"@codemirror/lang-css\": \"^6.3.1\",\n    \"@codemirror/lang-html\": \"^6.4.12\",\n    \"@codemirror/lang-javascript\": \"^6.2.5\",\n    \"@codemirror/lang-json\": \"^6.0.2\",\n    \"@codemirror/lang-markdown\": \"^6.5.2\",\n    \"@codemirror/lang-python\": \"^6.2.1\",\n    \"@codemirror/lang-sass\": \"^6.0.2\",\n    \"@codemirror/lang-vue\": \"^0.1.3\",\n    \"@codemirror/lang-wast\": \"^6.0.2\",\n    \"@codemirror/language\": \"^6.13.1\",\n    \"@codemirror/search\": \"^6.7.2\",\n    \"@codemirror/state\": \"^6.7.6\",\n    \"@codemirror/view\": \"^6.43.15\",\n    \"@iconify-json/svg-spinners\": \"^1.2.4\",\n    \"@modelcontextprotocol/sdk\": \"^1.32.2\",\n    \"@nanostores/react\": \"^2.0.1\",\n    \"@octokit/rest\": \"^22.0.1\",\n    \"@openrouter/ai-sdk-provider\": \"3.1.0\",\n    \"@radix-ui/react-checkbox\": \"^1.4.1\",\n    \"@radix-ui/react-collapsible\": \"^1.2.1\",\n    \"@radix-ui/react-context-menu\": \"^2.4.1\",\n    \"@radix-ui/react-dialog\": \"^1.3.1\",\n    \"@radix-ui/react-dropdown-menu\": \"^2.2.1\",\n    \"@radix-ui/react-label\": \"^2.1.17\",\n    \"@radix-ui/react-popover\": \"^1.3.1\",\n    \"@radix-ui/react-scroll-area\": \"^1.4.0\",\n    \"@radix-ui/react-separator\": \"^1.2.0\",\n    \"@radix-ui/react-switch\": \"^1.4.1\",\n    \"@radix-ui/react-tabs\": \"^1.2.1\",\n    \"@radix-ui/react-tooltip\": \"^1.4.1\",\n    \"@react-router/cloudflare\": \"^8.5.1\",\n    \"@react-router/node\": \"^8.5.1\",\n    \"@uiw/codemirror-theme-vscode\": \"^4.25.12\",\n    \"@unocss/reset\": \"^66.13.0\",\n    \"@webcontainer/api\": \"1.6.5-internal.2\",\n    \"@xterm/addon-fit\": \"^0.11.0\",\n    \"@xterm/addon-web-links\": \"^0.12.0\",\n    \"@xterm/xterm\": \"^6.0.0\",\n    \"ai\": \"7.0.176\",\n    \"chalk\": \"^6.0.1\",\n    \"class-variance-authority\": \"^0.7.1\",\n    \"date-fns\": \"^4.4.0\",\n    \"diff\": \"^9.0.0\",\n    \"dompurify\": \"^3.4.18\",\n    \"dotenv\": \"^18.0.10\",\n    \"electron-log\": \"^5.4.4\",\n    \"electron-store\": \"^12.0.0\",\n    \"electron-updater\": \"^6.8.11\",\n    \"file-saver\": \"^2.0"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 115,
+      "line_count": 6,
+      "truncated": false,
+      "excerpt": "allowBuilds:\n  '@parcel/watcher': true\n  core-js: true\n  electron-winstaller: true\n  esbuild: true\n  workerd: true\n"
+    }
+  },
+  "workflow_samples": {
+    "ci.yaml": {
+      "path": ".github/workflows/ci.yaml",
+      "size_bytes": 3206,
+      "line_count": 111,
+      "truncated": false,
+      "excerpt": "name: CI/CD\n\non:\n  push:\n    branches:\n      - main\n  pull_request:\n\n# Cancel in-progress runs on the same branch/PR\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  test:\n    name: Test\n    runs-on: ubuntu-latest\n    timeout-minutes: 30\n\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v7\n\n      - name: Setup and Build\n        uses: ./.github/actions/setup-and-build\n\n      - name: Run type check\n        run: pnpm run typecheck\n\n      - name: Cache ESLint\n        uses: actions/cache@v4\n        with:\n          path: node_modules/.cache/eslint\n          key: ${{ runner.os }}-eslint-${{ hashFiles('eslint.config.mjs', 'pnpm-lock.yaml') }}-${{ hashFiles('app/**/*.ts', 'app/**/*.tsx') }}\n          restore-keys: |\n            ${{ runner.os }}-eslint-${{ hashFiles('eslint.config.mjs', 'pnpm-lock.yaml') }}-\n\n      - name: Run ESLint\n        run: pnpm run lint\n\n      - name: Run tests with coverage\n        run: pnpm run test:coverage\n\n      - name: Install Playwright Chromium\n        run: pnpm exec playwright install --with-deps chromium\n\n      - name: Run deterministic browser tests\n        run: pnpm run test:e2e:ci\n\n      - name: Upload Playwright report\n        uses: actions/upload-artifact@v7\n        if: failure()\n        with:\n          name: playwright-report\n          path: |\n            playwright-report/\n            test-results/\n          retention-days: 7\n\n      - name: Upload test coverage\n        uses: actions/upload-artifact@v7\n        if: always()\n        with:\n          name: coverage-report\n          path: coverage/\n          retention-days: 7\n\n  docker-validation:\n    name: Docker Build Validation\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v7\n\n      - name: Set up Docker Buildx\n        uses: docker/setup-buildx-action@v3\n\n      - name: Validate Docker production build\n        run: |\n          echo \"\ud83d\udc33 Testing Docker production target...\"\n          docker build --target bolt-ai-production -t bolt-ai:ci . --no-cache --progress=plain\n          echo \"\u2705 Production target builds successfully\"\n\n      - name: Smoke test production container\n        run: |\n          container_id=$(docker run -d -p 127.0.0.1:5173:5173 bolt-ai:ci)\n          trap 'docker logs \"$container_id\"; docker rm -f \"$container_id\"' EXIT\n          for attempt in $(seq 1 30); do\n            if curl -fsS http://127.0.0.1:5173/ -o /dev/null; then\n              exit 0\n            fi\n            if [ \"$(docker inspect -f '{{.State.Running}}' \"$container_id\")\" != \"true\" ]; then\n              exit 1\n            fi\n            sleep 2\n          done\n          exit 1\n\n      - name: Validate Docker development build\n        run: |\n          echo \"\ud83d\udc33 Testing Docker development target...\"\n          docker build --target development . --no-cache --progress=plain\n          echo \"\u2705 Development target builds successfully\"\n\n      - name: Validate docker-compose configuration\n        run: |\n          echo \"\ud83d\udc33 Validating docker-compose configuration...\"\n          docker compose config --quiet\n          echo \"\u2705 docker-compose configuration is valid\"\n"
+    },
+    "pr-release-validation.yaml": {
+      "path": ".github/workflows/pr-release-validation.yaml",
+      "size_bytes": 4451,
+      "line_count": 127,
+      "truncated": false,
+      "excerpt": "name: PR Validation\n\non:\n  pull_request:\n    types: [opened, synchronize, reopened, labeled, unlabeled]\n    branches:\n      - main\n\npermissions:\n  contents: read\n  pull-requests: write\n  checks: write\n\njobs:\n  quality-gates:\n    name: Quality Gates\n    runs-on: ubuntu-latest\n    \n    steps:\n      - name: Checkout\n        uses: actions/checkout@v7\n\n      - name: Wait for CI checks\n        uses: lewagon/wait-on-check-action@v1.3.1\n        with:\n          ref: ${{ github.event.pull_request.head.sha }}\n          check-name: 'Test'\n          repo-token: ${{ secrets.GITHUB_TOKEN }}\n          wait-interval: 10\n          running-workflow-name: 'Quality Gates'\n          allowed-conclusions: success,skipped,neutral\n\n      - name: Check required status checks\n        uses: actions/github-script@v9\n        continue-on-error: true\n        with:\n          script: |\n            const { data: checks } = await github.rest.checks.listForRef({\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              ref: context.payload.pull_request.head.sha\n            });\n\n            const requiredChecks = ['Test', 'CodeQL Analysis'];\n            const optionalChecks = ['Quality Analysis', 'Deploy Preview'];\n            const failedChecks = [];\n            const passedChecks = [];\n\n            // Check required workflows\n            for (const checkName of requiredChecks) {\n              const check = checks.check_runs.find(c => c.name === checkName);\n              if (check && check.conclusion === 'success') {\n                passedChecks.push(checkName);\n              } else {\n                failedChecks.push(checkName);\n              }\n            }\n\n            // Report optional checks\n            for (const checkName of optionalChecks) {\n              const check = checks.check_runs.find(c => c.name === checkName);\n              if (check && check.conclusion === 'success') {\n                passedChecks.push(`${checkName} (optional)`);\n              }\n            }\n\n            console.log(`\u2705 Passed checks: ${passedChecks.join(', ')}`);\n            \n            if (failedChecks.length > 0) {\n              console.log(`\u274c Failed required checks: ${failedChecks.join(', ')}`);\n              core.setFailed(`Required checks failed: ${failedChecks.join(', ')}`);\n            } else {\n              console.log(`\u2705 All required checks passed!`);\n            }\n\n  validate-release:\n    name: Release Validation\n    runs-on: ubuntu-latest\n    needs: quality-gates\n\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v7\n\n      - name: Validate PR Labels\n        run: |\n          if [[ \"${{ contains(github.event.pull_request.labels.*.name, 'stable-release') }}\" == \"true\" ]]; then\n            echo \"\u2713 PR has stable-release label\"\n            \n            # Check version bump labels\n            if [[ \"${{ contains(github.event.pull_request.labels.*.name, 'major') }}\" == \"true\" ]]; then\n              echo \"\u2713 Major version bump requested\"\n            elif [[ \"${{ contains(github.event.pull_request.labels.*.name, 'minor') }}\" == \"true\" ]]; then\n              echo \"\u2713 Minor version bump requested\"\n            else\n              echo \"\u2713 Patch version bump will be applied\"\n            fi\n          else\n            echo \"This PR doesn't have the stable-release label. No release will be created.\" \n          fi\n\n      - name: Check breaking changes\n        if: contains(github.event.pull_request.labels.*.name, 'major')\n        run: |\n          echo \"\u26a0\ufe0f This PR contains breaking changes and will trigger a major release.\"\n          \n      - name: Validate changelog entry\n        if: contains(github.event.pull_request.labels.*.name, 'stable-release')\n        run: |\n          if ! grep -q \"${{ github.event.pull_request.number }}\" CHANGES.md; then\n            echo \"\u274c No changelog entry found for PR #${{ github.event.pull_request.number }}\"\n            echo \"Please add an entry to CHANGES.md\"\n            exit 1\n          else\n            echo \"\u2713 Changelog entry found\"\n          fi\n\n  security-review:\n    name: Security Review Required\n    runs-on: ubuntu-latest\n    if: contains(github.event.pull_request.labels.*.name, 'security')\n    \n    steps:\n      - name: Check security label\n        run: |\n          echo \"\ud83d\udd12 This PR has security implications and requires additional review\"\n          echo \"Ensure a security team member has approved this PR before merging\"\n"
+    },
+    "preview.yaml": {
+      "path": ".github/workflows/preview.yaml",
+      "size_bytes": 7994,
+      "line_count": 221,
+      "truncated": true,
+      "excerpt": "name: Preview Deployment\n\non:\n  pull_request:\n    types: [opened, synchronize, reopened, closed]\n    branches: [main]\n\n# Cancel in-progress runs on the same PR\nconcurrency:\n  group: preview-${{ github.event.pull_request.number }}\n  cancel-in-progress: true\n\npermissions:\n  contents: read\n  pull-requests: write\n\nenv:\n  PREVIEW_NAME: preview-pr-${{ github.event.pull_request.number }}\n\njobs:\n  deploy-preview:\n    name: Deploy Preview\n    runs-on: ubuntu-latest\n    if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository\n\n    steps:\n      - name: Check if preview deployment is configured\n        id: check-secrets\n        env:\n          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}\n          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}\n        run: |\n          if [[ -n \"$CLOUDFLARE_API_TOKEN\" && -n \"$CLOUDFLARE_ACCOUNT_ID\" ]]; then\n            echo \"configured=true\" >> \"$GITHUB_OUTPUT\"\n          else\n            echo \"configured=false\" >> \"$GITHUB_OUTPUT\"\n          fi\n\n      - name: Checkout\n        if: steps.check-secrets.outputs.configured == 'true'\n        uses: actions/checkout@v7\n        with:\n          persist-credentials: false\n\n      - name: Setup and Build\n        if: steps.check-secrets.outputs.configured == 'true'\n        uses: ./.github/actions/setup-and-build\n        env:\n          NODE_ENV: production\n\n      - name: Deploy preview to Cloudflare Workers\n        if: steps.check-secrets.outputs.configured == 'true'\n        id: deploy\n        shell: bash\n        env:\n          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}\n          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}\n        run: |\n          result=\"$(pnpm exec wrangler preview --name \"$PREVIEW_NAME\" --json)\"\n          # Wrangler prints Vite config and asset logs before the JSON object.\n          preview_url=\"$(sed -n '/^{/,/^}$/p' <<< \"$result\" |\n            jq -er '.preview.urls[0] | strings | select(test(\"^https://[^[:space:]]+$\"))')\"\n          echo \"deployment-url=$preview_url\" >> \"$GITHUB_OUTPUT\"\n\n      - name: Run smoke test on preview\n        if: steps.check-secrets.outputs.configured == 'true'\n        env:\n          PREVIEW_URL: ${{ steps.deploy.outputs.deployment-url }}\n        run: |\n          echo \"Checking $PREVIEW_URL\"\n          curl --fail --silent --show-error --location --retry 3 --retry-all-errors \\\n            --max-time 30 --output /dev/null -- \"$PREVIEW_URL\"\n\n      - name: Preview deployment not configured\n        if: steps.check-secrets.outputs.configured == 'false'\n        run: |\n          echo \"\u2705 Preview deployment is not configured for this repository\"\n          echo \"To enable preview deployments, add the following secrets:\"\n          echo \"- CLOUDFLARE_API_TOKEN\"\n          echo \"- CLOUDFLARE_ACCOUNT_ID\"\n          echo \"This is optional and the workflow will pass without it.\"\n\n      - name: Add preview URL comment to PR\n        uses: actions/github-script@v9\n        continue-on-error: true\n        env:\n          PREVIEW_URL: ${{ steps.deploy.outputs.deployment-url }}\n        with:\n          script: |\n            const comments = await github.paginate(github.rest.issues.listComments, {\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              issue_number: context.issue.number,\n            });\n\n            const previewComment = comments.find(comment =>\n              comment.user?.login === 'github-actions[bot]' &&\n              (comment.body?.startsWith('\ud83d\ude80 Preview deployment') ||\n                comment.body?.startsWith('\u2139\ufe0f Preview deployment'))\n            );\n\n            const deployUrl = process.env.PREVIEW_URL;\n\n            let commentBody;\n            if (deployUrl) {\n              commentBody = `\ud83d\ude80 Preview deployment is ready!\n\n              | Name | Link |\n              |------|------|\n              | Latest commit | ${{ github.sha }} |\n              | Preview URL | ${deployUrl} |\n\n              Built with \u2764\ufe0f by [bolt.diy](https://bolt.diy)\n              `;\n            } else {\n              commentBody = `\u2139\ufe0f Preview deployment not configured\n\n              | Name | Info |\n              |------|------|\n              | Latest commit | ${{ github.sha }} |\n              | Status | Preview deployment requires Cloudflare secrets |\n\n              To enable preview deployments, repository maintainers can add:\n              - \\`CLOUDFLARE_API_TOKEN\\` secret\n              - \\`CLOUDFLARE_ACCOUNT_I"
+    },
+    "semantic-pr.yaml": {
+      "path": ".github/workflows/semantic-pr.yaml",
+      "size_bytes": 954,
+      "line_count": 32,
+      "truncated": false,
+      "excerpt": "name: Semantic Pull Request\non:\n  pull_request_target:\n    types: [opened, reopened, edited, synchronize]\npermissions:\n  pull-requests: read\njobs:\n  main:\n    name: Validate PR Title\n    runs-on: ubuntu-latest\n    steps:\n      # https://github.com/amannn/action-semantic-pull-request/releases/tag/v5.5.3\n      - uses: amannn/action-semantic-pull-request@0723387faaf9b38adef4775cd42cfd5155ed6017\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n        with:\n          subjectPattern: ^(?![A-Z]).+$\n          subjectPatternError: |\n            The subject \"{subject}\" found in the pull request title \"{title}\"\n            didn't match the configured pattern. Please ensure that the subject\n            doesn't start with an uppercase character.\n          types: |\n            fix\n            feat\n            chore\n            build\n            ci\n            perf\n            docs\n            refactor\n            revert\n            test\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-21T22:49:33Z",
+      "oldest": "2026-11-16T15:47:15Z"
+    },
+    "conventional_pct": 34.0,
+    "fix_revert_pct": 6.0,
+    "ai_coauthor_pct": 0.0,
+    "top_recent_authors": [
+      [
+        "dustinwloring1988",
+        50
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "72db5ce8",
+        "date": "2026-11-21T22:49:33Z",
+        "author": "dustinwloring1988",
+        "subject": "Merge pull request #2342 from dustinwloring1988/main",
+        "ai_signal": false
+      },
+      {
+        "sha": "9c2aeb64",
+        "date": "2026-11-21T22:42:47Z",
+        "author": "dustinwloring1988",
+        "subject": "added CA Certs, changed debug logging",
+        "ai_signal": false
+      },
+      {
+        "sha": "7a0b8f0d",
+        "date": "2026-11-21T05:28:28Z",
+        "author": "dustinwloring1988",
+        "subject": "Merge pull request #2340 from dustinwloring1988/main",
+        "ai_signal": false
+      },
+      {
+        "sha": "51975a42",
+        "date": "2026-11-21T05:21:58Z",
+        "author": "dustinwloring1988",
+        "subject": "Improve tool recovery and restart restored projects",
+        "ai_signal": false
+      },
+      {
+        "sha": "938c5c72",
+        "date": "2026-11-20T18:13:20Z",
+        "author": "dustinwloring1988",
+        "subject": "Improve project tool reliability and recovery",
+        "ai_signal": false
+      },
+      {
+        "sha": "406bfc6a",
+        "date": "2026-11-18T19:52:02Z",
+        "author": "dustinwloring1988",
+        "subject": "Merge pull request #2337 from dustinwloring1988/main",
+        "ai_signal": false
+      },
+      {
+        "sha": "570b0d10",
+        "date": "2026-11-18T16:15:10Z",
+        "author": "dustinwloring1988",
+        "subject": "perf: reduce chat persistence and editor update work",
+        "ai_signal": false
+      },
+      {
+        "sha": "794b9499",
+        "date": "2026-11-18T15:59:44Z",
+        "author": "dustinwloring1988",
+        "subject": "perf: reduce startup and project update work",
+        "ai_signal": false
+      },
+      {
+        "sha": "98fdcf5a",
+        "date": "2026-11-18T14:35:40Z",
+        "author": "dustinwloring1988",
+        "subject": "Merge pull request #2336 from dustinwloring1988/main",
+        "ai_signal": false
+      },
+      {
+        "sha": "940dc442",
+        "date": "2026-11-18T14:33:02Z",
+        "author": "dustinwloring1988",
+        "subject": "updated workflows",
+        "ai_signal": false
+      },
+      {
+        "sha": "49258668",
+        "date": "2026-11-18T14:03:17Z",
+        "author": "dustinwloring1988",
+        "subject": "updated deps",
+        "ai_signal": false
+      },
+      {
+        "sha": "9cb39a3a",
+        "date": "2026-11-18T13:32:44Z",
+        "author": "dustinwloring1988",
+        "subject": "Cleaned up test files left behind",
+        "ai_signal": false
+      },
+      {
+        "sha": "1f210cb2",
+        "date": "2026-11-18T10:42:15Z",
+        "author": "dustinwloring1988",
+        "subject": "refactor: restore test coverage and fix Supabase activation",
+        "ai_signal": false
+      },
+      {
+        "sha": "1e619a08",
+        "date": "2026-11-18T10:26:28Z",
+        "author": "dustinwloring1988",
+        "subject": "Merge pull request #2335 from dustinwloring1988/main",
+        "ai_signal": false
+      },
+      {
+        "sha": "300a9afa",
+        "date": "2026-11-18T10:20:14Z",
+        "author": "dustinwloring1988",
+        "subject": "fixed contrast in connectors",
+        "ai_signal": false
+      },
+      {
+        "sha": "c9eef0cb",
+        "date": "2026-11-18T09:59:10Z",
+        "author": "dustinwloring1988",
+        "subject": "fix chat reloads",
+        "ai_signal": false
+      },
+      {
+        "sha": "cbbd0134",
+        "date": "2026-11-18T09:57:51Z",
+        "author": "dustinwloring1988",
+        "subject": "fix chat reloads",
+        "ai_signal": false
+      },
+      {
+        "sha": "885cd410",
+        "date": "2026-11-18T09:22:48Z",
+        "author": "dustinwloring1988",
+        "subject": "refactor(deploy): complete deployment dialog consolidation - Phase 2 \u2705",
+        "ai_signal": false
+      },
+      {
+        "sha": "b8cfd4cf",
+        "date": "2026-11-18T09:08:47Z",
+        "author": "dustinwloring1988",
+        "subject": "feat(deploy): add shared deployment infrastructure (Phase 2 WIP)",
+        "ai_signal": false
+      },
+      {
+        "sha": "147b5c68",
+        "date": "2026-11-18T08:54:00Z",
+        "author": "dustinwloring1988",
+        "subject": "refactor(settings): consolidate RepositoryCard + Phase 1 docs",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "dustinwloring1988",
+      "contributions": 566
+    },
+    {
+      "login": "thecodacus",
+      "contributions": 320
+    },
+    {
+      "login": "Stijnus",
+      "contributions": 165
+    },
+    {
+      "login": "xKevIsDev",
+      "contributions": 163
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 129
+    },
+    {
+      "login": "wonderwhy-er",
+      "contributions": 95
+    },
+    {
+      "login": "coleam00",
+      "contributions": 85
+    },
+    {
+      "login": "d3lm",
+      "contributions": 42
+    },
+    {
+      "login": "leex279",
+      "contributions": 26
+    },
+    {
+      "login": "kc0tlh",
+      "contributions": 25
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.0.3",
+      "published_at": "2026-11-15T18:52:39Z",
+      "name": "Release v1.0.3"
+    },
+    {
+      "tag": "v1.0.2",
+      "published_at": "2026-11-15T18:16:31Z",
+      "name": "Release v1.0.2"
+    },
+    {
+      "tag": "v1.0.1",
+      "published_at": "2026-10-12T16:49:08Z",
+      "name": "Release v1.0.1"
+    },
+    {
+      "tag": "v1.0.0",
+      "published_at": "2025-05-12T02:15:57Z",
+      "name": "Release v1.0.0"
+    },
+    {
+      "tag": "v0.0.7",
+      "published_at": "2025-02-28T20:13:17Z",
+      "name": "Release v0.0.7"
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "repo": "smtg-ai/claude-squad",
+  "meta": {
+    "description": "Manage multiple AI terminal agents like Claude Code, Codex, OpenCode, and Amp.",
+    "homepage": "https://smtg-ai.github.io/claude-squad/",
+    "license": "AGPL-3.0",
+    "stars": 8866,
+    "forks": 641,
+    "open_issues": 54,
+    "archived": false,
+    "created_at": "2025-03-09T20:00:41Z",
+    "pushed_at": "2026-11-13T13:13:11Z",
+    "default_branch": "main",
+    "topics": [
+      "claude-code",
+      "cli",
+      "codex",
+      "opencode",
+      "vibe-coding"
+    ]
+  },
+  "languages": {
+    "Go": 263141,
+    "Shell": 12379,
+    "TypeScript": 8682,
+    "CSS": 8426,
+    "JavaScript": 393
+  },
+  "structure": {
+    "root": [
+      ".github/",
+      ".gitignore",
+      ".goreleaser.yaml",
+      "CLA.md",
+      "CONTRIBUTING.md",
+      "LICENSE.md",
+      "README.md",
+      "app/",
+      "assets/",
+      "bump-version.sh",
+      "clean.sh",
+      "clean_hard.sh",
+      "cmd/",
+      "config/",
+      "daemon/",
+      "go.mod",
+      "go.sum",
+      "install.sh",
+      "keys/",
+      "log/",
+      "main.go",
+      "session/",
+      "ui/",
+      "web/"
+    ],
+    "workflows": [
+      "build.yml",
+      "cla.yml",
+      "deploy-pages.yml",
+      "lint.yml",
+      "release.yml"
+    ],
+    "docs": [],
+    "docs_count": 0,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 651,
+      "line_count": 29,
+      "truncated": false,
+      "excerpt": "# Contributing\n\nThank you for considering contributing to our project! This document outlines the process for contributing.\n\n## Development Setup\n\n1. Fork the repository\n2. Clone your fork: `git clone https://github.com/YOUR-USERNAME/claude-squad.git`\n3. Add the upstream repository: `git remote add upstream https://github.com/smtg-ai/claude-squad.git`\n4. Install dependencies: `go mod download`\n\n## Code Standards\n\n### Lint\n\nYou can run the following command to lint the code:\n\n```bash\ngofmt -w .\n```\n\n### Testing\n\nPlease include tests for new features or bug fixes.\n\n## Questions?\n\nFeel free to open an issue for any questions about contributing.\n\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 5539,
+      "line_count": 162,
+      "truncated": false,
+      "excerpt": "# Claude Squad [![CI](https://github.com/smtg-ai/claude-squad/actions/workflows/build.yml/badge.svg)](https://github.com/smtg-ai/claude-squad/actions/workflows/build.yml) [![GitHub Release](https://img.shields.io/github/v/release/smtg-ai/claude-squad)](https://github.com/smtg-ai/claude-squad/releases/latest)\n\n[Claude Squad](https://smtg-ai.github.io/claude-squad/) is a terminal app that manages multiple [Claude Code](https://github.com/anthropics/claude-code), [Codex](https://github.com/openai/codex), [Gemini](https://github.com/google-gemini/gemini-cli) (and other local agents including [Aider](https://github.com/Aider-AI/aider)) in separate workspaces, allowing you to work on multiple tasks simultaneously.\n\n\n![Claude Squad Screenshot](assets/screenshot.png)\n\n### Highlights\n- Complete tasks in the background (including yolo / auto-accept mode!)\n- Manage instances and tasks in one terminal window\n- Review changes before applying them, checkout changes before pushing them\n- Each task gets its own isolated git workspace, so no conflicts\n\n<br />\n\nhttps://github.com/user-attachments/assets/aef18253-e58f-4525-9032-f5a3d66c975a\n\n<br />\n\n### Installation\n\nBoth Homebrew and manual installation will install Claude Squad as `cs` on your system.\n\n#### Homebrew\n\n```bash\nbrew install claude-squad\nln -s \"$(brew --prefix)/bin/claude-squad\" \"$(brew --prefix)/bin/cs\"\n```\n\n#### Manual\n\nClaude Squad can also be installed by running the following command:\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/smtg-ai/claude-squad/main/install.sh | bash\n```\n\nThis puts the `cs` binary in `~/.local/bin`.\n\nTo use a custom name for the binary:\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/smtg-ai/claude-squad/main/install.sh | bash -s -- --name <your-binary-name>\n```\n\n### Prerequisites\n\n- [tmux](https://github.com/tmux/tmux/wiki/Installing)\n- [gh](https://cli.github.com/)\n\n### Usage\n\n```\nUsage:\n  cs [flags]\n  cs [command]\n\nAvailable Commands:\n  completion  Generate the autocompletion script for the specified shell\n  debug       Print debug information like config paths\n  help        Help about any command\n  reset       Reset all stored instances\n  version     Print the version number of claude-squad\n\nFlags:\n  -y, --autoyes          [experimental] If enabled, all instances will automatically accept prompts for claude code & aider\n  -h, --help             help for claude-squad\n  -p, --program string   Program to run in new instances (e.g. 'aider --model ollama_chat/gemma3:1b')\n```\n\nRun the application with:\n\n```bash\ncs\n```\nNOTE: The default program is `claude` and we recommend using the latest version.\n\n<br />\n\n<b>Using Claude Squad with other AI assistants:</b>\n- For [Codex](https://github.com/openai/codex): Set your API key with `export OPENAI_API_KEY=<your_key>`\n- Launch with specific assistants:\n   - Codex: `cs -p \"codex\"`\n   - Aider: `cs -p \"aider ...\"`\n   - Gemini: `cs -p \"gemini\"`\n- Make this the default, by modifying the config file (locate with `cs debug`)\n\n<br />\n\n#### Menu\nThe menu at the bottom of the screen shows available commands: \n\n##### Instance/Session Management\n- `n` - Create a new session\n- `N` - Create a new session with a prompt\n- `D` - Kill (delete) the selected session\n- `\u2191/j`, `\u2193/k` - Navigate between sessions\n\n##### Actions\n- `\u21b5/o` - Attach to the selected session to reprompt\n- `ctrl-q` - Detach from session\n- `s` - Commit and push branch to github\n- `c` - Checkout. Commits changes and pauses the session\n- `r` - Resume a paused session\n- `?` - Show help menu\n\n##### Navigation\n- `tab` - Switch between preview tab and diff tab\n- `q` - Quit the application\n- `shift-\u2193/\u2191` - scroll in diff view\n\n### Configuration\n\nClaude Squad stores its configuration in `~/.claude-squad/config.json`. You can find the exact path by running `cs debug`.\n\n#### Profiles\n\nProfiles let you define multiple named program configurations and switch between them when creating a new session. When more than one profile is defined, the session creation overlay shows a profile picker that you can navigate with `\u2190`/`\u2192`.\n\nTo configure profiles, add a `profiles` array to your config file and set `default_program` to the name of the profile to select by default:\n\n```json\n{\n  \"default_program\": \"claude\",\n  \"profiles\": [\n    { \"name\": \"claude\", \"program\": \"claude\" },\n    { \"name\": \"codex\", \"program\": \"codex\" },\n    { \"name\": \"aider\", \"program\": \"aider --model ollama_chat/gemma3:1b\" }\n  ]\n}\n```\n\nEach profile has two fields:\n\n| Field     | Description                                              |\n|-----------|----------------------------------------------------------|\n| `name`    | Display name shown in the profile picker                 |\n| `program` | Shell command used to launch the agent for that profile  |\n\nIf no profiles are defined, Claude Squad uses `default_program` directly as the launch command (the default is `claude`).\n\n### FAQs\n\n#### Failed to start new session\n\nIf you get an error like `failed to start new session: timed out waiting for tmux session`, update the\nunderlying program (ex. `claude`) to the latest version.\n\n### How It Works\n\n1. **tmux** to create isolated terminal sessions for each agent\n2. **git worktrees** to isolate codebases so each session works on its own branch\n3. A simple TUI interface for easy navigation and management\n\n### License\n\n[AGPL-3.0](LICENSE.md)\n\n### Star History\n\n[![Star History Chart](https://api.star-history.com/svg?repos=smtg-ai/claude-squad&type=Date)](https://www.star-history.com/#smtg-ai/claude-squad&Date)\n"
+    },
+    "go.mod": {
+      "path": "go.mod",
+      "size_bytes": 1519,
+      "line_count": 43,
+      "truncated": false,
+      "excerpt": "module claude-squad\n\ngo 1.23.0\n\ntoolchain go1.25.8\n\nrequire (\n\tgithub.com/atotto/clipboard v0.1.4\n\tgithub.com/charmbracelet/bubbles v0.20.0\n\tgithub.com/charmbracelet/bubbletea v1.3.4\n\tgithub.com/charmbracelet/lipgloss v1.0.0\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/mattn/go-runewidth v0.0.16\n\tgithub.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6\n\tgithub.com/muesli/reflow v0.3.0\n\tgithub.com/muesli/termenv v0.15.2\n\tgithub.com/spf13/cobra v1.9.1\n\tgithub.com/stretchr/testify v1.10.0\n\tgolang.org/x/sys v0.31.0\n\tgolang.org/x/term v0.30.0\n)\n\nrequire (\n\tgithub.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect\n\tgithub.com/charmbracelet/x/ansi v0.8.0 // indirect\n\tgithub.com/charmbracelet/x/term v0.2.1 // indirect\n\tgithub.com/davecgh/go-spew v1.1.1 // indirect\n\tgithub.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect\n\tgithub.com/inconshreveable/mousetrap v1.1.0 // indirect\n\tgithub.com/kr/pretty v0.3.1 // indirect\n\tgithub.com/lucasb-eyer/go-colorful v1.2.0 // indirect\n\tgithub.com/mattn/go-isatty v0.0.20 // indirect\n\tgithub.com/mattn/go-localereader v0.0.1 // indirect\n\tgithub.com/muesli/cancelreader v0.2.2 // indirect\n\tgithub.com/pmezard/go-difflib v1.0.0 // indirect\n\tgithub.com/rivo/uniseg v0.4.7 // indirect\n\tgithub.com/rogpeppe/go-internal v1.14.1 // indirect\n\tgithub.com/spf13/pflag v1.0.6 // indirect\n\tgolang.org/x/sync v0.11.0 // indirect\n\tgolang.org/x/text v0.22.0 // indirect\n\tgopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect\n\tgopkg.in/yaml.v3 v3.0.1 // indirect\n)\n"
+    }
+  },
+  "workflow_samples": {
+    "lint.yml": {
+      "path": ".github/workflows/lint.yml",
+      "size_bytes": 1070,
+      "line_count": 48,
+      "truncated": false,
+      "excerpt": "name: Lint\n\non:\n  push:\n    branches: [ main ]\n    paths:\n      - '**.go'\n      - 'go.mod'\n      - 'go.sum'\n      - '.github/workflows/lint.yml'\n  pull_request:\n    branches: [ main ]\n    paths:\n      - '**.go'\n      - 'go.mod'\n      - 'go.sum'\n      - '.github/workflows/lint.yml'\n\njobs:\n  golangci:\n    name: lint\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Set up Go\n        uses: actions/setup-go@v5\n        with:\n          go-version: '1.25.8'\n          cache: false\n\n      - name: golangci-lint\n        uses: golangci/golangci-lint-action@v6\n        with:\n          version: v1.60.1\n          args: --timeout=3m --out-format=line-number --fast --max-issues-per-linter=0 --max-same-issues=0\n          skip-cache: false\n          only-new-issues: true\n\n      - name: Check formatting\n        run: |\n          if [ -n \"$(gofmt -l .)\" ]; then\n            echo \"The following files are not formatted correctly:\"\n            gofmt -l .\n            echo \"Fix these issues\"\n            gofmt -d .\n            exit 1\n          fi\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-13T13:13:10Z",
+      "oldest": "2025-06-13T18:50:58Z"
+    },
+    "conventional_pct": 82.0,
+    "fix_revert_pct": 36.0,
+    "ai_coauthor_pct": 16.0,
+    "top_recent_authors": [
+      [
+        "mufeez-amjad",
+        28
+      ],
+      [
+        "jayshrivastava",
+        4
+      ],
+      [
+        "neokim",
+        2
+      ],
+      [
+        "SKSCody",
+        1
+      ],
+      [
+        "Noam5",
+        1
+      ],
+      [
+        "JDKrasnick",
+        1
+      ],
+      [
+        "paytonagreen",
+        1
+      ],
+      [
+        "hanbin8269",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "070eb938",
+        "date": "2026-11-13T13:13:10Z",
+        "author": "SKSCody",
+        "subject": "fix: remove gh repo sync call that always fails before push (#344)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ce1ffb43",
+        "date": "2026-08-20T05:09:45Z",
+        "author": "mufeez-amjad",
+        "subject": "Bump version to 1.0.20",
+        "ai_signal": false
+      },
+      {
+        "sha": "ebb83b2d",
+        "date": "2026-08-20T05:09:27Z",
+        "author": "Noam5",
+        "subject": "fix: recover instances whose tmux session died with the server (#322)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2dd388e9",
+        "date": "2026-07-30T16:45:40Z",
+        "author": "JDKrasnick",
+        "subject": "fix: record base commit for existing-branch sessions (#315)",
+        "ai_signal": true
+      },
+      {
+        "sha": "5a604f76",
+        "date": "2026-06-17T16:05:11Z",
+        "author": "mufeez-amjad",
+        "subject": "chore: bump Go toolchain to 1.25.8 (GO-2026-4602) (#304)",
+        "ai_signal": false
+      },
+      {
+        "sha": "78b6efde",
+        "date": "2026-06-17T14:45:18Z",
+        "author": "mufeez-amjad",
+        "subject": "Bump version to 1.0.19",
+        "ai_signal": false
+      },
+      {
+        "sha": "b27ded30",
+        "date": "2026-06-17T05:19:58Z",
+        "author": "paytonagreen",
+        "subject": "chore: remove unused go-git dependency and transitive security advisory (#302)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4a02a308",
+        "date": "2026-05-18T16:30:38Z",
+        "author": "jayshrivastava",
+        "subject": "chore: set version to 1.0.18",
+        "ai_signal": false
+      },
+      {
+        "sha": "c8350cac",
+        "date": "2026-05-18T16:23:38Z",
+        "author": "hanbin8269",
+        "subject": "perf: compute full diff only for the selected instance (#279)",
+        "ai_signal": true
+      },
+      {
+        "sha": "389e59db",
+        "date": "2026-05-18T16:12:10Z",
+        "author": "jayshrivastava",
+        "subject": "test: cover orphaned worktree directory cleanup in Setup (#294)",
+        "ai_signal": false
+      },
+      {
+        "sha": "908a9950",
+        "date": "2026-05-18T16:02:47Z",
+        "author": "neokim",
+        "subject": "fix: prevent inconsistent state when Pause() encounters IsDirty error (#285)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2231d843",
+        "date": "2026-05-18T15:27:30Z",
+        "author": "neokim",
+        "subject": "feat: add instance reorder with Shift+J/K (#286)",
+        "ai_signal": false
+      },
+      {
+        "sha": "434ca256",
+        "date": "2026-05-15T06:24:05Z",
+        "author": "estubmo",
+        "subject": "fix: use actual binary name in completion scripts (#289)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a4ab6988",
+        "date": "2026-03-28T23:34:19Z",
+        "author": "miamachine",
+        "subject": "fix: move expensive operations off UI event loop and fix stale preview pane (#253)",
+        "ai_signal": true
+      },
+      {
+        "sha": "c4d0c035",
+        "date": "2026-03-12T07:38:41Z",
+        "author": "mufeez-amjad",
+        "subject": "chore: Bump version to 1.0.17",
+        "ai_signal": false
+      },
+      {
+        "sha": "52aa2dd5",
+        "date": "2026-03-12T07:34:53Z",
+        "author": "mufeez-amjad",
+        "subject": "feat: Allow configuring preset profiles for creating sessions (#264)",
+        "ai_signal": false
+      },
+      {
+        "sha": "166112ae",
+        "date": "2026-03-12T06:43:13Z",
+        "author": "mufeez-amjad",
+        "subject": "fix: Update claude trust prompt handling (#263)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b4b43ab0",
+        "date": "2026-03-12T06:36:55Z",
+        "author": "mufeez-amjad",
+        "subject": "feat: Enable selecting source branch for session (#262)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4cefe6fa",
+        "date": "2026-03-04T03:39:14Z",
+        "author": "whoamipl",
+        "subject": "fix: correct typosquatted org name in website install command (#259)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a4d5e522",
+        "date": "2026-03-01T08:10:12Z",
+        "author": "mufeez-amjad",
+        "subject": "Bump version to 1.0.16",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "mufeez-amjad",
+      "contributions": 116
+    },
+    {
+      "login": "jayshrivastava",
+      "contributions": 87
+    },
+    {
+      "login": "neokim",
+      "contributions": 2
+    },
+    {
+      "login": "SKSCody",
+      "contributions": 1
+    },
+    {
+      "login": "estubmo",
+      "contributions": 1
+    },
+    {
+      "login": "kimeuichan",
+      "contributions": 1
+    },
+    {
+      "login": "fijimunkii",
+      "contributions": 1
+    },
+    {
+      "login": "JDKrasnick",
+      "contributions": 1
+    },
+    {
+      "login": "kennyfrc",
+      "contributions": 1
+    },
+    {
+      "login": "Noam5",
+      "contributions": 1
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.0.20",
+      "published_at": "2026-08-20T05:11:12Z",
+      "name": "v1.0.20"
+    },
+    {
+      "tag": "v1.0.19",
+      "published_at": "2026-06-17T14:47:44Z",
+      "name": "v1.0.19"
+    },
+    {
+      "tag": "v1.0.18",
+      "published_at": "2026-05-23T03:25:11Z",
+      "name": "v1.0.18"
+    },
+    {
+      "tag": "v1.0.17",
+      "published_at": "2026-03-12T07:40:53Z",
+      "name": "v1.0.17"
+    },
+    {
+      "tag": "v1.0.16",
+      "published_at": "2026-03-01T08:25:12Z",
+      "name": "v1.0.16"
+    }
+  ]
+}

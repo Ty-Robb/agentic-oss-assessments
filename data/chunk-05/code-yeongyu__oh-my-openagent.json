@@ -1,0 +1,534 @@
+{
+  "repo": "code-yeongyu/oh-my-openagent",
+  "meta": {
+    "description": "OmO: Just type \"mass ulw\" keyword with your prompt. Now you are the master of graph engineering.",
+    "homepage": "https://omo.dev",
+    "license": "NOASSERTION",
+    "stars": 71105,
+    "forks": 5839,
+    "open_issues": 2823,
+    "archived": false,
+    "created_at": "2025-12-03T01:40:05Z",
+    "pushed_at": "2026-11-25T12:44:28Z",
+    "default_branch": "dev",
+    "topics": [
+      "ai",
+      "ai-agents",
+      "anthropic",
+      "chatgpt",
+      "claude",
+      "claude-skills",
+      "codex",
+      "cursor",
+      "gemini",
+      "ide",
+      "openai",
+      "opencode",
+      "orchestration",
+      "tui",
+      "typescript"
+    ]
+  },
+  "languages": {
+    "TypeScript": 57955457,
+    "JavaScript": 6737650,
+    "Rust": 5272415,
+    "Shell": 599923,
+    "Python": 442618,
+    "PowerShell": 113522,
+    "C": 82221,
+    "CSS": 80052,
+    "C#": 63842,
+    "Swift": 34963,
+    "Objective-C": 12976,
+    "Dockerfile": 6138,
+    "HTML": 4431,
+    "Go Template": 1174,
+    "Go": 993,
+    "Vue": 391,
+    "SCSS": 270
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".claude/",
+      ".codex/",
+      ".cursor/",
+      ".devcontainer/",
+      ".env.example",
+      ".git-blame-ignore-revs",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".gitmodules",
+      ".omo/",
+      ".opencode/",
+      ".oxlintrc.json",
+      ".prettierignore",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CLA.md",
+      "CLAUDE.md",
+      "CONTRIBUTING.md",
+      "Cargo.lock",
+      "Cargo.toml",
+      "LICENSE.md",
+      "README.de.md",
+      "README.es.md",
+      "README.fr.md",
+      "README.it.md",
+      "README.ja.md",
+      "README.ko.md",
+      "README.md",
+      "README.pt-br.md",
+      "README.ru.md",
+      "README.zh-cn.md",
+      "ROADMAP.md",
+      "SECURITY.md",
+      "THIRD-PARTY-NOTICES.md",
+      "assets/",
+      "bin/",
+      "bun-test.d.ts",
+      "bun.lock",
+      "bunfig.macos-shard-1b.toml",
+      "bunfig.root.toml",
+      "bunfig.toml",
+      "bunfig.win2.parallel.rest.toml",
+      "bunfig.win2.parallel.toml",
+      "bunfig.win2.parallel.windows.toml",
+      "bunfig.win2.toml",
+      "changes.md",
+      "changes/",
+      "crates/",
+      "docs/",
+      "knip.base.jsonc",
+      "knip.ts",
+      "knip.workspace.jsonc",
+      "package.json",
+      "packages/",
+      "postinstall.mjs",
+      "postinstall.test.ts",
+      "rust-toolchain.toml",
+      "script/",
+      "scripts/",
+      "signatures/",
+      "test-env.ts",
+      "test-git-environment.test.ts",
+      "test-hermetic-home-teardown.test.ts",
+      "test-hermetic-home.test.ts",
+      "test-hermetic-home.ts",
+      "test-setup.ts",
+      "test-support/",
+      "test-temp-leak-match.test.ts",
+      "test-temp-leak-match.ts",
+      "test-temp-leak-report-only.json",
+      "test-temp-root.test.ts",
+      "test-temp-root.ts",
+      "tests/",
+      "tsconfig.json"
+    ],
+    "workflows": [
+      "bot-merge.yml",
+      "changelog-gate.yml",
+      "ci-full-matrix-label.yml",
+      "ci.yml",
+      "cla.yml",
+      "compiled-worker.yml",
+      "computer-engine.yml",
+      "computer-fixtures.yml",
+      "computer-live-linux.yml",
+      "computer-live-windows-full.yml",
+      "cutover-target-deploy.yml",
+      "desktop-bench.yml",
+      "desktop-engine.yml",
+      "desktop-linux-qa.yml",
+      "desktop-windows-qa.yml",
+      "engine-trust-helper.yml",
+      "get-worker-ci.yml",
+      "get-worker-deploy.yml",
+      "git-job-helper.yml",
+      "installer-mirror.yml",
+      "isolation-linux-fs.yml",
+      "lint-workflows.yml",
+      "linux-trust-containers.yml",
+      "macos-signing-canary.yml",
+      "memory-takeover-trace.yml",
+      "npm-deprecate-version.yml",
+      "npm-dist-tag-rollback.yml",
+      "operator-darwin-anchors.ts",
+      "operator-darwin-cms.ts",
+      "operator-darwin-macho.ts",
+      "operator-darwin-services.ts",
+      "operator-darwin-verify.ts",
+      "package-labels.yml",
+      "platform-red-tracker.yml",
+      "pr-automation-signal.yml",
+      "pr-automation.yml",
+      "pr-platform-decision.yml",
+      "publish-platform.yml",
+      "publish.yml",
+      "refresh-model-capabilities.yml",
+      "release-announce.yml",
+      "review-claims.yml",
+      "sisyphus-agent.yml",
+      "stats.yml",
+      "trust-mutations.yml",
+      "web-ci.yml",
+      "web-deploy.yml",
+      "windows-flake-soak.yml"
+    ],
+    "docs": [
+      "AGENTS.md",
+      "examples/",
+      "guide/",
+      "i18n-glossary.md",
+      "legal/",
+      "manifesto.md",
+      "model-capabilities-maintenance.md",
+      "reference/",
+      "templates/",
+      "troubleshooting/"
+    ],
+    "docs_count": 10,
+    "agents_dir": [
+      "AGENTS.md",
+      "background-tasks.json",
+      "command/",
+      "knip.workspace.jsonc",
+      "skills/"
+    ],
+    "agents_skills": [
+      ".npmignore",
+      "codex-qa/",
+      "get-unpublished-changes/",
+      "github-triage/",
+      "hyperplan/",
+      "omomomo/",
+      "opencode-qa/",
+      "pre-publish-review/",
+      "publish/",
+      "remove-deadcode/",
+      "security-research/",
+      "senpi-qa/",
+      "tech-debt-audit/",
+      "work-with-pr/"
+    ],
+    "claude_dir": [
+      "commands",
+      "settings.json",
+      "skills"
+    ],
+    "cursor_dir": [
+      "environment.json"
+    ],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 70831,
+      "line_count": 479,
+      "truncated": true,
+      "excerpt": "# oh-my-opencode \u2014 OpenCode Plugin\n\n> **HOLD THE FUCK UP. THIS ENTIRE GODDAMN CODEBASE IS BEING RIPPED APART AND REBUILT RIGHT NOW. A MASSIVE MULTI-HARNESS AGENT OS REFACTOR IS IN PROGRESS \u2014 WE ARE RESTRUCTURING EVERYTHING TO SUPPORT MULTIPLE AGENT HARNESSES (OPENCODE, CODEX, PI, AND OTHERS). DO NOT TRUST THE STRUCTURE BELOW AS STABLE. READ THE [ROADMAP](./ROADMAP.md) BEFORE YOU TOUCH ANYTHING OR SO HELP ME GOD.**\n\n**Generated:** 2026-08-24 | **Source snapshot:** f3642fcda | **Branch:** initdeep-refresh-20260824 | **Release:** v5.0.0-beta.18\n\n## STOP. QA IS MANDATORY. NON-NEGOTIABLE. EVERY SINGLE TIME YOU TOUCH AN OPENCODE-, CODEX-, OR SENPI-CONNECTED COMPONENT.\n\n> **IF YOUR CHANGE TOUCHES ANYTHING WIRED INTO OPENCODE, INTO THE CODEX LIGHT EDITION, OR INTO THE SENPI ADAPTER, YOU MUST QA IT. ALWAYS. EVERY SINGLE TIME. NO EXCEPTIONS. THERE IS NO \"TOO SMALL TO SKIP\". THERE IS NO \"IT OBVIOUSLY WORKS\".**\n\n**\"It typechecks\" is NOT QA. \"`bun test` is green\" is NOT QA.** YOU MUST DRIVE THE REAL HARNESS, and then **YOU MUST WRITE THE EVIDENCE TO DISK.** If there is no evidence file, **the QA DID NOT HAPPEN**, and **YOU ARE NOT ALLOWED TO COMMIT OR PUSH.**\n\nThis is repeated on purpose, because it is the single most ignored rule in this repo. **CHANGE A HOOK, A TOOL, AN AGENT, A FEATURE, A CONFIG SCHEMA, AN MCP, A CLI COMMAND, AN INSTALLER, A PROMPT, OR ANYTHING ELSE THAT REACHES OPENCODE, CODEX, OR SENPI, THEN: RUN QA, THEN RECORD EVIDENCE.** Always. Every time. No exceptions.\n\n### OPENCODE side (`packages/omo-opencode/`): ALWAYS run the `opencode-qa` skill\n\n1. **ALWAYS RUN THE `opencode-qa` SKILL** (`.agents/skills/opencode-qa/`) to map the EXPECTED IMPACT and the FULL CHANGE SCOPE of your edit BEFORE and AFTER. Pick the right case: CLI (`opencode run --format json`), server + SSE hook proof, TUI smoke, or DB inspection.\n2. **ISOLATE EVERYTHING.** Any QA that SPAWNS opencode MUST run in an isolated XDG sandbox (`XDG_DATA_HOME` / `XDG_CONFIG_HOME` / `XDG_STATE_HOME` / `XDG_CACHE_HOME` pointed at temp dirs). The bundled scripts already do this. **NEVER pollute the real `~/.local/share/opencode/opencode.db`.** PROVE isolation by comparing `SELECT count(*) FROM session` before and after.\n3. **USE tmux** for the TUI smoke (`scripts/tui-smoke.sh`) and for any interactive driving. tmux is for SMOKE (did it boot, render, accept a key); assert REAL behavior via `opencode run --format json` or the server API + SSE.\n4. **PROVE THE HOOK FIRED.** If you changed a lifecycle hook, prove the matching event hit the wire (`scripts/sse-hook-probe.sh --event <name>`). Seeing the event proves the hook would fire.\n\n### CODEX side (`packages/omo-codex/`): ALWAYS run the `codex-qa` skill\n\n1. **ALWAYS RUN THE `codex-qa` SKILL** (`.agents/skills/codex-qa/`) to map the EXPECTED IMPACT and the FULL CHANGE SCOPE of your edit BEFORE and AFTER. It exercises ONLY our plugin in strict isolation \u2014 an isolated `CODEX_HOME` + a LOCAL mock model (no real API call) \u2014 so the real `~/.codex` is NEVER read or written. NEVER QA against your real `~/.codex`; NEVER the published package.\n2. **PROVE THE HOOK FIRED, FIRST-PARTY.** The skill drives the real `codex app-server` and asserts `hook/started` / `hook/completed` notifications for our components (`scripts/app-server-drive.sh --plugin`). Deterministic per-component checks: `scripts/hook-unit-probe.sh`. Installer + `config.toml` landing: `scripts/install-verify.sh`. tmux TUI smoke: `scripts/tui-smoke.sh`. Each script ships a `--self-test`.\n3. **RUN THE CODEX GATE:** `bun run test:codex` (installer + config migration + plugin component suite). This is the hermetic UNIT gate; it does NOT prove a live session \u2014 the `codex-qa` skill does.\n4. **CONFIRM THE REAL `~/.codex/config.toml` WAS NOT TOUCHED** \u2014 every `codex-qa` script asserts this automatically (shasum before/after).\n\n### SENPI side (`packages/omo-senpi/`, `packages/senpi-task/`): ALWAYS run the `senpi-qa` skill\n\n1. **ALWAYS RUN THE `senpi-qa` SKILL** (`.agents/skills/senpi-qa/`) to map the EXPECTED IMPACT and the FULL CHANGE SCOPE of your edit BEFORE and AFTER. It drives the REAL `senpi` binary through the drivers in `packages/omo-senpi/scripts/qa/`, which build their own isolated `SENPI_CODING_AGENT_DIR` and IGNORE a caller-provided one, so the real `~/.senpi/agent` is NEVER written.\n2. **RESOLVE THE EVIDENCE DIRECTORY WITH THE SKILL'S SCRIPT.** `node .agents/skills/senpi-qa/scripts/resolve-evidence-dir.mjs --repo-root \"$(git rev-parse --show-toplevel)\" --slug <YYYYMMDD>-<short-slug>` is the ONLY sanctioned way to pick the path. It returns an absolute path under `.omo/evidence/omo-senpi-adapter/<slug>/`, creates nothing, and rejects traversal, separators, absolute paths, and stray roots such as `local-ignore/qa-evidence`.\n3. **RUN THE SENPI GATE:** `tsgo --noEmit -p packages/omo-senpi/tsconfig.json` then `bun run test:senpi`. This is the hermetic UNIT gate; it does NOT prove a live session \u2014 the `senpi-qa` skill does.\n4. **CONFIRM THE REAL `~/.senpi/agent` WAS NOT TOUCHED** \u2014 record the live driver's `realSenpiUntouched` / changed-path fields and isolated agent-dir path. A whole-directory digest is supporting evidence only because live debug/cache files may change. A driver reporting `SKIP` because the `senpi` binary is absent is NOT a pass; say so in the evidence.\n\n### EVIDENCE: write it under `.omo/evidence/` (local, NEVER committed) or it DID NOT HAPPEN\n\n**WRITE EVERY QA ARTIFACT TO `.omo/evidence/<YYYYMMDD>-<short-slug>/`** (one subfolder per change, keep it ORGANIZED). Live Senpi QA is the one scoped exception: it goes under `.omo/evidence/omo-senpi-adapter/<slug>/`, resolved by the `senpi-qa` skill's script. **THE EVIDENCE FILES STAY LOCAL.** `.omo/evidence/` is gitignored and `script/tracked-evidence-paths-audit.test.ts` fails the build the moment any evidence path is tracked (#8703): never `git add -f` an evidence file, and never invent another capture root inside the worktree (`.qa-evidence/`, `qa-evidence/`, a RED/GREEN `.txt` next to the sources). What reaches the reviewer is the **QA & Evidence section of the PR body**: the four items below, the decisive sanitized excerpt of each capture (the RED failure line, the GREEN pass count, the driver's final JSON, the isolation proof), and one `sha256sum <artifact>` line per local evidence file so the summary is checkable against the file that produced it. For EVERY change you MUST record reviewer-readable plain files locally and summarize them there:\n- **WHAT WAS TESTED:** the command or manual action, the surface driven, and the behavior it was meant to prove.\n- **WHAT WAS OBSERVED:** the before/after or new behavior, isolation proof such as unchanged session counts, and the artifact path for the exact captured output.\n- **WHY IT IS ENOUGH:** how the evidence covers the intended behavior and remaining regression risk.\n- **WHAT WAS OMITTED:** redact or summarize raw secret-bearing logs, env dumps, tokens, auth headers, and private credentials instead of copying them.\n\n**NO EVIDENCE FILE == NO QA == NO COMMIT == NO PUSH.** ALWAYS. EVERY TIME. NO EXCEPTIONS. **AND AN EVIDENCE FILE INSIDE THE COMMIT == A REJECTED PR.**\n\n## MANDATORY CHANGE-EXECUTION PROTOCOL. EVERY USER-ORDERED PATCH FOLLOWS THIS. NO EXCEPTIONS.\n\n> **THE MOMENT A TASK REQUIRES PRODUCING A PATCH THAT MODIFIES THIS REPOSITORY, AND THE USER HAS EXPLICITLY INSTRUCTED THAT MODIFICATION, THIS PROTOCOL IS LAW. IT IS NOT A SUGGESTION. IT IS NOT OPTIONAL. THERE IS NO \"TOO SMALL TO BOTHER\", NO \"JUST THIS ONCE\", NO \"I ALREADY KNOW THE CODEBASE\". YOU RUN EVERY STEP, IN ORDER, EVERY SINGLE TIME.**\n\n1. **EXPLORE.** MAP the code you are about to touch BEFORE editing a single line: read the real files, trace the call paths, measure the blast radius. NEVER patch from memory.\n2. **MAKE A PLAN.** Write the full plan down BEFORE the first edit: every file, every change, the verification for each. NO PLAN ON DISK MEANS YOU DO NOT START.\n3. **ADD TODOS IN ULTRA-DETAIL.** Mirror EVERY atomic step of the plan into the todo list: one todo per edit-plus-verification unit. Vague todos like \"implement feature\" are FORBIDDEN.\n4. **MAKE A NEW WORKTREE.** ALL implementation happens in a fresh, task-owned git worktree. NEVER edit the main checkout in place, NEVER hand-commit to `dev`.\n5. **MAKE A PR AND WORK UNTIL IT GETS MERGED.** Open a reviewer-readable PR and STAY ON IT until it is MERGED: fix CI, answer review, re-run QA, resolve conflicts via `smart-rebase`. AN UNMERGED PR IS UNFINISHED WORK.\n6. **SET A GOAL AND RUN THE ULW LOOP.** Register the goal with binding success criteria and drive the work through the `ulw-loop`: evidence-bound, reproduce-first, real-surface QA. \"IT SHOULD WORK\" IS NOT EVIDENCE.\n7. **MANAGE THE TODO LIST OBSESSIVELY.** Mark a step in progress the instant it begins, done the instant it finishes, append new steps the moment they surface. THE TODO LIST NEVER LAGS REALITY. EVER.\n\n## DEFAULT WORKFLOW \u2014 how to take on any task\n\nUnless the user EXPLICITLY says otherwise, or the task is an urgent must-fix-now hotfix, deliver every change through the **`work-with-pr`** skill: it works in an isolated git worktree, implements with evidence-bound manual QA, opens a reviewer-readable English PR (what changed, why, observed behavior, QA/evidence, residual risk), runs the verification loop, and merges. Do NOT hand-commit normal work straight to `dev`.\n\n- **QA is the evidence gate, scoped to what you touched.** A change under `packages/omo-opencode/` MUST run the **`opencode-qa`** skill; a change under `packages/omo-codex/` (lazycodex) MUST run the **`codex-qa`** skill; a change under `packages/omo-senpi/` or `packages/senpi-task/` MUST run the **`senpi-qa`** skill (see the QA section above for each). Run the matching skill, and treat its captured output (written under the gitignored `.omo/evidence/`, summarized in the PR body, never committed) as the QA evidence `work-with-pr` requires. A change touching more than one runs each.\n- **Conflicts \u2192 `smart-rebase`.** If the worktree branch conflicts with its base, resolve it with the **`smart-rebase`** skill, then re-run the scoped QA. Never hand-resolve by force-pushing shared history.\n- **Merge \u2192 merge commit, ALWAYS.** Land the PR with a merge commit per **PR MERGE POLICY** below. NEVER squash-merge or rebase-merge, even if a generic workflow, skill, or GitHub default suggests it.\n\n## OVERVIEW\n\nOpenCode plugin (npm: `oh-my-opencode`, dual-published as `oh-my-openagent` during the rename transition) extending OpenCode with 11 agents, ~54-62 lifecycle hooks (54 base / 61 team / 62 monitor) across 62 dirs, 12-38 registry tools (gated by config flags including team-mode and goal; 8 `lsp_*` aliases served via the built-in lsp MCP), 3-tier MCP system (built-in + .mcp.json + skill-embedded), Hashline LINE#ID edit tool, IntentGate keyword detector, Team Mode (parallel multi-agent coordination, OFF by default), Boulder feature (boulder-state work tracking + cli/boulder subcommand), configurable agent ordering, and Claude Code compatibility.\n\n**The package layering refactor moved the entire plugin out of root `src/` into [`packages/omo-opencode/src/`](packages/omo-opencode/src/AGENTS.md)** (a 100% git rename \u2014 there is NO root `src/` anymore). That adapter tree is now the OpenCode-facing shim over 20 Core packages + 4 MCP packages + sibling adapters (Codex, Senpi, native). Build entry: `packages/omo-opencode/src/index.ts`, a thin wrapper that delegates to `packages/omo-opencode/src/testing/create-plugin-module.ts` `createPluginModule()` \u2192 staged plugin init (see INITIALIZATION FLOW). Ships in two editions of one product: **Ultimate** (omo for OpenCode, this plugin = `packages/omo-opencode/`) and **Light** (omo for Codex CLI = [`packages/omo-codex/`](packages/omo-codex/AGENTS.md), with `lazycodex` as the repository/bin identity and `lazycodex-ai` as the live npm alias; see CODEX LIGHT EDITION below).\n\n## STRUCTURE\n\n```\noh-my-opencode/                      # workspace root (no root src/ \u2014 it moved into packages/omo-opencode)\n\u251c\u2500\u2500 packages/                        # 45 sibling packages across Core/MCP/Skills/Adapters/Platform/Web. See packages/AGENTS.md\n\u2502   \u251c\u2500\u2500 omo-opencode/                # \u2605 THE OpenCode plugin adapter (formerly root src/). Build entry: src/index.ts\n\u2502   \u2502   \u251c\u2500\u2500 src/                     # plugin source and OpenCode-facing adapter shims. Full breakdown \u2192 packages/omo-opencode/src/AGENTS.md\n\u2502   \u2502       \u251c\u2500\u2500 index.ts             # Plugin entry; thin wrapper re-exporting createPluginModule() from src/testing/\n\u2502   \u2502       \u251c\u2500\u2500 plugin-interface.ts  # 12 OpenCode hook handlers (+2 wired in testing/create-plugin-module.ts)\n\u2502   \u2502       \u251c\u2500\u2500 create-{managers,tools,hooks}.ts  # 4 managers / ToolRegistry / 5-tier hook composition\n\u2502   \u2502       \u251c\u2500\u2500 agents/              # 11 agents, 10 createXXXAgent factories (Prometheus special-cased via plugin-handlers/prometheus-agent-config-builder.ts)\n\u2502   \u2502       \u251c\u2500\u2500 hooks/               # ~54-62 lifecycle hooks (54 base / 61 team / 62 monitor) across 62 dirs (incl. 5 zauc-* mock dirs + shared/ + team-session-events/)\n\u2502   \u2502       \u251c\u2500\u2500 tools/               # 15 native tool dirs (14 tools + shared/); LSP served via a built-in MCP, ast-grep via the bundled skill\n\u2502   \u2502       \u251c\u2500\u2500 features/            # 24 feature modules (team-mode, background-agent, skill-mcp-manager, opencode-skill-loader, mcp-oauth, boulder-state, btw-side, tui-sidebar, opengateway-provider, \u2026)\n\u2502   \u2502       \u251c\u2500\u2500 shared/              # cross-cutting utilities; logger \u2192 oh-my-opencode.log in os.tmpdir() (50 MB cap, .1/.2 backups)\n\u2502   \u2502       \u251c\u2500\u2500 config/             # Zod v4 schema system (36 schema files)\n\u2502   \u2502       \u251c\u2500\u2500 cli/                 # Commander.js CLI, 12 commands: install(setup), run, doctor, cleanup(uninstall), version, get-local-version, refresh-model-capabilities, boulder, ulw-loop, config (migrate), worktree-sweep, mcp (oauth login/logout/status)\n\u2502   \u2502       \u251c\u2500\u2500 mcp/                 # 4 built-in MCPs (3 remote + local stdio lsp)\n\u2502   \u2502       \u251c\u2500\u2500 plugin/ plugin-handlers/  # OpenCode hook handlers + 6-phase config loading pipeline\n\u2502   \u2502       \u251c\u2500\u2500 openclaw/            # Bidirectional Discord/Telegram/HTTP/shell integration + reply listener daemon\n\u2502   \u2502       \u2514\u2500\u2500 generated/ help/ locales/ testing/ __tests__/  # model-capabilities, CLI help schemas, i18n, test factory, perf benchmarks\n\u2502   \u2502   \u2514\u2500\u2500 scripts/             # standalone codegen (OpenGateway + models.dev \u2192 tracked src/features/opengateway-provider/opengateway-models.json). See scripts/AGENTS.md\n\u2502   \u251c\u2500\u2500 omo-codex/                   # Codex CLI Light edition; vendored Codex plugin `omo` + TS installer + telemetry (`lazycodex` repo/bin identity, `lazycodex-ai` live npm alias)\n\u2502   \u251c\u2500\u2500 omo-senpi/                   # Senpi native TS extension adapter (local-path Pi package); 18 components incl. task + memory + init-deep-advisor (drives senpi-task + omo-config-core)\n\u2502   \u251c\u2500\u2500 omo-native/                  # npm `omo-ai` distribution (BETA channel): launcher spawning the pinned senpi engine + `canonicalAgentDir()` (~/.omo/agent)\n\u2502   \u251c\u2500\u2500 senpi-task/                  # Senpi-coupled task engine: state machine, store, in-process/RPC runners, lifecycle, completion, teams, dependency-frontier DAG engine (src/dag/, largest subsystem); 4 task + 6 lead-team tools (the `dag` tool is registered by omo-senpi)\n\u2502   \u251c\u2500\u2500 utils/ model-core/ prompts-core/ rules-engine/ agents-md-core/ comment-checker-core/ hashline-core/ boulder-state/ memory-core/ telemetry-core/ lsp-core/ mcp-stdio-core/ tmux-core/ claude-code-compat-core/ skills-loader-core/ mcp-client-core/ openclaw-core/ team-core/ delegate-core/ omo-config-core/   # 20 Core (pure-TS) pkgs\n\u2502   \u251c\u2500\u2500 lsp-tools-mcp/ git-bash-mcp/ lsp-daemon/ ast-grep-mcp/   # 4 MCP-layer pkgs (stdio); LSP packages consume lsp-core + mcp-stdio-core\n\u2502   \u251c\u2500\u2500 shared-skills/               # Cross-harness SKILL.md bundle shared by OpenCode + Codex\n\u2502   \u251c\u2500\u2500 web/                         # Marketing site (Next.js 15 + Cloudflare Workers"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 70831,
+      "line_count": 479,
+      "truncated": true,
+      "excerpt": "# oh-my-opencode \u2014 OpenCode Plugin\n\n> **HOLD THE FUCK UP. THIS ENTIRE GODDAMN CODEBASE IS BEING RIPPED APART AND REBUILT RIGHT NOW. A MASSIVE MULTI-HARNESS AGENT OS REFACTOR IS IN PROGRESS \u2014 WE ARE RESTRUCTURING EVERYTHING TO SUPPORT MULTIPLE AGENT HARNESSES (OPENCODE, CODEX, PI, AND OTHERS). DO NOT TRUST THE STRUCTURE BELOW AS STABLE. READ THE [ROADMAP](./ROADMAP.md) BEFORE YOU TOUCH ANYTHING OR SO HELP ME GOD.**\n\n**Generated:** 2026-08-24 | **Source snapshot:** f3642fcda | **Branch:** initdeep-refresh-20260824 | **Release:** v5.0.0-beta.18\n\n## STOP. QA IS MANDATORY. NON-NEGOTIABLE. EVERY SINGLE TIME YOU TOUCH AN OPENCODE-, CODEX-, OR SENPI-CONNECTED COMPONENT.\n\n> **IF YOUR CHANGE TOUCHES ANYTHING WIRED INTO OPENCODE, INTO THE CODEX LIGHT EDITION, OR INTO THE SENPI ADAPTER, YOU MUST QA IT. ALWAYS. EVERY SINGLE TIME. NO EXCEPTIONS. THERE IS NO \"TOO SMALL TO SKIP\". THERE IS NO \"IT OBVIOUSLY WORKS\".**\n\n**\"It typechecks\" is NOT QA. \"`bun test` is green\" is NOT QA.** YOU MUST DRIVE THE REAL HARNESS, and then **YOU MUST WRITE THE EVIDENCE TO DISK.** If there is no evidence file, **the QA DID NOT HAPPEN**, and **YOU ARE NOT ALLOWED TO COMMIT OR PUSH.**\n\nThis is repeated on purpose, because it is the single most ignored rule in this repo. **CHANGE A HOOK, A TOOL, AN AGENT, A FEATURE, A CONFIG SCHEMA, AN MCP, A CLI COMMAND, AN INSTALLER, A PROMPT, OR ANYTHING ELSE THAT REACHES OPENCODE, CODEX, OR SENPI, THEN: RUN QA, THEN RECORD EVIDENCE.** Always. Every time. No exceptions.\n\n### OPENCODE side (`packages/omo-opencode/`): ALWAYS run the `opencode-qa` skill\n\n1. **ALWAYS RUN THE `opencode-qa` SKILL** (`.agents/skills/opencode-qa/`) to map the EXPECTED IMPACT and the FULL CHANGE SCOPE of your edit BEFORE and AFTER. Pick the right case: CLI (`opencode run --format json`), server + SSE hook proof, TUI smoke, or DB inspection.\n2. **ISOLATE EVERYTHING.** Any QA that SPAWNS opencode MUST run in an isolated XDG sandbox (`XDG_DATA_HOME` / `XDG_CONFIG_HOME` / `XDG_STATE_HOME` / `XDG_CACHE_HOME` pointed at temp dirs). The bundled scripts already do this. **NEVER pollute the real `~/.local/share/opencode/opencode.db`.** PROVE isolation by comparing `SELECT count(*) FROM session` before and after.\n3. **USE tmux** for the TUI smoke (`scripts/tui-smoke.sh`) and for any interactive driving. tmux is for SMOKE (did it boot, render, accept a key); assert REAL behavior via `opencode run --format json` or the server API + SSE.\n4. **PROVE THE HOOK FIRED.** If you changed a lifecycle hook, prove the matching event hit the wire (`scripts/sse-hook-probe.sh --event <name>`). Seeing the event proves the hook would fire.\n\n### CODEX side (`packages/omo-codex/`): ALWAYS run the `codex-qa` skill\n\n1. **ALWAYS RUN THE `codex-qa` SKILL** (`.agents/skills/codex-qa/`) to map the EXPECTED IMPACT and the FULL CHANGE SCOPE of your edit BEFORE and AFTER. It exercises ONLY our plugin in strict isolation \u2014 an isolated `CODEX_HOME` + a LOCAL mock model (no real API call) \u2014 so the real `~/.codex` is NEVER read or written. NEVER QA against your real `~/.codex`; NEVER the published package.\n2. **PROVE THE HOOK FIRED, FIRST-PARTY.** The skill drives the real `codex app-server` and asserts `hook/started` / `hook/completed` notifications for our components (`scripts/app-server-drive.sh --plugin`). Deterministic per-component checks: `scripts/hook-unit-probe.sh`. Installer + `config.toml` landing: `scripts/install-verify.sh`. tmux TUI smoke: `scripts/tui-smoke.sh`. Each script ships a `--self-test`.\n3. **RUN THE CODEX GATE:** `bun run test:codex` (installer + config migration + plugin component suite). This is the hermetic UNIT gate; it does NOT prove a live session \u2014 the `codex-qa` skill does.\n4. **CONFIRM THE REAL `~/.codex/config.toml` WAS NOT TOUCHED** \u2014 every `codex-qa` script asserts this automatically (shasum before/after).\n\n### SENPI side (`packages/omo-senpi/`, `packages/senpi-task/`): ALWAYS run the `senpi-qa` skill\n\n1. **ALWAYS RUN THE `senpi-qa` SKILL** (`.agents/skills/senpi-qa/`) to map the EXPECTED IMPACT and the FULL CHANGE SCOPE of your edit BEFORE and AFTER. It drives the REAL `senpi` binary through the drivers in `packages/omo-senpi/scripts/qa/`, which build their own isolated `SENPI_CODING_AGENT_DIR` and IGNORE a caller-provided one, so the real `~/.senpi/agent` is NEVER written.\n2. **RESOLVE THE EVIDENCE DIRECTORY WITH THE SKILL'S SCRIPT.** `node .agents/skills/senpi-qa/scripts/resolve-evidence-dir.mjs --repo-root \"$(git rev-parse --show-toplevel)\" --slug <YYYYMMDD>-<short-slug>` is the ONLY sanctioned way to pick the path. It returns an absolute path under `.omo/evidence/omo-senpi-adapter/<slug>/`, creates nothing, and rejects traversal, separators, absolute paths, and stray roots such as `local-ignore/qa-evidence`.\n3. **RUN THE SENPI GATE:** `tsgo --noEmit -p packages/omo-senpi/tsconfig.json` then `bun run test:senpi`. This is the hermetic UNIT gate; it does NOT prove a live session \u2014 the `senpi-qa` skill does.\n4. **CONFIRM THE REAL `~/.senpi/agent` WAS NOT TOUCHED** \u2014 record the live driver's `realSenpiUntouched` / changed-path fields and isolated agent-dir path. A whole-directory digest is supporting evidence only because live debug/cache files may change. A driver reporting `SKIP` because the `senpi` binary is absent is NOT a pass; say so in the evidence.\n\n### EVIDENCE: write it under `.omo/evidence/` (local, NEVER committed) or it DID NOT HAPPEN\n\n**WRITE EVERY QA ARTIFACT TO `.omo/evidence/<YYYYMMDD>-<short-slug>/`** (one subfolder per change, keep it ORGANIZED). Live Senpi QA is the one scoped exception: it goes under `.omo/evidence/omo-senpi-adapter/<slug>/`, resolved by the `senpi-qa` skill's script. **THE EVIDENCE FILES STAY LOCAL.** `.omo/evidence/` is gitignored and `script/tracked-evidence-paths-audit.test.ts` fails the build the moment any evidence path is tracked (#8703): never `git add -f` an evidence file, and never invent another capture root inside the worktree (`.qa-evidence/`, `qa-evidence/`, a RED/GREEN `.txt` next to the sources). What reaches the reviewer is the **QA & Evidence section of the PR body**: the four items below, the decisive sanitized excerpt of each capture (the RED failure line, the GREEN pass count, the driver's final JSON, the isolation proof), and one `sha256sum <artifact>` line per local evidence file so the summary is checkable against the file that produced it. For EVERY change you MUST record reviewer-readable plain files locally and summarize them there:\n- **WHAT WAS TESTED:** the command or manual action, the surface driven, and the behavior it was meant to prove.\n- **WHAT WAS OBSERVED:** the before/after or new behavior, isolation proof such as unchanged session counts, and the artifact path for the exact captured output.\n- **WHY IT IS ENOUGH:** how the evidence covers the intended behavior and remaining regression risk.\n- **WHAT WAS OMITTED:** redact or summarize raw secret-bearing logs, env dumps, tokens, auth headers, and private credentials instead of copying them.\n\n**NO EVIDENCE FILE == NO QA == NO COMMIT == NO PUSH.** ALWAYS. EVERY TIME. NO EXCEPTIONS. **AND AN EVIDENCE FILE INSIDE THE COMMIT == A REJECTED PR.**\n\n## MANDATORY CHANGE-EXECUTION PROTOCOL. EVERY USER-ORDERED PATCH FOLLOWS THIS. NO EXCEPTIONS.\n\n> **THE MOMENT A TASK REQUIRES PRODUCING A PATCH THAT MODIFIES THIS REPOSITORY, AND THE USER HAS EXPLICITLY INSTRUCTED THAT MODIFICATION, THIS PROTOCOL IS LAW. IT IS NOT A SUGGESTION. IT IS NOT OPTIONAL. THERE IS NO \"TOO SMALL TO BOTHER\", NO \"JUST THIS ONCE\", NO \"I ALREADY KNOW THE CODEBASE\". YOU RUN EVERY STEP, IN ORDER, EVERY SINGLE TIME.**\n\n1. **EXPLORE.** MAP the code you are about to touch BEFORE editing a single line: read the real files, trace the call paths, measure the blast radius. NEVER patch from memory.\n2. **MAKE A PLAN.** Write the full plan down BEFORE the first edit: every file, every change, the verification for each. NO PLAN ON DISK MEANS YOU DO NOT START.\n3. **ADD TODOS IN ULTRA-DETAIL.** Mirror EVERY atomic step of the plan into the todo list: one todo per edit-plus-verification unit. Vague todos like \"implement feature\" are FORBIDDEN.\n4. **MAKE A NEW WORKTREE.** ALL implementation happens in a fresh, task-owned git worktree. NEVER edit the main checkout in place, NEVER hand-commit to `dev`.\n5. **MAKE A PR AND WORK UNTIL IT GETS MERGED.** Open a reviewer-readable PR and STAY ON IT until it is MERGED: fix CI, answer review, re-run QA, resolve conflicts via `smart-rebase`. AN UNMERGED PR IS UNFINISHED WORK.\n6. **SET A GOAL AND RUN THE ULW LOOP.** Register the goal with binding success criteria and drive the work through the `ulw-loop`: evidence-bound, reproduce-first, real-surface QA. \"IT SHOULD WORK\" IS NOT EVIDENCE.\n7. **MANAGE THE TODO LIST OBSESSIVELY.** Mark a step in progress the instant it begins, done the instant it finishes, append new steps the moment they surface. THE TODO LIST NEVER LAGS REALITY. EVER.\n\n## DEFAULT WORKFLOW \u2014 how to take on any task\n\nUnless the user EXPLICITLY says otherwise, or the task is an urgent must-fix-now hotfix, deliver every change through the **`work-with-pr`** skill: it works in an isolated git worktree, implements with evidence-bound manual QA, opens a reviewer-readable English PR (what changed, why, observed behavior, QA/evidence, residual risk), runs the verification loop, and merges. Do NOT hand-commit normal work straight to `dev`.\n\n- **QA is the evidence gate, scoped to what you touched.** A change under `packages/omo-opencode/` MUST run the **`opencode-qa`** skill; a change under `packages/omo-codex/` (lazycodex) MUST run the **`codex-qa`** skill; a change under `packages/omo-senpi/` or `packages/senpi-task/` MUST run the **`senpi-qa`** skill (see the QA section above for each). Run the matching skill, and treat its captured output (written under the gitignored `.omo/evidence/`, summarized in the PR body, never committed) as the QA evidence `work-with-pr` requires. A change touching more than one runs each.\n- **Conflicts \u2192 `smart-rebase`.** If the worktree branch conflicts with its base, resolve it with the **`smart-rebase`** skill, then re-run the scoped QA. Never hand-resolve by force-pushing shared history.\n- **Merge \u2192 merge commit, ALWAYS.** Land the PR with a merge commit per **PR MERGE POLICY** below. NEVER squash-merge or rebase-merge, even if a generic workflow, skill, or GitHub default suggests it.\n\n## OVERVIEW\n\nOpenCode plugin (npm: `oh-my-opencode`, dual-published as `oh-my-openagent` during the rename transition) extending OpenCode with 11 agents, ~54-62 lifecycle hooks (54 base / 61 team / 62 monitor) across 62 dirs, 12-38 registry tools (gated by config flags including team-mode and goal; 8 `lsp_*` aliases served via the built-in lsp MCP), 3-tier MCP system (built-in + .mcp.json + skill-embedded), Hashline LINE#ID edit tool, IntentGate keyword detector, Team Mode (parallel multi-agent coordination, OFF by default), Boulder feature (boulder-state work tracking + cli/boulder subcommand), configurable agent ordering, and Claude Code compatibility.\n\n**The package layering refactor moved the entire plugin out of root `src/` into [`packages/omo-opencode/src/`](packages/omo-opencode/src/AGENTS.md)** (a 100% git rename \u2014 there is NO root `src/` anymore). That adapter tree is now the OpenCode-facing shim over 20 Core packages + 4 MCP packages + sibling adapters (Codex, Senpi, native). Build entry: `packages/omo-opencode/src/index.ts`, a thin wrapper that delegates to `packages/omo-opencode/src/testing/create-plugin-module.ts` `createPluginModule()` \u2192 staged plugin init (see INITIALIZATION FLOW). Ships in two editions of one product: **Ultimate** (omo for OpenCode, this plugin = `packages/omo-opencode/`) and **Light** (omo for Codex CLI = [`packages/omo-codex/`](packages/omo-codex/AGENTS.md), with `lazycodex` as the repository/bin identity and `lazycodex-ai` as the live npm alias; see CODEX LIGHT EDITION below).\n\n## STRUCTURE\n\n```\noh-my-opencode/                      # workspace root (no root src/ \u2014 it moved into packages/omo-opencode)\n\u251c\u2500\u2500 packages/                        # 45 sibling packages across Core/MCP/Skills/Adapters/Platform/Web. See packages/AGENTS.md\n\u2502   \u251c\u2500\u2500 omo-opencode/                # \u2605 THE OpenCode plugin adapter (formerly root src/). Build entry: src/index.ts\n\u2502   \u2502   \u251c\u2500\u2500 src/                     # plugin source and OpenCode-facing adapter shims. Full breakdown \u2192 packages/omo-opencode/src/AGENTS.md\n\u2502   \u2502       \u251c\u2500\u2500 index.ts             # Plugin entry; thin wrapper re-exporting createPluginModule() from src/testing/\n\u2502   \u2502       \u251c\u2500\u2500 plugin-interface.ts  # 12 OpenCode hook handlers (+2 wired in testing/create-plugin-module.ts)\n\u2502   \u2502       \u251c\u2500\u2500 create-{managers,tools,hooks}.ts  # 4 managers / ToolRegistry / 5-tier hook composition\n\u2502   \u2502       \u251c\u2500\u2500 agents/              # 11 agents, 10 createXXXAgent factories (Prometheus special-cased via plugin-handlers/prometheus-agent-config-builder.ts)\n\u2502   \u2502       \u251c\u2500\u2500 hooks/               # ~54-62 lifecycle hooks (54 base / 61 team / 62 monitor) across 62 dirs (incl. 5 zauc-* mock dirs + shared/ + team-session-events/)\n\u2502   \u2502       \u251c\u2500\u2500 tools/               # 15 native tool dirs (14 tools + shared/); LSP served via a built-in MCP, ast-grep via the bundled skill\n\u2502   \u2502       \u251c\u2500\u2500 features/            # 24 feature modules (team-mode, background-agent, skill-mcp-manager, opencode-skill-loader, mcp-oauth, boulder-state, btw-side, tui-sidebar, opengateway-provider, \u2026)\n\u2502   \u2502       \u251c\u2500\u2500 shared/              # cross-cutting utilities; logger \u2192 oh-my-opencode.log in os.tmpdir() (50 MB cap, .1/.2 backups)\n\u2502   \u2502       \u251c\u2500\u2500 config/             # Zod v4 schema system (36 schema files)\n\u2502   \u2502       \u251c\u2500\u2500 cli/                 # Commander.js CLI, 12 commands: install(setup), run, doctor, cleanup(uninstall), version, get-local-version, refresh-model-capabilities, boulder, ulw-loop, config (migrate), worktree-sweep, mcp (oauth login/logout/status)\n\u2502   \u2502       \u251c\u2500\u2500 mcp/                 # 4 built-in MCPs (3 remote + local stdio lsp)\n\u2502   \u2502       \u251c\u2500\u2500 plugin/ plugin-handlers/  # OpenCode hook handlers + 6-phase config loading pipeline\n\u2502   \u2502       \u251c\u2500\u2500 openclaw/            # Bidirectional Discord/Telegram/HTTP/shell integration + reply listener daemon\n\u2502   \u2502       \u2514\u2500\u2500 generated/ help/ locales/ testing/ __tests__/  # model-capabilities, CLI help schemas, i18n, test factory, perf benchmarks\n\u2502   \u2502   \u2514\u2500\u2500 scripts/             # standalone codegen (OpenGateway + models.dev \u2192 tracked src/features/opengateway-provider/opengateway-models.json). See scripts/AGENTS.md\n\u2502   \u251c\u2500\u2500 omo-codex/                   # Codex CLI Light edition; vendored Codex plugin `omo` + TS installer + telemetry (`lazycodex` repo/bin identity, `lazycodex-ai` live npm alias)\n\u2502   \u251c\u2500\u2500 omo-senpi/                   # Senpi native TS extension adapter (local-path Pi package); 18 components incl. task + memory + init-deep-advisor (drives senpi-task + omo-config-core)\n\u2502   \u251c\u2500\u2500 omo-native/                  # npm `omo-ai` distribution (BETA channel): launcher spawning the pinned senpi engine + `canonicalAgentDir()` (~/.omo/agent)\n\u2502   \u251c\u2500\u2500 senpi-task/                  # Senpi-coupled task engine: state machine, store, in-process/RPC runners, lifecycle, completion, teams, dependency-frontier DAG engine (src/dag/, largest subsystem); 4 task + 6 lead-team tools (the `dag` tool is registered by omo-senpi)\n\u2502   \u251c\u2500\u2500 utils/ model-core/ prompts-core/ rules-engine/ agents-md-core/ comment-checker-core/ hashline-core/ boulder-state/ memory-core/ telemetry-core/ lsp-core/ mcp-stdio-core/ tmux-core/ claude-code-compat-core/ skills-loader-core/ mcp-client-core/ openclaw-core/ team-core/ delegate-core/ omo-config-core/   # 20 Core (pure-TS) pkgs\n\u2502   \u251c\u2500\u2500 lsp-tools-mcp/ git-bash-mcp/ lsp-daemon/ ast-grep-mcp/   # 4 MCP-layer pkgs (stdio); LSP packages consume lsp-core + mcp-stdio-core\n\u2502   \u251c\u2500\u2500 shared-skills/               # Cross-harness SKILL.md bundle shared by OpenCode + Codex\n\u2502   \u251c\u2500\u2500 web/                         # Marketing site (Next.js 15 + Cloudflare Workers"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 19691,
+      "line_count": 399,
+      "truncated": true,
+      "excerpt": "# Contributing to Oh My OpenCode\n\nFirst off, thanks for taking the time to contribute! This document provides guidelines and instructions for contributing to oh-my-opencode.\n\n## Table of Contents\n\n- [Code of Conduct](#code-of-conduct)\n- [Language Policy](#language-policy)\n- [Getting Started](#getting-started)\n  - [Prerequisites](#prerequisites)\n  - [Development Setup](#development-setup)\n  - [Testing Your Changes Locally](#testing-your-changes-locally)\n- [Development Environment](#development-environment)\n- [Credentials & Isolation](#credentials--isolation)\n- [Project Structure](#project-structure)\n- [Development Workflow](#development-workflow)\n  - [Build Commands](#build-commands)\n  - [Code Style & Conventions](#code-style--conventions)\n- [Making Changes](#making-changes)\n  - [Adding a New Agent](#adding-a-new-agent)\n  - [Adding a New Hook](#adding-a-new-hook)\n  - [Adding a New Tool](#adding-a-new-tool)\n  - [Adding a New MCP Server](#adding-a-new-mcp-server)\n- [Security](#security)\n- [QA Discipline](#qa-discipline)\n- [Pull Request Process](#pull-request-process)\n  - [PR Checklist](#pr-checklist)\n- [Publishing](#publishing)\n- [Getting Help](#getting-help)\n\n## Code of Conduct\n\nBe respectful, inclusive, and constructive. We're all here to make better tools together.\n\n## Language Policy\n\n**English is the primary language for all communications in this repository.**\n\nThis includes:\n\n- Issues and bug reports\n- Pull requests and code reviews\n- Documentation and comments\n- Discussions and community interactions\n\n### Why English?\n\n- **Global Accessibility**: English allows contributors from all regions to collaborate effectively\n- **Consistency**: A single language keeps discussions organized and searchable\n- **Open Source Best Practice**: Most successful open-source projects use English as the lingua franca\n\n### Need Help with English?\n\nIf English isn't your first language, don't worry! We value your contributions regardless of perfect grammar. You can:\n\n- Use translation tools to help compose messages\n- Ask for help from other community members\n- Focus on clear, simple communication rather than perfect prose\n\n## Getting Started\n\n### Prerequisites\n\n- **Bun** 1.4.4 (CI-pinned) - The only package manager for the workspace itself\n- **Node** 24 - Required for vendored packages (lsp-tools-mcp, lsp-daemon, git-bash-mcp) and the Codex plugin build via npm\n- **git** - Version control\n- **tmux** (optional) - Enables the `interactive_bash` tool and Team Mode visualization\n\n### Development Setup\n\n```bash\n# Clone the repository (with the frontend provenance submodules)\ngit clone --recurse-submodules https://github.com/code-yeongyu/oh-my-openagent.git\ncd oh-my-openagent\n\n# If you cloned without --recurse-submodules, initialize them now (non-fatal offline):\ngit submodule update --init --recursive\n\n# Install dependencies (bun only - never use npm/yarn)\nbun install\n\n# Build the project (materializes the frontend third-party references from the submodules)\nbun run build\n```\n\n> The frontend skill's brand / taste / ui-ux references are third-party content kept ONLY as pinned git submodules under `packages/shared-skills/upstreams/`. The repo contains zero committed copies; the build materializes them into `packages/shared-skills/skills/frontend/references/` (gitignored locally, shipped in the published package). `script/agent/setup.sh` runs the submodule init + materialize for you (both non-fatal, so an offline checkout still builds, just without the brand refs).\n\n### Testing Your Changes Locally\n\nAfter making changes, you can test your local build in OpenCode:\n\n1. **Build the project**:\n\n   ```bash\n   bun run build\n   ```\n\n2. **Update your OpenCode config** (`~/.config/opencode/opencode.json` or `opencode.jsonc`):\n\n   Built dist (after `bun run build`):\n\n   ```json\n   {\n     \"plugin\": [\"file:///absolute/path/to/oh-my-openagent/dist/index.js\"]\n   }\n   ```\n\n   Source mode (no build needed):\n\n   ```json\n   {\n     \"plugin\": [\"file:///absolute/path/to/oh-my-openagent/packages/omo-opencode/src/index.ts\"]\n   }\n   ```\n\n   The path must be **absolute** and contain a recognizable project name plus `(src|dist)/index.(ts|js)`. A relative `file://./...` path will not be detected by the installer.\n\n   > **Note**: Remove `\"oh-my-openagent\"` or `\"oh-my-opencode\"` from the plugin array if they exist, to avoid conflicts with the npm version.\n\n3. **Restart OpenCode** to load the changes.\n\n4. **Verify** the plugin is loaded by checking for OmO agent availability or startup messages.\n\n## Development Environment\n\nThe cross-harness one-command bootstrap is the single source of truth for all development environments.\n\n- **`script/agent/setup.sh`** verifies Bun, Node, and git, warns if tmux is missing, runs `bun install`, initializes the frontend provenance submodules and materializes their references (both non-fatal so an offline checkout still builds), and builds when `dist/index.js` is missing or `OMO_AGENT_FORCE_BUILD=1` is set.\n- **`script/agent/cleanup.sh`** removes regenerable transients by default. Pass `--deep` to also drop `dist/` and `node_modules/`; it leaves the `packages/shared-skills/upstreams/` submodules in place.\n- **`script/agent/cleanup-hook.sh`** launches cleanup from Claude Code `SessionEnd` without blocking shutdown.\n\nAll harnesses delegate to these scripts:\n\n| Harness | Wiring |\n| ------- | ------ |\n| GitHub Codespaces / VS Code Dev Containers | `.devcontainer/devcontainer.json` runs `postCreateCommand: script/agent/setup.sh` on `.devcontainer/Dockerfile` (Node 24 + Bun 1.4.4 + tmux) |\n| Plain Docker | `script/agent/docker-dev.sh` builds the Dockerfile and opens a shell |\n| Cursor cloud agents | `.cursor/environment.json` `install` runs setup on environment creation |\n| Claude Code | `.claude/settings.json` `SessionStart` hook runs setup; `SessionEnd` hook launches cleanup |\n| Codex App (local environments) | `.codex/setup.sh` runs at project root on worktree creation |\n| OpenCode (this plugin's own harness) | re"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 10375,
+      "line_count": 111,
+      "truncated": true,
+      "excerpt": "[English](README.md) | [\u7b80\u4f53\u4e2d\u6587](README.zh-cn.md) | [\u65e5\u672c\u8a9e](README.ja.md) | [\u0420\u0443\u0441\u0441\u043a\u0438\u0439](README.ru.md) | [\ud55c\uad6d\uc5b4](README.ko.md) | [Espa\u00f1ol](README.es.md) | [Fran\u00e7ais](README.fr.md) | [Deutsch](README.de.md) | [Portugu\u00eas (Brasil)](README.pt-br.md) | [Italiano](README.it.md)\n\n> [!NOTE]\n> **OmO 5.0: OmO \u2764\ufe0f Pi**\n> Install it with `curl -fsSL https://get.omo.dev/install.sh | bash`. Memory system, CodeMode, Anthropic subscriptions, all covered.\n> [![OmO Herdr DAG - live OmO workflow DAGs in a Herdr side pane](./.github/assets/omo-herdr-dag.png)](https://github.com/jc01rho/omo-herdr-dag)\n> *Just type \"mass ulw\" with your prompt - now you are the master of graph engineering. Multi-model ultracode, together with a better memory system. (The right panel is [omo-herdr-dag](https://github.com/jc01rho/omo-herdr-dag).)*\n\n> [!TIP]\n> Be with us!\n>\n> | [<img alt=\"Discord link\" src=\"https://img.shields.io/discord/1452487457085063218?color=5865F2&label=discord&labelColor=black&logo=discord&logoColor=white&style=flat-square\" width=\"156px\" />](https://discord.gg/PUwSMR9XNk) | Join our [Discord community](https://discord.gg/PUwSMR9XNk) to connect with contributors and fellow OmO users. |\n> | :-----| :----- |\n> | [<img alt=\"X link\" src=\"https://img.shields.io/badge/Follow-%40justsisyphus-00CED1?style=flat-square&logo=x&labelColor=black\" width=\"156px\" />](https://x.com/justsisyphus) | Updates for OmO used to be posted on my X account. <br /> Since it was mistakenly suspended, [@justsisyphus](https://x.com/justsisyphus) now posts updates on my behalf. |\n> | [<img alt=\"GitHub Follow\" src=\"https://img.shields.io/github/followers/code-yeongyu?style=flat-square&logo=github&labelColor=black&color=24292f\" width=\"156px\" />](https://github.com/code-yeongyu) | Follow [@code-yeongyu](https://github.com/code-yeongyu) on GitHub for more projects. |\n\n<!-- <CENTERED SECTION FOR GITHUB DISPLAY> -->\n\n<div align=\"center\">\n\n<a href=\"https://omo.dev\"><img src=\"./.github/assets/omo-icon-light.svg\" alt=\"OmO\" width=\"200\" /></a>\n\n# OmO\n\n**Your tool for real work. But it's an agent.**\n\n[![GitHub Release](https://img.shields.io/github/v/release/code-yeongyu/oh-my-openagent?color=369eff&labelColor=black&logo=github&style=flat-square)](https://github.com/code-yeongyu/oh-my-openagent/releases)\n[![downloads](https://img.shields.io/endpoint?url=https%3A%2F%2Fomo.dev%2Fapi%2Fdownloads&style=flat-square)](https://omo.dev)\n[![GitHub Contributors](https://img.shields.io/github/contributors/code-yeongyu/oh-my-openagent?color=c4f042&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-openagent/graphs/contributors)\n[![GitHub Stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?color=ffcb47&labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-openagent/stargazers)\n[![License](https://img.shields.io/badge/license-SUL--1.0-white?labelColor=black&style=flat-square)](https://github.com/code-yeongyu/oh-my-openagent/blob/dev/LICENSE.md)\n[![Docs](https://img.shields.io/badge/docs-omo.dev-369eff?labelColor=black&logo=readthedocs&logoColor=white&style=flat-square)](https://omo.dev/docs)\n\n\n</div>\n\n<!-- </CENTERED SECTION FOR GITHUB DISPLAY> -->\n\nOmO is one `omo` command that turns your tokens into finished work: research across ten thousand sources, a deck people actually get, backends, frontends, code. It runs on senpi, our fork of [pi](https://github.com/badlogic/pi-mono), with everything below built in.\n\n## Install\n\n```bash\ncurl -fsSL https://get.omo.dev/install.sh | bash\nomo\n```\n\nOn Windows, in PowerShell: `irm https://get.omo.dev/install.ps1 | iex`. The script installs the native `omo` binary for your OS and CPU into `~/.local/bin`, checks it against the release checksums, and falls back to GitHub Releases when the mirror is unreachable. Add `-s -- beta` (or a version such as `-s -- 5.1.1`) after `bash` to pick another channel. Windows CMD, fixing your `PATH`, updating and uninstalling are covered at [omo.dev/docs/install](https://omo.dev/docs/install).\n\nPrefer a package manager? `bun add -g omo-ai` (or `npm i -g omo-ai`) installs the same OmO. The package is `omo-ai`; the unrelated `omo` package on npm is someone else's.\n\nOpen your project, run `omo`, describe the job. That's the whole setup.\n\nIn a session, `/thinking <level>` sets how hard the model thinks (`/thinking` alone opens a picker), `Shift+Tab` cycles through the levels, and `/efforts <level>` sets the reasoning effort directly on models with effort grades. To pick up earlier work, `/resume` (or `/sessions`) opens your past sessions; from the shell, `omo -c` continues the last one and `omo -r` opens the picker. `/help` lists everything else.\n\nComing from the OpenCode edition or LazyCodex? Run `omo setup` once. It carries your provider keys, custom providers, MCP servers, skills and model picks across. `omo doctor` then shows which task categories your providers can run and what the old install left behind, and `omo doctor --models` shows which model each category and agent runs and in what order (keep one out everywhere with [`exclude_models`](docs/reference/omo-json.md#exclude_models-native-harness)). The full walkthrough is [Migrating from OpenCode](docs/guide/migrating-from-opencode.md).\n\nTo update, run the install line again (a package-manager install updates with `omo update`). `rm ~/.local/bin/omo` removes the binary install; `bun remove -g omo-ai` (or `npm uninstall -g omo-ai`) removes the package install.\n\n## Why OmO\n\n**ultrawork.** Skip the study. If a task feels hard, add `ultrawork` (or `ulw`) to your prompt. The agent reads the codebase before touching a line, plans, proves each step before moving on, checks the result on the real surface, and stops when it's done.\n\n**Hundreds of agents, one keyword.** Type `mass ulw` and the whole job becomes a graph of agents: deep research over thousands of sources, a full machine-learning pipeline, a migration nobody wants to do. Each part runs on the model that fits it, in parallel, and gets"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 21916,
+      "line_count": 301,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"oh-my-opencode\",\n  \"version\": \"5.1.83\",\n  \"description\": \"The Best AI Agent Harness - Batteries-Included OpenCode Plugin with Multi-Model Orchestration, Parallel Background Agents, and Crafted LSP/AST Tools\",\n  \"main\": \"./dist/index.js\",\n  \"types\": \"dist/index.d.ts\",\n  \"type\": \"module\",\n  \"workspaces\": [\n    \"packages/rules-engine\",\n    \"packages/delegate-core\",\n    \"packages/thread-address-core\",\n    \"packages/ast-grep-mcp\",\n    \"packages/git-bash-mcp\",\n    \"packages/mcp-stdio-core\",\n    \"packages/mcp-client-core\",\n    \"packages/lsp-core\",\n    \"packages/utils\",\n    \"packages/model-core\",\n    \"packages/omo-config-core\",\n    \"packages/prompts-core\",\n    \"packages/comment-checker-core\",\n    \"packages/hashline-core\",\n    \"packages/tmux-core\",\n    \"packages/team-core\",\n    \"packages/openclaw-core\",\n    \"packages/boulder-state\",\n    \"packages/memory-core\",\n    \"packages/device-service-core\",\n    \"packages/isolation-core\",\n    \"packages/telemetry-core\",\n    \"packages/claude-code-compat-core\",\n    \"packages/skills-loader-core\",\n    \"packages/agents-md-core\",\n    \"packages/shared-skills\",\n    \"packages/omo-codex\",\n    \"packages/omo-senpi\",\n    \"packages/senpi-task\",\n    \"packages/senpi-desktop-protocol\",\n    \"packages/senpi-desktop-engine\",\n    \"packages/senpi-desktop-prelude\",\n    \"packages/senpi-desktop-service\",\n    \"packages/senpi-desktop-sdk\",\n    \"packages/senpi-desktop-tool\",\n    \"packages/omo-computer-protocol\",\n    \"packages/omo-computer-sdk\",\n    \"packages/omo-computer-engine\",\n    \"packages/omo-computer-hand\",\n    \"packages/omo-computer-carriers\",\n    \"packages/omo-computer-tool\",\n    \"packages/omo-computer-prelude\",\n    \"packages/omo-opencode\",\n    \"packages/omo-native\"\n  ],\n  \"bin\": {\n    \"oh-my-opencode\": \"bin/oh-my-opencode.js\",\n    \"oh-my-openagent\": \"bin/oh-my-opencode.js\",\n    \"omo-agent-toolkit\": \"bin/oh-my-opencode.js\",\n    \"lazycodex\": \"bin/oh-my-opencode.js\",\n    \"lazycodex-ai\": \"bin/oh-my-opencode.js\"\n  },\n  \"files\": [\n    \"THIRD-PARTY-NOTICES.md\",\n    \"dist\",\n    \"bin\",\n    \"postinstall.mjs\",\n    \"script/qa/strip-ansi.mjs\",\n    \"script/qa/web-terminal-redaction.d.mts\",\n    \"script/qa/web-terminal-redaction.mjs\",\n    \"script/qa/web-terminal-visual-qa.mjs\",\n    \"script/qa/xterm-live-terminal.mjs\",\n    \"docs/reference/github-attachment-upload.md\",\n    \"docs/reference/web-terminal-visual-qa.md\",\n    \".opencode/command\",\n    \".opencode/skills\",\n    \".agents/command\",\n    \".agents/skills\",\n    \"packages/lsp-tools-mcp/package.json\",\n    \"packages/lsp-core/package.json\",\n    \"packages/lsp-core/src\",\n    \"packages/lsp-tools-mcp/dist\",\n    \"packages/lsp-daemon/package.json\",\n    \"packages/lsp-daemon/dist\",\n    \"packages/git-bash-mcp/package.json\",\n    \"packages/git-bash-mcp/dist\",\n    \"packages/shared-skills/package.json\",\n    \"packages/shared-skills/index.mjs\",\n    \"packages/shared-skills/skill-source-filter.d.ts\",\n    \"packages/shared-skills/skill-source-filter.mjs\",\n    \"packages/shared-skills/skills\",\n    \"packages/omo-codex/THIRD-PARTY-NOTICES.md\",\n    \"packages/omo-codex/marketplace.json\",\n    \"packages/omo-codex/lazycodex-repository\",\n    \"packages/omo-codex/plugin\",\n    \"packages/omo-codex/plugin/components/bootstrap/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/bootstrap/scripts/bootstrap.ps1\",\n    \"packages/omo-codex/plugin/components/bootstrap/scripts/node-dispatch.ps1\",\n    \"packages/omo-codex/plugin/components/comment-checker/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/git-bash/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/lazycodex-executor-verify/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/lsp/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/rules/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/ulw-execute-continuation/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/teammode/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/telemetry/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/ultrawork/dist/cli.js\",\n    \"packages/omo-codex/plugin/components/ulw-loop/dist/cli.js\",\n    \"packages/prompts-core/prompts/ultrawork/codex.md\",\n    \"packages/omo-codex/plugin/.codex-plugin\",\n    \"!packages/omo-codex/plugin/node_modules\",\n    \"!packages/omo-codex/plugin/**/node_modules\",\n    \"!packages/omo-codex/plugin/components/workflow-selector\",\n    \"packages/omo-codex/scripts\",\n    \"!packages/omo-codex/scripts/install\"\n  ],\n  \"exports\": {\n    \".\": {\n      \"types\": \"./dist/index.d.ts\",\n      \"import\": \"./dist/index.js\"\n    },\n    \"./server\": \"./dist/index.js\",\n    \"./tui\": \"./dist/tui.js\",\n    \"./schema.json\": \"./dist/oh-my-opencode.schema.json\"\n  },\n  \"scripts\": {\n    \"build\": \"bun run script/build.ts\",\n    \"build:cli-node\": \"bun run script/build-cli-node.ts\",\n    \"build:codex-install\": \"bun run script/build-codex-install.ts\",\n    \"install:codex-dev\": \"bun run script/build-codex-install.ts && bun run script/install-codex-dev.ts\",\n    \"build:codex-plugin\": \"npm --prefix packages/omo-codex/plugin ci && bun run --cwd packages/omo-codex/plugin build\",\n    \"build:senpi-plugin\": \"bun run build:lsp-daemon && bun run build:ast-grep-mcp && bun run build:senpi-plugin:stage\",\n    \"build:senpi-plugin:native\": \"node packages/omo-senpi/plugin/scripts/stage-lsp-daemon-runtime.mjs && node packages/omo-senpi/plugin/scripts/stage-ast-grep-mcp-runtime.mjs && node packages/omo-senpi/plugin/scripts/stage-x-search-skill.mjs && node packages/omo-senpi/plugin/scripts/build-extension.mjs && node packages/omo-senpi/plugin/scripts/build-daemon-launch-spec.mjs && node packages/omo-senpi/plugin/scripts/sync-skills.mjs && node packages/omo-senpi/plugin/scripts/embed-directive.mjs --check && node packages/omo-senpi/plugin/scripts/build-install.mjs\",\n    \"build:senpi-plugin:stage\": \"bun run build:materialize-frontend && node packages/omo-senpi/plugin/scripts/stage-lsp-daemon-runtime.mjs && node packages/omo-senpi/plugin/scripts/stage-ast-grep-mcp-runtime.mjs && node packages/omo-senpi/plugin/scripts/stage-x-search-skill.mjs "
+    },
+    "Cargo.toml": {
+      "path": "Cargo.toml",
+      "size_bytes": 3459,
+      "line_count": 104,
+      "truncated": false,
+      "excerpt": "[workspace]\nmembers = [\n    \"crates/senpi-desktop-core\",\n    \"crates/senpi-desktop-safety\",\n    \"crates/senpi-desktop-session\",\n    \"crates/senpi-desktop-backend-fake\",\n    \"crates/senpi-desktop-backend-atspi\",\n    \"crates/senpi-desktop-backend-macos\",\n    \"crates/senpi-desktop-backend-x11\",\n    \"crates/senpi-desktop-backend-wayland\",\n    \"crates/senpi-desktop-backend-win32\",\n    \"crates/senpi-desktop-engine\",\n    \"crates/senpi-desktop-xpc\",\n    \"crates/omo-engine-trust-helper\",\n    \"crates/omo-git-job-helper\",\n    \"crates/omo-computer-core\",\n    \"crates/omo-computer-safety\",\n    \"crates/omo-computer-session\",\n    \"crates/omo-computer-backend-fake\",\n    \"crates/omo-computer-backend-atspi\",\n    \"crates/omo-computer-backend-macos\",\n    \"crates/omo-computer-backend-x11\",\n    \"crates/omo-computer-backend-wayland\",\n    \"crates/omo-computer-backend-win32\",\n    \"crates/omo-computer-engine\",\n]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.0.0\"\nedition = \"2021\"\nlicense = \"MIT\"\n\n[workspace.dependencies]\n# Desktop stack: pins copied from oh-my-pi crates/pi-natives (and its workspace resolutions).\nimage = { version = \"=0.25.10\", default-features = false, features = [\n    \"png\",\n    \"jpeg\",\n    \"gif\",\n    \"webp\",\n    \"bmp\",\n] }\npng = \"=0.18.1\"\nflume = \"=0.12.0\"\nparking_lot = \"=0.12.5\"\nxcap = { version = \"=0.9.6\", default-features = false }\ncore-graphics = { version = \"=0.25.0\", features = [\"highsierra\"] }\nobjc2 = \"=0.6.4\"\nobjc2-app-kit = \"=0.3.2\"\nobjc2-core-graphics = \"=0.3.2\"\nobjc2-foundation = \"=0.3.2\"\nobjc2-application-services = { version = \"=0.3.2\", default-features = true }\nobjc2-core-foundation = \"=0.3.2\"\nobjc2-screen-capture-kit = { version = \"=0.3.2\", default-features = false, features = [\n    \"std\", \"SCShareableContent\", \"SCStream\", \"SCScreenshotManager\",\n    \"block2\", \"objc2-core-foundation\", \"objc2-core-graphics\", \"libc\",\n] }\nblock2 = \"=0.6.2\"\nforeign-types = \"=0.5.0\"\narboard = { version = \"=3.6.1\", default-features = false, features = [\"wayland-data-control\"] }\ntempfile = \"=3.27.0\"\nlibc = \"=0.2.189\"\nlibloading = \"=0.8.9\"\nx11rb = { version = \"=0.13.2\", features = [\"randr\", \"xinput\", \"xtest\"] }\natspi = { version = \"=0.30.0\", features = [\"tokio\", \"zbus\"] }\nashpd = { version = \"=0.11.1\", default-features = false, features = [\"tokio\"] }\nreis = { version = \"=0.5.0\", features = [\"tokio\"] }\nzbus = { version = \"=5.19.0\", default-features = false, features = [\n    \"async-io\",\n    \"blocking-api\",\n] }\nxkeysym = \"=0.2.1\"\nwindows-sys = { version = \"=0.61.2\", features = [\n    \"Wdk_Storage_FileSystem\",\n    \"Win32_Foundation\",\n    \"Win32_Graphics_Gdi\",\n    \"Win32_Security\",\n    \"Win32_System_Power\",\n    \"Win32_System_Registry\",\n    \"Win32_System_Threading\",\n    \"Win32_UI_Input_KeyboardAndMouse\",\n    \"Win32_UI_Shell\",\n    \"Win32_UI_WindowsAndMessaging\",\n] }\nenigo = { version = \"=0.6.1\", default-features = false }\nuiautomation = \"=0.25.1\"\n\n# Engine + later-lane pins (not in pi-natives' desktop list).\nserde = { version = \"=1.0.229\", features = [\"derive\"] }\nserde_json = { version = \"=1.0.151\", features = [\"preserve_order\"] }\nschemars = \"=1.2.2\"\nthiserror = \"=2.0.21\"\ntokio = { version = \"=1.53.1\", features = [\n    \"rt-multi-thread\",\n    \"io-util\",\n    \"process\",\n    \"net\",\n] }\nclap = { version = \"=4.6.7\", features = [\"derive\"] }\nulid = \"=3.0.0\"\nsha2 = \"=0.10.9\"\nproptest = \"=1.11.0\"\n# omo engine trust helper (omo#10762): Security.framework facts; already locked through objc2-core-services.\nobjc2-security = \"=0.3.2\"\n"
+    },
+    ".oxlintrc.json": {
+      "path": ".oxlintrc.json",
+      "size_bytes": 10492,
+      "line_count": 297,
+      "truncated": true,
+      "excerpt": "{\n  \"$schema\": \"./node_modules/oxlint/configuration_schema.json\",\n  \"plugins\": [\n    \"import\",\n    \"jest\",\n    \"typescript\",\n    \"unicorn\"\n  ],\n  \"jsPlugins\": [\n    \"./script/oxlint/biome-ports.ts\"\n  ],\n  \"categories\": {},\n  \"rules\": {\n    \"eslint/array-callback-return\": [\n      \"error\",\n      {\n        \"checkForEach\": true,\n        \"allowVoid\": true\n      }\n    ],\n    \"eslint/constructor-super\": \"error\",\n    \"eslint/default-case-last\": \"error\",\n    \"eslint/eqeqeq\": [\n      \"error\",\n      \"always\",\n      {\n        \"null\": \"ignore\"\n      }\n    ],\n    \"eslint/for-direction\": \"error\",\n    \"eslint/getter-return\": \"error\",\n    \"eslint/no-array-constructor\": \"error\",\n    \"eslint/no-async-promise-executor\": \"error\",\n    \"eslint/no-case-declarations\": \"error\",\n    \"eslint/no-class-assign\": \"error\",\n    \"eslint/no-compare-neg-zero\": \"error\",\n    \"eslint/no-cond-assign\": \"error\",\n    \"eslint/no-const-assign\": \"error\",\n    \"eslint/no-constant-condition\": \"error\",\n    \"eslint/no-constructor-return\": \"error\",\n    \"eslint/no-control-regex\": \"off\",\n    \"eslint/no-debugger\": \"error\",\n    \"eslint/no-dupe-class-members\": \"error\",\n    \"eslint/no-dupe-else-if\": \"error\",\n    \"eslint/no-dupe-keys\": \"error\",\n    \"eslint/no-duplicate-case\": \"error\",\n    \"eslint/no-empty-character-class\": \"error\",\n    \"eslint/no-empty-pattern\": \"error\",\n    \"eslint/no-eval\": \"error\",\n    \"eslint/no-ex-assign\": \"error\",\n    \"eslint/no-extra-boolean-cast\": \"error\",\n    \"eslint/no-extra-label\": \"error\",\n    \"eslint/no-fallthrough\": \"error\",\n    \"eslint/no-func-assign\": \"error\",\n    \"eslint/no-global-assign\": \"error\",\n    \"eslint/no-import-assign\": \"error\",\n    \"eslint/no-inner-declarations\": \"error\",\n    \"eslint/no-irregular-whitespace\": \"error\",\n    \"eslint/no-label-var\": \"error\",\n    \"eslint/no-labels\": [\n      \"error\",\n      {\n        \"allowLoop\": true,\n        \"allowSwitch\": false\n      }\n    ],\n    \"eslint/no-lone-blocks\": \"error\",\n    \"eslint/no-loss-of-precision\": \"error\",\n    \"eslint/no-misleading-character-class\": \"error\",\n    \"eslint/no-nonoctal-decimal-escape\": \"error\",\n    \"eslint/no-obj-calls\": \"error\",\n    \"eslint/no-proto\": \"error\",\n    \"eslint/no-prototype-builtins\": \"error\",\n    \"eslint/no-redeclare\": \"error\",\n    \"eslint/no-regex-spaces\": \"error\",\n    \"eslint/no-script-url\": \"error\",\n    \"eslint/no-self-assign\": \"error\",\n    \"eslint/no-self-compare\": \"error\",\n    \"eslint/no-sequences\": \"error\",\n    \"eslint/no-setter-return\": \"error\",\n    \"eslint/no-shadow-restricted-names\": \"error\",\n    \"eslint/no-sparse-arrays\": \"error\",\n    \"eslint/no-template-curly-in-string\": \"error\",\n    \"eslint/no-this-before-super\": \"error\",\n    \"eslint/no-unneeded-ternary\": \"error\",\n    \"eslint/no-unreachable\": \"error\",\n    \"eslint/no-unsafe-finally\": \"error\",\n    \"eslint/no-unsafe-negation\": \"error\",\n    \"eslint/no-unsafe-optional-chaining\": \"error\",\n    \"eslint/no-unused-labels\": \"error\",\n    \"eslint/no-unused-private-class-members\": \"error\",\n    \"eslint/no-unused-vars\": [\n      \"error\",\n      {\n        \"ignoreRestSiblings\": true,\n        \"varsIgnorePattern\": \"^_\",\n        \"argsIgnorePattern\": \"^_\",\n        \"caughtErrorsIgnorePattern\": \"^_\"\n      }\n    ],\n    \"eslint/no-use-before-define\": [\n      \"error\",\n      {\n        \"functions\": false,\n        \"classes\": false,\n        \"variables\": false,\n        \"allowNamedExports\": true\n      }\n    ],\n    \"eslint/no-useless-backreference\": \"error\",\n    \"eslint/no-useless-catch\": \"error\",\n    \"eslint/no-useless-constructor\": \"error\",\n    \"eslint/no-useless-escape\": \"error\",\n    \"eslint/no-useless-rename\": \"error\",\n    \"eslint/no-with\": \"error\",\n    \"eslint/prefer-arrow-callback\": \"error\",\n    \"eslint/prefer-const\": [\n      \"error\",\n      {\n        \"ignoreReadBeforeAssign\": true\n      }\n    ],\n    \"eslint/prefer-exponentiation-operator\": \"error\",\n    \"eslint/prefer-numeric-literals\": \"error\",\n    \"eslint/prefer-regex-literals\": \"error\",\n    \"eslint/prefer-rest-params\": \"error\",\n    \"eslint/prefer-template\": \"off\",\n    \"eslint/radix\": \"error\",\n    \"eslint/require-yield\": \"error\",\n    \"eslint/use-isnan\": \"error\",\n    \"eslint/valid-typeof\": \"error\",\n    \"jest/no-duplicate-hooks\": \"error\",\n    \"jest/no-export\": \"error\",\n    \"jest/no-focused-tests\": \"error\",\n    \"jest/no-identical-title\": \"off\",\n    \"oxc/bad-min-max-func\": \"error\",\n    \"oxc/no-accumulating-spread\": \"error\",\n    \"oxc/no-const-enum\": \"error\",\n    \"typescript/adjacent-overload-signatures\": \"error\",\n    \"typescript/ban-ts-comment\": \"error\",\n    \"typescript/ban-types\": \"error\",\n    \"typescript/no-duplicate-enum-values\": \"error\",\n    \"typescript/no-empty-interface\": \"off\",\n    \"typescript/no-explicit-any\": \"error\",\n    \"typescript/no-extra-non-null-assertion\": \"error\",\n    \"typescript/no-extraneous-class\": [\n      \"error\",\n      {\n        \"allowEmpty\": true,\n        \"allowConstructorOnly\": true,\n        \"allowWithDecorator\": true\n      }\n    ],\n    \"typescript/no-misused-new\": \"error\",\n    \"typescript/no-non-null-asserted-optional-chain\": \"error\",\n    \"typescript/no-non-null-assertion\": \"error\",\n    \"typescript/no-this-alias\": \"off\",\n    \"typescript/no-unnecessary-type-constraint\": \"error\",\n    \"typescript/no-unsafe-declaration-merging\": \"error\",\n    \"typescript/no-useless-empty-export\": \"error\",\n    \"typescript/prefer-function-type\": \"error\",\n    \"typescript/prefer-literal-enum-member\": \"error\",\n    \"typescript/prefer-namespace-keyword\": \"error\",\n    \"typescript/prefer-optional-chain\": \"off\",\n    \"unicorn/no-document-cookie\": \"error\",\n    \"unicorn/no-instanceof-array\": \"error\",\n    \"unicorn/no-thenable\": \"error\",\n    \"unicorn/no-useless-switch-case\": \"error\",\n    \"unicorn/prefer-array-flat\": \"error\",\n    \"unicorn/prefer-array-flat-map\": \"error\",\n    \"unicorn/prefer-array-index-of\": \"error\",\n    \"unicorn/prefer-date-now\": \"error\",\n    \"unicorn/prefer-dom-node-text-content\": \"error\",\n    \"unicorn/prefer-math-min-max\": \"off\",\n    \"unicorn/prefer-node-protocol\": \"off\",\n    \"unicorn/prefer-number-properties\": \"off\",\n    \"typescript/triple-slash-r"
+    }
+  },
+  "workflow_samples": {
+    "ci-full-matrix-label.yml": {
+      "path": ".github/workflows/ci-full-matrix-label.yml",
+      "size_bytes": 1208,
+      "line_count": 35,
+      "truncated": false,
+      "excerpt": "name: CI Full Matrix Label\n\non:\n  pull_request:\n    branches: [dev, master]\n    types: [labeled]\n\n# Reusable workflows cannot elevate the caller's token permissions.\n# ci.yml's PR guard and push-only jobs declare these write permissions.\npermissions:\n  contents: write\n  pull-requests: write\n\njobs:\n  # The label costs macOS/Windows runners: the shared platform decision honors it only for a platform path in the diff\n  # or a PR body line 'Platform-reason: <why>'. A refused label fails here in seconds, on Linux, before the reusable\n  # full matrix schedules anything. These checks are optional; required CI is untouched.\n  gate:\n    name: Full-matrix label gate\n    if: github.event.label.name == 'ci:full-matrix'\n    permissions:\n      contents: read\n      pull-requests: read\n    uses: ./.github/workflows/pr-platform-decision.yml\n    with:\n      fail-on-refusal: true\n\n  full-matrix:\n    needs: gate\n    if: github.event.label.name == 'ci:full-matrix'\n    # Only matching labels enter this group; bot labels cannot cancel it.\n    concurrency:\n      group: ${{ github.workflow }}-pr-${{ github.event.pull_request.number }}-full-matrix\n      cancel-in-progress: true\n    uses: ./.github/workflows/ci.yml\n"
+    },
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 91811,
+      "line_count": 1905,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  push:\n    branches: [master, dev]\n  pull_request:\n    branches: [master, dev]\n    types: [opened, synchronize, reopened]\n  merge_group:\n    types: [checks_requested]\n  workflow_call:\n\nconcurrency:\n  # Queue refs are unique per group, so unrelated groups never cancel each other. One group per ref: a push to\n  # master/dev is never cancelled, so the running dev run always finishes (the baseline PR failures are judged\n  # against), and GitHub keeps only the newest pending push run, so at most two dev runs exist at a time. PR runs\n  # still cancel their superseded run on the same ref.\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: ${{ github.event_name != 'push' }}\n\npermissions:\n  contents: read\n\njobs:\n  # Job timeouts are about twice each job's measured p95 (25 green PR runs + 12 green dev pushes, 2026-11-22),\n  # with a 3-minute floor for setup noise, so a regression fails loudly instead of creeping (#14573).\n  # A stable, unconditional context that dev's required checks can enforce even\n  # when the rest of CI takes a docs/web/release fast path.\n  lint-ratchet:\n    name: Lint ratchet\n    runs-on: ubuntu-26.04\n    timeout-minutes: 3\n    steps:\n      - uses: actions/checkout@v7\n\n      - uses: actions/setup-node@v7\n        with:\n          node-version: \"24\"\n\n      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2\n        with:\n          bun-version: \"1.4.4\"\n\n      - name: Install dependencies\n        run: bun install --frozen-lockfile --ignore-scripts\n\n      - name: Lint ratchet\n        run: bun run lint:ratchet\n\n      - name: Write job summary\n        if: always()\n        shell: bash\n        env:\n          JOB_SUMMARY_TITLE: Lint ratchet\n          JOB_SUMMARY_STATUS: ${{ job.status }}\n          JOB_SUMMARY_DETAILS: |\n            - Runs the lint-debt ratchet on every CI event, independently of fast-path classification.\n            - Requires each tracked source file's counts to match the committed baseline.\n          JOB_SUMMARY_NEXT: Fix new findings; when removing existing debt, lower the baseline in the same change.\n        run: GITHUB_STEP_SUMMARY=\"$GITHUB_STEP_SUMMARY\" bash .github/scripts/write-job-summary.sh\n\n  ci-mode:\n    runs-on: ubuntu-26.04\n    timeout-minutes: 3\n    # actions: read lets base-platform-green.sh read the base's dev push run.\n    permissions:\n      contents: read\n      actions: read\n    outputs:\n      generated_release_push: ${{ steps.classify.outputs.generated_release_push }}\n      web_only: ${{ steps.classify.outputs.web_only }}\n      run_heavy: ${{ steps.classify.outputs.run_heavy }}\n      full_matrix: ${{ steps.classify.outputs.full_matrix }}\n      runtime_touching: ${{ steps.classify.outputs.runtime_touching }}\n      label_refused: ${{ steps.classify.outputs.label_refused }}\n      shard_timings_key: ${{ steps.shard-timings.outputs.cache-matched-key }}\n    steps:\n      - uses: actions/checkout@v7\n        with:\n          fetch-depth: 0\n\n      - name: Classify CI mode\n        id: classify\n        shell: bash\n        env:\n          BASE_SHA: ${{ github.event_name == 'merge_group' && github.event.merge_group.base_sha || (github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before) }}\n          HEAD_COMMIT_MESSAGE: ${{ github.event.head_commit.message || '' }}\n          HEAD_REF: ${{ github.head_ref || '' }}\n          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || '' }}\n          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name || '' }}\n          PR_LABELS: ${{ toJSON(github.event.pull_request.labels.*.name) || '[]' }}\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          set -euo pipefail\n\n          PATHS_FILE=\"$RUNNER_TEMP/ci-changed-paths\"\n          DIFF_AVAILABLE=true\n          if [ -z \"$BASE_SHA\" ] ||\n             [ \"$BASE_SHA\" = \"0000000000000000000000000000000000000000\" ] ||\n             ! git cat-file -e \"${BASE_SHA}^{commit}\" 2>/dev/null ||\n             ! git diff --name-only -z \"$BASE_SHA\" \"$GITHUB_SHA\" > \"$PATHS_FILE\"; then\n            DIFF_AVAILABLE=false\n            : > \"$PATHS_FILE\"\n          fi\n\n          # A release-state pull request skips the macOS/Windows matrix only when its stamp commit is ONE commit on the pinned\n          # source, that pin is on the base branch, the pin's completed dev push run passed with every macOS/Windows leg run\n          # and green, the head is not a fork, and the stamp changes nothing but versions (release-stamp-stri"
+    },
+    "get-worker-ci.yml": {
+      "path": ".github/workflows/get-worker-ci.yml",
+      "size_bytes": 9046,
+      "line_count": 205,
+      "truncated": true,
+      "excerpt": "name: get.omo.dev CI\n\non:\n  push:\n    branches: [master, dev]\n    paths:\n      - \"packages/get-worker/**\"\n      - \"script/installer/**\"\n      - \".github/workflows/get-worker-ci.yml\"\n  pull_request:\n    branches: [master, dev]\n    paths:\n      - \"packages/get-worker/**\"\n      - \"script/installer/**\"\n      - \".github/workflows/get-worker-ci.yml\"\n  workflow_dispatch:\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}\n  cancel-in-progress: ${{ github.event_name == 'pull_request' }}\n\npermissions:\n  contents: read\n\n# Installs from this workflow are tagged so they stay out of the public download count.\nenv:\n  OMO_INSTALL_QA: \"1\"\n\njobs:\n  platform:\n    permissions:\n      contents: read\n      pull-requests: read\n    uses: ./.github/workflows/pr-platform-decision.yml\n\n  worker:\n    runs-on: ubuntu-26.04\n    defaults:\n      run:\n        working-directory: packages/get-worker\n    steps:\n      - uses: actions/checkout@v7\n      - uses: oven-sh/setup-bun@v2\n        with:\n          bun-version: \"1.4.4\"\n      - run: bun install --frozen-lockfile\n      - name: Type check\n        run: bun run type-check\n      - name: Unit tests\n        run: bun run test\n      - name: shellcheck install.sh\n        run: shellcheck scripts/install.sh\n      - name: PSScriptAnalyzer install.ps1\n        shell: pwsh\n        run: |\n          Install-Module PSScriptAnalyzer -Force -Scope CurrentUser\n          $findings = Invoke-ScriptAnalyzer -Path scripts/install.ps1 -Severity Error\n          $findings | Format-Table -AutoSize\n          if ($findings) { exit 1 }\n      - name: Bundle dry run\n        run: bunx wrangler deploy --dry-run --outdir dist\n      - name: Write job summary\n        if: always()\n        shell: bash\n        working-directory: .\n        env:\n          JOB_SUMMARY_TITLE: get.omo.dev worker checks\n          JOB_SUMMARY_STATUS: ${{ job.status }}\n          JOB_SUMMARY_DETAILS: |\n            - Type-checks and unit-tests the get.omo.dev Worker.\n            - Lints install.sh with shellcheck and install.ps1 with PSScriptAnalyzer.\n            - Bundles the Worker with a wrangler dry run.\n          JOB_SUMMARY_NEXT: Start with the first failing step; the install jobs only run after this one passes.\n        run: GITHUB_STEP_SUMMARY=\"$GITHUB_STEP_SUMMARY\" bash .github/scripts/write-job-summary.sh\n\n  # Runs the installer from this checkout against the live get.omo.dev, the way users run it.\n  install-unix:\n    needs: [worker, platform]\n    strategy:\n      fail-fast: false\n      matrix:\n        # macOS/Windows only when the shared platform decision allows it (pr-platform-decision.yml, #13859).\n        include: >-\n          ${{ fromJSON(needs.platform.outputs.full_matrix != 'true' && '[{\"os\": \"ubuntu-latest\", \"name\": \"linux-glibc\"},\n          {\"os\": \"ubuntu-24.04-arm\", \"name\": \"linux-arm64\"}]' || '[{\"os\": \"ubuntu-latest\", \"name\": \"linux-glibc\"},\n          {\"os\": \"ubuntu-24.04-arm\", \"name\": \"linux-arm64\"}, {\"os\": \"macos-latest\", \"name\": \"macos-arm64\"}]') }}\n    runs-on: ${{ matrix.os == 'ubuntu-latest' && 'ubuntu-26.04' || matrix.os }}\n    steps:\n      - uses: actions/checkout@v7\n      - name: Install into an isolated HOME, twice\n        shell: bash\n        run: |\n          set -euo pipefail\n          expected=\"$(curl -fsSL https://get.omo.dev/channels/latest | tr -d '[:space:]')\"\n          HOME=\"$(mktemp -d)\"\n          export HOME SHELL=/bin/bash\n          bash packages/get-worker/scripts/install.sh 2>&1 | tee first.log\n          \"$HOME/.local/bin/omo\" --version | grep -F \"omo ${expected}\"\n          bash packages/get-worker/scripts/install.sh 2>&1 | tee second.log\n          grep -F \"is already installed\" second.log\n          test \"$(grep -c 'omo installer >>>' \"$HOME/.bashrc\" \"$HOME/.bash_profile\" 2>/dev/null | awk -F: '{s+=$2} END {print s}')\" = 1\n          grep -F '\"method\": \"standalone\"' \"$HOME/.omo/install.json\"\n      - name: Unreachable mirror falls back to npm + GitHub\n        if: matrix.name == 'linux-glibc'\n        shell: bash\n        run: |\n          set -euo pipefail\n          HOME=\"$(mktemp -d)\"\n          export HOME\n          OMO_INSTALL_BASE_URL=https://get.omo.invalid bash packages/get-worker/scripts/install.sh 2>&1 | tee fallback.log\n          grep -F \"falling back to GitHub releases\" fallback.log\n          \"$HOME/.local/bin/omo\" --version\n      - name: Write job summary\n        if: always()\n        shell: bash\n        working-directory: .\n        env:\n          JOB_SUMMARY_TITLE: get.omo.dev"
+    },
+    "lint-workflows.yml": {
+      "path": ".github/workflows/lint-workflows.yml",
+      "size_bytes": 1212,
+      "line_count": 41,
+      "truncated": false,
+      "excerpt": "name: Lint Workflows\n\non:\n  push:\n    paths:\n      - '.github/workflows/**'\n  pull_request:\n    paths:\n      - '.github/workflows/**'\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}\n  cancel-in-progress: ${{ github.event_name == 'pull_request' }}\n\npermissions:\n  contents: read\n\njobs:\n  actionlint:\n    runs-on: ubuntu-26.04\n    steps:\n      - uses: actions/checkout@v7\n\n      - name: Install actionlint\n        run: |\n          bash <(curl -sSL https://raw.githubusercontent.com/rhysd/actionlint/v1.7.10/scripts/download-actionlint.bash)\n\n      - name: Run actionlint\n        run: ./actionlint -color -shellcheck=\"\"\n\n      - name: Write job summary\n        if: always()\n        shell: bash\n        env:\n          JOB_SUMMARY_TITLE: Workflow lint\n          JOB_SUMMARY_STATUS: ${{ job.status }}\n          JOB_SUMMARY_DETAILS: |\n            - Downloads the pinned actionlint release.\n            - Validates every workflow changed in this repository.\n          JOB_SUMMARY_NEXT: Fix the first actionlint diagnostic; most failures point to an exact workflow line.\n        run: GITHUB_STEP_SUMMARY=\"$GITHUB_STEP_SUMMARY\" bash .github/scripts/write-job-summary.sh\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T09:40:30Z",
+      "oldest": "2026-11-24T14:29:12Z"
+    },
+    "conventional_pct": 52.0,
+    "fix_revert_pct": 8.0,
+    "ai_coauthor_pct": 0.0,
+    "top_recent_authors": [
+      [
+        "code-yeongyu",
+        50
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "2e2a815a",
+        "date": "2026-11-25T09:40:30Z",
+        "author": "code-yeongyu",
+        "subject": "Merge pull request #14924 from code-yeongyu/wt/14920-consent-b",
+        "ai_signal": false
+      },
+      {
+        "sha": "acf722a5",
+        "date": "2026-11-25T09:40:05Z",
+        "author": "code-yeongyu",
+        "subject": "chore: restore dev's generated extension bytes (bundles are threadtools-driver's to regenerate)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ab14e565",
+        "date": "2026-11-25T09:36:47Z",
+        "author": "code-yeongyu",
+        "subject": "Merge pull request #14923 from code-yeongyu/wt/14920-telemetry-a",
+        "ai_signal": false
+      },
+      {
+        "sha": "a942df55",
+        "date": "2026-11-25T09:33:56Z",
+        "author": "code-yeongyu",
+        "subject": "Merge pull request #14623 from code-yeongyu/train/thread-11",
+        "ai_signal": false
+      },
+      {
+        "sha": "6c1b583f",
+        "date": "2026-11-25T04:41:52Z",
+        "author": "code-yeongyu",
+        "subject": "test(eq): refresh the golden baselines at this head (#14623)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0ff92d7b",
+        "date": "2026-11-25T04:14:52Z",
+        "author": "code-yeongyu",
+        "subject": "test(eq): re-record the E21-E24 goldens after the dev merge, in a clean env (#14623)",
+        "ai_signal": false
+      },
+      {
+        "sha": "18714e34",
+        "date": "2026-11-25T02:24:47Z",
+        "author": "code-yeongyu",
+        "subject": "chore: rename change fragment to the PR number",
+        "ai_signal": false
+      },
+      {
+        "sha": "e35a90f5",
+        "date": "2026-11-24T22:38:48Z",
+        "author": "code-yeongyu",
+        "subject": "feat(telemetry): first-run consent question; headless runs are not consented (#14920 wave B)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f5ecad31",
+        "date": "2026-11-25T02:22:01Z",
+        "author": "code-yeongyu",
+        "subject": "chore: rename change fragment to the PR number",
+        "ai_signal": false
+      },
+      {
+        "sha": "305f7395",
+        "date": "2026-11-25T00:44:27Z",
+        "author": "code-yeongyu",
+        "subject": "chore(telemetry): retire knip rows for exports this change now uses (#14920)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d7e870f3",
+        "date": "2026-11-25T00:41:20Z",
+        "author": "code-yeongyu",
+        "subject": "chore(telemetry): regenerate the codex installer bundle for the config gate sources (#14920)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5687a833",
+        "date": "2026-11-24T22:20:35Z",
+        "author": "code-yeongyu",
+        "subject": "chore(senpi): regenerate the plugin bundles with the canonical bundle-check recipe (#14623)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6de90017",
+        "date": "2026-11-24T22:15:09Z",
+        "author": "code-yeongyu",
+        "subject": "fix(telemetry): disclose both destinations, honor one opt-out per sender (#14920)",
+        "ai_signal": false
+      },
+      {
+        "sha": "8147cf1b",
+        "date": "2026-11-24T22:09:28Z",
+        "author": "code-yeongyu",
+        "subject": "Merge remote-tracking branch 'origin/dev' into slot",
+        "ai_signal": false
+      },
+      {
+        "sha": "9b85b90d",
+        "date": "2026-11-24T22:01:02Z",
+        "author": "code-yeongyu",
+        "subject": "Merge pull request #14807 from code-yeongyu/fix/14335-handover-parked-record-recovery",
+        "ai_signal": false
+      },
+      {
+        "sha": "66ea8555",
+        "date": "2026-11-24T21:15:30Z",
+        "author": "code-yeongyu",
+        "subject": "chore(senpi): regenerate the plugin bundles with the canonical bundle-check recipe (#14807)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e6e1576c",
+        "date": "2026-11-24T21:08:29Z",
+        "author": "code-yeongyu",
+        "subject": "Merge commit 'c6b8936cf67b0f66e66ab814248db6bb8d1ba19b' into slot",
+        "ai_signal": false
+      },
+      {
+        "sha": "c6b8936c",
+        "date": "2026-11-24T21:05:31Z",
+        "author": "code-yeongyu",
+        "subject": "Merge pull request #14824 from code-yeongyu/fix/linux-clk-tck-from-system",
+        "ai_signal": false
+      },
+      {
+        "sha": "93148f7a",
+        "date": "2026-11-24T20:44:54Z",
+        "author": "code-yeongyu",
+        "subject": "Merge pull request #14900 from code-yeongyu/fix/store-reader-floor-busy",
+        "ai_signal": false
+      },
+      {
+        "sha": "e5846e98",
+        "date": "2026-11-24T20:18:05Z",
+        "author": "code-yeongyu",
+        "subject": "chore(senpi): regenerate the plugin bundles with the canonical bundle-check recipe (#14824)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "code-yeongyu",
+      "contributions": 31010
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 808
+    },
+    {
+      "login": "sisyphus-dev-ai",
+      "contributions": 680
+    },
+    {
+      "login": "MoerAI",
+      "contributions": 575
+    },
+    {
+      "login": "justsisyphus",
+      "contributions": 239
+    },
+    {
+      "login": "acamq",
+      "contributions": 118
+    },
+    {
+      "login": "effortprogrammer",
+      "contributions": 98
+    },
+    {
+      "login": "RaviTharuma",
+      "contributions": 97
+    },
+    {
+      "login": "cynkai",
+      "contributions": 93
+    },
+    {
+      "login": "minpeter",
+      "contributions": 79
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v5.1.83",
+      "published_at": "2026-11-24T02:39:28Z",
+      "name": "v5.1.83"
+    },
+    {
+      "tag": "v5.1.82",
+      "published_at": "2026-11-23T23:09:15Z",
+      "name": "v5.1.82"
+    },
+    {
+      "tag": "v5.1.81",
+      "published_at": "2026-11-21T21:53:04Z",
+      "name": "v5.1.81"
+    },
+    {
+      "tag": "v5.1.79",
+      "published_at": "2026-11-19T06:08:57Z",
+      "name": "v5.1.79"
+    },
+    {
+      "tag": "v5.1.78",
+      "published_at": "2026-11-18T23:57:07Z",
+      "name": "v5.1.78"
+    }
+  ]
+}

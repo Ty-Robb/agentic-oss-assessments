@@ -1,0 +1,424 @@
+{
+  "repo": "zgsm-ai/costrict",
+  "meta": {
+    "description": "Costrict - strict AI coder for enterprises, quality first, including AI Agent, AI CodeReview, AI Completion. ",
+    "homepage": "https://costrict.ai",
+    "license": "Apache-2.0",
+    "stars": 4464,
+    "forks": 205,
+    "open_issues": 14,
+    "archived": false,
+    "created_at": "2025-04-10T02:06:51Z",
+    "pushed_at": "2026-09-30T09:24:54Z",
+    "default_branch": "main",
+    "topics": [
+      "agent",
+      "ai",
+      "aicoding",
+      "claude",
+      "cline",
+      "cloud",
+      "coding",
+      "deepseek",
+      "gemini",
+      "glm",
+      "jetbrains",
+      "kilo-code",
+      "mimo",
+      "minimax",
+      "opencode",
+      "roocode",
+      "skills",
+      "vibecoding",
+      "vscode",
+      "vscode-extension"
+    ]
+  },
+  "languages": {
+    "TypeScript": 15135509,
+    "JavaScript": 100689,
+    "CSS": 65957,
+    "Shell": 33511,
+    "HTML": 282
+  },
+  "structure": {
+    "root": [
+      ".changeset/",
+      ".dockerignore",
+      ".env.sample",
+      ".git-blame-ignore-revs",
+      ".gitattributes",
+      ".gitconfig",
+      ".github/",
+      ".gitignore",
+      ".husky/",
+      ".nvmrc",
+      ".prettierrc.json",
+      ".roo/",
+      ".rooignore",
+      ".roomodes",
+      ".tool-versions",
+      ".vscode/",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CHANGELOG_ARCHIVE.md",
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "PRIVACY.md",
+      "README.md",
+      "README.zh-CN.md",
+      "SECURITY.md",
+      "apps/",
+      "assets/",
+      "costrict.code-workspace",
+      "ellipsis.yaml",
+      "knip.json",
+      "localhost",
+      "package.json",
+      "packages/",
+      "patches/",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "progress.txt",
+      "renovate.json",
+      "schemas/",
+      "scripts/",
+      "src/",
+      "sync-upstream.md",
+      "tsconfig.json",
+      "turbo.json",
+      "webview-ui/"
+    ],
+    "workflows": [
+      "changeset-release.yml",
+      "cli-release.yml",
+      "code-qa.yml",
+      "codeql.yml",
+      "deploy-vsix.yml",
+      "evals.yml",
+      "marketplace-publish.yml",
+      "nightly-publish.yml",
+      "update-contributors.yml",
+      "website-deploy.yml.disabled",
+      "website-preview.yml.disabled"
+    ],
+    "docs": [],
+    "docs_count": 0,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 615,
+      "line_count": 6,
+      "truncated": false,
+      "excerpt": "# AGENTS.md\n\nThis file provides guidance to agents when working with code in this repository.\n\n- Settings View Pattern: When working on `SettingsView`, inputs must bind to the local `cachedState`, NOT the live `useExtensionState()`. The `cachedState` acts as a buffer for user edits, isolating them from the `ContextProxy` source-of-truth until the user explicitly clicks \"Save\". Wiring inputs directly to the live state causes race conditions.\n- Commit messages must be written in English and follow Conventional Commits (`type(scope): summary`). Never use Chinese in commit messages, even for local-only commits.\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 4399,
+      "line_count": 132,
+      "truncated": false,
+      "excerpt": "<div align=\"center\">\n<sub>\n\n<b>English</b> \u2022 [\u7b80\u4f53\u4e2d\u6587](locales/zh-CN/CONTRIBUTING.md) \u2022 [\u7e41\u9ad4\u4e2d\u6587](locales/zh-TW/CONTRIBUTING.md)\n\n</sub>\n</div>\n\n# Contributing to CoStrict\n\nCoStrict is a community-driven project, and we deeply value every contribution. To streamline collaboration, we operate on an [Issue-First](#issue-first-approach) basis, meaning all [Pull Requests (PRs)](#submitting-a-pull-request) must first be linked to a GitHub Issue. Please review this guide carefully.\n\n## Table of Contents\n\n- [Before You Contribute](#before-you-contribute)\n- [Finding & Planning Your Contribution](#finding--planning-your-contribution)\n- [Development & Submission Process](#development--submission-process)\n- [Legal](#legal)\n\n## Before You Contribute\n\n### 1. Code of Conduct\n\nAll contributors must adhere to our [Code of Conduct](./CODE_OF_CONDUCT.md).\n\n### 2. Project Roadmap\n\nOur roadmap guides the project's direction. Align your contributions with these key goals:\n\n### Reliability First\n\n- Ensure diff editing and command execution are consistently reliable.\n- Reduce friction points that deter regular usage.\n- Guarantee smooth operation across all locales and platforms.\n- Expand robust support for a wide variety of AI providers and models.\n\n### Enhanced User Experience\n\n- Streamline the UI/UX for clarity and intuitiveness.\n- Continuously improve the workflow to meet the high expectations developers have for daily-use tools.\n\n### Leading on Agent Performance\n\n- Establish comprehensive evaluation benchmarks (evals) to measure real-world productivity.\n- Make it easy for everyone to easily run and interpret these evals.\n- Ship improvements that demonstrate clear increases in eval scores.\n\nMention alignment with these areas in your PRs.\n\n### 3. Join the CoStrict Community\n\n- **Alternative:** Experienced contributors can engage directly via [GitHub Projects](https://github.com/zgsm-ai/costrict/projects).\n\n## Finding & Planning Your Contribution\n\n### Types of Contributions\n\n- **Bug Fixes:** Addressing code issues.\n- **New Features:** Adding functionality.\n- **Documentation:** Improving guides and clarity.\n\n### Issue-First Approach\n\nAll contributions must begin with a GitHub Issue.\n\n- **Check existing issues**: Search [GitHub Issues](https://github.com/zgsm-ai/costrict/issues).\n- **Create an issue**: Use appropriate templates:\n    - **Bugs:** \"Bug Report\" template.\n    - **Features:** \"Detailed Feature Proposal\" template. Approval required before starting.\n- **Claim issues**: Comment and await official assignment.\n\n**PRs without approved issues may be closed.**\n\n### Deciding What to Work On\n\n- Check the [GitHub Project](https://github.com/zgsm-ai/costrict/projects) for unassigned \"Good First Issues.\"\n- For docs, visit [CoStrict Docs](https://docs.costrict.ai/).\n\n### Reporting Bugs\n\n- Check for existing reports first.\n- Create new bugs using the [\"Bug Report\" template](https://github.com/zgsm-ai/costrict/issues/new/choose).\n- **Security issues**: Report privately via [security advisories](https://github.com/zgsm-ai/costrict/security/advisories/new).\n\n## Development & Submission Process\n\n### Development Setup\n\n1. **Fork & Clone:**\n\n```\ngit clone https://github.com/YOUR_USERNAME/costrict.git\n```\n\n2. **Install Dependencies:**\n\n```\npnpm install\n```\n\n3. **Debugging:** Open with VS Code (`F5`).\n\n### Writing Code Guidelines\n\n- One focused PR per feature or fix.\n- Follow ESLint and TypeScript best practices.\n- Write clear, descriptive commits referencing issues (e.g., `Fixes #123`).\n- Provide thorough testing (`npm test`).\n- Rebase onto the latest `main` branch before submission.\n\n### Submitting a Pull Request\n\n- Begin as a **Draft PR** if seeking early feedback.\n- Clearly describe your changes following the Pull Request Template.\n- Provide screenshots/videos for UI changes.\n- Indicate if documentation updates are necessary.\n\n### Pull Request Policy\n\n- Must reference pre-approved, assigned issues.\n- PRs without adherence to the policy may be closed.\n- PRs should pass CI tests, align with the roadmap, and have clear documentation.\n\n### Review Process\n\n- **Daily Triage:** Quick checks by maintainers.\n- **Weekly In-depth Review:** Comprehensive assessment.\n- **Iterate promptly** based on feedback.\n\n## Legal\n\nBy contributing, you agree your contributions will be licensed under the Apache 2.0 License, consistent with CoStrict's licensing.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 9668,
+      "line_count": 192,
+      "truncated": true,
+      "excerpt": "<div align=\"center\">\n\n[![Announcement Banner](https://img.shields.io/badge/\ud83c\udf1f_We_are_exploring_some_interesting_things,_please_keep_following_us!-2563EB?style=for-the-badge)](https://costrict.ai)\n\n</div>\n\n<div align=\"center\">\n\n<img src=\"https://img.shields.io/badge/version-latest-blue?style=flat-square\" alt=\"Version\">\n<img src=\"https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square\" alt=\"License\">\n<img src=\"https://img.shields.io/badge/platform-VS%20Code%20%7C%20JetBrains-orange?style=flat-square\" alt=\"Platform\">\n<img src=\"https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square\" alt=\"PRs Welcome\">\n\n</div>\n\n<div align=\"center\">\n\n# CoStrict\n\n<img src=\"./assets/images/shenma_robot_logo_big.png\" alt=\"CoStrict Logo\" width=\"60\">\n\n**Strict AI Coder for Enterprises**\n\n_Free \u2022 Open Source \u2022 Private Deployment_\n\n[\u7b80\u4f53\u4e2d\u6587](./README.zh-CN.md) | English\n\n</div>\n\n---\n\n**CoStrict** is a free, open-source AI-powered coding assistant designed for enterprise-grade development. With support for private deployment, it's the optimal choice for organizations requiring secure, standardized AI development workflows.\n\n## \u2728 Core Capabilities\n\n| Feature                | Description                                                                                                         |\n| ---------------------- | ------------------------------------------------------------------------------------------------------------------- |\n| \ud83d\udd12 **Strict Mode**     | Standardized AI code generation with requirements analysis, architecture design, task planning, and test generation |\n| \ud83d\udd0d **Code Review**     | Repository-wide RAG-based code analysis with multi-expert model verification                                        |\n| \ud83c\udfaf **Vibe Code**       | Rapid development through natural language dialogue                                                                 |\n| \ud83d\udd17 **MCP Integration** | Standardized system connectivity for APIs, databases, and custom tools                                              |\n| \ud83c\udfa8 **Multi-modal**     | Support for image context and visual inputs                                                                         |\n| \ud83d\udee0\ufe0f **Skills Support**  | Extensible skills system for specialized task workflows                                                             |\n\n## \ud83d\udce6 Installation\n\n<table>\n  <tr>\n    <td align=\"center\" width=\"25%\">\n      <b>\ud83c\udf1f CoStrict Cloud</b><br><br>\n      <a href=\"https://docs.costrict.ai/cli/product-characteristics/cloud\">\n        <img src=\"https://img.shields.io/badge/Cloud-Documentation-blue?style=for-the-badge\" alt=\"Cloud Docs\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"25%\">\n      <b>VS Code Extension</b><br><br>\n      <a href=\"https://marketplace.visualstudio.com/items?itemName=zgsm-ai.zgsm-nightly\">\n        <img src=\"https://img.shields.io/badge/Download-Nightly-success?style=for-the-badge\" alt=\"Download\">\n      </a>\n      <a href=\"https://marketplace.visualstudio.com/items?itemName=zgsm-ai.zgsm\">\n        <img src=\"https://img.shields.io/badge/Download-Latest-success?style=for-the-badge\" alt=\"Download\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"25%\">\n      <b>CLI Tool</b><br><br>\n      <a href=\"https://docs.costrict.ai/cli/guide/installation\">\n        <img src=\"https://img.shields.io/badge/CLI-Documentation-blue?style=for-the-badge\" alt=\"CLI Docs\">\n      </a>\n      <a href=\"https://costrict.ai/download\">\n        <img src=\"https://img.shields.io/badge/Download-Latest-success?style=for-the-badge\" alt=\"Download\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"25%\">\n      <b>JetBrains Plugin</b><br><br>\n      <a href=\"https://github.com/zgsm-sangfor/costrict-for-jetbrains\">\n        <img src=\"https://img.shields.io/badge/GitHub-Repository-informational?style=for-the-badge\" alt=\"JetBrains Repo\">\n      </a>\n      <a href=\"https://costrict.ai/download\">\n        <img src=\"https://img.shields.io/badge/Download-Latest-success?style=for-the-badge\" alt=\"Download\">\n      </a>\n    </td>\n  </tr>\n</table>\n\n## \ud83d\ude80 Key Features\n\n### Strict Mode\n\nStandardizes AI-generated code workflows for enterprise scenarios, ensuring high-quality and controllable outputs.\n\n<table bgcolor=\"#1e1e1e\">\n  <tr>\n    <td align=\"center\" width=\"50%\">\n      <a href=\"https://docs.costrict.ai/en/tutorial-videos/video/#strict-mode\">\n        <img src=\"./assets/images/readme/strict_mode_en_buffer.webp\" alt=\"Strict Mode Demo\" width=\"100%\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"50%\">\n      <img src=\"./assets/images/readme/strict_mode_en.webp\" alt=\"Strict Mode\" width=\"100%\">\n    </td>\n  </tr>\n</table>\n\n### Code Review\n\nRepository-wide indexing and RAG-based analysis with multi-model verification strategies.\n\n<table bgcolor=\"#1e1e1e\">\n  <tr>\n    <td align=\"center\" width=\"50%\">\n      <a href=\"https://docs.costrict.ai/en/tutorial-videos/video/#ai-codereview\">\n        <img src=\"./assets/images/readme/codereview_buffer.webp\" alt=\"Code Review Demo\" width=\"100%\">\n      </a>\n    </td>\n    <td align=\"center\" width=\"50%\">\n      <img src=\"./assets/images/readme/codereview_en.webp\" alt=\"Code Review\" width=\"100%\">\n    </td>\n  </tr>\n</table>\n\n### More Features\n\n- \ud83c\udf10 **Multi-language Support** - Python, Go, Java, JavaScript/TypeScript, C/C++, and all programming languages\n- \ud83d\udd10 **Privacy & Security** - Professional private deployment with physical isolation and end-to-end encryption\n- \ud83c\udf9b\ufe0f **API & Model Customization** - Built-in free models + support for Anthropic, OpenAI, OpenAI-compatible APIs, and local models\n- \ud83d\udcc1 **Large Repository Context** - Automatic context inclusion with @ file/folder mentions\n- \ud83d\udd27 **Mode Customization** - Multiple default modes (Code, Orchestrator) with custom mode support\n- \ud83d\udcdd **[OpenSpec Integration](https://github.com/Fission-AI/OpenSpec)** - Standardized change proposal workflows with `/openspec-init`\n- \ud83d\udd17 **VSCode SCM Integration** - Seamless integration with Git for code review and collaboration\n- **Auto Cleanup History** - Automatically clean up histo"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 2543,
+      "line_count": 58,
+      "truncated": false,
+      "excerpt": "{\n\t\"name\": \"costrict\",\n\t\"packageManager\": \"pnpm@10.8.1\",\n\t\"engines\": {\n\t\t\"node\": \"20.19.2\"\n\t},\n\t\"scripts\": {\n\t\t\"preinstall\": \"node scripts/bootstrap.mjs\",\n\t\t\"prepare\": \"husky\",\n\t\t\"install\": \"node scripts/bootstrap.mjs\",\n\t\t\"install:all\": \"node scripts/bootstrap.mjs\",\n\t\t\"lint\": \"turbo lint --log-order grouped --output-logs new-only\",\n\t\t\"check-types\": \"turbo check-types --log-order grouped --output-logs new-only\",\n\t\t\"test\": \"turbo test --log-order grouped --output-logs new-only\",\n\t\t\"format\": \"turbo format --log-order grouped --output-logs new-only\",\n\t\t\"build\": \"turbo build --log-order grouped --output-logs new-only\",\n\t\t\"bundle\": \"node scripts/generate-review-builtin.mjs && turbo bundle --log-order grouped --output-logs new-only\",\n\t\t\"bundle:nightly\": \"node scripts/generate-review-builtin.mjs && turbo bundle:nightly --log-order grouped --output-logs new-only\",\n\t\t\"vsix\": \"node scripts/generate-review-builtin.mjs && turbo vsix --log-order grouped --output-logs new-only\",\n\t\t\"make-nightly\": \"node scripts/make-nightly-vsix.js\",\n\t\t\"vsix:nightly\": \"pnpm vsix && pnpm make-nightly\",\n\t\t\"clean\": \"turbo clean --log-order grouped --output-logs new-only && rimraf dist out bin .vite-port .turbo \",\n\t\t\"install:vsix\": \"pnpm install --frozen-lockfile && pnpm clean && pnpm vsix && node scripts/install-vsix.js\",\n\t\t\"install:vsix:nightly\": \"pnpm install --frozen-lockfile && pnpm clean && pnpm vsix:nightly && node scripts/install-vsix.js --nightly\",\n\t\t\"code-server:install\": \"node scripts/code-server.js\",\n\t\t\"changeset:version\": \"cp CHANGELOG.md src/CHANGELOG.md && changeset version && cp -vf src/CHANGELOG.md .\",\n\t\t\"knip\": \"knip --include files\",\n\t\t\"evals\": \"dotenvx run -f packages/evals/.env.development packages/evals/.env.local -- docker compose -f packages/evals/docker-compose.yml --profile server --profile runner up --build --scale runner=0\",\n\t\t\"npm:publish:types\": \"pnpm --filter @roo-code/types npm:publish\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@changesets/cli\": \"^2.27.10\",\n\t\t\"@dotenvx/dotenvx\": \"^1.34.0\",\n\t\t\"@roo-code/config-typescript\": \"workspace:^\",\n\t\t\"@types/glob\": \"^9.0.0\",\n\t\t\"@types/node\": \"^24.1.0\",\n\t\t\"@vscode/vsce\": \"3.3.2\",\n\t\t\"esbuild\": \"^0.25.0\",\n\t\t\"eslint\": \"^9.27.0\",\n\t\t\"glob\": \"^11.1.0\",\n\t\t\"husky\": \"^9.1.7\",\n\t\t\"knip\": \"5.44.4\",\n\t\t\"lint-staged\": \"^16.0.0\",\n\t\t\"mkdirp\": \"^3.0.1\",\n\t\t\"only-allow\": \"^1.2.1\",\n\t\t\"ovsx\": \"0.10.4\",\n\t\t\"prettier\": \"^3.4.2\",\n\t\t\"rimraf\": \"^6.0.1\",\n\t\t\"tsx\": \"^4.19.3\",\n\t\t\"turbo\": \"^2.5.6\",\n\t\t\"typescript\": \"5.8.3\"\n\t},\n\t\"lint-staged\": {\n\t\t\"*.{js,jsx,ts,tsx,json,css,md}\": [\n\t\t\t\"prettier --write\"\n\t\t]\n\t}\n}\n"
+    },
+    "knip.json": {
+      "path": "knip.json",
+      "size_bytes": 1432,
+      "line_count": 44,
+      "truncated": false,
+      "excerpt": "{\n\t\"$schema\": \"https://unpkg.com/knip@latest/schema.json\",\n\t\"ignore\": [\n\t\t\"**/__tests__/**\",\n\t\t\"apps/vscode-e2e/**\",\n\t\t\"src/extension/api.ts\",\n\t\t\"src/activate/**\",\n\t\t\"src/workers/countTokens.ts\",\n\t\t\"src/extension.ts\",\n\t\t\"scripts/**\",\n\t\t\"apps/cli/scripts/**\",\n\t\t\"apps/web-roo-code/next-sitemap.config.cjs\",\n\n\t\t\"packages/cloud/src/__mocks__/vscode.ts\",\n\t\t\"packages/types/src/costrict/fix-agent.ts\",\n\t\t\"src/api/providers/fetchers/roo.ts\",\n\t\t\"src/api/providers/roo.ts\",\n\t\t\"src/core/costrict/wiki/utils/rooCommandsUtils.ts\",\n\t\t\"src/core/ignore/__mocks__/RooIgnoreController.ts\",\n\t\t\"src/core/prompts/tools/native-tools/codebase_search.ts\",\n\t\t\"src/core/prompts/tools/native-tools/costrict_checkpoint.ts\",\n\t\t\"src/core/tools/CodebaseSearchTool.ts\",\n\t\t\"src/services/glob/__mocks__/list-files.ts\",\n\t\t\"webview-ui/src/__mocks__/vscode.ts\",\n\t\t\"webview-ui/src/components/cloud/CloudAccountSwitcher.tsx\",\n\t\t\"webview-ui/src/components/common/__mocks__/CodeBlock.tsx\",\n\t\t\"webview-ui/src/components/common/__mocks__/MarkdownBlock.tsx\",\n\t\t\"webview-ui/src/components/common/TelemetryBanner.tsx\",\n\t\t\"webview-ui/src/components/settings/providers/Roo.tsx\"\n\t],\n\t\"workspaces\": {\n\t\t\"src\": {\n\t\t\t\"entry\": [\"extension.ts\"],\n\t\t\t\"project\": [\"**/*.ts\"]\n\t\t},\n\t\t\"webview-ui\": {\n\t\t\t\"entry\": [\"src/index.tsx\"],\n\t\t\t\"project\": [\"src/**/*.{ts,tsx}\", \"../src/shared/*.ts\"]\n\t\t},\n\t\t\"packages/{build,cloud,evals,ipc,telemetry,types}\": {\n\t\t\t\"project\": [\"src/**/*.ts\"]\n\t\t}\n\t}\n}\n"
+    },
+    "turbo.json": {
+      "path": "turbo.json",
+      "size_bytes": 641,
+      "line_count": 27,
+      "truncated": false,
+      "excerpt": "{\n\t\"$schema\": \"https://turbo.build/schema.json\",\n\t\"globalEnv\": [\n\t\t\"COSTRICT_PKG_NAME\", \"VSCODE_DEBUG_MODE\", \"COSTRICT_PKG_OUTPUT_CHANNEL\",\n\t\t\"ZGSM_PUBLIC_KEY\", \"COSTRICT_PUBLIC_KEY\", \"COSTRICT_BASE_URL\", \n\t\t\"CS_CLOUD_UI_DIST_PATH\", \"NODE_ENV\",\n\t\t\"COSTRICT_PKG_VERSION\", \"COSTRICT_PKG_BUILD_TIME\"\n\t],\n\t\"tasks\": {\n\t\t\"lint\": {},\n\t\t\"check-types\": {},\n\t\t\"test\": {\n\t\t\t\"dependsOn\": [\"@roo-code/types#build\"]\n\t\t},\n\t\t\"format\": {},\n\t\t\"clean\": {\n\t\t\t\"cache\": false\n\t\t},\n\t\t\"build\": {\n\t\t\t\"outputs\": [\"dist/**\"],\n\t\t\t\"inputs\": [\"src/**\", \"package.json\", \"tsconfig.json\", \"tsup.config.ts\", \"vite.config.ts\"]\n\t\t},\n\t\t\"watch:tsc\": {\n\t\t\t\"cache\": false\n\t\t}\n\t}\n}\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 1990,
+      "line_count": 68,
+      "truncated": false,
+      "excerpt": "packages:\n    - \"src\" # Should be apps/vscode\n    - \"webview-ui\" # Should be apps/vscode-webview\n    - \"apps/*\"\n    - \"packages/*\"\n\nonlyBuiltDependencies:\n    - \"@vscode/ripgrep\"\n    - \"@tailwindcss/oxide\"\n    - \"@vscode/vsce-sign\"\n    - better-sqlite3\n    - core-js\n    - esbuild\n    - keytar\n    - puppeteer-chromium-resolver\n    - sharp\n\nignoredBuiltDependencies:\n    - protobufjs\n\noverrides:\n    csstype: \">=3.2.3\"\n    tar-fs: \">=3.1.1\"\n    esbuild: \"0.25.0\"\n    undici: \">=5.29.0\"\n    brace-expansion: \"^2.0.2\"\n    form-data: \">=4.0.4\"\n    bluebird: \">=3.7.2\"\n    glob: \">=11.1.0\"\n    \"@types/react\": \"^18.3.23\"\n    \"@types/react-dom\": \"^18.3.5\"\n    zod: \"3.25.76\"\n    \"nth-check@<2.0.1\": \">=2.0.1\"\n    \"vite@>=6.0.0 <=6.4.0\": \">=6.4.1\"\n    \"diff@>=6.0.0 <8.0.3\": \">=8.0.3\"\n    \"serialize-javascript@<=7.0.2\": \">=7.0.3\"\n    \"serialize-javascript@<7.0.5\": \">=7.0.5\"\n    \"vite@<=6.4.1\": \">=6.4.2\"\n    \"vite@>=6.0.0 <=6.4.1\": \">=6.4.2\"\n    \"drizzle-orm@<0.45.2\": \">=0.45.2\"\n    \"follow-redirects@<=1.15.11\": \">=1.16.0\"\n    \"dompurify@<=3.3.3\": \">=3.4.0\"\n    \"postcss@<8.5.10\": \">=8.5.10\"\n    \"simple-git@<3.36.0\": \">=3.36.0\"\n    \"fast-uri@<=3.1.1\": \">=3.1.2\"\n    \"@xmldom/xmldom@<0.8.13\": \">=0.8.13\"\n    \"fast-xml-parser@<5.7.0\": \">=5.7.0\"\n    \"next@>=16.0.0 <16.2.6\": \">=16.2.6\"\n    \"i18next-http-backend@<3.0.5\": \">=3.0.5\"\n    \"mermaid@>=11.0.0-alpha.1 <=11.14.0\": \">=11.15.0\"\n    \"protobufjs@>=8.0.0 <8.2.0\": \">=8.2.0\"\n    \"basic-ftp@<=5.3.0\": \">=5.3.1\"\n    \"ip-address@<=10.1.0\": \">=10.1.1\"\n    \"@protobufjs/utf8@<=1.1.0\": \">=1.1.1\"\n    \"fast-xml-builder@<=1.1.6\": \">=1.1.7\"\n    \"hono@<4.12.21\": \">=4.12.21\"\n    \"ws@>=8.0.0 <8.20.1\": \">=8.20.1\"\n    \"turbo@>=1.1.0 <2.9.14\": \">=2.9.14\"\n    \"uuid@<11.1.1\": \">=11.1.1\"\n    \"js-cookie@<=3.0.5\": \">=3.0.7\"\n    \"qs@>=6.11.1 <=6.15.1\": \">=6.15.2\"\n    \"tmp@<0.2.6\": \">=0.2.6\"\n    \"axios@>=1.0.0 <1.16.0\": \"1.16.0\"\n    \"vitest\": \"3.2.6\"\n    \"@ai-sdk/provider-utils\": \"4.0.27\"\n\npatchedDependencies:\n    axios@1.16.0: patches/axios@1.16.0.patch\n"
+    }
+  },
+  "workflow_samples": {
+    "evals.yml": {
+      "path": ".github/workflows/evals.yml",
+      "size_bytes": 2678,
+      "line_count": 74,
+      "truncated": false,
+      "excerpt": "name: Evals\n\non:\n    pull_request:\n        types: [labeled]\n    workflow_dispatch:\n\nenv:\n    DOCKER_BUILDKIT: 1\n    COMPOSE_DOCKER_CLI_BUILD: 1\n\njobs:\n    evals:\n        # Run if triggered manually or if PR has 'evals' label.\n        if: github.event_name == 'workflow_dispatch' || contains(github.event.label.name, 'evals')\n        runs-on: blacksmith-16vcpu-ubuntu-2404\n        timeout-minutes: 45\n\n        defaults:\n            run:\n                working-directory: packages/evals\n\n        steps:\n            - name: Checkout repository\n              uses: actions/checkout@v4\n\n            - name: Set up Docker Buildx\n              uses: docker/setup-buildx-action@v3\n\n            - name: Create environment\n              run: |\n                  cat > .env.local << EOF\n                  OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY || 'test-key-for-build' }}\n                  EOF\n\n                  cat > .env.development << EOF\n                  NODE_ENV=development\n                  DATABASE_URL=postgresql://postgres:password@db:5432/evals_development\n                  REDIS_URL=redis://redis:6379\n                  HOST_EXECUTION_METHOD=docker\n                  EOF\n\n            - name: Build image\n              uses: docker/build-push-action@v6\n              with:\n                  context: .\n                  file: packages/evals/Dockerfile.runner\n                  tags: evals-runner:latest\n                  cache-from: type=gha\n                  cache-to: type=gha,mode=max\n                  push: false\n                  load: true\n\n            - name: Tag image\n              run: docker tag evals-runner:latest evals-runner\n\n            - name: Start containers\n              run: |\n                  docker compose up -d db redis\n                  timeout 60 bash -c 'until docker compose exec -T db pg_isready -U postgres; do sleep 2; done'\n                  timeout 60 bash -c 'until docker compose exec -T redis redis-cli ping | grep -q PONG; do sleep 2; done'\n                  docker compose run --rm runner sh -c 'nc -z db 5432 && echo \"\u2713 Runner -> Database connection successful\"'\n                  docker compose run --rm runner sh -c 'nc -z redis 6379 && echo \"\u2713 Runner -> Redis connection successful\"'\n                  docker compose run --rm runner docker ps\n\n            - name: Run database migrations\n              run: docker compose run --rm runner pnpm --filter @roo-code/evals db:migrate\n\n            - name: Run evals\n              run: docker compose run --rm runner pnpm --filter @roo-code/evals cli --ci\n\n            - name: Cleanup\n              if: always()\n              run: docker compose down -v --remove-orphans\n"
+    },
+    "website-preview.yml.disabled": {
+      "path": ".github/workflows/website-preview.yml.disabled",
+      "size_bytes": 4073,
+      "line_count": 102,
+      "truncated": false,
+      "excerpt": "name: Preview costrict.ai\n\non:\n    push:\n        branches-ignore:\n            - main\n        paths:\n            - \"apps/web-roo-code/**\"\n    pull_request:\n        paths:\n            - \"apps/web-roo-code/**\"\n    workflow_dispatch:\n\nconcurrency:\n    group: preview-roocode-com-${{ github.ref }}\n    cancel-in-progress: true\n\nenv:\n    VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}\n    VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}\n\njobs:\n    check-secrets:\n        runs-on: ubuntu-latest\n        outputs:\n            has-vercel-token: ${{ steps.check.outputs.has-vercel-token }}\n        steps:\n            - name: Check if VERCEL_TOKEN exists\n              id: check\n              run: |\n                  if [ -n \"${{ secrets.VERCEL_TOKEN }}\" ]; then\n                    echo \"has-vercel-token=true\" >> $GITHUB_OUTPUT\n                  else\n                    echo \"has-vercel-token=false\" >> $GITHUB_OUTPUT\n                  fi\n\n    preview:\n        runs-on: ubuntu-latest\n        needs: check-secrets\n        if: ${{ needs.check-secrets.outputs.has-vercel-token == 'true' }}\n        steps:\n            - name: Checkout code\n              uses: actions/checkout@v4\n            - name: Setup Node.js and pnpm\n              uses: ./.github/actions/setup-node-pnpm\n            - name: Run lint\n              run: pnpm lint\n              working-directory: apps/web-roo-code\n            - name: Run type check\n              run: pnpm check-types\n              working-directory: apps/web-roo-code\n            - name: Run build\n              run: pnpm build\n              working-directory: apps/web-roo-code\n            - name: Install Vercel CLI\n              run: npm install --global vercel@latest\n            - name: Pull Vercel Environment Information\n              run: npx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}\n            - name: Build Project Artifacts\n              run: npx vercel build --token=${{ secrets.VERCEL_TOKEN }}\n            - name: Deploy Project Artifacts to Vercel\n              id: deploy\n              run: |\n                  DEPLOYMENT_URL=$(npx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})\n                  echo \"deployment_url=$DEPLOYMENT_URL\" >> $GITHUB_OUTPUT\n                  echo \"Preview deployed to: $DEPLOYMENT_URL\"\n\n            - name: Comment PR with preview link\n              if: github.event_name == 'pull_request'\n              uses: actions/github-script@v7\n              with:\n                  script: |\n                      const deploymentUrl = '${{ steps.deploy.outputs.deployment_url }}';\n                      const commentIdentifier = '<!-- roo-preview-comment -->';\n\n                      const { data: comments } = await github.rest.issues.listComments({\n                        owner: context.repo.owner,\n                        repo: context.repo.repo,\n                        issue_number: context.issue.number,\n                      });\n\n                      const existingComment = comments.find(comment =>\n                        comment.body.includes(commentIdentifier)\n                      );\n\n                      const comment = commentIdentifier + '\\n\ud83d\ude80 **Preview deployed!**\\n\\nYour changes have been deployed to Vercel:\\n\\n**Preview URL:** ' + deploymentUrl + '\\n\\nThis preview will be updated automatically when you push new commits to this PR.';\n\n                      if (existingComment) {\n                        await github.rest.issues.updateComment({\n                          owner: context.repo.owner,\n                          repo: context.repo.repo,\n                          comment_id: existingComment.id,\n                          body: comment\n                        });\n                      } else {\n                        await github.rest.issues.createComment({\n                          owner: context.repo.owner,\n                          repo: context.repo.repo,\n                          issue_number: context.issue.number,\n                          body: comment\n                        });\n                      }\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-09-30T09:21:10Z",
+      "oldest": "2026-06-13T17:58:17Z"
+    },
+    "conventional_pct": 92.0,
+    "fix_revert_pct": 14.0,
+    "ai_coauthor_pct": 2.0,
+    "top_recent_authors": [
+      [
+        "mini2s",
+        44
+      ],
+      [
+        "unknownzjc",
+        3
+      ],
+      [
+        "Octopus",
+        1
+      ],
+      [
+        "xiaojingming",
+        1
+      ],
+      [
+        "juststillthinking",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "dd38f540",
+        "date": "2026-09-30T09:21:10Z",
+        "author": "mini2s",
+        "subject": "chore(release): bump version to 3.0.23 (#1377)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5f711bed",
+        "date": "2026-09-30T09:01:08Z",
+        "author": "mini2s",
+        "subject": "Cloud UI mode stability dev (#1376)",
+        "ai_signal": false
+      },
+      {
+        "sha": "eff700f4",
+        "date": "2026-09-24T04:33:27Z",
+        "author": "mini2s",
+        "subject": "chore(release): bump version to 3.0.22 (#1375)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e7e18161",
+        "date": "2026-09-24T04:26:37Z",
+        "author": "mini2s",
+        "subject": "chore(costrict): temporarily disable quota purchase entries (#1374)",
+        "ai_signal": false
+      },
+      {
+        "sha": "7628822c",
+        "date": "2026-09-17T16:27:14Z",
+        "author": "mini2s",
+        "subject": "refactor(costrict): remove code completion feature and runtime installer (#1372)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a7f2d710",
+        "date": "2026-09-09T02:21:07Z",
+        "author": "mini2s",
+        "subject": "chore(release): bump version to 3.0.21 (#1368)",
+        "ai_signal": false
+      },
+      {
+        "sha": "9fc86b5c",
+        "date": "2026-08-18T16:52:36Z",
+        "author": "mini2s",
+        "subject": "chore(release): bump version to 3.0.20 (#1364)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e2e6971c",
+        "date": "2026-08-18T04:58:03Z",
+        "author": "Octopus",
+        "subject": "feat(minimax): add MiniMax-M3 model to the MiniMax model registry (#1349)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2599df50",
+        "date": "2026-08-18T04:16:52Z",
+        "author": "mini2s",
+        "subject": "feat(cs-cloud): add `csc cloud start` auto-start fallback and improve not-running error UI (#1363)",
+        "ai_signal": false
+      },
+      {
+        "sha": "999b8d35",
+        "date": "2026-08-09T11:57:04Z",
+        "author": "mini2s",
+        "subject": "chore: update version to 3.0.19 (#1357)",
+        "ai_signal": false
+      },
+      {
+        "sha": "00b59ab1",
+        "date": "2026-08-09T11:42:21Z",
+        "author": "mini2s",
+        "subject": "feat(security): implement workspace trust service for custom tools and MCP server approval (#1356)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0ba9e17b",
+        "date": "2026-08-03T19:17:08Z",
+        "author": "mini2s",
+        "subject": "chore: update version to 3.0.18 (#1355)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a48b9233",
+        "date": "2026-08-03T07:25:40Z",
+        "author": "mini2s",
+        "subject": "fix(task-persistence): use pure-JS tar fallback for Windows task history backup (#1354)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d947265b",
+        "date": "2026-07-31T08:25:46Z",
+        "author": "mini2s",
+        "subject": "fix(security): remediate command injection, path traversal, and SSRF vulnerabilities (#1353)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6734998d",
+        "date": "2026-07-27T02:47:07Z",
+        "author": "unknownzjc",
+        "subject": "feat: distinguish authoritative model lists from cache (#1348)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4c2a1b6f",
+        "date": "2026-07-21T12:08:44Z",
+        "author": "mini2s",
+        "subject": "chore: update version to 3.0.17 (#1346)",
+        "ai_signal": false
+      },
+      {
+        "sha": "670f9454",
+        "date": "2026-07-21T10:41:54Z",
+        "author": "mini2s",
+        "subject": "feat: support command: protocol links in markdown (#1345)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3ae56ce8",
+        "date": "2026-07-19T13:52:05Z",
+        "author": "mini2s",
+        "subject": "fix(cs-cloud): allow JetBrains host script in loading page via CSP nonce (#1344)",
+        "ai_signal": false
+      },
+      {
+        "sha": "dd0a532b",
+        "date": "2026-07-18T16:37:51Z",
+        "author": "mini2s",
+        "subject": "chore: update version to 3.0.16 (#1343)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c13114a8",
+        "date": "2026-07-18T15:30:17Z",
+        "author": "mini2s",
+        "subject": "feat(providers): remove Gemini CLI provider support (#1342)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "mrubens",
+      "contributions": 1763
+    },
+    {
+      "login": "saoudrizwan",
+      "contributions": 962
+    },
+    {
+      "login": "mini2s",
+      "contributions": 759
+    },
+    {
+      "login": "cte",
+      "contributions": 564
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 258
+    },
+    {
+      "login": "daniel-lxs",
+      "contributions": 175
+    },
+    {
+      "login": "renovate[bot]",
+      "contributions": 145
+    },
+    {
+      "login": "samhvw8",
+      "contributions": 127
+    },
+    {
+      "login": "hannesrudolph",
+      "contributions": 118
+    },
+    {
+      "login": "unknownzjc",
+      "contributions": 81
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v3.0.23",
+      "published_at": "2026-09-30T09:24:54Z",
+      "name": "Release v3.0.23"
+    },
+    {
+      "tag": "v3.0.22",
+      "published_at": "2026-09-24T04:41:36Z",
+      "name": "Release v3.0.22"
+    },
+    {
+      "tag": "v3.0.21",
+      "published_at": "2026-09-09T12:13:44Z",
+      "name": "Release v3.0.21"
+    },
+    {
+      "tag": "v3.0.20",
+      "published_at": "2026-08-18T16:59:26Z",
+      "name": "Release v3.0.20"
+    },
+    {
+      "tag": "v3.0.19",
+      "published_at": "2026-08-09T11:57:53Z",
+      "name": "Release v3.0.19"
+    }
+  ]
+}

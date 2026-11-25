@@ -1,0 +1,478 @@
+{
+  "repo": "getpaseo/paseo",
+  "meta": {
+    "description": "Orchestrate multiple coding agents from desktop and mobile",
+    "homepage": "https://paseo.sh",
+    "license": "NOASSERTION",
+    "stars": 25293,
+    "forks": 3140,
+    "open_issues": 2203,
+    "archived": false,
+    "created_at": "2025-10-13T12:27:02Z",
+    "pushed_at": "2026-11-25T13:24:23Z",
+    "default_branch": "main",
+    "topics": [
+      "ade",
+      "agents",
+      "android",
+      "claude-code",
+      "codex",
+      "copilot",
+      "developer-tools",
+      "hermes",
+      "ios",
+      "linux",
+      "mobile",
+      "opencode",
+      "orchestration",
+      "pi",
+      "windows"
+    ]
+  },
+  "languages": {
+    "TypeScript": 51211681,
+    "Kotlin": 1110664,
+    "JavaScript": 961485,
+    "Objective-C": 852394,
+    "C++": 823452,
+    "Objective-C++": 542302,
+    "C": 281052,
+    "Shell": 80421,
+    "Swift": 76329,
+    "Java": 35551,
+    "Ruby": 28832,
+    "Nix": 28412,
+    "HTML": 22585,
+    "CSS": 20532,
+    "PowerShell": 7887,
+    "CMake": 6411,
+    "Dockerfile": 3853,
+    "Python": 2716,
+    "Batchfile": 549
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".claude/",
+      ".dockerignore",
+      ".github/",
+      ".gitignore",
+      ".mise.toml",
+      ".oxfmtrc.json",
+      ".oxlintrc.json",
+      ".tool-versions",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CHANGELOG.zh-CN.md",
+      "CLAUDE.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "README.ja.md",
+      "README.ko.md",
+      "README.md",
+      "README.zh-CN.md",
+      "SECURITY.md",
+      "assets/",
+      "cli-client-id",
+      "docker/",
+      "docs/",
+      "fastlane/",
+      "flake.lock",
+      "flake.nix",
+      "knip.json",
+      "lefthook.yml",
+      "nix/",
+      "package-lock.json",
+      "package.json",
+      "packages/",
+      "paseo.json",
+      "patches/",
+      "plugin-examples/",
+      "plugins/",
+      "public-docs/",
+      "scripts/",
+      "skills/",
+      "tsconfig.base.json",
+      "tsconfig.json",
+      "vitest.config.ts"
+    ],
+    "workflows": [
+      "android-apk-release.yml",
+      "ci.yml",
+      "deploy-app.yml",
+      "deploy-relay.yml",
+      "deploy-website.yml",
+      "desktop-packages.yml",
+      "desktop-release.yml",
+      "desktop-rollout.yml",
+      "docker.yml",
+      "nix-update-hash.yml",
+      "nix.yml",
+      "release-notes-sync.yml"
+    ],
+    "docs": [
+      "ad-hoc-daemon-testing.md",
+      "agent-lifecycle.md",
+      "agent-stream-disclosure.md",
+      "agent-stream-performance.md",
+      "android.md",
+      "architecture.md",
+      "browser-capture-harness.md",
+      "coding-standards.md",
+      "connected-hosts.md",
+      "custom-providers.md",
+      "data-model.md",
+      "design.md",
+      "development.md",
+      "docker.md",
+      "explorer-sidebar.md",
+      "expo-router.md",
+      "file-icons.md",
+      "file-observation.md",
+      "floating-panels.md",
+      "forge-providers.md",
+      "forms.md",
+      "glossary.md",
+      "hover.md",
+      "hub.md",
+      "i18n.md",
+      "keyboard-shortcuts.md",
+      "markdown-renderer.md",
+      "menus.md",
+      "mobile-panels.md",
+      "mobile-testing.md",
+      "native-text-selection.md",
+      "notifications.md",
+      "opencode-global-event-baseline.md",
+      "permissions.md",
+      "plugins.md",
+      "product.md",
+      "protocol-compatibility.md",
+      "protocol-validation.md",
+      "providers.md",
+      "qa-evidence/",
+      "qa.md",
+      "refactors/",
+      "relay-endpoint-security.md",
+      "release.md",
+      "rpc-namespacing.md",
+      "service-proxy.md",
+      "terminal-activity.md",
+      "terminal-performance.md",
+      "terminal-rendering.md",
+      "terminal-worker.md"
+    ],
+    "docs_count": 54,
+    "agents_dir": [
+      "skills/"
+    ],
+    "agents_skills": [
+      "release-beta/",
+      "release-stable/"
+    ],
+    "claude_dir": [
+      "skills/"
+    ],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 24042,
+      "line_count": 205,
+      "truncated": true,
+      "excerpt": "# CLAUDE.md\n\nPaseo is a mobile app for monitoring and controlling your local AI coding agents from anywhere. Your dev environment, in your pocket. Connects directly to your actual development environment \u2014 your code stays on your machine.\n\n**Supported agents:** Claude Code, Codex, GitHub Copilot, OpenCode, Pi, Antigravity, and Muse Code.\n\n## Repository map\n\nThis is an npm workspace monorepo:\n\n- `packages/server` \u2014 Daemon: agent lifecycle, WebSocket API, MCP server\n- `packages/app` \u2014 Mobile + web client (Expo)\n- `packages/cli` \u2014 Docker-style CLI (`paseo run/ls/logs/wait`)\n- `packages/relay` \u2014 E2E encrypted relay for remote access\n- `packages/desktop` \u2014 Electron desktop wrapper\n- `packages/website` \u2014 Marketing site (paseo.sh)\n\n## Docs\n\n`docs/` is the source of truth for system-level and process-level knowledge. **\"The docs\", \"check the docs\", or \"check the X docs\" always mean this directory \u2014 not the web.** Look here before fetching anything online; the docs capture gotchas and conventions you cannot derive from the code or external sources.\n\nAt the start of non-trivial work, list `docs/` and skim anything relevant to the task.\n\n| Doc                                                                  | What's in it                                                                                                                   |\n| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |\n| [docs/product.md](docs/product.md)                                   | What Paseo is, who it's for, where it's going                                                                                  |\n| [docs/architecture.md](docs/architecture.md)                         | System design, package layering, WebSocket protocol, agent lifecycle, data flow                                                |\n| [docs/agent-lifecycle.md](docs/agent-lifecycle.md)                   | Agent states, parent/child relationships, archive semantics, tabs vs archive, subagents track                                  |\n| [docs/data-model.md](docs/data-model.md)                             | File-based JSON persistence, Zod schemas, atomic writes, no migrations                                                         |\n| [docs/glossary.md](docs/glossary.md)                                 | Authoritative terminology \u2014 UI label wins, no synonyms                                                                         |\n| [docs/coding-standards.md](docs/coding-standards.md)                 | Type hygiene, error handling, state design, React patterns, file organization                                                  |\n| [docs/design.md](docs/design.md)                                     | Design system \u2014 tokens, buttons, hierarchy, density, alignment rails, states, what's forbidden                                 |\n| [docs/forms.md](docs/forms.md)                                       | Form architecture \u2014 non-React form model, form kit, load-state gating; the schedule form is the golden example                 |\n| [docs/hover.md](docs/hover.md)                                       | Hover \u2014 the canonical pattern (plain View + onPointerEnter/Leave, separate inner Pressable) and the three ways agents break it |\n| [docs/unistyles.md](docs/unistyles.md)                               | Unistyles gotchas \u2014 `useUnistyles()` is forbidden, alternatives in order                                                       |\n| [docs/floating-panels.md](docs/floating-panels.md)                   | Anchored popovers \u2014 Portal/Modal escape for Android, lifecycle gates, keyboard-shared-value, status-bar offset, the flash      |\n| [docs/keyboard-shortcuts.md](docs/keyboard-shortcuts.md)             | The binding table, per-platform key sources, badges vs routing, iOS `UIKeyCommand` limits                                      |\n| [docs/menus.md](docs/menus.md)                                       | The menu engine \u2014 popover vs sheet, submenu pages, hover intent, when a decision earns a submenu                               |\n| [docs/expo-router.md](docs/expo-router.md)                           | Expo Router route ownership, startup restore, and native blank-screen gotchas                                                  |\n| [docs/notifications.md](docs/notifications.md)                       | Notification tap ownership, native replay and acknowledgement, startup handoff, and payload QA                                 |\n| [docs/file-icons.md](docs/file-icons.md)                             | Material icon theme integration for the file explorer                                                                          |\n| [docs/providers.md](docs/providers.md)                               | Adding a new agent provider end-to-end                                                                                         |\n| [docs/forge-providers.md](docs/forge-providers.md)                   | Adding a git forge: registry/manifest, drop-in checklist, self-host/GHES, the two facts tiers                                  |\n| [docs/custom-providers.md](docs/custom-providers.md)                 | Custom provider config: Z.AI, Alibaba/Qwen, ACP agents, profiles, custom binaries                                              |\n| [docs/plugins.md](docs/plugins.md)                                   | Local plugin manifest, directory source config, RPCs, native surfaces, and attachment sources                                  |\n| [docs/website-i18n.md](docs/website-i18n.md)                         | Website languages: locale URLs, translated Markdown pairs, `{#id}` anchors, Chinese style                                      |\n| [docs/service-proxy.md](docs/service-proxy.md)                       | Service proxy: exposing workspace scripts at public URLs, DNS setup, reverse proxy config                                      |\n| [docs/relay-endpoint-security.md](docs/relay-endpoint-security.md)   | Relay E2EE modes: Noise NK mapping, record framing, negotiation, the `requireProtectedSecurity` flag, close codes              |\n| [docs/development.md](docs/development.md)                           | Dev server, build sync gotchas, CLI reference, agent state, Playwright MCP                                                     |\n| [docs/rpc-namespacing.md](docs/rpc-namespacing.md)                   | WebSocket RPC naming convention \u2014 dotted namespaces and `.request`/`.response` pairs                                           |\n| [docs/protocol-compatibility.md](docs/protocol-compatibility.md)     | Why app/daemon versions drift, protocol vs feature contract, capability gating, COMPAT tagging                                 |\n| [docs/protocol-validation.md](docs/protocol-validation.md)           | zod-aot generated inbound WebSocket validation, patched compiler regressions, schema-purity rules                              |\n| [docs/connected-hosts.md](docs/connected-hosts.md)                   | Daemon-owned host registrations, routed SDK scopes, identity and authority boundaries                                          |\n| [docs/permissions.md](docs/permissions.md)                           | Semantic daemon permissions, principals, credentials, pairing invitations, and Hub authority                                   |\n| [docs/terminal-performance.md](docs/terminal-performance.md)         | Terminal latency pipeline, coalescing/backpressure invariants, benchmark + perf spec usage                                     |\n| [docs/terminal-rendering.md](docs/terminal-rendering.md)             | Native terminal view: xterm owns the grid, cluster placement, emoji widths, mixed-direction limits, render regression          |\n| [docs/agent-stream-performance.md](docs/agent-stream-performance.md) | Assistant text pipeline \u2014 coalescing window, paced reveal, why arrival lumps are smoothed at render                            |\n| [docs/agent-stream-disclosure.md](docs/agent-stream-disclosure.md)   | Expand/collapse in the chat timeline \u2014 hold contract, native anchor sequence, frame spacing, render-window cost                |\n| [docs/markdown-renderer.md](docs/markdown-renderer.md)               | Shared Markdown engine, the vendored library fork, native selection, links, images and library constraints                     |\n| [docs/native-text-selection.md](docs/native-text-selection.md)       | Native diagram grouping, selection boundaries and leading inline image limitations                                             |\n| [docs/file-observation.md](docs/file-observation.md)                 | Recursive watcher ownership, Linux constraints, teardown invariants, and Parcel comparison                                     |\n| [docs/testing.md](docs/testing.md)                                   | TDD workflow, determinism, real dependencies over mocks, test organization                                                     |\n| [docs/qa.md](docs/qa.md)                                             | QA evidence bar for pull requests \u2014 platform matrix, version drift, performance, UI proof                                      |\n| [docs/mobile-testing.md](docs/mobile-testing.md)                     | Maestro and mobile test workflows                                                                                              |\n| [docs/mobile-panels.md](docs/mobile-panels.md)                       | Compact left/center/right panel ownership, worklet motion, gesture revisions, and Fabric constraints                           |\n| [docs/explorer-sidebar.md](docs/explorer-sidebar.md)                 | Explorer sidebar, side-pane, and compact workspace sheet host contracts, lifecycle, placement, routing preferences             |\n| [docs/ad-hoc-daemon-testing.md](docs/ad-hoc-daemon-testing.md)       | Isolated in-process daemon test harness                                                                                        |\n| [docs/browser-capture-harness.md](docs/browser-capture-harness.md)   | Real-Electron browser screenshot harness and compositor-surface gotcha                                                         |\n| [docs/android.md](docs/android.md)                                   | App variants, local/cloud builds, EAS workflows, version codes, F-Droid source builds and store metadata                       |\n| [docs/docker.md](docs/docker.md)                                     | Running the daemon and bundled web UI in Docker, volumes, agent images, security                                               |\n| [docs/release.md](docs/release.md)                                   | Release playbook, draft releases, completion checklist                                                                         |\n| [docs/terminal-worker.md](docs/terminal-worker.md)                   | Terminal worker process model, socket/record/secret, protocol-bump rule and draining, the worker's file copy, Windows desktop  |\n| [docs/terminal-activity.md](docs/terminal-activity.md)               | Terminal activity indicators \u2014 source-agnostic tracker, agent hook reporting, adding a new hook provider                       |\n| [SECURITY.md](SECURITY.md)                                           | Relay threat model, E2E encryption, DNS rebinding, agent auth                                                                  |\n| [public-docs/hub/security.md](public-docs/hub/security.md)           | Public Hub guide \u2014 trust boundaries, untrusted triggers, provider controls, and output authority                               |\n\n### Writing docs\n\n- **Integrate, don't append.** Find the doc that owns the subject and rewrite the part that is now wrong. The standard failure is finishing a task and adding a paragraph to the bottom of the closest-looking doc; ten tasks later the doc is a pile of paragraphs in discovery order. `docs/custom-providers.md` is what that looks like.\n- **Don't document logic.** Prose that restates code drifts from the code and loses. Write down what the code can't tell you: why something is shaped the way it is, the gotcha that cost an afternoon, conventions nothing enforces, constraints that span packages or versions. If a reader could get it in two minutes by opening the file, cut it.\n- **One fact, one doc.** Every other mention is a link. If you are about to write the same paragraph in two docs, one of them is a link.\n- **Respect the layers.** `CONTRIBUTING.md` and this file name things and link out. Activity docs like `docs/qa.md` and `docs/testing.md` set the bar for a kind of work. Subject docs like `docs/unistyles.md` own one thing completely. A layer never re-explains the one below it.\n- **One subject per doc.** If the subject doesn't fit in a sentence, split the doc. A section per provider, vendor, or platform is a table plus one worked example.\n- **Delete.** Obsolete sections go. Prefer a `packages/app/src/thing.ts:120` reference over a pasted block.\n- **New doc?** Add a row to the table above and link it from the docs that should send readers there.\n- Code-level facts belong in comments next to the code, not here.\n\n### Doc voice\n\nPlain and short. Second person. State the rule, then the reason when the reason isn't obvious. Match the doc you're editing.\n\nDo not:\n\n- Write a sentence to land a point. \"It's not X, it's Y\", \"That's not a Z, that's a W\", and every other setup-and-punchline shape.\n- Add a clause that only asserts importance: \"and that matters\", \"which is what keeps it working\", \"this is critical\".\n- Use \"honest\", \"robust\", \"seamless\", \"powerful\", \"simply\", \"just\", \"delightful\".\n- Restate something you already said, in different words, for emphasis.\n- Hedge with \"generally\", \"typically\", or \"you may want to\" when the answer is \"do this\".\n- Clear your throat: \"It's worth noting that\", \"In order to\", \"This section covers\".\n\n## Quick start\n\n```bash\nnpm run dev                          # Start the dev daemon\nnpm run dev:app                      # Start Expo against the dev daemon\nnpm run dev:desktop                  # Start Electron desktop dev\nnpm run cli -- ls -a -g              # List all agents\nnpm run cli -- daemon status         # Check daemon status\nnpm run typecheck                    # Always run after changes\nnpm run lint                         # Always run after changes\nnpm run format                       # Auto-format with Biome\nnpm run format:check                 # Check formatting without writing\n```\n\nRepo dev commands use checkout-local state by default. In this checkout, `PASEO_HOME` resolves to `.dev/paseo-home`, and `npm run cli -- ...` targets that same dev home automatically. The packaged desktop app and production-style daemon keep using `~/.paseo` on port `6767`.\n\nWhen Mo requests an APK, use `npm run build:apk:arm64` for an ARM64 build: writes `artifacts/paseo-dogfood-arm64.apk` with diagnostics without starting a device; `npm run build:apk` builds all four Android architectures.\n\nSee [docs/development.md](docs/development.md) for full setup, build sync requirements, and debugging.\n\n## Release branches\n\nMerge normal PRs into `main`, including while a beta soaks or a release is being finalized. Each\nrelease builds in a short-lived release workspace from `origin/main` or a release tag; see\n[release base and source](docs/release.md#release-base-and-source).\n\n## Critical rules\n\n- **NEVER restart the main Paseo daemon on port 6767 without permission** \u2014 it manages all running agents. If you're an agent, restarting it kills your own process.\n- **NEVER assume a timeout means the service needs restarting** \u2014 timeouts can be transient.\n- **NEVER add auth checks to tests** \u2014 agent providers handle their own auth.\n- **Before changing app routes, startup routing, remembered workspace restore, or active workspace selection, read [docs/expo-router.md](docs/expo-router.md).**\n- **NEVER run the full test suite locally.** The test suites are heavy "
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 24042,
+      "line_count": 205,
+      "truncated": true,
+      "excerpt": "# CLAUDE.md\n\nPaseo is a mobile app for monitoring and controlling your local AI coding agents from anywhere. Your dev environment, in your pocket. Connects directly to your actual development environment \u2014 your code stays on your machine.\n\n**Supported agents:** Claude Code, Codex, GitHub Copilot, OpenCode, Pi, Antigravity, and Muse Code.\n\n## Repository map\n\nThis is an npm workspace monorepo:\n\n- `packages/server` \u2014 Daemon: agent lifecycle, WebSocket API, MCP server\n- `packages/app` \u2014 Mobile + web client (Expo)\n- `packages/cli` \u2014 Docker-style CLI (`paseo run/ls/logs/wait`)\n- `packages/relay` \u2014 E2E encrypted relay for remote access\n- `packages/desktop` \u2014 Electron desktop wrapper\n- `packages/website` \u2014 Marketing site (paseo.sh)\n\n## Docs\n\n`docs/` is the source of truth for system-level and process-level knowledge. **\"The docs\", \"check the docs\", or \"check the X docs\" always mean this directory \u2014 not the web.** Look here before fetching anything online; the docs capture gotchas and conventions you cannot derive from the code or external sources.\n\nAt the start of non-trivial work, list `docs/` and skim anything relevant to the task.\n\n| Doc                                                                  | What's in it                                                                                                                   |\n| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |\n| [docs/product.md](docs/product.md)                                   | What Paseo is, who it's for, where it's going                                                                                  |\n| [docs/architecture.md](docs/architecture.md)                         | System design, package layering, WebSocket protocol, agent lifecycle, data flow                                                |\n| [docs/agent-lifecycle.md](docs/agent-lifecycle.md)                   | Agent states, parent/child relationships, archive semantics, tabs vs archive, subagents track                                  |\n| [docs/data-model.md](docs/data-model.md)                             | File-based JSON persistence, Zod schemas, atomic writes, no migrations                                                         |\n| [docs/glossary.md](docs/glossary.md)                                 | Authoritative terminology \u2014 UI label wins, no synonyms                                                                         |\n| [docs/coding-standards.md](docs/coding-standards.md)                 | Type hygiene, error handling, state design, React patterns, file organization                                                  |\n| [docs/design.md](docs/design.md)                                     | Design system \u2014 tokens, buttons, hierarchy, density, alignment rails, states, what's forbidden                                 |\n| [docs/forms.md](docs/forms.md)                                       | Form architecture \u2014 non-React form model, form kit, load-state gating; the schedule form is the golden example                 |\n| [docs/hover.md](docs/hover.md)                                       | Hover \u2014 the canonical pattern (plain View + onPointerEnter/Leave, separate inner Pressable) and the three ways agents break it |\n| [docs/unistyles.md](docs/unistyles.md)                               | Unistyles gotchas \u2014 `useUnistyles()` is forbidden, alternatives in order                                                       |\n| [docs/floating-panels.md](docs/floating-panels.md)                   | Anchored popovers \u2014 Portal/Modal escape for Android, lifecycle gates, keyboard-shared-value, status-bar offset, the flash      |\n| [docs/keyboard-shortcuts.md](docs/keyboard-shortcuts.md)             | The binding table, per-platform key sources, badges vs routing, iOS `UIKeyCommand` limits                                      |\n| [docs/menus.md](docs/menus.md)                                       | The menu engine \u2014 popover vs sheet, submenu pages, hover intent, when a decision earns a submenu                               |\n| [docs/expo-router.md](docs/expo-router.md)                           | Expo Router route ownership, startup restore, and native blank-screen gotchas                                                  |\n| [docs/notifications.md](docs/notifications.md)                       | Notification tap ownership, native replay and acknowledgement, startup handoff, and payload QA                                 |\n| [docs/file-icons.md](docs/file-icons.md)                             | Material icon theme integration for the file explorer                                                                          |\n| [docs/providers.md](docs/providers.md)                               | Adding a new agent provider end-to-end                                                                                         |\n| [docs/forge-providers.md](docs/forge-providers.md)                   | Adding a git forge: registry/manifest, drop-in checklist, self-host/GHES, the two facts tiers                                  |\n| [docs/custom-providers.md](docs/custom-providers.md)                 | Custom provider config: Z.AI, Alibaba/Qwen, ACP agents, profiles, custom binaries                                              |\n| [docs/plugins.md](docs/plugins.md)                                   | Local plugin manifest, directory source config, RPCs, native surfaces, and attachment sources                                  |\n| [docs/website-i18n.md](docs/website-i18n.md)                         | Website languages: locale URLs, translated Markdown pairs, `{#id}` anchors, Chinese style                                      |\n| [docs/service-proxy.md](docs/service-proxy.md)                       | Service proxy: exposing workspace scripts at public URLs, DNS setup, reverse proxy config                                      |\n| [docs/relay-endpoint-security.md](docs/relay-endpoint-security.md)   | Relay E2EE modes: Noise NK mapping, record framing, negotiation, the `requireProtectedSecurity` flag, close codes              |\n| [docs/development.md](docs/development.md)                           | Dev server, build sync gotchas, CLI reference, agent state, Playwright MCP                                                     |\n| [docs/rpc-namespacing.md](docs/rpc-namespacing.md)                   | WebSocket RPC naming convention \u2014 dotted namespaces and `.request`/`.response` pairs                                           |\n| [docs/protocol-compatibility.md](docs/protocol-compatibility.md)     | Why app/daemon versions drift, protocol vs feature contract, capability gating, COMPAT tagging                                 |\n| [docs/protocol-validation.md](docs/protocol-validation.md)           | zod-aot generated inbound WebSocket validation, patched compiler regressions, schema-purity rules                              |\n| [docs/connected-hosts.md](docs/connected-hosts.md)                   | Daemon-owned host registrations, routed SDK scopes, identity and authority boundaries                                          |\n| [docs/permissions.md](docs/permissions.md)                           | Semantic daemon permissions, principals, credentials, pairing invitations, and Hub authority                                   |\n| [docs/terminal-performance.md](docs/terminal-performance.md)         | Terminal latency pipeline, coalescing/backpressure invariants, benchmark + perf spec usage                                     |\n| [docs/terminal-rendering.md](docs/terminal-rendering.md)             | Native terminal view: xterm owns the grid, cluster placement, emoji widths, mixed-direction limits, render regression          |\n| [docs/agent-stream-performance.md](docs/agent-stream-performance.md) | Assistant text pipeline \u2014 coalescing window, paced reveal, why arrival lumps are smoothed at render                            |\n| [docs/agent-stream-disclosure.md](docs/agent-stream-disclosure.md)   | Expand/collapse in the chat timeline \u2014 hold contract, native anchor sequence, frame spacing, render-window cost                |\n| [docs/markdown-renderer.md](docs/markdown-renderer.md)               | Shared Markdown engine, the vendored library fork, native selection, links, images and library constraints                     |\n| [docs/native-text-selection.md](docs/native-text-selection.md)       | Native diagram grouping, selection boundaries and leading inline image limitations                                             |\n| [docs/file-observation.md](docs/file-observation.md)                 | Recursive watcher ownership, Linux constraints, teardown invariants, and Parcel comparison                                     |\n| [docs/testing.md](docs/testing.md)                                   | TDD workflow, determinism, real dependencies over mocks, test organization                                                     |\n| [docs/qa.md](docs/qa.md)                                             | QA evidence bar for pull requests \u2014 platform matrix, version drift, performance, UI proof                                      |\n| [docs/mobile-testing.md](docs/mobile-testing.md)                     | Maestro and mobile test workflows                                                                                              |\n| [docs/mobile-panels.md](docs/mobile-panels.md)                       | Compact left/center/right panel ownership, worklet motion, gesture revisions, and Fabric constraints                           |\n| [docs/explorer-sidebar.md](docs/explorer-sidebar.md)                 | Explorer sidebar, side-pane, and compact workspace sheet host contracts, lifecycle, placement, routing preferences             |\n| [docs/ad-hoc-daemon-testing.md](docs/ad-hoc-daemon-testing.md)       | Isolated in-process daemon test harness                                                                                        |\n| [docs/browser-capture-harness.md](docs/browser-capture-harness.md)   | Real-Electron browser screenshot harness and compositor-surface gotcha                                                         |\n| [docs/android.md](docs/android.md)                                   | App variants, local/cloud builds, EAS workflows, version codes, F-Droid source builds and store metadata                       |\n| [docs/docker.md](docs/docker.md)                                     | Running the daemon and bundled web UI in Docker, volumes, agent images, security                                               |\n| [docs/release.md](docs/release.md)                                   | Release playbook, draft releases, completion checklist                                                                         |\n| [docs/terminal-worker.md](docs/terminal-worker.md)                   | Terminal worker process model, socket/record/secret, protocol-bump rule and draining, the worker's file copy, Windows desktop  |\n| [docs/terminal-activity.md](docs/terminal-activity.md)               | Terminal activity indicators \u2014 source-agnostic tracker, agent hook reporting, adding a new hook provider                       |\n| [SECURITY.md](SECURITY.md)                                           | Relay threat model, E2E encryption, DNS rebinding, agent auth                                                                  |\n| [public-docs/hub/security.md](public-docs/hub/security.md)           | Public Hub guide \u2014 trust boundaries, untrusted triggers, provider controls, and output authority                               |\n\n### Writing docs\n\n- **Integrate, don't append.** Find the doc that owns the subject and rewrite the part that is now wrong. The standard failure is finishing a task and adding a paragraph to the bottom of the closest-looking doc; ten tasks later the doc is a pile of paragraphs in discovery order. `docs/custom-providers.md` is what that looks like.\n- **Don't document logic.** Prose that restates code drifts from the code and loses. Write down what the code can't tell you: why something is shaped the way it is, the gotcha that cost an afternoon, conventions nothing enforces, constraints that span packages or versions. If a reader could get it in two minutes by opening the file, cut it.\n- **One fact, one doc.** Every other mention is a link. If you are about to write the same paragraph in two docs, one of them is a link.\n- **Respect the layers.** `CONTRIBUTING.md` and this file name things and link out. Activity docs like `docs/qa.md` and `docs/testing.md` set the bar for a kind of work. Subject docs like `docs/unistyles.md` own one thing completely. A layer never re-explains the one below it.\n- **One subject per doc.** If the subject doesn't fit in a sentence, split the doc. A section per provider, vendor, or platform is a table plus one worked example.\n- **Delete.** Obsolete sections go. Prefer a `packages/app/src/thing.ts:120` reference over a pasted block.\n- **New doc?** Add a row to the table above and link it from the docs that should send readers there.\n- Code-level facts belong in comments next to the code, not here.\n\n### Doc voice\n\nPlain and short. Second person. State the rule, then the reason when the reason isn't obvious. Match the doc you're editing.\n\nDo not:\n\n- Write a sentence to land a point. \"It's not X, it's Y\", \"That's not a Z, that's a W\", and every other setup-and-punchline shape.\n- Add a clause that only asserts importance: \"and that matters\", \"which is what keeps it working\", \"this is critical\".\n- Use \"honest\", \"robust\", \"seamless\", \"powerful\", \"simply\", \"just\", \"delightful\".\n- Restate something you already said, in different words, for emphasis.\n- Hedge with \"generally\", \"typically\", or \"you may want to\" when the answer is \"do this\".\n- Clear your throat: \"It's worth noting that\", \"In order to\", \"This section covers\".\n\n## Quick start\n\n```bash\nnpm run dev                          # Start the dev daemon\nnpm run dev:app                      # Start Expo against the dev daemon\nnpm run dev:desktop                  # Start Electron desktop dev\nnpm run cli -- ls -a -g              # List all agents\nnpm run cli -- daemon status         # Check daemon status\nnpm run typecheck                    # Always run after changes\nnpm run lint                         # Always run after changes\nnpm run format                       # Auto-format with Biome\nnpm run format:check                 # Check formatting without writing\n```\n\nRepo dev commands use checkout-local state by default. In this checkout, `PASEO_HOME` resolves to `.dev/paseo-home`, and `npm run cli -- ...` targets that same dev home automatically. The packaged desktop app and production-style daemon keep using `~/.paseo` on port `6767`.\n\nWhen Mo requests an APK, use `npm run build:apk:arm64` for an ARM64 build: writes `artifacts/paseo-dogfood-arm64.apk` with diagnostics without starting a device; `npm run build:apk` builds all four Android architectures.\n\nSee [docs/development.md](docs/development.md) for full setup, build sync requirements, and debugging.\n\n## Release branches\n\nMerge normal PRs into `main`, including while a beta soaks or a release is being finalized. Each\nrelease builds in a short-lived release workspace from `origin/main` or a release tag; see\n[release base and source](docs/release.md#release-base-and-source).\n\n## Critical rules\n\n- **NEVER restart the main Paseo daemon on port 6767 without permission** \u2014 it manages all running agents. If you're an agent, restarting it kills your own process.\n- **NEVER assume a timeout means the service needs restarting** \u2014 timeouts can be transient.\n- **NEVER add auth checks to tests** \u2014 agent providers handle their own auth.\n- **Before changing app routes, startup routing, remembered workspace restore, or active workspace selection, read [docs/expo-router.md](docs/expo-router.md).**\n- **NEVER run the full test suite locally.** The test suites are heavy "
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 6603,
+      "line_count": 104,
+      "truncated": true,
+      "excerpt": "# Contributing to Paseo\n\nThis guide is here to save us both time and help you find a useful way to contribute.\n\nPaseo grows through bug reports, testing, workflow discussions, plugins, documentation, and people helping each other. The sections below explain where each contribution belongs and what to expect.\n\n## Philosophy\n\n**Paseo has a lean, opinionated core built to be extended.**\n\nThe goal is a low floor and a high ceiling: a polished default experience that is easy to understand, with the flexibility to choose your providers, run on your own infrastructure, and build your own workflows. Paseo should remain self-hosted and respectful of your privacy and control.\n\nThe core continues to evolve through improvements to the shared experience. Specialized workflows and integrations belong in the extension ecosystem. Product, design, architecture, and workflow decisions remain with the maintainer.\n\nRead the [product philosophy](docs/product.md) for the reasoning behind these choices and how Paseo develops.\n\n## Build a plugin\n\nMost specialized workflows and integrations are better served by plugins.\n\nPlugins let you build what you need, share it, and maintain it independently. Start with the [plugin documentation](https://paseo.sh/docs/plugins). For applications and integrations built around Paseo, see the [SDK documentation](https://paseo.sh/docs/sdk).\n\nIf an extension point is missing, describe the workflow in [Discussions](https://github.com/getpaseo/paseo/discussions). A reusable capability that enables several plugins may be a better addition than implementing one particular workflow in core.\n\n## Report bugs\n\nOpen a [GitHub issue](https://github.com/getpaseo/paseo/issues) and fill out the bug report template.\n\nInclude:\n\n- What you did, what you expected, and what happened.\n- Reproduction steps, Paseo version, and platform.\n- Relevant logs, screenshots, or a recording.\n\nIf an agent investigated, include the evidence and reproduction steps it collected. Its explanation of the cause still needs verification.\n\nFocused fixes for reproducible bugs are welcome. If you submit one, follow the pull request and QA guidance below.\n\n## Discuss workflows before proposing features\n\nProduct discussions, including feature requests, belong in [GitHub Discussions](https://github.com/getpaseo/paseo/discussions). Feature requests opened as issues will be closed.\n\nExplain:\n\n- What are you trying to do?\n- How do you do it today?\n- Where does Paseo get in the way?\n- What would a better workflow look like?\n\nThis helps other people describe their needs and gives me useful context when deciding what to build.\n\nThere is no feature request backlog or commitment to implement a discussion. I may read and learn from it without replying.\n\n## If you still want to submit a pull request\n\nAfter considering plugins and discussing the workflow, you may still want to propose a change to core. Focused fixes for reproducible bugs are also welcome.\n\n**Pull requests are closed by default.** I may reopen the ones I want to take forward. Submit one only if you are comfortable with it being closed without a detailed review or explanation.\n\nPaseo receives more pull requests than I can responsibly review. Reviewing every submission and explaining every decision would consume the time available for developing the product.\n\nI can prompt an agent to write code just as you can. The bottlenecks are choosing what to build, shaping it, verifying its behavior, and taking responsibility for its maintenance. A finished implementation still leaves that work to do.\n\nIf you choose to submit a PR, these are the basics to cover.\n\n### What I look for in a core feature\n\n- **Demonstrated demand.** Link a discussion with concrete examples of other users needing the workflow. A feature for a small, specialized use case belongs in a plugin.\n- **Value across workflows.** The feature should improve how existing capabilities work together and benefit a broad set of users. A reusable improvement is more valuable than an isolated control for one task.\n- **A coherent design across platforms and providers.** Shared capabilities should work across platforms and providers wherever applicable. Do not reshape a shared abstraction around one provider while leaving the others unsupported or inconsistent.\n- **A finished experience.** Follow the [design guidelines](docs/design.md). The feature must look and feel right in Paseo, including loading states, layout stability, and interaction performance. PRs with janky or rushed interfaces will be closed. Design judgment remains with the maintainer.\n\n### Keep the scope small\n\nSubmit one focused change. PRs adding more than roughly **3,000 lines of production code** are unlikely to be accepted. Prefer the smallest complete improvement that can be tested and understood on its own.\n\n### QA evidence\n\nRun the changed application or service and test the affected workflow yourself. Include detailed QA evidence so I can see what you exercised and what happened. PRs without this verification and evidence will be closed, whether they fix a bug or add a feature.\n\nExplain the problem and link the relevant bug report or discussion. Include:\n\n- Automated tests that exercise the changed behavior. A bug fix needs a regression test that fails on the broken version.\n- The commands you ran and their output.\n- A recording for interactive UI changes, or before-and-after screenshots for static changes.\n- The platforms you tested and any affected platforms you could not test.\n\nThe [QA guide](docs/qa.md) explains the expected evidence and available tooling.\n\nUsing an agent is welcome. Sending it to implement a change and submitting its output without trying the result yourself does not meet this bar.\n\n**Satisfying all of the above does not mean your pull request will be merged.**\n\n### What happens to your contribution\n\nIf I take a contribution forward, I may narrow it, reshape it, or use it as a reference for my own implementation. **You will be cr"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 10114,
+      "line_count": 236,
+      "truncated": true,
+      "excerpt": "<p align=\"center\">\n  <img src=\"packages/website/public/logo.svg\" width=\"64\" height=\"64\" alt=\"Paseo logo\">\n</p>\n\n<h1 align=\"center\">Paseo</h1>\n\n<p align=\"center\">\n  <a href=\"README.md\">English</a> \u00b7\n  <a href=\"README.zh-CN.md\">\u7b80\u4f53\u4e2d\u6587</a> \u00b7\n  <a href=\"README.ja.md\">\u65e5\u672c\u8a9e</a> \u00b7\n  <a href=\"README.ko.md\">\ud55c\uad6d\uc5b4</a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/getpaseo/paseo/stargazers\">\n    <img src=\"https://img.shields.io/github/stars/getpaseo/paseo?style=flat&logo=github\" alt=\"GitHub stars\">\n  </a>\n  <a href=\"https://github.com/getpaseo/paseo/releases\">\n    <img src=\"https://img.shields.io/github/v/release/getpaseo/paseo?style=flat&logo=github\" alt=\"GitHub release\">\n  </a>\n  <a href=\"https://x.com/moboudra\">\n    <img src=\"https://img.shields.io/badge/%40moboudra-555?logo=x\" alt=\"X\">\n  </a>\n  <a href=\"https://discord.gg/jz8T2uahpH\">\n    <img src=\"https://img.shields.io/badge/Discord-555?logo=discord\" alt=\"Discord\">\n  </a>\n  <a href=\"https://www.reddit.com/r/PaseoAI/\">\n    <img src=\"https://img.shields.io/badge/Reddit-555?logo=reddit\" alt=\"Reddit\">\n  </a>\n</p>\n\n<p align=\"center\">One interface for Claude Code, Codex, Copilot, OpenCode, Pi, Antigravity, and Muse Code agents.</p>\n\n<p align=\"center\">\n  <img src=\"https://paseo.sh/hero-mockup.png\" alt=\"Paseo app screenshot\" width=\"100%\">\n</p>\n\n<p align=\"center\">\n  <img src=\"https://paseo.sh/mobile-mockup.png\" alt=\"Paseo mobile app\" width=\"100%\">\n</p>\n\nPaseo is an open source agentic development environment for desktop, mobile, web, and CLI. Open the desktop app and work: agents, editor, terminals, diffs, pull requests, and a browser in one window. Run many agents at once, each in its own worktree, on one machine or several. The mobile app is the full app, native on iOS and Android.\n\n- **Parallel agents:** Run many agents at once, each in its own worktree.\n- **Built-in orchestration:** Agents in Paseo can create worktrees, launch other agents, and talk to them, across providers.\n- **Complete development workflow:** Edit files, review diffs, open pull requests, and run terminals, in split panes you arrange how you want.\n- **Self-hosted:** Agents run on your machine with your full dev environment. Use your tools, your configs, and your skills.\n- **Multi-provider:** Claude Code, Codex, Copilot, OpenCode, Pi, Antigravity, and Muse Code through the same interface. Pick the right model for each job.\n- **Voice control:** Dictate tasks or talk through problems in voice mode. Hands-free when you need it.\n- **Cross-device:** iOS, Android, desktop, web, and CLI. Start work at your desk, check in from your phone, script it from the terminal.\n- **Privacy-first:** No telemetry, tracking, or forced login. Remote access uses an optional end-to-end encrypted relay.\n\n[Run parallel tasks in Paseo](https://paseo.sh/docs/parallel-development): start agents in separate worktrees, review their diffs, run each app, and check it in the built-in browser.\n\n## Sponsors\n\n<!-- Sponsors: one cell per sponsor in the order of packages/website/src/data/sponsors.ts, then \"become a sponsor\" cells up to three. -->\n<table>\n  <tr>\n    <td align=\"center\" width=\"33%\"><a href=\"https://hoplite.sh/?utm_source=paseo&utm_medium=readme&utm_campaign=sponsor\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"packages/website/public/sponsors/hoplite-on-dark.svg\"><img src=\"packages/website/public/sponsors/hoplite-on-light.svg\" alt=\"Hoplite\" height=\"56\"></picture></a><br><sub>Cloud coding agents</sub></td>\n    <td align=\"center\" width=\"33%\"><a href=\"https://paseo.sh/sponsor\">Become a sponsor</a></td>\n    <td align=\"center\" width=\"33%\"><a href=\"https://paseo.sh/sponsor\">Become a sponsor</a></td>\n  </tr>\n</table>\n\n## Plugins\n\nPlugins run on the daemon and show up in every client you connect, with the same UI on desktop, web,\niOS, and Android. Write a plugin once and it is on your phone.\n\n- **UI:** screens, sidebar items, workspace panels, Command Center items, slash commands, composer pills, attachment sources, timeline items, themes.\n- **Agent lifecycle:** change configuration, environment, and MCP servers, answer permissions, follow up when a turn ends.\n- **Providers:** add a coding agent as a provider.\n\nInstall from the registry with `paseo plugin add owner/slug`, or from Git or a local directory.\n\n**[Browse plugins](https://paseo.sh/plugins)** \u00b7 **[Plugin docs](https://paseo.sh/docs/plugins)**\n\nPlugins run with access to your daemon machine and inside connected clients; install only code you trust.\n\n## Getting Started\n\nPaseo runs a local server called the daemon that manages your coding agents. Clients like the desktop app, mobile app, web app, and CLI connect to it.\n\n### Prerequisites\n\nYou need at least one agent CLI installed and configured with your credentials:\n\n- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)\n- [Codex](https://github.com/openai/codex)\n- [GitHub Copilot](https://github.com/features/copilot/cli/)\n- [OpenCode](https://github.com/anomalyco/opencode)\n- [Pi](https://pi.dev)\n- [Antigravity](https://paseo.sh/docs/supported-providers/antigravity)\n- [Muse Code](https://paseo.sh/docs/supported-providers/muse-code)\n- [fx](https://paseo.sh/docs/supported-providers/fx)\n- [Hoplite](https://paseo.sh/docs/supported-providers/hoplite)\n\nPaseo also runs Cursor, Gemini CLI, and many other agents. See [Supported providers](https://paseo.sh/docs/supported-providers) for the full list and setup steps.\n\n### Desktop app (recommended)\n\nDownload it from [paseo.sh/download](https://paseo.sh/download) or the [GitHub releases page](https://github.com/getpaseo/paseo/releases). Open the app and the daemon starts automatically. Nothing else to install.\n\nTo connect from your phone, open **Settings \u2192 your host \u2192 Pair Device**.\n\n### Server\n\nFor a server, a VM, or any machine without the desktop app. Install the CLI and start the daemon:\n\n```bash\nnpm install -g @getpaseo/cli\npaseo\n```\n\nPaseo starts, then asks whether to enable the end-to-end encrypted relay for device pairing. If you "
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 10298,
+      "line_count": 173,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"paseo\",\n  \"version\": \"0.17.4\",\n  \"private\": true,\n  \"description\": \"Paseo: voice-controlled development environment for local AI coding agents\",\n  \"keywords\": [\n    \"development\",\n    \"mcp\",\n    \"openai\",\n    \"voice\",\n    \"voice-assistant\"\n  ],\n  \"homepage\": \"https://paseo.sh\",\n  \"license\": \"Apache-2.0\",\n  \"author\": {\n    \"name\": \"Mohamed Boudra\",\n    \"email\": \"hello@moboudra.com\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/getpaseo/paseo.git\"\n  },\n  \"workspaces\": [\n    \"plugins\",\n    \"packages/expo-two-way-audio\",\n    \"packages/react-native-enriched-markdown\",\n    \"packages/highlight\",\n    \"packages/plugin\",\n    \"packages/protocol\",\n    \"packages/client\",\n    \"packages/server\",\n    \"packages/app\",\n    \"packages/relay\",\n    \"packages/website\",\n    \"packages/desktop\",\n    \"packages/cli\"\n  ],\n  \"scripts\": {\n    \"dev\": \"npm run dev:server\",\n    \"dev:win\": \"powershell ./scripts/dev.ps1\",\n    \"dev:server\": \"cross-env PASEO_LISTEN=127.0.0.1:6768 ./scripts/dev-daemon.sh\",\n    \"dev:server:watch\": \"npm run dev --workspace=@getpaseo/server -- --watch-dependencies\",\n    \"dev:server:raw\": \"npm run dev --workspace=@getpaseo/server\",\n    \"dev:app\": \"cross-env PASEO_LISTEN=127.0.0.1:6768 EXPO_PORT=8081 ./scripts/dev-app.sh\",\n    \"dev:android\": \"npm run dev:android --workspace=@getpaseo/app\",\n    \"dev:ios\": \"npm run dev:ios --workspace=@getpaseo/app\",\n    \"test:e2e:mobile\": \"./scripts/test-mobile-agent-device.sh\",\n    \"test:e2e:composer-keyboard:android\": \"./packages/app/e2e/mobile/composer-keyboard/android.sh\",\n    \"dev:website\": \"npm run dev --workspace=@getpaseo/website\",\n    \"postinstall\": \"node scripts/postinstall-patches.mjs\",\n    \"prepare\": \"lefthook install --force\",\n    \"build\": \"npm run build --workspaces --if-present\",\n    \"build:apk\": \"node scripts/build-apk.mjs\",\n    \"build:apk:arm64\": \"node scripts/build-apk.mjs arm64\",\n    \"build:highlight\": \"npm run build --workspace=@getpaseo/highlight\",\n    \"build:highlight:clean\": \"npm run build:clean --workspace=@getpaseo/highlight\",\n    \"build:plugin\": \"npm run build --workspace=@getpaseo/plugin\",\n    \"build:plugin:clean\": \"npm run build:clean --workspace=@getpaseo/plugin\",\n    \"build:relay\": \"npm run build --workspace=@getpaseo/relay\",\n    \"build:relay:clean\": \"npm run build:clean --workspace=@getpaseo/relay\",\n    \"build:protocol\": \"npm run build --workspace=@getpaseo/protocol\",\n    \"build:protocol:clean\": \"npm run build:clean --workspace=@getpaseo/protocol\",\n    \"build:client\": \"npm run build --workspace=@getpaseo/client\",\n    \"build:client:clean\": \"npm run build:protocol:clean && npm run build:clean --workspace=@getpaseo/client\",\n    \"build:server-deps\": \"npm run build:client && concurrently --kill-others-on-fail --names highlight,plugin,relay --prefix-colors yellow,green,blue \\\"npm run build:highlight\\\" \\\"npm run build:plugin\\\" \\\"npm run build:relay\\\"\",\n    \"build:server-deps:clean\": \"npm run build:client:clean && npm run build:highlight:clean && npm run build:plugin:clean && npm run build:relay:clean\",\n    \"build:server\": \"npm run build:server-deps && npm run build --workspace=@getpaseo/server && npm run build --workspace=@getpaseo/cli\",\n    \"build:server:clean\": \"npm run build:server-deps:clean && npm run build:clean --workspace=@getpaseo/server && npm run build:clean --workspace=@getpaseo/cli\",\n    \"build:daemon-web-ui\": \"node scripts/build-daemon-web-ui.mjs\",\n    \"build:app-deps\": \"npm run build:highlight && npm run build:client && npm run build:plugin && npm run build --workspace=@getpaseo/expo-two-way-audio\",\n    \"build:app-deps:clean\": \"npm run build:highlight:clean && npm run build:client:clean && npm run build:plugin:clean && npm run build --workspace=@getpaseo/expo-two-way-audio\",\n    \"watch:protocol\": \"npm run watch --workspace=@getpaseo/protocol\",\n    \"watch:client\": \"tsc -p packages/client/tsconfig.json --watch --preserveWatchOutput\",\n    \"typecheck\": \"npm run typecheck --workspaces --if-present\",\n    \"typecheck:server\": \"npm run typecheck --workspace=@getpaseo/relay && npm run typecheck --workspace=@getpaseo/protocol && npm run typecheck --workspace=@getpaseo/client && npm run typecheck --workspace=@getpaseo/builtin-plugins && npm run typecheck --workspace=@getpaseo/server && npm run typecheck --workspace=@getpaseo/cli\",\n    \"test\": \"npm run test --workspaces --if-present\",\n    \"format\": \"oxfmt .\",\n    \"format:files\": \"oxfmt\",\n    \"format:check\": \"oxfmt --check .\",\n    \"format:check:files\": \"oxfmt --check\",\n    \"lint\": \"oxlint\",\n    \"lint:fix\": \"oxlint --fix\",\n    \"knip\": \"knip\",\n    \"acp:version-drift\": \"node scripts/check-acp-catalog-version-drift.mjs\",\n    \"acp:version-drift:check\": \"node scripts/check-acp-catalog-version-drift.mjs --fail-on-drift\",\n    \"acp:version-drift:update\": \"node scripts/check-acp-catalog-version-drift.mjs --update\",\n    \"start\": \"npm run start --workspace=@getpaseo/server\",\n    \"android\": \"npm run dev:android\",\n    \"android:development\": \"npm run android:development --workspace=@getpaseo/app\",\n    \"android:production\": \"npm run android:production --workspace=@getpaseo/app\",\n    \"android:release\": \"npm run android:production --workspace=@getpaseo/app\",\n    \"android:clear\": \"npm run android:clear --workspace=@getpaseo/app\",\n    \"fdroid:changelogs\": \"node scripts/sync-fdroid-changelogs.mjs\",\n    \"fdroid:changelogs:check\": \"node scripts/sync-fdroid-changelogs.mjs --check\",\n    \"ios\": \"npm run dev:ios\",\n    \"web\": \"npm run web --workspace=@getpaseo/app\",\n    \"dev:desktop\": \"cross-env PASEO_LISTEN=127.0.0.1:6768 npm run dev --workspace=@getpaseo/desktop\",\n    \"dev:win:desktop\": \"npm run dev:win --workspace=@getpaseo/desktop\",\n    \"build:desktop\": \"npm run build:app-deps:clean && cd packages/app && cross-env PASEO_WEB_PLATFORM=electron npx expo export --platform web && cd ../.. && npm run build --workspace=@getpaseo/desktop --\",\n    \"db:query\": \"npm run db:query --workspace=@getpaseo/server --\",\n    \"cli\": \"./scripts/dev-home.sh npx tsx packages/cli/src/index.js\",\n    \""
+    },
+    ".oxlintrc.json": {
+      "path": ".oxlintrc.json",
+      "size_bytes": 31836,
+      "line_count": 632,
+      "truncated": true,
+      "excerpt": "{\n  \"$schema\": \"./node_modules/oxlint/configuration_schema.json\",\n  \"options\": {\n    \"typeAware\": false\n  },\n  \"ignorePatterns\": [\".dev/**\", \"packages/react-native-enriched-markdown/**\"],\n  \"plugins\": [\"react\", \"react-perf\", \"unicorn\", \"typescript\", \"oxc\", \"import\", \"promise\"],\n  \"jsPlugins\": [\"./scripts/oxlint/paseo-plugin.mjs\"],\n  \"categories\": {\n    \"correctness\": \"error\",\n    \"suspicious\": \"error\",\n    \"perf\": \"error\"\n  },\n  \"rules\": {\n    \"react/react-in-jsx-scope\": \"off\",\n\n    \"no-await-in-loop\": \"off\",\n\n    \"no-unused-expressions\": \"error\",\n    \"no-useless-catch\": \"error\",\n    \"preserve-caught-error\": \"error\",\n    \"require-await\": \"off\",\n    \"no-async-promise-executor\": \"error\",\n    \"no-useless-escape\": \"error\",\n    \"no-empty-pattern\": \"error\",\n    \"no-self-assign\": \"error\",\n    \"no-shadow\": \"error\",\n    \"unicorn/consistent-function-scoping\": \"off\",\n    \"unicorn/no-array-sort\": \"off\",\n\n    \"unicorn/no-useless-spread\": \"error\",\n    \"unicorn/no-useless-fallback-in-spread\": \"error\",\n    \"unicorn/no-new-array\": \"error\",\n    \"unicorn/no-empty-file\": \"error\",\n\n    \"promise/always-return\": \"error\",\n    \"promise/no-multiple-resolved\": \"error\",\n\n    \"react/no-array-index-key\": \"error\",\n    \"react/jsx-no-useless-fragment\": \"error\",\n    \"react/jsx-no-constructed-context-values\": \"error\",\n    \"react/no-unescaped-entities\": \"error\",\n    \"react/button-has-type\": \"error\",\n    \"react/jsx-max-depth\": [\"error\", { \"max\": 6 }],\n\n    \"react-hooks/rules-of-hooks\": \"error\",\n    \"react-hooks/exhaustive-deps\": \"error\",\n\n    \"react-perf/jsx-no-new-array-as-prop\": \"error\",\n    \"react-perf/jsx-no-new-function-as-prop\": \"error\",\n    \"react-perf/jsx-no-new-object-as-prop\": \"error\",\n    \"react-perf/jsx-no-jsx-as-prop\": \"error\",\n\n    \"oxc/no-map-spread\": \"error\",\n    \"oxc/no-async-endpoint-handlers\": \"error\",\n    \"oxc/only-used-in-recursion\": \"error\",\n\n    \"typescript/no-explicit-any\": \"error\",\n    \"typescript/prefer-as-const\": \"error\",\n    \"typescript/no-this-alias\": \"error\",\n    \"typescript/no-unnecessary-type-assertion\": \"error\",\n    \"typescript/consistent-type-definitions\": [\"error\", \"interface\"],\n\n    \"import/no-unassigned-import\": [\n      \"error\",\n      {\n        \"allow\": [\n          \"**/*.css\",\n          \"**/expo-router/entry\",\n          \"**/event-target-polyfill\",\n          \"**/dotenv/config\",\n          \"**/react-native\",\n          \"**/@/styles/unistyles\",\n          \"**/src/styles/unistyles\",\n          \"**/@/test/window-local-storage\"\n        ]\n      }\n    ],\n\n    \"no-nested-ternary\": \"error\",\n    \"no-unneeded-ternary\": \"error\",\n\n    \"complexity\": [\"error\", { \"max\": 20 }],\n    \"max-depth\": [\"error\", { \"max\": 4 }],\n    \"max-nested-callbacks\": [\"error\", { \"max\": 3 }]\n  },\n  \"overrides\": [\n    // Exceptions name individual APIs in individual modules; new APIs still fail in these files.\n    // TODO entries are runtime debt, not startup exemptions. Do not add directory-wide exceptions.\n    {\n      \"files\": [\"packages/server/src/**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}\"],\n      \"rules\": {\n        \"paseo/no-sync-io\": [\n          \"error\",\n          {\n            \"allow\": {\n              // TODO: literal executableExists is a synchronous public capability; move its callers and Windows existence predicates to async together.\n              \"executable-resolution/executable-resolution.ts\": [\"existsSync\"],\n              // TODO: winget enumeration shares synchronous existence predicates with literal lookup; convert the executable-resolution boundary together.\n              \"executable-resolution/windows.ts\": [\"readdirSync\"],\n              // TODO: live file-change classification is a synchronous event mapper; move the probe to async event ingestion.\n              \"server/agent/providers/claude/agent.ts\": [\"existsSync\"],\n              // TODO: new-session construction still resolves its project directory synchronously; move preparation before construction.\n              \"server/agent/providers/claude/project-dir.ts\": [\"realpathSync\"],\n              // TODO: live subagent output is read by a synchronous event mapper; add bounded async loading at ingestion.\n              \"server/agent/providers/claude/subagents/workflow-output.ts\": [\n                \"closeSync\",\n                \"openSync\",\n                \"readSync\"\n              ],\n              // TODO: diagnostics probes provider-owned auth/session storage; convert alongside provider discovery and readiness.\n              \"server/agent/providers/omp/agent.ts\": [\"existsSync\"],\n              // TODO: synchronous provider configuration discovery; move discovery into async launch preparation.\n              \"server/agent/providers/omp/provider-config.ts\": [\"existsSync\"],\n              // TODO: synchronous session-root selection is shared by descriptor builders; migrate callers with explicit readiness.\n              \"server/agent/providers/omp/session-descriptor.ts\": [\"existsSync\"],\n              // TODO: launch directory creation shares the server generation/start state machine; audit concurrent rotation before adding an await.\n              \"server/agent/providers/opencode/server-manager.ts\": [\"mkdirSync\"],\n              // TODO: launch preparation owns MCP config merge, extension generation and synchronous cleanup; migrate lifecycle and diagnostics together.\n              \"server/agent/providers/pi/agent.ts\": [\n                \"existsSync\",\n                \"mkdtempSync\",\n                \"readFileSync\",\n                \"rmSync\",\n                \"writeFileSync\"\n              ],\n              // Provider child process: Pi loads this extension outside the daemon; it reads child-agent status there.\n              \"server/agent/providers/pi/extensions/pi-subagents/index.ts\": [\"readFileSync\"],\n              // Startup/shutdown only: remove stale Unix listening sockets before bind and during disposal.\n              \"server/bootstrap.ts\": [\"existsSync\", \"unlinkSync\"],\n              // Startup configuration resolution: detect the bundled app distribution before the daemon listens.\n   "
+    },
+    "knip.json": {
+      "path": "knip.json",
+      "size_bytes": 2859,
+      "line_count": 101,
+      "truncated": false,
+      "excerpt": "{\n  \"$schema\": \"./node_modules/knip/schema.json\",\n  \"workspaces\": {\n    \"plugins\": {\n      \"entry\": [\"**/index.{server,client}.{ts,tsx}\", \"**/*.test.ts\"],\n      \"project\": [\"**/*.{ts,tsx}\"]\n    },\n    \".\": {\n      \"entry\": [\"scripts/**/*.{js,mjs,cjs,ts}\"],\n      \"project\": [\"scripts/**/*.{js,mjs,cjs,ts}\"]\n    },\n    \"packages/server\": {\n      \"entry\": [\n        \"src/server/index.ts\",\n        \"src/server/exports.ts\",\n        \"src/utils/tool-call-parsers.ts\",\n        \"src/shared/**/*.ts\",\n        \"src/client/**/*.ts\",\n        \"src/server/agent/agent-sdk-types.ts\",\n        \"src/server/agent/provider-manifest.ts\",\n        \"scripts/**/*.{ts,mts,mjs,cjs,js}\",\n        \"src/**/*.test.ts\",\n        \"src/**/*.test.tsx\",\n        \"src/**/*.e2e.ts\",\n        \"src/**/*.e2e.tsx\"\n      ],\n      \"project\": [\"src/**/*.{ts,tsx}\", \"scripts/**/*.{ts,mts,mjs,cjs,js}\"]\n    },\n    \"packages/app\": {\n      \"entry\": [\n        \"index.ts\",\n        \"app.config.js\",\n        \"babel.config.js\",\n        \"app/**/*.{ts,tsx}\",\n        \"src/**/*.test.{ts,tsx}\",\n        \"src/**/*.e2e.{ts,tsx}\",\n        \"src/**/*.native.{ts,tsx}\",\n        \"e2e/**/*.{ts,tsx}\",\n        \"playwright.config.{ts,js}\",\n        \"vitest.config.{ts,js}\",\n        \"test-stubs/**/*.ts\"\n      ],\n      \"project\": [\"**/*.{ts,tsx,js,jsx}\"],\n      \"paths\": {\n        \"@server/*\": [\"../server/src/*\"]\n      },\n      \"ignore\": [\"android/**\", \"ios/**\", \".expo/**\", \"dist/**\", \"scripts/reset-project.js\"]\n    },\n    \"packages/cli\": {\n      \"entry\": [\"src/index.ts\", \"bin/paseo\", \"src/**/*.test.{ts,tsx}\", \"tests/**/*.{ts,tsx}\"],\n      \"project\": [\"src/**/*.{ts,tsx}\", \"tests/**/*.{ts,tsx}\"]\n    },\n    \"packages/relay\": {\n      \"entry\": [\"src/index.ts\", \"src/e2ee.ts\", \"src/cloudflare-adapter.ts\", \"src/**/*.test.ts\"],\n      \"project\": [\"src/**/*.ts\"]\n    },\n    \"packages/website\": {\n      \"entry\": [\"src/router.tsx\", \"vite.config.ts\", \"src/routes/**/*.tsx\"],\n      \"project\": [\"src/**/*.{ts,tsx}\"],\n      \"ignore\": [\"src/routeTree.gen.ts\"]\n    },\n    \"packages/desktop\": {\n      \"entry\": [\"src/main.ts\", \"src/preload.ts\", \"src/**/*.test.ts\"],\n      \"project\": [\"src/**/*.ts\"]\n    },\n    \"packages/highlight\": {\n      \"entry\": [\"src/index.ts\", \"src/**/*.test.ts\"],\n      \"project\": [\"src/**/*.ts\"]\n    },\n    \"packages/expo-two-way-audio\": {\n      \"entry\": [\"src/index.ts\"],\n      \"project\": [\"src/**/*.ts\"]\n    }\n  },\n  \"ignoreWorkspaces\": [\"packages/react-native-enriched-markdown\"],\n  \"ignoreDependencies\": [\n    \"sherpa-onnx-node\",\n    \"@playwright/test\",\n    \"material-icon-theme\",\n    \"eas-cli\",\n    \"wait-on\",\n    \"concurrently\",\n    \"get-port-cli\",\n    \"patch-package\",\n    \"cross-env\",\n    \"expo-module-scripts\",\n    \"buffer\",\n    \"metro-config\"\n  ],\n  \"ignoreBinaries\": [\n    \"expo-module\",\n    \"xed\",\n    \"eas\",\n    \"playwright\",\n    \"wrangler\",\n    \"powershell\",\n    \"tsx\",\n    \"vitest\",\n    \"open\"\n  ]\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 24557,
+      "line_count": 645,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  push:\n    branches: [main, \"release/**\"]\n  # Every base branch, so stacked PRs and PRs into any base get the same checks.\n  pull_request:\n  merge_group:\n  workflow_dispatch:\n\n# A newer push to the same ref cancels the run still in progress, main included.\n# A full run costs about 200 runner-minutes against the org's 20 concurrent\n# jobs, and a superseded main run only answers a question the newer commit\n# answers again.\nconcurrency:\n  group: ci-${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\nenv:\n  # CI does not use the CUDA execution provider, and the onnxruntime-node\n  # postinstall download from NuGet is large enough to make npm ci flaky.\n  ONNXRUNTIME_NODE_INSTALL: skip\n  NPM_CONFIG_AUDIT: \"false\"\n  NPM_CONFIG_FUND: \"false\"\n\njobs:\n  changes:\n    name: changes\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      pull-requests: read\n    outputs:\n      full: ${{ github.event_name != 'pull_request' || steps.filter.outputs.routing != 'false' || steps.filter.outputs.workspace != 'false' || steps.filter.outputs.ci != 'false' }}\n      format: ${{ steps.filter.outputs.format }}\n      quality: ${{ steps.filter.outputs.quality }}\n      hub: ${{ steps.filter.outputs.hub }}\n      server: ${{ steps.filter.outputs.server }}\n      desktop: ${{ steps.filter.outputs.desktop }}\n      app: ${{ steps.filter.outputs.app }}\n      sdk: ${{ steps.filter.outputs.sdk }}\n      browser: ${{ steps.filter.outputs.browser }}\n      relay: ${{ steps.filter.outputs.relay }}\n      cli: ${{ steps.filter.outputs.cli }}\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0\n        with:\n          fetch-depth: 0\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version: \"22\"\n\n      - name: Detect affected CI contracts\n        id: filter\n        uses: dorny/paths-filter@d1c1ffe0248fe513906c8e24db8ea791d46f8590 # v3.0.3\n        with:\n          filters: .github/ci-paths.yml\n\n      - name: Validate CI contracts\n        run: node --test scripts/ci-workflow.test.mjs scripts/daemon-launch-contract.test.mjs scripts/changelog-utils.test.mjs scripts/release-version-utils.test.mjs scripts/publish-release-packages.test.mjs scripts/push-current-release-tag.test.mjs scripts/reconcile-release.test.mjs scripts/sync-fdroid-changelogs.test.mjs scripts/sync-release-notes-from-changelog.test.mjs scripts/upload-release-assets.test.mjs\n\n  quality:\n    name: quality\n    needs: changes\n    if: ${{ !cancelled() && (needs.changes.outputs.full != 'false' || needs.changes.outputs.format != 'false' || needs.changes.outputs.quality != 'false' || needs.changes.outputs.relay != 'false' || needs.changes.outputs.sdk != 'false') }}\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version: \"22\"\n          cache: \"npm\"\n\n      - name: Install dependencies\n        id: install\n        run: node scripts/npm-retry.mjs ci\n\n      # Explicit status checks keep independent domains running after a failure.\n      # A failed step still fails quality; no continue-on-error or success shim.\n      - name: Check formatting\n        if: ${{ !cancelled() && steps.install.outcome == 'success' && (needs.changes.outputs.full != 'false' || needs.changes.outputs.format != 'false') }}\n        run: npm run format:check\n\n      - name: Lint lockfile\n        if: ${{ !cancelled() && steps.install.outcome == 'success' && (needs.changes.outputs.full != 'false' || needs.changes.outputs.quality != 'false') }}\n        run: npx --yes lockfile-lint --path package-lock.json --type npm --allowed-hosts npm --validate-https --validate-integrity\n\n      - name: Lint\n        if: ${{ !cancelled() && steps.install.outcome == 'success' && (needs.changes.outputs.full != 'false' || needs.changes.outputs.quality != 'false') }}\n        run: npm run lint\n\n      - name: Test lint rules\n        if: ${{ !cancelled() && steps.install.outcome == 'success' && (needs.changes.outputs.full != 'false' || needs.changes.outputs.quality != 'false') }}\n        run: node --test scripts/oxlint/paseo-plugin.test.mjs\n\n      - name: Build relay\n        if: ${{ !cancelled() && steps.install.outcome == 'success' && (needs.changes.outputs.full != 'false' || needs.changes.outputs.relay != 'false') }}\n        run: npm run build:relay\n\n      - name: Run relay tests\n        if: ${{ !cancelled() && steps.install.outcome == 'success' && (needs.changes.outputs.full != 'false'"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T13:07:08Z",
+      "oldest": "2026-11-23T03:53:34Z"
+    },
+    "conventional_pct": 44.0,
+    "fix_revert_pct": 26.0,
+    "ai_coauthor_pct": 28.0,
+    "top_recent_authors": [
+      [
+        "boudra",
+        33
+      ],
+      [
+        "paseo-bot[bot]",
+        15
+      ],
+      [
+        "ArnoldHueteG",
+        1
+      ],
+      [
+        "mdbraber",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "e108fdc7",
+        "date": "2026-11-25T13:07:08Z",
+        "author": "boudra",
+        "subject": "fix(app): keep the turn footer on plugin-transformed assistant replies (#10795)",
+        "ai_signal": true
+      },
+      {
+        "sha": "732b936f",
+        "date": "2026-11-25T13:00:15Z",
+        "author": "boudra",
+        "subject": "fix(codex): keep configured developer instructions when Paseo adds instructions (#10792)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5c97cd59",
+        "date": "2026-11-25T12:23:22Z",
+        "author": "boudra",
+        "subject": "chore(ci): move dependency signature audit to release preparation (#10800)",
+        "ai_signal": false
+      },
+      {
+        "sha": "019f8780",
+        "date": "2026-11-25T12:09:20Z",
+        "author": "paseo-bot[bot]",
+        "subject": "test(server): stabilize the busy-loop image decode check (#10762)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7d425b2e",
+        "date": "2026-11-25T11:59:47Z",
+        "author": "boudra",
+        "subject": "Mark desktop, web, and mobile in the homepage plugins subtitle (#10799)",
+        "ai_signal": false
+      },
+      {
+        "sha": "20622923",
+        "date": "2026-11-25T11:36:42Z",
+        "author": "boudra",
+        "subject": "fix(hub): let Hub sessions list provider controls (#10794)",
+        "ai_signal": false
+      },
+      {
+        "sha": "95a755e6",
+        "date": "2026-11-25T11:33:01Z",
+        "author": "boudra",
+        "subject": "Say that homepage plugins install once and run on every client (#10797)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c1b43ee5",
+        "date": "2026-11-25T10:48:24Z",
+        "author": "boudra",
+        "subject": "Keep Git watchers responsive during large directory scans (#10788)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b4af7599",
+        "date": "2026-11-25T10:39:10Z",
+        "author": "boudra",
+        "subject": "perf(app): keep overlays and long-running sessions fast (#10778)",
+        "ai_signal": false
+      },
+      {
+        "sha": "eaadacad",
+        "date": "2026-11-25T10:31:58Z",
+        "author": "boudra",
+        "subject": "fix(app): return the previous pane to its last active tab when splitting or moving (#10716)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b6375b14",
+        "date": "2026-11-25T10:06:48Z",
+        "author": "ArnoldHueteG",
+        "subject": "Set Archive on finish from the CLI and MCP (#8479)",
+        "ai_signal": false
+      },
+      {
+        "sha": "bbe7e2a7",
+        "date": "2026-11-25T10:03:51Z",
+        "author": "paseo-bot[bot]",
+        "subject": "Keep slow Import Session results and show provider errors (#10516)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d94148a2",
+        "date": "2026-11-25T09:58:02Z",
+        "author": "boudra",
+        "subject": "Let plugins nest dispatched workspaces under the workspace that created them (#10781)",
+        "ai_signal": false
+      },
+      {
+        "sha": "831f2472",
+        "date": "2026-11-25T09:45:08Z",
+        "author": "boudra",
+        "subject": "fix(providers): upgrade Factory Droid to 1.20.0 (#10779)",
+        "ai_signal": false
+      },
+      {
+        "sha": "8df6672d",
+        "date": "2026-11-25T09:28:33Z",
+        "author": "boudra",
+        "subject": "Add projects from one sheet with Existing, Clone, and New folder tabs (#10767)",
+        "ai_signal": false
+      },
+      {
+        "sha": "feb7882e",
+        "date": "2026-11-25T09:01:20Z",
+        "author": "boudra",
+        "subject": "Find agent profiles by searching models, and in the Command Center (#10774)",
+        "ai_signal": false
+      },
+      {
+        "sha": "cd2e56f1",
+        "date": "2026-11-25T07:37:02Z",
+        "author": "paseo-bot[bot]",
+        "subject": "Keep Git watcher retries on schedule after reconnect (#10602)",
+        "ai_signal": true
+      },
+      {
+        "sha": "1ff119dc",
+        "date": "2026-11-25T06:36:01Z",
+        "author": "boudra",
+        "subject": "feat(app): copy a quote's body with one tap (#10608)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6e6f224e",
+        "date": "2026-11-25T06:30:37Z",
+        "author": "boudra",
+        "subject": "Hub login prints a one-click URL, and an uninstalled Muse Code shows as unavailable (#10751)",
+        "ai_signal": false
+      },
+      {
+        "sha": "395a5a5f",
+        "date": "2026-11-25T06:30:13Z",
+        "author": "boudra",
+        "subject": "Run OpenCode v2 agents with their own MCP servers and env on a shared OpenCode server (#10752)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "boudra",
+      "contributions": 5406
+    },
+    {
+      "login": "paseo-bot[bot]",
+      "contributions": 779
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 104
+    },
+    {
+      "login": "cleiter",
+      "contributions": 35
+    },
+    {
+      "login": "mcowger",
+      "contributions": 30
+    },
+    {
+      "login": "colonelpanic8",
+      "contributions": 14
+    },
+    {
+      "login": "ragokan",
+      "contributions": 11
+    },
+    {
+      "login": "nikuscs",
+      "contributions": 11
+    },
+    {
+      "login": "omercnet",
+      "contributions": 9
+    },
+    {
+      "login": "dwyanewang",
+      "contributions": 8
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v0.17.4",
+      "published_at": "2026-11-23T22:34:48Z",
+      "name": "Paseo v0.17.4"
+    },
+    {
+      "tag": "v0.17.3",
+      "published_at": "2026-11-22T17:46:11Z",
+      "name": "Paseo v0.17.3"
+    },
+    {
+      "tag": "v0.17.2",
+      "published_at": "2026-11-22T13:07:00Z",
+      "name": "Paseo v0.17.2"
+    },
+    {
+      "tag": "v0.17.1",
+      "published_at": "2026-11-21T22:23:34Z",
+      "name": "Paseo v0.17.1"
+    },
+    {
+      "tag": "v0.17.0-beta.1",
+      "published_at": "2026-11-19T15:17:54Z",
+      "name": "Paseo v0.17.0-beta.1"
+    }
+  ]
+}
