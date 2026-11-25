@@ -1,0 +1,512 @@
+{
+  "repo": "stablyai/orca",
+  "meta": {
+    "description": "Orca lets you run a fleet of bots with your own subscription (e.g. Claude Code, Grok, Agy, Codex). Available on desktop, mobile and remote runtime.",
+    "homepage": "https://orca.dev",
+    "license": "MIT",
+    "stars": 137847,
+    "forks": 8828,
+    "open_issues": 9918,
+    "archived": false,
+    "created_at": "2026-03-17T03:28:57Z",
+    "pushed_at": "2026-11-25T21:36:35Z",
+    "default_branch": "main",
+    "topics": [
+      "agent-ide",
+      "ai-agents",
+      "automation",
+      "bot",
+      "claude-code",
+      "codex",
+      "ghostty",
+      "grok-bot",
+      "hermes-agent",
+      "mobile-app",
+      "muse",
+      "openclaw",
+      "opencode",
+      "orchestration",
+      "pi",
+      "runtime",
+      "swarm",
+      "terminal",
+      "worktrees",
+      "yc-backed"
+    ]
+  },
+  "languages": {
+    "TypeScript": 143697324,
+    "JavaScript": 5019640,
+    "Swift": 496639,
+    "CSS": 319145,
+    "Python": 228927,
+    "PowerShell": 159197,
+    "Kotlin": 117185,
+    "C": 108494,
+    "HTML": 107883,
+    "Shell": 68241,
+    "C++": 43340,
+    "Rust": 28162,
+    "Ruby": 21535,
+    "Dockerfile": 15445,
+    "NSIS": 12566,
+    "Objective-C": 7556,
+    "Java": 3372,
+    "Batchfile": 999,
+    "VBScript": 745
+  },
+  "structure": {
+    "root": [
+      ".claude/",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".husky/",
+      ".mcp.json",
+      ".oxfmtrc.json",
+      ".oxlintrc.json",
+      "AGENTS.md",
+      "Casks/",
+      "LICENSE",
+      "README.md",
+      "cloud/",
+      "components.json",
+      "config/",
+      "docs/",
+      "electron.vite.config.ts",
+      "examples/",
+      "mobile/",
+      "native/",
+      "opencode.json",
+      "orca.yaml",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "resources/",
+      "skill-guides/",
+      "skill-stubs/",
+      "skills/",
+      "src/",
+      "tests/",
+      "tsconfig.json",
+      "vite.web.config.ts"
+    ],
+    "workflows": [
+      "adhoc-mac-build.yml",
+      "agent-state-rules-publish.yml",
+      "bot-app-catalog-smoke.yml",
+      "ci-branch-cache-sweep.yml",
+      "ci-cache-warmup-platform-jobs.yml",
+      "ci-cache-warmup-platforms.yml",
+      "ci-cache-warmup.yml",
+      "ci-closed-pr-caches.yml",
+      "ci-runner-demand.yml",
+      "ci-xterm-cache.yml",
+      "cloud-verify.yml",
+      "computer-e2e.yml",
+      "computer-macos-native.yml",
+      "computer-task-benchmark.yml",
+      "daily-mac-build.yml",
+      "dependency-security.yml",
+      "dev-channel-win-build.yml",
+      "dev-channel-win-publish.yml",
+      "docs.yml",
+      "e2e.yml",
+      "golden-e2e-experiment.yml",
+      "homebrew-bump.yml",
+      "hourly-mac-build.yml",
+      "issue-os-labeler.yaml",
+      "journal-file-lock.yml",
+      "layout-owner-e2e.yml",
+      "linux-wayland-gpu-sandbox.yml",
+      "main-blocking-work.yml",
+      "mobile-android-release.yml",
+      "mobile-ios-release.yml",
+      "mobile-native-fingerprint.yml",
+      "mobile.yml",
+      "node-next-compat.yml",
+      "node-server-tests.yml",
+      "orca-server-artifact.yml",
+      "performance-contracts.yml",
+      "pi-owner-runtime.yml",
+      "pi-provider-runtime.yml",
+      "pr-description.yml",
+      "pr-test-loc.yml",
+      "pr.yml",
+      "preflight-benchmark.yml",
+      "preflight-critical-path-benchmark.yml",
+      "pullfrog.yml",
+      "qualified-orcad-template.yml",
+      "readme-downloads-badge.yml",
+      "release-cut.yml",
+      "release-javascript-benchmark.yml",
+      "release-javascript.yml",
+      "release-mac-build.yml",
+      "release-mirror-r2.yml",
+      "release-policy.yml",
+      "unit-module-cache-benchmark.yml",
+      "unit-module-cache.yml",
+      "unit-plan.yml",
+      "unit-selection-evidence.yml",
+      "unit-tests.yml",
+      "win-crash-survival-e2e.yml",
+      "win-orcad-serve-switch-e2e.yml",
+      "win-update-e2e.yml",
+      "win-update-survival-e2e.yml",
+      "windows-native-preparation-benchmark.yml",
+      "windows-signing-rehearsal.yml",
+      "windows-typecheck-parity.yml",
+      "windows-wsl-e2e.yml",
+      "zcode-account-contract.yml",
+      "zcode-credential-contract.yml"
+    ],
+    "docs": [
+      "STYLEGUIDE.md",
+      "agent-skill-sharing-implementation-checklist.md",
+      "agents-md-refs/",
+      "assets/",
+      "automated-setup-tab-astra-review.md",
+      "automated-setup-tab-design.md",
+      "bug-reproductions/",
+      "development.md",
+      "native-chat-setup-provisioning-design.md",
+      "native-chat-setup-provisioning-review.md",
+      "readme/",
+      "reference/",
+      "relay-region-correction/",
+      "schemas/",
+      "site/",
+      "styleguide/"
+    ],
+    "docs_count": 16,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [
+      "settings.json"
+    ],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 5075,
+      "line_count": 60,
+      "truncated": false,
+      "excerpt": "# Checks\n\n- **Gate**: `pnpm check:changed` runs format, lint, typecheck, the tests that import your changes, and the ratchets your paths select, and prints only failures. Run it once when you are done editing (and again after a rebase or fix), then push. A pass is cached, so don't rerun it \"to be sure\", and don't also run `pnpm tc`, `pnpm lint`, or the full suite. Never `--no-verify`.\n- **While iterating**: run only what you touched: `pnpm test <file.test.ts> --maxWorkers=2`, `pnpm tc:node|tc:web|tc:cli`, `pnpm exec oxlint <files>`, `pnpm exec oxfmt --write <files>`. Transitive tests and the full suite are CI's job ([details](.github/CONTRIBUTING.md#targeting-local-tests)).\n- Run checks in the foreground with `timeout 900`. Don't background them and poll with `sleep`.\n- Stacked PRs: `ORCA_CODE_QUALITY_BASE=<ref>` or `--base=<ref>`; `--base=HEAD` covers only uncommitted edits.\n- CI: `gh pr checks --watch` or `gh run watch <id> --compact --exit-status` (no polling). Read failures with `gh run view <id> --log-failed`; for long logs, filter with `grep -nE \"error|FAIL|\u2717\"` instead of tailing.\n\n# Repo Rules\n\n- Ensure main is always releasable\n- Never break the CI. If it's broken, merge fixes.\n- **Tests are the exception.** Prove a change by running it (app via CDP screenshot, CLI, script), not by committing a test. Commit one only for logic where a silent regression is costly: parsers/codecs/round-trips, security boundaries (escaping, path traversal, auth, crypto), persistence/migrations/data loss, concurrency or state-machine invariants, cross-platform paths. It must call real code with minimal mocks, hardcode its expectations, and fail if the fix is reverted; prefer one invariant over many examples. Never test UI behavior (\"button does X\"), wiring/IPC glue, mock calls, copy, constants, or timing. Critical user flows belong in the golden E2E journeys (`tests/e2e/golden-journeys`), not unit tests. Delete low-value tests you touch instead of updating them. Perf contracts: `*.performance.test.*` only ([rules](./docs/agents-md-refs/test-antipatterns.md#perf-contracts)); more in [anti-patterns](./docs/agents-md-refs/test-antipatterns.md).\n\n# Design System\n\nAll UI work \u2014 layout, color, typography, spacing, component selection, UX behavior \u2014 must follow [`docs/STYLEGUIDE.md`](./docs/STYLEGUIDE.md). Use the tokens defined in `src/renderer/src/assets/main.css` (the canonical source) and the shadcn primitives in `src/renderer/src/components/ui/`. Don't invent new color values, font sizes, or shadow tiers when a documented one already covers the role.\n\n# Electron UI Validation\n\n- Always run tests and agent-launched apps in the background with `ORCA_BACKGROUND_LAUNCH=1`.\n- Never steal monitor focus or reveal test windows: no `show()`, `showInactive()`, `bringToFront()`, `app.focus()`, or OS activation. Use CDP screenshots of hidden renderers.\n- Keep native-focus and visible-window tests paused on the user's desktop; run them on an isolated display or CI.\n- Rebuild modified launch-policy code before running an app (stale build wrappers are not safe).\n- Use the `$electron` skill and Playwright CDP for rendered Orca UI checks. Do not use computer-use for Orca UI validation.\n- Rendered UI E2E checks need an explicit, reproducible viewport and state.\n- Screenshot presentational components without Electron: `pnpm fixtures:shot <id>` ([fixtures](docs/agents-md-refs/component-fixtures.md)).\n\n# Code Style\n\n## Reuse Before Reimplementing\n\nBefore writing new logic at any scale extend or generalize it instead of building a parallel version.\n\n## Avoid Comments\n\n- Only use when code does not describe\n- BE CONCISE. 1 LINE if possible (why not how)\n\n## File and Module Naming\n\nNever use vague names like `helpers`, `utils`, `common`, `misc`, or `shared-stuff` for files, folders, or modules. They carry zero info and tend to become dumping grounds. Name files after what they _actually_ contain \u2014 prefer the concrete domain concept (e.g. `tab-group-state.ts`, `terminal-orphan-cleanup.ts`) over the generic role (`tabs-helpers.ts`, `terminal-utils.ts`). If you find yourself reaching for `helpers`, the file probably has more than one responsibility and should be split, or there's a better name hiding in the code that describes what the functions operate on.\n\n# First Class Citizens\n\nEvery change must consider these areas:\n\n1. Cross-Platform Support (mac/linux/windows)\n   - Guard platform-specific behavior at runtime; use platform-aware shortcuts, paths, and existing process wrappers. Before changing platform-specific code, processes, shells, shortcuts, paths, or native modules, read [`docs/agents-md-refs/cross-platform-support.md`](./docs/agents-md-refs/cross-platform-support.md).\n2. Remote hosts\n   - Features should work locally and on remote hosts\n3. Mobile\n4. Folder Workspaces\n   - Don't assume every workspace is a git worktree.\n\n# Footguns\n\n## Git / GitHub\n\nIf changing code around `git`, `gh`, source-control, or review behavior read [`docs/agents-md-refs/git-workflow.md`](./docs/agents-md-refs/git-workflow.md).\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 21662,
+      "line_count": 340,
+      "truncated": true,
+      "excerpt": "<h1 align=\"center\">\n  <a href=\"https://orca.dev\"><img src=\"resources/build/icon.png\" alt=\"Orca\" width=\"64\" valign=\"middle\" /></a> Orca\n</h1>\n\n<p align=\"center\">\n  <a href=\"https://github.com/stablyai/orca\"><img src=\"https://img.shields.io/github/stars/stablyai/orca?style=flat&amp;label=%E2%98%85&amp;color=08C\" alt=\"GitHub stars\" /></a>\n  <a href=\"https://github.com/stablyai/orca/releases\"><img src=\"docs/assets/readme-downloads.svg\" alt=\"Total downloads across all releases\" /></a>\n  <img src=\"https://img.shields.io/badge/license-MIT-08C?style=flat\" alt=\"License: MIT\" />\n  <a href=\"https://discord.gg/fzjDKHxv8Q\"><img src=\"https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white\" alt=\"Join the Orca Discord\" /></a>\n  <a href=\"https://x.com/orca_build\"><img src=\"https://img.shields.io/badge/X-000000?logo=x&logoColor=white\" alt=\"Follow Orca on X\" /></a>\n  <img src=\"https://img.shields.io/badge/macOS%20%7C%20Windows%20%7C%20Linux-4493F8?style=flat-square\" alt=\"Supported platforms: macOS, Windows, and Linux\" />\n</p>\n\n<p align=\"center\">\n  <sub><a href=\"docs/readme/README.zh-CN.md\">\u4e2d\u6587</a> \u00b7 <a href=\"docs/readme/README.ja.md\">\u65e5\u672c\u8a9e</a> \u00b7 <a href=\"docs/readme/README.ko.md\">\ud55c\uad6d\uc5b4</a> \u00b7 <a href=\"docs/readme/README.es.md\">Espa\u00f1ol</a> \u00b7 <a href=\"docs/readme/README.fr.md\">Fran\u00e7ais</a> \u00b7 <a href=\"docs/readme/README.pt.md\">Portugu\u00eas</a> \u00b7 <a href=\"docs/readme/README.tr.md\">T\u00fcrk\u00e7e</a> \u00b7 <a href=\"docs/readme/README.ru.md\">\u0420\u0443\u0441\u0441\u043a\u0438\u0439</a></sub>\n</p>\n\n<h2 align=\"center\">Bots inside your agent IDE.</h2>\n\n<p align=\"center\">\n  Open source. Bring your own everything: your Claude Code or Codex, your local or remote machines, your tools. Ask from Slack or your phone. When it needs you, it's one tab away.\n</p>\n\n<h3 align=\"center\"><a href=\"https://orca.dev/download\"><ins>Download Orca</ins></a> &nbsp;\u00b7&nbsp; <a href=\"https://orca.dev/bots\"><ins>Explore bots \u2192</ins></a></h3>\n\n<p align=\"center\">\n  <img src=\"docs/assets/readme-hero.jpg\" alt=\"Orca desktop app with a coordinator agent running worker agents in parallel workspaces, and the Orca mobile app in the corner\" width=\"960\" />\n</p>\n\n## Features\n\n<table>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Orca Bots\n\nAsk a bot in Slack, Linear, or GitHub to fix a bug, and come back to a tested pull request. It runs on your own Claude Code or Codex. Open its work in Orca to review it or step in.\n\n[Overview](https://orca.dev/bots) \u00b7 [Security](https://orca.dev/docs/bots/security) \u00b7 [Docs \u2192](https://orca.dev/docs/bots)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://orca.dev/bots\"><picture><source srcset=\"docs/assets/readme-features/bots.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/bots.poster.jpg\" alt=\"A bot in Orca that fixed a checkout bug with two workers, linked the pull request, and is waiting on a question under Needs you\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Chat or Terminal\n\nRun any agent in Chat UI or as the raw CLI, and move a conversation between the two without losing context.\n\n[Docs \u2192](https://orca.dev/docs/agents/native-chat)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://orca.dev/docs/agents/native-chat\"><picture><source srcset=\"docs/assets/readme-features/chat-or-terminal.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/chat-or-terminal.poster.jpg\" alt=\"The same agent conversation in Chat UI and in the terminal, side by side\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Orchestrate Agents\n\nHand a big task to one agent. It splits the work, starts worker agents in their own workspaces, and brings their results back to you.\n\n[Docs \u2192](https://orca.dev/docs/cli/orchestration)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://orca.dev/docs/cli/orchestration\"><picture><source srcset=\"docs/assets/readme-features/orchestration.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/orchestration.poster.jpg\" alt=\"A coordinator agent splitting a task between two worker agents and reporting their results\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Run Anywhere\n\nPair a Remote Orca Server, work on any SSH host, or give a worktree its own cloud VM. Your agents keep running when your laptop sleeps.\n\n[Docs \u2192](https://orca.dev/docs/ways-to-run)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://orca.dev/docs/ways-to-run\"><picture><source srcset=\"docs/assets/readme-features/remote.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/remote.poster.jpg\" alt=\"Choosing which machine a new worktree runs on, from this computer to an SSH host or a per-workspace environment\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Mobile App\n\nPair Orca with the mobile app to get pinged when an agent needs you, reply in chat, and keep work moving on any of your machines when you are away from your desk.\n\n[iOS App Store](https://apps.apple.com/us/app/orca-ide/id6766130217) \u00b7 [Google Play](https://play.google.com/store/apps/details?id=dev.orca.app) \u00b7 [Android APK](https://orca.dev/download/android) \u00b7 [Docs \u2192](https://orca.dev/docs/mobile)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://orca.dev/docs/mobile\"><picture><source srcset=\"docs/assets/readme-features/mobile-companion.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/mobile-companion.poster.jpg\" alt=\"The Orca mobile app getting a notification that Claude needs input, opening the session, and replying so the agent opens the PR\" width=\"100%\" /></picture></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Review AI Output\n\nReview diffs, leave notes on exact changed lines, and send focused feedback back to an agent.\n\n[Docs \u2192](https://orca.dev/docs/review/annotate-ai-diff)\n\n</td>\n<td width=\"50%\">\n  <a href=\"https://orca.dev/docs/review/annotate-ai-diff\"><picture><source srcset=\"docs/assets/readme-features/annotate-ai-diffs.webp\" type=\"image/webp\"><img src=\"docs/assets/readme-features/annotate-ai-diffs.poster.jpg\" alt=\"A note on a changed diff"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 39371,
+      "line_count": 470,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"orca\",\n  \"version\": \"1.4.214\",\n  \"description\": \"Next-gen IDE for parallel agentic development\",\n  \"homepage\": \"https://github.com/stablyai/orca\",\n  \"author\": \"stablyai\",\n  \"bin\": {\n    \"orca\": \"./out/cli/index.js\",\n    \"orca-dev\": \"./config/scripts/development/launch/orca-dev.mjs\"\n  },\n  \"main\": \"./out/main/index.js\",\n  \"scripts\": {\n    \"check:dependencies\": \"pnpm run build:packages && node config/scripts/dependency-security/audit-tools/check-dependency-security.mjs\",\n    \"install:release\": \"pnpm install --frozen-lockfile --cpu=current,x64,arm64\",\n    \"audit:perf\": \"oxlint --config config/oxlint-performance-audit.json --format json src\",\n    \"eval:bot-automations\": \"node config/scripts/workspace-package-build/build-workspace-packages.mjs && vitest run --config config/vitest.bot-automation-eval.config.ts\",\n    \"eval:bot-orchestration\": \"node config/scripts/workspace-package-build/build-workspace-packages.mjs && vitest run --config config/vitest.bot-orchestration-eval.config.ts\",\n    \"audit:perf:type-aware\": \"oxlint --type-aware --config config/oxlint-performance-audit-type-aware.json --format json src\",\n    \"test:perf:contracts\": \"vitest run --config config/vitest.performance.config.ts\",\n    \"format\": \"oxfmt --write .\",\n    \"lint\": \"node config/scripts/preflight/changed-checks/run-lint.mjs\",\n    \"audit:code-quality\": \"pnpm run audit:code-quality:native && pnpm run audit:code-quality:type-aware && pnpm run audit:react-doctor\",\n    \"audit:code-quality:native\": \"oxlint --config config/oxlint-code-quality-native-plugins.json src config tests mobile --deny-warnings\",\n    \"audit:code-quality:type-aware\": \"oxlint --type-aware --config config/oxlint-code-quality-type-aware.json src config tests --deny-warnings\",\n    \"audit:react-doctor\": \"node config/scripts/dependency-security/audit-tools/run-audit-tool.mjs react-doctor . --yes --no-supply-chain --no-telemetry --blocking none\",\n    \"audit:dead-code\": \"node config/scripts/dependency-security/audit-tools/run-audit-tool.mjs knip --config config/knip.json\",\n    \"check:changed\": \"node config/scripts/preflight/changed-checks/check-changed.mjs\",\n    \"check:code-quality:changed\": \"node config/scripts/preflight/changed-checks/check-changed-code-quality.mjs\",\n    \"lint:js-plugins\": \"oxlint --config config/oxlint-js-plugins.json src config tests mobile native .github\",\n    \"lint:ast-grep\": \"ast-grep scan --config config/sgconfig.yml --min-severity warning src config tests mobile\",\n    \"lint:ast-grep-gates\": \"node config/scripts/static-analysis/structural-scan/ast-grep-gates.mjs\",\n    \"lint:ast-grep:flaky-tests\": \"ast-grep scan --config config/sgconfig.yml --filter \\\"^test-\\\" src config tests mobile\",\n    \"test:ast-grep\": \"ast-grep test --config config/sgconfig.yml --skip-snapshot-tests\",\n    \"check:dead-classes\": \"oxlint --config config/oxlint-dead-classes.json src/renderer\",\n    \"lint:design-system\": \"oxlint --config config/oxlint-design-system.json src/renderer\",\n    \"check:react-doctor:changed\": \"node config/scripts/static-analysis/react-doctor/check-react-doctor-changed.mjs\",\n    \"doctor\": \"node config/scripts/dependency-security/audit-tools/run-audit-tool.mjs react-doctor . --no-telemetry\",\n    \"lint:react-doctor\": \"oxlint --config config/oxlint-react-doctor.json\",\n    \"lint:react-doctor:changed\": \"node config/scripts/static-analysis/react-doctor/lint-react-doctor-changed.mjs\",\n    \"prepare\": \"husky\",\n    \"test\": \"node config/scripts/workspace-package-build/build-workspace-packages.mjs && node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && node config/scripts/test-runtime/execution-policy/run-vitest.mjs run --config config/vitest.config.ts\",\n    \"test:changed\": \"node config/scripts/workspace-package-build/build-workspace-packages.mjs && node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && node config/scripts/test-runtime/execution-policy/run-vitest.mjs run --config config/vitest.config.ts --changed=HEAD\",\n    \"test:node\": \"pnpm run build:packages && node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && vitest run --config config/vitest.config.ts\",\n    \"test:node-server\": \"node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON config/scripts/ci/unit-selection/run-node-server-tests.mjs\",\n    \"test:skill-sharing:release\": \"vitest run --config config/vitest.config.ts src/main/skills\",\n    \"test:repro:remote-agent-session\": \"pnpm run build:cli && pnpm run build:electron-vite && node config/scripts/diagnostics/remote-agent-authority/remote-agent-session-authority-repro.mjs\",\n    \"capture:agent-transcript\": \"node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --runtime=node && node config/scripts/diagnostics/terminal-transcripts/capture-agent-pty-transcript.mjs\",\n    \"check:reliability-gates\": \"node config/scripts/static-analysis/reliability-policy/check-reliability-gates.mjs\",\n    \"check:ratchets\": \"node config/scripts/static-analysis/ratchet-runner/run-ratchets.mjs\",\n    \"check:max-lines-ratchet\": \"node config/scripts/static-analysis/ratchets/source-budget/check-max-lines-ratchet.mjs\",\n    \"check:ts-nocheck-ratchet\": \"node config/scripts/static-analysis/ratchets/source-budget/check-ts-nocheck-ratchet.mjs\",\n    \"check:host-list-render-ratchet\": \"node config/scripts/static-analysis/ratchets/renderer-state/check-host-list-render-ratchet.mjs\",\n    \"check:whole-hot-map-selector-ratchet\": \"node config/scripts/static-analysis/ratchets/renderer-state/check-whole-hot-map-selector-ratchet.mjs\",\n    \"check:memo-translate-subscription-ratchet\": \"node config/scripts/static-analysis/ratchets/renderer-state/check-memo-translate-subscription-ratchet.mjs\",\n    \"check:react-compiler-compat-ratchet\": \"node config/scripts/static-analysis/ratchets/react-compiler/check-react-compiler-compat-ratchet.mjs\",\n    \"check:render-path-translate-ratchet\": \"node config/scripts/static-analysis/ratchets/renderer-state/check-render-path-translate-ratchet."
+    },
+    ".oxlintrc.json": {
+      "path": ".oxlintrc.json",
+      "size_bytes": 16523,
+      "line_count": 402,
+      "truncated": true,
+      "excerpt": "{\n  \"$schema\": \"./node_modules/oxlint/configuration_schema.json\",\n  \"plugins\": [\"typescript\", \"react\", \"react-hooks\", \"react-perf\", \"unicorn\"],\n  \"categories\": {\n    \"correctness\": \"error\"\n  },\n  \"rules\": {\n    \"no-fallthrough\": \"error\",\n    \"eslint/no-useless-call\": \"error\",\n    \"oxc/no-accumulating-spread\": \"error\",\n    \"react/jsx-no-duplicate-props\": \"error\",\n    \"react/jsx-no-undef\": \"error\",\n    \"react/no-children-prop\": \"error\",\n    \"react/no-danger-with-children\": \"error\",\n    \"react/no-direct-mutation-state\": \"error\",\n    \"react/no-find-dom-node\": \"error\",\n    \"react/no-render-return-value\": \"error\",\n    \"react/no-string-refs\": \"error\",\n    \"react/no-unescaped-entities\": \"error\",\n    \"react/require-render-return\": \"error\",\n    \"react/error-boundaries\": \"error\",\n    \"react/globals\": \"error\",\n    \"react/immutability\": \"off\",\n    \"react/incompatible-library\": \"off\",\n    \"react/preserve-manual-memoization\": \"off\",\n    \"react/purity\": \"error\",\n    \"react/refs\": \"off\",\n    \"react/set-state-in-effect\": \"off\",\n    \"react/set-state-in-render\": \"error\",\n    \"react/static-components\": \"error\",\n    \"react/use-memo\": \"error\",\n    \"react/void-use-memo\": \"error\",\n    \"react/no-deriving-state-in-effects\": \"error\",\n    \"react/jsx-curly-brace-presence\": [\n      \"error\",\n      { \"props\": \"never\", \"children\": \"never\", \"propElementValues\": \"always\" }\n    ],\n    \"react/jsx-filename-extension\": [\"error\", { \"extensions\": [\".tsx\", \".jsx\"] }],\n    \"react/jsx-fragments\": \"error\",\n    \"react/jsx-key\": \"error\",\n    \"react/jsx-no-constructed-context-values\": \"error\",\n    \"react/jsx-no-target-blank\": \"error\",\n    \"react/jsx-no-useless-fragment\": [\"error\", { \"allowExpressions\": true }],\n    \"react/jsx-pascal-case\": \"error\",\n    \"react/no-object-type-as-default-prop\": \"error\",\n    \"react/no-unstable-nested-components\": [\"warn\", { \"allowAsProps\": true }],\n    \"react/self-closing-comp\": \"error\",\n    \"react-hooks/rules-of-hooks\": \"error\",\n    \"react-hooks/exhaustive-deps\": \"warn\",\n    \"typescript/array-type\": \"error\",\n    \"typescript/consistent-generic-constructors\": \"error\",\n    \"typescript/consistent-indexed-object-style\": \"error\",\n    \"typescript/consistent-type-assertions\": \"error\",\n    \"typescript/consistent-type-definitions\": [\"error\", \"type\"],\n    \"typescript/consistent-type-imports\": \"error\",\n    \"typescript/no-explicit-any\": [\"error\", { \"ignoreRestArgs\": true }],\n    \"typescript/no-confusing-non-null-assertion\": \"error\",\n    \"typescript/no-import-type-side-effects\": \"error\",\n    \"typescript/no-unnecessary-boolean-literal-compare\": \"error\",\n    \"typescript/no-unnecessary-template-expression\": \"error\",\n    \"typescript/no-unsafe-function-type\": \"warn\",\n    \"typescript/prefer-function-type\": \"error\",\n    \"typescript/prefer-includes\": \"error\",\n    \"typescript/prefer-optional-chain\": \"error\",\n    \"typescript/prefer-ts-expect-error\": \"error\",\n    \"typescript/switch-exhaustiveness-check\": [\n      \"error\",\n      { \"allowDefaultCaseForExhaustiveSwitch\": false }\n    ],\n    \"curly\": \"error\",\n    \"no-unneeded-ternary\": \"error\",\n    \"no-else-return\": \"error\",\n    \"prefer-exponentiation-operator\": \"error\",\n    \"prefer-object-has-own\": \"error\",\n    \"no-restricted-imports\": [\n      \"error\",\n      {\n        \"paths\": [\n          {\n            \"name\": \"@linear/sdk\",\n            \"allowTypeImports\": true,\n            \"message\": \"Value-importing @linear/sdk hoists its ~2.6MB CJS bundle into the eager top-level require block and defeats the lazy loader. Use `import type` plus loadLinearSdk() from src/main/linear/requests/linear-sdk.ts.\"\n          }\n        ]\n      }\n    ],\n    \"no-useless-return\": \"error\",\n    \"prefer-template\": \"error\",\n    \"unicorn/consistent-empty-array-spread\": \"error\",\n    \"unicorn/consistent-existence-index-check\": \"error\",\n    \"unicorn/empty-brace-spaces\": \"error\",\n    \"unicorn/error-message\": \"error\",\n    \"unicorn/no-array-fill-with-reference-type\": \"warn\",\n    \"unicorn/no-array-reverse\": \"error\",\n    \"unicorn/no-instanceof-builtins\": \"error\",\n    \"unicorn/no-typeof-undefined\": \"error\",\n    \"unicorn/no-unnecessary-array-splice-count\": \"error\",\n    \"unicorn/no-useless-promise-resolve-reject\": \"error\",\n    \"unicorn/no-zero-fractions\": \"error\",\n    \"unicorn/prefer-array-find\": \"error\",\n    \"unicorn/prefer-array-flat-map\": \"warn\",\n    \"unicorn/prefer-array-index-of\": \"error\",\n    \"unicorn/prefer-at\": \"error\",\n    \"unicorn/prefer-date-now\": \"error\",\n    \"unicorn/prefer-includes\": \"error\",\n    \"unicorn/prefer-import-meta-properties\": \"error\",\n    \"unicorn/prefer-math-min-max\": \"error\",\n    \"unicorn/prefer-negative-index\": \"error\",\n    \"unicorn/prefer-node-protocol\": \"error\",\n    \"unicorn/prefer-number-properties\": \"error\",\n    \"unicorn/prefer-object-from-entries\": \"error\",\n    \"unicorn/prefer-regexp-test\": \"warn\",\n    \"unicorn/prefer-ternary\": \"error\",\n    \"unicorn/throw-new-error\": \"error\"\n  },\n  \"overrides\": [\n    {\n      \"files\": [\"src/main/backend/**/*.ts\"],\n      \"rules\": {\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"patterns\": [\n              {\n                \"group\": [\"electron\", \"electron/*\"],\n                \"message\": \"Backend services use the typed desktop capability bridge; only the shell imports Electron.\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"files\": [\"**/*.{js,cjs,mjs,jsx,ts,tsx,mts,cts}\"],\n      \"excludeFiles\": [\n        \"**/*.{test,spec}.{js,cjs,mjs,jsx,ts,tsx,mts,cts}\",\n        \"**/__tests__/**\",\n        \"src/renderer/src/runtime/web-runtime-browser-creation-placement-test-rig.ts\"\n      ],\n      \"rules\": {\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"paths\": [\n              {\n                \"name\": \"@linear/sdk\",\n                \"allowTypeImports\": true,\n                \"message\": \"Value-importing @linear/sdk hoists its ~2.6MB CJS bundle into the eager top-level require block and defeats the lazy loader. Use `import type` plus loadLinearSdk() from src/main/linear/requests/linear-sdk"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 5437,
+      "line_count": 136,
+      "truncated": false,
+      "excerpt": "# Exclude mobile\u2019s independent workspace/lockfile: recursive discovery causes ERR_PNPM_UNUSED_PATCH.\n# Explicit Windows addon workspaces avoid file:-dependency relinks, whose virtual-store churn\n# raced Windows node-gyp and removed @vscode/windows-process-tree\u2019s binding.gyp mid-rebuild.\npackages:\n  - native/windows-notifications\n  - native/windows-registry\n  - native/windows-security\n  - src/packages/*\n\nminimumReleaseAge: 4320\nshamefullyHoist: true\n\n# Enables pnpm's global virtual store outside CI; under config/ because the repo root only admits\n# allowlisted entries.\npnpmfile: config/pnpmfile.cjs\n\n# Orca resolves the user\u2019s Claude CLI via pathToClaudeCodeExecutable; exclude SDK\u2019s ~95 MB/platform\n# bundled CLIs so that override stays mandatory.\nignoredOptionalDependencies:\n  - '@anthropic-ai/claude-agent-sdk-darwin-arm64'\n  - '@anthropic-ai/claude-agent-sdk-darwin-x64'\n  - '@anthropic-ai/claude-agent-sdk-linux-arm64'\n  - '@anthropic-ai/claude-agent-sdk-linux-arm64-musl'\n  - '@anthropic-ai/claude-agent-sdk-linux-x64'\n  - '@anthropic-ai/claude-agent-sdk-linux-x64-musl'\n  - '@anthropic-ai/claude-agent-sdk-win32-arm64'\n  - '@anthropic-ai/claude-agent-sdk-win32-x64'\n\n# Development and test jobs need only their host. Cross-target packaging opts in\n# with pnpm install:release (or explicit pnpm install --os / --cpu targets).\nsupportedArchitectures:\n  os:\n    - current\n  cpu:\n    - current\n\nallowBuilds:\n  # Its postinstall only hardlinks the platform binary over the JS launcher.\n  '@ast-grep/cli': true\n  '@parcel/watcher': true\n  '@swc/core': false\n  '@vscode/windows-process-tree': false\n  agent-browser: false\n  bun: true\n  cpu-features: true\n  electron-winstaller: false\n  esbuild: true\n  # Its install script only rebuilds when no @koromix/koffi-<platform> prebuilt is installed.\n  koffi: false\n  msw: false\n  node-pty: true\n  ssh2: false\n  '@orca/windows-notifications': false\n  '@orca/windows-registry': false\n  '@orca/windows-security': false\n\n# Link @types/<peer> beside peer dependents (e.g. React/lucide) for global-virtual-store resolution.\naddMissingPeerTypes: true\n\n# Published declarations import undeclared deps; hoisting hid missing types/jest-dom augmentation,\n# but the global virtual store requires explicit package dependencies.\npackageExtensions:\n  '@testing-library/jest-dom':\n    dependencies:\n      '@types/aria-query': ^5.0.1\n    peerDependencies:\n      vitest: '*'\n    peerDependenciesMeta:\n      vitest:\n        optional: true\n  '@tiptap/extension-list':\n    dependencies:\n      prosemirror-model: ^1.0.0\n  # electron-vite reads electron/package.json and the binary path at build and dev time.\n  electron-vite:\n    peerDependencies:\n      electron: '*'\n  electron-updater:\n    peerDependencies:\n      electron: '*'\n    peerDependenciesMeta:\n      electron:\n        optional: true\n  mermaid:\n    dependencies:\n      '@iconify/types': ^2.0.0\n      '@types/d3-selection': ^3.0.0\n      type-fest: ^5.0.0\n  playwright-core:\n    peerDependencies:\n      electron: '*'\n    peerDependenciesMeta:\n      electron:\n        optional: true\n  remark-parse:\n    dependencies:\n      vfile: ^6.0.0\n\noverrides:\n  dompurify@<3.4.17: 3.4.17\n  # Upstream markdown/math packages still require the vulnerable 0.16 line.\n  katex@>=0.11.0 <0.18.2: 0.18.10\n\npatchedDependencies:\n  '@radix-ui/react-collapsible@1.1.20': config/patches/@radix-ui__react-collapsible@1.1.20.patch\n  '@xterm/addon-image@0.10.0-beta.331': config/patches/@xterm__addon-image@0.10.0-beta.331.patch\n  node-pty@1.1.0: config/patches/node-pty@1.1.0.patch\n  '@xterm/addon-ligatures@0.11.0-beta.330': config/patches/@xterm__addon-ligatures@0.11.0-beta.330.patch\n  '@xterm/addon-webgl@0.20.0-beta.329': config/patches/@xterm__addon-webgl@0.20.0-beta.329.patch\n  '@xterm/addon-search@0.17.0-beta.330': config/patches/@xterm__addon-search@0.17.0-beta.330.patch\n  '@xterm/addon-serialize@0.15.0-beta.330': config/patches/@xterm__addon-serialize@0.15.0-beta.330.patch\n  '@xterm/xterm@6.1.0-beta.336': config/patches/@xterm__xterm@6.1.0-beta.336.patch\n  lint-staged@16.4.0: config/patches/lint-staged@16.4.0.patch\n  '@vscode/windows-process-tree@0.8.0': config/patches/@vscode__windows-process-tree@0.8.0.patch\n  i18next-cli@1.74.2: config/patches/i18next-cli@1.74.2.patch\n  ws@8.22.0: config/patches/ws@8.22.0.patch\n  oxlint-plugin-anti-slop@0.1.2: config/patches/oxlint-plugin-anti-slop@0.1.2.patch\n  monaco-editor@0.55.1: config/patches/monaco-editor@0.55.1.patch\n  sprintf-js@1.1.3: config/patches/sprintf-js@1.1.3.patch\n  '@tiptap/extension-list@3.31.3': config/patches/@tiptap__extension-list@3.31.3.patch\n  '@tiptap/markdown@3.31.3': config/patches/@tiptap__markdown@3.31.3.patch\n  vitest@5.1.0: config/patches/vitest@5.1.0.patch\n  pdfjs-dist@6.3.289: config/patches/pdfjs-dist@6.3.289.patch\n  prosemirror-view@1.42.3: config/patches/prosemirror-view@1.42.3.patch\n  glob@13.0.6: config/patches/glob@13.0.6.patch\n  minimatch@9.0.9: config/patches/minimatch@9.0.9.patch\n  minimatch@10.2.5: config/patches/minimatch@10.2.5.patch\n  minimatch@10.2.6: config/patches/minimatch@10.2.6.patch\n  picomatch@4.0.4: config/patches/picomatch@4.0.4.patch\n  picomatch@4.0.7: config/patches/picomatch@4.0.7.patch\n  '@radix-ui/react-menu@2.1.24': config/patches/@radix-ui__react-menu@2.1.24.patch\n  mermaid@11.17.2: config/patches/mermaid@11.17.2.patch\n  serve-sim@0.1.47: config/patches/serve-sim@0.1.47.patch\npermissions:\n  agent-browser:\n    skills: false\n"
+    }
+  },
+  "workflow_samples": {
+    "ci-branch-cache-sweep.yml": {
+      "path": ".github/workflows/ci-branch-cache-sweep.yml",
+      "size_bytes": 5254,
+      "line_count": 114,
+      "truncated": true,
+      "excerpt": "name: Sweep idle branch caches\n\n# Branch-scoped caches serve only their branch, and nothing else removes them before LRU eviction\n# reaches main's shared entries. PR merge refs belong to ci-closed-pr-caches.yml; tag refs to releases.\n# Main keeps only the newest entry per key family plus anything still in use, so superseded\n# lockfile stores and rebuilt artifacts stop evicting current ones at the 10 GB quota.\non:\n  schedule:\n    - cron: '23 */3 * * *'\n  workflow_dispatch:\n    inputs:\n      dry_run:\n        description: List what would be deleted without deleting it.\n        type: boolean\n        default: true\n\npermissions:\n  actions: write\n\nconcurrency:\n  group: ci-branch-cache-sweep\n  cancel-in-progress: false\n\njobs:\n  sweep:\n    runs-on: ubuntu-24.04\n    timeout-minutes: 10\n    steps:\n      # No checkout: only this script runs, with the cache-write token.\n      - uses: actions/github-script@v8\n        env:\n          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}\n        with:\n          script: |\n            const keep = new Set(['refs/heads/main'])\n            const idleMs = 6 * 60 * 60 * 1000\n            const dryRun = process.env.DRY_RUN === 'true'\n            const now = Date.now()\n            const caches = await github.paginate(github.rest.actions.getActionsCacheList, {\n              ...context.repo, per_page: 100\n            })\n            let count = 0\n            let bytes = 0\n            for (const cache of caches) {\n              if (typeof cache.ref !== 'string' || !cache.ref.startsWith('refs/heads/') ||\n                  keep.has(cache.ref)) continue\n              const idle = now - Date.parse(cache.last_accessed_at)\n              // An unparseable access time compares false, so the cache is kept.\n              if (!(idle > idleMs)) continue\n              core.info(`${dryRun ? 'Would delete' : 'Deleting'} ${cache.ref} ${cache.key} ` +\n                `(${cache.size_in_bytes} B, idle ${Math.round(idle / 3600000)} h)`)\n              count += 1\n              bytes += cache.size_in_bytes ?? 0\n              if (dryRun) continue\n              try {\n                await github.rest.actions.deleteActionsCacheById({\n                  ...context.repo, cache_id: cache.id\n                })\n              } catch (error) {\n                if (error.status !== 404) throw error\n              }\n            }\n            core.info(`${dryRun ? 'Would remove' : 'Removed'} ${count} idle branch caches ` +\n              `(${(bytes / 1e9).toFixed(2)} GB)`)\n\n            // A family is the key before its first content hash; exact-key lookups never reach older hashes.\n            const family = (key) => key.split(/-[0-9a-f]{16,}/)[0]\n            const families = new Map()\n            for (const cache of caches) {\n              if (cache.ref !== 'refs/heads/main') continue\n              const entries = families.get(family(cache.key)) ?? []\n              entries.push(cache)\n              families.set(family(cache.key), entries)\n            }\n            let superseded = 0\n            let supersededBytes = 0\n            for (const entries of families.values()) {\n              entries.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))\n              for (const cache of entries.slice(1)) {\n                const idle = now - Date.parse(cache.last_accessed_at)\n                if (!(idle > idleMs)) continue\n                core.info(`${dryRun ? 'Would delete' : 'Deleting'} superseded ${cache.key} ` +\n                  `(${cache.size_in_bytes} B, idle ${Math.round(idle / 3600000)} h)`)\n                superseded += 1\n                supersededBytes += cache.size_in_bytes ?? 0\n                if (dryRun) continue\n                try {\n                  await github.rest.actions.deleteActionsCacheById({\n                    ...context.repo, cache_id: cache.id\n                  })\n                } catch (error) {\n                  if (error.status !== 404) throw error\n                }\n              }\n            }\n            core.info(`${dryRun ? 'Would remove' : 'Removed'} ${superseded} superseded main caches ` +\n              `(${(supersededBytes / 1e9).toFixed(2)} GB)`)\n\n            // Fail visibly before the quota starts evicting main's current entries.\n            const total = caches.reduce((sum, cache) => sum + (cache.size_in_bytes ?? 0), 0)\n            const usedGb = (total - bytes - supersededBytes) / 1e9\n            for (const [name, entries] of families) {\n              const kept = "
+    },
+    "ci-cache-warmup-platform-jobs.yml": {
+      "path": ".github/workflows/ci-cache-warmup-platform-jobs.yml",
+      "size_bytes": 12964,
+      "line_count": 296,
+      "truncated": true,
+      "excerpt": "name: Warm shared CI platform cache jobs\n\non:\n  workflow_call:\n\npermissions:\n  contents: read\n\njobs:\n  warm-linux-runtime:\n    if: github.event_name != 'pull_request'\n    concurrency:\n      group: ci-cache-warmup-linux-runtime-${{ matrix.runner }}-${{ github.event.pull_request.number || github.ref }}\n      cancel-in-progress: ${{ github.event_name != 'schedule' }}\n    strategy:\n      fail-fast: false\n      matrix:\n        # Separate cache stores per pool; native keys are image-scoped, and ci-cache-warmup.yml warms hosted 24.04 x64.\n        runner:\n          [\n            blacksmith-4vcpu-ubuntu-2404-arm,\n            blacksmith-8vcpu-ubuntu-2404,\n            ubuntu-24.04-arm,\n            ubuntu-22.04\n          ]\n    runs-on: ${{ matrix.runner }}\n    timeout-minutes: 10\n    env:\n      ORCA_BACKGROUND_LAUNCH: '1'\n    steps:\n      - uses: actions/checkout@v6\n        with:\n          persist-credentials: false\n      - uses: ./.github/actions/install-node-dependencies\n        with:\n          native-runtime: node\n          node-version: '24'\n          # Hosted consumers of these images restore neither the Electron archive nor the root store.\n          cache-electron-package: ${{ startsWith(matrix.runner, 'blacksmith-') }}\n          cache-pnpm-store: ${{ startsWith(matrix.runner, 'blacksmith-') }}\n          cache-pnpm-store-lookup-only: 'true'\n      - name: Populate shared Electron archive\n        if: startsWith(matrix.runner, 'blacksmith-')\n        run: node config/scripts/electron-installation/platform-layout/install-electron-package-binary.mjs\n      - name: Verify native cache is usable\n        run: node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --check-only\n\n  # node-server's hosted macOS lane needs nothing; this serves hosted macOS PR contracts and updater tests.\n  warm-macos-runtime:\n    if: github.event_name != 'pull_request'\n    concurrency:\n      group: ci-cache-warmup-macos-runtime-${{ github.event.pull_request.number || github.ref }}\n      cancel-in-progress: ${{ github.event_name != 'schedule' }}\n    runs-on: macos-15\n    timeout-minutes: 15\n    env:\n      ORCA_BACKGROUND_LAUNCH: '1'\n    steps:\n      - uses: actions/checkout@v6\n        with:\n          persist-credentials: false\n      - uses: ./.github/actions/install-node-dependencies\n        with:\n          native-runtime: node\n          node-version: '24'\n          # A main-scoped archive stops each macOS PR from saving its own copy.\n          cache-electron-package: 'true'\n          cache-pnpm-store: 'false'\n      - name: Populate shared Electron archive\n        run: node config/scripts/electron-installation/platform-layout/install-electron-package-binary.mjs\n      - name: Verify native cache is usable\n        run: node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --check-only\n\n  warm-windows:\n    concurrency:\n      group: ci-cache-warmup-windows-${{ matrix.os }}-${{ github.event.pull_request.number || github.ref }}\n      cancel-in-progress: ${{ github.event_name != 'schedule' }}\n    strategy:\n      fail-fast: false\n      matrix:\n        os: [windows-2022, windows-11-arm, windows-2025]\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 20\n    env:\n      ORCA_BACKGROUND_LAUNCH: '1'\n    steps:\n      - uses: actions/checkout@v6\n        with:\n          persist-credentials: false\n      - uses: ./.github/actions/install-node-dependencies\n        with:\n          native-runtime: node\n          # Windows PR consumers download packages directly; retain only the build caches.\n          cache-pnpm-store: 'false'\n      - name: Verify native cache is usable\n        run: node config/scripts/native-build/node-addons/ensure-native-runtime.mjs --check-only\n\n      - name: Resolve the Windows Rust build scope\n        id: rust-scope\n        if: runner.arch == 'X64' && matrix.os != 'windows-2025'\n        shell: bash\n        run: node config/scripts/native-build/windows/windows-rust-build-scope.mjs >> \"$GITHUB_OUTPUT\"\n\n      - name: Cache Windows CLI launcher\n        if: runner.arch == 'X64' && matrix.os != 'windows-2025'\n        uses: actions/cache@v5\n        with:\n          path: |\n            native/windows-cli-launcher/.build\n            native/windows-cli-launcher/target\n            native/windows-agent-hook/.build\n            native/windows-agent-hook/target\n            ~/.cargo/registry\n          key: windows-cli-launcher-v2-${{ runner.os }}-${{ runner.arch }}-${{ steps.rust-scope.outputs.toolchain }}-${{ steps.rust-scope.outputs.ap"
+    },
+    "ci-cache-warmup-platforms.yml": {
+      "path": ".github/workflows/ci-cache-warmup-platforms.yml",
+      "size_bytes": 4421,
+      "line_count": 84,
+      "truncated": false,
+      "excerpt": "name: Warm shared CI platform caches\n\non:\n  push:\n    branches: [main]\n    paths:\n      - '.github/workflows/ci-cache-warmup.yml'\n      - '.github/workflows/ci-cache-warmup-platform-jobs.yml'\n      - '.github/workflows/ci-cache-warmup-platforms.yml'\n      - '.github/actions/install-node-dependencies/**'\n      - '.github/actions/restore-pnpm-verification/**'\n      - '.github/actions/prepare-native-runtime/**'\n      - '.github/actions/prepare-windows-cli-launcher/**'\n      - '.github/actions/prepare-windows-agent-hook/**'\n      - 'config/scripts/native-build/windows/windows-rust-build-scope.mjs'\n      - '.github/actions/prepare-orcad-prebuilds/**'\n      - 'config/scripts/native-build/node-addons/native-dependency-lock-digest.mjs'\n      - 'config/scripts/orcad-distribution/prebuilds/orcad-windows-prebuild-cache.mjs'\n      - 'config/scripts/native-build/node-addons/shared-native-build.mjs'\n      - 'config/scripts/artifact-storage/atomic-publication/shared-tree-publish.mjs'\n      - 'config/scripts/native-build-entry*.cjs'\n      - 'config/scripts/native-build/node-addons/native-build-entry*.cjs'\n      - 'config/scripts/orcad-distribution/prebuilds/orcad-prebuild-node-gyp.mjs'\n      - 'config/scripts/native-build/windows/msbuild-file-tracking.mjs'\n      - 'config/scripts/native-build/windows/windows-pe-imports.mjs'\n      - 'config/scripts/orcad-distribution/prebuilds/build-orcad-prebuilds.mjs'\n      - 'config/scripts/orcad-distribution/prebuilds/orcad-prebuild-slot-contents.mjs'\n      - 'config/scripts/orcad-distribution/prebuilds/pinned-node-downloads.mjs'\n      - 'config/scripts/node-runtime/archive-identity/update-node-runtime-pin.mjs'\n      - 'config/scripts/workspace-package-build/build-workspace-packages.mjs'\n      - 'src/shared/node-runtime/node-runtime-pin.ts'\n      - 'src/packages/process-host/**'\n      - '.github/actions/prepare-linux-package-fixture/**'\n      - 'config/docker/headless-serve-shutdown/**'\n      - 'config/docker/cli-launch-contract/**'\n      - 'config/docker/daemon-shutdown-descendants/**'\n      - 'package.json'\n      - 'pnpm-lock.yaml'\n      - 'pnpm-workspace.yaml'\n      - '.npmrc'\n      - 'config/pnpmfile.cjs'\n      - 'config/scripts/native-build/node-addons/ensure-native-runtime.mjs'\n      - 'config/scripts/native-build/windows/initialize-windows-native-toolchain.mjs'\n      - 'config/scripts/native-build/windows/capture-windows-native-environment.cmd'\n      - 'config/scripts/native-build/node-addons/rebuild-native-deps.mjs'\n      - 'config/scripts/native-build/node-addons/node-pty-job-ownership.cjs'\n      - 'config/scripts/native-build/windows/windows-pe-machine.cjs'\n      - 'config/scripts/native-build/windows/windows-process-tree-gyp-rebuild.mjs'\n      - 'config/scripts/native-build/windows/windows-process-tree-creation-time.cjs'\n      - 'config/scripts/electron-installation/platform-layout/install-electron-package-binary.mjs'\n      - 'config/scripts/electron-installation/platform-layout/electron-platform-path.mjs'\n      - 'config/scripts/zip-extractor-command.mjs'\n      - 'src/shared/archives/zip-extractor-command.ts'\n      - 'config/scripts/electron-installation/shared-dist-cache/shared-electron-dist-cache.mjs'\n      - 'config/scripts/artifact-storage/reflink-copy/space-sharing-copy.mjs'\n      - 'config/patches/**'\n      - 'native/windows-notifications/**'\n      - 'native/windows-registry/**'\n      - 'native/windows-security/**'\n      - 'native/windows-cli-launcher/**'\n      - 'native/windows-agent-hook/**'\n      - 'config/scripts/native-build/windows/build-windows-cli-launcher.mjs'\n      - 'config/scripts/native-build/windows/build-windows-agent-hook.mjs'\n      - 'config/scripts/native-build/windows/windows-rust-executable-build.mjs'\n      - 'resources/build/icon.ico'\n      - 'mobile/Gemfile'\n      - 'mobile/Gemfile.lock'\n  pull_request:\n    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft]\n    paths:\n      - '.github/workflows/ci-cache-warmup-platforms.yml'\n      - '.github/workflows/ci-cache-warmup-platform-jobs.yml'\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ci-cache-warmup-platforms-${{ github.event.pull_request.number || github.ref }}\n  cancel-in-progress: ${{ github.event_name == 'pull_request' }}\n\njobs:\n  warm-platforms:\n    if: github.event_name != 'pull_request' || github.event.pull_request.draft != true\n    uses: ./.github/workflows/ci-cache-warmup-platform-jobs.yml\n"
+    },
+    "ci-cache-warmup.yml": {
+      "path": ".github/workflows/ci-cache-warmup.yml",
+      "size_bytes": 4962,
+      "line_count": 112,
+      "truncated": true,
+      "excerpt": "name: Warm shared CI caches\n\non:\n  # Cache-input pushes seed immediately; this schedule repairs eviction and image changes.\n  schedule:\n    - cron: '41 */6 * * *'\n  workflow_dispatch:\n  push:\n    branches: [main]\n    paths:\n      - '.github/workflows/ci-cache-warmup.yml'\n      - '.github/workflows/ci-cache-warmup-platform-jobs.yml'\n      - '.github/workflows/ci-cache-warmup-platforms.yml'\n      - '.github/actions/install-node-dependencies/**'\n      - '.github/actions/restore-pnpm-verification/**'\n      - '.github/actions/prepare-native-runtime/**'\n      - '.github/actions/prepare-windows-cli-launcher/**'\n      - '.github/actions/prepare-headless-compiler/**'\n      - 'config/scripts/runtime-verification/headless-detector/headless-detector-compiler-cache.mjs'\n      - '.github/actions/prepare-linux-package-fixture/**'\n      - '.github/actions/prepare-wayland-clipboard/**'\n      - 'native/wayland-clipboard/**'\n      - 'config/scripts/native-build/linux/build-wayland-clipboard.mjs'\n      - 'native/provider-exec/**'\n      - 'config/scripts/native-build/posix/build-provider-exec.mjs'\n      - 'native/journal-file-lock/**'\n      - 'config/scripts/native-build/build-journal-file-lock.mjs'\n      - 'config/docker/headless-serve-shutdown/**'\n      - 'config/docker/cli-launch-contract/**'\n      - 'config/docker/daemon-shutdown-descendants/**'\n      - 'package.json'\n      - 'pnpm-lock.yaml'\n      - 'pnpm-workspace.yaml'\n      - '.npmrc'\n      - 'config/pnpmfile.cjs'\n      - 'config/scripts/native-build/node-addons/ensure-native-runtime.mjs'\n      - 'config/scripts/native-build/windows/initialize-windows-native-toolchain.mjs'\n      - 'config/scripts/native-build/windows/capture-windows-native-environment.cmd'\n      - 'config/scripts/native-build/node-addons/rebuild-native-deps.mjs'\n      - 'config/scripts/native-build/node-addons/node-pty-job-ownership.cjs'\n      - 'config/scripts/native-build/windows/windows-pe-machine.cjs'\n      - 'config/scripts/native-build/windows/windows-process-tree-gyp-rebuild.mjs'\n      - 'config/scripts/native-build/windows/windows-process-tree-creation-time.cjs'\n      - 'config/scripts/electron-installation/platform-layout/install-electron-package-binary.mjs'\n      - 'config/scripts/electron-installation/platform-layout/electron-platform-path.mjs'\n      - 'config/scripts/zip-extractor-command.mjs'\n      - 'src/shared/archives/zip-extractor-command.ts'\n      - 'config/scripts/electron-installation/shared-dist-cache/shared-electron-dist-cache.mjs'\n      - 'config/scripts/artifact-storage/reflink-copy/space-sharing-copy.mjs'\n      - 'config/patches/**'\n      - 'native/windows-notifications/**'\n      - 'native/windows-registry/**'\n      - 'native/windows-security/**'\n  pull_request:\n    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft]\n    paths:\n      - '.github/workflows/ci-cache-warmup.yml'\n      - '.github/actions/prepare-headless-compiler/**'\n      - 'config/scripts/runtime-verification/headless-detector/headless-detector-compiler-cache.mjs'\n      - '.github/actions/prepare-wayland-clipboard/**'\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ci-cache-warmup-${{ github.event.pull_request.number || github.run_id }}\n  cancel-in-progress: ${{ github.event_name == 'pull_request' }}\n\njobs:\n  warm:\n    if: github.event_name != 'pull_request' || github.event.pull_request.draft != true\n    concurrency:\n      group: ci-cache-warmup-linux-x64-${{ matrix.runner }}-${{ github.event.pull_request.number || github.ref }}\n      cancel-in-progress: ${{ github.event_name != 'schedule' }}\n    # Blacksmith and GitHub-hosted jobs restore from separate cache stores; warm both.\n    strategy:\n      fail-fast: false\n      matrix:\n        runner: [blacksmith-4vcpu-ubuntu-2404, ubuntu-24.04]\n    runs-on: ${{ matrix.runner }}\n    timeout-minutes: 10\n    env:\n      ORCA_BACKGROUND_LAUNCH: '1'\n    steps:\n      - uses: actions/checkout@v6\n        with:\n          persist-credentials: false\n\n      # Default-branch caches can be restored by every PR; PR caches cannot.\n      - uses: ./.github/actions/install-node-dependencies\n        with:\n          native-runtime: node\n          node-version: '24'\n          cache-electron-package: 'true'\n          # No hosted job restores the root store, so keep it out of GitHub's cache quota.\n          cache-pnpm-store: ${{ startsWith(matrix.runner, 'blacksmith-') }}\n          cache-pnpm-store-lookup-only: 'true'\n\n      - uses: ./.github/actions/prepare-headless-compiler"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T21:28:26Z",
+      "oldest": "2026-11-25T18:17:50Z"
+    },
+    "conventional_pct": 88.0,
+    "fix_revert_pct": 70.0,
+    "ai_coauthor_pct": 0.0,
+    "top_recent_authors": [
+      [
+        "AmoabaKelvin",
+        14
+      ],
+      [
+        "Minidoracat",
+        6
+      ],
+      [
+        "Jinwoo-H",
+        6
+      ],
+      [
+        "nwparker",
+        5
+      ],
+      [
+        "brennanb2025",
+        5
+      ],
+      [
+        "Pr1p",
+        4
+      ],
+      [
+        "dbsghdz1",
+        3
+      ],
+      [
+        "AmethystLiang",
+        2
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "282fae0b",
+        "date": "2026-11-25T21:28:26Z",
+        "author": "AmethystLiang",
+        "subject": "fix(mobile): cap kept item answer cards so ones closed elsewhere don't pile up (STA-18216) (#49264)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a0af8c2e",
+        "date": "2026-11-25T21:27:21Z",
+        "author": "dbsghdz1",
+        "subject": "fix(bots): truncate long names and subtitles in bot pick lists instead of overflowing (#49261)",
+        "ai_signal": false
+      },
+      {
+        "sha": "cfd4b536",
+        "date": "2026-11-25T21:26:33Z",
+        "author": "nwparker",
+        "subject": "fix(terminal): paste CF_HDROP-only clipboard files into the terminal on Windows (#49277)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2f23283e",
+        "date": "2026-11-25T21:21:00Z",
+        "author": "vinioo",
+        "subject": "fix(tasks): keep Linear attribute filters when returning to the Tasks page (#49214)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2bb4040c",
+        "date": "2026-11-25T21:20:01Z",
+        "author": "orca-remote-automation[bot]",
+        "subject": "Refine the compact usage bar: dim labels and icons, bright tabular numbers (#49276)",
+        "ai_signal": false
+      },
+      {
+        "sha": "7b9b27e5",
+        "date": "2026-11-25T21:15:24Z",
+        "author": "Minidoracat",
+        "subject": "fix(i18n): make existing zh-Hant strings consistent (#49196)",
+        "ai_signal": false
+      },
+      {
+        "sha": "658f310f",
+        "date": "2026-11-25T21:15:10Z",
+        "author": "brennanb2025",
+        "subject": "fix(connectors): tell no new turn from an ended turn's own status row (#48604)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c07fce2a",
+        "date": "2026-11-25T21:13:49Z",
+        "author": "brennanb2025",
+        "subject": "fix(chat): resume usage-limited chats after a relaunch (#47245)",
+        "ai_signal": false
+      },
+      {
+        "sha": "89960aa6",
+        "date": "2026-11-25T21:13:40Z",
+        "author": "brennanb2025",
+        "subject": "perf(connector-replies): stop answered turn scans early and read a turn's answered messages once (#49272)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4ccbfc2f",
+        "date": "2026-11-25T20:59:45Z",
+        "author": "Pr1p",
+        "subject": "fix(i18n): translate the Voice settings host notice in Simplified Chinese (#49222)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d9a3b555",
+        "date": "2026-11-25T20:59:11Z",
+        "author": "dbsghdz1",
+        "subject": "fix(dashboard): keep the in-window Agents board clear of the right sidebar (#49224)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6c9e3db1",
+        "date": "2026-11-25T20:58:30Z",
+        "author": "ggpepperstech",
+        "subject": "fix(browser): name notes and never-save sites in the Delete all password data confirmation (#49237)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2994440c",
+        "date": "2026-11-25T20:47:47Z",
+        "author": "Jinwoo-H",
+        "subject": "Revert \"Compact item headers and jump to the open question (#48081)\" (#49260)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c6409723",
+        "date": "2026-11-25T20:42:59Z",
+        "author": "brennanb2025",
+        "subject": "Remove the real-person filter from avatar generation (#49205)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a52a1479",
+        "date": "2026-11-25T20:41:51Z",
+        "author": "nwparker",
+        "subject": "fix(i18n): join translated text with locale-aware separators in Uninstall and Workspace Cleanup (#49253)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e682e1bb",
+        "date": "2026-11-25T20:41:01Z",
+        "author": "nwparker",
+        "subject": "fix(mcp): translate the org-blocked Claude line in the MCP server Agents list (#49243)",
+        "ai_signal": false
+      },
+      {
+        "sha": "98014fe3",
+        "date": "2026-11-25T20:35:37Z",
+        "author": "YannVanneth",
+        "subject": "fix(speech): show \"Saved key kept\" hint for equivalent OpenAI-compatible base URLs (#49231)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d94ab6cc",
+        "date": "2026-11-25T20:34:51Z",
+        "author": "Jinwoo-H",
+        "subject": "fix(source-control): never run a Codex model the signed-in account can't use (#49210)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0ff1d048",
+        "date": "2026-11-25T20:24:59Z",
+        "author": "Minidoracat",
+        "subject": "fix(i18n): add 1,275 missing zh-Hant strings outside Settings (#49190)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d351142a",
+        "date": "2026-11-25T20:19:10Z",
+        "author": "nwparker",
+        "subject": "fix(settings): give diff whitespace search its own tab-character keyword (#49239)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "nwparker",
+      "contributions": 8257
+    },
+    {
+      "login": "brennanb2025",
+      "contributions": 3619
+    },
+    {
+      "login": "OrcaWin",
+      "contributions": 3085
+    },
+    {
+      "login": "AmethystLiang",
+      "contributions": 2660
+    },
+    {
+      "login": "Jinwoo-H",
+      "contributions": 2647
+    },
+    {
+      "login": "AmoabaKelvin",
+      "contributions": 1553
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 795
+    },
+    {
+      "login": "buf0-bot[bot]",
+      "contributions": 158
+    },
+    {
+      "login": "Pr1p",
+      "contributions": 119
+    },
+    {
+      "login": "innocarpe",
+      "contributions": 113
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "android-v0.0.71",
+      "published_at": "2026-11-25T17:10:55Z",
+      "name": "Orca Mobile Android android-v0.0.71"
+    },
+    {
+      "tag": "v1.4.274",
+      "published_at": "2026-11-24T22:52:16Z",
+      "name": "v1.4.274"
+    },
+    {
+      "tag": "v1.4.273",
+      "published_at": "2026-11-24T10:20:48Z",
+      "name": "v1.4.273"
+    },
+    {
+      "tag": "android-v0.0.70",
+      "published_at": "2026-11-24T01:09:26Z",
+      "name": "Orca Mobile Android android-v0.0.70"
+    },
+    {
+      "tag": "v1.4.272",
+      "published_at": "2026-11-23T12:35:31Z",
+      "name": "v1.4.272"
+    }
+  ]
+}

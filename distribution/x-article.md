@@ -1,14 +1,14 @@
-# I Audited 34 Open-Source AI Coding Repos (2.90M Stars). Here's What Actually Works.
+# I Audited 35 Open-Source AI Coding Repos (3.04M Stars). Here's What Actually Works.
 
-*Primary-source engineering teardown of 24 coding harnesses & orchestrators (`t3code`, `openclaw`, `opencode`, `pi`, `codex`, `gemini-cli`, `OpenHands`, `cline`, `goose`, `paperclip`, `paseo`, `happy`, `cmux`, `Paradev`, `emdash`, `oh-my-openagent`, `beads`, `symphony`, `bolt.diy`, `claude-squad`, `costrict`, `1code`, `vibe-kanban`, `Roo-Code`) plus 10 leading agent skill, spec & sandbox stacks (`mattpocock/skills`, `mattpocock/sandcastle`, `obra/superpowers`, `github/spec-kit`, `garrytan/gstack`, `Fission-AI/OpenSpec`, `gsd-build/get-shit-done`, `bmad-code-org/BMAD-METHOD`, `backnotprop/pstack`, `michael-denyer/pstack-claude`).*
+*Primary-source engineering teardown of 25 coding harnesses & orchestrators (`t3code`, `orca`, `openclaw`, `opencode`, `pi`, `codex`, `gemini-cli`, `OpenHands`, `cline`, `goose`, `paperclip`, `paseo`, `happy`, `cmux`, `Paradev`, `emdash`, `oh-my-openagent`, `beads`, `symphony`, `bolt.diy`, `claude-squad`, `costrict`, `1code`, `vibe-kanban`, `Roo-Code`) plus 10 leading agent skill, spec & sandbox stacks (`mattpocock/skills`, `mattpocock/sandcastle`, `obra/superpowers`, `github/spec-kit`, `garrytan/gstack`, `Fission-AI/OpenSpec`, `gsd-build/get-shit-done`, `bmad-code-org/BMAD-METHOD`, `backnotprop/pstack`, `michael-denyer/pstack-claude`).*
 
 ---
 
 Most advice on running AI coding agents comes from toy demos or blog posts.
 
-I wanted real receipts, so I pulled primary-source snapshots via the GitHub API across **34 open-source agentic coding, harness, orchestration, and skill-stack repositories** (**2.90M combined stars** as of November 2026). I inspected their actual `AGENTS.md` and `CLAUDE.md` files, linter plugins, CI workflows, dependency configs, contributor gates, eval labs, and recent commit histories.
+I wanted real receipts, so I pulled primary-source snapshots via the GitHub API across **35 open-source agentic coding, harness, orchestration, and skill-stack repositories** (**3.04M combined stars** as of November 2026). I inspected their actual `AGENTS.md` and `CLAUDE.md` files, linter plugins, CI workflows, dependency configs, contributor gates, eval labs, and recent commit histories.
 
-Four of those 34 repos have already archived or begun sunsetting. Several others are shipping **50 commits every 2 to 15 hours** without melting down.
+Four of those 35 repos have already archived or begun sunsetting. Several others (`openclaw` at 2.3 hrs, `stablyai/orca` at 3.2 hrs, `t3code` at 7.0 hrs) are shipping **50 commits every few hours** without melting down.
 
 The gap between the two groups comes down to eight concrete engineering realities. Every one of them is stealable this week.
 
@@ -89,7 +89,7 @@ Five repos built mechanical defenses against this:
 2. **Diff-Scoped Mutation Testing (`OpenHands`):** `stryker-diff.mjs` runs mutation testing strictly on changed lines so AI-written tests must actually kill mutants instead of padding line coverage.
 3. **Uncommitted Local QA Evidence + `sha256sum` Proof (`oh-my-openagent`):** Agents must drive the real harness in an isolated sandbox, save plain-text captures under gitignored `.omo/evidence/`, and paste decisive excerpts + `sha256sum` lines in the PR body. A CI audit (`tracked-evidence-paths-audit.test.ts`) fails the build if any evidence file is accidentally committed. (`t3code` enforces the same rule for `.github/pr-assets`.)
 4. **Honest Disclosure & Anti-Vacuous Checks (`cmux`, `beads`):** `cmux` requires an `### Observed / Not run` section in every PR body and explicitly warns that *"a skipped job is green and is not coverage."* `beads` mandates verifying that filtered test runs actually executed >0 subtests and answering `NOT_ENOUGH_INFO` when evidence runs out.
-5. **Anti-Fragile Test Bars (`gstack`, `gsd`):** `gstack`'s `test-value-bar` bans fragile prose-pin unit tests, and `gsd`'s `lint-no-source-grep.cjs` forbids tests that merely `fs.readFileSync` + regex source strings instead of running behavior.
+5. **Anti-Test-Slop & Anti-Fragile Test Bars (`orca`, `gstack`, `gsd`):** `stablyai/orca` (`137.8k★`, 50 commits / 3.2 hrs) puts **`"Tests are the exception"`** right in `AGENTS.md` — banning UI/mock unit tests, running zero-checkout `pr-test-loc.yml` on free `ubuntu-slim` runners to post test-vs-prod LoC tables on every PR, enforcing a mandatory `## Performance` PR section (`pr-description.yml`), and validating diff-based test selection in shadow mode (`unit-selection-evidence.yml`) against its 24-shard full suite. `gstack`'s `test-value-bar` bans fragile prose-pin unit tests, and `gsd`'s `lint-no-source-grep.cjs` forbids regex-grepping source strings instead of running behavior.
 
 ---
 
@@ -169,4 +169,4 @@ If you run a TypeScript monorepo with coding agents today, start here:
 
 ---
 
-*All 34 repo assessments, raw GitHub API snapshots, and the full tiered playbook are tracked in `agentic-oss-assessments`.*
+*All 35 repo assessments, raw GitHub API snapshots, and the full tiered playbook are tracked in `agentic-oss-assessments`.*

@@ -1,14 +1,14 @@
 <prompt>
 <goal>
-Audit this repository and upgrade its agentic engineering guardrails using the proven patterns from 34 top open-source AI coding repos & skill stacks (2.90M combined stars). Do not add speculative complexity; ship only the highest-ROI mechanical checks that fit this stack.
+Audit this repository and upgrade its agentic engineering guardrails using the proven patterns from 35 top open-source AI coding repos & skill stacks (3.04M combined stars). Do not add speculative complexity; ship only the highest-ROI mechanical checks that fit this stack.
 </goal>
 
 <evidence>
-Grounded in primary-source audits of 34 repos (t3code, openclaw, opencode, pi, codex, gemini-cli, OpenHands, cline, goose, paperclip, paseo, happy, cmux, Paradev, emdash, oh-my-openagent, beads, symphony, bolt.diy, claude-squad, costrict, 1code, vibe-kanban, Roo-Code, mattpocock/skills, mattpocock/sandcastle, obra/superpowers, github/spec-kit, garrytan/gstack, Fission-AI/OpenSpec, gsd-build/get-shit-done, bmad-code-org/BMAD-METHOD, backnotprop/pstack, michael-denyer/pstack-claude):
+Grounded in primary-source audits of 35 repos (t3code, stablyai/orca, openclaw, opencode, pi, codex, gemini-cli, OpenHands, cline, goose, paperclip, paseo, happy, cmux, Paradev, emdash, oh-my-openagent, beads, symphony, bolt.diy, claude-squad, costrict, 1code, vibe-kanban, Roo-Code, mattpocock/skills, mattpocock/sandcastle, obra/superpowers, github/spec-kit, garrytan/gstack, Fission-AI/OpenSpec, gsd-build/get-shit-done, bmad-code-org/BMAD-METHOD, backnotprop/pstack, michael-denyer/pstack-claude):
 - Mechanical lint/CI gates beat prompt stacks 10-to-1 (gstack's own 100-bug benchmark: 58 solved with gstack vs. 61/99 without).
-- Open trackers drown (codex: 28,619 issues) vs. gated trackers (pi: 307; superpowers: 94% PR rejection rate stated upfront).
+- Open trackers drown (codex: 28,619; orca: 9,918) vs. gated trackers (pi: 307; superpowers: 94% PR rejection rate stated upfront).
 - CI sweet spot is 8-30 focused workflows (0 -> 1code archived in 7 wks; 231 -> cmux spends ~80% of commits fixing CI).
-- 4/34 repos archived or sunset (scope sprawl, missing gates, or supply-chain compromise in gsd-build/get-shit-done).
+- 4/35 repos archived or sunset (scope sprawl, missing gates, or supply-chain compromise in gsd-build/get-shit-done).
 </evidence>
 
 <agents_md>

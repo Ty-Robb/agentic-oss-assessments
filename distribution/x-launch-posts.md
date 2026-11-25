@@ -11,7 +11,7 @@
 
 ## Main Post (Attach `x-card-1-prompt.png` + `x-card-2-infographic.png`)
 
-> I audited 34 open-source AI coding repos (2.90M combined stars) via the GitHub API — harnesses, orchestrators, and top skill stacks (`t3code`, `openclaw`, `opencode`, `pi`, `mattpocock/skills`, `sandcastle`, `gstack`, `pstack`, `superpowers`, `spec-kit`).
+> I audited 35 open-source AI coding repos (3.04M combined stars) via the GitHub API — harnesses, orchestrators, and top skill stacks (`t3code`, `orca`, `openclaw`, `opencode`, `pi`, `mattpocock/skills`, `sandcastle`, `gstack`, `pstack`, `superpowers`, `spec-kit`).
 >
 > 4 already archived or sunset. `gstack`'s own benchmark showed 58/100 bugs fixed vs. 61/99 without it — because mechanical gates beat prompt stacks 10-to-1.
 >

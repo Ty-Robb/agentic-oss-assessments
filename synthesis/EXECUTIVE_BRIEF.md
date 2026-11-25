@@ -1,6 +1,6 @@
-# Everything You Need to Know: Lessons from 34 Agentic OSS Repositories
+# Everything You Need to Know: Lessons from 35 Agentic OSS Repositories
 
-*Executive brief distilled from primary-source GitHub API audits of **34 open-source coding agent, harness, orchestration, and skill-stack repositories** (**2.90M combined stars**, snapshot date: **2026-11-25**). For the full 34-repo matrix, raw metrics, and Week 1–3 implementation plan, see [`PLAYBOOK.md`](PLAYBOOK.md).*
+*Executive brief distilled from primary-source GitHub API audits of **35 open-source coding agent, harness, orchestration, and skill-stack repositories** (**3.04M combined stars**, snapshot date: **2026-11-25**). For the full 35-repo matrix, raw metrics, and Week 1–3 implementation plan, see [`PLAYBOOK.md`](PLAYBOOK.md).*
 
 ---
 

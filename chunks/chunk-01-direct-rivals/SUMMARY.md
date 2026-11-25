@@ -7,6 +7,7 @@
 | Repo | Stars | Status | Primary Stack | `AGENTS.md` / `CLAUDE.md` | Lint / Static Gates | CI Workflows | Last-50 Velocity & Hygiene |
 | --- | ---: | --- | --- | --- | --- | ---: | --- |
 | **`pingdotgg/t3code`** *(baseline)* | 78.8k | Active | TS (Effect-TS, Vite+, Electron, RN) | 157 lines + `@AGENTS.md` + `docs/internals/` + 4 skills | Custom `oxlint` plugin, `knip`, `check:changed`, `evals/`, PR limits/vouch | 29 | 50 commits / **7 hrs** · 100% conv · 86% fix · 12% AI |
+| **[`stablyai/orca`](orca.md)** | **137.8k** | Active | TS (143.7 MB, Electron, Web, Mobile, `orcad`, Ghostty, native Win addons) | Operational `AGENTS.md` + `docs/agents-md-refs/` (`"Tests are the exception"`) | 5 custom `oxlint` perf/IME plugins, `main-blocking-work`, `pr-test-loc`, `pr-description` perf gate, shadow test selection, 3d npm cooldown | **67** | 50 commits / **3.2 hrs** · 88% conv · 70% fix · 0% AI |
 | **[`ParadevAI/Paradev`](paradev.md)** | 16.6k | Active | TS (Bun, Turbo, Electron, Next, Expo, tRPC, Drizzle) + TLA+ | 292 lines + `@AGENTS.md` + 16 `.agents/skills/` | `biome.jsonc` domain `noRestrictedImports` ratchets, `sherif`, `vale`, `check:i18n`, `check:durable-objects` | 22 | 50 commits / **3.2 days** · 98% conv · 36% fix · 0% AI |
 | **[`BloopAI/vibe-kanban`](vibe-kanban.md)** | 28.8k | **Sunsetting** | 30-crate Rust (`axum`/`sqlx`/`ts-rs`/`tauri`) + pnpm React | 59 lines + duplicated 59-line `CLAUDE.md` + crate guides | `clippy -D warnings`, `ts-rs` typegen check, `sqlx` offline check, i18n & legacy-path ratchets | 9 | 50 commits / **7.5 mos** · 64% conv · 28% fix · 46% AI |
 | **[`generalaction/emdash`](emdash.md)** | 6.3k | Active | TS (pnpm, Nx, Electron, Drizzle, Wire RPC, MobX) | 419 lines + `@AGENTS.md` + `agents/` + `CONTEXT.md` | Custom `oxlint` plugin (6 rules), `respectEslintDisableDirectives: false`, self-pruning allowlists, `nx affected` | 6 | 50 commits / **22 days** · 50% conv · 22% fix · 6% AI |
@@ -30,7 +31,6 @@
    - Paradev's `paradev schema` JSON introspection and CDP port verification (`DESKTOP_VITE_PORT` check) make self-testing safe when 5+ worktrees run concurrently.
    - 1Code's local NDJSON log collector (`localhost:7799/log`) is a cheap, high-leverage debugging primitive worth adopting.
 
-4. **T3 Code's unique moats vs. every direct rival in Chunk 1:**
-   - **Review-capacity defense:** Only T3 Code has an explicit anti-slop governance system (`CONTRIBUTING.md`, `VOUCHED.td`, `pr-limits.yml`, `pr-size.yml`, `agent-context-budget.yml`, `contribution-triage` skill).
-   - **Model-facing evals:** None of the 4 Chunk 1 rivals have an `evals/` suite testing how real LLMs behave with their prompts/MCP tools.
-   - **Shipping velocity:** T3 Code's last 50 commits landed in **7 hours** vs. Paradev's 3.2 days and Emdash's 22 days — though T3 Code's 86% `fix:` ratio reflects rapid bug-burn stabilization on a massive 226 MB TS codebase.
+4. **T3 Code vs. Orca (the two heavyweight direct rivals in Chunk 1):**
+   - **Orca (`137.8k★`, 50 commits / 3.2 hrs)** is the largest and fastest-moving direct rival on GitHub, leading the cohort on **performance-contract CI**, anti-test-slop discipline (`"Tests are the exception"` + zero-checkout `pr-test-loc.yml`), mandatory `## Performance` PR checks, custom `oxlint` perf/IME plugins (`quadratic-buffer-concat`, `ime-enter-guard`), hidden-window CDP/fixture UI checks, and Windows crash/update survival E2E — at the cost of `67` workflows and `9,918` open issues.
+   - **T3 Code (`78.8k★`, 50 commits / 7.0 hrs)** stays leaner (`29` workflows, `3,681` open issues) and holds distinct moats in **model-facing `evals/`** and structured anti-slop contributor vouching (`VOUCHED.td`, `pr-limits.yml`, `contribution-triage`).

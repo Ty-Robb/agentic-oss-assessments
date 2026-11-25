@@ -2,14 +2,14 @@
 
 > **Live Website:** **[https://agentic-oss-site.vercel.app](https://agentic-oss-site.vercel.app)** — Interactive 34-repo explorer, charts, one-click Repo Upgrade Prompt, Playbook, Executive Brief, and individual audit pages.
 
-Structured, primary-source engineering and agent-workflow assessments of **T3 Code rivals**, **flagship AI coding harnesses**, **orchestration platforms**, and **agent skill/workflow stacks** (**34 repositories** — 33 assessed across 6 chunks + `pingdotgg/t3code` as baseline; **2.90M combined GitHub stars** as of **2026-11-25**).
+Structured, primary-source engineering and agent-workflow assessments of **T3 Code rivals**, **flagship AI coding harnesses**, **orchestration platforms**, and **agent skill/workflow stacks** (**35 repositories** — 34 assessed across 6 chunks + `pingdotgg/t3code` as baseline; **3.04M combined GitHub stars** as of **2026-11-25**).
 
 Every assessment inspects the real repository via GitHub API (file trees, `AGENTS.md`/`CLAUDE.md`, CI workflows, lint/type/eval gates, commit history, contributor distribution, and architectural boundaries) — not marketing copy.
 
 ## Start Here
 
-- **[`synthesis/EXECUTIVE_BRIEF.md`](synthesis/EXECUTIVE_BRIEF.md)** — 5-minute distilled briefing covering everything learned across all 34 repos.
-- **[`synthesis/PLAYBOOK.md`](synthesis/PLAYBOOK.md)** — Master 34-repo comparison matrix, 6 empirical laws of agentic OSS, tiered **Steal Immediately / Steal as You Scale / Anti-Patterns** playbook, and a concrete Week 1–3 rollout plan for TypeScript monorepos.
+- **[`synthesis/EXECUTIVE_BRIEF.md`](synthesis/EXECUTIVE_BRIEF.md)** — 5-minute distilled briefing covering everything learned across all 35 repos.
+- **[`synthesis/PLAYBOOK.md`](synthesis/PLAYBOOK.md)** — Master 35-repo comparison matrix, 6 empirical laws of agentic OSS, tiered **Steal Immediately / Steal as You Scale / Anti-Patterns** playbook, and a concrete Week 1–3 rollout plan for TypeScript monorepos.
 - **[`distribution/x-article.md`](distribution/x-article.md)** & **[`distribution/x-launch-posts.md`](distribution/x-launch-posts.md)** — Ready-to-publish X Article, 2-card light-mode Research Note launch kit, copy-paste prompt (`upgrade-prompt.txt`), and retina PNG visuals under `distribution/assets/`.
 - **[`RUBRIC.md`](RUBRIC.md)** — Standardized 5-axis evaluation rubric and `pingdotgg/t3code` reference baseline.
 
@@ -18,7 +18,7 @@ Every assessment inspects the real repository via GitHub API (file trees, `AGENT
 | Chunk | Theme | Repositories | Combined Stars | Status | Summary |
 | --- | --- | --- | ---: | --- | --- |
 | Baseline | Reference Control Plane | `pingdotgg/t3code` | 78.8k | Reference | [RUBRIC.md](RUBRIC.md) |
-| **Chunk 1** | Direct T3 Code Rivals (Worktree GUIs) | `ParadevAI/Paradev`, `BloopAI/vibe-kanban`, `generalaction/emdash`, `21st-dev/1code` | 57.3k | Done | [Chunk 1 Summary](chunks/chunk-01-direct-rivals/SUMMARY.md) |
+| **Chunk 1** | Direct T3 Code Rivals (Worktree GUIs) | `stablyai/orca`, `ParadevAI/Paradev`, `BloopAI/vibe-kanban`, `generalaction/emdash`, `21st-dev/1code` | 195.1k | Done | [Chunk 1 Summary](chunks/chunk-01-direct-rivals/SUMMARY.md) |
 | **Chunk 2** | Flagship Open-Source Agent Harnesses | `anomalyco/opencode`, `earendil-works/pi`, `openai/codex`, `google-gemini/gemini-cli` | 598.4k | Done | [Chunk 2 Summary](chunks/chunk-02-agent-harnesses/SUMMARY.md) |
 | **Chunk 3** | Mature Autonomous & IDE-Native Heavyweights | `cline/cline`, `RooCodeInc/Roo-Code`, `OpenHands/OpenHands`, `aaif-goose/goose` | 247.4k | Done | [Chunk 3 Summary](chunks/chunk-03-autonomous-and-ide/SUMMARY.md) |
 | **Chunk 4** | Agent-Native Orchestration & Memory | `openclaw/openclaw`, `paperclipai/paperclip`, `openai/symphony`, `gastownhall/beads` | 569.3k | Done | [Chunk 4 Summary](chunks/chunk-04-agent-native-orchestration/SUMMARY.md) |

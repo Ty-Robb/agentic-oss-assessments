@@ -1,6 +1,6 @@
 # Agentic OSS Engineering Playbook
 
-*Synthesized from primary-source GitHub API audits of **34 open-source agentic coding, orchestration, and skill-stack repositories** (**2,903,100 / ~2.90M combined GitHub stars**, snapshot date: **2026-11-25**).*
+*Synthesized from primary-source GitHub API audits of **35 open-source agentic coding, orchestration, and skill-stack repositories** (**3,040,947 / ~3.04M combined GitHub stars**, snapshot date: **2026-11-25**).*
 
 Every recommendation below is backed by real configuration files, CI workflows, lint plugins, and commit histories captured under [`data/`](../data/). Nothing here is taken from marketing pages or blog posts.
 
@@ -45,11 +45,12 @@ Every recommendation below is backed by real configuration files, CI workflows, 
 
 ---
 
-## Master 34-Repository Matrix
+## Master 35-Repository Matrix
 
 | Chunk | Repository | Stars | Open Issues | Status | Primary Stack | Workflows | Last-50 Velocity | Signature Practice to Know |
 | --- | --- | ---: | ---: | --- | --- | ---: | --- | --- |
 | Base | [`pingdotgg/t3code`](../RUBRIC.md) | 78.8k | 3,681 | Active | TS (226.7 MB, Effect, Vite+, Electron, RN) | 29 | 50 / **7.0 hrs** | `oxlint-plugin-t3code`, `VOUCHED.td`, `evals/`, `agent-context-budget` |
+| C1 | [`stablyai/orca`](../chunks/chunk-01-direct-rivals/orca.md) | **137.8k** | 9,918 | Active | TS (143.7 MB, Electron, Web, Mobile, `orcad`, Ghostty) | 67 | 50 / **3.2 hrs** | `"Tests are the exception"`, `pr-test-loc`, `## Performance` CI gate, `quadratic-buffer-concat` oxlint |
 | C1 | [`ParadevAI/Paradev`](../chunks/chunk-01-direct-rivals/paradev.md) | 16.6k | 1,263 | Active | TS (35.2 MB, Bun, Turbo, Electron/Next/Expo, Drizzle) + TLA+ | 22 | 50 / **3.2 days** | Domain `noRestrictedImports` in Biome, `paradev schema`, 2-min test budget |
 | C1 | [`BloopAI/vibe-kanban`](../chunks/chunk-01-direct-rivals/vibe-kanban.md) | 28.8k | 537 | **Sunsetting** | 30-crate Rust (`axum`/`sqlx`/`ts-rs`/`tauri`) + React | 9 | 50 / **7.5 mos** | `ts-rs` codegen check, `sqlx` offline check (warning: scope sprawl) |
 | C1 | [`generalaction/emdash`](../chunks/chunk-01-direct-rivals/emdash.md) | 6.3k | 92 | Active | TS (21.2 MB, pnpm, Nx, Electron, Drizzle, MobX) | 6 | 50 / **22 days** | `respectEslintDisableDirectives: false`, self-pruning allowlists, sole-writer DB lint |
@@ -99,7 +100,7 @@ These practices require minimal infrastructure and pay off on day one for any te
 - **Rule:** Put task-specific checklists in `.agents/skills/` or `rules/*.mdc` with 1-line frontmatter descriptions rather than stuffing everything into root `AGENTS.md`. Maintain a compact **`REVIEW.md`** containing the top 10–20 real bugs code review keeps catching, and require agents to check their diff against it before opening a PR.
 
 ### 3. Anti-Slop & Domain-Invariant Custom Lint Rules (with Debt Ratchets)
-- **Sources:** `opencode` (`anti-slop` oxlint plugin + `ast-grep`), `openclaw` (`correctness`/`perf`/`suspicious` = `"error"`), `Paradev` (`noRestrictedImports` banning sync subprocesses, raw sandbox handles, cross-tenant queries), `emdash` (`respectEslintDisableDirectives: false` + sole-writer DB table bans + `prune:boundary-allowlists`), `paseo` (per-file, per-API allowlists + unit-tested lint plugin).
+- **Sources:** `opencode` (`anti-slop` oxlint plugin + `ast-grep`), `openclaw` (`correctness`/`perf`/`suspicious` = `"error"`), `orca` (`quadratic-buffer-concat`, `ime-enter-guard`, `app-store-performance`, `no-restricted-imports` guarding lazy SDK loads, `main-blocking-work.yml` sync-spawn ratchets), `Paradev` (`noRestrictedImports` banning sync subprocesses, raw sandbox handles, cross-tenant queries), `emdash` (`respectEslintDisableDirectives: false` + sole-writer DB table bans + `prune:boundary-allowlists`), `paseo` (per-file, per-API allowlists + unit-tested lint plugin), `sandcastle` (all-5-category type-aware `oxlint` + automated `lint-shrink.yml` PR bot).
 - **Rule:** Turn every repeated PR review comment into a lint error within the same week. If legacy violations exist, use **per-file, per-API allowlists** (never directory-wide disables) and **ban unapproved `eslint-disable` comments**. Unit-test your custom lint rules in CI.
 
 ### 4. Multi-Agent Git & Isolation Safety Rules
@@ -110,9 +111,9 @@ These practices require minimal infrastructure and pay off on day one for any te
 - **Sources:** `codex` & `openclaw` (`pnpm-workspace.yaml`: `minimumReleaseAge: 10080` [7 days], `blockExoticSubdeps: true`, `strictDepBuilds: true`, dated expiry comments on exemptions), `OpenHands` (`--min-release-age=7`), `paseo` (`lockfile-lint`), `pi` (`npm ci --ignore-scripts`).
 - **Rule:** Adding a 7-day npm release cooldown + explicit `allowBuilds` / `onlyBuiltDependencies` takes 10 lines of YAML and neutralizes almost every zero-day npm supply-chain compromise.
 
-### 6. Honest Verification Disclosures & Anti-Vacuous Test Checks
-- **Sources:** `cmux` (`### Observed / Not run` PR section + *"a skipped job is green and is not coverage"*), `beads` (*"Check That the Test Actually Ran"* + `NOT_ENOUGH_INFO` rule), `oh-my-openagent` (local gitignored `.omo/evidence/` + `sha256sum` in PR body + CI test failing if evidence is committed), `t3code` (`git ls-files .github/pr-assets` check).
-- **Rule:** Require every PR body to list the exact commands run, observed output, and explicitly what was **not** run. Never commit temporary QA screenshots/logs into git — upload them to the PR or keep them gitignored with a CI guard.
+### 6. Honest Verification Disclosures, Anti-Vacuous Checks & Anti-Test-Slop
+- **Sources:** `orca` (`"Tests are the exception"` policy + zero-checkout `pr-test-loc.yml` on `ubuntu-slim` + mandatory `## Performance` PR check + `ORCA_BACKGROUND_LAUNCH=1` hidden-window CDP + `unit-selection-evidence.yml` shadow-mode diff test selection), `cmux` (`### Observed / Not run` PR section + *"a skipped job is green and is not coverage"*), `beads` (*"Check That the Test Actually Ran"* + `NOT_ENOUGH_INFO` rule), `oh-my-openagent` (local gitignored `.omo/evidence/` + `sha256sum` in PR body + CI test failing if evidence is committed), `t3code` (`git ls-files .github/pr-assets` check).
+- **Rule:** Require every PR body to list the exact commands run, observed output, and explicitly what was **not** run — and ban low-value UI/mock unit tests that pad PR diffs without protecting costly invariants. Never commit temporary QA screenshots/logs into git — upload them to the PR or keep them gitignored with a CI guard.
 
 ### 7. Fast Local Diff-Scoped Checker + Single Required CI Aggregator
 - **Sources:** `paperclip` (`pnpm verify` with exit code 2 when diff is too broad), `cmux` (`scripts/verify-local.py --receipt -`), `t3code` (`vp run check:changed`), `codex` (`CI required` aggregator with `if: always()`).
