@@ -1,0 +1,442 @@
+{
+  "repo": "gsd-build/get-shit-done",
+  "meta": {
+    "description": "A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by T\u00c2CHES.",
+    "homepage": "",
+    "license": "MIT",
+    "stars": 64113,
+    "forks": 5442,
+    "open_issues": 0,
+    "archived": true,
+    "created_at": "2025-12-14T14:17:12Z",
+    "pushed_at": "2026-05-31T17:46:54Z",
+    "default_branch": "main",
+    "topics": [
+      "claude-code",
+      "context-engineering",
+      "meta-prompting",
+      "spec-driven-development"
+    ]
+  },
+  "languages": {
+    "JavaScript": 7254398,
+    "TypeScript": 2632050,
+    "Shell": 44482
+  },
+  "structure": {
+    "root": [
+      ".base64scanignore",
+      ".changeset/",
+      ".clinerules",
+      ".coderabbit.yaml",
+      ".githooks/",
+      ".github/",
+      ".gitignore",
+      ".out-of-scope/",
+      ".plans/",
+      ".release-monitor.sh",
+      ".secretscanignore",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CONTEXT.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "QUICK-WINS-CONFIRMED-BUGS.md",
+      "README.ja-JP.md",
+      "README.ko-KR.md",
+      "README.md",
+      "README.pt-BR.md",
+      "README.zh-CN.md",
+      "SECURITY.md",
+      "TEST-EXAMPLES.md",
+      "VERSIONING.md",
+      "agents/",
+      "assets/",
+      "bin/",
+      "commands/",
+      "docs/",
+      "get-shit-done/",
+      "hooks/",
+      "package-lock.json",
+      "package.json",
+      "scripts/",
+      "sdk/",
+      "tests/",
+      "tsconfig.json",
+      "vitest.config.ts"
+    ],
+    "workflows": [
+      "auto-branch.yml",
+      "auto-close-deprecated.yml",
+      "auto-label-issues.yml",
+      "branch-cleanup.yml",
+      "branch-naming.yml",
+      "canary.yml",
+      "changeset-required.yml",
+      "close-draft-prs.yml",
+      "dismiss-unauthorized-pr-approvals.yml",
+      "docs-required.yml",
+      "hotfix.yml",
+      "install-smoke.yml",
+      "pr-gate.yml",
+      "pr-template-format.yml",
+      "release-sdk.yml",
+      "release.yml",
+      "require-issue-link.yml",
+      "security-scan.yml",
+      "stale.yml",
+      "test.yml"
+    ],
+    "docs": [
+      "AGENTS.md",
+      "ARCHITECTURE.md",
+      "BETA.md",
+      "CANARY.md",
+      "CLI-TOOLS.md",
+      "COMMANDS.md",
+      "CONFIGURATION.md",
+      "FEATURES.md",
+      "INVENTORY-MANIFEST.json",
+      "INVENTORY.md",
+      "README.md",
+      "RELEASE-v1.39.0-rc.4.md",
+      "RELEASE-v1.39.0-rc.5.md",
+      "RELEASE-v1.39.0-rc.6.md",
+      "RELEASE-v1.39.0-rc.7.md",
+      "RELEASE-v1.40.0-rc.1.md",
+      "RELEASE-v1.41.0.md",
+      "RELEASE-v1.42.0-rc.1.md",
+      "RELEASE-v1.42.1.md",
+      "RELEASE-v1.42.3.md",
+      "RELEASE-v1.50.0-canary.1.md",
+      "STATE-MD-LIFECYCLE.md",
+      "TESTING-SUITES.md",
+      "USER-GUIDE.md",
+      "adr/",
+      "agents/",
+      "context-monitor.md",
+      "contributor-standards.md",
+      "discussions/",
+      "gsd-sdk-query-migration-blurb.md",
+      "installer-migrations.md",
+      "issue-driven-orchestration.md",
+      "ja-JP/",
+      "json-errors.md",
+      "ko-KR/",
+      "manual-update.md",
+      "prd/",
+      "pt-BR/",
+      "research/",
+      "ship-pr-body-sections.md",
+      "skills/",
+      "superpowers/",
+      "workflow-discuss-mode.md",
+      "zh-CN/"
+    ],
+    "docs_count": 44,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 3078,
+      "line_count": 41,
+      "truncated": false,
+      "excerpt": "# Repository Guidelines\n\n## Active Discussions\n\nFor current work on **Grok Build compatibility** and multi-runtime synchronization across Grok Build, Claude Code, Gemini CLI, and Codex, see:\n\n- `docs/discussions/grok-build-support-2026-05.md`\n\n## Project Structure & Module Organization\n\nThis repository ships GSD as a Node.js CLI and SDK. Root package entry points live in `bin/`, scripts in `scripts/`, runtime hooks in `hooks/`, command definitions in `commands/gsd/`, and workflow/template content in `get-shit-done/`. Agent role files are in `agents/`; docs are in `docs/`; logos and terminal images are in `assets/`. Root tests are in `tests/*.test.cjs`. The TypeScript SDK is isolated under `sdk/`, with source and Vitest tests in `sdk/src/`.\n\n## Build, Test, and Development Commands\n\nUse Node.js `>=22`.\n\n- `npm install`: install root dependencies.\n- `npm test`: builds the SDK first, then runs root `node:test` suites via `scripts/run-tests.cjs`.\n- `npm run test:coverage`: runs root tests with `c8` and enforces 70% line coverage for included CommonJS library files.\n- `npm run build:hooks`: rebuilds generated hook artifacts.\n- `npm run build:sdk`: installs SDK dependencies and builds TypeScript.\n- `cd sdk && npm test`: runs SDK Vitest unit and integration projects.\n- `cd sdk && npm run build`: type-checks and emits `sdk/dist/`.\n\n## Coding Style & Naming Conventions\n\nMatch the existing style in the edited area. Root JavaScript is CommonJS, generally strict-mode, two-space indentation, semicolons, `const`/`let`, and `node:` imports for built-ins. SDK code is strict TypeScript using ESM/`NodeNext`. Keep command, workflow, and test filenames kebab-case, for example `commands/gsd/plan-phase.md` and `tests/bug-2396-makefile-test-priority.test.cjs`. Agent files use `gsd-*.md`. Avoid unrelated formatting and unnecessary dependencies.\n\n## Testing Guidelines\n\nRoot tests use Node\u2019s built-in `node:test` and `node:assert/strict`; do not add Jest, Mocha, or Chai. Prefer helpers from `tests/helpers.cjs` for temporary projects, cleanup, and CLI execution. Name root tests `*.test.cjs`; run one with `node --test tests/name.test.cjs`. SDK tests use Vitest with `*.test.ts` for unit tests and `*.integration.test.ts` for integration tests.\n\n## Commit & Pull Request Guidelines\n\nRecent history follows Conventional Commit prefixes such as `fix:`, `feat:`, and `ci:`, often with issue references: `fix(#2623): resolve parent .planning root...`. Keep commits scoped and descriptive.\n\nEvery PR must link an approved or confirmed issue with `Closes #123`, `Fixes #123`, or `Resolves #123`. Use the matching template in `.github/PULL_REQUEST_TEMPLATE/`. Include behavior changes, root cause when relevant, test evidence, affected platforms/runtimes, and update `CHANGELOG.md` or docs for user-facing changes.\n\n## Security & Configuration Tips\n\nDo not commit secrets, local config, or generated worktree artifacts. Before release-facing changes, run the relevant scan scripts in `scripts/`, especially `secret-scan.sh`, `base64-scan.sh`, and `prompt-injection-scan.sh`.\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 44337,
+      "line_count": 791,
+      "truncated": true,
+      "excerpt": "# Contributing to GSD\n\n## Getting Started\n\n```bash\n# Clone the repo\ngit clone https://github.com/gsd-build/get-shit-done.git\ncd get-shit-done\n\n# Install dependencies\nnpm install\n\n# Run tests\nnpm test\n```\n\n---\n\n## Types of Contributions\n\nGSD accepts three types of contributions. Each type has a different process and a different bar for acceptance. **Read this section before opening anything.**\n\n### \ud83d\udc1b Fix (Bug Report)\n\nA fix corrects something that is broken, crashes, produces wrong output, or behaves contrary to documented behavior.\n\n**Process:**\n1. Open a [Bug Report issue](https://github.com/gsd-build/get-shit-done/issues/new?template=bug_report.yml) \u2014 fill it out completely.\n2. Wait for a maintainer to confirm it is a bug (label: `confirmed-bug`). For obvious, reproducible bugs this is typically fast.\n3. Fix it. Write a test that would have caught the bug.\n4. Open a PR using the [Fix PR template](.github/PULL_REQUEST_TEMPLATE/fix.md) \u2014 link the confirmed issue.\n\n**Rejection reasons:** Not reproducible, works-as-designed, duplicate of an existing issue.\n\n---\n\n### \u26a1 Enhancement\n\nAn enhancement improves an existing feature \u2014 better output, faster execution, cleaner UX, expanded edge-case handling. It does **not** add new commands, new workflows, or new concepts.\n\n**The bar:** Enhancements must have a scoped written proposal approved by a maintainer before any code is written. A PR for an enhancement will be closed without review if the linked issue does not carry the `approved-enhancement` label.\n\n**Process:**\n1. Open an [Enhancement issue](https://github.com/gsd-build/get-shit-done/issues/new?template=enhancement.yml) with the full proposal.  The issue template requires: the problem being solved, the concrete benefit, the scope of changes, and alternatives considered.\n2. **Wait for maintainer approval.** A maintainer must label the issue `approved-enhancement` before you write a single line of code. Do not open a PR against an unapproved enhancement issue \u2014 it will be closed.\n3. Write the code. Keep the scope exactly as approved. If scope creep occurs, comment on the issue and get re-approval before continuing.\n4. Open a PR using the [Enhancement PR template](.github/PULL_REQUEST_TEMPLATE/enhancement.md) \u2014 link the approved issue.\n\n**Rejection reasons:** Issue not labeled `approved-enhancement`, scope exceeds what was approved, no written proposal, duplicate of existing behavior.\n\n---\n\n### \u2728 Feature\n\nA feature adds something new \u2014 a new command, a new workflow, a new concept, a new integration. Features have the highest bar because they add permanent maintenance burden to a solo-developer tool maintained by a small team.\n\n**The bar:** Features require a complete written specification approved by a maintainer before any code is written. A PR for a feature will be closed without review if the linked issue does not carry the `approved-feature` label. Incomplete specs are closed, not revised by maintainers.\n\n**Process:**\n1. **Discuss first** \u2014 check [Discussions](https://github.com/gsd-build/get-shit-done/discussions) to see if the idea has been raised. If it has and was declined, don't open a new issue.\n2. Open a [Feature Request issue](https://github.com/gsd-build/get-shit-done/issues/new?template=feature_request.yml) with the complete spec. The template requires: the solo-developer problem being solved, what is being added, full scope of affected files and systems, user stories, acceptance criteria, and assessment of maintenance burden.\n3. **Wait for maintainer approval.** A maintainer must label the issue `approved-feature` before you write a single line of code. Approval is not guaranteed \u2014 GSD is intentionally lean and many valid ideas are declined because they conflict with the project's design philosophy.\n4. Write the code. Implement exactly the approved spec. Changes to scope require re-approval.\n5. Open a PR using the [Feature PR template](.github/PULL_REQUEST_TEMPLATE/feature.md) \u2014 link the approved issue.\n\n**Rejection reasons:** Issue not labeled `approved-feature`, spec is incomplete, scope exceeds what was approved, feature conflicts with GSD's solo-developer focus, maintenance burden too high.\n\n---\n\n### \ud83d\udcd0 Proposing an ADR or PRD\n\nAn ADR (Architecture Decision Record) documents a significant architectural decision. A PRD (Product Requirements Document) captures the what and why of a feature before implementation. Both are governed by the same issue-first rule as everything else.\n\n**Process:**\n\n1. Open an issue of the appropriate type (enhancement for an ADR revisiting an existing area, feature for a new architectural surface, chore for policy/docs decisions). Fill it out completely.\n2. **Wait for maintainer approval.** A maintainer must label the issue `approved-enhancement`, `approved-feature`, or confirm the chore before any file is created.\n3. The GitHub-assigned issue number becomes your filename prefix. Create the file on a branch named after the issue:\n   - `docs/adr/<issue#>-<slug>.md` for ADRs\n   - `docs/prd/<issue#>-<slug>.md` for PRDs\n   - Branch: `docs/<issue#>-<slug>`\n4. Open a PR using the appropriate template and close the issue with `Closes #<issue#>` in the PR body.\n\n**One issue = one ADR-or-PRD = one PR.** Do not batch multiple decisions into one file or one PR.\n\n**Do not compute a \"next number\" locally.** Any PR that uses the legacy `NNNN-*` sequential pattern for a *new* ADR or PRD will be asked to rename the file to the `<issue#>-<slug>.md` format before merge.\n\n**Example:** Issue #3485 was opened, approved, and its number became the prefix: `docs/adr/3485-adr-prd-naming-convention.md` on branch `docs/3485-adr-prd-naming-convention`.\n\n**Rejection reasons:** Issue not approved before file was created, filename uses local-compute sequential number instead of issue#, multiple decisions bundled in one PR, file placed in wrong directory (`docs/adr/` vs `docs/prd/`).\n\n---\n\n## The Issue-First Rule \u2014 No Exceptions\n\n> **No code before approval.**\n\nFor **fixes**: open"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 329,
+      "line_count": 12,
+      "truncated": false,
+      "excerpt": "<!-- GSD 2 - Archived repository redirect -->\n\n# GSD Has Moved\n\nThis repository is no longer the active home for GSD development.\n\nThe project now continues as **GSD Core** in the Open GSD repository:\n\nhttps://github.com/open-gsd/gsd-core\n\nUse the new repository for current source code, issues, releases, and contribution\nwork.\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 3742,
+      "line_count": 95,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"get-shit-done-cc\",\n  \"version\": \"1.50.0-canary.0\",\n  \"description\": \"A meta-prompting, context engineering and spec-driven development system for Claude Code, OpenCode, Gemini and Codex by T\u00c2CHES.\",\n  \"bin\": {\n    \"get-shit-done-cc\": \"bin/install.js\",\n    \"gsd-sdk\": \"bin/gsd-sdk.js\",\n    \"gsd-tools\": \"bin/gsd-sdk.js\"\n  },\n  \"files\": [\n    \"bin\",\n    \"commands\",\n    \"get-shit-done\",\n    \"agents\",\n    \"hooks\",\n    \"scripts\",\n    \"sdk/src\",\n    \"sdk/shared\",\n    \"sdk/prompts\",\n    \"sdk/dist\",\n    \"sdk/package.json\",\n    \"sdk/package-lock.json\",\n    \"sdk/tsconfig.json\"\n  ],\n  \"keywords\": [\n    \"claude\",\n    \"claude-code\",\n    \"ai\",\n    \"meta-prompting\",\n    \"context-engineering\",\n    \"spec-driven-development\",\n    \"gemini\",\n    \"gemini-cli\",\n    \"codex\",\n    \"codex-cli\"\n  ],\n  \"author\": \"T\u00c2CHES\",\n  \"license\": \"MIT\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/gsd-build/get-shit-done.git\"\n  },\n  \"homepage\": \"https://github.com/gsd-build/get-shit-done\",\n  \"bugs\": {\n    \"url\": \"https://github.com/gsd-build/get-shit-done/issues\"\n  },\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"dependencies\": {\n    \"@anthropic-ai/claude-agent-sdk\": \"^0.2.84\",\n    \"ws\": \"8.20.1\"\n  },\n  \"devDependencies\": {\n    \"c8\": \"^11.0.0\"\n  },\n  \"optionalDependencies\": {\n    \"fallow\": \"^2.70.0\"\n  },\n  \"scripts\": {\n    \"build:hooks\": \"node scripts/build-hooks.js\",\n    \"build:sdk\": \"cd sdk && npm ci && npm run build\",\n    \"check:alias-drift\": \"cd sdk && npm run check:alias-drift\",\n    \"check:state-document-fresh\": \"cd sdk && npm run check:state-document-fresh\",\n    \"check:configuration-fresh\": \"cd sdk && npm run check:configuration-fresh\",\n    \"check:workstream-inventory-builder-fresh\": \"cd sdk && npm run check:workstream-inventory-builder-fresh\",\n    \"check:project-root-fresh\": \"cd sdk && npm run check:project-root-fresh\",\n    \"check:plan-scan-fresh\": \"cd sdk && npm run check:plan-scan-fresh\",\n    \"check:secrets-fresh\": \"cd sdk && npm run check:secrets-fresh\",\n    \"check:schema-detect-fresh\": \"cd sdk && npm run check:schema-detect-fresh\",\n    \"check:decisions-fresh\": \"cd sdk && npm run check:decisions-fresh\",\n    \"check:workstream-name-policy-fresh\": \"cd sdk && npm run check:workstream-name-policy-fresh\",\n    \"prepublishOnly\": \"npm run build:hooks && npm run build:sdk\",\n    \"pretest\": \"npm run build:sdk && npm run lint:skill-deps\",\n    \"pretest:coverage\": \"npm run build:sdk\",\n    \"lint:descriptions\": \"node scripts/lint-descriptions.cjs\",\n    \"lint:skill-deps\": \"node scripts/lint-skill-deps.cjs\",\n    \"lint:tests\": \"node scripts/lint-no-source-grep.cjs\",\n    \"lint:test-file-count\": \"node scripts/lint-test-file-count.cjs\",\n    \"lint:pr-checks\": \"node scripts/lint-pr-check-project-dir.cjs\",\n    \"lint:changeset\": \"node scripts/changeset/lint.cjs\",\n    \"lint:docs\": \"node scripts/lint-docs-required.cjs\",\n    \"changeset\": \"node scripts/changeset/new.cjs\",\n    \"changelog:render\": \"node scripts/changeset/cli.cjs render\",\n    \"test\": \"node scripts/run-tests.cjs\",\n    \"test:unit\": \"node scripts/run-tests.cjs --suite unit\",\n    \"test:integration\": \"node scripts/run-tests.cjs --suite integration\",\n    \"test:install\": \"node scripts/run-tests.cjs --suite install\",\n    \"test:security\": \"node scripts/run-tests.cjs --suite security\",\n    \"test:slow\": \"node scripts/run-tests.cjs --suite slow\",\n    \"test:coverage\": \"c8 --check-coverage --lines 70 --reporter text --include 'get-shit-done/bin/lib/*.cjs' --exclude 'tests/**' --all node scripts/run-tests.cjs\",\n    \"test:coverage:unit\": \"c8 --check-coverage --lines 70 --reporter text --include 'get-shit-done/bin/lib/*.cjs' --exclude 'tests/**' --all node scripts/run-tests.cjs --suite unit\",\n    \"test:coverage:all\": \"npm run test:coverage\"\n  }\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "auto-close-deprecated.yml": {
+      "path": ".github/workflows/auto-close-deprecated.yml",
+      "size_bytes": 1929,
+      "line_count": 60,
+      "truncated": false,
+      "excerpt": "name: Auto-close (repository moved)\n\non:\n  issues:\n    types: [opened, reopened]\n  pull_request_target:\n    types: [opened, reopened]\n\npermissions:\n  issues: write\n  pull-requests: write\n\njobs:\n  auto-close-issue:\n    if: github.event_name == 'issues'\n    runs-on: ubuntu-latest\n    steps:\n      - env:\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n          NUM: ${{ github.event.issue.number }}\n          REPO: ${{ github.repository }}\n        run: |\n          gh issue comment \"$NUM\" --repo \"$REPO\" --body-file - <<'BODY'\n          \ud83d\udce6 **This repository has moved and is no longer maintained here.**\n\n          Development now happens at:\n          https://github.com/open-gsd/gsd-core\n\n          **Please file your issue on the active repo:**\n          https://github.com/open-gsd/gsd-core/issues/new/choose\n\n          This issue is being auto-closed and locked.\n          BODY\n          gh issue close \"$NUM\" --repo \"$REPO\" --reason \"not planned\"\n          gh api -X PUT \"repos/$REPO/issues/$NUM/lock\" -f lock_reason=resolved\n\n  auto-close-pr:\n    if: github.event_name == 'pull_request_target'\n    runs-on: ubuntu-latest\n    steps:\n      - env:\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n          NUM: ${{ github.event.pull_request.number }}\n          REPO: ${{ github.repository }}\n        run: |\n          gh pr comment \"$NUM\" --repo \"$REPO\" --body-file - <<'BODY'\n          \ud83d\udce6 **This repository has moved and is no longer maintained here.**\n\n          Development now happens at:\n          https://github.com/open-gsd/gsd-core\n\n          **Please re-open your PR against the active repo:**\n          https://github.com/open-gsd/gsd-core\n\n          (You'll need to rebase your branch against `open-gsd/gsd-core` first.)\n\n          This PR is being auto-closed and locked.\n          BODY\n          gh pr close \"$NUM\" --repo \"$REPO\"\n          gh api -X PUT \"repos/$REPO/issues/$NUM/lock\" -f lock_reason=resolved\n"
+    },
+    "close-draft-prs.yml": {
+      "path": ".github/workflows/close-draft-prs.yml",
+      "size_bytes": 2031,
+      "line_count": 51,
+      "truncated": false,
+      "excerpt": "name: Close Draft PRs\n\non:\n  pull_request:\n    types: [opened, reopened, converted_to_draft]\n\npermissions:\n  pull-requests: write\n\njobs:\n  close-if-draft:\n    name: Reject draft PRs\n    if: github.event.pull_request.draft == true\n    runs-on: ubuntu-latest\n    steps:\n      - name: Comment and close draft PR\n        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0\n        with:\n          script: |\n            const pr = context.payload.pull_request;\n            const repoUrl = context.repo.owner + '/' + context.repo.repo;\n\n            await github.rest.issues.createComment({\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              issue_number: pr.number,\n              body: [\n                '## Draft PRs are not accepted',\n                '',\n                'This project only accepts completed pull requests. Draft PRs are automatically closed.',\n                '',\n                '**Why?** GSD requires all PRs to be ready for review when opened \\u2014 with tests passing, the correct PR template used, and a linked approved issue. Draft PRs bypass these quality gates and create review overhead.',\n                '',\n                '### What to do instead',\n                '',\n                '1. Finish your implementation locally',\n                '2. Run `npm run test:coverage` and confirm all tests pass',\n                '3. Open a **non-draft** PR using the [correct template](https://github.com/' + repoUrl + '/blob/main/CONTRIBUTING.md#pull-request-guidelines)',\n                '',\n                'See [CONTRIBUTING.md](https://github.com/' + repoUrl + '/blob/main/CONTRIBUTING.md) for the full process.',\n              ].join('\\n')\n            });\n\n            await github.rest.pulls.update({\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              pull_number: pr.number,\n              state: 'closed'\n            });\n\n            core.info('Closed draft PR #' + pr.number + ': ' + pr.title);\n"
+    },
+    "dismiss-unauthorized-pr-approvals.yml": {
+      "path": ".github/workflows/dismiss-unauthorized-pr-approvals.yml",
+      "size_bytes": 6795,
+      "line_count": 173,
+      "truncated": true,
+      "excerpt": "name: Dismiss Unauthorized PR Approvals\n\non:\n  pull_request_review:\n    types: [submitted]\n  schedule:\n    # Fallback poll: pull_request_review runs whose triggering_actor is an\n    # outside collaborator are held in `action_required` until a maintainer\n    # approves them \u2014 so the event-driven path never fires for the very\n    # reviewers we want to dismiss. The schedule path runs as\n    # github-actions[bot] and bypasses that gate.\n    - cron: '*/15 * * * *'\n  workflow_dispatch:\n\npermissions:\n  contents: read\n  pull-requests: write\n\nconcurrency:\n  # Per-PR group for review events; single shared group for schedule/dispatch\n  # so polls serialize instead of stomping each other.\n  group: dismiss-unauthorized-pr-approvals-${{ github.event.pull_request.number || 'scheduled' }}\n  cancel-in-progress: false\n\njobs:\n  dismiss-unauthorized-approval:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n\n    steps:\n      - name: Dismiss blocked/non-collaborator approvals\n        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0\n        with:\n          script: |\n            const owner = context.repo.owner;\n            const repo = context.repo.repo;\n            const eventName = context.eventName;\n\n            // Any login here is always blocked, even if they are a collaborator.\n            const blockedReviewers = new Set(['ari4ka']);\n\n            // Any collaborator role is allowed unless explicitly blocked above.\n            const allowedRoles = new Set(['read', 'triage', 'write', 'maintain', 'admin']);\n\n            function norm(v) {\n              return (v || '').trim().toLowerCase();\n            }\n\n            const roleCache = new Map();\n            async function resolveRole(login) {\n              const key = norm(login);\n              if (roleCache.has(key)) return roleCache.get(key);\n              let role;\n              try {\n                const resp = await github.rest.repos.getCollaboratorPermissionLevel({\n                  owner,\n                  repo,\n                  username: login,\n                });\n                role = norm(resp.data.role_name) || 'unknown';\n              } catch (error) {\n                if (error.status === 404) {\n                  role = 'none'; // confirmed non-collaborator\n                } else {\n                  core.warning(`Could not resolve reviewer role for ${login}: ${error.message}`);\n                  role = 'unknown';\n                }\n              }\n              roleCache.set(key, role);\n              return role;\n            }\n\n            function shouldDismissReviewer(login, roleName) {\n              const reviewer = norm(login);\n              const isBlocked = blockedReviewers.has(reviewer);\n              // 'unknown' means a transient API error \u2014 fail-safe: keep the approval.\n              // Only 'none' (true 404) is a confirmed non-collaborator.\n              const isKnownRole = roleName !== 'unknown';\n              const isAllowedRole = allowedRoles.has(roleName);\n\n              const reasons = [];\n              if (isBlocked) {\n                reasons.push(`reviewer is blocked (${reviewer})`);\n              }\n              if (isKnownRole && !isAllowedRole) {\n                reasons.push(`reviewer is not a collaborator or higher (detected role: ${roleName})`);\n              }\n\n              return {\n                dismiss: isBlocked || (isKnownRole && !isAllowedRole),\n                message: `Auto-dismissed approval: ${reasons.join('; ')}.`,\n              };\n            }\n\n            async function dismissReview(pull_number, review_id, reviewer, message) {\n              try {\n                await github.rest.pulls.dismissReview({\n                  owner,\n                  repo,\n                  pull_number,\n                  review_id,\n                  message,\n                });\n                core.info(`Dismissed approval from ${reviewer} on PR #${pull_number}. Reason: ${message}`);\n                return true;\n              } catch (error) {\n                if (error.status === 422) {\n                  core.warning(`Could not dismiss review ${review_id} on PR #${pull_number}: ${error.message}`);\n                  return false;\n                }\n                throw error;\n              }\n            }\n\n            async function processApproval({ pull_number, review_id, reviewer }) {\n              const roleName = await resolveRole(reviewer);\n              const verdict = shouldDismissReviewer(reviewer, roleName);\n     "
+    },
+    "pr-gate.yml": {
+      "path": ".github/workflows/pr-gate.yml",
+      "size_bytes": 2269,
+      "line_count": 67,
+      "truncated": false,
+      "excerpt": "name: PR Gate\n\non:\n  pull_request:\n    types: [opened, synchronize]\n\npermissions:\n  pull-requests: write\n  issues: write\n\njobs:\n  size-check:\n    runs-on: ubuntu-latest\n    timeout-minutes: 2\n    steps:\n      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2\n        with:\n          fetch-depth: 0\n\n      - name: Check PR size\n        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0\n        with:\n          script: |\n            const files = await github.paginate(github.rest.pulls.listFiles, {\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              pull_number: context.issue.number,\n              per_page: 100,\n            });\n\n            const additions = files.reduce((sum, f) => sum + f.additions, 0);\n            const deletions = files.reduce((sum, f) => sum + f.deletions, 0);\n            const total = additions + deletions;\n\n            let label = '';\n            if (total <= 50) label = 'size/S';\n            else if (total <= 200) label = 'size/M';\n            else if (total <= 500) label = 'size/L';\n            else label = 'size/XL';\n\n            // Remove existing size labels\n            const existingLabels = context.payload.pull_request.labels || [];\n            const sizeLabels = existingLabels.filter(l => l.name.startsWith('size/'));\n            for (const staleLabel of sizeLabels) {\n              await github.rest.issues.removeLabel({\n                owner: context.repo.owner,\n                repo: context.repo.repo,\n                issue_number: context.issue.number,\n                name: staleLabel.name\n              }).catch(() => {}); // ignore if already removed\n            }\n\n            // Add size label\n            try {\n              await github.rest.issues.addLabels({\n                owner: context.repo.owner,\n                repo: context.repo.repo,\n                issue_number: context.issue.number,\n                labels: [label],\n              });\n            } catch (e) {\n              core.warning(`Could not add label: ${e.message}`);\n            }\n\n            if (total > 500) {\n              core.warning(`Large PR: ${total} lines changed (${additions}+ / ${deletions}-). Consider splitting.`);\n            }\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-05-31T13:34:35Z",
+      "oldest": "2026-05-18T16:42:43Z"
+    },
+    "conventional_pct": 80.0,
+    "fix_revert_pct": 40.0,
+    "ai_coauthor_pct": 72.0,
+    "top_recent_authors": [
+      [
+        "trek-e",
+        39
+      ],
+      [
+        "jeremymcs",
+        9
+      ],
+      [
+        "cristianuibar",
+        1
+      ],
+      [
+        "fr1j0",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "bdcaab2c",
+        "date": "2026-05-31T13:34:35Z",
+        "author": "jeremymcs",
+        "subject": "Merge pull request #3886 from gsd-build/chore/update-discord-link",
+        "ai_signal": false
+      },
+      {
+        "sha": "b125c632",
+        "date": "2026-05-31T13:32:27Z",
+        "author": "jeremymcs",
+        "subject": "chore: update Discord invite link",
+        "ai_signal": true
+      },
+      {
+        "sha": "dee2434b",
+        "date": "2026-05-31T13:26:10Z",
+        "author": "jeremymcs",
+        "subject": "Merge pull request #3885 from gsd-build/chore/auto-close-repo-moved",
+        "ai_signal": false
+      },
+      {
+        "sha": "b467c7e1",
+        "date": "2026-05-31T13:25:11Z",
+        "author": "jeremymcs",
+        "subject": "chore: point auto-close message to open-gsd/gsd-core",
+        "ai_signal": true
+      },
+      {
+        "sha": "0502b8c0",
+        "date": "2026-05-31T13:24:36Z",
+        "author": "jeremymcs",
+        "subject": "chore: simplify auto-close message to 'repository moved'",
+        "ai_signal": true
+      },
+      {
+        "sha": "6391b2d9",
+        "date": "2026-05-31T13:18:41Z",
+        "author": "jeremymcs",
+        "subject": "Update project name from 'GSD Redux' to 'GSD Core'",
+        "ai_signal": false
+      },
+      {
+        "sha": "837114c1",
+        "date": "2026-05-23T00:31:54Z",
+        "author": "jeremymcs",
+        "subject": "docs: rename package references to @opengsd/get-shit-done-redux",
+        "ai_signal": false
+      },
+      {
+        "sha": "ba20432c",
+        "date": "2026-05-22T22:49:53Z",
+        "author": "jeremymcs",
+        "subject": "Revise vulnerability reporting instructions",
+        "ai_signal": false
+      },
+      {
+        "sha": "da024a02",
+        "date": "2026-05-22T22:49:26Z",
+        "author": "jeremymcs",
+        "subject": "Update README.md",
+        "ai_signal": false
+      },
+      {
+        "sha": "c7102d7c",
+        "date": "2026-05-22T13:37:24Z",
+        "author": "trek-e",
+        "subject": "deprecate: point notice link to fork main (rebrand branch merged)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5e5df733",
+        "date": "2026-05-22T12:37:40Z",
+        "author": "trek-e",
+        "subject": "deprecate: auto-close + lock new issues/PRs with redirect message",
+        "ai_signal": false
+      },
+      {
+        "sha": "c58ee6c0",
+        "date": "2026-05-22T12:37:26Z",
+        "author": "trek-e",
+        "subject": "deprecate: redirect new issue picker to active fork",
+        "ai_signal": false
+      },
+      {
+        "sha": "126b6b9e",
+        "date": "2026-05-22T12:31:33Z",
+        "author": "trek-e",
+        "subject": "WARNING: This repository appears compromised \u2014 use the fork at GSD-redux/get-shit-done-redux",
+        "ai_signal": false
+      },
+      {
+        "sha": "b533f718",
+        "date": "2026-05-22T03:32:10Z",
+        "author": "trek-e",
+        "subject": "chore: introduce CommandRoutingHub and migrate phase-command-router (PoC) (#3828)",
+        "ai_signal": true
+      },
+      {
+        "sha": "420c64da",
+        "date": "2026-05-22T03:19:52Z",
+        "author": "trek-e",
+        "subject": "test(3646): add routing-block hyphen-form regression tests for workflow templates (#3800)",
+        "ai_signal": true
+      },
+      {
+        "sha": "5e071a32",
+        "date": "2026-05-21T14:15:18Z",
+        "author": "trek-e",
+        "subject": "fix(3775): clarify deterministic design note and sentinel guard rationale (#3793)",
+        "ai_signal": true
+      },
+      {
+        "sha": "c22e869b",
+        "date": "2026-05-21T03:22:40Z",
+        "author": "trek-e",
+        "subject": "test: redesign locking-bugs:180 with deterministic barrier (mirrors :235 fix) (#3790)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2d302776",
+        "date": "2026-05-21T03:13:50Z",
+        "author": "trek-e",
+        "subject": "fix(3426): Codex Windows hooks use .cmd shim to avoid POSIX exec fail (#3768)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a7abc6df",
+        "date": "2026-05-21T03:13:25Z",
+        "author": "trek-e",
+        "subject": "fix(3657): skip false-fail when pristine hash drifts after GSD update (#3767)",
+        "ai_signal": true
+      },
+      {
+        "sha": "99b52a30",
+        "date": "2026-05-21T03:12:44Z",
+        "author": "trek-e",
+        "subject": "fix(3659): applySurface prunes skill dirs on cluster disable (#3766)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "trek-e",
+      "contributions": 1435
+    },
+    {
+      "login": "glittercowboy",
+      "contributions": 945
+    },
+    {
+      "login": "Tibsfox",
+      "contributions": 127
+    },
+    {
+      "login": "jeremymcs",
+      "contributions": 68
+    },
+    {
+      "login": "davesienkowski",
+      "contributions": 23
+    },
+    {
+      "login": "Solvely-Colin",
+      "contributions": 16
+    },
+    {
+      "login": "j2h4u",
+      "contributions": 15
+    },
+    {
+      "login": "diegomarino",
+      "contributions": 9
+    },
+    {
+      "login": "Bantuson",
+      "contributions": 9
+    },
+    {
+      "login": "jecanore",
+      "contributions": 7
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.43.0-rc2",
+      "published_at": "2026-05-17T16:11:16Z",
+      "name": "v1.43.0-rc2"
+    },
+    {
+      "tag": "v1.42.3",
+      "published_at": "2026-05-16T04:36:09Z",
+      "name": "v1.42.3"
+    },
+    {
+      "tag": "v1.43.0-rc1",
+      "published_at": "2026-05-15T16:48:10Z",
+      "name": "v1.43.0-rc1"
+    },
+    {
+      "tag": "v1.42.2",
+      "published_at": "2026-05-15T03:26:12Z",
+      "name": "v1.42.2"
+    },
+    {
+      "tag": "v1.42.1",
+      "published_at": "2026-05-15T00:14:07Z",
+      "name": "v1.42.1"
+    }
+  ]
+}

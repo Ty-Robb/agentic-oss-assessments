@@ -1,0 +1,423 @@
+{
+  "repo": "Fission-AI/OpenSpec",
+  "meta": {
+    "description": "Spec-driven development (SDD) for AI coding assistants.",
+    "homepage": "https://openspec.dev/",
+    "license": "MIT",
+    "stars": 75717,
+    "forks": 5180,
+    "open_issues": 214,
+    "archived": false,
+    "created_at": "2025-08-05T10:37:45Z",
+    "pushed_at": "2026-11-25T02:07:01Z",
+    "default_branch": "main",
+    "topics": [
+      "ai",
+      "context-engineering",
+      "engineering",
+      "planning",
+      "prd",
+      "sdd",
+      "sdlc",
+      "spec",
+      "spec-driven-development",
+      "specification"
+    ]
+  },
+  "languages": {
+    "TypeScript": 5835157,
+    "JavaScript": 68250,
+    "Shell": 17597,
+    "PowerShell": 10118,
+    "Nix": 3940,
+    "CSS": 255
+  },
+  "structure": {
+    "root": [
+      ".actrc",
+      ".agents/",
+      ".changeset/",
+      ".coderabbit.yaml",
+      ".devcontainer/",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "MAINTAINERS.md",
+      "README.md",
+      "README_OLD.md",
+      "SECURITY.md",
+      "assets/",
+      "bin/",
+      "build.js",
+      "docs-lab/",
+      "docs/",
+      "eslint.config.js",
+      "flake.lock",
+      "flake.nix",
+      "install.md",
+      "openspec-parallel-merge-plan.md",
+      "openspec/",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "schemas/",
+      "scripts/",
+      "skills/",
+      "src/",
+      "test/",
+      "tsconfig.json",
+      "vitest.config.ts",
+      "vitest.setup.ts",
+      "website/"
+    ],
+    "workflows": [
+      "README.md",
+      "binaries.yml",
+      "ci.yml",
+      "release-prepare.yml",
+      "security.yml"
+    ],
+    "docs": [
+      "README.md",
+      "agent-contract.md",
+      "cli.md",
+      "commands.md",
+      "community.md",
+      "concepts.md",
+      "customization.md",
+      "editing-changes.md",
+      "examples.md",
+      "existing-projects.md",
+      "explore.md",
+      "faq.md",
+      "getting-started.md",
+      "glossary.md",
+      "how-commands-work.md",
+      "installation.md",
+      "migration-guide.md",
+      "multi-language.md",
+      "opsx.md",
+      "overview.md",
+      "reviewing-changes.md",
+      "stores-beta/",
+      "supported-tools.md",
+      "team-workflow.md",
+      "troubleshooting.md",
+      "workflows.md",
+      "writing-specs.md"
+    ],
+    "docs_count": 27,
+    "agents_dir": [
+      "skills/"
+    ],
+    "agents_skills": [
+      "draft-openspec-docs/",
+      "release-openspec/",
+      "verify-openspec-docs/",
+      "write-openspec-docs/"
+    ],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 0,
+      "line_count": 0,
+      "truncated": false,
+      "excerpt": ""
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 4270,
+      "line_count": 67,
+      "truncated": false,
+      "excerpt": "# Contributing\n\nThanks for helping improve OpenSpec.\n\nEvery contribution starts with a GitHub issue. We discuss the problem there, and if we agree to pursue it, a maintainer implements the change or invites you to build it with us. Pull requests come from maintainers and invited contributors. [An Update to OpenSpec's Contribution Policy](https://openspec.dev/blog/openspec-contribution-policy/) explains why.\n\n## 1. Open an issue\n\n[Pick a form](https://github.com/Fission-AI/OpenSpec/issues/new/choose): bug, feature, or docs.\n\n- **Bug:** what you were trying to do, what happened, what you expected, and the shortest steps that reproduce it from a fresh project. Error messages, logs, and a minimal example help most. We can't fix what we can't reproduce.\n- **Agent behavior:** say which agent and model you used, and attach a session trace if you have one. Which files the agent read, which tools it called, and whether the behavior repeats across sessions is usually what narrows it down.\n- **Feature:** describe the problem, who else it affects, what you tried instead, and whether the added complexity is worth maintaining. You don't need a solution; sometimes the behavior you hit is a deliberate trade-off, and that is what we want to talk about.\n\nFrom a project you're working in, `openspec feedback \"what happened\"` files a bug for you with your version and platform filled in, or hands you a prefilled form link.\n\nIf an agent drafts the issue, read it through and make it yours. We don't expect you to have all the answers, but we do want the issue to show that you have considered the problem.\n\n## 2. We discuss it on the issue\n\nWe work out the problem, the possible approaches, and whether it fits OpenSpec's priorities. OpenSpec runs across many agents, models, and workflows, so a change that helps one workflow can break another.\n\nIf we agree to pursue it, a maintainer adds the `approved` label and then either implements it or invites you to build it with us. Say on the issue if you would like to write the fix. We can't promise to take on every suggestion.\n\nOpening pull requests is limited to maintainers, so wait for an invitation on the issue before you start one.\n\n## 3. Open the PR (invited contributors and maintainers)\n\n**Bug or docs:** one PR with the fix. Write `Closes #123` in the description. It shouldn't change `openspec/`, since specs are for features.\n\n**Feature:** two PRs, once we've agreed on the change in the issue.\n\n1. **Proposal:** only `openspec/changes/<name>/`. Write `Part of #123`, so the issue stays open.\n2. **Implementation:** after the proposal merges, the code plus updates to that change, such as checking off its `tasks.md`. Write `Closes #123`.\n\n## Development setup\n\nYou need Node 22.20.0+ and pnpm.\n\n```bash\npnpm install\npnpm build              # tests run against the build output\npnpm test\npnpm exec tsc --noEmit\npnpm lint\n```\n\nThose four commands are what CI runs, so a green local run means a green CI run.\n\nRun `pnpm changeset` if your change affects users, and commit the file it generates.\n\n### Keep the CLI's startup fast\n\nEditors, agents and OpenSpec Desktop run the CLI many times, and each call pays for every module it loads before the command runs. Before this rule, `openspec --version` loaded 485 modules: about 0.5 s per call on a Windows machine. So a command loads only the command definitions and its own code:\n\n- **Definitions** (name, options, help text) go in `src/cli/index.ts` or `src/cli/commands/<name>.ts`. Import nothing heavy there: no zod, yaml, tinyglobby, ora, and no other command's code.\n- **The command's code** goes in `src/commands/<name>.ts` or `src/core/`, loaded inside the action with `await import()`.\n\n`test/cli-e2e/startup-modules.test.ts` checks which modules each command loads, and fails if a definition starts pulling in an implementation. When you add a command, add it to that test's list.\n\n## PR checklist\n\n- Branch off `main` in your fork.\n- Title it as a conventional commit: `type(scope): subject`, for example `fix(archive): keep authored Purpose`.\n- If a coding agent wrote the code, say which agent and model, and confirm you tested it. AI-generated code is welcome when it has been verified.\n\nMaintainers are listed in [MAINTAINERS.md](MAINTAINERS.md).\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 11088,
+      "line_count": 255,
+      "truncated": true,
+      "excerpt": "<p align=\"center\">\n  <a href=\"https://github.com/Fission-AI/OpenSpec\">\n    <picture>\n      <source srcset=\"assets/openspec_bg.png\">\n      <img src=\"assets/openspec_bg.png\" alt=\"OpenSpec logo\">\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/Fission-AI/OpenSpec/actions/workflows/ci.yml\"><img alt=\"CI\" src=\"https://github.com/Fission-AI/OpenSpec/actions/workflows/ci.yml/badge.svg\" /></a>\n  <a href=\"https://www.npmjs.com/package/@fission-ai/openspec\"><img alt=\"npm version\" src=\"https://img.shields.io/npm/v/@fission-ai/openspec?style=flat-square\" /></a>\n  <a href=\"./LICENSE\"><img alt=\"License: MIT\" src=\"https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square\" /></a>\n  <a href=\"https://discord.gg/YctCnvvshC\"><img alt=\"Discord\" src=\"https://img.shields.io/discord/1411657095639601154?style=flat-square&logo=discord&logoColor=white&label=Discord&suffix=%20online\" /></a>\n</p>\n\n<details>\n<summary><strong>The most loved spec framework.</strong></summary>\n\n[![Stars](https://img.shields.io/github/stars/Fission-AI/OpenSpec?style=flat-square&label=Stars)](https://github.com/Fission-AI/OpenSpec/stargazers)\n[![Downloads](https://img.shields.io/npm/dm/@fission-ai/openspec?style=flat-square&label=Downloads/mo)](https://www.npmjs.com/package/@fission-ai/openspec)\n[![Contributors](https://img.shields.io/github/contributors/Fission-AI/OpenSpec?style=flat-square&label=Contributors)](https://github.com/Fission-AI/OpenSpec/graphs/contributors)\n\n</details>\n<p></p>\nOur philosophy:\n\n```text\n\u2192 fluid not rigid\n\u2192 iterative not waterfall\n\u2192 easy not complex\n\u2192 built for brownfield not just greenfield\n\u2192 scalable from personal projects to enterprises\n```\n\n<p align=\"center\">\n  Follow <a href=\"https://x.com/0xTab\">@0xTab on X</a> for updates \u00b7 Join the <a href=\"https://discord.gg/YctCnvvshC\">OpenSpec Discord</a> for help and questions.\n</p>\n\n<!-- TODO: Add GIF demo of /openspec-propose \u2192 /openspec-archive-change workflow -->\n\n## See it in action\n\n```text\nYou: /openspec-explore\nAI:  What would you like to explore?\nYou: I want dark mode but I'm not sure how to do it cleanly.\nAI:  Let me look at your styling setup...\n     Cleanest path here: CSS variables + a small theme context,\n     with system-preference detection. No new dependencies. Scope it?\nYou: Yes, let's do it.\n\nYou: /openspec-propose add-dark-mode\nAI:  Created openspec/changes/add-dark-mode/\n     \u2713 proposal.md \u2014 why we're doing this, what's changing\n     \u2713 specs/       \u2014 requirements and scenarios\n     \u2713 design.md    \u2014 technical approach\n     \u2713 tasks.md     \u2014 implementation checklist\n     Ready for implementation!\n\nYou: /openspec-apply-change\nAI:  Implementing tasks...\n     \u2713 1.1 Add theme context provider\n     \u2713 1.2 Create toggle component\n     \u2713 2.1 Add CSS variables\n     \u2713 2.2 Wire up localStorage\n     All tasks complete!\n\nYou: /openspec-archive-change\nAI:  Archived to openspec/changes/archive/2025-01-23-add-dark-mode/\n     Specs updated. Ready for the next feature.\n```\n\n<details>\n<summary><strong>What do the specs actually look like?</strong></summary>\n\nPlain Markdown \u2014 requirements with concrete scenarios, no special syntax to learn. Here's what goes in the `specs/` folder created above:\n\n```markdown\n## ADDED Requirements\n\n### Requirement: Theme selection\nThe app SHALL let users switch between light and dark themes,\ndefaulting to the system preference.\n\n#### Scenario: User toggles dark mode\n- **WHEN** the user clicks the theme toggle\n- **THEN** the app switches to dark mode and persists the choice\n```\n\nYour AI writes these; you review the plan before any code is written.\n\nOpenSpec is built with OpenSpec \u2014 browse this repo's live [specs](openspec/specs) and in-flight [changes](openspec/changes) for real examples at scale.\n\n</details>\n\n<details>\n<summary><strong>OpenSpec Dashboard</strong></summary>\n\n<p align=\"center\">\n  <img src=\"assets/openspec_dashboard.png\" alt=\"OpenSpec dashboard preview\" width=\"90%\">\n</p>\n\n</details>\n\n## Why teams adopt OpenSpec\n\nSolo, OpenSpec keeps you and your AI honest on a single repo. On a team, the hard part moves: a feature spans the API server, the web app, and a shared library; requirements are owned by one team and consumed by others; planning starts before any code exists.\n\n**[Stores](https://openspec.dev/docs/stores)** are the answer \u2014 planning in a repo of its own. The same `openspec/` shape you already know (specs and changes), shared by `git push` like anything else. One source of truth your whole team and every coding agent can read, across every repo.\n\n- **Cross-repo features** \u2014 one change, one plan, even when the code lands in three repos.\n- **Shared requirements** \u2014 a platform team owns the specs; product teams reference them read-only, right where their coding agent can read them. No drifting wiki.\n- **Plan before code** \u2014 capture the plan in the store now; the code repos catch up later.\n\n> Stores are in **beta**. Start with the [Stores guide](https://openspec.dev/docs/stores).\n\n## Quick Start\n\nInstall OpenSpec. On macOS or Linux, in your terminal:\n\n```bash\ncurl -fsSL https://openspec.dev/cli/install.sh | sh\n```\n\nOn Windows, in PowerShell:\n\n```powershell\nirm https://openspec.dev/cli/install.ps1 | iex\n```\n\nPrefer a package manager? `npm install -g @fission-ai/openspec@latest` (needs Node.js 22.20.0 or higher) or the official [Homebrew formula](https://formulae.brew.sh/formula/openspec), `brew install openspec`.\n\nThen navigate to your project directory and initialize:\n\n```bash\ncd your-project\nopenspec init\n```\n\n> **Want your AI to do it?** Paste the [setup prompt](https://openspec.dev/docs/installation#install-with-your-ai-assistant) into your coding assistant \u2014 it installs the CLI, runs `openspec init`, and verifies the result.\n\nNow talk to your AI:\n\n- **Not sure what to build yet?** Start with `/openspec-explore`, a no-stakes thinking partner that reads your code, weighs options, and shapes a plan before any code gets written. ([Quickstart](https://openspec.dev/docs/quickstart))\n- "
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 2276,
+      "line_count": 90,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"@fission-ai/openspec\",\n  \"version\": \"2.2.0\",\n  \"description\": \"AI-native system for spec-driven development\",\n  \"keywords\": [\n    \"openspec\",\n    \"specs\",\n    \"cli\",\n    \"ai\",\n    \"development\"\n  ],\n  \"homepage\": \"https://github.com/Fission-AI/OpenSpec\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/Fission-AI/OpenSpec\"\n  },\n  \"license\": \"MIT\",\n  \"author\": \"FISSION AI INC\",\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@10.34.5\",\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"exports\": {\n    \".\": {\n      \"types\": \"./dist/index.d.ts\",\n      \"default\": \"./dist/index.js\"\n    }\n  },\n  \"bin\": {\n    \"openspec\": \"./bin/openspec.js\"\n  },\n  \"files\": [\n    \"dist\",\n    \"bin\",\n    \"schemas\",\n    \"!dist/**/*.test.js\",\n    \"!dist/**/__tests__\",\n    \"!dist/**/*.map\"\n  ],\n  \"scripts\": {\n    \"lint\": \"eslint src/\",\n    \"build\": \"node build.js\",\n    \"generate:skills\": \"node scripts/generate-skillssh.mjs\",\n    \"regen:parity-hashes\": \"node scripts/regen-parity-hashes.mjs\",\n    \"dev\": \"tsc --watch\",\n    \"dev:cli\": \"pnpm build && node bin/openspec.js\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:ui\": \"vitest --ui\",\n    \"test:coverage\": \"vitest --coverage\",\n    \"prepare\": \"node build.js\",\n    \"prepublishOnly\": \"pnpm run build\",\n    \"check:pack-version\": \"node scripts/pack-version-check.mjs\",\n    \"release\": \"pnpm run release:ci\",\n    \"release:ci\": \"pnpm run check:pack-version && pnpm exec changeset publish\",\n    \"changeset\": \"changeset\"\n  },\n  \"engines\": {\n    \"node\": \">=22.20.0\"\n  },\n  \"devDependencies\": {\n    \"@changesets/changelog-github\": \"^1.0.0\",\n    \"@changesets/cli\": \"^3.0.1\",\n    \"@types/node\": \"^22.12.0\",\n    \"@types/picomatch\": \"^4.0.3\",\n    \"@vitest/ui\": \"^5.0.3\",\n    \"eslint\": \"^10.5.0\",\n    \"smol-toml\": \"^1.7.1\",\n    \"typescript\": \"^6.0.3\",\n    \"typescript-eslint\": \"^8.65.0\",\n    \"vite\": \"^8.3.5\",\n    \"vitest\": \"^5.0.3\"\n  },\n  \"dependencies\": {\n    \"@inquirer/core\": \"^12.0.0\",\n    \"@inquirer/prompts\": \"^8.5.2\",\n    \"brace-expansion\": \"^5.0.12\",\n    \"chalk\": \"^6.0.1\",\n    \"commander\": \"^14.0.0\",\n    \"cross-spawn\": \"7.0.6\",\n    \"diff\": \"^9.0.0\",\n    \"ora\": \"^9.4.1\",\n    \"picomatch\": \"^4.0.4\",\n    \"skills\": \"1.8.1\",\n    \"tinyglobby\": \"^0.2.17\",\n    \"yaml\": \"^2.8.3\",\n    \"zod\": \"^4.4.3\"\n  }\n}\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 2662,
+      "line_count": 47,
+      "truncated": false,
+      "excerpt": "packages:\n  - '.'\n\nallowBuilds:\n  esbuild@0.28.2: true\n\n# The only declaration of these. A `pnpm.overrides` block in package.json does not\n# merge with this list \u2014 pnpm 10 uses it *instead of* this file (verified: a lone\n# entry there produced a lockfile with only that override). Dependabot rewrites\n# plain-name entries in package.json when it bumps the same package, so a mirrored\n# copy there both drifts and silently takes precedence over these advisory pins.\noverrides:\n  # GHSA-6j4f-fj2g-mc7p, GHSA-qhr7-859c-m2p7, GHSA-q2hr-2g5m-vwhr \u2014 brace-expansion\n  # below 5.0.12. Direct dependency, and minimatch. Remove once every copy is\n  # >=5.0.12 (check: pnpm why brace-expansion).\n  brace-expansion@<5.0.12: '>=5.0.12 <6'\n  postcss@<8.5.23: '>=8.5.23 <9'\n  # GHSA-5p4m-2wfm-xmqj \u2014 js-yaml quadratic-CPU !!omap DoS. Dev-only (pulled by\n  # @changesets: read-yaml-file for 3.x, @changesets/parse for 4.x); never in the\n  # published CLI. Remove once changesets' transitive js-yaml is >=3.15.1 / >=4.3.1\n  # (check: pnpm why js-yaml).\n  js-yaml@>=3.0.0 <3.15.1: '>=3.15.1 <4'\n  js-yaml@>=4.0.0 <4.3.1: '>=4.3.1 <5'\n  # GHSA-2v37-7h3g-55p8 / CVE-2026-67213 \u2014 nanoid infinite loop on size=0. Dev-only\n  # (transitive via postcss). Remove once transitive nanoid is >=3.3.17\n  # (check: pnpm why nanoid).\n  nanoid@<3.3.17: '>=3.3.17 <4'\n  # GHSA-px8p-9vwx-vf98 \u2014 fflate `unzipSync` infinite loop on malformed ZIP64.\n  # Dev-only (transitive via @vitest/ui); never in the published CLI. Remove once\n  # transitive fflate is >=0.8.3 (check: pnpm why fflate).\n  fflate@<0.8.3: '>=0.8.3 <0.9'\n  # GHSA-pqg4-j6r4-53mv \u2014 shell-quote `quote()` command injection via a line\n  # terminator after a `{ comment }` token. Dev-only (transitive via\n  # @changesets/cli > launch-editor); never in the published CLI. Remove once\n  # transitive shell-quote is >=1.11.0 (check: pnpm why shell-quote).\n  shell-quote@>=1.8.4 <1.11.0: '>=1.11.0 <2'\n  # GHSA-587h-7wmj-h5pm, GHSA-698v-4r3x-3vcv, GHSA-r825-w8mm-5pxw \u2014 launch-editor\n  # command execution on Windows. Dev-only (transitive via @changesets/cli); never\n  # in the published CLI. Remove once transitive launch-editor is >=2.14.2\n  # (check: pnpm why launch-editor).\n  launch-editor@<2.14.2: '>=2.14.2 <3'\n  # GHSA-g3hv-75wg-m249 / CVE-2026-118764 \u2014 minimatch globParts amplification in\n  # firstPhasePreProcess(), then quadratic pairwise processing. Dev-only (transitive\n  # via eslint, @eslint/config-array and @typescript-eslint/typescript-estree, which\n  # all pin ^10.x); never in the published CLI. Remove once those ranges allow\n  # >=11.0.1 (check: pnpm why minimatch).\n  minimatch@<11.0.1: '>=11.0.1'\n"
+    }
+  },
+  "workflow_samples": {
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 19553,
+      "line_count": 545,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  pull_request:\n    branches: [main]\n  merge_group:\n    branches: [main]\n  push:\n    branches: [main]\n  workflow_dispatch:\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ci-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  # Detect which files changed to enable path-based filtering\n  changes:\n    name: Detect changes\n    runs-on: ubuntu-latest\n    outputs:\n      nix: ${{ steps.filter.outputs.nix }}\n      # 'false' when a pull request or merge group changes documentation only.\n      # Pushes to main and manual runs always test the CLI.\n      code: ${{ steps.code.outputs.code || 'true' }}\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          persist-credentials: false\n\n      - name: Check for Nix-related changes\n        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4\n        id: filter\n        with:\n          filters: |\n            nix:\n              - 'flake.nix'\n              - 'flake.lock'\n              - 'package.json'\n              - 'pnpm-lock.yaml'\n              - 'pnpm-workspace.yaml'\n              - 'scripts/update-flake.sh'\n              - '.github/workflows/ci.yml'\n              # The Nix build runs `openspec completion generate`, so a change to\n              # the generator can break packaging without touching flake.nix.\n              - 'src/commands/completion.ts'\n              - 'src/core/completions/**'\n\n      # A file counts as code unless it matches one of these documentation\n      # paths. Keep this list identical to the one in binaries.yml\n      # (test/ci-docs-only.test.ts checks).\n      - name: Check for changes outside documentation\n        if: github.event_name == 'pull_request' || github.event_name == 'merge_group'\n        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4\n        id: code\n        with:\n          predicate-quantifier: every\n          filters: |\n            code:\n              - '**'\n              - '!docs/**'\n              - '!docs-lab/**'\n              - '!website/**'\n              - '!assets/**'\n              - '!*.md'\n\n  test_matrix:\n    name: Test (${{ matrix.label }})\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: ${{ matrix.timeout_minutes || 15 }}\n    needs: changes\n    if: needs.changes.outputs.code == 'true'\n    strategy:\n      fail-fast: false\n      matrix:\n        # Every OS runs the oldest supported Node (package.json engines).\n        # Linux also runs the current LTS lines users are likely to have.\n        include:\n          - os: ubuntu-latest\n            shell: bash\n            label: linux-bash\n            node: '22.20.0'\n            vitest_workers: 4\n          - os: macos-latest\n            shell: bash\n            label: macos-bash\n            node: '22.20.0'\n            vitest_workers: 4\n          - os: windows-latest\n            shell: pwsh\n            label: windows-pwsh\n            timeout_minutes: 25\n            node: '22.20.0'\n            vitest_workers: 2\n          - os: ubuntu-latest\n            shell: bash\n            label: linux-bash-node22\n            node: '22'\n            vitest_workers: 4\n          - os: ubuntu-latest\n            shell: bash\n            label: linux-bash-node24\n            node: '24'\n            vitest_workers: 4\n\n    defaults:\n      run:\n        shell: ${{ matrix.shell }}\n\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n\n      - name: Setup pnpm\n        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1\n\n      - name: Setup Node.js\n        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0\n        with:\n          node-version: ${{ matrix.node }}\n          cache: 'pnpm'\n\n      - name: Print environment diagnostics\n        run: |\n          node -p \"JSON.stringify({ platform: process.platform, arch: process.arch, shell: process.env.SHELL || process.env.ComSpec || '' })\"\n\n      - name: Install dependencies\n        run: pnpm install --frozen-lockfile\n\n      - name: Build project\n        run: pnpm run build\n\n      - name: Run tests\n        env:\n          VITEST_MAX_WORKERS: ${{ matrix.vitest_workers }}\n        run: pnpm test\n\n      - name: Upload test coverage\n        if: matrix.os == 'ubuntu-latest' && matrix.node == '22.20.0'\n        uses: actions/upload-artifact@cf430e030ddbb5b0abf"
+    },
+    "release-prepare.yml": {
+      "path": ".github/workflows/release-prepare.yml",
+      "size_bytes": 7560,
+      "line_count": 192,
+      "truncated": true,
+      "excerpt": "name: Release\n\non:\n  push:\n    branches: [main]\n  workflow_dispatch: # manually cut a beta prerelease from main\n\n# Floor for both jobs. The prepare job widens this to pull-requests: write for\n# the Version Packages PR; the beta job only tags/releases + publishes via OIDC\n# and needs no PR access, so it inherits this narrower default.\npermissions:\n  contents: write\n  id-token: write # Required for npm OIDC trusted publishing\n\nconcurrency:\n  group: release-${{ github.ref }}\n  cancel-in-progress: false\n\njobs:\n  prepare:\n    if: github.repository == 'Fission-AI/OpenSpec' && github.event_name == 'push'\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n      pull-requests: write # changesets opens/updates the Version Packages PR\n      id-token: write # Required for npm OIDC trusted publishing\n    steps:\n      # Generate GitHub App token first - used for checkout and changesets\n      # This allows git operations to trigger CI workflows on the version PR\n      # (GITHUB_TOKEN cannot trigger workflows by design)\n      - name: Generate GitHub App Token\n        id: app-token\n        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3\n        with:\n          app-id: ${{ vars.APP_ID }}\n          private-key: ${{ secrets.APP_PRIVATE_KEY }}\n\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          fetch-depth: 0\n          token: ${{ steps.app-token.outputs.token }}\n\n      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1\n\n      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0\n        with:\n          node-version: '24' # Node 24 includes npm 11.5.1+ required for OIDC\n          cache: 'pnpm'\n          registry-url: 'https://registry.npmjs.org'\n\n      - run: pnpm install --frozen-lockfile\n\n      # Opens/updates the Version Packages PR; publishes when the Version PR merges\n      - name: Create/Update Version PR\n        id: changesets\n        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2\n        with:\n          github-token: ${{ steps.app-token.outputs.token }}\n          pr-title: 'chore(release): version packages'\n          create-github-releases: true\n          # Preserve the v1 release path: pushes use the GitHub App token from\n          # checkout so version PR updates trigger their normal CI workflows.\n          push-with-git-cli: true\n          # Use CI-specific release script: relies on version PR having been merged\n          # so package.json already contains the bumped version.\n          publish-script: pnpm run release:ci\n        env:\n          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}\n          # npm authentication handled via OIDC trusted publishing (no token needed)\n\n  # Manually-dispatched beta prerelease from main: version is the next stable\n  # release per pending changesets with a -beta.N suffix (e.g. v1.6.0-beta.1),\n  # published to npm under the `beta` dist-tag and posted as a prerelease-flagged\n  # GitHub Release. Changesets are left unconsumed, so the stable flow above is\n  # unaffected. This job lives in this file because npm trusted publishing\n  # authorizes a single workflow file per package.\n  #\n  # Users opt in with: npm install -g @fission-ai/openspec@beta\n  beta:\n    if: github.repository == 'Fission-AI/OpenSpec' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          fetch-depth: 0\n\n      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1\n\n      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0\n        with:\n          node-version: '24' # Node 24 includes npm 11.5.1+ required for OIDC\n          cache: 'pnpm'\n          registry-url: 'https://registry.npmjs.org'\n\n      - run: pnpm install --frozen-lockfile\n\n      # Beta version = next stable version per pending changesets, plus a\n      # -beta.N suffix that increments over existing beta tags for that version.\n      - name: Compute beta version\n        id: version\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          git fetch --tags --force origin\n          pnpm exec changeset status --output=changeset-status.json\n          NEXT=$(node -p \"JSON.parse(require('fs').readFileSync('changeset-status.json','utf8')).releases[0]?.newVersion ?? ''\""
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-24T19:44:06Z",
+      "oldest": "2026-10-30T19:41:25Z"
+    },
+    "conventional_pct": 86.0,
+    "fix_revert_pct": 40.0,
+    "ai_coauthor_pct": 98.0,
+    "top_recent_authors": [
+      [
+        "clay-good",
+        35
+      ],
+      [
+        "openspec-release-bot[bot]",
+        7
+      ],
+      [
+        "dependabot[bot]",
+        6
+      ],
+      [
+        "artemasmith",
+        1
+      ],
+      [
+        "micromagicman",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "f1cd852f",
+        "date": "2026-11-24T19:44:06Z",
+        "author": "openspec-release-bot[bot]",
+        "subject": "Version Packages (#2301)",
+        "ai_signal": true
+      },
+      {
+        "sha": "b30672cc",
+        "date": "2026-11-24T18:05:03Z",
+        "author": "clay-good",
+        "subject": "fix(install): retry the move when Windows still has the new exe locked (#2302)",
+        "ai_signal": true
+      },
+      {
+        "sha": "8ad4406a",
+        "date": "2026-11-24T17:07:18Z",
+        "author": "clay-good",
+        "subject": "feat(skills): add an /openspec router with references, keeping every skill as a tab-complete shortcut (#2287)",
+        "ai_signal": true
+      },
+      {
+        "sha": "1f846e64",
+        "date": "2026-11-24T15:24:22Z",
+        "author": "clay-good",
+        "subject": "chore(deps-dev): bump vitest and @vitest/ui to 5.1.1 (#2296)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4abd55ce",
+        "date": "2026-11-24T15:24:17Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump the website-dependencies group (#2294)",
+        "ai_signal": true
+      },
+      {
+        "sha": "0c737dc1",
+        "date": "2026-11-19T22:15:20Z",
+        "author": "openspec-release-bot[bot]",
+        "subject": "Version Packages (#2284)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a0993e9d",
+        "date": "2026-11-19T21:51:34Z",
+        "author": "clay-good",
+        "subject": "fix(update): refresh skills that npx skills put in a project (#2269)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4ff226bb",
+        "date": "2026-11-19T21:51:29Z",
+        "author": "clay-good",
+        "subject": "fix(skills): install skills from the npm package instead of cloning (#2283)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ad0579d3",
+        "date": "2026-11-19T20:20:36Z",
+        "author": "clay-good",
+        "subject": "fix(skills): hand off to apply when continue completes planning (#2274)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e6539de0",
+        "date": "2026-11-18T22:40:58Z",
+        "author": "clay-good",
+        "subject": "fix(archive): check the archive target before syncing specs (#2277)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e0fdff34",
+        "date": "2026-11-18T22:40:51Z",
+        "author": "clay-good",
+        "subject": "fix(validate): allow frontmatter at the top of delta specs (#2273)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a1213fcd",
+        "date": "2026-11-18T22:40:41Z",
+        "author": "clay-good",
+        "subject": "fix(archive): read a wrapped line starting with `<` as part of its sentence (#2266)",
+        "ai_signal": true
+      },
+      {
+        "sha": "168a5eac",
+        "date": "2026-11-18T21:47:47Z",
+        "author": "clay-good",
+        "subject": "fix(archive): put a blank line after ## Purpose in a new main spec (#2267)",
+        "ai_signal": true
+      },
+      {
+        "sha": "499602e8",
+        "date": "2026-11-18T21:47:45Z",
+        "author": "clay-good",
+        "subject": "fix(validate): warn when MODIFIED requirement grows past 500 chars (#2216) (#2265)",
+        "ai_signal": false
+      },
+      {
+        "sha": "efdf5319",
+        "date": "2026-11-18T21:47:42Z",
+        "author": "clay-good",
+        "subject": "fix(version): stop telling Homebrew and Nix installs to update with npm (#2264)",
+        "ai_signal": true
+      },
+      {
+        "sha": "f085c850",
+        "date": "2026-11-17T01:47:34Z",
+        "author": "clay-good",
+        "subject": "docs(site): give the upgrade pages their own Upgrading section (#2259)",
+        "ai_signal": true
+      },
+      {
+        "sha": "8bd4b355",
+        "date": "2026-11-17T00:58:26Z",
+        "author": "openspec-release-bot[bot]",
+        "subject": "Version Packages (#2258)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ee9038a0",
+        "date": "2026-11-17T00:20:13Z",
+        "author": "clay-good",
+        "subject": "feat(skills): install skills through the skills package, per project or once per machine (#2241)",
+        "ai_signal": true
+      },
+      {
+        "sha": "82a0be53",
+        "date": "2026-11-16T19:32:53Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump the website-dependencies group (#2253)",
+        "ai_signal": true
+      },
+      {
+        "sha": "9b0a156c",
+        "date": "2026-11-16T19:32:49Z",
+        "author": "dependabot[bot]",
+        "subject": "ci: bump pnpm/action-setup (#2250)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "TabishB",
+      "contributions": 523
+    },
+    {
+      "login": "clay-good",
+      "contributions": 232
+    },
+    {
+      "login": "openspec-release-bot[bot]",
+      "contributions": 37
+    },
+    {
+      "login": "dependabot[bot]",
+      "contributions": 35
+    },
+    {
+      "login": "dwin-gharibi",
+      "contributions": 21
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 20
+    },
+    {
+      "login": "ryandemelo",
+      "contributions": 9
+    },
+    {
+      "login": "mc856",
+      "contributions": 7
+    },
+    {
+      "login": "showms",
+      "contributions": 7
+    },
+    {
+      "login": "alfred-openspec",
+      "contributions": 5
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v2.2.0",
+      "published_at": "2026-11-24T19:55:16Z",
+      "name": "v2.2.0 - The /openspec skill router"
+    },
+    {
+      "tag": "v2.1.1",
+      "published_at": "2026-11-19T22:26:58Z",
+      "name": "v2.1.1 - Offline skill installs, safer archive"
+    },
+    {
+      "tag": "v2.1.0",
+      "published_at": "2026-11-17T01:12:49Z",
+      "name": "v2.1.0 - Global skills"
+    },
+    {
+      "tag": "v2.0.0",
+      "published_at": "2026-11-11T22:41:44Z",
+      "name": "v2.0.0 - Skills in .agents/skills, /opsx commands removed"
+    },
+    {
+      "tag": "v1.17.0",
+      "published_at": "2026-11-09T23:46:31Z",
+      "name": "v1.17.0 - Safe upgrades, 2.0 notice"
+    }
+  ]
+}

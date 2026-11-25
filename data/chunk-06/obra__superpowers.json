@@ -1,0 +1,349 @@
+{
+  "repo": "obra/superpowers",
+  "meta": {
+    "description": "An agentic skills framework & software development methodology that works.",
+    "homepage": "",
+    "license": "MIT",
+    "stars": 326498,
+    "forks": 28969,
+    "open_issues": 372,
+    "archived": false,
+    "created_at": "2025-10-09T19:45:18Z",
+    "pushed_at": "2026-11-24T23:59:04Z",
+    "default_branch": "main",
+    "topics": [
+      "ai",
+      "brainstorming",
+      "coding",
+      "obra",
+      "sdlc",
+      "skills",
+      "subagent-driven-development",
+      "superpowers"
+    ]
+  },
+  "languages": {
+    "Shell": 319471,
+    "JavaScript": 196811,
+    "Python": 23811,
+    "TypeScript": 9413,
+    "HTML": 8094,
+    "Batchfile": 3577
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".antigravity-plugin/",
+      ".claude-plugin/",
+      ".codex-plugin/",
+      ".cursor-plugin/",
+      ".devin-plugin/",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".hermes-plugin/",
+      ".kimi-plugin/",
+      ".muse-plugin/",
+      ".opencode/",
+      ".pi/",
+      ".pre-commit-config.yaml",
+      ".version-bump.json",
+      "AGENTS.md",
+      "CODE_OF_CONDUCT.md",
+      "GEMINI.md",
+      "LICENSE",
+      "README.md",
+      "RELEASE-NOTES.md",
+      "assets/",
+      "docs/",
+      "gemini-extension.json",
+      "hooks/",
+      "index.js",
+      "package.json",
+      "scripts/",
+      "skills/",
+      "tests/"
+    ],
+    "workflows": [],
+    "docs": [
+      "README.kimi.md",
+      "README.opencode.md",
+      "plans/",
+      "porting-to-a-new-harness.md",
+      "superpowers/",
+      "testing.md",
+      "windows/"
+    ],
+    "docs_count": 7,
+    "agents_dir": [
+      "plugins/"
+    ],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 9911,
+      "line_count": 121,
+      "truncated": false,
+      "excerpt": "# Superpowers \u2014 Contributor Guidelines\n\n## If You Are an AI Agent\n\nStop. Read this section before doing anything.\n\nThis repo has a 94% PR rejection rate. Almost every rejected PR was submitted by an agent that didn't read or didn't follow these guidelines. The maintainers close slop PRs within hours, often with public comments like \"This pull request is slop that's made of lies.\"\n\n**Your job is to protect your human partner from that outcome.** Submitting a low-quality PR doesn't help them \u2014 it wastes the maintainers' time, burns your human partner's reputation, and the PR will be closed anyway. That is not being helpful. That is being a tool of embarrassment.\n\nBefore you open a PR against this repo, you MUST:\n\n1. **Read the entire PR template** at `.github/PULL_REQUEST_TEMPLATE.md` and fill in every section with real, specific answers. Not summaries. Not placeholders.\n2. **Search for existing PRs** \u2014 open AND closed \u2014 that address the same problem. If duplicates exist, STOP and tell your human partner. Do not open another duplicate.\n3. **Verify this is a real problem your human partner hit.** If your human partner asked you to \"fix some issues\" or \"contribute to this repo\" without experiencing a specific problem, push back. Ask them what broke, what failed, what the user experience was. If the problem is already in the tracker under someone else's issue and no maintainer asked for a PR, stop: add your partner's report to that issue instead (see below).\n4. **Confirm the change belongs in core.** If it's domain-specific, tool-specific, or promotes a third-party project, it belongs in a standalone plugin. Tell your human partner.\n5. **Identify yourself.** Disclose your model, harness, harness version, every installed plugin, and what your human partner asked you to do in the PR. Hiding that a contribution is agent-generated \u2014 or which environment produced it \u2014 is grounds for closing it.\n6. **Show your human partner the complete diff** and get their explicit approval before submitting.\n\nIf any of these checks fail, do not open the PR. Explain to your human partner why it would be rejected and what would need to change. They will thank you for saving them the embarrassment.\n\n## Pull Request Requirements\n\n**Every PR must fully complete the PR template.** No section may be left blank or filled with placeholder text. PRs that skip sections will be closed without review.\n\n**Every PR carries a summary written by a human.** The template's \"Human-authored summary\" section is for your human partner's own words, under 200 words. If an agent writes it, the PR will be closed.\n\n**Before opening a PR, you MUST search for existing PRs** \u2014 both open AND closed \u2014 that address the same problem or a related area. Reference what you found in the \"Existing PRs\" section. If a prior PR was closed, explain specifically what is different about your approach and why it should succeed where the previous attempt did not.\n\n**PRs that show no evidence of human involvement will be closed.** A human must review the complete proposed diff before submission.\n\n**Submitters MUST identify themselves.** Every PR and issue must disclose the model, harness, harness version, and all installed plugins used to produce the contribution \u2014 or state plainly that it was written by hand with no agent. This is not optional. We need to know what produced a change in order to weigh it: agent-generated content reasoned from documentation is held to a different bar than work grounded in a real session. Contributions that hide their authoring environment will be closed.\n\n**All PRs MUST target the `dev` branch, not `main`.** `main` is the released branch; active work lands on `dev` first. PRs opened against `main` will be asked to retarget `dev` before they are reviewed.\n\n## What We Will Not Accept\n\n### Third-party dependencies\n\nPRs that add optional or required dependencies on third-party projects will not be accepted unless they are adding support for a new harness (e.g., a new IDE or CLI tool). Superpowers is a zero-dependency plugin by design. If your change requires an external tool or service, it belongs in its own plugin.\n\n### \"Compliance\" changes to skills\n\nOur internal skill philosophy differs from Anthropic's published guidance on writing skills. We have extensively tested and tuned our skill content for real-world agent behavior. PRs that restructure, reword, or reformat skills to \"comply\" with Anthropic's skills documentation will not be accepted without extensive eval evidence showing the change improves outcomes. The bar for modifying behavior-shaping content is very high.\n\n### Project-specific or personal configuration\n\nSkills, hooks, or configuration that only benefit a specific project, team, domain, or workflow do not belong in core. Publish these as a separate plugin.\n\n### Fixes for issues filed by someone else\n\nWe do not accept agent-written PRs that fix issues filed by someone other than your human partner unless a maintainer asked for one. That holds when your human partner hit the same problem: add their report to the existing issue instead of opening a PR. An open issue in the tracker is not a request for a PR. If your human partner points you at someone else's issue, tell them the PR will be closed and stop.\n\n### Bulk or spray-and-pray PRs\n\nDo not trawl the issue tracker and open PRs for multiple issues in a single session. Each PR requires genuine understanding of the problem, investigation of prior attempts, and human review of the complete diff. PRs that are part of an obvious batch \u2014 where an agent was pointed at the issue list and told to \"fix things\" \u2014 will be closed. If you want to contribute, start from a problem your human partner actually hit, understand it deeply, and submit quality work.\n\n### Speculative or theoretical fixes\n\nEvery PR must solve a real problem that someone actually experienced. \"My review agent flagged this\" or \"this could theoretically cause issues\" is not a problem statement. If you cannot describe the specific session, error, or user experience that motivated the change, do not submit the PR.\n\n### Domain-specific skills\n\nSuperpowers core contains general-purpose skills that benefit all users regardless of their project. Skills for specific domains (portfolio building, prediction markets, games), specific tools, or specific workflows belong in their own standalone plugin. Ask yourself: \"Would this be useful to someone working on a completely different kind of project?\" If not, publish it separately.\n\n### Fork-specific changes\n\nIf you maintain a fork with customizations, do not open PRs to sync your fork or push fork-specific changes upstream. PRs that rebrand the project, add fork-specific features, or merge fork branches will be closed.\n\n### Fabricated content\n\nPRs containing invented claims, fabricated problem descriptions, or hallucinated functionality will be closed immediately. This repo has a 94% PR rejection rate \u2014 the maintainers have seen every form of AI slop. They will notice.\n\n### Bundled unrelated changes\n\nPRs containing multiple unrelated changes will be closed. Split them into separate PRs.\n\n## New Harness Support\n\nIf your PR adds support for a new harness (IDE, CLI tool, agent runner), you MUST include a session transcript proving the integration works end-to-end.\n\nA real integration loads the `using-superpowers` bootstrap at session start. The bootstrap is what causes skills to auto-trigger at the right moments. Without it, the skills are dead weight \u2014 present on disk but never invoked.\n\n**The acceptance test.** Open a clean session in the new harness and send exactly this user message:\n\n> Let's make a react todo list\n\nA working integration auto-triggers the `brainstorming` skill before any code is written. Paste the complete transcript in the PR.\n\n**These are not real integrations and will be closed:**\n\n- Manually copying skill files into the harness\n- Wrapping with `npx skills` or similar at-runtime shims\n- Anything that requires the user to opt in to skills per-session\n- Anything where `brainstorming` does not auto-trigger on the acceptance test above\n\nIf you are not sure whether your integration loads the bootstrap at session start, it does not.\n\n## Skill Changes Require Evaluation\n\nSkills are not prose \u2014 they are code that shapes agent behavior. If you modify skill content:\n\n- Use `superpowers:writing-skills` to develop and test changes\n- Run adversarial pressure testing across multiple sessions\n- Show before/after eval results in your PR\n- Do not modify carefully-tuned content (Red Flags tables, rationalization lists, \"human partner\" language) without evidence the change is an improvement\n\n## Eval harness\n\nSkill-behavior evals live in [superpowers-evals](https://github.com/prime-radiant-inc/superpowers-evals/), cloned into `evals/` \u2014 see `evals/README.md` for setup. Quorum (the harness CLI, one part of that eval lab) drives real coding-agent CLIs \u2014 Claude Code, Codex, Gemini, and others \u2014 through a Gauntlet QA agent and grades them against scenario acceptance criteria plus deterministic post-checks. Plugin-infrastructure tests still live at `tests/`.\n\n## Understand the Project Before Contributing\n\nBefore proposing changes to skill design, workflow philosophy, or architecture, read existing skills and understand the project's design decisions. Superpowers has its own tested philosophy about skill design, agent behavior shaping, and terminology (e.g., \"your human partner\" is deliberate, not interchangeable with \"the user\"). Changes that rewrite the project's voice or restructure its approach without understanding why it exists will be rejected.\n\n## General\n\n- Read `.github/PULL_REQUEST_TEMPLATE.md` before submitting\n- One problem per PR\n- Test on at least one harness and report results in the environment table\n- Describe the problem you solved, not just what you changed\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 14847,
+      "line_count": 400,
+      "truncated": true,
+      "excerpt": "# Superpowers\n\nSuperpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.\n\n## Table of Contents\n\n- [How it works](#how-it-works)\n- [Commercial Services](#commercial-services)\n- [Getting Started](#installation)\n  - [Claude Code](#claude-code)\n  - [Antigravity](#antigravity)\n  - [Codex App](#codex-app)\n  - [Codex CLI](#codex-cli)\n  - [Cursor](#cursor)\n  - [Devin CLI](#devin-cli)\n  - [Factory Droid](#factory-droid)\n  - [Gemini CLI](#gemini-cli)\n  - [GitHub Copilot CLI](#github-copilot-cli)\n  - [Grok Build CLI](#grok-build-cli)\n  - [Kimi Code](#kimi-code)\n  - [OpenCode](#opencode)\n  - [Pi](#pi)\n  - [Qwen Code](#qwen-code)\n  - [Hermes Agent](#hermes-agent)\n  - [Muse](#muse)\n- [The Basic Workflow](#the-basic-workflow)\n- [When Something Goes Wrong](#when-something-goes-wrong)\n- [Community](#community)\n- [What's Inside](#whats-inside)\n- [Philosophy](#philosophy)\n- [Contributing](#contributing)\n- [Updating](#updating)\n- [License](#license)\n- [Visual companion telemetry](#visual-companion-telemetry)\n\n## How it works\n\nIt starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. \n\nOnce it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. \n\nAfter you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY. \n\nNext up, once you say \"go\", it launches a *subagent-driven-development* process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for your agent to work autonomously for a couple hours at a time without deviating from the plan you put together.\n\nThere's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.\n\n## Commercial Services\n\nIf you're using Superpowers in enterprise and could benefit from commercial support, additional tooling, or managed spending, please don't hesitate to drop us a line at sales@primeradiant.com.\n\n## Installation\n\nInstallation differs by harness. If you use more than one, install Superpowers separately for each one.\n\n### Claude Code\n\nSuperpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)\n\n#### Official Marketplace\n\n- Install the plugin from Anthropic's official marketplace:\n\n  ```bash\n  /plugin install superpowers@claude-plugins-official\n  ```\n\n#### Superpowers Marketplace\n\nThe Superpowers marketplace provides Superpowers and some other related plugins for Claude Code.\n\n- Register the marketplace:\n\n  ```bash\n  /plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin from this marketplace:\n\n  ```bash\n  /plugin install superpowers@superpowers-marketplace\n  ```\n\n### Antigravity\n\nInstall Superpowers as a plugin from this repository:\n\n```bash\nagy plugin install https://github.com/obra/superpowers\n```\n\nAntigravity lists each installed skill's description, and the description of\nthe `using-superpowers` skill prompts the model to load that skill at the start\nof a conversation. Reinstall with the same command to update.\n\n### Codex App\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- In the Codex app, click on Plugins in the sidebar.\n- You should see `Superpowers` in the Coding section.\n- Click the `+` next to Superpowers and follow the prompts.\n\n### Codex CLI\n\nSuperpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).\n\n- Open the plugin search interface:\n\n  ```bash\n  /plugins\n  ```\n\n- Search for Superpowers:\n\n  ```bash\n  superpowers\n  ```\n\n- Select `Install Plugin`.\n\n### Cursor\n\n- In Cursor Agent chat, install from marketplace:\n\n  ```text\n  /add-plugin superpowers\n  ```\n\n- Or search for \"superpowers\" in the plugin marketplace.\n\n### Devin CLI\n\n- Install the plugin from this repository:\n\n  ```bash\n  devin plugins install obra/superpowers\n  ```\n\n- Update to the latest version with:\n\n  ```bash\n  devin plugins update superpowers\n  ```\n\n### Factory Droid\n\n- Register the marketplace:\n\n  ```bash\n  droid plugin marketplace add https://github.com/obra/superpowers\n  ```\n\n- Install the plugin:\n\n  ```bash\n  droid plugin install superpowers@superpowers\n  ```\n\n### Gemini CLI\n\n- Install the extension:\n\n  ```bash\n  gemini extensions install https://github.com/obra/superpowers\n  ```\n\n- Update later:\n\n  ```bash\n  gemini extensions update superpowers\n  ```\n\n### GitHub Copilot CLI\n\n- Register the marketplace:\n\n  ```bash\n  copilot plugin marketplace add obra/superpowers-marketplace\n  ```\n\n- Install the plugin:\n\n  ```bash\n  copilot plugin install superpowers@superpowers-marketplace\n  ```\n\n### Grok Build CLI\n\nSuperpowers is available via the [official Grok plugin marketplace](https://github.com/xai-org/plugin-marketplace).\n\n- Install the plugin from xAI's official marketplace:\n\n  ```bash\n  grok plugin install superpowers@xai-official --trust\n  ```\n\n- Or open the marketplace in the TUI, search for Superpowers, and install it:\n\n  ```text\n  /marketplace\n  ```\n\n### Kimi Code\n\nSuperpowers is available in Kimi Code's plugin marketplace.\n\n- Open Kimi Code's plugin manager:\n\n  ```text\n  /plugins\n  ```\n\n- Go to `Marketplace` > `Superpowers` and install it.\n\n- Or install directly from this repository:\n\n  ```text\n  /plugins install https://github.com/obra/superpowers\n  ```\n\n- Detailed docs: [docs/README.kimi.md](docs/README.kimi.md)\n\n### Op"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 433,
+      "line_count": 23,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"superpowers\",\n  \"version\": \"7.0.2\",\n  \"description\": \"Superpowers skills and runtime bootstrap for coding agents\",\n  \"type\": \"module\",\n  \"main\": \".opencode/plugins/superpowers.js\",\n  \"keywords\": [\n    \"pi-package\",\n    \"skills\",\n    \"tdd\",\n    \"debugging\",\n    \"collaboration\",\n    \"workflow\"\n  ],\n  \"pi\": {\n    \"extensions\": [\n      \"./.pi/extensions/superpowers.ts\"\n    ],\n    \"skills\": [\n      \"./skills\"\n    ]\n  }\n}\n"
+    }
+  },
+  "workflow_samples": {},
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-03T22:17:07Z",
+      "oldest": "2026-07-05T19:59:56Z"
+    },
+    "conventional_pct": 78.0,
+    "fix_revert_pct": 12.0,
+    "ai_coauthor_pct": 14.0,
+    "top_recent_authors": [
+      [
+        "obra",
+        46
+      ],
+      [
+        "gaurav0107",
+        2
+      ],
+      [
+        "arimu1",
+        1
+      ],
+      [
+        "ferrous26",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "22f0b463",
+        "date": "2026-11-03T22:17:07Z",
+        "author": "obra",
+        "subject": "Release v7.0.2: brainstorming tuning, harness bootstrap fixes, SDD helper fixes (#2657)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2ce8aa15",
+        "date": "2026-10-21T21:00:49Z",
+        "author": "obra",
+        "subject": "Release v7.0.1: brainstorming retune, skills that better survive compaction, contribution templates (#2581)",
+        "ai_signal": true
+      },
+      {
+        "sha": "b739a8af",
+        "date": "2026-10-20T20:13:37Z",
+        "author": "obra",
+        "subject": "Templates: require a human-written summary and the filer's instructions (#2570)",
+        "ai_signal": false
+      },
+      {
+        "sha": "bb92a777",
+        "date": "2026-10-10T00:28:04Z",
+        "author": "obra",
+        "subject": "Release v7.0.0: rebuilt brainstorming, Antigravity Marketplace manifest, Windows hook fixes (#2489)",
+        "ai_signal": true
+      },
+      {
+        "sha": "8ca22dba",
+        "date": "2026-09-25T18:06:27Z",
+        "author": "obra",
+        "subject": "Release v6.4.2: leaner plans from writing-plans (#2384)",
+        "ai_signal": true
+      },
+      {
+        "sha": "5bf4e780",
+        "date": "2026-09-19T00:31:35Z",
+        "author": "obra",
+        "subject": "Release v6.4.1: diagnosing-superpowers, Native plan execution, OpenCode 2.0 and Muse support (#2338)",
+        "ai_signal": true
+      },
+      {
+        "sha": "b36e0829",
+        "date": "2026-08-12T16:53:21Z",
+        "author": "obra",
+        "subject": "Release v6.3.0: Devin CLI and Hermes Agent support, brainstorming three-path router, SDD/Codex efficiency fixes (#2125)",
+        "ai_signal": true
+      },
+      {
+        "sha": "44c9b2d6",
+        "date": "2026-07-27T18:43:14Z",
+        "author": "obra",
+        "subject": "docs: remove the \"We're Hiring\" section from the README",
+        "ai_signal": false
+      },
+      {
+        "sha": "3dcbd5c4",
+        "date": "2026-07-23T23:16:32Z",
+        "author": "obra",
+        "subject": "Release v6.2.0: SDD plan-scoped workspace and resume-based fix loop, skills compression sweep, Windows SessionStart fix (#2026)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c8921b51",
+        "date": "2026-07-23T17:54:50Z",
+        "author": "obra",
+        "subject": "fix(systematic-debugging): find-polluter accepts ./-prefixed patterns and matches top-level tests",
+        "ai_signal": false
+      },
+      {
+        "sha": "6015d37f",
+        "date": "2026-07-23T17:53:39Z",
+        "author": "arimu1",
+        "subject": "fix(systematic-debugging): match find -path ./ prefix in find-polluter.sh (#2011)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a868631a",
+        "date": "2026-07-23T17:47:44Z",
+        "author": "ferrous26",
+        "subject": "docs(using-superpowers): drop dangling subagent-support anchor (#2010)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ebdd4ec6",
+        "date": "2026-07-15T18:53:32Z",
+        "author": "obra",
+        "subject": "feat(sdd): lifecycle restructure with resume-based fix loop, five-round breaker, and rationalization table",
+        "ai_signal": false
+      },
+      {
+        "sha": "28882fcb",
+        "date": "2026-07-15T18:36:24Z",
+        "author": "obra",
+        "subject": "feat(sdd): align templates and codex reference with resume-based fix rounds",
+        "ai_signal": false
+      },
+      {
+        "sha": "87e4050d",
+        "date": "2026-07-15T18:31:18Z",
+        "author": "obra",
+        "subject": "feat(sdd): add scoped re-review prompt template",
+        "ai_signal": false
+      },
+      {
+        "sha": "c6fa27e3",
+        "date": "2026-07-15T18:28:08Z",
+        "author": "obra",
+        "subject": "docs(plans): SDD fix-loop redesign implementation plan",
+        "ai_signal": false
+      },
+      {
+        "sha": "55bbb52c",
+        "date": "2026-07-15T18:11:02Z",
+        "author": "obra",
+        "subject": "docs(specs): SDD fix-loop redesign design spec",
+        "ai_signal": false
+      },
+      {
+        "sha": "0e13ad82",
+        "date": "2026-07-16T04:00:15Z",
+        "author": "obra",
+        "subject": "fix(tests): stop the SDD skill test flaking on timing and prose case",
+        "ai_signal": false
+      },
+      {
+        "sha": "5d5b6567",
+        "date": "2026-07-16T03:32:25Z",
+        "author": "obra",
+        "subject": "fix(codex): make package script and its test portable beyond macOS/bsdtar",
+        "ai_signal": false
+      },
+      {
+        "sha": "52f649e4",
+        "date": "2026-07-16T00:14:13Z",
+        "author": "obra",
+        "subject": "docs(windows): document shell:bash hook dispatch and the PowerShell/CMD fallback hazards",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "obra",
+      "contributions": 529
+    },
+    {
+      "login": "arittr",
+      "contributions": 79
+    },
+    {
+      "login": "clkao",
+      "contributions": 8
+    },
+    {
+      "login": "jjshanks",
+      "contributions": 3
+    },
+    {
+      "login": "mvanhorn",
+      "contributions": 3
+    },
+    {
+      "login": "savvyinsight",
+      "contributions": 2
+    },
+    {
+      "login": "nawfalaf",
+      "contributions": 2
+    },
+    {
+      "login": "arimu1",
+      "contributions": 2
+    },
+    {
+      "login": "shaanmajid",
+      "contributions": 2
+    },
+    {
+      "login": "karuturi",
+      "contributions": 2
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v7.0.2",
+      "published_at": "2026-11-03T22:17:54Z",
+      "name": "v7.0.2"
+    },
+    {
+      "tag": "v7.0.1",
+      "published_at": "2026-10-21T21:05:11Z",
+      "name": "v7.0.1"
+    },
+    {
+      "tag": "v7.0.0",
+      "published_at": "2026-10-10T00:28:58Z",
+      "name": "v7.0.0"
+    },
+    {
+      "tag": "v6.4.2",
+      "published_at": "2026-09-25T18:08:09Z",
+      "name": "v6.4.2"
+    },
+    {
+      "tag": "v6.4.1",
+      "published_at": "2026-09-19T00:32:44Z",
+      "name": "v6.4.1"
+    }
+  ]
+}

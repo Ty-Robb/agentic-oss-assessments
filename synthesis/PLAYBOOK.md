@@ -1,12 +1,12 @@
 # Agentic OSS Engineering Playbook
 
-*Synthesized from primary-source GitHub API audits of **24 open-source agentic coding, orchestration, and control-plane repositories** (**~1.73M combined GitHub stars**, snapshot date: **2026-11-25**).*
+*Synthesized from primary-source GitHub API audits of **34 open-source agentic coding, orchestration, and skill-stack repositories** (**2,903,100 / ~2.90M combined GitHub stars**, snapshot date: **2026-11-25**).*
 
 Every recommendation below is backed by real configuration files, CI workflows, lint plugins, and commit histories captured under [`data/`](../data/). Nothing here is taken from marketing pages or blog posts.
 
 ---
 
-## Executive Summary: 5 Empirical Laws of High-Velocity Agentic Repos
+## Executive Summary: 6 Empirical Laws of High-Velocity Agentic Repos
 
 1. **Mechanical invariants beat prose instructions 10-to-1.**
    - Every surviving high-velocity TypeScript codebase (`t3code`, `Paradev`, `emdash`, `opencode`, `openclaw`, `paseo`, `oh-my-openagent`) stopped lecturing agents in `AGENTS.md` and encoded recurring failure modes directly into **`oxlint` / Biome custom plugins, `ast-grep` rules, or meta-tests**.
@@ -31,15 +31,21 @@ Every recommendation below is backed by real configuration files, CI workflows, 
    - Agents naturally game soft checks: weakening tests to make CI green, claiming a filtered test run passed when 0 subtests matched, or reading a skipped CI job as green coverage.
    - The best defenses in the cohort are **Verification Skill Independence** (`OpenHands`: `verify-skill-isolation.yml`), **diff-scoped mutation testing** (`OpenHands`: `stryker-diff.mjs`), **uncommitted local QA evidence + `sha256sum` PR proofs** (`oh-my-openagent`), **explicit `### Observed / Not run` PR sections** (`cmux`), and **"verify the test actually ran"** (`beads`).
 
-5. **Scope sprawl kills small teams faster than missing features.**
-   - All three archived or sunsetting repos in this study share clear structural failure modes:
+5. **Scope sprawl and weak governance kill projects faster than missing features.**
+   - All four archived or sunsetting repos in this 34-repo study share clear structural failure modes:
      - `21st-dev/1code` (Archived < 2 mos): Zero CI/tests + one-way sync mirror + stale WIP docs.
      - `BloopAI/vibe-kanban` (Sunsetting): Strong Rust craft (`ts-rs`, `sqlx`), crushed by 30 Rust crates + ElectricSQL + WebRTC relay + Tauri + Rust nightly on a 4-person team.
      - `RooCodeInc/Roo-Code` (Archived May 2026): Trapped inside a VS Code extension architecture while every surviving rival (`Cline`, `OpenHands`, `Goose`) decoupled into multi-surface SDKs + ACP control planes.
+     - `gsd-build/get-shit-done` (64.1k★, Archived May 2026): Heavy CommonJS + TS SDK process sprawl, ultimately abandoned and migrated to `open-gsd/gsd-core` after a repo-compromise warning in git history.
+
+6. **Skill stacks do not boost raw bug-fix rates — they enforce alignment, review, QA, and safety.**
+   - `garrytan/gstack` published the most honest empirical receipt in the study right inside its `README.md`: on 100 real GitHub bugs/features, Opus 5.5 solved **58 with `gstack`** vs. **61 of 99 without it** (and 29 vs. 29 on 60 security fixes).
+   - Skills are for **workflow discipline** (`/grill-me`, `brainstorming`, `GLOSSARY.md`, formal verification via `pstack`'s TLA+/Lean, and shipping evidence). Raw code quality still comes from **mechanical repo gates** — exemplified by Matt Pocock's `sandcastle` (all-5-category `oxlint` straitjacket + automated `lint-shrink.yml` ratchet bot).
+   - Skill repos also face extreme AI-PR slop (`obra/superpowers` reports a **94% PR rejection rate**; `mattpocock/skills` and `OpenSpec` restrict PRs to collaborators/invited authors only).
 
 ---
 
-## Master 24-Repository Matrix
+## Master 34-Repository Matrix
 
 | Chunk | Repository | Stars | Open Issues | Status | Primary Stack | Workflows | Last-50 Velocity | Signature Practice to Know |
 | --- | --- | ---: | ---: | --- | --- | ---: | --- | --- |
@@ -67,6 +73,15 @@ Every recommendation below is backed by real configuration files, CI workflows, 
 | C5 | [`stackblitz-labs/bolt.diy`](../chunks/chunk-05-specialists/bolt-diy.md) | 20.1k | 2 | Active | TS (3.4 MB, React Router, WebContainers, AI SDK) | 13 | 50 / **5.3 days** | Prod Docker `curl` smoke test in CI, `.performance-budgets.json`, Lighthouse CI |
 | C5 | [`code-yeongyu/oh-my-openagent`](../chunks/chunk-05-specialists/oh-my-openagent.md) | 71.1k | 2,823 | Active | TS (58.0 MB) + Rust (5.3 MB), 45 pkgs, Bun | 48 | 50 / **19.2 hrs** | Local `.omo/evidence/` + `sha256sum` proof + anti-commit test, hermetic `$HOME` tests |
 | C5 | [`zgsm-ai/costrict`](../chunks/chunk-05-specialists/costrict.md) | 4.5k | 14 | Slowing | TS (15.1 MB, Roo Code enterprise fork, pnpm) | 11 | 50 / **3.6 mos** | 1-line English commit rule (92% conv), 40+ CVE overrides, workspace-trust MCP gate |
+| C6 | [`mattpocock/skills`](../chunks/chunk-06-skill-stacks/mattpocock-skills.md) | 332.8k | 251 | Active | Markdown skills + 20 KB Shell/JS, Changesets | 4 | 50 / **7.1 wks** | Bucket lifecycle, fresh-context subagents, Codex `openai.yaml` parity, collab-only PRs |
+| C6 | [`mattpocock/sandcastle`](../chunks/chunk-06-skill-stacks/mattpocock-sandcastle.md) | 9.3k | 137 | Active | TS (2.6 MB, TS 7, Effect, `oxlint-tsgolint`) | 8 | 50 / **6.0 days** | **All-5-cat `oxlint` straitjacket + `lint-shrink.yml` bot**, real `bwrap` CI, `docs-guide.test.ts` |
+| C6 | [`obra/superpowers`](../chunks/chunk-06-skill-stacks/superpowers.md) | 326.5k | 372 | Active | Markdown skills + 520 KB Shell/JS, 15+ harnesses | **0** | 50 / **4.0 mos** | **94% PR rejection rate**, external Quorum eval lab, `"react todo list"` bootstrap test |
+| C6 | [`github/spec-kit`](../chunks/chunk-06-skill-stacks/spec-kit.md) | 151.4k | 230 | Active | Python (11.9 MB, `uv`, Typer, MCP SDK) | 29 | 50 / **7.0 days** | **Firewall-sandboxed `gh-aw` agentic workflows**, Evidence Gate, Ruff `S602`–`S605` |
+| C6 | [`garrytan/gstack`](../chunks/chunk-06-skill-stacks/gstack.md) | 142.6k | **45** | Active | TS (**45.1 MB**), Bun, Playwright/Aside CLIs | 38 | 50 / **1.8 days** | Honest **58 vs 61/99** eval, `egress-receipt-wiring`, token-budget ratchets, `$150/wk` cap |
+| C6 | [`Fission-AI/OpenSpec`](../chunks/chunk-06-skill-stacks/openspec.md) | 75.7k | 214 | Active | TS (5.8 MB, Node 22+, pnpm 10, Vitest 5) | 5 | 50 / **25 days** | **`startup-modules.test.ts`** CLI cold-start guard, GHSA-annotated overrides, 2-PR features |
+| C6 | [`gsd-build/get-shit-done`](../chunks/chunk-06-skill-stacks/get-shit-done.md) | 64.1k | 0 | **Archived** | 7.3 MB CJS + 2.6 MB TS SDK, `node:test` | 20 | Archived May '26 | `prompt-injection-scan.sh`, `<issue#>-<slug>` ADRs (postmortem: compromise redirect) |
+| C6 | [`bmad-code-org/BMAD-METHOD`](../chunks/chunk-06-skill-stacks/bmad-method.md) | 55.7k | 116 | Active | Python (1.8 MB, `uv`, Jinja2, Ruff) + Astro | 5 | 50 / **27 days** | *"Length paid on every run; prefer deleting to hedging"*, PEP 723 skill scripts, `ready_for_review` AI |
+| C6 | [`pstack`](../chunks/chunk-06-skill-stacks/pstack.md) (`backnotprop` / `pstack-claude`) | 5.2k / 4.9k | 2 / 16 | Active | Agent Skills + 1.8 MB TS/JS + **Lean/TLA+** | 0 / 6 | 50 / **6.5 days** | Formal verification skills (TLA+/Lean), `tools/forks.json` CI check, `--check-rules` |
 
 ---
 

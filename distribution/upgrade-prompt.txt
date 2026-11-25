@@ -1,42 +1,46 @@
 <prompt>
 <goal>
-Audit this repository and upgrade its agentic engineering guardrails using the proven patterns from 24 top open-source AI coding repos (1.73M combined stars). Do not add speculative complexity; ship only the highest-ROI mechanical checks that fit this stack.
+Audit this repository and upgrade its agentic engineering guardrails using the proven patterns from 34 top open-source AI coding repos & skill stacks (2.90M combined stars). Do not add speculative complexity; ship only the highest-ROI mechanical checks that fit this stack.
 </goal>
 
 <evidence>
-Grounded in primary-source audits of t3code, openclaw, opencode, pi, codex, gemini-cli, OpenHands, cline, goose, paperclip, paseo, happy, cmux, Paradev, emdash, oh-my-openagent, beads, symphony, bolt.diy, claude-squad, costrict, 1code, vibe-kanban, and Roo-Code:
-- Mechanical lint/CI gates beat prose rules 10-to-1.
-- Open trackers drown (codex: 28,619 issues) vs. gated trackers (pi: 307).
-- CI sweet spot is 12-30 focused workflows (0 -> 1code archived in 7 wks; 231 -> cmux spends ~80% of commits fixing CI).
+Grounded in primary-source audits of 34 repos (t3code, openclaw, opencode, pi, codex, gemini-cli, OpenHands, cline, goose, paperclip, paseo, happy, cmux, Paradev, emdash, oh-my-openagent, beads, symphony, bolt.diy, claude-squad, costrict, 1code, vibe-kanban, Roo-Code, mattpocock/skills, mattpocock/sandcastle, obra/superpowers, github/spec-kit, garrytan/gstack, Fission-AI/OpenSpec, gsd-build/get-shit-done, bmad-code-org/BMAD-METHOD, backnotprop/pstack, michael-denyer/pstack-claude):
+- Mechanical lint/CI gates beat prompt stacks 10-to-1 (gstack's own 100-bug benchmark: 58 solved with gstack vs. 61/99 without).
+- Open trackers drown (codex: 28,619 issues) vs. gated trackers (pi: 307; superpowers: 94% PR rejection rate stated upfront).
+- CI sweet spot is 8-30 focused workflows (0 -> 1code archived in 7 wks; 231 -> cmux spends ~80% of commits fixing CI).
+- 4/34 repos archived or sunset (scope sprawl, missing gates, or supply-chain compromise in gsd-build/get-shit-done).
 </evidence>
 
 <agents_md>
 1. Keep root AGENTS.md under 180 lines (<20 KB). Make CLAUDE.md a symlink or 1-line @AGENTS.md include.
-2. Every rule must cite a real bug, incident, or failure mode. Delete tutorials and WIP status.
-3. Add three short invariants:
+2. Every rule must cite a real bug, incident, or failure mode (openclaw). Prefer deleting an instruction to hedging it (BMAD).
+3. Add four compact invariants:
    - Anti-overengineering ("Choose good compromises": prefer idempotency key + check + retry over speculative machinery).
    - Anti-slop Doc voice (ban "It's not X, it's Y", "robust", "seamless", "and that matters"; integrate edits, don't append).
    - Multi-agent Git safety (never git add -A, git stash, or git reset --hard; never kill processes by pattern).
+   - Fresh-context subagents (start research/review subagents in fresh context windows, never forked parent state - mattpocock/skills).
 4. Create a 1-page REVIEW.md seeded from our last 10-15 real PR review catches; instruct agents to self-audit against it pre-PR.
 </agents_md>
 
 <lint_and_supply_chain>
-1. Turn our top 3-5 recurring PR review bugs into hard lint errors (oxlint or Biome).
+1. Turn our top 3-5 recurring PR review bugs into hard lint errors (type-aware oxlint or Biome).
 2. Disallow silent eslint-disable escapes (or require justified inline reasons). Use per-file, per-API allowlists - never directory-wide disables.
-3. Add a 7-day dependency cooldown:
-   - pnpm-workspace.yaml: minimumReleaseAge: 10080, blockExoticSubdeps: true, explicit allowBuilds.
+3. Add a shrink-only debt/coverage ratchet (sandcastle lint-shrink.yml style) so baselines tighten automatically on main.
+4. Add a 7-day dependency cooldown:
+   - pnpm-workspace.yaml: minimumReleaseAge: 10080, blockExoticSubdeps: true, explicit allowBuilds (put GHSA overrides in pnpm-workspace.yaml).
    - npm: --min-release-age=7 + lockfile-lint in CI.
-4. Add dead-file/export detection (knip or equivalent).
+5. Add dead-file/export detection (knip) and, for CLIs, a startup module-count budget test (OpenSpec).
 </lint_and_supply_chain>
 
-<verification_and_ci>
+<verification_and_skills>
 1. Wire one fast, diff-scoped local check command (check:changed / verify) so agents never run full-repo suites locally.
 2. Pair path-filtered CI jobs with one `if: always()` `CI required` aggregator job so skipped jobs never hang branch protection.
 3. Add a PR template section `### Observed / Not run` (commands run, observed output, and what was skipped).
 4. Keep QA screenshots/logs gitignored and add a CI check failing if temporary evidence or scratch files are tracked.
-5. Protect verification skills / evals from being modified in the same PR as production code (Verification Skill Independence).
-6. If stateful DB/Docker/LLM: add lock_timeout='5s' migrations, prod container health smoke test, and prompt prefix-stability test.
-</verification_and_ci>
+5. Protect verification skills / evals from being modified in the same PR as production code (OpenHands skill isolation).
+6. If we ship skills: validate YAML frontmatter in CI (mattpocock/skills), cap loaded skill catalog tokens (gstack), mark manual/destructive skills `disable-model-invocation: true`, and keep state-machine invariants formally testable (pstack TLA+/Lean).
+7. If stateful DB/Docker/LLM: add lock_timeout='5s' migrations, prod container health smoke test, and prompt prefix-stability test.
+</verification_and_skills>
 
 <delivery>
 1. Inspect our repo first and report current gaps in a short table.

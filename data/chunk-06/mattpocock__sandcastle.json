@@ -1,0 +1,395 @@
+{
+  "repo": "mattpocock/sandcastle",
+  "meta": {
+    "description": "Orchestrate sandboxed coding agents in TypeScript with sandcastle.run()",
+    "homepage": "",
+    "license": "MIT",
+    "stars": 9277,
+    "forks": 997,
+    "open_issues": 137,
+    "archived": false,
+    "created_at": "2026-03-17T14:49:05Z",
+    "pushed_at": "2026-11-18T16:18:07Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "TypeScript": 2585184,
+    "Shell": 13561,
+    "JavaScript": 7169,
+    "Dockerfile": 1518
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".changeset/",
+      ".claude/",
+      ".dependency-cruiser.mjs",
+      ".factory/",
+      ".github/",
+      ".gitignore",
+      ".husky/",
+      ".mailmap",
+      ".out-of-scope/",
+      ".oxlintrc.json",
+      ".sandcastle/",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CLAUDE.md",
+      "GLOSSARY.md",
+      "LICENSE",
+      "README.md",
+      "api-report/",
+      "biome.json",
+      "docs/",
+      "ideas/",
+      "lint-staged.config.mjs",
+      "package-lock.json",
+      "package.json",
+      "plans/",
+      "research/",
+      "scripts/",
+      "src/",
+      "tests/",
+      "tsconfig.json",
+      "tsup.config.ts",
+      "vitest.config.ts",
+      "vitest.local.config.ts"
+    ],
+    "workflows": [
+      "agent-explore.yml",
+      "agent-implement-pr.yml",
+      "agent-implement.yml",
+      "agent-review.yml",
+      "agent-update-branch.yml",
+      "ci.yml",
+      "lint-shrink.yml",
+      "release.yml"
+    ],
+    "docs": [
+      "adr/",
+      "agents/",
+      "guide/",
+      "research/"
+    ],
+    "docs_count": 4,
+    "agents_dir": [
+      "skills/"
+    ],
+    "agents_skills": [
+      "pre-release/",
+      "verify/"
+    ],
+    "claude_dir": [
+      "settings.json",
+      "skills"
+    ],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 4982,
+      "line_count": 41,
+      "truncated": false,
+      "excerpt": "Use `npm run typecheck` for type checking. Before you finish a change, run `npm test`, then the `verify` skill on the agent \u00d7 sandbox combination it touches.\n\n`tsc` is TypeScript 7 (the `@typescript/native` alias of `typescript@7`). The `typescript` package name is an alias of `@typescript/typescript6`, because TypeScript 7 has no JS API and tsup's declaration build still `require`s one. Don't import `typescript` in our own code, and drop the alias once tsup no longer needs it.\n\nReleasing: before merging the changesets **Version Packages** PR, run `npm run test:local` (real Docker and Podman; CI never runs it). See [docs/agents/releasing.md](./docs/agents/releasing.md).\n\nCheck [./GLOSSARY.md](./GLOSSARY.md) for terminology questions.\n\nFor user-facing changes, add a changeset to `.changeset`. Check all changesets there first to see if there are duplicates. We use `@changesets/cli`, but you can create/edit the file manually. Make all bugfixes `patch`, all new features or breaking changes `minor` (since we're pre-1.0). Use `package.json#name` for the name.\n\nWhen changing public-facing behavior, check the user docs in `docs/guide/` to see if they need updating.\n\n## User docs\n\nThe user docs are the markdown pages in `docs/guide/`. [aihero.dev/sandcastle](https://www.aihero.dev/sandcastle) renders them as a docs site, and `README.md` links to them.\n\n- One page per major term in `GLOSSARY.md`, at `docs/guide/<slug>.md`, with its related terms folded in. The file name is the page's URL: `docs/guide/prompts.md` is `aihero.dev/sandcastle/prompts`. The first line is the page's `# Title`, and its sections are `##` and below.\n- A term page opens with a short runnable example, then the details, then a `## Related terms` list of links. It does not repeat definitions: those live on one page.\n- `docs/guide/glossary.md` (last in the `Reference` group) defines each user-facing term for readers, one `## Term` entry each, in alphabetical order. It is hand-written, not copied: `GLOSSARY.md` stays the agents' source, and each entry's name must be a term `GLOSSARY.md` defines. When a term is added, renamed or changes meaning in `GLOSSARY.md`, update its entry.\n- On every other guide page, the first mention of each glossary term links to its entry (`[worktrees](./glossary.md#worktree)`). A mention is the entry's name, whole word, case-insensitive, plural allowed (`-s`, `-es`, `-y` to `-ies`), outside code, headings and other links; a hyphen joins words, so `no-sandbox` is not a mention of `sandbox`, and a longer term wins, so `agent provider` is not a mention of `agent`. If a word is a mention by these rules but means something else (an interactive \"prompt\"), reword it.\n- Explain each term once in the guide, at its home: its first mention on the earliest page in `toc.json` order that mentions it. Weave one or two plain sentences into the prose there (keep the link); every other page only links it. Each glossary entry ends `First explained in [<Page title>](./<page>.md).`\n- Never reference ADRs from the user docs (`docs/guide/`, `README.md`): no `docs/adr/` links, no \"ADR 0018\". Keep any reasoning a reader needs in plain words.\n- The `toc.json` groups follow `GLOSSARY.md`'s groups. The start page (`getting-started`) and the `Reference` group (`run`, every `RunOptions` option and result field, `cli`, and `glossary`) are not term pages. Each option is explained on its term page, and listed once in the reference.\n- `docs/guide/toc.json` orders and groups the pages for the sidebar. `start` is the page a new reader opens first. `groups` lists every other page as `{ \"title\": \"...\", \"pages\": [\"slug\", ...] }`, in sidebar order.\n- To add a page, write `docs/guide/<slug>.md`, add its slug to a group in `toc.json`, and link it from the Documentation list in `README.md`. Renaming or removing a page touches the same three places.\n- Link between pages with relative paths (`./prompts.md#built-in-prompt-arguments`), and to other repo files relative to the page (`../../src/sandboxes/docker.ts`).\n- `tests/docs-guide.test.ts` fails when the three drift apart: a page missing from `toc.json` or `README.md`, a listed page with no file, a page without its `# Title`, a glossary entry whose name `GLOSSARY.md` does not define, a `glossary.md#\u2026` link anywhere in `docs/` or the README to an entry that does not exist, a first mention of a glossary term that is not linked, a glossary entry whose `First explained in` line does not name its home, an ADR reference in the user docs, or a relative link to a file or a guide heading that does not exist.\n\n## Agent skills\n\n### Issue tracker\n\nIssues live as GitHub issues in `mattpocock/sandcastle`; external PRs are also a triage surface. See `docs/agents/issue-tracker.md`.\n\n### Triage labels\n\nDefault canonical labels. Agent provider support is detailed here. See `docs/agents/triage.md`.\n\n### Domain docs\n\nSingle-context layout: `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.\n"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 4982,
+      "line_count": 41,
+      "truncated": false,
+      "excerpt": "Use `npm run typecheck` for type checking. Before you finish a change, run `npm test`, then the `verify` skill on the agent \u00d7 sandbox combination it touches.\n\n`tsc` is TypeScript 7 (the `@typescript/native` alias of `typescript@7`). The `typescript` package name is an alias of `@typescript/typescript6`, because TypeScript 7 has no JS API and tsup's declaration build still `require`s one. Don't import `typescript` in our own code, and drop the alias once tsup no longer needs it.\n\nReleasing: before merging the changesets **Version Packages** PR, run `npm run test:local` (real Docker and Podman; CI never runs it). See [docs/agents/releasing.md](./docs/agents/releasing.md).\n\nCheck [./GLOSSARY.md](./GLOSSARY.md) for terminology questions.\n\nFor user-facing changes, add a changeset to `.changeset`. Check all changesets there first to see if there are duplicates. We use `@changesets/cli`, but you can create/edit the file manually. Make all bugfixes `patch`, all new features or breaking changes `minor` (since we're pre-1.0). Use `package.json#name` for the name.\n\nWhen changing public-facing behavior, check the user docs in `docs/guide/` to see if they need updating.\n\n## User docs\n\nThe user docs are the markdown pages in `docs/guide/`. [aihero.dev/sandcastle](https://www.aihero.dev/sandcastle) renders them as a docs site, and `README.md` links to them.\n\n- One page per major term in `GLOSSARY.md`, at `docs/guide/<slug>.md`, with its related terms folded in. The file name is the page's URL: `docs/guide/prompts.md` is `aihero.dev/sandcastle/prompts`. The first line is the page's `# Title`, and its sections are `##` and below.\n- A term page opens with a short runnable example, then the details, then a `## Related terms` list of links. It does not repeat definitions: those live on one page.\n- `docs/guide/glossary.md` (last in the `Reference` group) defines each user-facing term for readers, one `## Term` entry each, in alphabetical order. It is hand-written, not copied: `GLOSSARY.md` stays the agents' source, and each entry's name must be a term `GLOSSARY.md` defines. When a term is added, renamed or changes meaning in `GLOSSARY.md`, update its entry.\n- On every other guide page, the first mention of each glossary term links to its entry (`[worktrees](./glossary.md#worktree)`). A mention is the entry's name, whole word, case-insensitive, plural allowed (`-s`, `-es`, `-y` to `-ies`), outside code, headings and other links; a hyphen joins words, so `no-sandbox` is not a mention of `sandbox`, and a longer term wins, so `agent provider` is not a mention of `agent`. If a word is a mention by these rules but means something else (an interactive \"prompt\"), reword it.\n- Explain each term once in the guide, at its home: its first mention on the earliest page in `toc.json` order that mentions it. Weave one or two plain sentences into the prose there (keep the link); every other page only links it. Each glossary entry ends `First explained in [<Page title>](./<page>.md).`\n- Never reference ADRs from the user docs (`docs/guide/`, `README.md`): no `docs/adr/` links, no \"ADR 0018\". Keep any reasoning a reader needs in plain words.\n- The `toc.json` groups follow `GLOSSARY.md`'s groups. The start page (`getting-started`) and the `Reference` group (`run`, every `RunOptions` option and result field, `cli`, and `glossary`) are not term pages. Each option is explained on its term page, and listed once in the reference.\n- `docs/guide/toc.json` orders and groups the pages for the sidebar. `start` is the page a new reader opens first. `groups` lists every other page as `{ \"title\": \"...\", \"pages\": [\"slug\", ...] }`, in sidebar order.\n- To add a page, write `docs/guide/<slug>.md`, add its slug to a group in `toc.json`, and link it from the Documentation list in `README.md`. Renaming or removing a page touches the same three places.\n- Link between pages with relative paths (`./prompts.md#built-in-prompt-arguments`), and to other repo files relative to the page (`../../src/sandboxes/docker.ts`).\n- `tests/docs-guide.test.ts` fails when the three drift apart: a page missing from `toc.json` or `README.md`, a listed page with no file, a page without its `# Title`, a glossary entry whose name `GLOSSARY.md` does not define, a `glossary.md#\u2026` link anywhere in `docs/` or the README to an entry that does not exist, a first mention of a glossary term that is not linked, a glossary entry whose `First explained in` line does not name its home, an ADR reference in the user docs, or a relative link to a file or a guide heading that does not exist.\n\n## Agent skills\n\n### Issue tracker\n\nIssues live as GitHub issues in `mattpocock/sandcastle`; external PRs are also a triage surface. See `docs/agents/issue-tracker.md`.\n\n### Triage labels\n\nDefault canonical labels. Agent provider support is detailed here. See `docs/agents/triage.md`.\n\n### Domain docs\n\nSingle-context layout: `GLOSSARY.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 2480,
+      "line_count": 46,
+      "truncated": false,
+      "excerpt": "<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1775033787/readme-sandcastle-ondark_2x.png\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1775033787/readme-sandcastle-onlight_2x.png\">\n    <img alt=\"Sandcastle\" src=\"https://res.cloudinary.com/total-typescript/image/upload/v1775033787/readme-sandcastle-onlight_2x.png\" height=\"200\" style=\"margin-bottom: 20px;\">\n  </picture>\n</div>\n\n## What is Sandcastle?\n\nA TypeScript library for orchestrating AI coding agents in isolated sandboxes:\n\n1. You invoke agents with a single `sandcastle.run()`.\n2. Sandcastle handles sandboxing the agent with a configurable branch strategy.\n3. The commits made on the branches get merged back.\n\nSandcastle is provider-agnostic. It ships with native sandboxes that use your OS's own process sandbox (Bubblewrap on Linux and WSL2, Seatbelt on macOS), image-based providers for Docker and Podman, and cloud providers for Daytona, E2B, Fly.io Sprites, Modal and Vercel, and you can create your own. Great for parallelizing multiple AFK agents, creating review pipelines, or even just orchestrating your own agents.\n\n## Documentation\n\nThe docs live in [`docs/guide`](./docs/guide), one page per major term, with every term defined in the [Glossary](./docs/guide/glossary.md), and are published at [aihero.dev/sandcastle](https://www.aihero.dev/sandcastle).\n\n- [Getting started](./docs/guide/getting-started.md): prerequisites and a quick start\n- Core: [Core concepts](./docs/guide/core-concepts.md)\n- Sandboxes: [Sandbox providers](./docs/guide/sandbox-providers.md)\n- Branching: [Branch strategies](./docs/guide/branch-strategies.md)\n- Agents: [Agent providers](./docs/guide/agent-providers.md), [Agent sessions](./docs/guide/agent-sessions.md)\n- Execution: [Iterations](./docs/guide/iterations.md), [Structured output](./docs/guide/structured-output.md)\n- Prompts: [Prompts](./docs/guide/prompts.md)\n- Hooks: [Hooks](./docs/guide/hooks.md)\n- Init: [Init](./docs/guide/init.md)\n- Display: [Run logs](./docs/guide/run-logs.md)\n- Reference: [`run()` and `createSandbox()`](./docs/guide/run.md), [CLI commands](./docs/guide/cli.md), [Glossary](./docs/guide/glossary.md)\n\n## Development\n\n```bash\nnpm install\nnpm run build    # Bundle with tsup\nnpm test         # Run tests with vitest\nnpm run typecheck # Type-check\n```\n\n## License\n\nMIT\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 4990,
+      "line_count": 159,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"@ai-hero/sandcastle\",\n  \"version\": \"0.14.0\",\n  \"description\": \"CLI for orchestrating AI agents in isolated sandbox environments\",\n  \"type\": \"module\",\n  \"main\": \"./dist/index.js\",\n  \"types\": \"./dist/index.d.ts\",\n  \"exports\": {\n    \".\": {\n      \"import\": \"./dist/index.js\",\n      \"types\": \"./dist/index.d.ts\"\n    },\n    \"./sandboxes/docker\": {\n      \"import\": \"./dist/sandboxes/docker.js\",\n      \"types\": \"./dist/sandboxes/docker.d.ts\"\n    },\n    \"./sandboxes/e2b\": {\n      \"import\": \"./dist/sandboxes/e2b.js\",\n      \"types\": \"./dist/sandboxes/e2b.d.ts\"\n    },\n    \"./sandboxes/vercel\": {\n      \"import\": \"./dist/sandboxes/vercel.js\",\n      \"types\": \"./dist/sandboxes/vercel.d.ts\"\n    },\n    \"./sandboxes/podman\": {\n      \"import\": \"./dist/sandboxes/podman.js\",\n      \"types\": \"./dist/sandboxes/podman.d.ts\"\n    },\n    \"./sandboxes/daytona\": {\n      \"import\": \"./dist/sandboxes/daytona.js\",\n      \"types\": \"./dist/sandboxes/daytona.d.ts\"\n    },\n    \"./sandboxes/modal\": {\n      \"import\": \"./dist/sandboxes/modal.js\",\n      \"types\": \"./dist/sandboxes/modal.d.ts\"\n    },\n    \"./sandboxes/no-sandbox\": {\n      \"import\": \"./dist/sandboxes/no-sandbox.js\",\n      \"types\": \"./dist/sandboxes/no-sandbox.d.ts\"\n    },\n    \"./sandboxes/bwrap\": {\n      \"import\": \"./dist/sandboxes/bwrap.js\",\n      \"types\": \"./dist/sandboxes/bwrap.d.ts\"\n    },\n    \"./sandboxes/seatbelt\": {\n      \"import\": \"./dist/sandboxes/seatbelt.js\",\n      \"types\": \"./dist/sandboxes/seatbelt.d.ts\"\n    },\n    \"./sandboxes/sprites\": {\n      \"import\": \"./dist/sandboxes/sprites.js\",\n      \"types\": \"./dist/sandboxes/sprites.d.ts\"\n    }\n  },\n  \"bin\": {\n    \"sandcastle\": \"dist/main.js\"\n  },\n  \"scripts\": {\n    \"build\": \"tsup\",\n    \"postbuild\": \"node scripts/copy-templates.mjs && node scripts/check-public-types-effect-free.mjs\",\n    \"pretest\": \"tsx scripts/ensure-build.ts\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:local\": \"vitest run --config vitest.local.config.ts\",\n    \"typecheck\": \"tsc --noEmit && tsc --noEmit -p tests/tsconfig.json\",\n    \"prelint\": \"tsx scripts/ensure-build.ts\",\n    \"lint\": \"tsc --noEmit -p scripts/tsconfig.json && tsx scripts/lint-ratchet.ts\",\n    \"lint:shrink\": \"tsx scripts/lint-ratchet.ts --shrink\",\n    \"lint:transfer\": \"tsx scripts/lint-ratchet.ts --transfer\",\n    \"prelint:report\": \"tsx scripts/ensure-build.ts\",\n    \"lint:report\": \"tsx scripts/lint-ratchet.ts --report\",\n    \"format\": \"biome format --write .\",\n    \"format:check\": \"biome format .\",\n    \"prepare\": \"husky\",\n    \"release\": \"changeset publish\",\n    \"sandcastle\": \"npm run build && tsx .sandcastle/run.ts\",\n    \"test-podman\": \"npm run build && tsx --env-file=.sandcastle/.env .sandcastle/test-podman.ts\",\n    \"test-vercel\": \"npm run build && tsx --env-file=.sandcastle/.env .sandcastle/test-vercel.ts\",\n    \"test-interactive\": \"npm run build && tsx --env-file=.sandcastle/.env .sandcastle/test-interactive.ts\",\n    \"verify\": \"tsx .sandcastle/verify/verify.ts\",\n    \"verify:world\": \"npm run build >/dev/null && tsx .sandcastle/verify/verify.ts world\",\n    \"coverage:gate\": \"tsx scripts/coverage-gate.ts\",\n    \"coverage:floor\": \"tsx scripts/coverage-floor.ts\",\n    \"preapi:report\": \"tsx scripts/ensure-build.ts\",\n    \"api:report\": \"tsx scripts/api-report.ts\"\n  },\n  \"keywords\": [\n    \"cli\",\n    \"sandbox\",\n    \"docker\",\n    \"ai\",\n    \"agent\"\n  ],\n  \"packageManager\": \"npm@10.9.2\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/mattpocock/sandcastle\"\n  },\n  \"license\": \"MIT\",\n  \"devDependencies\": {\n    \"@biomejs/biome\": \"2.6.4\",\n    \"@changesets/cli\": \"^2.30.0\",\n    \"@daytona/sdk\": \"^0.227.0\",\n    \"@effect/cli\": \"^0.74.0\",\n    \"@effect/language-service\": \"0.87.5\",\n    \"@effect/platform\": \"^0.95.0\",\n    \"@effect/platform-node\": \"^0.105.0\",\n    \"@effect/printer\": \"^0.48.0\",\n    \"@effect/printer-ansi\": \"^0.48.0\",\n    \"@fly/sprites\": \"^0.2.4\",\n    \"@microsoft/api-extractor\": \"^7.60.1\",\n    \"@types/node\": \"^25.5.0\",\n    \"@typescript/native\": \"npm:typescript@7.0.2\",\n    \"@vitest/coverage-v8\": \"^3.2.4\",\n    \"dependency-cruiser\": \"^18.7.0\",\n    \"e2b\": \"^2.62.0\",\n    \"effect\": \"^3.20.0\",\n    \"husky\": \"^9.1.7\",\n    \"lint-staged\": \"^15.5.1\",\n    \"modal\": \"^0.11.1\",\n    \"oxlint\": \"1.90.0\",\n    \"oxlint-tsgolint\": \"7.0.2005\",\n    \"tsup\": \"^8.5.1\",\n    \"tsx\": \"^4.21.0\",\n    \"typescript\": \"npm:@typescript/typescript6@6.0.2\",\n    \"vitest\": \"^3.2.0\",\n    \"zod\": \"^4.4.3\"\n  },\n  \"dependencies\": {\n    \"@clack/prompts\": \"^1.1.0\",\n    \"@standard-schema/spec\": \"^1.1.0\"\n  },\n  \"peerDependencies\": {\n    \"@daytona/sdk\": \">=0.164.0 <1.0.0\",\n    \"@fly/sprites\": \">=0.2.4 <1.0.0\",\n    \"@vercel/sandbox\": \">=1.0.0\",\n    \"e2b\": \">=2.62.0 <3.0.0\",\n    \"modal\": \">=0.11.0 <1.0.0\"\n  },\n  \"peerDependenciesMeta\": {\n    \"@vercel/sandbox\": {\n      \"optional\": true\n    },\n    \"@daytona/sdk\": {\n      \"optional\": true\n    },\n    \"@fly/sprites\": {\n      \"optional\": true\n    },\n    \"e2b\": {\n      \"optional\": true\n    },\n    \"modal\": {\n      \"optional\": true\n    }\n  },\n  \"files\": [\n    \"dist\"\n  ]\n}\n"
+    },
+    "biome.json": {
+      "path": "biome.json",
+      "size_bytes": 932,
+      "line_count": 47,
+      "truncated": false,
+      "excerpt": "{\n  \"$schema\": \"https://biomejs.dev/schemas/2.6.4/schema.json\",\n  \"vcs\": {\n    \"enabled\": true,\n    \"clientKind\": \"git\",\n    \"useIgnoreFile\": true\n  },\n  \"files\": {\n    \"ignoreUnknown\": true,\n    \"includes\": [\"**\", \"!**/dist\", \"!**/.changeset\", \"!**/api-report\"]\n  },\n  \"formatter\": {\n    \"enabled\": true,\n    \"indentStyle\": \"space\",\n    \"indentWidth\": 2,\n    \"lineEnding\": \"lf\",\n    \"lineWidth\": 80\n  },\n  \"javascript\": {\n    \"formatter\": {\n      \"quoteStyle\": \"double\",\n      \"jsxQuoteStyle\": \"double\",\n      \"quoteProperties\": \"asNeeded\",\n      \"trailingCommas\": \"all\",\n      \"semicolons\": \"always\",\n      \"arrowParentheses\": \"always\",\n      \"bracketSpacing\": true,\n      \"bracketSameLine\": false\n    }\n  },\n  \"linter\": {\n    \"enabled\": false\n  },\n  \"assist\": {\n    \"enabled\": false\n  },\n  \"markdown\": {\n    \"parser\": {\n      \"frontmatter\": true\n    }\n  },\n  \"yaml\": {\n    \"formatter\": {\n      \"quoteStyle\": \"double\"\n    }\n  }\n}\n"
+    },
+    ".oxlintrc.json": {
+      "path": ".oxlintrc.json",
+      "size_bytes": 14783,
+      "line_count": 336,
+      "truncated": true,
+      "excerpt": "{\n  \"$schema\": \"./node_modules/oxlint/configuration_schema.json\",\n\n  // The straitjacket. Every category below is an error. Code that broke a rule\n  // when this landed sits in scripts/lint-baseline.json, which\n  // scripts/lint-ratchet.ts keeps shrink-only. Never add a rule-off override\n  // for a source file here and never write a disable comment: lower the\n  // baseline instead. See .sandcastle/CODING_STANDARDS.md, \"The lint ratchet\".\n  //\n  // Categories left off:\n  // - restriction: bans ordinary language features (optional chaining,\n  //   async/await, `undefined`); its useful rules are cherry-picked below.\n  // - nursery: unstable rules that change between oxlint releases.\n  \"plugins\": [\n    \"eslint\",\n    \"typescript\",\n    \"unicorn\",\n    \"oxc\",\n    \"import\",\n    \"promise\",\n    \"node\",\n    \"vitest\"\n  ],\n  \"categories\": {\n    \"correctness\": \"error\",\n    \"suspicious\": \"error\",\n    \"pedantic\": \"error\",\n    \"perf\": \"error\",\n    \"style\": \"error\"\n  },\n  \"options\": {\n    \"typeAware\": true,\n    \"reportUnusedDisableDirectives\": \"error\"\n  },\n  \"ignorePatterns\": [\"dist/**\", \"node_modules/**\"],\n\n  \"rules\": {\n    // --- Cherry-picked from `restriction` ---------------------------------\n    \"eslint/complexity\": [\"error\", { \"max\": 15, \"variant\": \"modified\" }],\n    \"eslint/no-alert\": \"error\",\n    \"eslint/no-bitwise\": \"error\",\n    \"eslint/no-div-regex\": \"error\",\n    \"eslint/no-empty\": \"error\",\n    \"eslint/no-empty-function\": \"error\",\n    \"eslint/no-eq-null\": \"error\",\n    \"eslint/no-implicit-globals\": \"error\",\n    \"eslint/no-param-reassign\": \"error\",\n    \"eslint/no-proto\": \"error\",\n    \"eslint/no-regex-spaces\": \"error\",\n    \"eslint/no-sequences\": \"error\",\n    \"eslint/no-var\": \"error\",\n    \"eslint/unicode-bom\": \"error\",\n    \"import/no-amd\": \"error\",\n    \"import/no-commonjs\": \"error\",\n    \"import/no-cycle\": \"error\",\n    \"import/no-dynamic-require\": \"error\",\n    \"import/no-webpack-loader-syntax\": \"error\",\n    \"node/handle-callback-err\": \"error\",\n    \"node/no-new-require\": \"error\",\n    \"node/no-path-concat\": \"error\",\n    \"oxc/bad-bitwise-operator\": \"error\",\n    \"oxc/no-const-enum\": \"error\",\n    \"promise/catch-or-return\": \"error\",\n    \"typescript/no-dynamic-delete\": \"error\",\n    \"typescript/no-empty-object-type\": \"error\",\n    \"typescript/no-explicit-any\": \"error\",\n    \"typescript/no-import-type-side-effects\": \"error\",\n    \"typescript/no-invalid-void-type\": \"error\",\n    \"typescript/no-namespace\": \"error\",\n    \"typescript/no-non-null-asserted-nullish-coalescing\": \"error\",\n    \"typescript/no-non-null-assertion\": \"error\",\n    \"typescript/no-require-imports\": \"error\",\n    \"typescript/no-var-requires\": \"error\",\n    \"typescript/prefer-literal-enum-member\": \"error\",\n    \"typescript/promise-function-async\": \"error\",\n    \"typescript/use-unknown-in-catch-callback-variable\": \"error\",\n    \"unicorn/no-abusive-eslint-disable\": \"error\",\n    \"unicorn/no-array-for-each\": \"error\",\n    \"unicorn/no-length-as-slice-end\": \"error\",\n    \"unicorn/no-magic-array-flat-depth\": \"error\",\n    \"unicorn/no-process-exit\": \"error\",\n    \"unicorn/no-useless-error-capture-stack-trace\": \"error\",\n    \"unicorn/prefer-modern-math-apis\": \"error\",\n    \"unicorn/prefer-module\": \"error\",\n    \"unicorn/prefer-node-protocol\": \"error\",\n    \"unicorn/prefer-number-properties\": \"error\",\n\n    // --- Effect -------------------------------------------------------------\n    // An Effect is run once, at the edge: the public promise API and the CLI\n    // entry. Everywhere else composes Effects and hands them back. The entry\n    // points are named in the first override at the bottom, mirrored in\n    // ENTRY_POINTS in scripts/lint-ratchet.ts (which checks they agree). The\n    // Effect language service (tsconfig.json `plugins`, run by `npm run lint`)\n    // covers the rest: floating Effects, `any`/`unknown` in error channels,\n    // run-inside-run, global Error in failures.\n    \"eslint/no-restricted-properties\": [\n      \"error\",\n      {\n        \"object\": \"Effect\",\n        \"property\": \"runPromise\",\n        \"message\": \"Run Effects only at an entry point (the public promise API or the CLI). Compose and return the Effect instead.\"\n      },\n      {\n        \"object\": \"Effect\",\n        \"property\": \"runPromiseExit\",\n        \"message\": \"Run Effects only at an entry point (the public promise API or the CLI). Compose and return the Effect instead.\"\n      },\n      {\n        \"object\": \"Effect\",\n        \"property\": \"runSync\",\n        \"message\": \"Run Effects only at an entry point (the public promise API or the CLI). Compose and return the Effect instead.\"\n      },\n      {\n        \"object\": \"Effect\",\n        \"property\": \"runSyncExit\",\n        \"message\": \"Run Effects only at an entry point (the public promise API or the CLI). Compose and return the Effect instead.\"\n      },\n      {\n        \"object\": \"Effect\",\n        \"property\": \"runFork\",\n        \"message\": \"Run Effects only at an entry point (the public promise API or the CLI). Compose and return the Effect instead.\"\n      },\n      {\n        \"object\": \"Effect\",\n        \"property\": \"runCallback\",\n        \"message\": \"Run Effects only at an entry point (the public promise API or the CLI). Compose and return the Effect instead.\"\n      }\n    ],\n\n    // --- Configured, not off ----------------------------------------------\n    \"eslint/one-var\": [\"error\", \"never\"],\n    // `value || fallback` on strings deliberately treats \"\" as missing.\n    \"typescript/prefer-nullish-coalescing\": [\n      \"error\",\n      { \"ignorePrimitives\": { \"string\": true } }\n    ],\n    // 10 (the default) blocks extracting a helper that names its steps; 20\n    // still flags a function doing too much, and complexity 15 caps branching.\n    \"eslint/max-statements\": [\"error\", { \"max\": 20 }],\n    // The rule's default names are callback, cb and next. Every `next` it\n    // flagged was a test helper or a queued resolver, never a Node-style\n    // callback; dropping `next` keeps the double-callback check on the rest.\n    \"node/callback-return\": [\"error\", [\"callback\", \"c"
+    }
+  },
+  "workflow_samples": {
+    "agent-implement-pr.yml": {
+      "path": ".github/workflows/agent-implement-pr.yml",
+      "size_bytes": 7062,
+      "line_count": 178,
+      "truncated": true,
+      "excerpt": "name: Agent Implement PR\n\non:\n  # pull_request, not pull_request_target: on a fork PR this gets no secrets\n  # and a read-only token, so checking out and running the PR's code is safe.\n  # Same-repo PRs (the ones the agent opens) keep secrets as before.\n  # pull_request does not fire on PRs with merge conflicts (GitHub can't build\n  # the merge ref) \u2014 resolving those is agent-update-branch's job.\n  pull_request:\n    types: [labeled]\n\njobs:\n  implement-pr:\n    if: github.event.label.name == 'agent:implement'\n    runs-on: ubuntu-latest\n    timeout-minutes: 60\n    concurrency:\n      group: agent-mutate-pr-${{ github.event.pull_request.number }}\n      cancel-in-progress: false\n    permissions:\n      contents: write\n      pull-requests: write\n\n    env:\n      PR_NUMBER: ${{ github.event.pull_request.number }}\n      BRANCH: ${{ github.event.pull_request.head.ref }}\n      BRANCH_HEAD_SHA: ${{ github.event.pull_request.head.sha }}\n      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n      GH_REPO: ${{ github.repository }}\n\n    steps:\n      - name: Refuse closed PR\n        if: github.event.pull_request.state != 'open'\n        run: |\n          gh pr edit \"$PR_NUMBER\" --remove-label \"agent:implement\" || true\n          gh pr comment \"$PR_NUMBER\" --body \"Refused to run: PR #${PR_NUMBER} is not open.\"\n\n      - name: Transition labels\n        if: github.event.pull_request.state == 'open'\n        run: |\n          gh pr edit \"$PR_NUMBER\" --remove-label \"agent:implement\" || true\n          gh pr edit \"$PR_NUMBER\" --remove-label \"agent:blocked\" || true\n          gh pr edit \"$PR_NUMBER\" --add-label \"agent:in-progress\"\n\n      - name: Checkout PR branch\n        if: github.event.pull_request.state == 'open'\n        uses: actions/checkout@v4\n        with:\n          ref: ${{ github.event.pull_request.head.sha }}\n          fetch-depth: 0\n\n      - name: Prepare branch\n        if: github.event.pull_request.state == 'open'\n        run: |\n          git fetch origin main:main || git fetch origin main\n          git checkout \"$BRANCH\" 2>/dev/null || git checkout -B \"$BRANCH\"\n          git config user.name \"sandcastle-agent[bot]\"\n          git config user.email \"sandcastle-agent[bot]@users.noreply.github.com\"\n\n      - name: Setup Node.js\n        if: github.event.pull_request.state == 'open'\n        uses: actions/setup-node@v4\n        with:\n          node-version: 22\n\n      - name: Install dependencies\n        if: github.event.pull_request.state == 'open'\n        run: npm ci\n\n      - name: Build\n        if: github.event.pull_request.state == 'open'\n        run: npm run build\n\n      - name: Install Claude Code\n        if: github.event.pull_request.state == 'open'\n        run: npm install -g @anthropic-ai/claude-code\n\n      - name: Run implement-PR agent\n        if: github.event.pull_request.state == 'open'\n        env:\n          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}\n          OUTPUT_DIR: ${{ runner.temp }}\n        run: npx tsx .sandcastle/agent-workflows/implement-pr/implement-pr.ts\n\n      - name: Push branch\n        if: github.event.pull_request.state == 'open' && success()\n        run: |\n          if [ \"$(cat \"${RUNNER_TEMP}/has_commits.txt\")\" != \"true\" ]; then\n            echo \"No commits to push.\"\n            exit 0\n          fi\n          set +e\n          git push --force-with-lease=\"refs/heads/$BRANCH:$BRANCH_HEAD_SHA\" origin \"$BRANCH\" 2> push_err.txt\n          status=$?\n          set -e\n          if [ $status -ne 0 ]; then\n            if grep -qiE \"non-fast-forward|rejected|fetch first|stale info\" push_err.txt; then\n              echo \"Branch advanced during implement-PR run.\" > \"${RUNNER_TEMP}/failure_reason.txt\"\n              cat push_err.txt\n              exit 1\n            fi\n            cat push_err.txt\n            exit $status\n          fi\n\n      - name: Post thread replies\n        if: github.event.pull_request.state == 'open' && success()\n        env:\n          REPLIES: ${{ runner.temp }}/implement_thread_replies.json\n        run: |\n          count=$(jq 'length' \"$REPLIES\")\n          if [ \"$count\" -eq 0 ]; then\n            exit 0\n          fi\n          for i in $(seq 0 $((count - 1))); do\n            commentId=$(jq -r \".[$i].commentId\" \"$REPLIES\")\n            body=$(jq -r \".[$i].body\" \"$REPLIES\")\n            rest_id=$(gh api graphql -f query=\"query(\\$id:ID!){ node(id:\\$id){ ... on PullRequestReviewComment { databaseId } } }\" -F id=\"$commentId\" --jq '.data.node.databaseId')\n            if [ -z \"$rest_id\" ] || [ \"$rest_id\" = \""
+    },
+    "agent-review.yml": {
+      "path": ".github/workflows/agent-review.yml",
+      "size_bytes": 4977,
+      "line_count": 134,
+      "truncated": true,
+      "excerpt": "name: Agent Review\n\non:\n  # pull_request, not pull_request_target: on a fork PR this gets no secrets\n  # and a read-only token, so checking out and running the PR's code is safe.\n  # Same-repo PRs (the ones the agent opens) keep secrets as before.\n  # pull_request does not fire on PRs with merge conflicts (GitHub can't build\n  # the merge ref) \u2014 resolving those is agent-update-branch's job.\n  pull_request:\n    types: [labeled]\n\njobs:\n  review:\n    if: github.event.label.name == 'agent:review'\n    runs-on: ubuntu-latest\n    timeout-minutes: 60\n    concurrency:\n      group: agent-mutate-pr-${{ github.event.pull_request.number }}\n      cancel-in-progress: false\n    permissions:\n      contents: write\n      pull-requests: write\n\n    env:\n      PR_NUMBER: ${{ github.event.pull_request.number }}\n      BRANCH: ${{ github.event.pull_request.head.ref }}\n      BRANCH_HEAD_SHA: ${{ github.event.pull_request.head.sha }}\n      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n      GH_REPO: ${{ github.repository }}\n\n    steps:\n      - name: Transition labels\n        run: |\n          gh pr edit \"$PR_NUMBER\" --remove-label \"agent:review\" || true\n          gh pr edit \"$PR_NUMBER\" --remove-label \"agent:blocked\" || true\n          gh pr edit \"$PR_NUMBER\" --add-label \"agent:in-progress\"\n\n      - name: Checkout PR branch\n        uses: actions/checkout@v4\n        with:\n          ref: ${{ github.event.pull_request.head.sha }}\n          fetch-depth: 0\n\n      - name: Prepare branch\n        run: |\n          git fetch origin main:main || git fetch origin main\n          git checkout \"$BRANCH\" 2>/dev/null || git checkout -B \"$BRANCH\"\n          git config user.name \"sandcastle-agent[bot]\"\n          git config user.email \"sandcastle-agent[bot]@users.noreply.github.com\"\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: 22\n\n      - name: Install dependencies\n        run: npm ci\n\n      - name: Build\n        run: npm run build\n\n      - name: Install Claude Code\n        run: npm install -g @anthropic-ai/claude-code\n\n      - name: Run review agent\n        env:\n          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}\n          OUTPUT_DIR: ${{ runner.temp }}\n        run: npx tsx .sandcastle/agent-workflows/review/review.ts\n\n      - name: Push branch\n        if: success()\n        run: |\n          set +e\n          git push --force-with-lease=\"refs/heads/$BRANCH:$BRANCH_HEAD_SHA\" origin \"$BRANCH\" 2> push_err.txt\n          status=$?\n          set -e\n          if [ $status -ne 0 ]; then\n            if grep -qiE \"non-fast-forward|rejected|fetch first|stale info\" push_err.txt; then\n              echo \"Branch advanced during review run.\" > \"${RUNNER_TEMP}/failure_reason.txt\"\n              cat push_err.txt\n              exit 1\n            fi\n            cat push_err.txt\n            exit $status\n          fi\n\n      - name: Post PR review\n        if: success()\n        env:\n          PAYLOAD: ${{ runner.temp }}/review_payload.json\n        run: gh api --method POST \"repos/{owner}/{repo}/pulls/${PR_NUMBER}/reviews\" --input \"$PAYLOAD\"\n\n      - name: Mark PR ready\n        if: success()\n        run: gh pr ready \"$PR_NUMBER\" || true\n\n      - name: Post thread replies\n        if: success()\n        env:\n          REPLIES: ${{ runner.temp }}/replies.json\n        run: |\n          count=$(jq 'length' \"$REPLIES\")\n          if [ \"$count\" -eq 0 ]; then\n            exit 0\n          fi\n          for i in $(seq 0 $((count - 1))); do\n            commentId=$(jq -r \".[$i].commentId\" \"$REPLIES\")\n            body=$(jq -r \".[$i].body\" \"$REPLIES\")\n            rest_id=$(gh api graphql -f query=\"query(\\$id:ID!){ node(id:\\$id){ ... on PullRequestReviewComment { databaseId } } }\" -F id=\"$commentId\" --jq '.data.node.databaseId')\n            if [ -z \"$rest_id\" ] || [ \"$rest_id\" = \"null\" ]; then\n              echo \"Could not resolve REST id for $commentId; skipping\" >&2\n              continue\n            fi\n            gh api --method POST \"repos/{owner}/{repo}/pulls/${PR_NUMBER}/comments/${rest_id}/replies\" -f body=\"$body\"\n          done\n\n      - name: Mark blocked on failure\n        if: failure()\n        env:\n          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n        run: |\n          reason=\"(no reason file written; check workflow logs)\"\n          if [ -f \"${RUNNER_TEMP}/failure_reason.txt\" ]; then\n            reason=$(cat \"${RUNNER_TEMP}/failure_reason.txt\")\n          fi\n          body_f"
+    },
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 5012,
+      "line_count": 113,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  push:\n    branches:\n      - main\n  # pull_request, not pull_request_target: a fork PR's code runs here with no\n  # secrets and a read-only token (see the agent workflows, moved off\n  # pull_request_target in 8976368).\n  pull_request:\n  # The merge queue on main: each queued PR is checked against the PRs ahead\n  # of it before it lands.\n  merge_group:\n\npermissions:\n  contents: read\n\n# A new push to a PR cancels that PR's in-flight run. Runs on main are never\n# cancelled: each push to main gets its own group.\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}\n  cancel-in-progress: ${{ github.event_name == 'pull_request' }}\n\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      # Full history: `npm run lint` checks that no baseline grew against\n      # origin/main and finds the files a branch changed from its merge-base\n      # with origin/main. A default (depth 1) checkout of the PR's merge\n      # commit has no origin/main at all; fetch-depth: 0 fetches every branch,\n      # so origin/main and a real merge-base are there. With CI set, a missing\n      # origin/main fails the lint rather than skipping it.\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n      # Biome's format check, right after install so unformatted code fails\n      # fast, before Bubblewrap, the build or the tests run.\n      # Fix locally with `npm run format`.\n      - run: npm run format:check\n      # bwrap() is proven here under real Bubblewrap (#1272): the containment\n      # suite fails, rather than skips, when CI is set and bwrap can't run.\n      # Ubuntu 24.04's AppArmor blocks the unprivileged user namespaces bwrap\n      # needs, so lift that restriction on this throwaway runner.\n      - name: Install Bubblewrap\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y bubblewrap\n          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0\n          bwrap --ro-bind / / true\n      - run: npm run typecheck\n      # Tests import from dist, so build before test. Lint too: the scripts\n      # in .sandcastle/ and .factory/ import @ai-hero/sandcastle, whose types\n      # come from dist, so without it type-aware rules see them as any.\n      # (Locally, `pretest`/`prelint` build via scripts/ensure-build.ts when\n      # dist/ is missing or stale; after this step it is fresh, so they skip.)\n      - run: npm run build\n      # api-report/ must match the built .d.ts: a public API change shows up\n      # in the PR as a report diff, which CODEOWNERS routes to Matt.\n      - run: npm run api:report -- --check\n      - run: npm run lint\n      # `npm test`, split so the e2e tests run once: the floor runs them with\n      # coverage, fails on a failing test, and holds their line coverage to\n      # scripts/coverage-baseline.json (see scripts/coverage-floor.ts).\n      - run: npx vitest run --project tooling --project legacy\n      - run: npm run coverage:floor\n\n  # Everything that runs on a real Windows host, in one job: real cmd.exe and\n  # Windows argv rules for noSandbox (#940), plus the end-to-end tests\n  # (tests/, which include tests/no-sandbox.windows.test.ts). The e2e tests\n  # run from src through the vitest alias, so no build is needed \u2014 and\n  # `npm run build`'s postbuild uses rm/cp, which Windows lacks. Most of the\n  # legacy suite assumes a POSIX host (sh, /tmp, POSIX path joins), so only\n  # its Windows-relevant file runs here.\n  windows:\n    runs-on: windows-latest\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n      # Coverage for scripts/coverage-gate.ts: code that runs only on win32\n      # can count toward deleting a legacy test. The gate merges this artifact\n      # with `--coverage-from <dir>` (see the comment at the top of the gate).\n      - run: npx vitest run --project e2e --coverage.enabled --coverage.reporter=json --coverage.reportsDirectory=coverage/e2e-windows\n      - uses: actions/upload-artifact@v4\n        with:\n          name: e2e-coverage-windows\n          path: coverage/e2e-windows/coverage-final.json\n          retention-days: 14\n      - run: npx vitest run --project legacy src/sandboxes/no-sandbox.test.ts\n\n  # The end-to-end tests on a real macOS host. This is the only place\n "
+    },
+    "lint-shrink.yml": {
+      "path": ".github/workflows/lint-shrink.yml",
+      "size_bytes": 3130,
+      "line_count": 72,
+      "truncated": false,
+      "excerpt": "name: Lint shrink baseline\n\n# The lint, test and typecheck ratchets pass when a count falls below their\n# baselines (scripts/lint-baseline.json, scripts/test-baseline.json,\n# scripts/typecheck-baseline.json), and the e2e coverage floor passes when\n# coverage rises above it (scripts/coverage-baseline.json), so fix and\n# migration PRs leave them alone. After each push to main this lowers the three\n# baselines and raises the floor to what main now has, and opens (or updates)\n# one PR with them. It never pushes to main.\n\non:\n  push:\n    branches:\n      - main\n  workflow_dispatch:\n\npermissions:\n  contents: write\n  pull-requests: write\n\n# A newer push to main supersedes an in-flight run: both would write the same\n# branch, and the newer one sees the lower counts.\nconcurrency:\n  group: lint-shrink\n  cancel-in-progress: true\n\nenv:\n  BRANCH: chore/lint-shrink-baseline\n  TITLE: \"chore(lint): shrink baseline\"\n\njobs:\n  shrink:\n    runs-on: ubuntu-latest\n    steps:\n      # AGENT_PAT, like the agent workflows: a push made with GITHUB_TOKEN\n      # does not trigger CI on the PR, so the PR could never go green.\n      - uses: actions/checkout@v4\n        with:\n          ref: main\n          token: ${{ secrets.AGENT_PAT || secrets.GITHUB_TOKEN }}\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n      # The type-aware rules need dist (see ci.yml).\n      - run: npm run build\n      - run: npm run lint:shrink\n      # Only ever raises the floor. A failing e2e test fails this step but\n      # must not hold back the lint baselines.\n      - run: npm run coverage:floor -- --raise\n        continue-on-error: true\n      - name: Open or update the shrink PR\n        env:\n          GH_TOKEN: ${{ secrets.AGENT_PAT || secrets.GITHUB_TOKEN }}\n        run: |\n          if git diff --quiet -- scripts/lint-baseline.json scripts/test-baseline.json scripts/typecheck-baseline.json scripts/coverage-baseline.json; then\n            echo \"Baseline unchanged.\"\n            exit 0\n          fi\n          git config user.name \"sandcastle-agent[bot]\"\n          git config user.email \"sandcastle-agent[bot]@users.noreply.github.com\"\n          git checkout -B \"$BRANCH\"\n          git add scripts/lint-baseline.json scripts/test-baseline.json scripts/typecheck-baseline.json scripts/coverage-baseline.json\n          git commit -m \"$TITLE\"\n          git push --force origin \"$BRANCH\"\n          body=\"Lowers \\`scripts/lint-baseline.json\\`, \\`scripts/test-baseline.json\\` and \\`scripts/typecheck-baseline.json\\` to the violations on main at ${GITHUB_SHA}, and raises the e2e coverage floor in \\`scripts/coverage-baseline.json\\` to its coverage. Generated by \\`npm run lint:shrink\\` and \\`npm run coverage:floor -- --raise\\` in the lint-shrink workflow; counts only fall and the floor only rises.\"\n          existing=$(gh pr list --head \"$BRANCH\" --base main --state open --json number --jq '.[0].number')\n          if [ -n \"$existing\" ]; then\n            gh pr edit \"$existing\" --body \"$body\"\n          else\n            gh pr create --base main --head \"$BRANCH\" --title \"$TITLE\" --body \"$body\"\n          fi\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-16T10:31:25Z",
+      "oldest": "2026-11-10T13:29:28Z"
+    },
+    "conventional_pct": 98.0,
+    "fix_revert_pct": 8.0,
+    "ai_coauthor_pct": 98.0,
+    "top_recent_authors": [
+      [
+        "mattpocock",
+        48
+      ],
+      [
+        "kuLm1Fs",
+        2
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "1b380ca5",
+        "date": "2026-11-16T10:31:25Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): filename case and typed mocks in interactive windowsMounts test (#1659)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4e74054d",
+        "date": "2026-11-16T10:26:38Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): filename case and typed mocks in createWorktree windowsMounts test (#1657)",
+        "ai_signal": true
+      },
+      {
+        "sha": "3f70d8a4",
+        "date": "2026-11-16T10:21:20Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): split .sandcastle/verify/ledger.ts under max-lines (#1658)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e05aa33a",
+        "date": "2026-11-16T10:17:02Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): split .sandcastle/verify/world.ts under max-lines (#1656)",
+        "ai_signal": true
+      },
+      {
+        "sha": "0ed674e5",
+        "date": "2026-11-13T14:37:57Z",
+        "author": "mattpocock",
+        "subject": "ci: fetch origin/main so the lint ratchet's growth check runs (#1654)",
+        "ai_signal": true
+      },
+      {
+        "sha": "190271bd",
+        "date": "2026-11-13T14:33:26Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): max-lines in src/mountUtils.ts (#1651)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2146f227",
+        "date": "2026-11-13T12:41:29Z",
+        "author": "mattpocock",
+        "subject": "fix: wait for an iteration's log writes before run() settles on abort (#1643)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e5b2d4e4",
+        "date": "2026-11-13T12:30:22Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): max-lines in syncOut.ts (#1653)",
+        "ai_signal": true
+      },
+      {
+        "sha": "fe6725ef",
+        "date": "2026-11-13T12:24:56Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): carry baselined counts through a move-only split (#1652)",
+        "ai_signal": true
+      },
+      {
+        "sha": "731dfcb2",
+        "date": "2026-11-13T12:19:52Z",
+        "author": "kuLm1Fs",
+        "subject": "fix: stop planner/merger templates rewriting host node_modules (#1467) (#1535)",
+        "ai_signal": true
+      },
+      {
+        "sha": "f4af67d1",
+        "date": "2026-11-13T12:14:44Z",
+        "author": "kuLm1Fs",
+        "subject": "docs(podman): use a default-granted capability in capDrop example (#1510)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4ec53ad2",
+        "date": "2026-11-13T12:05:10Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): max-lines in sandboxes/daytona.ts (#1650)",
+        "ai_signal": true
+      },
+      {
+        "sha": "f6329fc0",
+        "date": "2026-11-13T11:59:33Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): type importOriginal in interactiveArgCollection.test.ts (#1649)",
+        "ai_signal": true
+      },
+      {
+        "sha": "69cc3831",
+        "date": "2026-11-13T11:53:26Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): type the execFile mock in podman.test.ts (#1648)",
+        "ai_signal": true
+      },
+      {
+        "sha": "b9ec4c8a",
+        "date": "2026-11-13T11:48:23Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): max-lines in SandboxProvider.ts (#1647)",
+        "ai_signal": true
+      },
+      {
+        "sha": "49a6f867",
+        "date": "2026-11-13T11:42:15Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): require-unicode-regexp and prefer-at in interactive.test.ts (#1646)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7fee18cf",
+        "date": "2026-11-13T11:37:44Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): type-guard SandboxErrors in withFriendlyErrors instead of casting (#1645)",
+        "ai_signal": true
+      },
+      {
+        "sha": "68ae538d",
+        "date": "2026-11-13T11:11:16Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): no-anonymous-default-export in lint-staged config (#1641)",
+        "ai_signal": true
+      },
+      {
+        "sha": "3304b3f8",
+        "date": "2026-11-13T11:06:32Z",
+        "author": "mattpocock",
+        "subject": "test: one typed execAsync helper for the src/ unit tests (#1634)",
+        "ai_signal": true
+      },
+      {
+        "sha": "cdcff0bb",
+        "date": "2026-11-12T10:11:24Z",
+        "author": "mattpocock",
+        "subject": "chore(lint): prefer-strict-boolean-matchers in mountUtils.test.ts (#1640)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "mattpocock",
+      "contributions": 1725
+    },
+    {
+      "login": "sandcastle-agent[bot]",
+      "contributions": 104
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 53
+    },
+    {
+      "login": "dichioniccolo",
+      "contributions": 4
+    },
+    {
+      "login": "bwcampbell9",
+      "contributions": 3
+    },
+    {
+      "login": "jerome-benoit",
+      "contributions": 2
+    },
+    {
+      "login": "kuLm1Fs",
+      "contributions": 2
+    },
+    {
+      "login": "mellson",
+      "contributions": 1
+    },
+    {
+      "login": "claude",
+      "contributions": 1
+    },
+    {
+      "login": "lautarosegura",
+      "contributions": 1
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v0.14.0",
+      "published_at": "2026-11-02T22:13:58Z",
+      "name": "v0.14.0"
+    },
+    {
+      "tag": "v0.13.0",
+      "published_at": "2026-11-02T10:45:47Z",
+      "name": "v0.13.0"
+    },
+    {
+      "tag": "v0.12.0",
+      "published_at": "2026-06-29T20:16:27Z",
+      "name": "v0.12.0"
+    },
+    {
+      "tag": "v0.10.0",
+      "published_at": "2026-06-18T08:57:42Z",
+      "name": "v0.10.0"
+    },
+    {
+      "tag": "v0.9.0",
+      "published_at": "2026-06-16T09:07:02Z",
+      "name": "v0.9.0"
+    }
+  ]
+}

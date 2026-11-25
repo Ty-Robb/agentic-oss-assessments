@@ -1,0 +1,253 @@
+{
+  "repo": "backnotprop/pstack",
+  "meta": {
+    "description": "Use pstack with claude, codex, pi - Skills and principles for rigorous AI-assisted engineering",
+    "homepage": "",
+    "license": "MIT",
+    "stars": 5167,
+    "forks": 395,
+    "open_issues": 2,
+    "archived": false,
+    "created_at": "2026-05-27T02:30:34Z",
+    "pushed_at": "2026-11-25T15:53:07Z",
+    "default_branch": "main",
+    "topics": [
+      "agent-skills",
+      "agentskills",
+      "ai-agents",
+      "backnotprop",
+      "claude-code",
+      "claude-skills",
+      "codex",
+      "cursor",
+      "opencode",
+      "pstack",
+      "pstack-claude",
+      "skills"
+    ]
+  },
+  "languages": {
+    "TypeScript": 457422,
+    "TLA": 30612,
+    "Mermaid": 21756,
+    "Shell": 9174,
+    "Java": 2717,
+    "Python": 2620,
+    "JavaScript": 1029
+  },
+  "structure": {
+    "root": [
+      ".cursor-plugin/",
+      ".gitignore",
+      "LICENSE",
+      "MIRROR.md",
+      "README.md",
+      "SYNC-LOG.md",
+      "agents/",
+      "assets/",
+      "automations/",
+      "docs/",
+      "mirror-assets/",
+      "plugin.json",
+      "skills/"
+    ],
+    "workflows": [],
+    "docs": [
+      "guide/",
+      "harness/"
+    ],
+    "docs_count": 2,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 33101,
+      "line_count": 373,
+      "truncated": true,
+      "excerpt": "<!-- mirror:start \u2014 this top section is specific to the mirror. Everything after mirror:end is the upstream README from cursor/plugins/pstack, unchanged. To sync with upstream, follow MIRROR.md. -->\n<h1 align=\"center\">pstack \u2014 standalone mirror</h1>\n\n<p align=\"center\">\n  <a href=\"https://github.com/cursor/plugins/tree/main/pstack\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"mirror-assets/header-dark.svg\">\n      <img src=\"mirror-assets/header-light.svg\" width=\"100%\" alt=\"cursor/plugins/pstack is kept in sync with this mirror, backnotprop/pstack. npx skills add backnotprop/pstack installs it into Claude Code, Codex, Pi, Cursor, OpenCode, and other agents.\">\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\">\n  <b>Mirror</b> of cursor/plugins/pstack by Poteto \u2014 kept in sync for standalone use. Sponsored by Plannotator.\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/backnotprop/plannotator\"><picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"mirror-assets/sponsor-plannotator-dark.svg\">\n    <img src=\"mirror-assets/sponsor-plannotator-light.svg\" width=\"48%\" alt=\"Sponsored by Plannotator\">\n  </picture></a>\n  <a href=\"https://plannotator.ai/inbox/\"><picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"mirror-assets/sponsor-inbox-dark.svg\">\n    <img src=\"mirror-assets/sponsor-inbox-light.svg\" width=\"48%\" alt=\"Try Plannotator Inbox today\">\n  </picture></a>\n</p>\n\n<p align=\"center\">\n  Poteto's Bro Skill was created by me, <a href=\"https://github.com/backnotprop/bro\">backnotprop/bro</a>\n</p>\n\n## Install\n\npstack is a folder of plain [Agent Skills](https://agentskills.io) (`skills/<name>/SKILL.md`). You don't need [Cursor](https://github.com/cursor/plugins/tree/main/pstack). The [`skills` CLI](https://skills.sh) installs them into Claude Code, Codex, Pi, Cursor, OpenCode, and other agents:\n\n```bash\nnpx skills add backnotprop/pstack\n```\n\nThe CLI shows every skill in a list you can search. Select the skills you want, then select your agents.\n\n## Skills\n\nCursor's original README is [further down this page](#pstack).\n\nThese skills don't call other pstack skills, so each one works alone:\n\n`unslop`, `bro`, `how`, `why`, `tdd`, `typescript-best-practices`, `arena`, `swarm`, `interrogate`, `reflect`, `show-me-your-work`, `figure-it-out`, `automate-me`, `correct`, `benchmark-checklist`, `in-your-own-words`, `sharpen`, `reframe`, `statechart`\n\nSome skills call other skills. Install these together:\n\n| Skill | Also install |\n|---|---|\n| `teach` | `how`, `why` |\n| `technical-writing` | `unslop` |\n| `architect` | `arena` |\n| `blast-radius` | `arena`, `how`, `why`, `unslop` |\n| `create-verification-skill` | `maintain-verification-skill` |\n| `create-formal-verification-skill` | `maintain-formal-verification-skill`, `statechart` |\n| `ketchup` | `bro` |\n| `ketchup-video` | `ketchup`, `bro` |\n| `poteto-mode` | all `principle-*` skills and most of the other skills |\n| `poteto-help` | the skills you want help with |\n\nSkills that spawn subagents point to the Subagents section of `poteto-mode` to pick each subagent's effort. Without `poteto-mode`, they use the default effort.\n\n## What this mirror changes\n\nMany skills were Cursor-specific. They've been rewritten to work in any harness.\n\nCodex ignores the `disable-model-invocation: true` mark that keeps most pstack skills from running unless you call them. So each marked skill also gets an `agents/openai.yaml` that tells Codex the same thing. The skill stays out of Codex's startup prompt, and `$skill` still runs it. ([#26](https://github.com/backnotprop/pstack/issues/26))\n\nThe mirror also carries two community fixes that aren't upstream yet:\n\n- `no-comments` keeps a comment about an outside rule (a dependency, platform, or protocol) when it can't check the rule, and marks it for review instead of deleting it. A rejected review no longer stops the whole run. ([#14](https://github.com/backnotprop/pstack/issues/14))\n- `watch-pr` no longer adds a pull request from a fork to a watched stack, so a fork's review comments stay out of the agent's context, and it strips control characters from review paths, authors and comment text before printing them. Patch from [cursor/plugins#1194](https://github.com/cursor/plugins/pull/1194). ([cursor/plugins#1193](https://github.com/cursor/plugins/issues/1193))\n<!-- mirror:end -->\n\n---\n\n# pstack\n\n[See Pstack Blog](https://x.com/poteto/article/2094457600259842065?lang=en)\n\ni'm [poteto](https://x.com/poteto). i'm not a president or ceo, but i've worked with millions of lines of code at Meta, Netflix, and Cursor. i'm also on the react core team where i help build and maintain react compiler.\n\nthere's a growing sense that ai writes too much slop code. i agree. i don't want to ship like a team of twenty slop artists. throughput without quality is not a goal i aspire to. if you want to go fast, go deep first. \n\n**pstack is my answer.** these are the same skills i use every day to ship high quality code at Cursor. this turns cursor into a real engineering team. the goal is not to maximize loc, in fact it's the opposite. pstack helps you write less, but higher quality code.\n\n**pstack gives you fearless parallelism.** when you can go deep on one agent and trust it to write good, verifiable code, you can truly parallelize with confidence. start multiple agents up with `poteto-mode` and trust that they'll apply rigorous engineering principles to their work.\n\n**cursor gives you the best of all worlds.** every frontier model has its strengths and weaknesses. use any model with pstack. in fact, many of my skills use multi-model workflows to take advantage of each model's unique strengths.\n\nfork it. improve it. make it yours. PRs are welcome! \n\n## install\n\n```bash\n/add-plugin pstack\n```\n\nin claude code:\n\n```bash\n/plugin marketplace add cursor/plugins\n/plugin install pstack@cursor-plugins\n```\n\nclaude code leaves auto-update off for third-party marketplaces, so pstack stays on the version you installed. "
+    }
+  },
+  "workflow_samples": {},
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T15:53:03Z",
+      "oldest": "2026-10-28T19:15:29Z"
+    },
+    "conventional_pct": 2.0,
+    "fix_revert_pct": 2.0,
+    "ai_coauthor_pct": 2.0,
+    "top_recent_authors": [
+      [
+        "backnotprop",
+        49
+      ],
+      [
+        "olibaron",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "c81f1bf6",
+        "date": "2026-11-25T15:53:03Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-25 check, no upstream change",
+        "ai_signal": false
+      },
+      {
+        "sha": "2a562168",
+        "date": "2026-11-24T17:38:55Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-24 check, no upstream change",
+        "ai_signal": false
+      },
+      {
+        "sha": "9dd34088",
+        "date": "2026-11-24T02:29:49Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-23 second check, no upstream change",
+        "ai_signal": false
+      },
+      {
+        "sha": "2d752484",
+        "date": "2026-11-24T02:29:13Z",
+        "author": "backnotprop",
+        "subject": "Sync log: fix date of the 0.15.48 row",
+        "ai_signal": false
+      },
+      {
+        "sha": "cba04be5",
+        "date": "2026-11-24T02:29:09Z",
+        "author": "backnotprop",
+        "subject": "Codex file and README install list for reframe (0.15.48), sync log",
+        "ai_signal": false
+      },
+      {
+        "sha": "2997751f",
+        "date": "2026-11-24T02:28:50Z",
+        "author": "backnotprop",
+        "subject": "Sync upstream cursor/plugins/pstack @ 9e278fe (0.15.48)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5d390efd",
+        "date": "2026-11-24T02:28:50Z",
+        "author": "backnotprop",
+        "subject": "upstream: cursor/plugins/pstack @ 9e278fe",
+        "ai_signal": false
+      },
+      {
+        "sha": "d164eec2",
+        "date": "2026-11-23T16:40:26Z",
+        "author": "backnotprop",
+        "subject": "Codex: add agents/openai.yaml to explicit-only skills (#26)",
+        "ai_signal": false
+      },
+      {
+        "sha": "95622c1d",
+        "date": "2026-11-23T16:31:25Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-23 check, no upstream change",
+        "ai_signal": false
+      },
+      {
+        "sha": "c3464c11",
+        "date": "2026-11-20T22:00:45Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-20 second check, no upstream change",
+        "ai_signal": false
+      },
+      {
+        "sha": "f9eb2cd7",
+        "date": "2026-11-20T19:23:21Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-20, merged #24, asked #25 for a smaller version",
+        "ai_signal": false
+      },
+      {
+        "sha": "fcf39c01",
+        "date": "2026-11-20T19:22:52Z",
+        "author": "backnotprop",
+        "subject": "Merge PR #24: watch-pr keeps fork PRs out of a watched stack, strips control characters (community fix from cursor/plugins#1194)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d89b67ba",
+        "date": "2026-11-20T19:12:57Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-20, synced 0.15.46",
+        "ai_signal": false
+      },
+      {
+        "sha": "0443efea",
+        "date": "2026-11-20T19:10:17Z",
+        "author": "backnotprop",
+        "subject": "Sync upstream cursor/plugins/pstack @ 0b46ec3 (0.15.46)",
+        "ai_signal": false
+      },
+      {
+        "sha": "8260de23",
+        "date": "2026-11-20T19:09:34Z",
+        "author": "backnotprop",
+        "subject": "upstream: cursor/plugins/pstack @ 0b46ec3",
+        "ai_signal": false
+      },
+      {
+        "sha": "c71a3df2",
+        "date": "2026-11-20T01:03:32Z",
+        "author": "olibaron",
+        "subject": "fix(watch-pr): keep fork PRs out of a watched stack; strip control characters from review text",
+        "ai_signal": true
+      },
+      {
+        "sha": "4a4f41c4",
+        "date": "2026-11-19T20:16:07Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-19, synced 0.15.44",
+        "ai_signal": false
+      },
+      {
+        "sha": "3db217cb",
+        "date": "2026-11-19T20:16:02Z",
+        "author": "backnotprop",
+        "subject": "Sync upstream cursor/plugins/pstack @ e58dd04 (0.15.44)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1d89ad4b",
+        "date": "2026-11-19T20:15:46Z",
+        "author": "backnotprop",
+        "subject": "upstream: cursor/plugins/pstack @ e58dd04",
+        "ai_signal": false
+      },
+      {
+        "sha": "0d2dc00d",
+        "date": "2026-11-18T16:50:32Z",
+        "author": "backnotprop",
+        "subject": "Sync log: 2026-11-18 second check, no upstream change",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "backnotprop",
+      "contributions": 87
+    },
+    {
+      "login": "jeffreymurdock",
+      "contributions": 1
+    },
+    {
+      "login": "olibaron",
+      "contributions": 1
+    }
+  ],
+  "recent_releases": []
+}

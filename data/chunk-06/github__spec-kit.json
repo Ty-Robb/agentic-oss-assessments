@@ -1,0 +1,449 @@
+{
+  "repo": "github/spec-kit",
+  "meta": {
+    "description": "\ud83d\udcab Toolkit to help you get started with SDD or any other process!",
+    "homepage": "https://github.github.com/spec-kit/",
+    "license": "MIT",
+    "stars": 151365,
+    "forks": 13607,
+    "open_issues": 230,
+    "archived": false,
+    "created_at": "2025-08-21T22:54:31Z",
+    "pushed_at": "2026-11-25T19:16:59Z",
+    "default_branch": "main",
+    "topics": [
+      "ai",
+      "copilot",
+      "development",
+      "engineering",
+      "prd",
+      "spec",
+      "spec-driven"
+    ]
+  },
+  "languages": {
+    "Python": 11907146,
+    "Shell": 142245,
+    "PowerShell": 136732
+  },
+  "structure": {
+    "root": [
+      ".devcontainer/",
+      ".editorconfig",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".markdownlint-cli2.jsonc",
+      ".pre-commit-config.yaml",
+      ".specify/",
+      ".zenodo.json",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CITATION.cff",
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "DEVELOPMENT.md",
+      "LICENSE",
+      "README.ja.md",
+      "README.ko.md",
+      "README.md",
+      "README.zh-CN.md",
+      "SECURITY.md",
+      "SUPPORT.md",
+      "bundles/",
+      "design/",
+      "docs/",
+      "extensions/",
+      "integrations/",
+      "media/",
+      "newsletters/",
+      "presets/",
+      "pyproject.toml",
+      "scripts/",
+      "spec-driven.md",
+      "spec-kit.code-workspace",
+      "src/",
+      "templates/",
+      "tests/",
+      "workflows/"
+    ],
+    "workflows": [
+      "RELEASE-PROCESS.md",
+      "add-community-bundle.lock.yml",
+      "add-community-bundle.md",
+      "add-community-extension.lock.yml",
+      "add-community-extension.md",
+      "add-community-preset.lock.yml",
+      "add-community-preset.md",
+      "add-community-workflow-step.lock.yml",
+      "add-community-workflow-step.md",
+      "bug-assess.lock.yml",
+      "bug-assess.md",
+      "bug-fix.lock.yml",
+      "bug-fix.md",
+      "bug-test.lock.yml",
+      "bug-test.md",
+      "catalog-assign.yml",
+      "codeql.yml",
+      "docs.yml",
+      "extension-version-guard.yml",
+      "feature-assess.lock.yml",
+      "feature-assess.md",
+      "lint.yml",
+      "pr-assess.lock.yml",
+      "pr-assess.md",
+      "publish-pypi.yml",
+      "release-trigger.yml",
+      "release.yml",
+      "stale.yml",
+      "test.yml"
+    ],
+    "docs": [
+      ".gitignore",
+      "README.md",
+      "assets/",
+      "bundles/",
+      "community/",
+      "docfx.json",
+      "extensions/",
+      "generate_presets.py",
+      "guides/",
+      "how-to/",
+      "images/",
+      "index.md",
+      "install/",
+      "installation.md",
+      "integrations/",
+      "overview/",
+      "presets/",
+      "quickstart.md",
+      "reference/",
+      "template/",
+      "toc.yml",
+      "upgrade.md",
+      "workflow-steps/",
+      "workflows/"
+    ],
+    "docs_count": 24,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 3747,
+      "line_count": 76,
+      "truncated": false,
+      "excerpt": "# AGENTS.md\n\n## About Spec Kit and Specify\n\n**GitHub Spec Kit** is a comprehensive toolkit for implementing Spec-Driven Development (SDD) - a methodology that emphasizes creating clear specifications before implementation. The toolkit includes templates, scripts, and workflows that guide development teams through a structured approach to building software.\n\n**Specify CLI** is the command-line interface that bootstraps projects with the Spec Kit framework. It sets up the necessary directory structures, templates, and AI agent integrations to support the Spec-Driven Development workflow.\n\nThe toolkit supports multiple AI coding assistants, allowing teams to use their preferred tools while maintaining consistent project structure and development practices.\n\n## Adding or Updating CLI Commands\n\nBefore adding, updating, or reorganizing Specify CLI commands, read\n[Shared Command Application Architecture](design/shared.md) and\n[Specify CLI Command Architecture](design/cli.md). They define the shared\noperation boundary, command-module naming, private phases, nested command\ngroups, registration ownership, and mirrored tests.\n\n## Adding or Updating MCP Commands\n\nBefore adding or changing MCP tools for Specify commands, read\n[Shared Command Application Architecture](design/shared.md) and\n[Specify MCP Command Architecture](design/mcp.md). They define the shared\noperation boundary, typed contracts, explicit inventory, side-effect metadata,\nthe local stdio protocol boundary, and mirrored tests.\n\n## Adding or Updating Agent Integrations\n\nBefore adding or changing AI agent integrations, read\n[Agent Integration Design](design/integration.md). It covers\ndelivery routes, output formats, registration, and install/uninstall ownership.\n\n## Adding or Updating Workflow Steps\n\nBefore adding or changing workflow step types, read\n[Workflow Step Design](design/workflow-step.md). It covers registration,\nvalidation, execution, resume, and installed step packages.\n\n## Testing Executable Behavior\n\nBefore changing code or configuration that runs or controls execution without\nan LLM, read\n[Testing deterministic behavior](CONTRIBUTING.md#testing-deterministic-behavior).\nBehavioral changes need positive and negative coverage; bug fixes need\nbefore-and-after regression evidence.\n\n## PowerShell Compatibility\n\nAll PowerShell scripts in the repository and all generated PowerShell\nfunctionality MUST target Windows PowerShell 5.1, the version included with\nWindows. When adding or changing PowerShell code, use only syntax, cmdlets,\nparameters, and .NET APIs available in Windows PowerShell 5.1. Account for\nencoding and other runtime differences, preserve the required behavioral\nparity with Bash and Python implementations, and provide Windows PowerShell\n5.1 validation evidence for behavioral changes.\n\n## Branches and Agent Contributions\n\nWhen creating a branch, follow [Branch naming](CONTRIBUTING.md#branch-naming).\nBefore authoring commits, opening PRs, or posting review comments, read\n[Agent-authored Git and review activity](CONTRIBUTING.md#agent-authored-git-and-review-activity).\nAgent-authored commits and AI-generated PRs and comments each require their\nown disclosure; a PR-body disclosure alone does not cover later activity.\n\n## Other Contribution Guidance\n\nFor contribution or repository-workflow questions not covered above, or when\nthe applicable guidance is unclear, read [CONTRIBUTING.md](CONTRIBUTING.md)\nbefore acting.\n\n## Common Pitfalls\n\n- **Running tests against the wrong environment:** Run the suite inside this\n  worktree's own virtualenv (`uv sync --extra test` then\n  `.venv/bin/python -m pytest`). A bare `uv run pytest` can pick up an\n  editable install from another worktree and fail to import new subpackages.\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 30538,
+      "line_count": 519,
+      "truncated": true,
+      "excerpt": "# Contributing to Spec Kit\n\nHi there! We're thrilled that you'd like to contribute to Spec Kit. Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE).\n\nPlease note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.\n\n## Prerequisites for running and testing code\n\nThese are one time installations required to be able to test your changes locally as part of the pull request (PR) submission process.\n\n1. Install [Python 3.11+](https://www.python.org/downloads/)\n1. Install [uv](https://docs.astral.sh/uv/) for package management\n1. Install [Git](https://git-scm.com/downloads)\n1. Have an [AI coding agent available](https://github.github.io/spec-kit/integrations/index.html)\n\n<details>\n<summary><b>\ud83d\udca1 Hint if you are using <code>VSCode</code> or <code>GitHub Codespaces</code> as your IDE</b></summary>\n\n<br>\n\nProvided you have [Docker](https://docker.com) installed on your machine, you can leverage [Dev Containers](https://containers.dev) through this [VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), to easily set up your development environment, with aforementioned tools already installed and configured, thanks to the `.devcontainer/devcontainer.json` file (located at the root of the project).\n\nTo do so, simply:\n\n- Checkout the repo\n- Open it with VSCode\n- Open the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) and select \"Dev Containers: Open Folder in Container...\"\n\nOn [GitHub Codespaces](https://github.com/features/codespaces) it's even simpler, as it leverages the `.devcontainer/devcontainer.json` automatically upon opening the codespace.\n\n</details>\n\n## Submitting a pull request\n\n> [!NOTE]\n> If your pull request introduces a large change that materially impacts the work of the CLI or the rest of the repository (e.g., you're introducing new templates, arguments, or otherwise major changes), make sure that it was **discussed and agreed upon** by the project maintainers. Pull requests with large changes that did not have a prior conversation and agreement will be closed.\n\n1. Fork and clone the repository\n1. Set up this checkout's `.venv` and editable install using the [local development guide](https://github.github.io/spec-kit/how-to/local-development.html)\n1. Make sure the CLI works: `.venv/bin/specify --help` (Windows PowerShell: `.\\.venv\\Scripts\\specify.exe --help`)\n1. Create a new branch (see [Branch naming](#branch-naming) below)\n1. Make your change, add tests, and make sure everything still works\n1. Test the CLI functionality with a sample project if relevant\n1. Push to your fork and submit a pull request\n1. Wait for your pull request to be reviewed and merged.\n\nUse a separate `.venv` per checkout or worktree and run the CLI and tests through\nthat environment's explicit executable paths. Follow [Testing setup](#testing-setup)\nbefore running the manual slash-command tests described below.\n\nHere are a few things you can do that will increase the likelihood of your pull request being accepted:\n\n- Follow the project's coding conventions.\n- Write tests for new functionality.\n- Update documentation (`README.md`, `spec-driven.md`) if your changes affect user-facing features.\n- Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.\n- Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).\n- Test your changes with the Spec-Driven Development workflow to ensure compatibility.\n\nAccounts with three open pull requests may continue submitting changes, but additional submissions may be placed behind contributions from other authors in the review queue. Coding agents must follow the [agent-authored PR rules](#agent-authored-git-and-review-activity) before opening another pull request.\n\n### Integration pull requests\n\nFollow the [integration delivery boundary](design/integration.md#integration-delivery-boundary)\nwhen adding or updating an integration. Keep integration-specific behavior in\nits package; registry wiring, catalog metadata, integration-specific tests,\ndocumentation, and agent-specific devcontainer tooling may accompany it in the\nsame PR, even though those files live outside the integration package.\n\nIf the integration requires changes to shared runtime behavior, integration\nbase classes, rendering, lifecycle management, CLI behavior, or core templates\nor scripts, submit **at least two PRs**: one for the prerequisite shared behavior\nand one for the integration. The prerequisite PR must justify the shared change\nindependently under the [evidence gate](#evidence-gate) and follow\n[Testing deterministic behavior](#testing-deterministic-behavior), including\nregression evidence for bug fixes. It must work and be testable without the new\nintegration; moving an agent-specific workaround into core does not justify it.\n\nIdentify the prerequisite PRs in the integration PR and merge them before\nmerging the integration PR. Changes outside the integration package that only\nwire up or document the integration do not, by themselves, require a split.\n\n### Evidence gate\n\nA contribution is evaluated on the evidence it carries, not on how plausible its reasoning sounds. The same bar applies to everyone \u2014 human and AI-assisted contributions are judged identically.\n\nA valid, in-scope change that arrives without evidence is not rejected outright. It may be labeled [`triage-can-wait`](#triage-and-author-labels) and held behind proven work until evidence is added, at which point it can be reprioritized.\n\nWhat counts as evidence:\n\n- **A reproduction or a linked real-world report** \u2014 a failing "
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 14337,
+      "line_count": 268,
+      "truncated": true,
+      "excerpt": "<div align=\"center\">\n    <img src=\"https://raw.githubusercontent.com/github/spec-kit/main/media/logo_large.webp\" alt=\"Spec Kit Logo\" width=\"200\" height=\"200\"/>\n    <h1>\ud83c\udf31 Spec Kit</h1>\n    <h3><em>Build with a spec, fix a bug, or assess an idea \u2014 with your coding agent.</em></h3>\n</div>\n\n<p align=\"center\">\n    <a href=\"https://github.com/github/spec-kit/releases/latest\"><img src=\"https://img.shields.io/github/v/release/github/spec-kit\" alt=\"Latest Release\"/></a>\n    <a href=\"https://github.com/github/spec-kit/stargazers\"><img src=\"https://img.shields.io/github/stars/github/spec-kit?style=social\" alt=\"GitHub stars\"/></a>\n    <a href=\"https://github.com/github/spec-kit/blob/main/LICENSE\"><img src=\"https://img.shields.io/github/license/github/spec-kit\" alt=\"License\"/></a>\n    <a href=\"https://github.github.io/spec-kit/\"><img src=\"https://img.shields.io/badge/docs-GitHub_Pages-blue\" alt=\"Documentation\"/></a>\n</p>\n\n<p align=\"center\">\n    <strong>English</strong> \u00b7\n    <a href=\"./README.zh-CN.md\">\u7b80\u4f53\u4e2d\u6587</a> \u00b7\n    <a href=\"./README.ja.md\">\u65e5\u672c\u8a9e</a> \u00b7\n    <a href=\"./README.ko.md\">\ud55c\uad6d\uc5b4</a>\n</p>\n\nSpec Kit is an open source toolkit that gives AI coding agents structured\nprocesses, reusable templates, and documented outcomes. Start with a ready-made\nprocess, customize it, or bring your own.\n\n## Choose your process\n\n| What you need | Process | Outcome |\n| --- | --- | --- |\n| Build a feature or application | [Spec-Driven Development](#spec-driven-development) | A specification carried through planning, implementation, and convergence |\n| Diagnose and repair broken behavior | [Bug fixing](#bug-fixing) | An assessed cause, scoped fix, and recorded verification |\n| Decide whether an idea deserves investment | [Idea assessment](#idea-assessment) | An evidence-backed go, clarify, or stop decision |\n| Adopt or create a different process | [Your own process](#capabilities) | A process adapted or assembled from reusable primitives |\n\nThese are independent entry points, not mandatory phases. SDD ships in core;\nbug fixing and assessment are bundled extensions you install when needed, and\nthe primitives below let you adopt or create other processes.\n\n## Capabilities\n\nSpec Kit combines ready-to-use processes with composable mechanisms:\n\n| Capability | Spec Kit mechanism |\n| --- | --- |\n| Connect to or switch between coding agents | [Integration](https://github.github.io/spec-kit/integrations/index.html) |\n| Add a command, quality gate, or complete process | [Extension](https://github.github.io/spec-kit/extensions/overview.html) |\n| Connect a process to an external tool or service | [Extension](https://github.github.io/spec-kit/extensions/overview.html) |\n| React to coding-agent lifecycle events | [Extension runtime event](https://github.github.io/spec-kit/extensions/api.html#extension-runtime-events) |\n| Run extension commands before or after Spec Kit commands | [Extension hook](https://github.github.io/spec-kit/extensions/api.html#hook-configuration) |\n| Adapt templates, commands, terminology, or methodology | [Preset](https://github.github.io/spec-kit/presets/overview.html) |\n| Enforce organizational or regulatory standards | [Preset](https://github.github.io/spec-kit/presets/overview.html) |\n| Override a template for one project | [Project-local override](https://github.github.io/spec-kit/how-to/customization.html#project-local-overrides-and-resolution) |\n| Automate prompts, commands, gates, and shell tasks | [Workflow](https://github.github.io/spec-kit/workflows/overview.html) |\n| Modify an installed workflow without forking it | [Workflow overlay](https://github.github.io/spec-kit/workflows/overlays.html) |\n| Add reusable executable behavior to workflows | [Workflow step](https://github.github.io/spec-kit/workflow-steps/developing.html#custom-step-packages) |\n| Install a curated setup for a role or team | [Bundle](https://github.github.io/spec-kit/bundles/overview.html) |\n| Discover community components | [Catalog](https://github.github.io/spec-kit/overview/catalogs.html) |\n| Host a private catalog of approved components | [Catalog](https://github.github.io/spec-kit/overview/catalogs.html) |\n| Access private catalogs and component downloads | [Authentication](https://github.github.io/spec-kit/reference/authentication.html) |\n| Work offline or behind a firewall | [Local sources and self-hosted catalogs](https://github.github.io/spec-kit/install/air-gapped.html) |\n| Inspect which layer supplies a command, template, or script | [Artifact inventory](https://github.github.io/spec-kit/overview/artifacts.html) |\n\nSearch the active catalogs with commands such as `specify extension search`,\n`specify preset search`, `specify workflow search`, and `specify bundle search`.\nSpec Kit includes community catalogs, and organizations can add their own\ncurated sources. Catalog listings are not audits or endorsements, so review\ncommunity source code before installing or running it.\n\n<a id=\"-get-started\"></a>\n<a id=\"-prerequisites\"></a>\n\n## Get started\n\nYou need Python 3.11+, [uv](https://github.github.io/spec-kit/install/uv.html),\nand a supported AI coding agent on Linux, macOS, or Windows.\n\nRun these commands in your terminal to install Spec Kit and create a project.\nThis example uses GitHub Copilot.\n\n```bash\nuv tool install specify-cli\nspecify init my-project --integration copilot\ncd my-project\n```\n\n<a id=\"-supported-ai-coding-agent-integrations\"></a>\n\nAfter installing the Specify CLI and creating your project, launch your coding\nagent in the project directory, then choose a process below.\n\nFor other setups:\n\n- [Installation](https://github.github.io/spec-kit/installation.html) for pinned releases, other installers, CI, and troubleshooting.\n- [Existing projects](https://github.github.io/spec-kit/how-to/existing-projects.html) to start with code you already have.\n- [Other agents](https://github.github.io/spec-kit/integrations/index.html) for integration keys and [invocation syntax](https://github.github.io/spec-kit/integrations/cli."
+    },
+    "pyproject.toml": {
+      "path": "pyproject.toml",
+      "size_bytes": 3700,
+      "line_count": 98,
+      "truncated": false,
+      "excerpt": "[project]\nname = \"specify-cli\"\nversion = \"1.4.6.dev0\"\ndescription = \"Specify CLI, part of GitHub Spec Kit. A tool to bootstrap your projects for Spec-Driven Development (SDD).\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n    \"typer>=0.24.0\",\n    \"click>=8.2.1\",\n    \"rich\",\n    \"readchar\",\n    \"pyyaml>=6.0\",\n    \"packaging>=23.0\",\n    \"pathspec>=0.12.0\",\n    \"json5>=0.13.0\",\n    \"mcp>=2.2.0,<3.0.0\",\n    \"pydantic>=2.13.0,<3.0.0\",\n    \"lark>=1.3.1,<2.0.0\",\n]\n\n[project.scripts]\nspecify = \"specify_cli:main\"\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/specify_cli\"]\n\n[tool.hatch.build.targets.wheel.force-include]\n# Bundle core assets so `specify init` works without network access (air-gapped / enterprise)\n# Page templates (exclude commands/ \u2014 bundled separately below to avoid duplication)\n\"templates/checklist-template.md\" = \"specify_cli/core_pack/templates/checklist-template.md\"\n\"templates/constitution-template.md\" = \"specify_cli/core_pack/templates/constitution-template.md\"\n\"templates/plan-template.md\" = \"specify_cli/core_pack/templates/plan-template.md\"\n\"templates/spec-template.md\" = \"specify_cli/core_pack/templates/spec-template.md\"\n\"templates/tasks-template.md\" = \"specify_cli/core_pack/templates/tasks-template.md\"\n\"templates/vscode-settings.json\" = \"specify_cli/core_pack/templates/vscode-settings.json\"\n# Command templates\n\"templates/commands\" = \"specify_cli/core_pack/commands\"\n\"scripts/bash\" = \"specify_cli/core_pack/scripts/bash\"\n\"scripts/powershell\" = \"specify_cli/core_pack/scripts/powershell\"\n\"scripts/python\" = \"specify_cli/core_pack/scripts/python\"\n# Bundled extensions (installable via `specify extension add <name>`)\n\"extensions/git\" = \"specify_cli/core_pack/extensions/git\"\n\"extensions/agent-context\" = \"specify_cli/core_pack/extensions/agent-context\"\n\"extensions/assess\" = \"specify_cli/core_pack/extensions/assess\"\n\"extensions/bug\" = \"specify_cli/core_pack/extensions/bug\"\n\"extensions/github\" = \"specify_cli/core_pack/extensions/github\"\n# Bundled workflows (`specify init` installs only `speckit`; `bugfix`/`assess` are opt-in via first-party bundles)\n\"workflows/speckit\" = \"specify_cli/core_pack/workflows/speckit\"\n\"workflows/bugfix\" = \"specify_cli/core_pack/workflows/bugfix\"\n\"workflows/assess\" = \"specify_cli/core_pack/workflows/assess\"\n# Bundled presets (installable via `specify preset add <name>` or `specify init --preset <name>`)\n\"presets/lean\" = \"specify_cli/core_pack/presets/lean\"\n\"presets/constitution-sync\" = \"specify_cli/core_pack/presets/constitution-sync\"\n# Bundle catalog snapshots (used for offline discovery)\n\"bundles/catalog.json\" = \"specify_cli/core_pack/bundles/catalog.json\"\n\"bundles/catalog.community.json\" = \"specify_cli/core_pack/bundles/catalog.community.json\"\n\n[project.optional-dependencies]\ntest = [\n    \"cryptography\",\n    \"pytest>=7.0\",\n    \"pytest-cov>=4.0\",\n    \"pytest-xdist>=3.0\",\n]\n\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\npython_files = [\"test_*.py\"]\npython_classes = [\"Test*\"]\npython_functions = [\"test_*\"]\naddopts = [\n    \"-v\",\n    \"--strict-markers\",\n    \"--tb=short\",\n]\n\n[tool.coverage.run]\nsource = [\"src\"]\nomit = [\"*/tests/*\", \"*/__pycache__/*\"]\n\n[tool.coverage.report]\nprecision = 2\nshow_missing = true\nskip_covered = false\n\n[tool.ruff.lint]\n# Lock in subprocess security posture: any reintroduction of shell=True\n# (or os.system / popen2) must be acknowledged with an explicit `# noqa`\n# pointing at the rule, making the deviation visible in review.\nextend-select = [\n    \"S602\",  # subprocess-popen-with-shell-equals-true\n    \"S604\",  # call-with-shell-equals-true\n    \"S605\",  # start-process-with-a-shell\n]\n"
+    }
+  },
+  "workflow_samples": {
+    "RELEASE-PROCESS.md": {
+      "path": ".github/workflows/RELEASE-PROCESS.md",
+      "size_bytes": 13309,
+      "line_count": 246,
+      "truncated": true,
+      "excerpt": "# Release Process\n\nThis document describes the automated release process for Spec Kit.\n\n## Overview\n\nThe release process is split into three workflows:\n\n1. **Release Trigger Workflow** (`release-trigger.yml`) - Manages versioning, creates the tag, and opens the release PR\n2. **Release Workflow** (`release.yml`) - Creates the GitHub Release and release notes\n3. **Publish to PyPI Workflow** (`publish-pypi.yml`) - Builds and publishes the Python package from an exact tag\n\nThis separation ensures that git tags point to commits with the correct version in `pyproject.toml` and lets maintainers recover the GitHub and PyPI publishing steps independently.\n\n## Before Creating a Release\n\n**Important**: Write clear, descriptive commit messages!\n\n### How CHANGELOG.md Works\n\nThe CHANGELOG is **automatically generated** from your git commit messages:\n\n1. **During Development**: Write clear, descriptive commit messages:\n\n   ```bash\n   git commit -m \"feat: Add new authentication feature\"\n   git commit -m \"fix: Resolve timeout issue in API client (#123)\"\n   git commit -m \"docs: Update installation instructions\"\n   ```\n\n2. **When Releasing**: The release trigger workflow automatically:\n   - Finds all commits since the last release tag\n   - Formats them as changelog entries\n   - Inserts them into CHANGELOG.md\n   - Commits the updated changelog before creating the new tag\n\n### Commit Message Best Practices\n\nGood commit messages make good changelogs:\n\n- **Be descriptive**: \"Add user authentication\" not \"Update files\"\n- **Reference issues/PRs**: Include `(#123)` for automated linking\n- **Use conventional commits** (optional): `feat:`, `fix:`, `docs:`, `chore:`\n- **Keep it concise**: One line is ideal, details go in commit body\n\n**Example commits that become good changelog entries:**\n\n```text\nfix: prepend YAML frontmatter to Cursor .mdc files (#1699)\nfeat: add generic agent support with customizable command directories (#1639)\ndocs: document dual-catalog system for extensions (#1689)\n```\n\n## Creating a Release\n\n### Option 1: Auto-Increment (Recommended for patches)\n\n1. Go to **Actions** \u2192 **Release Trigger**\n2. Click **Run workflow**\n3. Leave the version field **empty**\n4. Click **Run workflow**\n\nThe workflow will:\n\n- Auto-increment the patch version (e.g., `0.1.10` \u2192 `0.1.11`)\n- Update `pyproject.toml`\n- Update `CHANGELOG.md` by adding a new section for the release based on commits since the last tag\n- Commit changes to a `chore/release-vX.Y.Z` branch\n- Create and push the git tag from that branch\n- Bump the release branch to the next patch development version (for example, `1.2.3` \u2192 `1.2.4.dev0`)\n- Open a PR to merge the version bump into `main`\n- Trigger the release workflow automatically via the tag push\n\n### Option 2: Manual Version (For major/minor bumps)\n\n1. Go to **Actions** \u2192 **Release Trigger**\n2. Click **Run workflow**\n3. Enter the desired version (e.g., `0.2.0` or `v0.2.0`)\n4. Click **Run workflow**\n\nThe workflow will:\n\n- Use your specified version\n- Update `pyproject.toml`\n- Update `CHANGELOG.md` by adding a new section for the release based on commits since the last tag\n- Commit changes to a `chore/release-vX.Y.Z` branch\n- Create and push the git tag from that branch\n- Bump the release branch to the next patch development version (for example, `1.2.3` \u2192 `1.2.4.dev0`)\n- Open a PR to merge the version bump into `main`\n- Trigger the release workflow automatically via the tag push\n\n## What Happens Next\n\nThe release trigger pushes a `chore/release-vX.Y.Z` branch with the release version commit, then pushes the tag pointing to that commit. After the tag push, two paths proceed independently:\n\n- The **Release Workflow** creates a GitHub Release with generated release notes. No per-agent ZIP assets are built or uploaded; GitHub still provides its standard source archives.\n- The **Release Trigger Workflow** continues by bumping the release branch to the next patch development version and opening a PR to merge both version commits into `main`.\n\nGitHub Release creation may finish before or after the development bump and PR creation. Run the **Publish to PyPI Workflow** manually with the same tag to build and publish the wheel and source distribution.\n\n> **Note**: The GitHub Release and PyPI workflows do not depend on each other. Waiting for the GitHub Release to complete before publishing to PyPI makes the release state easier to verify. Merge the auto-opened PR after publishing to keep `main` on the next development version.\n\n## Workflo"
+    },
+    "add-community-preset.lock.yml": {
+      "path": ".github/workflows/add-community-preset.lock.yml",
+      "size_bytes": 137007,
+      "line_count": 2027,
+      "truncated": true,
+      "excerpt": "# gh-aw-metadata: {\"schema_version\":\"v4\",\"frontmatter_hash\":\"564efd2f35a62e6eefd16aa78978c1c65f7a5d503d98412f61789a19138d65c9\",\"body_hash\":\"853306b78d6cb2990eb3645fbfc04aa5eef71e54fb1514dcac2cb42d7cab36f8\",\"compiler_version\":\"v0.88.7\",\"strict\":true,\"agent_id\":\"copilot\",\"engine_versions\":{\"copilot\":\"1.0.80\"}}\n# gh-aw-manifest: {\"version\":1,\"secrets\":[\"COPILOT_GITHUB_TOKEN\",\"GH_AW_CI_TRIGGER_TOKEN\",\"GH_AW_DEFAULT_OTLP_HEADERS\",\"GH_AW_GITHUB_MCP_SERVER_TOKEN\",\"GH_AW_GITHUB_TOKEN\",\"GITHUB_TOKEN\"],\"actions\":[{\"repo\":\"actions/cache/restore\",\"sha\":\"55cc8345863c7cc4c66a329aec7e433d2d1c52a9\",\"version\":\"v6.1.0\"},{\"repo\":\"actions/cache/save\",\"sha\":\"55cc8345863c7cc4c66a329aec7e433d2d1c52a9\",\"version\":\"v6.1.0\"},{\"repo\":\"actions/checkout\",\"sha\":\"3d3c42e5aac5ba805825da76410c181273ba90b1\",\"version\":\"v7.0.1\"},{\"repo\":\"actions/download-artifact\",\"sha\":\"3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c\",\"version\":\"v8.0.1\"},{\"repo\":\"actions/github-script\",\"sha\":\"3a2844b7e9c422d3c10d287c895573f7108da1b3\",\"version\":\"v9.0.0\"},{\"repo\":\"actions/setup-node\",\"sha\":\"820762786026740c76f36085b0efc47a31fe5020\",\"version\":\"v7.0.0\"},{\"repo\":\"actions/setup-python\",\"sha\":\"5fda3b95a4ea91299a34e894583c3862153e4b97\",\"version\":\"v7.0.0\"},{\"repo\":\"actions/upload-artifact\",\"sha\":\"043fb46d1a93c77aae656e7c1c64a875d1fc6a0a\",\"version\":\"v7.0.1\"},{\"repo\":\"github/gh-aw-actions/setup\",\"sha\":\"5e508589e03a7757a7e05b26e834292f5445bfb6\",\"version\":\"v0.88.7\"}],\"containers\":[{\"image\":\"ghcr.io/github/gh-aw-firewall/agent:0.28.14\",\"digest\":\"sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98\",\"pinned_image\":\"ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98\"},{\"image\":\"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14\",\"digest\":\"sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5\",\"pinned_image\":\"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5\"},{\"image\":\"ghcr.io/github/gh-aw-firewall/squid:0.28.14\",\"digest\":\"sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5\",\"pinned_image\":\"ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5\"},{\"image\":\"ghcr.io/github/gh-aw-mcpg:v0.4.18\",\"digest\":\"sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53\",\"pinned_image\":\"ghcr.io/github/gh-aw-mcpg:v0.4.18@sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53\"},{\"image\":\"ghcr.io/github/gh-aw-node\",\"digest\":\"sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23\",\"pinned_image\":\"ghcr.io/github/gh-aw-node@sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23\"},{\"image\":\"ghcr.io/github/github-mcp-server:v1.11.0\",\"digest\":\"sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699\",\"pinned_image\":\"ghcr.io/github/github-mcp-server:v1.11.0@sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699\"}],\"mcp_servers\":[{\"name\":\"github\",\"tools\":[\"get_commit\",\"get_file_contents\",\"get_latest_release\",\"get_release_by_tag\",\"get_tag\",\"issue_read\",\"list_branches\",\"list_commits\",\"list_issue_types\",\"list_issues\",\"list_releases\",\"list_starred_repositories\",\"list_tags\",\"search_code\",\"search_issues\",\"search_repositories\"]},{\"name\":\"safeoutputs\",\"tools\":[\"add_comment\",\"add_labels\",\"create_pull_request\",\"missing_data\",\"missing_tool\",\"noop\",\"remove_labels\"]}]}\n# This file was automatically generated by gh-aw (v0.88.7). DO NOT EDIT. To debug this workflow, load the skill at https://github.com/github/gh-aw/blob/main/debug.md\n#\n#    ___                   _   _\n#   / _ \\                 | | (_)\n#  | |_| | __ _  ___ _ __ | |_ _  ___\n#  |  _  |/ _` |/ _ \\ '_ \\| __| |/ __|\n#  | | | | (_| |  __/ | | | |_| | (__\n#  \\_| |_/\\__, |\\___|_| |_|\\__|_|\\___|\n#          __/ |\n#  _    _ |___/\n# | |  | |                / _| |\n# | |  | | ___ _ __ _  __| |_| | _____      ____\n# | |/\\| |/ _ \\ '__| |/ /|  _| |/ _ \\ \\ /\\ / / ___|\n# \\  /\\  / (_) | | | | ( | | | | (_) \\ V  V /\\__ \\\n#  \\/  \\/ \\___/|_| |_|\\_\\|_| |_|\\___/ \\_/\\_/ |___/\n#\n#\n# To update this file, edit the corresponding .md file and run:\n#   gh aw compile\n# Not all edits will cause changes to this file.\n#\n# For more information: https://github.github.com/gh-aw/introduction/overview/\n#\n# Process community preset submission issues \u2014 validate, add to catalog, and open a PR for maintainer review\n#\n# Secrets used:\n#   - COPILOT_GITHUB_TOKEN\n#   - GH"
+    },
+    "add-community-preset.md": {
+      "path": ".github/workflows/add-community-preset.md",
+      "size_bytes": 23131,
+      "line_count": 527,
+      "truncated": true,
+      "excerpt": "---\ndescription: \"Process community preset submission issues \u2014 validate, add to catalog, and open a PR for maintainer review\"\nemoji: \"\ud83c\udfa8\"\n\non:\n  issues:\n    types: [labeled]\n    names: [preset-submission]\n  skip-bots: [github-actions, copilot, dependabot]\n\nengine:\n  id: copilot\n  args:\n    - --allow-url=https://github.com\n    - --allow-url=https://codeload.github.com\n    - --allow-url=https://release-assets.githubusercontent.com\n    - --allow-url=https://raw.githubusercontent.com\n\ntools:\n  edit:\n  bash: [\"echo\", \"cat\", \"head\", \"tail\", \"grep\", \"wc\", \"sort\", \"python3\", \"jq\", \"date\", \"curl\", \"sha256sum\"]\n  github:\n    toolsets: [issues, repos]\n    min-integrity: none\n  web-fetch:\n\nnetwork:\n  allowed:\n    - defaults\n    - github.com\n    - codeload.github.com\n    - release-assets.githubusercontent.com\n    - raw.githubusercontent.com\n\npermissions:\n  contents: read\n  issues: read\n\ncheckout:\n  fetch-depth: 0\n\nsteps:\n  - name: Set up Python for preset verification\n    continue-on-error: true\n    uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0\n    with:\n      python-version: \"3.13\"\n  - name: Install preset verifier dependency\n    continue-on-error: true\n    run: python3 -m pip install 'PyYAML==6.0.3'\n\nsafe-outputs:\n  noop:\n    report-as-issue: false\n  threat-detection:\n    continue-on-error: false\n  create-pull-request:\n    title-prefix: \"[preset] \"\n    labels: [preset-submission, automated]\n    draft: true\n    max: 1\n    allowed-files:\n      - presets/catalog.community.json\n    protected-files:\n      policy: blocked\n      exclude:\n        - README.md\n        - CHANGELOG.md\n  add-comment:\n    max: 2\n  add-labels:\n    allowed: [preset-submission, validation-passed, validation-failed, needs-info]\n    max: 3\n    issue-intent: false\n  remove-labels:\n    allowed: [validation-passed, validation-failed]\n---\n\n# Add Community Preset from Issue Submission\n\nYou are a catalog maintenance agent for the Spec Kit project. Your job is to\nprocess community preset submission issues and create pull requests that add\nor update entries in the community preset catalog.\n\n## Label Responsibilities\n\nApplying the outcome labels is your responsibility, not a recommendation for a\nmaintainer. Use the `add_labels` safe output on source issue\n#${{ github.event.issue.number }}, with plain strings in its `labels` array.\nNever emit label objects with `suggest: true` or suggestion-only output.\nFor a Passed outcome, emit `labels: [\"validation-passed\"]`; for a Failed\noutcome, emit `labels: [\"validation-failed\"]`. Follow the outcome rules below\nfor timing, stale-label removal, and Blocked validation; this requirement does\nnot turn environment blockers into submission failures.\n\n## Triggering Conditions\n\nThis workflow is triggered by any `issues: labeled` event, but a job-level\ncondition gates the agent run so it only proceeds when the label that was just\nadded is `preset-submission`. By the time you run, that condition has already\npassed. Before processing, verify that the issue title starts with `[Preset]:`.\nIf it does not, emit one `add_comment` on the issue:\n\n> The preset-submission workflow stopped before validation because the issue title does not start with `[Preset]:`.\n\nInclude `[Workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})`,\nthen stop without validation, label changes, catalog/docs edits, or PR creation.\nDo not substitute `noop` for this comment. Otherwise, continue to Step 1.\n\n## Step 1 \u2014 Read and Parse the Issue\n\nRead issue #${{ github.event.issue.number }}.\n\nExtract the following fields from the structured issue body (GitHub issue form\nfields):\n\n| Field | Issue Form ID | Required |\n|-------|--------------|----------|\n| Preset ID | `preset-id` | Yes |\n| Preset Name | `preset-name` | Yes |\n| Version | `version` | Yes |\n| Description | `description` | Yes |\n| Author | `author` | Yes |\n| Repository URL | `repository` | Yes |\n| Download URL | `download-url` | Yes |\n| Documentation URL | `documentation` | Yes |\n| License | `license` | Yes |\n| Required Spec Kit Version | `speckit-version` | Yes |\n| Required Extensions | `required-extensions` | No |\n| Templates Provided | `templates-provided` | Yes |\n| Commands Provided | `commands-provided` | Yes |\n| Number of Scripts | `scripts-count` | No (default 0) |\n| Tags | `tags` | Yes |\n\nThe issue body uses GitHub's issue form format. Each field appears under a\nheading matching the field label (e.g., `### Preset ID` followed by the\nvalue)"
+    },
+    "bug-test.lock.yml": {
+      "path": ".github/workflows/bug-test.lock.yml",
+      "size_bytes": 130636,
+      "line_count": 1937,
+      "truncated": true,
+      "excerpt": "# gh-aw-metadata: {\"schema_version\":\"v4\",\"frontmatter_hash\":\"bab399cdaaa60022ca898a8b5cb4e0cc1c03bd6246e975b5d477af0173436b72\",\"body_hash\":\"651a8d96a68c61d3c09c4c6d2997708573151e660da03ecef8248d8f6f1e055b\",\"compiler_version\":\"v0.88.7\",\"strict\":true,\"agent_id\":\"copilot\",\"engine_versions\":{\"copilot\":\"1.0.80\"}}\n# gh-aw-manifest: {\"version\":1,\"secrets\":[\"COPILOT_GITHUB_TOKEN\",\"GH_AW_DEFAULT_OTLP_HEADERS\",\"GH_AW_GITHUB_MCP_SERVER_TOKEN\",\"GH_AW_GITHUB_TOKEN\",\"GITHUB_TOKEN\"],\"actions\":[{\"repo\":\"actions/cache/restore\",\"sha\":\"55cc8345863c7cc4c66a329aec7e433d2d1c52a9\",\"version\":\"v6.1.0\"},{\"repo\":\"actions/cache/save\",\"sha\":\"55cc8345863c7cc4c66a329aec7e433d2d1c52a9\",\"version\":\"v6.1.0\"},{\"repo\":\"actions/checkout\",\"sha\":\"3d3c42e5aac5ba805825da76410c181273ba90b1\",\"version\":\"v7.0.1\"},{\"repo\":\"actions/download-artifact\",\"sha\":\"3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c\",\"version\":\"v8.0.1\"},{\"repo\":\"actions/github-script\",\"sha\":\"3a2844b7e9c422d3c10d287c895573f7108da1b3\",\"version\":\"v9.0.0\"},{\"repo\":\"actions/setup-node\",\"sha\":\"820762786026740c76f36085b0efc47a31fe5020\",\"version\":\"v7.0.0\"},{\"repo\":\"actions/setup-python\",\"sha\":\"5fda3b95a4ea91299a34e894583c3862153e4b97\",\"version\":\"v7.0.0\"},{\"repo\":\"actions/upload-artifact\",\"sha\":\"043fb46d1a93c77aae656e7c1c64a875d1fc6a0a\",\"version\":\"v7.0.1\"},{\"repo\":\"astral-sh/setup-uv\",\"sha\":\"68559e99cc807c1eb7e9238fd43a15bba460eec2\",\"version\":\"v10.3.3\"},{\"repo\":\"github/gh-aw-actions/setup\",\"sha\":\"5e508589e03a7757a7e05b26e834292f5445bfb6\",\"version\":\"v0.88.7\"},{\"repo\":\"github/gh-aw-actions/setup-cli\",\"sha\":\"5e508589e03a7757a7e05b26e834292f5445bfb6\",\"version\":\"v0.88.7\"}],\"containers\":[{\"image\":\"ghcr.io/github/gh-aw-firewall/agent:0.28.14\",\"digest\":\"sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98\",\"pinned_image\":\"ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98\"},{\"image\":\"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14\",\"digest\":\"sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5\",\"pinned_image\":\"ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5\"},{\"image\":\"ghcr.io/github/gh-aw-firewall/squid:0.28.14\",\"digest\":\"sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5\",\"pinned_image\":\"ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5\"},{\"image\":\"ghcr.io/github/gh-aw-mcpg:v0.4.18\",\"digest\":\"sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53\",\"pinned_image\":\"ghcr.io/github/gh-aw-mcpg:v0.4.18@sha256:85b940556a8faa4e1fdbef124bfd75f2c4ebd855a10b88a1c3b6f3e97f6f1a53\"},{\"image\":\"ghcr.io/github/gh-aw-node\",\"digest\":\"sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23\",\"pinned_image\":\"ghcr.io/github/gh-aw-node@sha256:0daa8971fa4732b647150cb6524a6b0804b68d5d24f6f58b5dd1af23bd63fb23\"},{\"image\":\"ghcr.io/github/github-mcp-server:v1.11.0\",\"digest\":\"sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699\",\"pinned_image\":\"ghcr.io/github/github-mcp-server:v1.11.0@sha256:fbec75de11c255213fa08d80fb166abe73d851fff631c51c0079872967720699\"}],\"mcp_servers\":[{\"name\":\"github\",\"tools\":[\"get_commit\",\"get_file_contents\",\"get_latest_release\",\"get_pull_request\",\"get_pull_request_comments\",\"get_pull_request_diff\",\"get_pull_request_files\",\"get_pull_request_review_comments\",\"get_pull_request_reviews\",\"get_pull_request_status\",\"get_release_by_tag\",\"get_tag\",\"issue_read\",\"list_branches\",\"list_commits\",\"list_issue_types\",\"list_issues\",\"list_pull_requests\",\"list_releases\",\"list_starred_repositories\",\"list_tags\",\"pull_request_read\",\"search_code\",\"search_issues\",\"search_pull_requests\",\"search_repositories\"]},{\"name\":\"safeoutputs\",\"tools\":[\"add_comment\",\"add_labels\",\"missing_data\",\"missing_tool\",\"noop\"]}]}\n# This file was automatically generated by gh-aw (v0.88.7). DO NOT EDIT. To debug this workflow, load the skill at https://github.com/github/gh-aw/blob/main/debug.md\n#\n#    ___                   _   _\n#   / _ \\                 | | (_)\n#  | |_| | __ _  ___ _ __ | |_ _  ___\n#  |  _  |/ _` |/ _ \\ '_ \\| __| |/ __|\n#  | | | | (_| |  __/ | | | |_| | (__\n#  \\_| |_/\\__, |\\___|_| |_|\\__|_|\\___|\n#          __/ |\n#  _    _ |___/\n# | |  | |                / _| |\n# | |  | | ___ _ __ _  __| |_| | _____      ____\n# | |/\\| |/ _ \\ '__| |/ /|  _| |/ _ \\ \\ /\\ / / ___|\n# \\  /\\  / (_) | | | | ( | | | | (_) \\ V  V /\\__ \\\n#  \\/  \\/ \\___/|_| |_|\\_\\|_| |_|\\___"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T19:16:57Z",
+      "oldest": "2026-11-18T18:48:37Z"
+    },
+    "conventional_pct": 78.0,
+    "fix_revert_pct": 60.0,
+    "ai_coauthor_pct": 34.0,
+    "top_recent_authors": [
+      [
+        "adityajai119",
+        9
+      ],
+      [
+        "github-actions[bot]",
+        8
+      ],
+      [
+        "mnriem",
+        6
+      ],
+      [
+        "leninworld",
+        4
+      ],
+      [
+        "chelsealong",
+        4
+      ],
+      [
+        "dlwlgnsrhy",
+        4
+      ],
+      [
+        "kartsan03",
+        3
+      ],
+      [
+        "chuenchen309",
+        2
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "f2010547",
+        "date": "2026-11-25T19:16:57Z",
+        "author": "github-actions[bot]",
+        "subject": "Update Spec Status extension to v0.4.1 (#5576)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a01c3eab",
+        "date": "2026-11-25T18:08:00Z",
+        "author": "leninworld",
+        "subject": "fix(presets): split replace-section lines only at Markdown line endings (#5572)",
+        "ai_signal": false
+      },
+      {
+        "sha": "dfe33ea9",
+        "date": "2026-11-25T17:45:22Z",
+        "author": "kartsan03",
+        "subject": "fix(init): keep other installed integrations on re-init (#5536)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f432bd2f",
+        "date": "2026-11-25T17:45:04Z",
+        "author": "leninworld",
+        "subject": "fix(presets): detect command frontmatter after a UTF-8 BOM (#5568)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4f9d6161",
+        "date": "2026-11-25T17:44:12Z",
+        "author": "mnriem",
+        "subject": "chore: release 1.4.5, begin 1.4.6.dev0 development (#5573)",
+        "ai_signal": true
+      },
+      {
+        "sha": "3df7575e",
+        "date": "2026-11-25T17:23:46Z",
+        "author": "leninworld",
+        "subject": "fix(extensions): keep TOML command prompts identical to the body (#5570)",
+        "ai_signal": false
+      },
+      {
+        "sha": "bf674565",
+        "date": "2026-11-25T17:18:43Z",
+        "author": "adityajai119",
+        "subject": "fix(scripts): reconfigure setup_plan.py streams as UTF-8 (#5569)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f912acbe",
+        "date": "2026-11-25T15:57:00Z",
+        "author": "github-actions[bot]",
+        "subject": "Update SpecKit Grill Me extension to v1.0.3 (#5565)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7609822e",
+        "date": "2026-11-25T15:19:42Z",
+        "author": "leninworld",
+        "subject": "fix(extensions): parse command frontmatter after a UTF-8 BOM (#5562)",
+        "ai_signal": false
+      },
+      {
+        "sha": "65384031",
+        "date": "2026-11-25T15:19:06Z",
+        "author": "orshih6",
+        "subject": "fix(extensions): fall back to in-memory archive when the unlinked download file can't be written (#5561)",
+        "ai_signal": false
+      },
+      {
+        "sha": "22ee4430",
+        "date": "2026-11-25T15:18:42Z",
+        "author": "dleontev",
+        "subject": "fix(presets): report preset layers hidden by project overrides (#5560)",
+        "ai_signal": false
+      },
+      {
+        "sha": "542a2973",
+        "date": "2026-11-25T15:18:16Z",
+        "author": "chelsealong",
+        "subject": "fix: accept UTF-8 BOM in bundler JSON readers (#5557)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f61648db",
+        "date": "2026-11-24T20:13:47Z",
+        "author": "kartsan03",
+        "subject": "fix(extensions): keep edited skill resources on an unforced integration switch (#5495)",
+        "ai_signal": false
+      },
+      {
+        "sha": "edf5067e",
+        "date": "2026-11-24T20:12:15Z",
+        "author": "adityajai119",
+        "subject": "fix(integrations): decode captured dispatch_command output as UTF-8 (#5535)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4d7cb8e5",
+        "date": "2026-11-24T19:24:15Z",
+        "author": "mnriem",
+        "subject": "chore: migrate shared infrastructure writes to FileHelper (#5543)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7def2cde",
+        "date": "2026-11-24T17:26:22Z",
+        "author": "Verlintas",
+        "subject": "fix(presets): resolve script artifacts through the CLI (#5415)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c4b8da9e",
+        "date": "2026-11-24T17:26:06Z",
+        "author": "adityajai119",
+        "subject": "fix(scripts): reconfigure stdout and stderr as UTF-8 in setup_tasks.py (#5555)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e59953dd",
+        "date": "2026-11-24T14:01:43Z",
+        "author": "josephleee",
+        "subject": "docs: add spec-visualizer to community friends (#5549)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a55782f1",
+        "date": "2026-11-23T21:54:11Z",
+        "author": "Copilot",
+        "subject": "[Copilot Dreaming] Avoid rejecting valid extension IDs with digits (#5548)",
+        "ai_signal": true
+      },
+      {
+        "sha": "97487e2a",
+        "date": "2026-11-23T21:53:47Z",
+        "author": "XSY-28",
+        "subject": "fix(copilot): suppress discarded prompt hook output (#5547)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "mnriem",
+      "contributions": 478
+    },
+    {
+      "login": "localden",
+      "contributions": 361
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 300
+    },
+    {
+      "login": "jawwad-ali",
+      "contributions": 153
+    },
+    {
+      "login": "Quratulain-bilal",
+      "contributions": 100
+    },
+    {
+      "login": "Noor-ul-ain001",
+      "contributions": 73
+    },
+    {
+      "login": "dependabot[bot]",
+      "contributions": 64
+    },
+    {
+      "login": "marcelsafin",
+      "contributions": 54
+    },
+    {
+      "login": "WOLIKIMCHENG",
+      "contributions": 42
+    },
+    {
+      "login": "PascalThuet",
+      "contributions": 31
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.4.5",
+      "published_at": "2026-11-25T17:43:41Z",
+      "name": "Spec Kit - 1.4.5"
+    },
+    {
+      "tag": "v1.4.4",
+      "published_at": "2026-11-23T18:07:31Z",
+      "name": "Spec Kit - 1.4.4"
+    },
+    {
+      "tag": "v1.4.3",
+      "published_at": "2026-11-19T14:31:35Z",
+      "name": "Spec Kit - 1.4.3"
+    },
+    {
+      "tag": "v1.4.2",
+      "published_at": "2026-11-17T18:03:41Z",
+      "name": "Spec Kit - 1.4.2"
+    },
+    {
+      "tag": "v1.4.1",
+      "published_at": "2026-11-16T15:50:09Z",
+      "name": "Spec Kit - 1.4.1"
+    }
+  ]
+}

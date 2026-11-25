@@ -1,0 +1,549 @@
+{
+  "repo": "garrytan/gstack",
+  "meta": {
+    "description": "Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA",
+    "homepage": "",
+    "license": "MIT",
+    "stars": 142644,
+    "forks": 21048,
+    "open_issues": 45,
+    "archived": false,
+    "created_at": "2026-03-11T21:22:45Z",
+    "pushed_at": "2026-11-25T19:48:50Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "TypeScript": 45058417,
+    "Shell": 2135839,
+    "Go Template": 1504898,
+    "JavaScript": 484281,
+    "C": 49012,
+    "CSS": 40053,
+    "Swift": 31214,
+    "HTML": 26479,
+    "Python": 24896,
+    "PowerShell": 12863,
+    "PLpgSQL": 6851,
+    "Awk": 5758,
+    "Dockerfile": 4815,
+    "jq": 1011
+  },
+  "structure": {
+    "root": [
+      ".env.example",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".gitlab-ci.yml",
+      ".gstack/",
+      ".osv-scanner.toml",
+      "AGENTS.md",
+      "ARCHITECTURE.md",
+      "BROWSER.md",
+      "CHANGELOG.md",
+      "CLAUDE.md",
+      "CONTRIBUTING.md",
+      "DESIGN.md",
+      "ETHOS.md",
+      "LICENSE",
+      "NOTICE.md",
+      "README.md",
+      "SECURITY.md",
+      "SKILL.md",
+      "SKILL.md.tmpl",
+      "TODOS.md",
+      "USING_GBRAIN_WITH_GSTACK.md",
+      "VERSION",
+      "agents-digest/",
+      "agents/",
+      "autoplan/",
+      "benchmark-models/",
+      "benchmark/",
+      "bin/",
+      "browse/",
+      "browser-skills/",
+      "build-check/",
+      "bun.lock",
+      "bunfig.toml",
+      "canary/",
+      "captain/",
+      "capy/",
+      "careful/",
+      "changelog.d/",
+      "claude-code/",
+      "codex/",
+      "conductor.json",
+      "connect-chrome",
+      "context-restore/",
+      "context-save/",
+      "contrib/",
+      "crew/",
+      "cso/",
+      "design-consultation/",
+      "design-html/",
+      "design-motion/",
+      "design-review/",
+      "design-shotgun/",
+      "design/",
+      "deslop-shared-libs/",
+      "devex-review/",
+      "diagram/",
+      "docs/",
+      "document-generate/",
+      "document-release/",
+      "eval-plan/",
+      "extension/",
+      "freeze/",
+      "gstack-upgrade/",
+      "gstack/",
+      "guard/",
+      "health/",
+      "hosts/",
+      "ios-clean/",
+      "ios-design-review/",
+      "ios-fix/",
+      "ios-qa/",
+      "ios-sync/",
+      "land-and-deploy/",
+      "landing-report/",
+      "learn/",
+      "lib/",
+      "licenses/",
+      "make-pdf/",
+      "model-overlays/",
+      "modernize/",
+      "modules/",
+      "office-hours/",
+      "open-gstack-browser/",
+      "openclaw/",
+      "package.json",
+      "pair-agent/",
+      "patches/",
+      "plan-ceo-review/",
+      "plan-design-review/",
+      "plan-devex-review/",
+      "plan-eng-review/",
+      "plan-tune/",
+      "qa-only/",
+      "qa/",
+      "qm/",
+      "retro/",
+      "review/",
+      "runaway-stopper/",
+      "scrape/",
+      "scripts/",
+      "setup",
+      "setup-browser-cookies/",
+      "setup-deploy/",
+      "setup-gbrain/",
+      "setup.ps1",
+      "ship/",
+      "skillify/",
+      "slop-scan.config.json",
+      "spec/",
+      "supabase/",
+      "sync-gbrain/",
+      "test-audit/",
+      "test-setup.ts",
+      "test/",
+      "tsconfig.json",
+      "tsconfig.test.json",
+      "ubicloud/",
+      "unfreeze/",
+      "write-skill/"
+    ],
+    "workflows": [
+      "actionlint.yml",
+      "arm-setup-smoke.yml",
+      "codex-hooks.yml",
+      "cso-runtime-images.yml",
+      "cso-runtime-promote.yml",
+      "cso-runtime-qualification.yml",
+      "cso-scanner-images.yml",
+      "dependency-review.yml",
+      "eval-sweep.yml",
+      "evals-main-backstop.yml",
+      "evals-marathon.yml",
+      "evals-periodic.yml",
+      "evals.yml",
+      "free-durations-record.yml",
+      "free-tests.yml",
+      "make-pdf-gate.yml",
+      "measure-journal-read.yml",
+      "model-policy-freshness.yml",
+      "mutation-report.yml",
+      "native-qualification.yml",
+      "osv-scanner.yml",
+      "plain-title.yml",
+      "platform-qualification.yml",
+      "pr-title-sync.yml",
+      "quality-gate.yml",
+      "release-gate.yml",
+      "scorecard.yml",
+      "skill-docs.yml",
+      "test-changes.yml",
+      "test-health.yml",
+      "trunk-flaky-tests.yml",
+      "version-gate.yml",
+      "weekly-release.yml",
+      "windows-free-tests.yml",
+      "windows-pregate-e2e.yml",
+      "windows-scoped-tests.yml",
+      "windows-setup-e2e.yml",
+      "windows-smoke.yml"
+    ],
+    "docs": [
+      "ADDING_A_HOST.md",
+      "BROWSER_INTERNALS.md",
+      "CHANGELOG_STYLE.md",
+      "CONTRIBUTOR_REFERENCE.md",
+      "ON_THE_LOC_CONTROVERSY.md",
+      "OPENCLAW.md",
+      "OPENCLAW_PUBLISHING.md",
+      "OVERLAY_BENCHMARK_CONTRACT.md",
+      "PROJECT_STRUCTURE.md",
+      "REMOTE_BROWSER_ACCESS.md",
+      "SLOP_SCAN.md",
+      "TESTING_INTERNALS.md",
+      "TEST_PORTFOLIO.md",
+      "agent-ready-errors.md",
+      "askuserquestion-cjk.md",
+      "askuserquestion-split.md",
+      "autoplan-guard-troubleshooting.md",
+      "captain.md",
+      "capy-install.md",
+      "cso-release-qualification.md",
+      "cso-scanners.md",
+      "design-lint.md",
+      "designs/",
+      "domain-skills.md",
+      "eval-calls.md",
+      "eval-models.md",
+      "evals/",
+      "explanation-diataxis-in-gstack.md",
+      "first-use-check.md",
+      "flaky.md",
+      "gbrain-quick-tour.md",
+      "gbrain-sync-errors.md",
+      "gbrain-sync.md",
+      "gbrain-write-surfaces.md",
+      "hosts.md",
+      "howto-bring-up-a-first-deploy.md",
+      "howto-diagrams-and-formats.md",
+      "howto-document-a-shipped-feature.md",
+      "howto-ios-testing-with-gstack.md",
+      "howto-land-a-fix-in-someone-elses-repo.md",
+      "howto-preview-a-frontend.md",
+      "howto-run-human-playtests.md",
+      "images/",
+      "install.md",
+      "inventory.md",
+      "inventory/",
+      "loadouts.md",
+      "memorable-workflow-memory.md",
+      "model-policy.md",
+      "owner-answers.md"
+    ],
+    "docs_count": 82,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 18637,
+      "line_count": 275,
+      "truncated": true,
+      "excerpt": "# gstack \u2014 AI Engineering Workflow\n\ngstack is a collection of SKILL.md files that give AI agents structured roles for\nsoftware development. Each skill is a specialist: CEO reviewer, eng manager,\ndesigner, QA lead, release engineer, debugger, and more.\n\n## Available skills\n\nSkills live in `.agents/skills/` (or `~/.claude/skills/gstack/` on Claude Code).\nInvoke them by name (e.g., `/office-hours`). This index lists names only; what each\nskill does, with examples, is in [docs/skills.md](docs/skills.md). The iOS companion\nCLIs (`gstack-ios-qa-daemon`, `gstack-ios-qa-mint`, `gstack-ios-qa-regen`) are in\n[docs/howto-ios-testing-with-gstack.md](docs/howto-ios-testing-with-gstack.md).\n\n| Skill | Area |\n|-------|------|\n| `/office-hours` | plan |\n| `/plan-ceo-review` | plan |\n| `/plan-eng-review` | plan |\n| `/plan-design-review` | plan |\n| `/plan-devex-review` | plan |\n| `/plan-tune` | plan |\n| `/autoplan` | plan |\n| `/design-consultation` | plan |\n| `/spec` | plan |\n| `/review` | build + review |\n| `/deslop-shared-libs` | build + review |\n| `/write-skill` | build + review |\n| `/test-audit` | build + review |\n| `/codex` | build + review |\n| `/claude-code` | build + review |\n| `/build-check` | build + review |\n| `/design-review` | build + review |\n| `/design-shotgun` | build + review |\n| `/design-html` | build + review |\n| `/design-motion` | build + review |\n| `/devex-review` | build + review |\n| `/qa` | build + review |\n| `/qa-only` | build + review |\n| `/scrape` | build + review |\n| `/skillify` | build + review |\n| `/gstack-ship` | release + deploy |\n| `/land-and-deploy` | release + deploy |\n| `/modernize` | release + deploy |\n| `/canary` | release + deploy |\n| `/landing-report` | release + deploy |\n| `/document-release` | release + deploy |\n| `/document-generate` | release + deploy |\n| `/setup-deploy` | release + deploy |\n| `/gstack-upgrade` | release + deploy |\n| `/context-save` | operational + memory |\n| `/context-restore` | operational + memory |\n| `/learn` | operational + memory |\n| `/retro` | operational + memory |\n| `/health` | operational + memory |\n| `/captain` | operational + memory |\n| `/benchmark` | operational + memory |\n| `/ubicloud` | operational + memory |\n| `/runaway-stopper` | operational + memory |\n| `/benchmark-models` | operational + memory |\n| `/eval-plan` | operational + memory |\n| `/cso` | operational + memory |\n| `/setup-gbrain` | operational + memory |\n| `/sync-gbrain` | operational + memory |\n| `/browse` | browser |\n| `/open-gstack-browser` | browser |\n| `/setup-browser-cookies` | browser |\n| `/pair-agent` | browser |\n| `/ios-qa` | iOS QA |\n| `/ios-fix` | iOS QA |\n| `/ios-design-review` | iOS QA |\n| `/ios-clean` | iOS QA |\n| `/ios-sync` | iOS QA |\n| `/careful` | safety + scoping |\n| `/freeze` | safety + scoping |\n| `/guard` | safety + scoping |\n| `/unfreeze` | safety + scoping |\n| `/make-pdf` | safety + scoping |\n| `/diagram` | safety + scoping |\n\n## Validation discipline\n\nWhen fixing failures or preparing `/gstack-ship`, follow this order:\n\n1. List the known failing cases, their logs and source revision, the demonstrated\n   cause, and the smallest check that can prove each repair. Keep one current\n   list in `.context/`; update it instead of starting overlapping repair plans.\n   Reconcile the runner's failure total with named failures and unhandled or\n   module-load errors; the named-test footer alone is not the complete inventory.\n2. Resolve base-branch integration and assign one owner per shared file before\n   editing. Keep repairs within the observed failures and the user's scope.\n   Before a fixture writes through a link, resolve its target and verify it stays\n   inside that fixture's temporary root; live skill registrations can point back\n   into this checkout.\n   When upstream replaces a helper API, inventory every direct caller, mock\n   adapter, source snapshot, generated golden, and selection edge before choosing\n   focused checks. Verify extracted test adapters supply the current imports and\n   result schema; an adapter failure is not evidence that production failed.\n   Schedule independent checks independently. Gate a check only on inputs or\n   prerequisites it actually needs; an unrelated failure must not serialize the\n   whole validation plan. Keep source fixed while tests live-link its files.\n3. Diagnose before changing code. Distinguish a product defect, an invalid test\n   expectation, a detector/fixture defect, and a launch/environment failure.\n   Preserve the original failure. Do not call it pre-existing without evidence.\n   Verify pinned runtime tool schemas and defaults before treating omitted fields\n   as model noncompliance.\n   Check that a bounded evaluation\u2019s fixture scope and automated answers support\n   its metric. Do not let the driver approve unrelated expansion, then blame the\n   skill for the extra work; preserve required findings and evidence limits.\n4. Reproduce with the smallest relevant test. For agent tests, reuse captured\n   public events in free regressions, including negative controls, before paying\n   for another agent run. Check behavior and acknowledgments; match exact prose\n   only when that prose is the contract. Do not lower thresholds, increase model\n   budgets, skip cases, or rejudge a failure to manufacture a pass. A\n   pre-registered fixed panel is not rejudging.\n   For any measured speedup, regression or eval delta, name the limiter that\n   moved and the run-to-run variation; a gap smaller than that variation is no\n   difference.\n   For policy or validation repairs, exercise the actual registered callback with\n   representative native input and assert that it uses the helper\u2019s result.\n   When renderer or parser failures recur at the same boundary, verify the\n   supported input class against the pinned runtime. Keep adversarial controls;\n   do not add one spelling or glyph per paid failure.\n   For workflow clarity failures, read the complete evaluated excerpt and its\n   referenced source. Resolve all demonstrated ambiguities together: order,\n   definitions, ownership and approval. Consolidate dense instructions into\n   executable steps instead of appending more clauses. Review the resulting\n   workflow as a whole; prose snapshots alone do not prove it is clear.\n   For each gate, identify when its inputs exist and trace normal,\n   skipped/unavailable and late-change paths to catch circular prerequisites or\n   bypassed checks.\n5. Run required cheap CI checks, including credential scanning, before paid work.\n   Also run adjacent cheap checks: generated-content freshness, prompt-size/parity\n   limits, source assertions, fixture checks, and dependency selection as\n   applicable. A changed prompt must clear these before its eval.\n   For skill edits, include `bun test test/parity-suite.test.ts`: its historical\n   union-size cap is separate from the other prompt-size and context budgets.\n   When workflow wording changes, search the entire test tree for removed\n   clauses, including always-loaded prompt guards. Test fixtures containing\n   subprocess examples must pass `test/spawnsync-timeout-tripwire.test.ts`;\n   its scanner also checks quoted code.\n   Run its selected quality judge before long behavioral evaluations that read\n   the same changed prompt. If a repair supersedes an active run's inputs, cancel\n   that run, preserve completed outcomes, and label unfinished cases as cancelled.\n   Check each edit or setup command\u2019s result before running dependent checks. A\n   failed edit is not a reason to test the unchanged input again.\n6. Declare a fixture actor\u2019s supported interactions before the model starts.\n   Keep its answers and permission handling within that declared interface.\n   Bind artifact ownership to the same isolated state passed to the child;\n   ambient environment paths do not establish ownership. Check whole-file and\n   CI supervision against every case and configured retry, not just one attempt.\n   Preflight the actual launcher: required binaries, isolated state, display when\n   needed, explicit test tier, selection, and expected executed-case counts.\n   Match the runtime versions pinned by the workflow and its container image.\n   Keep socket-bearing temporary paths short after the runner adds its nested\n   directories; exercise that exact layout in the smoke check. Store long-lived\n   logs separately from socket directories.\n   Verify required tool execution with a no-cost smoke check under that launch\n   environment; versions and authentication alone do not prove it works. Set\n   private artifact modes explicitly and preserve normal fixture permissions.\n   Prove a diagnostic snapshot survives fixture cleanup in the final artifact\n   directory before paid work; native snapshots require EVALS_RUN_ID or GSTACK_EVAL_DIR.\n   Bind complete spool filenames and classify Bun's out-of-tier describe.skip\n   placeholders separately, with zero selected-case credit.\n   Put standalone Git fixtures outside another checkout; verify their resolved\n   project slug and state root before interpreting a failure.\n   Prove a seed commit succeeds there: repository-local author configuration\n   does not establish the identity available to a fresh fixture repository.\n   Reject missing explicit test files before invoking Bun; it can silently ignore\n   a nonexistent file selector and pass the remaining files.\n   Preserve exit status through logging. Use the documented detached runner and\n   eval lock. Review the final launcher after edits; preparation and `--list`\n   modes must not start monitors, retainers, or test processes. Verify this with\n   a before/after process check. During long runs, inspect the last public tool\n   result and pending permission state; diagnose a blocked actor before waiting\n   through its deadline. Preserve cancellation separately from a test verdict.\n   Skipped or unstarted cases\n   do not satisfy coverage; preserve every attempt. Paid evals never retry, with\n   one exception: the gate reruns a red rule, behavior or judge case verdict once\n   at the same head (Garry, 2026-10-19: \"you can just run the failed test again\n   and note that it is flaky\"); a pass is green with a flaky annotation and a\n   flake record, a second failure is a real red, and harness, INFRA, INCOMPLETE\n   or unattributed reds never rerun (`docs/TESTING_INTERNALS.md#flaky-reruns`). Each\n   case's kind (`E2E_KINDS`) fixes its trials before the run: `rule` one trial;\n   `behavior` a panel of 3 independent trials, PASS at >= 2 with no contract\n   violation; `judge` 3 samples on one output, each dimension gated on its\n   median (at least 2 of 3 samples) against the unchanged threshold. Never add trials, samples or dispatches after seeing a\n   result, never change a kind to change a verdict without pass-rate evidence,\n   and report every trial. Quarantine follows `CASE_QUARANTINE`'s entry and exit\n   rules only (`EVAL_POLICY`, `docs/TESTING_INTERNALS.md`). A census whose every\n   red is machine-classified INFRA or INCOMPLETE may be re-dispatched once as a\n   new run; report both runs.\n7. Prove all known repairs with focused tests, including affected paid cases.\n   Rerun a failed case only after a concrete repair or a demonstrated launch\n   correction. Run the remaining required selected evaluations on the integrated\n   code. Do not use the full free suite to discover predictable adjacent failures.\n   Reuse a passing check when its consumed inputs and relevant environment are\n   unchanged. For model judges, compare the expanded prompt, rubric, parameters\n   and dependencies; a different commit alone does not invalidate the result.\n   Do not resample an unchanged passing judge to simplify launcher configuration.\n   Preserve its original source and label the result as reused evidence.\n   Use actual prompt builders and compare complete bytes when proving model-input\n   identity; preserve literal text in excerpts and record the consumed inputs.\n8. Finish review fixes, generation, release metadata, and build before final\n   acceptance. Freeze the code, then run `bun run test` once at the end. During\n   repair, focused checks replace a full-suite run before every commit. If final\n   acceptance unexpectedly fails, retain the failure, diagnose it narrowly, and\n   report the changed validation plan before another full run; never retry it\n   blindly or claim a pass from an older revision.\n9. Publish only with passing required checks, unless the user explicitly grants\n   an exception for identified failures. Report revision, actual pass/fail/skip\n   counts, and incomplete coverage. A passing subset is not release acceptance.\n\n## Build commands\n\n```bash\nbun install              # install dependencies\nbun run typecheck        # strict tsc over product code; must report zero errors\nbun run typecheck:test   # test-code type-debt ratchet (new diagnostics fail; --write-baseline locks in fixes)\nbun run format:cso       # format lib/cso/*.ts (format:cso:check is the CI gate)\nbun run test:quick       # fast measured free subset for edit feedback (not acceptance)\nbun run test             # complete free suite via the strict shard runner (no API spend)\nbun run eval:bg:pr       # changed live probes + selected judges; dispatches CI when HEAD is clean and pushed, else runs locally\nbun run eval:bg:release  # fresh complete gate + periodic live coverage (same backend choice)\nbun run test:health      # audit success metrics and weekly health from CI history (free; needs gh)\nbun run build            # generate docs + compile binaries\nbun run gen:skill-docs   # regenerate SKILL.md files from templates\nbun run skill:check      # health dashboard for all skills\n```\n\nEvery other test and eval command (Ubicloud, the Windows subset, one paid tier\nor case, branch validation in CI, pass rates, plan previews), with its cost and\nprerequisites, is in [Which command do I run?](CONTRIBUTING.md#which-command-do-i-run).\nAgents poll `eval:bg:*` logs for the `### gstack-detach EXIT=<code> ###` sentinel\n([CLAUDE.md](CLAUDE.md#running-evals-as-an-agent-always-detach-sigterm-proof)).\n\n## Platform support\n\nSupport tiers (full: macOS, Linux; minimal: Windows, Gemini models) are in\n[docs/support-tiers.md](docs/support-tiers.md).\n\n- **macOS** + **Linux**: full test suite supported.\n- **Windows**: minimal support; [docs/support-tiers.md](docs/support-tiers.md)\n  says what is promised. Every PR must pass the `windows-smoke` check (`./setup`,\n  the core skills start, the fastest Windows-safe tests); the curated\n  Windows-safe subset runs nightly on main in `windows-free-tests` and never\n  blocks a PR. Setup script (`./setup`) requires Git Bash or\n  MSYS today; native PowerShell support is a future expansion. The `bin/gstack-paths`\n  helper resolves state roots through `CLAUDE_PLUGIN_DATA` / `GSTACK_HOME` so plugin\n  installs work on every platform.\n- **CSO native helper**: `/cso` additionally needs Bun's four\n  `--no-compile-autoload-*` flags and a native toolchain (static-capable C on\n  Linux, Xcode command-line tools on macOS, or VS 2022 C++ Build Tools on\n  Windows). Setup installs everything else and leaves `/cso` explicitly\n  unavailable when that optional toolchain is absent.\n- **Browser and renderer**: the browser skills, `/make-pdf`, and `/diagram` drive\n  the Aside browser first, which is macOS 15+ only. On Linux and Windows (or a\n  Mac with Aside closed) the readiness check says so once and the same skills use\n  gstack's own bundled browser, built by `./setup`.\n\n## Key conventions\n\n- SKILL.md files are **generated** from `.tmpl` templates. Edit the template, not the output.\n- Run `bun run gen:skill-docs --host codex` to regenerate Codex-specific output.\n- Browser steps in skills are `aside repl` scripts per `scripts/resolvers/aside.ts` (Aside first), each with a `$B` equivalent for the fallback engine \u2014 `$B <command>` is the browse binary and is a legitimate tool when the Aside probe does not print `READY`. Local HTML renders through `bin/gstack-render.ts`, which picks the same way.\n- Safety skills "
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 35503,
+      "line_count": 631,
+      "truncated": true,
+      "excerpt": "# gstack development\n\n## Commands\n\n```bash\nbun install          # install dependencies\nbun run dev <cmd>    # run CLI in dev mode, e.g. bun run dev goto https://example.com\nbun run typecheck    # strict tsc over product code (zero errors required)\nbun run typecheck:test  # test-code type-debt ratchet\nbun run build        # gen docs + compile binaries\nbun run gen:skill-docs  # regenerate SKILL.md files from templates\nbun run skill:check  # health dashboard for all skills\nbun run dev:skill    # watch mode: auto-regen + validate on change\nbun run slop          # full slop-scan report (all files)\nbun run slop:diff     # slop findings in files changed on this branch only\nbun run audit:manifest  # file slices for /claude-api prompt-audit; rerun it at each frontier-model release (CONTRIBUTING.md)\n```\n\nTest and eval commands, their cost and what each needs live in one table:\n[Which command do I run?](CONTRIBUTING.md#which-command-do-i-run). The two you\nneed most are `bun run test` (free acceptance) and `bun run eval:bg:pr` (paid,\nchanged coverage). Retired names such as `test:evals` and `test:e2e` print their\nreplacement and exit 1.\n\nPaid evals require `ANTHROPIC_API_KEY`. Codex E2E tests (`test/codex-e2e.test.ts` and the other Codex files) use Codex's own auth \u2014 the hermetic runner copies\nonly `auth.json` from `${CODEX_HOME:-~/.codex}` and pins `CODEX_HOME` in the child\nenv \u2014 no `OPENAI_API_KEY` env var needed.\n\n**Hermetic E2E + env keys:** every E2E runner spawns children through\n`test/helpers/hermetic-env.ts` (allowlist-scrubbed env, fresh seeded\n`CLAUDE_CONFIG_DIR`, temp `GSTACK_HOME`, `--strict-mcp-config`); per-test\n`env:` overrides merge last onto a COMPLETE hermetic env, so they're safe.\nA PTY test that types a `/skill` command must pass `seedSkills: true`.\nDebug against real operator state with `EVALS_HERMETIC=0`. Full detail\n(env-shim, seeding tripwires, wiring tests):\n[docs/TESTING_INTERNALS.md](docs/TESTING_INTERNALS.md).\n\n**Test selection and tiers:** the sharded paid runner (`test:pr`,\n`eval:bg:pr`, `test:gate:sharded`) selects tests from `git diff` through the\ndependency lists in `test/helpers/touchfiles.ts` (`EVALS_ALL=1` forces\neverything; `eval:select` previews the PR profile, `--profile full` the plain\ntouchfile selection). Classify every new E2E test in `E2E_TIERS`: safety guardrail or\ndeterministic functional test -> `gate`; quality benchmark, Opus model test,\nnon-deterministic, or external service (Codex, Gemini) -> `periodic`.\n`test/e2e-tier-alignment.test.ts` enforces the tiers. CI lanes and periodic\nexclusions: [docs/TESTING_INTERNALS.md](docs/TESTING_INTERNALS.md#test-selection-and-tiers).\n\n## Testing\n\n```bash\nbun run test         # final full free acceptance after focused repairs and source freeze\nbun run eval:bg:pr   # required changed PR coverage, with explicit deferrals\n```\n\nFollow [Validation discipline in AGENTS.md](AGENTS.md#validation-discipline):\nprove repairs with focused checks first, complete required selected evaluations,\nthen run the full free suite once on the final integrated code. During repairs,\nfocused checks replace a full-suite run before every commit.\n\n`bun run test` routes through `scripts/test-free-shards.ts`, whose strict\nper-shard classification fails a shard that lacks bun's summary line.\n`TREE_MUTATING` lists the files that still run in their own trailing serial\nshard (today only `test/bootstrap-retention.test.ts`). Never type\nbare `bun test` for the suite: it walks the whole repo, loading paid eval files\nand missing the strict classifier. `bun run test:pr` runs the selected short\nlive behaviors and quality judges and reports deferred broad coverage. Full free\nacceptance and required PR checks must pass before publishing. See\n[testing policy](CONTRIBUTING.md#test-tiers) for commands and measured targets.\nTests that need Aside itself self-skip unless a Mac has the Aside app open.\nShard packing, judge reuse and engine skips:\n[docs/TESTING_INTERNALS.md](docs/TESTING_INTERNALS.md#free-suite-runner-judge-reuse-and-engine-skips).\n\nNew or changed tests follow the [test value bar](docs/test-value-bar.md): each one\nprotects behavior a real regression would break, and contract tests (SKILL.md\ngoldens, and prompt bytes that are a contract as defined below) stay. The bar's\nsource is `scripts/resolvers/test-value.ts`.\n\nIn this repo, prompt bytes are a contract only when software reads them (a\nparser, hook, grader or another skill consumes the exact text) or a recorded\neval shows the wording matters. Tests on skill templates and generated SKILL.md\npin structure, step order, routing tables, machine-read markers and\nsafety-critical lines; check safety lines case-insensitively, on meaning rather\nthan capitals. Leave behavior to E2E cases and judges. Don't pin emphasis,\ncapitalization, issue numbers, or a sentence a behavioral check already covers,\nand when a rewrite changes a pinned sentence, replace the pin with a structural\nor meaning-level check instead of pinning the new sentence. The terms are defined\nin [docs/test-value-bar.md](docs/test-value-bar.md) (\"Prompt-byte contract\",\n\"Sentence pin\"). Use `test/helpers/prompt-structure.ts` (`between`,\n`expectTokens`, `expectAbsent`, `expectOrdered`, `expectMentions`) for\ntemplate/SKILL.md checks: tokens and order exactly, safety rules as\ncase-insensitive keyword co-occurrence in one sentence.\nProjects tune `/gstack-ship`'s coverage gate with optional CLAUDE.md `## Test Coverage`\nkeys, all absent by default: `Minimum:`, `Target:`, `Generation cap:` (default 5),\n`Base control:` (`auto` or `off`), `Base control budget:` (seconds, default 90) and\n`Star rating:` (`auto` or `off`).\n\n## Project structure\n\nFull annotated tree: [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md).\nQuick map: `browse/` gstack's own headless-browser CLI (the fallback\nengine) plus the `/browse` skill, `design/` design binary, `make-pdf/` PDF\nbinary, `hosts/` typed host configs, `scripts/` build+DX tooling\n(gen-skill-docs, resolvers \u2014 `resolvers/aside.ts` is the Aside contract),\n`test/` validation+evals, `lib/` shared libraries (`aside-render.ts` renders\nlocal HTML through Aside, falling back to the engine; `design-catalog.ts` is\nthe typed design anti-pattern catalog every design skill renders from), `bin/`\nCLI utilities (`gstack-render.ts` is the render CLI skills call;\n`gstack-design-detect.ts` and `gstack-design-md.ts` are the design detector\nand open-DESIGN.md tools), `extension/` Chrome\nextension, one directory per skill (`ship/`, `review/`, `qa/`, ...),\n`.github/` CI, `contrib/` contributor tools, `docs/designs/` design documents.\n\n## SKILL.md workflow\n\nSKILL.md files are **generated** from `.tmpl` templates. To update docs:\n\n1. Edit the `.tmpl` file (e.g. `SKILL.md.tmpl` or `browse/SKILL.md.tmpl`)\n2. Run `bun run gen:skill-docs` (or `bun run build` which does it automatically)\n3. Commit both the `.tmpl` and generated `.md` files, including a tier 2+ skill's\n   `sections/preamble.md` (the shared preamble, rendered by\n   `scripts/resolvers/preamble-hoist.ts`; change the preamble resolvers, never that file)\n\nThe same `gen:skill-docs` run writes two more generated files from `lib/`:\n`review/design-checklist.md` (from `lib/design-catalog.ts`, through\n`scripts/resolvers/design-checklist.ts`) and `lib/dom-dump.js` (from\n`lib/dom-dump-script.ts`). Edit the catalog or the script source, regenerate,\nand commit both; never edit the generated file\n(`test/design-checklist-sync.test.ts` fails on drift).\n\nGeneration uses each host's `defaultModel` (`claude` for most hosts, `gpt`\nfor Codex, `gemini` for Antigravity's `agy` and Gemini CLI) unless `--model` is explicit. Codex installs additionally read the\ntop-level model from `${CODEX_HOME:-~/.codex}/config.toml`; rerun\n`./setup --host codex` after changing that model. Note: `bun run build` and a\nbare `gen:skill-docs --host codex` render the host default (gpt) \u2014 if your\nCodex config.toml pins a different model, rerun `./setup --host codex`\nafterwards to restore your profile (single-owner persistence is filed in\nTODOS.md).\n\nBrowser steps in skills are `aside repl` scripts per\n`scripts/resolvers/aside.ts`, each with its `$B` equivalent for the fallback\nengine. To add a new browse command: add it to `browse/src/commands.ts` and\nrebuild. To add a snapshot flag: add it to `SNAPSHOT_FLAGS` in\n`browse/src/snapshot.ts` and rebuild. Local-HTML rendering in a skill template\nis a `bun run ~/.claude/skills/gstack/bin/gstack-render.ts` call; new render\noptions go into `lib/aside-render.ts` (which handles the fallback), never into\na skill's own bash.\n\n**Size budgets:** generated SKILL.md files warn above 160KB (~40K tokens);\n`test/catalog-budget.test.ts` caps the always-loaded skill catalog at\n`CATALOG_BUDGET_TOKEN_EQUIVALENTS` (2,292 today; each new skill ratchets it); and\n`test/context-budget-ratchet.test.ts` pins per-skill token ceilings against\n`test/fixtures/context-budget.json` (for legitimate growth or a landed\nreduction, re-run `bun test/helpers/capture-context-budget.ts` and commit the\nrefreshed fixture in the same commit). Rationale and protocol:\n[docs/CONTRIBUTOR_REFERENCE.md](docs/CONTRIBUTOR_REFERENCE.md#skill-size-budgets).\n\n**Merge conflicts on SKILL.md files:** NEVER resolve conflicts on generated SKILL.md\nfiles by accepting either side. Instead: (1) resolve conflicts on the `.tmpl` templates\nand `scripts/gen-skill-docs.ts` (the sources of truth), (2) run `bun run gen:skill-docs`\nto regenerate all SKILL.md files, (3) stage the regenerated files. Accepting one side's\ngenerated output silently drops the other side's template changes.\n\n## Platform-agnostic design\n\nSkills must NEVER hardcode framework-specific commands, file patterns, or directory\nstructures. Instead:\n\n1. **Read CLAUDE.md** for project-specific config (test commands, eval commands, etc.)\n2. **If missing, AskUserQuestion** \u2014 let the user tell you or let gstack search the repo\n3. **Persist the answer to CLAUDE.md** so we never have to ask again\n\nThis applies to test commands, eval commands, deploy commands, and any other\nproject-specific behavior. The project owns its config; gstack reads it.\n\n## Writing SKILL templates\n\nSKILL.md.tmpl files are **prompt templates read by Claude**, not bash scripts.\nEach bash code block runs in a separate shell \u2014 variables do not persist between blocks.\n\nRules:\n- **Use natural language for logic and state.** Don't use shell variables to pass\n  state between code blocks. Instead, tell Claude what to remember and reference\n  it in prose (e.g., \"the base branch detected in Step 0\").\n- **Don't hardcode branch names.** Detect `main`/`master`/etc dynamically via\n  `gh pr view` or `gh repo view`. Use `{{BASE_BRANCH_DETECT}}` for PR-targeting\n  skills. Use \"the base branch\" in prose, `<base>` in code block placeholders.\n- **Keep bash blocks self-contained.** Each code block should work independently.\n  If a block needs context from a previous step, restate it in the prose above.\n- **Express conditionals as English.** Instead of nested `if/elif/else` in bash,\n  write numbered decision steps: \"1. If X, do Y. 2. Otherwise, do Z.\"\n\n## Writing style (V1)\n\nDefault output from every tier-\u22652 skill follows the Writing Style section in\n`scripts/resolvers/preamble/generate-writing-style.ts`: jargon glossed on first\nuse (curated list in `scripts/jargon-list.json`, which the skill Reads at runtime\non the first jargon term), questions framed in\noutcome terms (\"what breaks for your users if...\") not implementation terms,\nshort sentences, decisions close with user impact. Power users who want the\ntighter V0 prose set `gstack-config set explain_level terse` (binary switch,\nno middle mode). See `docs/designs/PLAN_TUNING_V1.md` for the full design\nrationale. The review pacing overhaul that originally tried to ride alongside\nwriting-style was extracted to V1.1 \u2014 see `docs/designs/PACING_UPDATES_V0.md`.\n\n## Browser interaction\n\ngstack drives the Aside AI browser (macOS 15+) first and falls back to its own\nbrowser engine when Aside is absent. When you need to interact with a browser\n(QA, dogfooding, inspecting a page), use the `/browse` skill: it probes Aside\nand, on `READY`, drives it \u2014 the user's real browser with their real sessions \u2014\nthrough `aside repl` scripts that follow the contract in\n`scripts/resolvers/aside.ts` (`{{ASIDE_SETUP}}`). Every browser skill (`/qa`,\n`/qa-only`, `/design-review`, `/canary`, `/benchmark`, `/scrape`) does the same,\nand web research in skills runs through Aside's agent (`{{ASIDE_RESEARCH}}`)\nbefore the WebSearch tool. When the probe says `NEEDS_ASIDE` or\n`ASIDE_NOT_RUNNING` (Linux, Windows, a closed Aside app), the skill resolves\n`$B` per `{{BROWSE_FALLBACK}}` and runs the browse binary instead \u2014 `$B <command>`\nis a legitimate tool in that context, and cookie import, GStack Browser headed\nmode, `/pair-agent`, and browser-skills/`/skillify` belong to it. Local HTML a\nskill generated itself (make-pdf, diagram, design previews) renders through\n`bin/gstack-render.ts` / `lib/aside-render.ts`, which serve the file on\nloopback and print or screenshot it in Aside, or in the engine when Aside is\nabsent \u2014 never point the renderer at a site. NEVER use\n`mcp__claude-in-chrome__*` tools \u2014 they are slow, unreliable, and not what this\nproject uses.\n\n**Server / sidebar / extension internals:** before editing `browse/src/server.ts`,\n`extension/`, the sidebar PTY, any SSE endpoint, or CDP session code, read\n[docs/BROWSER_INTERNALS.md](docs/BROWSER_INTERNALS.md) \u2014 sidebar message flow,\nWebSocket auth, tunnel dual-listener rules, Unicode sanitization at egress,\nSSE/CDP helpers, setup symlink hardening, and the sidebar security stack all\nlive there, each pinned by a CI tripwire.\n\n**Egress receipts at every off-machine sink** (v1.63.0.0+). Every gstack-initiated\nsend off the machine MUST write a receipt BEFORE the send: TypeScript callers use\n`writeReceipt` from `lib/egress-receipt.ts`; shell scripts source\n`bin/gstack-egress-lib.sh` and use `_receipted_curl` / `_receipted_git`.\n`test/egress-receipt-wiring.test.ts` fails CI on an unreceipted new sink.\nFailure polarity, scanner exemptions and the `_aside_exec` wrapper:\n[docs/CONTRIBUTOR_REFERENCE.md](docs/CONTRIBUTOR_REFERENCE.md#egress-receipts).\n\n## Dev symlink awareness\n\nWhen developing gstack, `.claude/skills/gstack` may be a symlink back to this\nworking directory (gitignored). This means skill changes are **live immediately**,\ngreat for rapid iteration, risky during big refactors where half-written skills\ncould break other Claude Code sessions using gstack concurrently.\n\n**Check once per session:** Run `ls -la .claude/skills/gstack` to see if it's a\nsymlink or a real copy. If it's a symlink to your working directory, be aware that:\n- Template changes + `bun run gen:skill-docs` immediately affect all gstack invocations\n- Breaking changes to SKILL.md.tmpl files can break concurrent gstack sessions\n- During large refactors, remove the symlink (`rm .claude/skills/gstack`) so the\n  global install at `~/.claude/skills/gstack/` is used instead\n\n**Skill linking and ownership (#2119):** setup installs each skill as a\ntop-level directory (short `qa` or namespaced `gstack-qa`, per `skill_prefix`),\nand `setup` and `bin/gstack-relink` only delete or link over an entry they can\nprove is gstack's; keep those two copies of the rule in sync. Proof rules,\nprune behavior and pinning tests:\n[docs/CONTRIBUTOR_REFERENCE.md](docs/CONTRIBUTOR_REFERENCE.md#skill-linking-and-ownership).\n\n**Note:** Vendoring gstack into a project's repo is deprecated. Use global install\n+ `./setup --team` instead. See README.md for team mode instructions.\n\n**For plan reviews:** When reviewing plans that modify skill templates or the\ngen-skill-docs pipeline, consider whether the changes should be tested in isolation\nbefore going live (especially if the user is actively using gstack in other windows).\n\n**Upgrade migrations:** When a change modifies on-disk state (directory structure,\nconfig format, stale files) in way"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 84690,
+      "line_count": 1088,
+      "truncated": true,
+      "excerpt": "# Contributing to gstack\n\nThanks for wanting to make gstack better. Whether you're fixing a typo in a skill prompt or building an entirely new workflow, this guide will get you up and running fast.\n\n## Quick start\n\ngstack skills are Markdown files that Claude Code discovers from a `skills/` directory. Normally they live at `~/.claude/skills/gstack/` (your global install). But when you're developing gstack itself, you want Claude Code to use the skills *in your working tree* \u2014 so edits take effect instantly without copying or deploying anything.\n\nThat's what dev mode does. It symlinks your repo into the local `.claude/skills/` directory so Claude Code reads skills straight from your checkout.\n\n```bash\ngit clone https://github.com/garrytan/gstack.git && cd gstack\nbun install                    # install dependencies\nbin/dev-setup                  # activate dev mode\n```\n\n`./setup` on its own installs production dependencies only. `bin/dev-setup` adds the dev toolchain the tests and evals need (the Claude Agent SDK, TypeScript and Prettier) and marks the clone as a contributor's with `git config gstack.contributor true`. In a marked clone a later `./setup` runs the full install too, so the toolchain stays at `bun.lock`'s versions. In an unmarked clone `./setup` moves back to production dependencies, which is how installs made before v1.91.231.0 drop the toolchain they never needed. If you ran plain `bun install` instead of `bin/dev-setup`, run `git config gstack.contributor true` once, or set `GSTACK_CONTRIBUTOR=1` for a single run.\n\n> **Full clone vs shallow.** The README's user-facing install uses `--depth 1` for speed. As a contributor, use a full clone (no `--depth` flag) \u2014 you'll need history for `git log`, `git blame`, `git bisect`, and reviewing PRs against earlier versions. If you already have a `--depth 1` clone from following the README, promote it to a full clone with `git fetch --unshallow`.\n\n### First free check (no API key, no browser)\n\n```bash\nbun install --frozen-lockfile\nbun run typecheck        # expect no output and exit 0 (about a second)\nbun run typecheck:test   # expect \"test typecheck ratchet: N known diagnostics, none new.\"\n```\n\n`typecheck` covers product code (`browse/src`, `lib`, `scripts`, `bin`, `hosts`, and the other\nentries in `tsconfig.json`) and must stay at zero errors. `typecheck:test` holds test code to the\ncommitted `scripts/typecheck-test-baseline.json`: a new or repeated diagnostic fails and names\nthe file, TS code and message; fixing diagnostics also fails until you lock the smaller allowance\nin with `bun run typecheck:test --write-baseline`. Editing `lib/cso/*.ts`? Run\n`bun run format:cso` before committing; CI runs `format:cso:check`. All three run in the required\n`free-tests` check.\n\nNow edit any `SKILL.md`, invoke it in Claude Code (e.g. `/review`), and see your changes live. When you're done developing:\n\n```bash\nbin/dev-teardown               # deactivate \u2014 back to your global install\n```\n\n## Operational self-improvement\n\ngstack automatically learns from failures. At the end of every skill session, the agent\nreflects on what went wrong (CLI errors, wrong approaches, project quirks) and logs\noperational learnings to `~/.gstack/projects/{slug}/learnings.jsonl`. Future sessions\nsurface these learnings automatically, so gstack gets smarter on your codebase over time.\n\nNo setup needed. Learnings are logged automatically. View them with `/learn`.\n\n### The contributor workflow\n\n1. **Use gstack normally** \u2014 operational learnings are captured automatically\n2. **Check your learnings:** `/learn` or `ls ~/.gstack/projects/*/learnings.jsonl`\n3. **Fork and clone gstack** (if you haven't already)\n4. **Symlink your fork into the project where you hit the bug:**\n   ```bash\n   # In your core project (the one where gstack annoyed you)\n   ln -sfn /path/to/your/gstack-fork .claude/skills/gstack\n   cd .claude/skills/gstack && bun install && bun run build && ./setup\n   ```\n   Setup creates per-skill directories with SKILL.md symlinks inside (`qa/SKILL.md -> gstack/qa/SKILL.md`),\n   links each skill's runtime assets alongside (sections/, templates, checklists \u2014 everything except\n   SKILL.md, tests, build output, and `.tmpl` sources), and asks your prefix preference.\n   Pass `--no-prefix` to skip the prompt and use short names.\n5. **Fix the issue** \u2014 your changes are live immediately in this project\n6. **Test by actually using gstack** \u2014 do the thing that annoyed you, verify it's fixed\n7. **Open a PR from your fork**\n\nThis is the best way to contribute: fix gstack while doing your real work, in the\nproject where you actually felt the pain.\n\n**What CI does on a fork PR.** GitHub never gives a fork PR this repository's\nsecrets, so CI runs everything that needs none: the required `free-tests` check\n(the Linux free suite, typecheck, the macOS and Windows gates), Windows\nSmoke, Skill Docs Freshness, Workflow Lint, Version Gate, Quality gate, the\nmake-pdf gate, and any path-triggered gates your change touches. E2E Evals\nstill builds the CI image from your `Dockerfile.ci` without publishing it, and\nskips its paid eval jobs, which need provider API keys. That skip is expected\nand does not block your PR. It is also not a pass: a maintainer runs the paid\nevals from a branch in this repository before merging. A first-time\ncontributor's runs wait for a maintainer to approve them.\n\n### Session awareness\n\nWhen you have 3+ gstack sessions open simultaneously, every question tells you which project, which branch, and what's happening. No more staring at a question thinking \"wait, which window is this?\" The format is consistent across all skills.\n\n## Working on gstack inside the gstack repo\n\nWhen you're editing gstack skills and want to test them by actually using gstack\nin the same repo, `bin/dev-setup` wires this up. It creates `.claude/skills/`\nsymlinks (gitignored) pointing back to your working tree, so Claude Code uses\nyour local edits instead of the global install.\n\n```\ngstack/     "
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 43292,
+      "line_count": 335,
+      "truncated": true,
+      "excerpt": "# gstack\n\ngstack turns Claude Code (and other coding agents) into a virtual engineering team: a CEO who rethinks the product, an eng manager who locks architecture, a designer who catches AI slop, a reviewer who looks for production bugs, a QA lead who opens a real browser, a security officer who runs OWASP + STRIDE audits, and a release engineer who ships the PR. All slash commands, all Markdown, all free, MIT license.\n\nI'm [Garry Tan](https://x.com/garrytan), President & CEO of [Y Combinator](https://www.ycombinator.com/). This is the open source software factory I use every day, and I'm sharing it because these tools should be available to everyone. The story, the productivity numbers and how I run ten sprints at once are in [Why gstack](docs/why-gstack.md).\n\nFork it. Improve it. Make it yours. And if you want to hate on free open source software \u2014 you're welcome to, but I'd rather you just try it first.\n\n**Who this is for:**\n- **Founders and CEOs** \u2014 especially technical ones who still want to ship\n- **First-time Claude Code users** \u2014 structured roles instead of a blank prompt\n- **Tech leads and staff engineers** \u2014 rigorous review, QA, and release automation on every PR\n\n## What gstack is for\n\n- **A whole team's judgment for one builder.** Product, design, engineering, QA, security and release reviews, each from a specialist role.\n- **A second look before you merge.** `/review` reads your diff for the kinds of bugs tests tend to miss, like race conditions, N+1 queries and broken trust boundaries.\n- **The evidence on every PR.** `/gstack-ship` puts the tests it ran, the review and their results on the pull request, so you can see what was checked before you merge.\n- **Free, open and portable.** MIT-licensed, and it runs on Claude Code and the other major coding agents.\n\n**What it doesn't do: make your agent fix more bugs.** In a November 2026 test on 100 everyday GitHub bugs and features, Claude Opus 5.5 fixed 58 with gstack installed and 61 of 99 without it (one task didn't score). So gstack gave no gain, and the test rules out a gain bigger than about 2 points on those tasks. On 60 security fixes, both fixed 29. Use gstack for the workflow, the reviews, the shipping steps and the safety guards, not for a higher fix rate. ([Results](https://github.com/garrytan/gstack-evals/blob/main/wiki/board/2026-11-19-geva-540-skill-pack-h2h-results/README.md), read with [its correction](https://github.com/garrytan/gstack-evals/blob/main/wiki/board/2026-11-20-geva-565-skill-pack-h2h-correction/README.md).)\n\n## Quick start\n\n1. Install gstack (two pastes, about 30 seconds of setup; see below).\n2. Run `/office-hours` and describe what you're building. It pushes back on your framing and writes a design doc the other skills read.\n3. Run `/review` on any branch with changes. It reads the diff for bugs that tests tend to miss, fixes the obvious ones and asks you about the rest.\n4. Run `/qa` on your staging URL, or on an isolated local API, CLI, job or webhook. It opens a real browser, reproduces bugs and fixes them.\n\nStop there. You'll know if this is for you. When you want the whole sprint, `/autoplan` reviews a plan end to end and `/gstack-ship` runs tests, review and the PR.\n\n## Install \u2014 about 30 seconds\n\n**Requirements:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Git](https://git-scm.com/), [Bun](https://bun.sh/) v1.4.2+ (the tested version; setup refuses Bun older than 1.3.3, which would let compiled tools read a project's `.env`), and [Node.js](https://nodejs.org/) on Windows. **Recommended on macOS:** the [Aside](https://aside.com) browser (macOS 15+), which the browser skills, `/make-pdf` and `/diagram` drive first with your real logged-in sessions; without it, `./setup` builds gstack's own bundled browser. `/cso` needs a native toolchain as well; setup says so and leaves it unavailable when the toolchain is absent. Timing, the `/cso` prerequisites and the hooks setup registers: [docs/install.md](docs/install.md).\n\n### Step 1: Install on your machine\n\nOpen Claude Code and paste this. Claude does the rest.\n\n> Install gstack: run **`git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup`** then add a \"gstack\" section to CLAUDE.md that says to use the /browse skill from gstack for all web browsing and never use mcp\\_\\_claude-in-chrome\\_\\_\\* tools. Claude Code lists the installed skills itself, so the section needs no skill list. Then ask the user if they also want to add gstack to the current project so teammates get it.\n\n**Which updates you get:** a new install follows the `stable` channel, the tagged release (Monday and Thursday at most once every 72 hours, an important fix within about a day, never more than a week stale, plus verified security and regression fixes), instead of every merge to main. `./setup` records this the first time it runs on a machine and prints it. The clone itself starts at main's latest commit, and the updater never moves a checkout backwards, so it moves onto releases at the next cut that passes it (within a few days). A gstack contributor's checkout (marked by `bin/dev-setup`, on a branch other than origin's default `main`, or carrying local commits) and a Capy crew machine (its installer records `main`) follow `main` instead, and an install set up before stable became the default keeps following `main`. To switch, run `~/.claude/skills/gstack/bin/gstack-config set update_channel main` (every merge) or `~/.claude/skills/gstack/bin/gstack-config set update_channel stable` (releases only). Details: [docs/releases.md](docs/releases.md#channels).\n\n### Step 2: Team mode \u2014 auto-update for shared repos (recommended)\n\nFrom inside your repo, paste this. Switches you to team mode, bootstraps the repo so teammates get gstack automatically, and commits the change:\n\n```bash\n(cd ~/.claude/skills/gstack && ./setup --team) && ~/.claude/skills/gstack/bin/gstack-team-init required "
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 5954,
+      "line_count": 120,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"gstack\",\n  \"version\": \"1.103.3\",\n  \"description\": \"Garry's Stack \u2014 Claude Code skills + fast headless browser. One repo, one install, entire AI engineering workflow.\",\n  \"license\": \"MIT\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"browse\": \"./browse/dist/browse\",\n    \"make-pdf\": \"./make-pdf/dist/pdf\"\n  },\n  \"scripts\": {\n    \"build\": \"bash scripts/build.sh\",\n    \"build:cso\": \"bash scripts/build-cso.sh\",\n    \"format:cso\": \"prettier --write 'lib/cso/*.ts'\",\n    \"format:cso:check\": \"prettier --check 'lib/cso/*.ts'\",\n    \"typecheck\": \"tsc -p tsconfig.json\",\n    \"typecheck:test\": \"bun run scripts/typecheck-test.ts\",\n    \"test:cso:docker\": \"bun test --max-concurrency 1 test/cso-docker-integration.test.ts test/cso-node-lifecycle-integration.test.ts test/cso-stack-cold-integration.test.ts\",\n    \"test:cso:macos\": \"bun test test/cso-macos-launcher.test.ts test/cso-registry-socket.test.ts\",\n    \"test:cso:windows\": \"bun test test/cso-windows-launcher.test.ts\",\n    \"vendor:xterm\": \"mkdir -p extension/lib && cp node_modules/xterm/lib/xterm.js extension/lib/xterm.js && cp node_modules/xterm/css/xterm.css extension/lib/xterm.css && cp node_modules/xterm-addon-fit/lib/xterm-addon-fit.js extension/lib/xterm-addon-fit.js\",\n    \"dev:make-pdf\": \"bun run make-pdf/src/cli.ts\",\n    \"dev:design\": \"bun run design/src/cli.ts\",\n    \"build:diagram-render\": \"cd lib/diagram-render && bun install && bun run scripts/build.ts\",\n    \"build:gates\": \"bun build --compile make-pdf/src/cli.ts --outfile make-pdf/dist/pdf --no-compile-autoload-dotenv --no-compile-autoload-bunfig && bun build --compile browse/src/cli.ts --outfile browse/dist/browse --no-compile-autoload-dotenv --no-compile-autoload-bunfig && bun run build:diagram-render\",\n    \"gen:skill-docs\": \"bun run scripts/gen-skill-docs.ts\",\n    \"gen:skill-docs:user\": \"bun run scripts/gen-skill-docs.ts --respect-detection\",\n    \"audit:manifest\": \"bun run scripts/prompt-audit-manifest.ts\",\n    \"dev\": \"bun run browse/src/cli.ts\",\n    \"server\": \"bun run browse/src/server.ts\",\n    \"test\": \"bun run scripts/test-free-shards.ts\",\n    \"test:free\": \"bun run scripts/test-free-shards.ts\",\n    \"test:windows\": \"bun run scripts/test-free-shards.ts --windows-only\",\n    \"test:ubicloud\": \"bash scripts/ubicloud/test-free.sh\",\n    \"test:evals\": \"bun run scripts/retired-command.ts test:evals\",\n    \"test:evals:all\": \"bun run scripts/retired-command.ts test:evals:all\",\n    \"test:e2e\": \"bun run scripts/retired-command.ts test:e2e\",\n    \"test:e2e:all\": \"bun run scripts/retired-command.ts test:e2e:all\",\n    \"test:gate\": \"bun run scripts/retired-command.ts test:gate\",\n    \"test:periodic\": \"bun run scripts/retired-command.ts test:periodic\",\n    \"test:gate:sharded\": \"bun run scripts/test-paid-shards.ts --tier gate\",\n    \"test:periodic:sharded\": \"EVALS_ALL=1 bun run scripts/test-paid-shards.ts --tier periodic\",\n    \"test:codex\": \"bun run scripts/retired-command.ts test:codex\",\n    \"test:codex:all\": \"bun run scripts/retired-command.ts test:codex:all\",\n    \"skill:check\": \"bun run scripts/skill-check.ts\",\n    \"dev:skill\": \"bun run scripts/dev-skill.ts\",\n    \"start\": \"bun run browse/src/server.ts\",\n    \"eval:bg\": \"bun run scripts/retired-command.ts eval:bg\",\n    \"eval:bg:all\": \"bun run scripts/retired-command.ts eval:bg:all\",\n    \"eval:bg:gate\": \"bun run scripts/eval-bg.ts gate\",\n    \"eval:bg:periodic\": \"bun run scripts/eval-bg.ts periodic\",\n    \"test:health\": \"bun run scripts/test-health-report.ts\",\n    \"test:exercised-map\": \"bun run scripts/exercised-map.ts\",\n    \"eval:list\": \"bun run scripts/eval-list.ts\",\n    \"eval:compare\": \"bun run scripts/eval-compare.ts\",\n    \"eval:summary\": \"bun run scripts/eval-summary.ts\",\n    \"eval:flake-rank\": \"bun run scripts/retired-command.ts eval:flake-rank\",\n    \"eval:pass-rates\": \"bun run scripts/eval-flake-rank.ts\",\n    \"eval:watch\": \"bun run scripts/retired-command.ts eval:watch\",\n    \"eval:select\": \"bun run scripts/eval-select.ts\",\n    \"analytics\": \"bun run scripts/analytics.ts\",\n    \"test:audit\": \"bun run scripts/retired-command.ts test:audit\",\n    \"slop\": \"npx slop-scan scan . 2>/dev/null || echo 'slop-scan not available (install with: npm i -g slop-scan)'\",\n    \"slop:diff\": \"bun run scripts/slop-diff.ts\",\n    \"test:quick\": \"bun run scripts/test-free-shards.ts --quick\",\n    \"test:pr\": \"EVALS_JOBS=${EVALS_JOBS:-2} EVALS_SCREEN_POLICY=${EVALS_SCREEN_POLICY:-narrow} bun run scripts/test-paid-shards.ts --tier gate --profile pr\",\n    \"test:release\": \"EVALS_ALL=1 EVALS_FRESH=1 EVALS_CACHE_PURPOSE=release bun run scripts/test-paid-shards.ts --tier gate --profile full && EVALS_ALL=1 EVALS_FRESH=1 EVALS_CACHE_PURPOSE=release bun run scripts/test-paid-shards.ts --tier periodic --profile full\",\n    \"eval:bg:pr\": \"bun run scripts/eval-bg.ts pr\",\n    \"eval:bg:release\": \"bun run scripts/eval-bg.ts release\"\n  },\n  \"dependencies\": {\n    \"@anthropic-ai/sdk\": \"^0.78.0\",\n    \"@huggingface/transformers\": \"^4.3.2\",\n    \"@ngrok/ngrok\": \"^1.7.0\",\n    \"cross-spawn\": \"^7.0.6\",\n    \"diff\": \"^9.0.0\",\n    \"html-to-docx\": \"1.8.0\",\n    \"html-to-vdom\": \"0.7.0\",\n    \"marked\": \"^18.1.3\",\n    \"playwright\": \"^1.65.0\",\n    \"sharp\": \"^0.35.4\",\n    \"socks\": \"^2.8.10\",\n    \"xterm\": \"^5.3.0\",\n    \"xterm-addon-fit\": \"^0.8.0\"\n  },\n  \"engines\": {\n    \"bun\": \">=1.4.2\"\n  },\n  \"keywords\": [\n    \"browser\",\n    \"automation\",\n    \"playwright\",\n    \"headless\",\n    \"cli\",\n    \"claude\",\n    \"ai-agent\",\n    \"devtools\"\n  ],\n  \"devDependencies\": {\n    \"@anthropic-ai/claude-agent-sdk\": \"0.2.141\",\n    \"@types/bun\": \"1.4.4\",\n    \"prettier\": \"3.9.10\",\n    \"typescript\": \"7.0.2\"\n  },\n  \"overrides\": {\n    \"@hono/node-server\": \"2.1.6\",\n    \"@modelcontextprotocol/sdk\": \"1.32.0\",\n    \"adm-zip\": \"^0.6.1\",\n    \"fast-uri\": \"3.1.9\",\n    \"hono\": \"4.13.16\",\n    \"image-size\": \"2.0.4\",\n    \"ip-address\": \"10.7.4\",\n    \"proxy-addr\": \"2.0.8\",\n    \"qs\": \"6.16.2\",\n    \"sharp\": \"0.35.5\"\n  },\n  \"patchedDependencies\": {\n    \"playwright-core@1.65.0\": \"patches/playwright-core@1.65.0.patch\"\n  }\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "actionlint.yml": {
+      "path": ".github/workflows/actionlint.yml",
+      "size_bytes": 1395,
+      "line_count": 33,
+      "truncated": false,
+      "excerpt": "name: Workflow Lint\n# push is main-only: a push to a PR branch already fires the pull_request run;\n# the unrestricted push trigger double-ran every PR commit.\non:\n  push:\n    branches: [main]\n  pull_request:\n\n# PR-number keyed (run_id fallback for push): a bare branch name carries no\n# fork prefix, so same-name branches from two forks would share one group and\n# cancel each other's runs (same rationale as free-tests.yml).\nconcurrency:\n  group: actionlint-${{ github.event.pull_request.number || github.run_id }}\n  cancel-in-progress: true\n\n# Lint needs nothing from the token; the job runs a third-party image with\n# the checkout mounted, so keep the grant read-only and out of .git/config.\npermissions:\n  contents: read\n\njobs:\n  actionlint:\n    runs-on: ubuntu-24.04\n    timeout-minutes: 5\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n        with:\n          persist-credentials: false\n      # Pull the prebuilt image instead of rhysd/actionlint@v1.7.11 (a Docker\n      # action that rebuilt from source every run: 16s of a 44s job for 1s of\n      # lint). Pinned by DIGEST: a Docker Hub tag is repointable with no\n      # GitHub-side audit trail, and this image sees the mounted checkout.\n      - run: docker run --rm -v \"$PWD:/repo\" -w /repo rhysd/actionlint:1.7.11@sha256:6f03470d0152251d7f07f7c4dc019dbe7024c72cd952f839544c7798843efa8f -color\n"
+    },
+    "cso-runtime-promote.yml": {
+      "path": ".github/workflows/cso-runtime-promote.yml",
+      "size_bytes": 9958,
+      "line_count": 187,
+      "truncated": true,
+      "excerpt": "name: Propose CSO Runtime Catalog Promotion\n\n# This workflow never deploys a catalog. It converts authenticated\n# same-repository qualification artifacts into an attested candidate, verifies\n# those exact bytes, and opens a normal source-review PR from a protected job.\n# Pushes and PRs made with GITHUB_TOKEN start no workflows, so the job\n# dispatches the required free-tests check on the pushed branch head; a\n# workflow_dispatch is the documented exception to that rule.\non:\n  workflow_dispatch:\n    inputs:\n      qualification_run_id:\n        description: Successful protected-main run containing cso-qualified-runtime-statements\n        required: true\n        type: string\n\npermissions:\n  contents: read\n  actions: read\n\nconcurrency:\n  group: cso-runtime-catalog-promotion\n  cancel-in-progress: false\n\njobs:\n  propose:\n    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'\n    runs-on: ubuntu-24.04\n    timeout-minutes: 40\n    environment: cso-runtime-release\n    permissions:\n      contents: write\n      pull-requests: write\n      actions: write\n      packages: read\n      id-token: write\n      attestations: write\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\n        with:\n          persist-credentials: true\n          fetch-depth: 0\n      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6\n        with:\n          bun-version: 1.4.2\n      - name: Authenticate the completed qualification run\n        env:\n          GH_TOKEN: ${{ github.token }}\n          CSO_QUALIFICATION_RUN: ${{ inputs.qualification_run_id }}\n        run: |\n          set -euo pipefail\n          case \"$CSO_QUALIFICATION_RUN\" in\n            ''|*[!0-9]*) echo 'qualification_run_id must be numeric' >&2; exit 1 ;;\n          esac\n          gh api \"repos/$GITHUB_REPOSITORY/actions/runs/$CSO_QUALIFICATION_RUN\" > qualification-run.json\n          jq -e '\n            .status == \"completed\" and .conclusion == \"success\" and\n            .head_branch == \"main\" and .event == \"repository_dispatch\" and\n            .path == \".github/workflows/cso-runtime-qualification.yml\" and\n            (.head_sha | test(\"^[a-f0-9]{40}$\"))\n          ' qualification-run.json\n          mkdir qualification-evidence\n          gh run download \"$CSO_QUALIFICATION_RUN\" --repo \"$GITHUB_REPOSITORY\" \\\n            --name cso-qualified-runtime-statements --dir qualification-evidence\n      - name: Generate a fail-closed catalog candidate\n        env:\n          GH_TOKEN: ${{ github.token }}\n          CSO_QUALIFICATION_RUN: ${{ inputs.qualification_run_id }}\n        run: |\n          set -euo pipefail\n          bun run scripts/cso-runtime-promotion.ts \\\n            --evidence-root qualification-evidence \\\n            --output runtime-catalog.candidate.json\n          source_commit=\"$(jq -er '.promotion.sourceCommit' runtime-catalog.candidate.json)\"\n          workflow=\"$(jq -er '.promotion.workflow' runtime-catalog.candidate.json)\"\n          test \"$workflow\" = \"https://github.com/$GITHUB_REPOSITORY/actions/runs/$CSO_QUALIFICATION_RUN\"\n          qualification_head=\"$(jq -er '.head_sha' qualification-run.json)\"\n          gh api \"repos/$GITHUB_REPOSITORY/compare/$source_commit...$qualification_head\" > source-ancestry.json\n          jq -e '.status == \"ahead\" or .status == \"identical\"' source-ancestry.json\n          bun -e '\n            import candidate from \"./runtime-catalog.candidate.json\";\n            import {validateRuntimeCatalog} from \"./lib/cso/runtime-catalog\";\n            validateRuntimeCatalog(candidate);\n          '\n          bun run scripts/cso-runtime-promotion.ts validate-transition \\\n            lib/cso/runtime-catalog.json runtime-catalog.candidate.json\n      - name: Prove the promotion and catalog contracts before signing\n        run: |\n          set -euo pipefail\n          bun install --frozen-lockfile --ignore-scripts\n          bun test --max-concurrency 1 test/cso-runtime-promotion.test.ts test/cso-distribution.test.ts\n      - name: Recheck public visibility and anonymous pulls before promotion\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          set -euo pipefail\n          mkdir public-image-evidence\n          jq -c '.runtimes[]' runtime-catalog.candidate.json | while IFS= read -r runtime; do\n            runtime_id=\"$(printf '%s' \"$runtime\" | jq -er '.id | select(test(\"^[a-z0-9][a-z0-9._-]{0,100}$\"))')\"\n            image=\"$(printf '%s' \"$runtime\" | jq -er '.image')\"\n            platform=\"$("
+    },
+    "dependency-review.yml": {
+      "path": ".github/workflows/dependency-review.yml",
+      "size_bytes": 750,
+      "line_count": 31,
+      "truncated": false,
+      "excerpt": "name: Dependency Review\n\non:\n  pull_request:\n    paths:\n      - 'package.json'\n      - 'bun.lock'\n      - '**/package.json'\n      - '**/bun.lock'\n\nconcurrency:\n  group: dependency-review-${{ github.event.pull_request.number }}\n  cancel-in-progress: true\n\npermissions:\n  contents: read\n\njobs:\n  dependency-review:\n    runs-on: ubuntu-24.04\n    timeout-minutes: 5\n    permissions:\n      contents: read\n      pull-requests: write\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0\n        with:\n          fail-on-severity: high\n          fail-on-scopes: runtime, development\n          comment-summary-in-pr: on-failure\n"
+    },
+    "eval-sweep.yml": {
+      "path": ".github/workflows/eval-sweep.yml",
+      "size_bytes": 8063,
+      "line_count": 204,
+      "truncated": true,
+      "excerpt": "name: Eval sweep\n# The weekly off-ship qualification sweep (docs/TESTING_INTERNALS.md#ship-measure-sweep):\n# `ship-measure sweep` ranks the gate cases that cost the gate's all-green\n# probability most (eval:pass-rates history on main) and measures the top K\n# alone at their kind's N on this ref's head, with /ship's runner and\n# measurement bar. Every trial is diagnostic: no verdict, no pass-rate\n# history. The weekly spend cap (ship_measure_sweep_budget_usd, $150) is shared\n# with every sweep report of the last 7 days, downloaded before the sweep runs.\n# This workflow only reads: it never pushes, commits or opens a pull request;\n# an agent fixes from the uploaded report. Pinned by\n# test/eval-sweep-workflow.test.ts.\non:\n  schedule:\n    - cron: '0 12 * * 1'  # Monday 12:00 UTC, after the 06:00 periodic census\n  workflow_dispatch:\n    inputs:\n      k:\n        description: 'Cases to measure (default: ship_measure_sweep_cases, 5)'\n        type: string\n        default: ''\n      cap_usd:\n        description: 'Weekly spend cap in USD, shared with the last 7 days of sweeps (default: ship_measure_sweep_budget_usd, 150)'\n        type: string\n        default: ''\n      dry_run:\n        description: 'Plan and estimate only ($0)'\n        type: boolean\n        default: false\n\n# One sweep at a time across every ref, never cancelled: two concurrent runs\n# would both read the same week's spend and could exceed the cap together.\nconcurrency:\n  group: eval-sweep\n  cancel-in-progress: false\n\npermissions:\n  contents: read\n\nenv:\n  IMAGE: ghcr.io/${{ github.repository }}/ci\n\njobs:\n  image:\n    runs-on: ubuntu-24.04\n    timeout-minutes: 10\n    permissions:\n      contents: read\n      packages: read\n    outputs:\n      image-ref: ${{ steps.digest.outputs.ref }}\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n        with:\n          persist-credentials: false\n\n      - id: meta\n        # The same content-hash tag the eval workflows build and push\n        # (test/ci-image-tag-binding.test.ts pins the identical input list).\n        run: echo \"tag=${{ env.IMAGE }}:${{ hashFiles('.github/docker/Dockerfile.ci', 'bun.lock', 'patches/**') }}\" >> \"$GITHUB_OUTPUT\"\n\n      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4\n        with:\n          registry: ghcr.io\n          username: ${{ github.actor }}\n          password: ${{ secrets.GITHUB_TOKEN }}\n\n      # Run the published image by digest: the digest is part of every\n      # measurement's pooling identity (GSTACK_CI_IMAGE). The sweep never\n      # builds an image; evals.yml and evals-periodic.yml publish it.\n      - name: Resolve the published CI image digest\n        id: digest\n        env:\n          TAG: ${{ steps.meta.outputs.tag }}\n        run: |\n          set -euo pipefail\n          if ! digest=$(docker buildx imagetools inspect \"$TAG\" --format '{{json .Manifest.Digest}}' | tr -d '\"'); then\n            echo \"::error::CI image $TAG is not published; run evals-periodic.yml (or an evals.yml PR run) to build it, then rerun the sweep\"\n            exit 1\n          fi\n          echo \"ref=${IMAGE}@${digest}\" >> \"$GITHUB_OUTPUT\"\n\n  sweep:\n    runs-on: ubicloud-standard-16\n    needs: image\n    timeout-minutes: 240\n    permissions:\n      contents: read\n      actions: read\n      packages: read\n    container:\n      image: ${{ needs.image.outputs.image-ref }}\n      credentials:\n        username: ${{ github.actor }}\n        password: ${{ secrets.GITHUB_TOKEN }}\n      options: --user runner\n    env:\n      EVALS_RUN_ID: ci-${{ github.run_id }}-${{ github.run_attempt }}-eval-sweep\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n        with:\n          # Full history: selection walks git at module load (evals-periodic.yml).\n          fetch-depth: 0\n          persist-credentials: false\n\n      - name: Fix bun temp\n        uses: ./.github/actions/fix-bun-temp\n\n      - name: Restore deps\n        uses: ./.github/actions/restore-deps\n\n      - run: bun run build\n\n      - name: Seed claude interactive config\n        uses: ./.github/actions/seed-claude-config\n        with:\n          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}\n\n      - name: Register gstack skills for PTY tests\n        uses: ./.github/actions/register-gstack-skills\n\n      # Same as evals-periodic.yml: the image ships the pinned Codex CLI\n      # without a credential; Codex cases see it only through the shard runner.\n      - name: Authenticate the Codex"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T19:23:38Z",
+      "oldest": "2026-11-23T23:33:05Z"
+    },
+    "conventional_pct": 0.0,
+    "fix_revert_pct": 0.0,
+    "ai_coauthor_pct": 100.0,
+    "top_recent_authors": [
+      [
+        "garrytan",
+        50
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "1145e80a",
+        "date": "2026-11-25T19:23:38Z",
+        "author": "garrytan",
+        "subject": "Let CI results count for /ship without the three /cso jobs being removed (#4836)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a48df18f",
+        "date": "2026-11-25T18:47:20Z",
+        "author": "garrytan",
+        "subject": "/careful no longer asks before deleting a file inside another worktree of the same repo (#4827) (#4834)",
+        "ai_signal": true
+      },
+      {
+        "sha": "8aafd408",
+        "date": "2026-11-25T18:13:02Z",
+        "author": "garrytan",
+        "subject": "gstack-pr-wait ignores cancelled checks a newer pass replaced, and the npm git-dependency hint names allow-git (#4832)",
+        "ai_signal": true
+      },
+      {
+        "sha": "959df8cc",
+        "date": "2026-11-25T17:35:14Z",
+        "author": "garrytan",
+        "subject": "Stop six gstack tests from failing at random in CI (GST-3852) (#4830)",
+        "ai_signal": true
+      },
+      {
+        "sha": "76dd597f",
+        "date": "2026-11-25T17:05:32Z",
+        "author": "garrytan",
+        "subject": "Skill routing no longer fires on subagent hand-backs or passing mentions of a trigger (#4831)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7eba5caf",
+        "date": "2026-11-25T16:21:05Z",
+        "author": "garrytan",
+        "subject": "/gstack-ship honours ruled edits after the final review and records second-model stops (GST-3814) (#4829)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ec5d7e6f",
+        "date": "2026-11-25T14:36:31Z",
+        "author": "garrytan",
+        "subject": "/gstack-ship drops bought extra review rounds and the second-model trail check (GST-3829) (#4826)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e11a5833",
+        "date": "2026-11-25T14:15:20Z",
+        "author": "garrytan",
+        "subject": "make-pdf: diagrams after a sub-heading keep the full width, and HTML export fits phones (GST-3846) (#4828)",
+        "ai_signal": true
+      },
+      {
+        "sha": "80fd754f",
+        "date": "2026-11-25T13:31:02Z",
+        "author": "garrytan",
+        "subject": "make-pdf: bold Swiss-style layout by default, --style plain keeps the old look (GST-3770) (#4820)",
+        "ai_signal": true
+      },
+      {
+        "sha": "64fe9e52",
+        "date": "2026-11-25T13:00:00Z",
+        "author": "garrytan",
+        "subject": "/cso refuses npm apps whose installed packages don't match the lockfile (GST-3664) (#4797)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a5acd49d",
+        "date": "2026-11-25T12:22:18Z",
+        "author": "garrytan",
+        "subject": "Run newer Claude Code and Codex in CI, and read the Astra model from the registry (GST-3801) (#4822)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2eb3e5ad",
+        "date": "2026-11-25T09:04:03Z",
+        "author": "garrytan",
+        "subject": "Eval plans can check a code judge against a third model's labels, with frozen anchors (GST-3833) (#4824)",
+        "ai_signal": true
+      },
+      {
+        "sha": "47b464a0",
+        "date": "2026-11-25T08:03:59Z",
+        "author": "garrytan",
+        "subject": "Release notes keep quoted versions, count only real changes and print each heading once (GST-3686) (#4803)",
+        "ai_signal": true
+      },
+      {
+        "sha": "47189a18",
+        "date": "2026-11-25T07:54:11Z",
+        "author": "garrytan",
+        "subject": "Stop the QA-only cleanup test from failing at random on a fast terminal-agent exit (GST-3830) (#4823)",
+        "ai_signal": true
+      },
+      {
+        "sha": "789e9bad",
+        "date": "2026-11-25T06:49:46Z",
+        "author": "garrytan",
+        "subject": "Stop three gstack tests from failing at random in CI (GST-3655) (#4821)",
+        "ai_signal": true
+      },
+      {
+        "sha": "719b1f59",
+        "date": "2026-11-25T03:53:15Z",
+        "author": "garrytan",
+        "subject": "Install gstack's shipping skill as /gstack-ship so Claude Code's own /ship stops hiding it (#4775) (#4819)",
+        "ai_signal": true
+      },
+      {
+        "sha": "9a550bca",
+        "date": "2026-11-25T02:06:47Z",
+        "author": "garrytan",
+        "subject": "gstack picks the newest Opus, Fable, Sol and Astra everywhere (GST-3760) (#4811)",
+        "ai_signal": true
+      },
+      {
+        "sha": "66b8f843",
+        "date": "2026-11-25T01:52:24Z",
+        "author": "garrytan",
+        "subject": "Let an owner's ruling ship a small edit made after /ship's final review (GST-3775) (#4818)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e38a1782",
+        "date": "2026-11-25T01:31:47Z",
+        "author": "garrytan",
+        "subject": "Docs: you don't need to cut back on MCP servers for accuracy, up to about 300 tools (#4814)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2679c6f7",
+        "date": "2026-11-25T01:21:46Z",
+        "author": "garrytan",
+        "subject": "/autoplan stops asking the owner again for changes his \"do it\" already approved (GST-3753) (#4809)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "garrytan",
+      "contributions": 1444
+    },
+    {
+      "login": "test22345",
+      "contributions": 17
+    },
+    {
+      "login": "16francej",
+      "contributions": 7
+    },
+    {
+      "login": "time-attack",
+      "contributions": 6
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 3
+    },
+    {
+      "login": "dependabot[bot]",
+      "contributions": 2
+    },
+    {
+      "login": "byliu-labs",
+      "contributions": 1
+    },
+    {
+      "login": "Davmunrey",
+      "contributions": 1
+    },
+    {
+      "login": "sensdiego",
+      "contributions": 1
+    },
+    {
+      "login": "evansolomon",
+      "contributions": 1
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.103.3.0",
+      "published_at": "2026-11-25T06:49:40Z",
+      "name": "gstack v1.103.3.0"
+    },
+    {
+      "tag": "v1.103.1.0",
+      "published_at": "2026-11-24T06:35:57Z",
+      "name": "gstack v1.103.1.0"
+    },
+    {
+      "tag": "v1.103.0.0",
+      "published_at": "2026-11-23T05:05:09Z",
+      "name": "gstack v1.103.0.0"
+    },
+    {
+      "tag": "v1.102.2.0",
+      "published_at": "2026-11-21T23:41:46Z",
+      "name": "gstack v1.102.2.0"
+    },
+    {
+      "tag": "v1.102.1.0",
+      "published_at": "2026-11-20T20:51:26Z",
+      "name": "gstack v1.102.1.0"
+    }
+  ]
+}

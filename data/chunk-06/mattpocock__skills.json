@@ -1,0 +1,333 @@
+{
+  "repo": "mattpocock/skills",
+  "meta": {
+    "description": "Skills for Real Engineers. Straight from my .agents directory.",
+    "homepage": "https://aihero.dev/skills",
+    "license": "MIT",
+    "stars": 332787,
+    "forks": 27987,
+    "open_issues": 251,
+    "archived": false,
+    "created_at": "2026-02-03T11:15:53Z",
+    "pushed_at": "2026-11-25T12:09:27Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "Shell": 13729,
+    "JavaScript": 6719
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".changeset/",
+      ".claude-plugin/",
+      ".github/",
+      ".gitignore",
+      ".out-of-scope/",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CLAUDE.md",
+      "CONTRIBUTING.md",
+      "GLOSSARY.md",
+      "LICENSE",
+      "README.md",
+      "SCOPE.md",
+      "docs/",
+      "package-lock.json",
+      "package.json",
+      "scripts/",
+      "skills/"
+    ],
+    "workflows": [
+      "check.yml",
+      "needs-info.yml",
+      "release.yml",
+      "triage-label.yml"
+    ],
+    "docs": [
+      "agents/",
+      "engineering/",
+      "productivity/"
+    ],
+    "docs_count": 3,
+    "agents_dir": [
+      "adr/",
+      "install-block.md",
+      "invocation.md",
+      "writing-docs.md"
+    ],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 4206,
+      "line_count": 33,
+      "truncated": false,
+      "excerpt": "Skills are organized into bucket folders under `skills/`:\n\n- `engineering/`: daily code work\n- `productivity/`: daily non-code workflow tools\n- `misc/`: kept around but rarely used, not promoted\n- `in-progress/`: beta: public on purpose, feedback wanted, not shipped in the plugin\n- `deprecated/`: no longer used\n\nEvery skill in `engineering/` or `productivity/` (the **promoted** buckets) must have a reference in the top-level `README.md` and an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly the promoted set). Skills in `misc/`, `in-progress/`, and `deprecated/` must not appear in either.\n\nInstall commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` is the repo's own marketplace. Every agent except Claude Code installs from it to get automatic updates, and Claude Code uses `claude-plugins-official`. Run `claude plugin validate . --strict` after touching either manifest. [ADR 0002](./.agents/adr/0002-ship-as-a-claude-code-plugin.md) records why.\n\nEach skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.\n\nEach bucket folder has a `README.md` that lists every skill in the bucket with a one-line description, with the skill name linked to its `SKILL.md`. The promoted buckets' `README.md`s and the top-level `README.md` group entries into **User-invoked** and **Model-invoked**; non-promoted bucket `README.md`s (`misc/`, `in-progress/`) use a flat list.\n\nSkills in `engineering/` and `productivity/` also have a human-facing docs page at `docs/<bucket>/<skill-name>.md` (the docs tree mirrors those two bucket folders under `skills/`). The published URL is `https://aihero.dev/skills-<skill-name>` regardless of bucket: the docs path is repo organisation only. When you add, rename, or change the behaviour of a skill in `engineering/` or `productivity/`, create or re-sync its docs page following [.agents/writing-docs.md](./.agents/writing-docs.md). A finished page carries four sections: **What it does**, **When to reach for it**, **Common questions**, and **It's working if**. `writing-docs.md` holds the template, the section order, and where to hunt for the questions. Skills in the non-promoted buckets (`misc/`, `in-progress/`, `deprecated/`) get **no** docs page. The one exception is a promoted skill removed outright: its page stays, marked archived (see `writing-docs.md`).\n\nEvery `SKILL.md` is either user-invoked (`disable-model-invocation: true` plus `policy.allow_implicit_invocation: false` in `agents/openai.yaml`, reachable only by the human) or model-invoked (model- or user-reachable). See [.agents/invocation.md](./.agents/invocation.md).\n\n[`ask-matt`](./skills/engineering/ask-matt/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a docs page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `ask-matt`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.\n\nTo (re)link every skill outside `deprecated/` and `misc/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repo, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.\n\nNo em-dashes anywhere in this repo's prose (`SKILL.md` files, docs, `README.md`, `CHANGELOG.md`, ADRs, changesets, code comments). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.\n\nEvery skill that dispatches a subagent says to start it with a fresh context window. Some harnesses (Codex, for one) fork the parent conversation by default, and a fork inherits the parent's context, which is what the subagent was meant to escape.\n\n## Agent skills\n\n### Triage labels\n\nCanonical names, unchanged. See `docs/agents/triage-labels.md`. Issues are judged against [`SCOPE.md`](./SCOPE.md).\n"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 4206,
+      "line_count": 33,
+      "truncated": false,
+      "excerpt": "Skills are organized into bucket folders under `skills/`:\n\n- `engineering/`: daily code work\n- `productivity/`: daily non-code workflow tools\n- `misc/`: kept around but rarely used, not promoted\n- `in-progress/`: beta: public on purpose, feedback wanted, not shipped in the plugin\n- `deprecated/`: no longer used\n\nEvery skill in `engineering/` or `productivity/` (the **promoted** buckets) must have a reference in the top-level `README.md` and an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly the promoted set). Skills in `misc/`, `in-progress/`, and `deprecated/` must not appear in either.\n\nInstall commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` is the repo's own marketplace. Every agent except Claude Code installs from it to get automatic updates, and Claude Code uses `claude-plugins-official`. Run `claude plugin validate . --strict` after touching either manifest. [ADR 0002](./.agents/adr/0002-ship-as-a-claude-code-plugin.md) records why.\n\nEach skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.\n\nEach bucket folder has a `README.md` that lists every skill in the bucket with a one-line description, with the skill name linked to its `SKILL.md`. The promoted buckets' `README.md`s and the top-level `README.md` group entries into **User-invoked** and **Model-invoked**; non-promoted bucket `README.md`s (`misc/`, `in-progress/`) use a flat list.\n\nSkills in `engineering/` and `productivity/` also have a human-facing docs page at `docs/<bucket>/<skill-name>.md` (the docs tree mirrors those two bucket folders under `skills/`). The published URL is `https://aihero.dev/skills-<skill-name>` regardless of bucket: the docs path is repo organisation only. When you add, rename, or change the behaviour of a skill in `engineering/` or `productivity/`, create or re-sync its docs page following [.agents/writing-docs.md](./.agents/writing-docs.md). A finished page carries four sections: **What it does**, **When to reach for it**, **Common questions**, and **It's working if**. `writing-docs.md` holds the template, the section order, and where to hunt for the questions. Skills in the non-promoted buckets (`misc/`, `in-progress/`, `deprecated/`) get **no** docs page. The one exception is a promoted skill removed outright: its page stays, marked archived (see `writing-docs.md`).\n\nEvery `SKILL.md` is either user-invoked (`disable-model-invocation: true` plus `policy.allow_implicit_invocation: false` in `agents/openai.yaml`, reachable only by the human) or model-invoked (model- or user-reachable). See [.agents/invocation.md](./.agents/invocation.md).\n\n[`ask-matt`](./skills/engineering/ask-matt/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a docs page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `ask-matt`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.\n\nTo (re)link every skill outside `deprecated/` and `misc/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repo, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.\n\nNo em-dashes anywhere in this repo's prose (`SKILL.md` files, docs, `README.md`, `CHANGELOG.md`, ADRs, changesets, code comments). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.\n\nEvery skill that dispatches a subagent says to start it with a fresh context window. Some harnesses (Codex, for one) fork the parent conversation by default, and a fork inherits the parent's context, which is what the subagent was meant to escape.\n\n## Agent skills\n\n### Triage labels\n\nCanonical names, unchanged. See `docs/agents/triage-labels.md`. Issues are judged against [`SCOPE.md`](./SCOPE.md).\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 1552,
+      "line_count": 25,
+      "truncated": false,
+      "excerpt": "# Contributing\n\nEvery issue is judged against the bar in [`SCOPE.md`](./SCOPE.md). Read it first.\n\n## Where each request goes\n\n| You have | Go to |\n| --- | --- |\n| A bug in a skill | [Bug issue](https://github.com/mattpocock/skills/issues/new?template=bug.yml) |\n| A change to an existing skill | [Idea or feedback issue](https://github.com/mattpocock/skills/issues/new?template=idea.yml) |\n| A question, or \"how do I...?\" | [Discussions: Q&A](https://github.com/mattpocock/skills/discussions/categories/q-a) |\n| An idea for a new skill, or a skill to donate | [Discussions: Ideas](https://github.com/mattpocock/skills/discussions/categories/ideas) |\n| Support for another harness or issue tracker | [Discussions: Ideas](https://github.com/mattpocock/skills/discussions/categories/ideas), after you read [`.out-of-scope/`](./.out-of-scope) |\n\nPull requests are open to collaborators only, so describe the fix in an issue instead.\n\n## Issues written with AI\n\nAgents are welcome to help, but you post the issue, so you own it:\n\n- **One problem per issue.** Several findings from one session are several issues, or none.\n- **Short.** If it does not fit on one screen, cut it.\n- **Repro first.** The steps that show the problem come before any analysis.\n- **No pasted specs.** No full proposals, plans, or rewritten `SKILL.md` files. Describe the problem; the fix is ours to design.\n- **Not your project's issues.** If your agent files the specs or tickets for your own project here, it has the wrong repo. Run `/setup-matt-pocock-skills` in your project.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 16461,
+      "line_count": 258,
+      "truncated": true,
+      "excerpt": "<p>\n  <a href=\"https://www.aihero.dev/s/skills-newsletter\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skills-repo-dark_2x.png\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\">\n      <img alt=\"Skills\" src=\"https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png\" width=\"369\">\n    </picture>\n  </a>\n</p>\n\n# Skills For Real Engineers\n\n[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)\n\nMy agent skills that I use every day to do real engineering - not vibe coding.\n\nDeveloping real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.\n\nThese skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy.\n\nIf you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter:\n\n[Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)\n\n## Installation (30-second setup)\n\nA plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.\n\n### 1. Get the skills\n\n<details>\n<summary><strong>Claude Code</strong></summary>\n\n```bash\nclaude plugin install mattpocock-skills@claude-plugins-official\n```\n\nUpdates itself by default.\n\n</details>\n\n<details>\n<summary><strong>Codex</strong></summary>\n\n```bash\ncodex plugin marketplace add mattpocock/skills\ncodex plugin add mattpocock-skills@mattpocock\n```\n\nUpdates itself at startup.\n\n</details>\n\n<details>\n<summary><strong>GitHub Copilot</strong> (CLI and VS Code)</summary>\n\n```bash\ncopilot plugin marketplace add mattpocock/skills\ncopilot plugin install mattpocock-skills@mattpocock\n```\n\nThen, once, add to `~/.copilot/settings.json`:\n\n```json\n{\n  \"extraKnownMarketplaces\": {\n    \"mattpocock\": { \"source\": { \"source\": \"github\", \"repo\": \"mattpocock/skills\" }, \"autoUpdate\": true }\n  }\n}\n```\n\nIn VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/mattpocock/skills`. It updates daily.\n\n</details>\n\n<details>\n<summary><strong>Gemini CLI</strong> (manual updates)</summary>\n\n```bash\ngemini skills install https://github.com/mattpocock/skills.git --path skills/engineering\ngemini skills install https://github.com/mattpocock/skills.git --path skills/productivity\n```\n\nRe-run both commands to update.\n\n</details>\n\n<details>\n<summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>\n\n```bash\nnpx skills@latest add mattpocock/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose\n```\n\nWhen the installer asks which skills to take, include `setup-matt-pocock-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.\n\n</details>\n\n### 2. Run `/setup-matt-pocock-skills`\n\nIn your agent, run it once per repo. It will:\n\n- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)\n- Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)\n- Ask you where you want to save any docs we create\n\n### 3. Bam - you're ready to go.\n\n## Why These Skills Exist\n\nI built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.\n\n### #1: The Agent Didn't Do What I Want\n\n> \"No-one knows exactly what they want\"\n>\n> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)\n\n**The Problem**. The most common failure mode in software development is misalignment. You think the dev knows what you want. Then you see what they've built - and you realize it didn't understand you at all.\n\nThis is just the same in the AI age. There is a communication gap between you and the agent. The fix for this is a **grilling session** - getting the agent to ask you detailed questions about what you're building.\n\n**The Fix** is to use:\n\n- [`/grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses\n- [`/grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)\n\nThese are my most popular skills. They help you align with the agent before you get started, and think deeply about the change you're making. Use them _every_ time you want to make a change.\n\n### #2: The Agent Is Way Too Verbose\n\n> With a ubiquitous language, conversations among developers and expressions of the code are all derived from the same domain model.\n>\n> Eric Evans, [Domain-Driven-Design](https://www.amazon.co.uk/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)\n\n**The Problem**: At the start of a project, devs and the people they're building the software for (the domain experts) are usually speaking different languages.\n\nI felt the same tension with my agents. Agents are usually dropped into a project and asked to figure out the jargon as they go. So they use 20 words where 1 will do.\n\n**The Fix** for this is a shared language. It's a document that helps agents decode the jargon used in the project.\n\n<details>\n<summary>\nExample\n</summary>\n\nHere's an example [glossary](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md) (still named `CONTEXT.md` at that pinned commit, from before the skills renamed the convention), from my `course-video-manager` repo. Which one is easier to read?\n\n- **BEFORE**: \"There'"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 682,
+      "line_count": 23,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"mattpocock-skills\",\n  \"version\": \"1.3.2\",\n  \"private\": true,\n  \"description\": \"Matt Pocock's agent skills for real engineering\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/mattpocock/skills\"\n  },\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"changeset\": \"changeset\",\n    \"version\": \"changeset version && node scripts/sync-plugin-version.mjs\",\n    \"check-plugin-version\": \"node scripts/sync-plugin-version.mjs --check\",\n    \"check-frontmatter\": \"node scripts/check-frontmatter.mjs\"\n  },\n  \"devDependencies\": {\n    \"@changesets/changelog-github\": \"^0.7.0\",\n    \"@changesets/cli\": \"^2.30.0\",\n    \"yaml\": \"^2.9.1\"\n  },\n  \"packageManager\": \"npm@10.9.4\"\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "check.yml": {
+      "path": ".github/workflows/check.yml",
+      "size_bytes": 488,
+      "line_count": 28,
+      "truncated": false,
+      "excerpt": "name: Check\n\non:\n  pull_request:\n  push:\n    branches:\n      - main\n\njobs:\n  frontmatter:\n    name: SKILL.md frontmatter\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: 22\n\n      - name: Install dependencies\n        run: npm ci\n\n      - name: Check frontmatter\n        run: npm run check-frontmatter\n"
+    },
+    "triage-label.yml": {
+      "path": ".github/workflows/triage-label.yml",
+      "size_bytes": 547,
+      "line_count": 23,
+      "truncated": false,
+      "excerpt": "name: Triage label\n\n# Every new issue gets `needs-triage`, so nothing skips the queue.\n# The issue forms already add it; this catches issues opened any other way.\n\non:\n  issues:\n    types: [opened]\n\npermissions: {}\n\njobs:\n  label:\n    runs-on: ubuntu-latest\n    permissions:\n      issues: write\n    steps:\n      - name: Add needs-triage\n        run: gh issue edit \"$NUMBER\" --add-label needs-triage\n        env:\n          GH_TOKEN: ${{ github.token }}\n          GH_REPO: ${{ github.repository }}\n          NUMBER: ${{ github.event.issue.number }}\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T12:08:23Z",
+      "oldest": "2026-10-06T12:51:45Z"
+    },
+    "conventional_pct": 16.0,
+    "fix_revert_pct": 6.0,
+    "ai_coauthor_pct": 66.0,
+    "top_recent_authors": [
+      [
+        "mattpocock",
+        42
+      ],
+      [
+        "bot",
+        6
+      ],
+      [
+        "Matt Pocock",
+        1
+      ],
+      [
+        "github-actions[bot]",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "6f7f7831",
+        "date": "2026-11-25T12:08:23Z",
+        "author": "mattpocock",
+        "subject": "Merge pull request #1485 from mattpocock/glossary-bold-terms",
+        "ai_signal": false
+      },
+      {
+        "sha": "2b7ab8c9",
+        "date": "2026-11-25T12:07:02Z",
+        "author": "bot",
+        "subject": "domain-modeling: express term relationships inside definitions",
+        "ai_signal": true
+      },
+      {
+        "sha": "d6539114",
+        "date": "2026-11-24T14:43:03Z",
+        "author": "mattpocock",
+        "subject": "Merge pull request #1474 from mattpocock/chief-of-staff-soften",
+        "ai_signal": false
+      },
+      {
+        "sha": "742afa6b",
+        "date": "2026-11-24T14:42:00Z",
+        "author": "bot",
+        "subject": "chief-of-staff: delegate the work, offer convention fixes",
+        "ai_signal": true
+      },
+      {
+        "sha": "419dac71",
+        "date": "2026-11-24T14:38:57Z",
+        "author": "bot",
+        "subject": "chief-of-staff: relay target, friction-only offers, keep conversation",
+        "ai_signal": true
+      },
+      {
+        "sha": "6bb33ef4",
+        "date": "2026-11-24T14:30:48Z",
+        "author": "mattpocock",
+        "subject": "Merge pull request #1473 from mattpocock/chief-of-staff-delegate-remember",
+        "ai_signal": false
+      },
+      {
+        "sha": "4edd64a1",
+        "date": "2026-11-24T14:22:08Z",
+        "author": "bot",
+        "subject": "chief-of-staff: refocus on delegate and remember",
+        "ai_signal": true
+      },
+      {
+        "sha": "abeeaf95",
+        "date": "2026-11-19T13:34:58Z",
+        "author": "mattpocock",
+        "subject": "Merge pull request #1455 from mattpocock/ci-frontmatter-check",
+        "ai_signal": false
+      },
+      {
+        "sha": "37209058",
+        "date": "2026-11-19T13:33:51Z",
+        "author": "bot",
+        "subject": "ci: check every SKILL.md's frontmatter parses with the installer's YAML parser",
+        "ai_signal": true
+      },
+      {
+        "sha": "3a051717",
+        "date": "2026-11-19T13:33:29Z",
+        "author": "mattpocock",
+        "subject": "Merge pull request #1453 from mattpocock/fix-software-factory-frontmatter",
+        "ai_signal": false
+      },
+      {
+        "sha": "9201b96d",
+        "date": "2026-11-19T13:32:57Z",
+        "author": "bot",
+        "subject": "fix(software-factory): quote description so strict YAML parsers accept it",
+        "ai_signal": true
+      },
+      {
+        "sha": "5863806d",
+        "date": "2026-11-12T08:42:38Z",
+        "author": "mattpocock",
+        "subject": "Merge pull request #1416 from mattpocock/software-factory-task-wording",
+        "ai_signal": false
+      },
+      {
+        "sha": "d18183fe",
+        "date": "2026-11-11T14:40:16Z",
+        "author": "Matt Pocock",
+        "subject": "software-factory: \"job\" is the CI vendor's word; explore leaves findings",
+        "ai_signal": true
+      },
+      {
+        "sha": "4ae2317d",
+        "date": "2026-10-31T14:23:30Z",
+        "author": "mattpocock",
+        "subject": "software-factory: glossary skill for designing a factory (#1316)",
+        "ai_signal": true
+      },
+      {
+        "sha": "5ae48169",
+        "date": "2026-10-31T13:47:43Z",
+        "author": "mattpocock",
+        "subject": "chief-of-staff: shared wiki first; retro and implement-spec as procedures (#1363)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a496f551",
+        "date": "2026-10-29T10:42:51Z",
+        "author": "mattpocock",
+        "subject": "implement-spec: a fresh implementer subagent per ticket (#1342)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d1478fcb",
+        "date": "2026-10-29T10:27:29Z",
+        "author": "github-actions[bot]",
+        "subject": "chore: version skills (#1161)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7739eaed",
+        "date": "2026-10-29T10:24:04Z",
+        "author": "mattpocock",
+        "subject": "Start subagents with a fresh context window, not a fork (#1341)",
+        "ai_signal": true
+      },
+      {
+        "sha": "59db609e",
+        "date": "2026-10-27T07:44:12Z",
+        "author": "mattpocock",
+        "subject": "Close blank issues and route requests by kind (#1169)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ed0de59e",
+        "date": "2026-10-27T07:39:47Z",
+        "author": "mattpocock",
+        "subject": "setup-matt-pocock-skills: reachable repo, legacy CONTEXT.md, tracker template fixes (#1228)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "mattpocock",
+      "contributions": 512
+    },
+    {
+      "login": "claude",
+      "contributions": 15
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 9
+    },
+    {
+      "login": "TESTPERSONAL",
+      "contributions": 8
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.3.2",
+      "published_at": "2026-10-29T10:27:41Z",
+      "name": "v1.3.2"
+    },
+    {
+      "tag": "v1.3.1",
+      "published_at": "2026-10-04T12:48:18Z",
+      "name": "v1.3.1"
+    },
+    {
+      "tag": "v1.3.0",
+      "published_at": "2026-10-04T12:47:22Z",
+      "name": "v1.3.0"
+    },
+    {
+      "tag": "v1.2.3",
+      "published_at": "2026-08-06T14:05:28Z",
+      "name": "v1.2.3"
+    },
+    {
+      "tag": "v1.2.2",
+      "published_at": "2026-08-05T18:10:19Z",
+      "name": "v1.2.2"
+    }
+  ]
+}

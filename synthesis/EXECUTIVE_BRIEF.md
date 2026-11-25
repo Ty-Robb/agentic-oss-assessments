@@ -1,6 +1,6 @@
-# Everything You Need to Know: Lessons from 24 Agentic OSS Repositories
+# Everything You Need to Know: Lessons from 34 Agentic OSS Repositories
 
-*Executive brief distilled from primary-source GitHub API audits of **24 open-source coding agent, harness, and orchestration repositories** (~1.73M combined stars, snapshot date: **2026-11-25**). For the full 24-repo matrix, raw metrics, and Week 1–3 implementation plan, see [`PLAYBOOK.md`](PLAYBOOK.md).*
+*Executive brief distilled from primary-source GitHub API audits of **34 open-source coding agent, harness, orchestration, and skill-stack repositories** (**2.90M combined stars**, snapshot date: **2026-11-25**). For the full 34-repo matrix, raw metrics, and Week 1–3 implementation plan, see [`PLAYBOOK.md`](PLAYBOOK.md).*
 
 ---
 
@@ -85,7 +85,21 @@ If an agent makes a mistake twice, **stop putting it in `AGENTS.md` and make the
 
 ---
 
-## 6. The 7 Fatal Traps to Avoid
+## 6. Skill Stacks (`gstack`, `pstack`, `mattpocock/skills`, `superpowers`, `spec-kit`, `OpenSpec`, `BMAD`, `GSD`)
+
+Auditing the top **10 agent skill & workflow repos** (~1.17M stars) revealed a sharp split between **harness engineering** and **skill-stack engineering**:
+
+- **Skills do not boost raw bug-fix rates — they enforce alignment, review, QA, and safety:** `garrytan/gstack` published an honest head-to-head benchmark right in its `README.md`: on 100 real GitHub bugs/features, Opus 5.5 solved **58 with `gstack`** vs. **61 of 99 without it** (and 29 vs. 29 on security fixes). Use skills for `/grill-me` alignment (`mattpocock/skills`), formal verification (`pstack`'s TLA+/Lean), browser QA, and shipping checklists — rely on **mechanical repo gates** for code quality.
+- **Composable skills beat heavyweight SDLC frameworks:** `mattpocock/skills` (332.8k★) explicitly warns that process-owning stacks (`GSD`, `BMAD`, `Spec-Kit`) hide failure modes; `gsd-build/get-shit-done` (64.1k★) archived after a May 2026 compromise warning (`open-gsd/gsd-core`), and `gstack` swelled to **45.1 MB TS + 38 workflows** just to test its own skills.
+- **Standout mechanical wins from Chunk 6:**
+  - **`mattpocock/sandcastle`:** All-5-category type-aware `oxlint` straitjacket + **`lint-shrink.yml` bot** (automatically lowers debt baselines and raises the E2E coverage floor on every push to `main`) + `tests/docs-guide.test.ts` + real Bubblewrap/Windows/macOS containment CI.
+  - **`mattpocock/skills` & `pstack`:** Always start subagents with a **fresh context window** (Codex forks parent context by default); pair `disable-model-invocation: true` with `agents/openai.yaml` so Codex doesn't auto-load explicit skills; use `pstack-claude`'s **`tools/forks.json`** to mechanically track every fork from upstream.
+  - **`garrytan/gstack`:** Prompt/catalog token-budget ratchets (`2,292` token cap), **`egress-receipt-wiring.test.ts`** (fails CI on any unreceipted outbound network call), and pre-registered eval panels with a hard `$150/wk` spend cap.
+  - **`github/spec-kit` & `Fission-AI/OpenSpec` & `BMAD`:** Firewall-sandboxed GitHub Agentic Workflows (`gh-aw`), **`startup-modules.test.ts`** CLI cold-start guards, *"length and ambiguity are paid on every run; prefer deleting to hedging"*, and `obra/superpowers`'s **94% PR rejection rate** anti-slop gate.
+
+---
+
+## 7. The 7 Fatal Traps to Avoid
 
 1. **Shipping without CI, linter, or tests** (`1code`).
 2. **Polyglot / multi-surface scope sprawl ahead of team size** (`vibe-kanban`, `cmux`).
@@ -97,7 +111,7 @@ If an agent makes a mistake twice, **stop putting it in `AGENTS.md` and make the
 
 ---
 
-## 7. Minimum Viable Upgrade (First 6 Changes to Ship)
+## 8. Minimum Viable Upgrade (First 6 Changes to Ship)
 
 1. Trim `AGENTS.md` to <180 incident-cited lines, symlink `CLAUDE.md`, and add `Doc voice` + *"Choose good compromises"* + multi-agent Git safety rules.
 2. Create a 1-page **`REVIEW.md`** seeded from your last 10–15 real PR review catches.

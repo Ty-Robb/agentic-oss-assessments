@@ -1,0 +1,397 @@
+{
+  "repo": "michael-denyer/pstack-claude",
+  "meta": {
+    "description": "Antigravity, Claude Code, Codex, Copilot, DeepSeek Harness, Gemini, Grok Build, Kimi Code, MiniMax Code, Muse, OMP, OpenCode, Pi, Prime Agent, etc versions of Poteto's pstack. Rigorous agent workflows with Cursor primitives translated for other harnesses.",
+    "homepage": "",
+    "license": "MIT",
+    "stars": 4872,
+    "forks": 452,
+    "open_issues": 16,
+    "archived": false,
+    "created_at": "2026-05-26T13:26:00Z",
+    "pushed_at": "2026-11-25T13:27:53Z",
+    "default_branch": "main",
+    "topics": [
+      "agent-plugin",
+      "agent-skills",
+      "agentic-ai",
+      "anthropic",
+      "antigravity-skills",
+      "chatgpt",
+      "claude",
+      "claude-code",
+      "claude-code-skills",
+      "claude-plugin",
+      "claude-skills",
+      "code-review",
+      "codex",
+      "codex-cli",
+      "codex-plugin",
+      "codex-skills",
+      "gemini-cli",
+      "muse-plugin",
+      "opencode",
+      "pstack"
+    ]
+  },
+  "languages": {
+    "JavaScript": 982558,
+    "TypeScript": 798230,
+    "Lean": 51998,
+    "TLA": 48807,
+    "Shell": 43829,
+    "Mermaid": 21756,
+    "Awk": 21322,
+    "Python": 12100,
+    "PowerShell": 8644,
+    "Java": 2717
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".claude-plugin/",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".markdownlint-cli2.jsonc",
+      ".pre-commit-config.yaml",
+      "CHANGES.md",
+      "CONTEXT.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "LICENSE-cursor-team-kit",
+      "LICENSE-thermos",
+      "NOTICE-skills.md",
+      "NOTICE.md",
+      "README.md",
+      "SECURITY.md",
+      "VERSION",
+      "assets/",
+      "bun.lock",
+      "bunfig.toml",
+      "docs/",
+      "installer/",
+      "kimi.plugin.json",
+      "lean/",
+      "package.json",
+      "plugins/",
+      "tests/",
+      "tla/",
+      "tools/"
+    ],
+    "workflows": [
+      "ci.yml",
+      "dependency-review.yml",
+      "hol-plugin-scanner.yml",
+      "release-npm.yml",
+      "scorecard.yml",
+      "security.yml"
+    ],
+    "docs": [
+      "pi-equivalence.md",
+      "reference.md"
+    ],
+    "docs_count": 2,
+    "agents_dir": [
+      "plugins/"
+    ],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 25861,
+      "line_count": 141,
+      "truncated": true,
+      "excerpt": "# Contributing\n\nThanks for helping out. This repo is a **port**, not an original work: the `skills/` tree tracks [upstream pstack](https://github.com/cursor/plugins/tree/main/pstack) and gets synced forward periodically. That one fact shapes most of what follows.\n\n[CONTEXT.md](CONTEXT.md) is the glossary for the terms below.\n\n## The sync boundary\n\nUpstream owns skill content. This port owns the Cursor-to-Claude-Code translation. It also carries named forks, each declared in [`tools/forks.json`](tools/forks.json) as a `port-feature` (Claude Code, Codex, Pi, GitHub Copilot, Muse, or MiniMax Code mechanics upstream cannot carry) or a `policy` (a workflow change the port chose to keep).\n\nBoth kinds of `SKILL.md` change land here. Upstream rarely merges pull requests from outside its own team, so this port does not ask you to land a change there first. Before changing a `SKILL.md`, work out which kind yours is:\n\n- **Fixing the port.** A Cursor primitive that resolves wrong on Claude Code, a broken cross-reference, a stale model slug. Open a PR.\n- **Changing what a skill does.** New steps, a different workflow, reworded guidance. Open a PR here too. The port keeps the change as a `policy` fork, and every later sync merges it three ways against upstream's new text. Keep the edit small and in one place, because a wide rewrite conflicts each time upstream touches the same lines, and someone has to settle the change again under time pressure.\n\nDeclare each file your change forks in `tools/forks.json` in the same PR, so the next sync knows it is deliberate and not drift. Set the entry's `upstream` field to `not-proposed`, or to the URL of an upstream PR or issue if you opened one.\n\nPut new port behavior in a file of its own where you can, rather than in a file upstream owns. A port-only file never conflicts in a sync. `watch-pr/shipping.ts` and `watch-pr/landing.ts` are port-only, while the edits inside `watch-pr/policy.ts` and `watch-pr/github.ts` are forks that every sync touching those files has to settle again. The `watch-pr` forks already hold most of the port's forked lines, as `bun tools/sync.mjs pstack <pinned sha> --dry-run` prints.\n\nEach substitution rule in [`tools/substitutions.json`](tools/substitutions.json) has a `rationale` field that gives its reason. If you add a rule, fill in its `rationale` in the same PR.\n\n### Running a sync\n\n```shell\nbun tools/sync.mjs pstack <new-upstream-sha>\n```\n\n`tools/upstream.json` pins the current upstream SHA per component; `tools/substitutions.json` holds the mechanical Cursor-to-Claude rewrites and a denylist of Cursor-isms that need a rewritten sentence rather than a token swap. A rewrite matches a literal `pattern` or a `regex`, optionally only in files whose upstream-relative path matches `files`, and carries a literal `replacement` and a `rationale`; a denylist entry is a literal `token` or a `regex`. Rewrites run in order, each on the output of the ones before it, so a pattern goes above any shorter pattern it contains. The tool fails on a rule in the reverse order, on an unknown field, and on a rule without exactly one matcher. Match a shape, such as a backticked model slug, rather than one version of it, so an upstream model bump needs no new rule. When upstream rewords a sentence a rule matches, split the rule around the words that changed, so one set of rules reads both pins. `bun tools/sync.mjs --check-rules`, which CI runs, fails on each rule that matches no upstream file at the pinned SHAs. Delete such a rule. If upstream may bring its text back, add a denylist entry for that text instead, because the denylist fails the sync that reintroduces it. The tool fetches both upstream revisions and derives each upstream file into its port form: the substitutions, then `deriveSkill` in `tools/generate.mjs`. It sets a skill's or plugin agent's `name` to its directory or file name, drops the Cursor-only `mode`, `icon`, `color`, `reminder`, and `is_background` keys, and drops `disable-model-invocation` (or swaps it for `user-invocable: false` on a `principle-*` leaf). Then it applies the generator's stamps, appending a `## Models` section where upstream has none. It writes files whose only local differences came from upstream (new files included), deletes files upstream removed that the port never edited in text or mode, and runs `git merge-file` on the rest: a file the port forked that upstream left alone (its text or only its mode) is counted as forked and left alone, non-overlapping edits are merged and written, and a real conflict is written with git's `<<<<<<< local`, `=======`, and `>>>>>>> upstream` markers and listed with its hunk count. A written file takes upstream's file mode, except that a merged or conflicted file keeps the port's mode when upstream left the mode alone. Mode here means what git records, executable or not. A write grants no permission that the file's own bits or your umask withhold. A new file is created through the umask. An existing file changes only when its mode has to, and then only in its execute bits, which are set where the file is readable or all cleared. An upstream change to the executable bit alone is written too. Symlinks, upstream's or the port's at an upstream path or at a directory above one, and files upstream deleted that the port had edited join the same conflicts list under their own reason. A deleted file the port had edited stays, and prints under the pinned summary as now port-only, so the CHANGES.md entry can record that decision. The tool never follows or writes through a symlink on either side. An upstream link's target can sit outside the clone, and writing through a port link would change or create its target. A file that differs three ways cannot carry markers when upstream's or the port's copy is binary, so it fails the run with its path: replace it with upstream's version or add it to `exclude`, then rerun. A port path in the way of a file upstream writes also fails the run, before any write"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 17666,
+      "line_count": 317,
+      "truncated": true,
+      "excerpt": "# pstack\n\n[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/codenyer)\n[![Mentioned in Awesome Claude Code](https://awesome.re/mentioned-badge.svg)](https://github.com/hesreallyhim/awesome-claude-code)\n\nLauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack) is an opinionated Cursor skill stack that improves agent outcomes. This is a port for Claude Code, Codex, Pi, GitHub Copilot, Muse, and other agent harnesses. It tracks upstream and also carries named policy forks, each declared in [`tools/forks.json`](tools/forks.json).\n\nTell `poteto-mode` your goal and it will invoke the correct workflow for the task. It keeps your code concise, simple and verified.\n\nFor concurrency bugs and invariants that tests cannot reach, `/create-formal-verification-skill` picks the riskiest property in your code, verifies it with a tool that fits, and leaves a project skill the next agent reruns. The separate [agent-formal-verify](https://github.com/michael-denyer/agent-formal-verify) plugin goes deeper on the method, with guided TLA+ model checking, Lean proofs, and Kani for Rust.\n\n## Built for Claude Code\n\nThis port translates upstream's Cursor skills for Claude Code before installation. [Upstream's Claude Code install](https://github.com/cursor/plugins/tree/ca782ed/harness/pstack/claude-code) asks agents to translate Cursor names at runtime, using extra tokens and relying on them to apply the mapping correctly. This port also adds a SessionStart hook that routes tasks to `poteto-mode`.\n\n## Install\n\n### Any harness: npm or Homebrew\n\n```shell\nnpx open-pstack\n```\n\nOr install it once and run it by name:\n\n```shell\nnpm install -g open-pstack\nopen-pstack\n```\n\nWith Homebrew:\n\n```shell\nbrew install michael-denyer/tap/open-pstack\n```\n\n`open-pstack` needs Node 20 or later; Homebrew installs Node for you. It finds the agent harnesses on your `PATH` and shows a picker. Press Enter to install into the ones it found, or choose others by number or id, then confirm the planned steps. It runs the same recipe as each harness's section below.\n\n| Option | Effect |\n| --- | --- |\n| `--only claude,pi` | Install into the named harnesses without the picker. Each section below gives its id. |\n| `--yes` | Install into every detected harness without asking. |\n| `--dry-run` | Print every step without running or writing anything. |\n| `--list` | Show each harness id and whether it was detected. |\n\nThe shared `~/.agents/skills` directory (id `skills`) is never chosen by default, because Codex and OpenCode read it as well as their own plugin and would load each skill twice. Choose it for Gemini CLI, Prime Agent, or DeepSeek Harness.\n\nMuse, Grok Build, MiniMax Code, Antigravity, and the shared skills directory install from a local copy of the plugin, so no clone is needed: `open-pstack` stages the copy that ships with it at `~/.local/share/open-pstack/pstack`, or under `XDG_DATA_HOME` when that is set. To update, upgrade the installer (`npm update -g open-pstack` or `brew upgrade open-pstack`) and run `open-pstack` again. That refreshes the staged copy, so the shared skills links pick up the new version and any new skills. Plugins that a harness installed itself update through that harness, as its section below describes. See [Install with open-pstack](docs/reference.md#install-with-open-pstack) for uninstalling.\n\n### One harness at a time\n\n<details>\n<summary><strong>Claude Code</strong></summary>\n\nRun in Claude Code 2.1.292 or later:\n\n```text\n/plugin marketplace add michael-denyer/pstack-claude\n/plugin install pstack@pstack-claude\n```\n\nClaude Code leaves auto-update off for third-party marketplaces, so pstack stays on the version you installed. To turn it on, run `/plugin`, open the **Marketplaces** tab, select `pstack-claude`, and choose **Enable auto-update**. To update once by hand, run `claude plugin update pstack@pstack-claude`.\n\nOr: `npx open-pstack --only claude`.\n\n</details>\n\n<a id=\"codex\"></a>\n<details>\n<summary><strong>Codex</strong></summary>\n\nRun in your terminal:\n\n```shell\ncodex plugin marketplace add michael-denyer/pstack-claude\ncodex plugin add pstack@pstack-claude\n```\n\nInvoke a skill by typing `$` and its name, such as `$poteto-mode` or `$babysit`, then choosing its entry, which inserts `$pstack:<name>`. `/skills` lists every skill.\n\nOr: `npx open-pstack --only codex`.\n\n</details>\n\n<details>\n<summary><strong>Pi</strong></summary>\n\nRun in your terminal, with Pi 1.5.1 or later:\n\n```shell\npi install git:github.com/michael-denyer/pstack-claude\n```\n\nThe package loads the skills and the pstack Pi extension, which adds the subagent, question, and wake-up tools the skills use, plus `/loop` and the routing instruction. Invoke a skill with `/skill:<name>`.\n\nOr: `npx open-pstack --only pi`.\n\n</details>\n\n<details>\n<summary><strong>GitHub Copilot</strong></summary>\n\nRun in your terminal:\n\n```shell\ncopilot plugin marketplace add michael-denyer/pstack-claude\ncopilot plugin install pstack@pstack-claude\n```\n\nThis installs pstack for the Copilot CLI and the GitHub Copilot app, which share `~/.copilot`. Start a new session afterwards. Copilot ships no default pstack models, so the first skill that needs one runs `setup-pstack` to pick from the models your account lists, and later sessions reuse that choice.\n\nThe Copilot build is tested on Copilot CLI 1.0.87 through 1.0.92. On those versions the routing hook's context reaches the session alongside other plugins' session-start context. If a later version keeps only one plugin's context, `setup-pstack` offers a [standing instruction](plugins/pstack/skills/setup-pstack/copilot.md#wire-it-in) for `~/.copilot/copilot-instructions.md` instead. On 1.0.92, once the CLI caches its computer-use experiment assignment, `copilot -p` sessions list no plugin skills and a `skill` call returns \"Skill not found\". Interactive sessions, the hooks, and the agents are unaffected.\n\nOr: `npx open-psta"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 1350,
+      "line_count": 52,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"pstack\",\n  \"private\": true,\n  \"version\": \"0.9.155\",\n  \"description\": \"If you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence. Pi and OpenCode package of the Claude Code plugin; skills are shared, and runtime mappings translate tool names. Original pstack by Lauren Tan (poteto).\",\n  \"author\": {\n    \"name\": \"Michael Denyer\",\n    \"url\": \"https://github.com/michael-denyer\"\n  },\n  \"homepage\": \"https://github.com/michael-denyer/pstack-claude\",\n  \"repository\": \"https://github.com/michael-denyer/pstack-claude\",\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"pi-package\",\n    \"pstack\",\n    \"poteto-mode\",\n    \"workflow\",\n    \"principles\",\n    \"agent-style\",\n    \"subagents\",\n    \"unslop\",\n    \"claude-code\",\n    \"skills\",\n    \"tdd\",\n    \"code-review\",\n    \"parallel-agents\",\n    \"codex\",\n    \"opencode\",\n    \"gemini-cli\",\n    \"prime-agent\"\n  ],\n  \"pi\": {\n    \"skills\": [\n      \"./plugins/pstack/skills\"\n    ],\n    \"extensions\": [\n      \"./plugins/pstack/pi/index.ts\"\n    ]\n  },\n  \"exports\": {\n    \"./server\": \"./plugins/pstack/opencode/index.js\"\n  },\n  \"peerDependencies\": {\n    \"@earendil-works/pi-coding-agent\": \"*\",\n    \"typebox\": \"*\"\n  },\n  \"peerDependenciesMeta\": {\n    \"@earendil-works/pi-coding-agent\": {\n      \"optional\": true\n    }\n  }\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 20791,
+      "line_count": 469,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  pull_request:\n  push:\n    branches: [main]\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ci-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  generated:\n    name: Generated files current\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          persist-credentials: false\n      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version: \"1.4.4\"\n      - name: Install dependencies\n        run: bun install --frozen-lockfile\n      - name: Install the copy of Pi the tests load\n        run: bun install --frozen-lockfile\n        working-directory: plugins\n      - name: Check generated files and plugin invariants\n        run: bun tools/generate.mjs --check\n      - name: Tool and invariant fixture tests\n        run: bun test tests/\n\n  windows-hooks:\n    name: Windows session hooks\n    runs-on: windows-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          persist-credentials: false\n      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version: \"1.4.4\"\n      - name: Install dependencies\n        run: bun install --frozen-lockfile\n      # The runner's first Windows PowerShell launch takes from 2.5 s to over\n      # 10 s, and the run steps above use pwsh, so without this step that cost\n      # lands in the first test. The first ConvertFrom-Json, which the Muse hook\n      # runs on models.json, took 1.5 s to over 10 s in the first Muse test\n      # with a sheet. Paid here, both leave the 10 s timeout to catch a hook\n      # launch that is slow every time.\n      - name: Warm up Windows PowerShell\n        shell: powershell\n        run: \"'{}' | ConvertFrom-Json | Out-Null\"\n      - name: Test Windows session hooks\n        run: bun test --timeout 10000 tests/session-hook-windows.test.mjs\n        env:\n          PSTACK_REQUIRE_WINDOWS_HOOK: \"1\"\n\n  windows-worktree-audit:\n    name: Windows worktree audit\n    runs-on: windows-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          persist-credentials: false\n      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version: \"1.4.4\"\n      - name: Install dependencies\n        run: bun install --frozen-lockfile\n      - name: Install the copy of Pi the tests load\n        run: bun install --frozen-lockfile\n        working-directory: plugins\n      - name: Test the worktree audit\n        run: bun test --timeout 30000 tests/worktree-audit.test.mjs\n\n  windows-installer:\n    name: Windows open-pstack installer\n    runs-on: windows-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          persist-credentials: false\n      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version: \"1.4.4\"\n      # The CLI runs under the runner's node, and launches each harness stub\n      # as a .cmd shim through cmd.exe, as npm installs a harness CLI.\n      - name: Test the installer CLI end to end\n        run: bun test tests/installer.test.mjs\n\n  forks:\n    name: Fork registry\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          persist-credentials: false\n      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version: \"1.4.4\"\n      - name: Install dependencies\n        run: bun install --frozen-lockfile\n      # A dry-run sync to the SHA already pinned compares the port with\n      # upstream as it stands, and fails on a fork tools/forks.json lacks or\n      # an entry whose path is not forked. bash ignores the exit status of a\n      # process substitution, so jq fills a variable first. Fed straight to\n      # the loop, a jq error runs it zero times and the step passes.\n      - name: Check every fork from upstream is declared\n        run: |\n          set -eo pipefail\n          components=$(jq -r '.components | to_entries[] | \"\\(.key) \\(.value.sha)\"' tools/upstream.json)\n          if [ -z \"$components\" ]; then\n            echo \"tools/upstream.json "
+    },
+    "dependency-review.yml": {
+      "path": ".github/workflows/dependency-review.yml",
+      "size_bytes": 563,
+      "line_count": 22,
+      "truncated": false,
+      "excerpt": "name: Dependency review\n\non:\n  pull_request:\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  dependency-review:\n    name: Dependency review\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      # Compares the dependency graph of base and head through the API, so no\n      # checkout is needed. Fails the PR when it adds a dependency with a\n      # known vulnerability.\n      - uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T13:27:51Z",
+      "oldest": "2026-11-19T01:19:14Z"
+    },
+    "conventional_pct": 2.0,
+    "fix_revert_pct": 0.0,
+    "ai_coauthor_pct": 0.0,
+    "top_recent_authors": [
+      [
+        "michael-denyer",
+        30
+      ],
+      [
+        "abc123931",
+        4
+      ],
+      [
+        "oliver-mee",
+        3
+      ],
+      [
+        "flipcyde101",
+        3
+      ],
+      [
+        "seonwooj0810",
+        2
+      ],
+      [
+        "dependabot[bot]",
+        1
+      ],
+      [
+        "wes-davis",
+        1
+      ],
+      [
+        "johnkattenhorn",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "2f6de895",
+        "date": "2026-11-25T13:27:51Z",
+        "author": "dependabot[bot]",
+        "subject": "ci: bump hashgraph-online/ai-plugin-scanner-action from 1.2.816 to 1.2.817 (#552)",
+        "ai_signal": false
+      },
+      {
+        "sha": "103a68d9",
+        "date": "2026-11-24T20:24:58Z",
+        "author": "wes-davis",
+        "subject": "Sync to upstream ca782ed (v0.15.48): add /reframe (#547)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e7570a0b",
+        "date": "2026-11-24T17:44:00Z",
+        "author": "michael-denyer",
+        "subject": "Release 0.9.154 (#546)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e5adc4f3",
+        "date": "2026-11-24T16:38:46Z",
+        "author": "oliver-mee",
+        "subject": "Keep principle leaves out of Codex's implicit skill list (#544)",
+        "ai_signal": false
+      },
+      {
+        "sha": "734e4731",
+        "date": "2026-11-24T16:30:07Z",
+        "author": "oliver-mee",
+        "subject": "Map Codex agent roles, isolation, and structured questions (#540)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b2f7b9e4",
+        "date": "2026-11-24T16:24:21Z",
+        "author": "oliver-mee",
+        "subject": "Run Codex session routing when a chat is forked (#542)",
+        "ai_signal": false
+      },
+      {
+        "sha": "595c0ca9",
+        "date": "2026-11-24T13:56:57Z",
+        "author": "michael-denyer",
+        "subject": "Add Scorecard and dependency review workflows (#532)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d97205a0",
+        "date": "2026-11-24T13:29:28Z",
+        "author": "michael-denyer",
+        "subject": "Replace every wildcard in the Pi typecheck paths test (#534)",
+        "ai_signal": false
+      },
+      {
+        "sha": "66181d3c",
+        "date": "2026-11-23T14:05:40Z",
+        "author": "michael-denyer",
+        "subject": "Release 0.9.153 (#530)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e78f3a6c",
+        "date": "2026-11-23T13:57:29Z",
+        "author": "michael-denyer",
+        "subject": "Read PRs over REST in watch-pr when a cloud session refuses GraphQL (#529)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f3b4ac49",
+        "date": "2026-11-23T11:09:25Z",
+        "author": "michael-denyer",
+        "subject": "Escape harness shim arguments for cmd.exe, %NAME% included (#528)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1b335d9f",
+        "date": "2026-11-23T09:34:03Z",
+        "author": "michael-denyer",
+        "subject": "Release 0.9.152 (#527)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4104a31e",
+        "date": "2026-11-23T09:25:28Z",
+        "author": "michael-denyer",
+        "subject": "Register pstack's bundled agents in the OpenCode plugin (#524)",
+        "ai_signal": false
+      },
+      {
+        "sha": "81603a46",
+        "date": "2026-11-23T04:56:06Z",
+        "author": "michael-denyer",
+        "subject": "Read the Pi agent host from the project sheet and ask git once per directory (#525)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2755973d",
+        "date": "2026-11-23T04:55:41Z",
+        "author": "michael-denyer",
+        "subject": "Run the open-pstack CLI tests on Windows (#523)",
+        "ai_signal": false
+      },
+      {
+        "sha": "45da1de6",
+        "date": "2026-11-23T03:22:12Z",
+        "author": "michael-denyer",
+        "subject": "Link poteto-mode's bugbot-triage pointer (#522)",
+        "ai_signal": false
+      },
+      {
+        "sha": "8d2d4bfb",
+        "date": "2026-11-23T02:54:40Z",
+        "author": "michael-denyer",
+        "subject": "Paginate the cloud-session commit statuses read (#521)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b26c2b09",
+        "date": "2026-11-23T02:30:02Z",
+        "author": "michael-denyer",
+        "subject": "Paginate the cloud-session list reads and link babysit's pointers (#519)",
+        "ai_signal": false
+      },
+      {
+        "sha": "36b090e3",
+        "date": "2026-11-23T01:51:57Z",
+        "author": "michael-denyer",
+        "subject": "Release 0.9.151 (#517)",
+        "ai_signal": false
+      },
+      {
+        "sha": "231fefff",
+        "date": "2026-11-23T01:39:02Z",
+        "author": "abc123931",
+        "subject": "Point shipping and fix-ci at the cloud-session REST reads (#515)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "michael-denyer",
+      "contributions": 331
+    },
+    {
+      "login": "EthanYoQ",
+      "contributions": 14
+    },
+    {
+      "login": "donbeave",
+      "contributions": 9
+    },
+    {
+      "login": "dependabot[bot]",
+      "contributions": 9
+    },
+    {
+      "login": "foreztgump",
+      "contributions": 6
+    },
+    {
+      "login": "wattanartongtipsukon-create",
+      "contributions": 6
+    },
+    {
+      "login": "harrymunro",
+      "contributions": 5
+    },
+    {
+      "login": "abc123931",
+      "contributions": 4
+    },
+    {
+      "login": "oliver-mee",
+      "contributions": 3
+    },
+    {
+      "login": "phant0um",
+      "contributions": 3
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v0.9.155",
+      "published_at": "2026-11-24T20:25:17Z",
+      "name": "0.9.155"
+    },
+    {
+      "tag": "v0.9.154",
+      "published_at": "2026-11-24T17:44:26Z",
+      "name": "0.9.154"
+    },
+    {
+      "tag": "v0.9.153",
+      "published_at": "2026-11-23T14:05:52Z",
+      "name": "0.9.153"
+    },
+    {
+      "tag": "v0.9.152",
+      "published_at": "2026-11-23T09:34:14Z",
+      "name": "0.9.152"
+    },
+    {
+      "tag": "v0.9.151",
+      "published_at": "2026-11-23T01:52:17Z",
+      "name": "0.9.151"
+    }
+  ]
+}

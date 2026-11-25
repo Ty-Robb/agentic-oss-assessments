@@ -1,0 +1,379 @@
+{
+  "repo": "bmad-code-org/BMAD-METHOD",
+  "meta": {
+    "description": "Breakthrough Method for Agile Ai Driven Development",
+    "homepage": "",
+    "license": "NOASSERTION",
+    "stars": 55740,
+    "forks": 6212,
+    "open_issues": 116,
+    "archived": false,
+    "created_at": "2025-04-13T14:54:25Z",
+    "pushed_at": "2026-11-25T05:49:42Z",
+    "default_branch": "main",
+    "topics": [
+      "agile",
+      "ai",
+      "context-engineering",
+      "sdlc",
+      "spec-driven-development"
+    ]
+  },
+  "languages": {
+    "Python": 1769506,
+    "HTML": 269823,
+    "JavaScript": 131784,
+    "CSS": 25969,
+    "Astro": 21980,
+    "TypeScript": 971
+  },
+  "structure": {
+    "root": [
+      ".coderabbit.yaml",
+      ".github/",
+      ".gitignore",
+      ".npmrc",
+      ".pre-commit-config.yaml",
+      ".python-version",
+      ".yamllint.yaml",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CNAME",
+      "CONTRIBUTING.md",
+      "CONTRIBUTORS.md",
+      "LICENSE",
+      "README.md",
+      "SECURITY.md",
+      "TRADEMARK.md",
+      "Wordmark.png",
+      "action.yml",
+      "banner-bmad-method.png",
+      "docs-site/",
+      "docs/",
+      "greptile.json",
+      "pyproject.toml",
+      "skills/",
+      "tools/",
+      "uv.lock"
+    ],
+    "workflows": [
+      "coderabbit-review.yaml",
+      "discord.yaml",
+      "docs.yaml",
+      "quality.yaml",
+      "retarget-pr.yaml"
+    ],
+    "docs": [
+      "404.md",
+      "_STYLE_GUIDE.md",
+      "build/",
+      "customize/",
+      "existing-codebases/",
+      "images/",
+      "index.md",
+      "plan/",
+      "reference/",
+      "start/",
+      "toolsmith/"
+    ],
+    "docs_count": 11,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 2202,
+      "line_count": 35,
+      "truncated": false,
+      "excerpt": "<!-- bmad:context -->\n<!-- Verified 2026-10-04 against 3cae711e. Managed by bmad-project-context; edits inside this block are replaced on refresh. Keep anything you want preserved outside the markers. -->\n\n# BMAD-METHOD\n\nOpen source framework for structured, agent-assisted software delivery. Skills live in `skills/`, Python tooling in `tools/`, the Astro docs site in `docs-site/`, and documentation in `docs/`.\n\n## Policy\n\n- Use Conventional Commits for every commit.\n- No tool or model attribution, anywhere.\n- Push only when explicitly requested. Commit first; the worktree must be clean with no untracked files.\n- Pull requests: branch from and target `dev` branch. Verify with `gh pr view` after creating.\n- Never push to `main` except by following `tools/release.md`. Legacy npm installer is maintained separately on `V6.12` branch.\n\n## Where things are\n\n- Skill validation rules: `tools/skill-validator.md`.\n- Rules shared by every skill that reads or writes the ticket tree: `tools/ticket-tree-rules.md`.\n- Documentation conventions: `docs/_STYLE_GUIDE.md`.\n\n## Running and verifying\n\n- To validate skills: `uv run tools/validate_skills.py --strict`.\n- To run the Python tests: `uv run --frozen python -B -m pytest`.\n\n## Conventions that differ from defaults\n\n- Skills, workflows, tasks, and agent definitions are prompt text an agent reads in full on every run. Length and ambiguity are paid on every run; a corner case is paid only when it occurs. So do not add instructions for exotic cases \u2014 the model usually handles them from context, and the reviewing human can correct it when it does not.\n- Write template conditionals as block-level `{% if %}` on their own lines, never inside a sentence; a whitespace-only difference in one rendered variant is an acceptable price for readable source.\n- Leave runtime choices as prose: when the model decides a value while running, the alternatives stay in the text. Render-time conditionals are only for values fixed before the render.\n- Prefer deleting an instruction to hedging it.\n- Automated tests assert outcomes produced by deterministic code. Do not write automated tests for LLM output or for static source text.\n\n<!-- /bmad:context -->\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 7463,
+      "line_count": 192,
+      "truncated": true,
+      "excerpt": "# Contributing to BMad\n\nThank you for considering contributing! We believe in **Human Amplification, Not Replacement** \u2014 bringing out the best thinking in both humans and AI through guided collaboration.\n\n\ud83d\udcac **Discord**: [Join our community](https://discord.gg/gk8jAdXWmj) for real-time discussions, questions, and collaboration.\n\n---\n\n> **Before you write code: talk to us on [Discord](https://discord.gg/gk8jAdXWmj).**\n>\n> If your change adds features, restructures code, or touches more than a couple of files, **confirm with a maintainer that it fits**. A large PR out of the blue has a high chance of being closed \u2014 regardless of effort invested. A five-minute conversation can save you hours.\n\n---\n\n## Our Philosophy\n\nBMad strengthens human-AI collaboration through specialized agents and guided workflows. Every contribution should answer: **\"Does this make humans and AI better together?\"**\n\n**\u2705 What we welcome:**\n- Enhanced collaboration patterns and workflows\n- Improved agent personas and prompts\n- Domain-specific modules leveraging BMad Core\n- Better planning and context continuity\n\n**\u274c What doesn't fit:**\n- Purely automated solutions that sideline humans\n- Complexity that creates barriers to adoption\n- Features that fragment BMad Core's foundation\n\n---\n\n## Reporting Issues\n\n**ALL bug reports and feature requests MUST go through GitHub Issues.**\n\n### Before Creating an Issue\n\n1. **Search existing issues** \u2014 Use the GitHub issue search to check if your bug or feature has already been reported\n2. **Search closed issues** \u2014 Your issue may have been fixed or addressed previously\n3. **Check discussions** \u2014 Some conversations happen in [GitHub Discussions](https://github.com/bmad-code-org/BMAD-METHOD/discussions)\n\n### Bug Reports\n\nAfter searching, if the bug is unreported, use the [bug report template](https://github.com/bmad-code-org/BMAD-METHOD/issues/new?template=bug-report.yaml) and include:\n\n- Clear description of the problem\n- Steps to reproduce\n- Expected vs actual behavior\n- Your environment (model, IDE, BMad version)\n- Screenshots or error messages if applicable\n\n### Feature Requests\n\nAfter searching, use the [feature request template](https://github.com/bmad-code-org/BMAD-METHOD/issues/new?template=feature-request.md) and explain:\n\n- What the feature is\n- Why it would benefit the BMad community\n- How it strengthens human-AI collaboration\n\n**For community modules**, review [TRADEMARK.md](TRADEMARK.md) for proper naming conventions (e.g., \"My Module (BMad Community Module)\").\n\n---\n\n## Before Starting Work\n\n| Work Type               | Requirement                                              |\n| ----------------------- | -------------------------------------------------------- |\n| Typo / small bug fix    | Just open the PR                                         |\n| Feature or large change | Confirm with a maintainer on Discord **before** you start |\n\n---\n\n## Pull Request Guidelines\n\n### Target Branch\n\n- **Development:** branch from `dev` and target `dev`.\n- `main` is release-only and remains the default branch.\n- **6.12 npm maintenance:** branch from and target `V6.12`, which still ships through npm.\n\nPRs opened against `main` are retargeted to `dev`.\n\n### PR Size\n\n- **Ideal**: 200-400 lines of code changes\n- **Maximum**: 800 lines (excluding generated files)\n- **One feature/fix per PR**\n\nIf your change exceeds 800 lines, break it into smaller PRs that can be reviewed independently.\n\n### AI-Generated Code\n\nGiven the nature of this project, we expect most contributions involve AI assistance \u2014 that's fine. What we require is **heavy human curation**. You must understand every line you're submitting, have made deliberate choices about what to include, and be able to explain your reasoning.\n\nWe will reject PRs that read like raw LLM output: bulk refactors nobody asked for, unsolicited \"improvements\" across many files, or changes where the submitter clearly hasn't read the existing code. Using AI to write code is normal here; using AI as a substitute for thinking is not.\n\n### New to Pull Requests?\n\n1. **Fork** the repository\n2. **Clone** your fork: `git clone https://github.com/YOUR-USERNAME/bmad-method.git`\n3. **Branch from upstream dev**: add `git remote add upstream https://github.com/bmad-code-org/BMAD-METHOD.git`, run `git fetch upstream dev`, then `git switch -c fix/description upstream/dev` (or use `feature/description`).\n4. **Make changes** \u2014 keep them focused\n5. **Commit**: `git commit -m \"fix: correct typo in README\"`\n6. **Push**: `git push origin fix/description`\n7. **Open PR** from your fork into `bmad-code-org/BMAD-METHOD` with `dev` as the base branch.\n\n### PR Description Template\n\n```markdown\n## What\n[1-2 sentences describing WHAT changed]\n\n## Why\n[1-2 sentences explaining WHY this change is needed]\nFixes #[issue number]\n\n## How\n- [2-3 bullets listing HOW you implemented it]\n-\n\n## Testing\n[1-2 sentences on how you tested this]\n```\n\n**Keep it under 200 words.**\n\n### Commit Messages\n\nUse conventional commits:\n\n- `feat:` New feature\n- `fix:` Bug fix\n- `docs:` Documentation only\n- `refactor:` Code change (no bug/feature)\n- `test:` Adding tests\n- `chore:` Build/tools changes\n\nKeep messages under 72 characters. Each commit = one logical change.\n\n### Checks\n\nYour PR must pass the `Quality & Validation` checks. How you get there is up to you. Two options:\n\n- Install the pre-commit hook once per clone with `uv run pre-commit install`. It runs the Python-side lint, validation, and tests on every commit.\n- Run every check CI runs, including the docs site, with `uv sync --frozen && (cd docs-site && npm ci) && uv run --frozen tools/quality.py`.\n\n---\n\n## What Makes a Good PR?\n\n| \u2705 Do                        | \u274c Don't                      |\n| --------------------------- | ---------------------------- |\n| Change one thing per PR     | Mix unrelated changes        |\n| Clear title and description | Vague or missing explanation |\n| Reference related issues    | Reformat entire files        |\n| Small"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 8085,
+      "line_count": 120,
+      "truncated": true,
+      "excerpt": "![BMad Method](banner-bmad-method.png)\n\n\n[![Version](https://img.shields.io/github/v/tag/bmad-code-org/BMAD-METHOD?color=blue&label=version)](https://github.com/bmad-code-org/BMAD-METHOD/tags)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)\n[![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white)](https://discord.gg/gk8jAdXWmj)\n\n**Agile Ai Driven Development \u2014 turn an idea or change request into working software without giving up the thinking.**\n\nAi Driven Development (AiDD) covers the whole effort, not only the code: what to build, how it holds together, and how it changes as you learn. BMad Method is the agile way to do it \u2014 decisions stay explicit, context carries forward, and the process sizes itself to the work. Small changes go straight to build. Complex work gets the depth it needs. The same method covers a weekend prototype and a system with years of history behind it.\n\n![The BMad delivery loop: a vague notion starts at Clarify, a big clear idea at Plan, and a small change at Build and verify; Learn and adjust loops back to Plan](docs/images/bmad-delivery-loop.svg)\n\n_Start anywhere. Use BMad end to end, or carry its briefs, specifications, and architecture into your existing delivery workflow._\n\n## Start Building\n\nBMad ships on two lines. The stable release is **v6.12**, installed by the npm installer and frozen aside from bug fixes. **V7** is in preview alpha on this branch: its skills, install path, and docs change often. The v7 release ETA is mid-November 2026, and it might be sooner. Both routes need [uv](https://docs.astral.sh/uv/) for BMad setup and Python scripts.\n\n### Stable: v6.12 (recommended if stability is needed until v7 is finalized for release)\n\nWith [Node.js](https://nodejs.org) 20.12+ and [Python](https://www.python.org) 3.10+, run in your project:\n\n```bash\nnpx bmad-method install\n```\n\nOpen your project in your AI coding tool, invoke `bmad-build` with what you want to change, and run `bmad-help` whenever you want guidance on what comes next. The v6.12 source and documentation live on the [V6.12 branch](https://github.com/bmad-code-org/BMAD-METHOD/tree/V6.12).\n\n### V7 Preview Alpha (recommended for solo or small teams that can pivot as things will change before beta)\n\nExpect breaking changes between updates. You need an AI coding tool that supports skills.\n\nWith [Node.js and npm](https://nodejs.org) and Git, run in your project to install core tools and BMad Method:\n\n```bash\nnpx skills add bmad-code-org/BMAD-METHOD/skills/core-tools --skill '*'\nnpx skills add bmad-code-org/BMAD-METHOD/skills/method --skill '*'\n```\n\nEach command installs one module whole and asks which coding tools to install to. Core tools hold the `bmad` skill for setup and help, so every install needs them.\n\nOptional modules install the same way:\n\n| Module | What it adds | Install |\n| --- | --- | --- |\n| Toolsmith | Smithy builds, converts, reviews and packages skills, agents and modules; `bmad-eval` measures them | `npx skills add bmad-code-org/BMAD-METHOD/skills/toolsmith --skill '*'` |\n| Founder | Nadia the Founder Advisor coaches the business side of a startup, from idea and pricing to fundraising | `npx skills add bmad-code-org/BMAD-METHOD/skills/founder` |\n\nTo pick single skills instead, run `npx skills add bmad-code-org/BMAD-METHOD` and include `bmad` plus the record of each module you take skills from, such as `bmod-core-tools` and `bmod-method`.\n\nOpen your coding tool in the project and ask the `bmad` skill to run\n`bmad setup`. Then invoke `bmad-build` with what you want to change. Ask\n`bmad` whenever you want guidance on what comes next or what is optional.\n\nAsk for `bmad status` to check versions and see what to run next. Ask for `bmad setup` to install updates: it runs `npx skills update`, then refreshes the project and cleans up renamed and removed skills.\n\nReport preview problems in [GitHub Issues](https://github.com/bmad-code-org/BMAD-METHOD/issues) or on [Discord](https://discord.gg/gk8jAdXWmj).\n\n### Next steps\n\n**[Build your first project with BMad \u2192](https://docs.bmad-method.org/start/build-your-first-change/)**\n\n**[Add BMad to an existing codebase \u2192](https://docs.bmad-method.org/existing-codebases/start-in-an-existing-codebase/)**\n\nBMad is free and open source, with no paywalled workflows or gated community.\n\n## Why BMad?\n\nCoding assistants are effective at implementation, but they often turn unstated assumptions into code. BMad keeps you in control while its agents and workflows make the important decisions explicit and preserve them as context for the work that follows.\n\n- **Right-sized process** \u2014 Go directly to implementation for clear changes or add deeper planning for larger initiatives.\n- **New or existing code** \u2014 Start from nothing, or establish verified context on a codebase you inherited and work from what is actually there.\n- **Durable context** \u2014 Carry product and technical decisions forward instead of re-explaining them in every chat.\n- **Specialized perspectives** \u2014 Bring in product, architecture, UX, development, and testing expertise when it helps.\n- **Guided collaboration** \u2014 Use structured workflows and multiple-agent discussions without handing over judgment.\n- **One delivery path** \u2014 Move from early thinking through reviewed implementation, correction, and learning.\n\n[See how much planning a change needs \u2192](https://docs.bmad-method.org/plan/choose-a-planning-path/)\n\n## BMad Ecosystem\n\nInstall the core method or add official modules for specialized work.\n\n| Module | Purpose |\n| --- | --- |\n| **[BMad Method](https://github.com/bmad-code-org/BMAD-METHOD)** | Plan and deliver software, from new prototypes to established codebases |\n| **[BMad Builder](https://github.com/bmad-code-org/bmad-builder)** | Skill, workflow, and agent builder |\n| **[BMad Creative Intelligence Suite](https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite)** | Creative thinking partners for i"
+    },
+    "pyproject.toml": {
+      "path": "pyproject.toml",
+      "size_bytes": 1983,
+      "line_count": 66,
+      "truncated": false,
+      "excerpt": "# Development tooling for the BMAD-METHOD repository.\n#\n# This is not a distributable package: the repository tree itself is what\n# `npx skills add bmad-code-org/BMAD-METHOD` and the plugin marketplaces\n# install, and each shipped script under skills/<module>/<skill>/scripts declares its own\n# dependencies inline (PEP 723) so `uv run` works without this file.\n# The release version lives in [bmod] of each skills/<module>/bmod-*/bmod.toml, not here.\n\n[project]\nname = \"bmad-method\"\nversion = \"0\"\ndescription = \"Repository tooling for BMAD-METHOD (not published)\"\nrequires-python = \">=3.11\"\ndependencies = []\n\n[dependency-groups]\ndev = [\n  \"jinja2>=3.1\",\n  \"pre-commit>=4.6.2\",\n  \"pytest>=8\",\n  \"pytest-xdist>=3\",\n  \"pyyaml>=6.0.2,<7\",\n  \"ruamel.yaml>=0.18\",\n  \"ruff>=0.14\",\n]\n\n[tool.uv]\npackage = false\n\n[tool.pytest.ini_options]\naddopts = \"-q -ra --tb=short -n auto -p no:cacheprovider\"\ntestpaths = [\"tools/tests\", \"skills\"]\n# tools/tests/helpers.py, for the tests under skills/ as well.\npythonpath = [\"tools/tests\"]\n\n[tool.ruff]\n# Every shipped script declares the same floor inline (PEP 723) as\n# requires-python above; tools/tests/test_python_floor.py enforces that,\n# since ruff reads only this setting.\ntarget-version = \"py311\"\nline-length = 120\nextend-exclude = [\"tools/tests/fixtures\"]\n\n[tool.ruff.lint]\nselect = [\"E\", \"F\", \"I\", \"UP\", \"B\"]\nignore = [\n  \"E501\", # long lines: the formatter handles code; strings and comments may exceed\n]\n\n[tool.rumdl]\n# The five rules markdownlint enforced before; the rest stay off.\nenable = [\"MD001\", \"MD024\", \"MD026\", \"MD034\", \"MD037\"]\nexclude = [\"node_modules\", \"tools/tests/fixtures\", \"CODE_OF_CONDUCT.md\", \"docs-site/dist\", \"docs-site/.astro\"]\n\n[tool.rumdl.MD024]\nsiblings-only = true\n\n[tool.rumdl.MD026]\npunctuation = \",\"\n\n[tool.yamlfix]\n# yamlfix's default of 0 also strips blank lines inside block scalars,\n# which rewrites the shell scripts in workflows. 1 keeps them.\nwhitelines = 1\nsection_whitelines = 1\nexplicit_start = false\n"
+    }
+  },
+  "workflow_samples": {
+    "coderabbit-review.yaml": {
+      "path": ".github/workflows/coderabbit-review.yaml",
+      "size_bytes": 581,
+      "line_count": 22,
+      "truncated": false,
+      "excerpt": "name: Trigger CodeRabbit on Ready for Review\n\non:\n  pull_request_target:\n    types: [ready_for_review]\n\njobs:\n  trigger-review:\n    runs-on: ubuntu-latest\n    permissions:\n      pull-requests: write\n    steps:\n      - name: Request CodeRabbit review\n        uses: actions/github-script@v8\n        with:\n          script: |-\n            await github.rest.issues.createComment({\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              issue_number: context.payload.pull_request.number,\n              body: '@coderabbitai review'\n            });\n"
+    },
+    "retarget-pr.yaml": {
+      "path": ".github/workflows/retarget-pr.yaml",
+      "size_bytes": 785,
+      "line_count": 28,
+      "truncated": false,
+      "excerpt": "name: Retarget Development Pull Requests\n\non:\n  pull_request_target:\n    types: [opened]\n    branches: [main]\n\njobs:\n  retarget:\n    runs-on: ubuntu-latest\n    permissions:\n      pull-requests: write\n    steps:\n      - name: Retarget to dev\n        uses: actions/github-script@v8\n        with:\n          script: |-\n            const pullRequest = context.payload.pull_request;\n            await github.rest.pulls.update({\n              ...context.repo,\n              pull_number: pullRequest.number,\n              base: 'dev'\n            });\n            await github.rest.issues.createComment({\n              ...context.repo,\n              issue_number: pullRequest.number,\n              body: 'Retargeted to dev: main receives releases by fast-forward push, not PRs.'\n            });\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-12T11:41:46Z",
+      "oldest": "2026-10-16T04:36:46Z"
+    },
+    "conventional_pct": 92.0,
+    "fix_revert_pct": 46.0,
+    "ai_coauthor_pct": 6.0,
+    "top_recent_authors": [
+      [
+        "bmadcode",
+        29
+      ],
+      [
+        "alexeyv",
+        13
+      ],
+      [
+        "muratkeremozcan",
+        4
+      ],
+      [
+        "CloneOfAlex",
+        2
+      ],
+      [
+        "SamuelPSantiago",
+        1
+      ],
+      [
+        "rubensousa-uw",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "e435a225",
+        "date": "2026-11-12T11:41:46Z",
+        "author": "alexeyv",
+        "subject": "style(memlog): drop the extra blank line ruff format rejects in test_memlog.py (#3187)",
+        "ai_signal": false
+      },
+      {
+        "sha": "06c1f851",
+        "date": "2026-11-12T10:47:17Z",
+        "author": "alexeyv",
+        "subject": "fix(skills): route skill and agent authoring to Toolsmith, test that a loose plan is not a ticket problem (#3185)",
+        "ai_signal": false
+      },
+      {
+        "sha": "7d95282f",
+        "date": "2026-11-12T06:52:22Z",
+        "author": "alexeyv",
+        "subject": "fix(po): offer bmad-retrospective before closing an epic (#3184)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c67a00d1",
+        "date": "2026-11-12T06:26:37Z",
+        "author": "alexeyv",
+        "subject": "fix(memlog): read and write frontmatter with PyYAML instead of a hand-rolled parser (#3182)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ff6bb860",
+        "date": "2026-11-12T06:20:39Z",
+        "author": "alexeyv",
+        "subject": "fix(po): stop the Outcome from carrying an empty signal sentence (#3183)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3cf35b6d",
+        "date": "2026-11-11T14:36:18Z",
+        "author": "bmadcode",
+        "subject": "refactor!: group skills into one folder per module (#3181)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e9cbe2b2",
+        "date": "2026-11-11T03:42:51Z",
+        "author": "bmadcode",
+        "subject": "feat(founder): Nadia the Founder Advisor, a single-skill module (#3180)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a867e160",
+        "date": "2026-11-08T03:38:56Z",
+        "author": "bmadcode",
+        "subject": "feat(facilitate)!: Mary and John on bmad-facilitate, paced templates, a generic engine and template customization (#3176)",
+        "ai_signal": false
+      },
+      {
+        "sha": "96ebd032",
+        "date": "2026-11-08T03:26:40Z",
+        "author": "bmadcode",
+        "subject": "feat(shard-pro): editable shards, safer rebuilds, and split-by-default for long documents (#3177)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d74453f5",
+        "date": "2026-11-06T17:20:43Z",
+        "author": "alexeyv",
+        "subject": "refactor(build): write plan enum values bare, quoting only what YAML needs (#3174)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e734d3ac",
+        "date": "2026-11-06T15:45:29Z",
+        "author": "alexeyv",
+        "subject": "fix(tickets): read frontmatter with PyYAML instead of a hand-rolled parser (#3169)",
+        "ai_signal": false
+      },
+      {
+        "sha": "7687d077",
+        "date": "2026-11-05T04:19:35Z",
+        "author": "bmadcode",
+        "subject": "feat: add bmad-facilitate and move John's planning documents onto it (#3172)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2c6124f6",
+        "date": "2026-11-02T18:30:47Z",
+        "author": "CloneOfAlex",
+        "subject": "test: skip unreadable-file READ-ERR test when run as root (#3138)",
+        "ai_signal": true
+      },
+      {
+        "sha": "022be931",
+        "date": "2026-11-02T17:53:33Z",
+        "author": "CloneOfAlex",
+        "subject": "fix(tools): validate SKILL.md frontmatter as YAML (SKILL-08) (#3139)",
+        "ai_signal": true
+      },
+      {
+        "sha": "499008ea",
+        "date": "2026-11-01T03:00:45Z",
+        "author": "bmadcode",
+        "subject": "feat(skills)!: rebuild advanced elicitation to start in one command with independent readers (#3162)",
+        "ai_signal": false
+      },
+      {
+        "sha": "dc9fbb14",
+        "date": "2026-11-01T02:22:02Z",
+        "author": "bmadcode",
+        "subject": "feat(core-tools): add bmad-shard-pro and bmad-ingest (#3161)",
+        "ai_signal": false
+      },
+      {
+        "sha": "fc6a41c6",
+        "date": "2026-11-01T00:01:43Z",
+        "author": "bmadcode",
+        "subject": "feat(toolsmith): default to a single-skill module and start prose from one sentence (#3158)",
+        "ai_signal": false
+      },
+      {
+        "sha": "bd70c643",
+        "date": "2026-10-31T23:07:24Z",
+        "author": "bmadcode",
+        "subject": "fix(eval): keep git init from rewriting a hook's repository config (#3160)",
+        "ai_signal": false
+      },
+      {
+        "sha": "04874133",
+        "date": "2026-10-31T23:02:51Z",
+        "author": "bmadcode",
+        "subject": "docs: move the v7 release ETA to mid-November 2026 (#3159)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1f2d8793",
+        "date": "2026-10-31T16:53:21Z",
+        "author": "SamuelPSantiago",
+        "subject": "fix(setup): keep _bmad/render/ out of git (#3150)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "alexeyv",
+      "contributions": 706
+    },
+    {
+      "login": "bmadcode",
+      "contributions": 272
+    },
+    {
+      "login": "semantic-release-bot",
+      "contributions": 91
+    },
+    {
+      "login": "muratkeremozcan",
+      "contributions": 65
+    },
+    {
+      "login": "dracic",
+      "contributions": 23
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 16
+    },
+    {
+      "login": "lrliang",
+      "contributions": 15
+    },
+    {
+      "login": "pbean",
+      "contributions": 13
+    },
+    {
+      "login": "ksylvan",
+      "contributions": 13
+    },
+    {
+      "login": "forcetrainer",
+      "contributions": 13
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v6.12.4",
+      "published_at": "2026-10-14T21:19:19Z",
+      "name": null
+    },
+    {
+      "tag": "v6.12.3",
+      "published_at": "2026-10-14T19:34:27Z",
+      "name": null
+    },
+    {
+      "tag": "v6.12.2",
+      "published_at": "2026-10-11T05:57:04Z",
+      "name": null
+    },
+    {
+      "tag": "v6.12.1",
+      "published_at": "2026-10-04T19:29:43Z",
+      "name": null
+    },
+    {
+      "tag": "v6.12.0",
+      "published_at": "2026-09-04T02:31:25Z",
+      "name": null
+    }
+  ]
+}
