@@ -1,6 +1,6 @@
 # Chunk 5 Summary — Mobile, Terminal & Guardrail Specialists
 
-*Snapshot date: 2026-11-25. Combined stars in this chunk: **183,645★**.*
+*Snapshot date: 2026-11-25. Combined stars in this chunk: **183,643★**.*
 
 ## Side-by-Side Matrix
 
