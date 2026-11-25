@@ -6,6 +6,7 @@ Every assessment inspects the real repository via GitHub API (file trees, `AGENT
 
 ## Start Here
 
+- **[`synthesis/EXECUTIVE_BRIEF.md`](synthesis/EXECUTIVE_BRIEF.md)** — 5-minute distilled briefing covering everything learned across all 24 repos.
 - **[`synthesis/PLAYBOOK.md`](synthesis/PLAYBOOK.md)** — Master 24-repo comparison matrix, 5 empirical laws of agentic OSS, tiered **Steal Immediately / Steal as You Scale / Anti-Patterns** playbook, and a concrete Week 1–3 rollout plan for TypeScript monorepos.
 - **[`RUBRIC.md`](RUBRIC.md)** — Standardized 5-axis evaluation rubric and `pingdotgg/t3code` reference baseline.
 
