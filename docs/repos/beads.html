@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gastownhall/beads — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: gastownhall/beads">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="gastownhall/beads — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: gastownhall/beads">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="gastownhall/beads — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: gastownhall/beads">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C4 · Orchestration · gastownhall/beads</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C4 · Orchestration</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/gastownhall/beads" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-04/gastownhall__beads.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>29.0k</strong> (29,048)</span>
+        <span class="meta-chip">Open Issues: <strong>1,828</strong></span>
+        <span class="meta-chip">Workflows: <strong>23</strong></span>
+        <span class="meta-chip">AI Signal: <strong>100%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>100%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 8.0 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="beads-gastownhall-beads-formerly-steveyegge-beads">Beads (<code>gastownhall/beads</code>, formerly <code>steveyegge/beads</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>29,048★</code> · <code>1,960</code> forks · <code>1,828</code> open issues · <code>MIT</code> · Active (created Oct 2025; pushed 2026-11-24)</li><li><strong>Primary Stack:</strong> Go + <strong>Bazel</strong> (51.4 MB Go, 740 KB Starlark, CGO + embedded/server <strong>Dolt</strong> version-controlled SQL database, <code>nogo</code> lint + <code>.golangci.yml</code>, Cobra + Charmbracelet TUI, OpenTelemetry, <code>testcontainers-go</code>, Nix flake, GoReleaser, npm/PyPI wrappers).</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-04/gastownhall__beads.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-04/gastownhall__beads.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Exceptionally thoughtful 245-line <code>AGENTS.md</code> (13.6 KB)</strong> with symlinked <code>CLAUDE.md</code> (zero drift) and a 15-row routing table to <code>engdocs/</code> (<code>PROJECT_CHARTER.md</code>, <code>TESTING.md</code>, <code>LINTING.md</code>, <code>AGENT_SIGNING.md</code>, <code>UI_PHILOSOPHY.md</code>) and <code>.claude/skills/beads-docs/SKILL.md</code>.</li><li><strong>Anti-hallucination verification rules every Go/Bazel team should copy:</strong><div class="sub-item">• Explicitly warns about the <strong>Go silent-skip trap</strong>: <em>&quot;A target also passes when the test never ran (a filter that matches nothing, a skip, a file the configuration does not compile)... Go prints <code>--- PASS</code> for a test whose every subtest skipped. Count a run only when its log shows <code>--- PASS: TestName</code> and no <code>--- SKIP</code>.&quot;</em></div><div class="sub-item">• Requires <code>NOT_ENOUGH_INFO</code> in issue/PR form fields when evidence runs out (prevents agents from fabricating reproduction details!).</div><div class="sub-item">• Requires running <code>scripts/pr-preflight.sh</code> before implementing/opening/closing any PR and <code>scripts/gh-body-lint &lt;body-file&gt;</code> before posting with <code>gh ... --body-file</code>.</div></li><li><strong>Contributor-first anti-steamrolling policy:</strong> Explicitly instructs agents to search open PRs first, build on an external contributor&#x27;s branch, preserve their tests and <code>Co-authored-by:</code>, and <em>never</em> silently supersede a contributor PR.</li><li><strong>Non-interactive shell safety list:</strong> Documents exact non-interactive flags (<code>cp -f</code>, <code>rm -f</code>, <code>ssh -o BatchMode=yes</code>, <code>HOMEBREW_NO_AUTO_UPDATE=1 brew</code>, never <code>bd edit</code>) and forbids emoji-style CLI icons in favor of crisp Unicode status glyphs (<code>○ ◐ ● ✓ ❄</code>).</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Full Bazel + <code>nogo</code> + RBE (<code>rbe-west</code>) CI architecture (23 workflows):</strong><div class="sub-item">• Contributors get an <strong>anonymous read-only remote build cache (<code>--config=fork-cache</code>)</strong> so local builds hit CI cache instantly without credentials!</div><div class="sub-item">• <code>bazel-autofix.yml</code> automatically repairs out-of-sync <code>BUILD.bazel</code> files on same-repo PRs and posts apply recipes on fork PRs.</div><div class="sub-item">• <code>make check-docs</code> runs Bazel docsync + doc freshness + CLI flag verification so docs can&#x27;t drift from Cobra flags.</div></li><li><strong>Brilliant merge-queue + post-merge alerting (<code>pr.yml</code>, <code>pr-risk.yml</code>, <code>main-ci-alert.yml</code>):</strong><div class="sub-item">• Merge groups run the fast Linux/Bazel subset (<code>ci-scope.sh</code>), while pushes to <code>main</code> run the heavy cross-OS (Windows/macOS/Nix) and Dolt-tier complement.</div><div class="sub-item">• <strong><code>main-ci-alert.yml</code>:</strong> Whenever a post-merge <code>main</code> push turns red, automatically opens (or updates) a single <code>ci/main-red</code> issue listing every candidate PR in the merged batch, comments on each candidate PR, and <strong>auto-closes the issue</strong> once every tracked workflow turns green again — using <code>concurrency: { group: main-ci-alert, queue: max }</code> to avoid duplicate issues!</div><div class="sub-item">• Even its CI bash/workflow policies are unit-tested in Go (<code>scripts/main_ci_alert_test.go</code>, <code>scripts/ci_merge_queue_test.go</code>).</div></li><li><strong>Race-safe label automation (<code>remove-needs-triage.yml</code>):</strong> Explicitly handles concurrent <code>labeled</code> webhook 404 races so benign concurrent label removals don&#x27;t paint a red X on PR checks.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Git-native structured agent memory (Dolt + hash IDs):</strong> Replaces flat markdown TODO lists with a dependency-aware issue graph (<code>bd ready</code>, <code>bd update --claim</code>, <code>bd remember</code>, <code>bd prime</code>, semantic compaction) using hash-based IDs (<code>bd-a1b2</code>) to prevent multi-branch/multi-agent merge collisions, plus <code>--stealth</code> and <code>--contributor</code> modes so personal agent planning stays out of upstream PRs.</li><li><strong>Strict layering &amp; scope charter (<code>Schema → issueops → cmd/bd</code>):</strong> Enforces a hard storage-driver boundary against Dolt (<code>dolthub/driver</code>), preferring metadata over schema bloat and leaving orchestration policy to external orchestrators.</li><li><strong>Heavy root clutter trade-off:</strong> 51.4 MB of Go + Bazel + Dolt CGO + 90 KB <code>pr.yml</code> (1,735 lines!) + multiple root <code>PROPOSAL-*.md</code> and <code>*_test.go</code> files reflect intense rapid evolution from lightweight JSONL CLI to full Dolt-backed distributed graph DB.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Most agent-operated repository in the entire study:</strong><div class="sub-item">• <strong>41 of the last 50 commits (82%) are authored by <code>gascity-eddie[bot]</code>!</strong></div><div class="sub-item">• <strong>100% conventional commits</strong>, <strong>100% AI-signed (<code>Agent-Signature:</code> trailer)</strong>, <strong>82% <code>fix:</code></strong> over 8 days (2026-11-12 to 2026-11-20), driven by an automated PR pipeline (<code>status/needs-review-auto</code> → <code>status/reviewing</code> → <code>status/merge-ready</code> → <code>status/merge-queued</code>).</div><div class="sub-item">• Notice how many bot commits include <code>(supersedes #7304)</code> / <code>(GH#4135)</code> — actively burning down community backlog and edge-case bugs at high throughput while crediting original PRs/issues.</div><div class="sub-item">• All-time top contributor remains founder <code>steveyegge</code> (4,805 commits), followed by <code>maphew</code> (776), <code>julianknutsen</code> (699), <code>coffeegoddd</code> (616), and <code>gascity-eddie[bot]</code> (156).</div></li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>The &quot;Check That the Test Actually Ran&quot; rule</strong> (verifying <code>--- PASS</code> and zero <code>--- SKIP</code>, never trusting a vacuous filtered pass) — applies to Vitest/Jest/Pytest too (<code>--passWithNoTests</code> traps!).</div><div class="sub-item">• <strong><code>NOT_ENOUGH_INFO</code> evidence rule + <code>scripts/gh-body-lint</code></strong> to stop agents from hallucinating issue repros or mangling GitHub markdown.</div><div class="sub-item">• <strong><code>main-ci-alert.yml</code> + Go-tested CI policy scripts</strong> — closes the observability gap when using fast merge queues + heavier post-merge CI.</div><div class="sub-item">• <strong>Anonymous read-only remote build cache (<code>--config=fork-cache</code>)</strong> and <strong>explicit non-interactive shell flags</strong> in <code>AGENTS.md</code>.</div><div class="sub-item">• <strong>Contributor-protection checklist</strong> before letting autonomous bots rewrite or close external PRs.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>1,735-line <code>pr.yml</code> + 25+ root <code>.md</code> proposal/guide files</strong> — hard for humans and agents to navigate without a map.</div><div class="sub-item">• <strong>Heavy CGO + embedded Dolt + Bazel toolchain</strong> unless you genuinely need cell-level SQL branching/merging.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

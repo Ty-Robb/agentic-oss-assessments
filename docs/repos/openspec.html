@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fission-AI/OpenSpec — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: Fission-AI/OpenSpec">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fission-AI/OpenSpec — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: Fission-AI/OpenSpec">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fission-AI/OpenSpec — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: Fission-AI/OpenSpec">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C6 · Skill Stacks · Fission-AI/OpenSpec</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C6 · Skill Stacks</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/Fission-AI__OpenSpec.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>75.7k</strong> (75,717)</span>
+        <span class="meta-chip">Open Issues: <strong>214</strong></span>
+        <span class="meta-chip">Workflows: <strong>5</strong></span>
+        <span class="meta-chip">AI Signal: <strong>98%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>86%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 25 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="openspec-fission-ai-openspec">OpenSpec (<code>Fission-AI/OpenSpec</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>75,717★</code> · <code>5,180</code> forks · <code>214</code> open issues · <code>MIT</code> · Active (created Aug 5, 2025; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> <strong>5.8 MB TypeScript</strong> (<code>@fission-ai/openspec</code>), Node <code>&gt;=22.20</code>, pnpm 10, ESLint 10 + <code>typescript-eslint</code>, Vitest 5, Zod 4, Commander 14, Changesets, Nix flake + Homebrew + npm OIDC trusted publishing.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/Fission-AI__OpenSpec.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-06/Fission-AI__OpenSpec.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Ironic blind spot:</strong> Root <strong><code>AGENTS.md</code> is literally <code>0</code> bytes (empty)</strong>! All real developer and agent engineering conventions live in a crisp 67-line <code>CONTRIBUTING.md</code>, 27 <code>docs/</code> files (<code>agent-contract.md</code>, <code>writing-specs.md</code>, <code>opsx.md</code>), 4 <code>.agents/skills/</code>, and OpenSpec&#x27;s own <code>openspec/</code> specs folder.</li><li><strong>Stray root clutter:</strong> <code>README_OLD.md</code> and <code>openspec-parallel-merge-plan.md</code> remain committed at repo root.</li><li><strong>Clear contribution gating (<code>CONTRIBUTING.md</code>):</strong> <strong>PRs are limited to maintainers and invited contributors</strong> (after discussing on an issue and receiving the <code>approved</code> label) — keeping open issues to just <strong><code>214</code></strong> at <strong>75.7k★</strong>.</li><li><strong>Two-PR feature workflow:</strong> Features split into PR 1 (<strong>Proposal</strong>: <code>openspec/changes/&lt;name&gt;/</code> only, <code>Part of #123</code>) and PR 2 (<strong>Implementation</strong>: code + checked-off <code>tasks.md</code> after proposal merges, <code>Closes #123</code>).</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Ultra-lean 5-workflow CI (<code>ci.yml</code>, <code>binaries.yml</code>, <code>release-prepare.yml</code>, <code>security.yml</code>):</strong><div class="sub-item">• <strong>CLI startup module-count regression test (<code>test/cli-e2e/startup-modules.test.ts</code>):</strong> After discovering <code>openspec --version</code> loaded <strong>485 modules (~0.5s on Windows)</strong>, OpenSpec enforced lazy <code>await import()</code> inside command actions and wrote a test that <strong>fails CI</strong> if any command definition starts eagerly importing heavy modules (<code>zod</code>, <code>yaml</code>, <code>ora</code>, <code>tinyglobby</code>).</div><div class="sub-item">• <strong>CI docs-only path parity test (<code>test/ci-docs-only.test.ts</code>):</strong> Verifies that the docs-only <code>dorny/paths-filter</code> ignore list stays identical across <code>ci.yml</code> and <code>binaries.yml</code>.</div><div class="sub-item">• <strong>Cross-OS + oldest-supported-Node matrix:</strong> Tests Ubuntu, macOS, and Windows PowerShell on exact floor <code>Node 22.20.0</code> plus current Node 22 &amp; 24 LTS, with SHA-pinned GitHub Actions (<code>actions/checkout</code>, <code>pnpm/action-setup</code>, <code>setup-node</code>).</div><div class="sub-item">• <strong>Best-documented <code>pnpm-workspace.yaml</code> CVE override discipline in the study:</strong> Every override cites exact GHSA/CVE IDs, marks whether it&#x27;s dev-only or shipped, gives the exact removal check (<code>pnpm why ...</code>), and documents a crucial pnpm 10 trap (<em><code>pnpm.overrides</code> in <code>package.json</code> silently replaces rather than merges <code>pnpm-workspace.yaml</code> overrides!</em>).</div><div class="sub-item">• <strong>Passwordless npm OIDC trusted publishing</strong> (<code>id-token: write</code>, Node 24) + GitHub App token for Changesets PRs so version PRs still trigger normal CI.</div></li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Lightweight, brownfield-first Spec-Driven Development:</strong> Plain Markdown delta specs (<code>ADDED</code>/<code>MODIFIED</code> requirements + <code>WHEN</code>/<code>THEN</code> scenarios) under <code>openspec/changes/&lt;name&gt;/</code>, designed to be iterative rather than waterfall, plus a <code>/openspec</code> router (<code>v2.2.0</code>) and cross-repo <strong>Stores</strong> (beta) for multi-repo team planning.</li><li><strong>Built-in bug-report telemetry helper:</strong> <code>openspec feedback &quot;what happened&quot;</code> auto-populates version and platform into a prefilled GitHub issue form.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>High-craft, AI-accelerated maintenance:</strong> <strong>50 commits in 25 days</strong> (<code>2026-10-30</code> to <code>2026-11-24</code>, <code>v1.17.0</code> → <code>v2.2.0</code>, PR <code>#2,302</code>), <strong>86% conventional</strong>, <strong>40% fix/revert</strong>, <strong>98% AI signal</strong>.</li><li>Very tight core: <code>clay-good</code> authored <strong>35/50</strong> recent commits (232 all-time), alongside founder <code>TabishB</code> (523 all-time) and <code>openspec-release-bot[bot]</code> (7/50).</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong><code>startup-modules.test.ts</code></strong> — mechanically guarding CLI cold-start time by asserting which modules each subcommand loads (massive win for any CLI invoked frequently by coding agents!).</div><div class="sub-item">• <strong>GHSA-annotated <code>pnpm-workspace.yaml</code> overrides + removal commands (<code>pnpm why ...</code>)</strong> and never duplicating <code>pnpm.overrides</code> in <code>package.json</code>.</div><div class="sub-item">• <strong>Two-PR proposal-then-implementation flow</strong> for architectural features + maintainers/invited-only PR gating.</div><div class="sub-item">• <strong>CI path-filter parity tests (<code>test/ci-docs-only.test.ts</code>)</strong> + <strong>npm OIDC trusted publishing</strong> (zero long-lived npm tokens).</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Leaving a <code>0</code>-byte <code>AGENTS.md</code> at repo root</strong> (and stray <code>README_OLD.md</code> / merge-plan docs) — put the startup-module invariant and test commands directly into <code>AGENTS.md</code>.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BloopAI/vibe-kanban — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: BloopAI/vibe-kanban">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BloopAI/vibe-kanban — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: BloopAI/vibe-kanban">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BloopAI/vibe-kanban — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: BloopAI/vibe-kanban">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C1 · Rivals · BloopAI/vibe-kanban</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C1 · Rivals</span>
+          <span class="tag tag-sunsetting" style="margin-left:6px">Sunsetting</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/BloopAI/vibe-kanban" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-01/BloopAI__vibe-kanban.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>28.8k</strong> (28,814)</span>
+        <span class="meta-chip">Open Issues: <strong>537</strong></span>
+        <span class="meta-chip">Workflows: <strong>9</strong></span>
+        <span class="meta-chip">AI Signal: <strong>46%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>64%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 7.5 mos</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="vibe-kanban-bloopai-vibe-kanban">Vibe Kanban (<code>BloopAI/vibe-kanban</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>28,814★</code> · <code>3,072</code> forks · <code>537</code> open issues · <code>Apache-2.0</code> · <strong>Sunsetting</strong> (README banner: <em>&quot;Vibe Kanban is sunsetting&quot;</em>; last pushed 2026-11-15)</li><li><strong>Primary Stack:</strong> 30-crate Rust workspace (<code>axum</code>, <code>tokio</code>, <code>sqlx</code>, <code>git2</code>, <code>ts-rs</code>, <code>tauri</code>) + pnpm TypeScript monorepo (<code>local-web</code>, <code>remote-web</code>, <code>web-core</code>, <code>ui</code>) + <code>npx-cli</code> wrapper.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-01/BloopAI__vibe-kanban.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-01/BloopAI__vibe-kanban.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Compact root <code>AGENTS.md</code> (59 lines / 4.1 KB):</strong> Crisp module map, exact build/typegen/check commands, and pointers to crate/package-local guides (<code>crates/remote/AGENTS.md</code>, <code>docs/AGENTS.md</code>, <code>packages/local-web/AGENTS.md</code>).</li><li><strong>Avoidable duplication:</strong> <code>CLAUDE.md</code> is an exact 59-line copy-paste of <code>AGENTS.md</code> instead of an <code>@AGENTS.md</code> symlink/include — guaranteed drift hazard.</li><li><strong>Mintlify docs + leftover scratch:</strong> 25 top-level entries in <code>docs/</code> including a stale <code>frontend-ui-library-refactor-audit.md</code> and root <code>mobile-testing.md</code> left behind in the repo.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Strong Rust↔TS contract integrity:</strong><div class="sub-item">• <code>ts-rs</code> generates <code>shared/types.ts</code> and <code>shared/remote-types.ts</code> directly from Rust structs (<code>#[derive(TS)]</code>), enforced in CI with <code>generate-types:check</code>.</div><div class="sub-item">• <code>sqlx</code> offline query verification (<code>prepare-db:check</code> and <code>remote:prepare-db:check</code>) ensures SQL compiles against schema without a live DB.</div><div class="sub-item">• <code>cargo clippy --workspace --all-targets -- -D warnings</code> (warnings as errors).</div></li><li><strong>Practical frontend ratchets:</strong> <code>check-unused-i18n-keys.mjs</code> and <code>check-legacy-frontend-paths.sh</code> (paired with <code>legacy-frontend-paths-allowlist.txt</code>) prevent regressions during UI refactors.</li><li><strong>Path-filtered CI (<code>test.yml</code>):</strong> Uses <code>dorny/paths-filter</code> to isolate <code>frontend</code>, <code>backend</code>, <code>backend-remote</code>, and <code>tauri</code> jobs so PRs only pay for touched subsystems.</li><li><strong>CI/release fragility:</strong> Pinned to <strong>Rust nightly</strong> (<code>nightly-2026-08-01</code>), a <strong>1,166-line <code>pre-release.yml</code></strong>, and private deploy-key dependencies (<code>VK_PRIVATE_DEPLOY_KEY</code>) inside a public repo — recent commit <code>#3484</code> even added a local CI script to run workflow checks without GitHub Actions, and <code>#3507</code> moved releases to a local script.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Clever distribution (<code>npx vibe-kanban</code>):</strong> Ships a Rust server + React SPA via an <code>npx</code> CLI wrapper for zero-install onboarding, later adding Tauri desktop + cloud/ElectricSQL remote sync + WebRTC/WS relay + embedded SSH.</li><li><strong>Severe scope/crate explosion for team size:</strong> 30 workspace crates plus 2 excluded crates (<code>crates/remote</code>, <code>crates/relay-tunnel</code>), dual databases (SQLite local + Postgres/ElectricSQL remote), dual frontends (<code>local-web</code> + <code>remote-web</code>), Tauri wrapper, and relay infrastructure. That architecture demands a 15-person systems team, not a 4-person startup.</li><li><strong>Multi-agent adapter convergence:</strong> Recent late-2026 commits show Vibe Kanban migrating toward the <strong>ACP registry</strong> (<code>feat: install and run agents from the ACP registry (#3489)</code>) rather than maintaining bespoke wrappers for every CLI — validating T3 Code&#x27;s and Emdash&#x27;s bet on ACP.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Slowing cadence post-sunset:</strong> Last 50 commits span <strong>7.5 months</strong> (2026-03-31 to 2026-11-15), with <strong>46% carrying explicit AI co-author signals</strong> (highest in Chunk 1) as 1–2 maintainers (<code>anastasiya1155</code>, <code>stunningpixels</code>) keep critical ACP/Copilot/Codex compatibility alive and turn off analytics/crash reporting (<code>#3503</code>).</li><li><strong>Commit hygiene:</strong> 64% conventional commits (mix of <code>bugfix:</code>, <code>feat:</code>, and plain sentences), 28% fix/revert.</li><li><strong>Ecosystem overlap:</strong> Theo (<code>t3dotgg</code>) actually has 4 early contributions in <code>top_contributors</code> — highlighting how directly T3 Code learned from Vibe Kanban&#x27;s early wins and pain points.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Single-source typegen + CI drift check</strong> (<code>generate-types:check</code>, <code>prepare-db:check</code>) whenever bridging two runtimes/languages.</div><div class="sub-item">• <strong>Refactor allowlist ratchets</strong> (<code>scripts/check-legacy-frontend-paths.sh</code> + allowlist file) so migrations only move forward.</div><div class="sub-item">• <strong>Zero-friction <code>npx &lt;tool&gt;</code> local server launch</strong> as an onboarding wedge.</div><div class="sub-item">• <strong>Path-filtered CI matrix</strong> (<code>dorny/paths-filter</code>) when mixing slow compiled backends with fast TS frontends.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Architectural over-indexing before product-market durability:</strong> 30 Rust crates + ElectricSQL + WebRTC relay + Tauri + Rust nightly is a massive maintenance anchor for a small team.</div><div class="sub-item">• <strong>Copy-pasting <code>AGENTS.md</code> into <code>CLAUDE.md</code></strong> instead of referencing <code>@AGENTS.md</code>.</div><div class="sub-item">• <strong>1,100+ line YAML release workflows</strong> coupled to private SSH deploy keys — impossible for community maintainers to keep running after a company pivots.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

@@ -162,7 +162,7 @@ Adopt these once your repo has multiple concurrent agents, stateful databases, L
 
 ## Practical Adoption Blueprint (Small/Mid-Size TypeScript Monorepo)
 
-For a real-world TypeScript product monorepo (e.g., Next.js / React + API/ORM + Drizzle/Postgres + Vitest/Playwright + GitHub Actions), here is the highest-leverage ordered rollout drawn from all 24 repos:
+For a real-world TypeScript product monorepo (e.g., Next.js / React + API/ORM + Drizzle/Postgres + Vitest/Playwright + GitHub Actions), here is the highest-leverage ordered rollout drawn from all 34 repos:
 
 ### Week 1 — Foundation (High Signal, Near-Zero Maintenance)
 1. **Tighten `AGENTS.md` (<180 lines) + symlink `CLAUDE.md` → `AGENTS.md`:** Add incident-cited traps, `paseo`'s `Doc voice` anti-slop list, `openclaw`'s *"Choose good compromises"*, and `pi`'s multi-agent Git safety rules.

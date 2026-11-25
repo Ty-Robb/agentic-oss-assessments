@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gsd-build/get-shit-done — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: gsd-build/get-shit-done">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="gsd-build/get-shit-done — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: gsd-build/get-shit-done">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="gsd-build/get-shit-done — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: gsd-build/get-shit-done">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C6 · Skill Stacks · gsd-build/get-shit-done</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C6 · Skill Stacks</span>
+          <span class="tag tag-archived" style="margin-left:6px">Archived</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/gsd-build/get-shit-done" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/gsd-build__get-shit-done.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>64.1k</strong> (64,113)</span>
+        <span class="meta-chip">Open Issues: <strong>0</strong></span>
+        <span class="meta-chip">Workflows: <strong>20</strong></span>
+        <span class="meta-chip">AI Signal: <strong>72%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>80%</strong></span>
+        <span class="meta-chip">Velocity: <strong>Archived May &#x27;26</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="get-shit-done-gsd-gsd-build-get-shit-done">Get Shit Done / GSD (<code>gsd-build/get-shit-done</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>64,113★</code> · <code>5,442</code> forks · <code>0</code> open issues · <code>MIT</code> · <strong>Archived (May 31, 2026 — moved to <code>open-gsd/gsd-core</code> after a compromise warning)</strong></li><li><strong>Primary Stack:</strong> <strong>7.3 MB CommonJS JavaScript</strong> + <strong>2.6 MB TypeScript</strong> (<code>sdk/</code>) + 44 KB Shell; Node <code>&gt;=22</code>, built-in <code>node:test</code> + <code>c8</code> (70% line coverage floor), Vitest for SDK, custom Changeset &amp; security scan scripts.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/gsd-build__get-shit-done.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-06/gsd-build__get-shit-done.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Compact 41-line <code>AGENTS.md</code> (3.1 KB)</strong> covering the hybrid CommonJS (<code>get-shit-done/</code>, <code>tests/*.test.cjs</code>) + ESM TypeScript (<code>sdk/</code>) split, <code>node:test</code> conventions, and mandatory pre-release security scans (<code>secret-scan.sh</code>, <code>base64-scan.sh</code>, <code>prompt-injection-scan.sh</code>).</li><li><strong>Massive governance overhead before archival:</strong> <strong>791-line / 44.3 KB <code>CONTRIBUTING.md</code></strong> mandating 3 strict issue-first tiers (<code>confirmed-bug</code>, <code>approved-enhancement</code>, <code>approved-feature</code>), banning draft PRs completely, and using GitHub issue numbers as ADR/PRD prefixes (<code>docs/adr/&lt;issue#&gt;-&lt;slug&gt;.md</code> — <em>&quot;never compute a next sequential number locally&quot;</em>).</li><li><strong>Visible repo clutter:</strong> 44 <code>docs/</code> files including 11 archived release-candidate markdowns, <code>QUICK-WINS-CONFIRMED-BUGS.md</code>, <code>TEST-EXAMPLES.md</code>, and <code>.plans/</code>.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>20 GitHub Actions workflows — heavy PR-policing and freshness automation:</strong><div class="sub-item">• <strong>10 freshness checks</strong> in <code>package.json</code> (<code>check:alias-drift</code>, <code>check:state-document-fresh</code>, <code>check:configuration-fresh</code>, <code>check:secrets-fresh</code>, <code>check:decisions-fresh</code>, etc.) + <code>lint:no-source-grep</code> (<code>scripts/lint-no-source-grep.cjs</code>, banning fragile grep-of-source tests!) + <code>lint:skill-deps</code> + <code>lint:descriptions</code>.</div><div class="sub-item">• <strong>Prompt-injection &amp; secret scanning (<code>security-scan.yml</code>):</strong> Dedicated <code>prompt-injection-scan.sh</code>, <code>base64-scan.sh</code>, and <code>secret-scan.sh</code> — crucial for any repo shipping Markdown prompts installed into users&#x27; coding agents!</div><div class="sub-item">• <strong>Aggressive PR policing:</strong> <code>close-draft-prs.yml</code> (auto-closes every draft PR), <code>require-issue-link.yml</code>, <code>changeset-required.yml</code>, <code>docs-required.yml</code>, <code>pr-gate.yml</code> (size labels + 500-line warning), and <strong><code>dismiss-unauthorized-pr-approvals.yml</code></strong> (auto-dismissing reviews from non-collaborators and a hardcoded blocked username, with a 15-minute cron fallback because <code>pull_request_review</code> from outside collaborators stalls in <code>action_required</code>!).</div><div class="sub-item">• <strong>Clean archival redirect (<code>auto-close-deprecated.yml</code>):</strong> Auto-comments, closes, and locks any new issue/PR pointing contributors to <code>open-gsd/gsd-core</code>.</div></li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Meta-prompting &amp; context-engineering SDLC engine:</strong> Pioneered structured phase-based <code>.planning/</code> context files and multi-runtime command routing across Claude Code, OpenCode, Gemini CLI, and Codex, later extracting a TypeScript <code>sdk/</code> alongside its legacy 7.3 MB CommonJS core.</li><li><strong>Process heaviness tradeoff:</strong> Matt Pocock&#x27;s <code>skills</code> README explicitly singled out GSD (alongside BMAD and Spec-Kit) as an example of process-owning frameworks that take control away from engineers and make process bugs painful to debug.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Dramatic governance/security collapse right in the commit history:</strong><div class="sub-item">• On <strong>May 22, 2026</strong> (commit <code>126b6b9e</code>), top maintainer <code>trek-e</code> (1,435 contributions vs. original creator <code>glittercowboy</code> 945) pushed <strong><code>&quot;WARNING: This repository appears compromised — use the fork at GSD-redux/get-shit-done-redux&quot;</code></strong>, followed by auto-closing PRs/issues and redirecting the community to <code>open-gsd/gsd-core</code> before archiving on May 31, 2026!</div><div class="sub-item">• Across its final 50 commits (<code>2026-05-18</code> to <code>2026-05-31</code>): 80% conventional, 40% fix/revert, 72% AI signal (<code>trek-e</code> 39/50, <code>jeremymcs</code> 9/50).</div></li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong><code>prompt-injection-scan.sh</code> + <code>base64-scan.sh</code> in CI</strong> for any repository shipping prompts, skills, or templates consumed by LLMs.</div><div class="sub-item">• <strong>Using GitHub issue numbers (<code>docs/adr/&lt;issue#&gt;-&lt;slug&gt;.md</code>) as ADR/PRD prefixes</strong> — eliminates merge-number collisions across parallel worktrees!</div><div class="sub-item">• <strong><code>lint-no-source-grep.cjs</code></strong> — mechanically banning brittle tests that regex-grep source files instead of testing real behavior.</div><div class="sub-item">• <strong>The <code>dismiss-unauthorized-pr-approvals</code> insight</strong> (knowing that outside-collaborator review events pause in <code>action_required</code>) and clean archival redirect workflows (<code>auto-close-deprecated.yml</code>).</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>7.3 MB of legacy CommonJS glued to a separate TS SDK + 44 KB of bureaucratic contribution rules</strong> (like auto-closing every draft PR) — high cognitive friction and brittle ownership boundaries.</div><div class="sub-item">• <strong>Weak org/maintainer ownership security on a 64k★ repo that executes install scripts and prompts on developer machines</strong> — a prime supply-chain target.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

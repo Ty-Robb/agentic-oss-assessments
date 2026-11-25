@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>smtg-ai/claude-squad — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: smtg-ai/claude-squad">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="smtg-ai/claude-squad — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: smtg-ai/claude-squad">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="smtg-ai/claude-squad — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: smtg-ai/claude-squad">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C5 · Specialists · smtg-ai/claude-squad</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C5 · Specialists</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/smtg-ai/claude-squad" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-05/smtg-ai__claude-squad.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>8.9k</strong> (8,866)</span>
+        <span class="meta-chip">Open Issues: <strong>54</strong></span>
+        <span class="meta-chip">Workflows: <strong>5</strong></span>
+        <span class="meta-chip">AI Signal: <strong>16%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>82%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 17 mos</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="claude-squad-smtg-ai-claude-squad">Claude Squad (<code>smtg-ai/claude-squad</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>8,866★</code> · <code>641</code> forks · <strong><code>54</code> open issues</strong> · <code>AGPL-3.0</code> · Stable / low-churn maintenance (created Mar 9, 2025; pushed 2026-11-13)</li><li><strong>Primary Stack:</strong> <strong>263 KB Go</strong> (<code>go 1.23</code> / toolchain <code>1.25.8</code>), Bubble Tea (<code>bubbletea</code> + <code>bubbles</code> + <code>lipgloss</code>), Cobra CLI, <code>creack/pty</code>, wrapping <code>tmux</code> + <code>git worktree</code> + <code>gh</code>; 12 KB Shell, 8.7 KB TS docs site; GoReleaser + Homebrew.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-05/smtg-ai__claude-squad.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-05/smtg-ai__claude-squad.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Zero agent instruction files:</strong> No <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>.agents/</code>, <code>.claude/</code>, <code>.cursor/</code>, or <code>docs/</code> directory.</li><li><strong>Minimal human docs:</strong> A clean 162-line <code>README.md</code> documenting keybindings, <code>~/.claude-squad/config.json</code> profiles, and the 3-bullet architecture (<em>tmux + git worktrees + TUI</em>), plus a boilerplate 29-line <code>CONTRIBUTING.md</code>.</li><li><strong>Why it still works here:</strong> At <strong>263 KB of Go</strong> across 8 shallow top-level packages (<code>app/</code>, <code>cmd/</code>, <code>config/</code>, <code>daemon/</code>, <code>keys/</code>, <code>log/</code>, <code>session/</code>, <code>ui/</code>), an agent or human can read the entire relevant subsystem in seconds — proving that tiny codebases don&#x27;t need elaborate instruction scaffolding to stay legible.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Lean 5-workflow CI:</strong> <code>build.yml</code>, <code>lint.yml</code>, <code>release.yml</code>, <code>cla.yml</code>, <code>deploy-pages.yml</code>.</li><li><strong>Pragmatic diff-only Go linting (<code>lint.yml</code>):</strong> Runs <code>golangci-lint</code> (<code>v1.60.1</code>) with <code>--fast</code> and <strong><code>only-new-issues: true</code></strong> plus a strict <code>gofmt -l .</code> check, scoped to Go file path filters (<code>**.go</code>, <code>go.mod</code>, <code>go.sum</code>).</li><li><strong>Automated binary distribution:</strong> <code>.goreleaser.yaml</code> + <code>release.yml</code> + <code>install.sh</code> + Homebrew (<code>brew install claude-squad</code>).</li><li><strong>Gaps:</strong> No race detector / integration harness visible in the sampled lint workflow, and <code>golangci-lint</code> is pinned to an older <code>v1.60.1</code>.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Unix-philosophy composition over reinvention:</strong> Instead of building a custom terminal emulator (<code>cmux</code>), custom Electron/WebSocket server (<code>t3code</code>, <code>1code</code>), or custom agent harness (<code>opencode</code>), Claude Squad delegates terminal multiplexing to <strong><code>tmux</code></strong>, workspace isolation to <strong><code>git worktree</code></strong>, PR shipping to <strong><code>gh</code></strong>, and agent execution to <strong>any CLI command</strong> (<code>claude</code>, <code>codex</code>, <code>gemini</code>, <code>aider</code>, <code>opencode</code>, custom profiles).</li><li><strong>Minimal dependency footprint:</strong> Only 13 direct Go dependencies in <code>go.mod</code>; recently even <strong>removed <code>go-git</code></strong> (<code>#302</code>) to eliminate a transitive security advisory and stick to native <code>git</code>.</li><li><strong>Real operational polish in small commits:</strong> Recent fixes directly target the exact pain points of TUI worktree wrappers — recovering instances after tmux server death (<code>#322</code>), moving expensive ops off the UI event loop (<code>#253</code>), computing full diffs only for the selected instance (<code>#279</code>), and orphaned worktree cleanup (<code>#294</code>).</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Calm, low-churn maturity:</strong> <strong>50 commits over 17 months</strong> (<code>2025-06-13</code> to <code>2026-11-13</code>, <code>v1.0.16</code> → <code>v1.0.20</code>), <strong>82% conventional commits</strong>, <strong>36% fix/revert</strong>, <strong>16% AI signal</strong> (mostly external contributors submitting focused bugfix PRs like <code>#344</code>, <code>#322</code>, <code>#315</code>, <code>#279</code>).</li><li><strong>Tiny team, tiny backlog:</strong> Two authors (<code>mufeez-amjad</code> 116 total / 28 of last 50; <code>jayshrivastava</code> 87 total / 4 of last 50) maintain an 8.9k★ tool with only <strong><code>54</code> open issues</strong> — the cleanest issue-to-star maintenance ratio among active standalone tools in Chunk 5.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Radical scope discipline (compose <code>tmux</code> + <code>git worktree</code> + <code>gh</code> instead of rebuilding them):</strong> 263 KB of Go achieves ~70% of the local multi-agent workflow with almost zero maintenance drag.</div><div class="sub-item">• <strong><code>golangci-lint</code> with <code>only-new-issues: true</code>:</strong> Zero-friction lint ratchet for small repos adopting stricter checks incrementally.</div><div class="sub-item">• <strong>Deleting heavy libraries in favor of native CLIs</strong> (removing <code>go-git</code> to shed CVEs and complexity) and computing diffs lazily only for the active selection.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>AGPL-3.0 + CLA friction</strong> if you want wide enterprise adoption or frictionless community patches.</div><div class="sub-item">• <strong>Relying on <code>tmux</code> screen-scraping / prompt-matching</strong> (e.g., <code>#263</code> <em>&quot;Update claude trust prompt handling&quot;</em>) for structured agent control — brittle whenever upstream CLIs change their TUI output.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

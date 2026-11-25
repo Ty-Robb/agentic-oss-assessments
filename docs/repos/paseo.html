@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>getpaseo/paseo — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: getpaseo/paseo">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="getpaseo/paseo — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: getpaseo/paseo">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="getpaseo/paseo — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: getpaseo/paseo">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C5 · Specialists · getpaseo/paseo</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C5 · Specialists</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/getpaseo/paseo" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-05/getpaseo__paseo.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>25.3k</strong> (25,293)</span>
+        <span class="meta-chip">Open Issues: <strong>2,203</strong></span>
+        <span class="meta-chip">Workflows: <strong>12</strong></span>
+        <span class="meta-chip">AI Signal: <strong>28%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>44%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 2.4 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="paseo-getpaseo-paseo">Paseo (<code>getpaseo/paseo</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>25,293★</code> · <code>3,140</code> forks · <code>2,203</code> open issues · <code>Apache-2.0</code> (<code>package.json</code>, GitHub meta <code>NOASSERTION</code>) · Active (created Oct 13, 2025; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> <strong>51.2 MB TypeScript</strong> + 1.1 MB Kotlin + 852 KB Objective-C + 823 KB C++ + 542 KB Objective-C++ + 76 KB Swift; npm workspaces (<code>server</code> daemon, Expo mobile+web <code>app</code>, Electron <code>desktop</code>, <code>cli</code>, Cloudflare/Noise NK E2EE <code>relay</code>, <code>protocol</code>, <code>client</code>, <code>plugins</code>, <code>website</code>), <code>oxlint</code> + <code>oxfmt</code>, Vitest, <code>knip</code>, Lefthook, Nix flake + Fastlane + F-Droid.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-05/getpaseo__paseo.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-05/getpaseo__paseo.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Best docs-governance and anti-LLM-slop writing standard in the entire 24-repo study:</strong><div class="sub-item">• <code>AGENTS.md</code> (205 lines / 24 KB) indexes <strong>54 single-subject docs</strong> in <code>docs/</code> and declares: <em>&quot;The docs, check the docs, or check the X docs always mean this directory — not the web.&quot;</em></div><div class="sub-item">• <strong><code>Writing docs</code> rules:</strong> <em>Integrate, don&#x27;t append</em> (explicitly calls out <code>docs/custom-providers.md</code> as an anti-example of append-only drift); <em>Don&#x27;t document logic</em>; <em>One fact, one doc</em>; <em>Respect the layers</em>; <em>One subject per doc</em>; <em>Delete obsolete sections</em>.</div><div class="sub-item">• <strong><code>Doc voice</code> (explicit LLM cliché ban):</strong> Forbids <code>&quot;It&#x27;s not X, it&#x27;s Y&quot;</code> setup-and-punchline prose, filler importance clauses (<code>&quot;and that matters&quot;</code>, <code>&quot;this is critical&quot;</code>), buzzwords (<code>&quot;honest&quot;</code>, <code>&quot;robust&quot;</code>, <code>&quot;seamless&quot;</code>, <code>&quot;powerful&quot;</code>, <code>&quot;simply&quot;</code>, <code>&quot;just&quot;</code>, <code>&quot;delightful&quot;</code>), hedging (<code>&quot;generally&quot;</code>, <code>&quot;typically&quot;</code>), and throat-clearing (<code>&quot;It&#x27;s worth noting that&quot;</code>, <code>&quot;In order to&quot;</code>).</div></li><li><strong>Safe self-hosting boundary:</strong> Dev commands automatically bind <code>PASEO_HOME</code> to checkout-local <code>.dev/paseo-home</code> on <code>127.0.0.1:6768</code>, leaving the live <code>~/.paseo</code> daemon on port <code>6767</code> untouched, with a crisp rule: <em>&quot;NEVER restart the main Paseo daemon on port 6767 without permission — if you&#x27;re an agent, restarting it kills your own process.&quot;</em></li><li><strong>Minor hygiene flaw:</strong> <code>CLAUDE.md</code> is a <strong>byte-for-byte 24,042-byte duplicate</strong> of <code>AGENTS.md</code> (both even start with <code># CLAUDE.md</code>) rather than a symlink.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Strict <code>.oxlintrc.json</code> (632 lines) with custom JS plugin + file-and-API-scoped debt ratchets:</strong><div class="sub-item">• Sets <code>correctness</code>, <code>suspicious</code>, and <code>perf</code> to <code>&quot;error&quot;</code>, plus <code>complexity: max 20</code>, <code>max-depth: 4</code>, <code>max-nested-callbacks: 3</code>, <code>react-perf/jsx-no-new-{array,function,object}-as-prop</code>, <code>typescript/no-explicit-any</code>, and <code>preserve-caught-error</code>.</div><div class="sub-item">• Custom <code>scripts/oxlint/paseo-plugin.mjs</code> enforces <code>paseo/no-sync-io</code> on <code>packages/server/src/**</code>, with <strong>per-file, per-API allowlists</strong> (<code>&quot;server/agent/providers/pi/agent.ts&quot;: [&quot;existsSync&quot;, &quot;mkdtempSync&quot;, ...]</code>) annotated with <code>TODO:</code> migration plans — <em>&quot;new APIs still fail in these files. Do not add directory-wide exceptions.&quot;</em></div><div class="sub-item">• <strong>Unit-tests its own lint rules and CI contracts in CI:</strong> <code>node --test scripts/oxlint/paseo-plugin.test.mjs</code> and <strong>10 CI/release contract test suites</strong> (<code>scripts/ci-workflow.test.mjs</code>, <code>daemon-launch-contract.test.mjs</code>, <code>reconcile-release.test.mjs</code>, etc.) run right inside the fast <code>changes</code> job!</div></li><li><strong>Only 12 GitHub workflows</strong> covering desktop, iOS, Android/F-Droid, Docker, Nix, relay, and website.<div class="sub-item">• <code>ci.yml</code> uses <code>dorny/paths-filter</code> (<code>.github/ci-paths.yml</code>) and explicit step conditions (<code>!cancelled() &amp;&amp; steps.install.outcome == &#x27;success&#x27;</code>) so independent domains still report failures without masking errors behind <code>continue-on-error</code>.</div><div class="sub-item">• Runs <code>lockfile-lint --allowed-hosts npm --validate-https --validate-integrity</code>, <code>knip</code>, <code>oxfmt --check</code>, <code>acp:version-drift:check</code>, and <code>fdroid:changelogs:check</code>.</div></li><li><strong>Anti-slop PR gate (<code>CONTRIBUTING.md</code>):</strong> <strong>&quot;Pull requests are closed by default.&quot;</strong> <em>&quot;I can prompt an agent to write code just as you can. The bottlenecks are choosing what to build, shaping it, verifying its behavior, and taking responsibility for its maintenance.&quot;</em> Caps core PRs at ~3,000 production lines and requires explicit QA evidence (<code>docs/qa.md</code> — failing-before regression test, commands + output, UI recording/screenshots, platform matrix).</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Daemon-owned, client-thin multi-surface architecture:</strong> Local daemon (<code>packages/server</code>) manages all agents (Claude Code, Codex, Copilot, OpenCode, Pi, Antigravity, Muse Code, fx, Hoplite), plugins, and file-based JSON state (atomic writes, Zod schemas, no DB migrations). Clients (Expo mobile+web, Electron, CLI) talk over dotted-namespace WebSocket RPCs validated via <strong><code>zod-aot</code></strong> compiled inbound validators (<code>docs/protocol-validation.md</code>) and version-drift <code>COMPAT</code> gating (<code>docs/protocol-compatibility.md</code>).</li><li><strong>Write-once daemon plugins that project to mobile:</strong> Plugins declare UI (screens, sidebar items, composer pills, timeline items, themes), lifecycle hooks, and custom providers once on the daemon and render natively across desktop, web, iOS, and Android.</li><li><strong>Privacy-first E2EE remote access:</strong> Optional Noise NK end-to-end encrypted relay (<code>packages/relay</code>), zero telemetry, no forced login, plus F-Droid reproducible Android source builds.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>High solo-founder + bot cadence:</strong> <strong>50 commits in 57.2 hours (~2.4 days)</strong> (<code>2026-11-23</code> to <code>2026-11-25</code>, PR <code>#10,800</code>), <strong>44% conventional commits</strong>, <strong>26% fix/revert</strong>, <strong>28% AI signal</strong>.</li><li><strong>Human + autonomous maintenance bot pair:</strong> Founder <code>boudra</code> (Mohamed Boudra) holds <strong>5,406 all-time contributions</strong> (33/50 recent), backed by <code>paseo-bot[bot]</code> (<strong>779 all-time; 15/50 recent</strong> — landing focused bugfixes and flaky-test stabilization PRs like <code>#10762</code>, <code>#10516</code>, <code>#10602</code>).</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>The <code>Doc voice</code> LLM cliché ban + <code>Writing docs</code> rules</strong> — immediately eliminates bloated, puffery-filled agent documentation.</div><div class="sub-item">• <strong>Per-file, per-API lint debt allowlists</strong> (<code>paseo/no-sync-io</code> naming exact functions per file instead of directory-wide disables) + unit tests for custom lint rules and CI scripts.</div><div class="sub-item">• <strong>Checkout-local <code>.dev/&lt;app&gt;-home</code></strong> isolating dev daemons and CLIs from the developer&#x27;s live <code>~/.app</code> install automatically.</div><div class="sub-item">• <strong>&quot;PRs closed by default&quot; + 3,000-line cap + QA evidence bar</strong> for solo/small-team open-source maintainers facing AI PR floods.</div><div class="sub-item">• <strong><code>lockfile-lint</code></strong> verifying npm lockfile integrity and HTTPS-only allowed registries in CI.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Duplicating <code>AGENTS.md</code> and <code>CLAUDE.md</code> as separate 24 KB files</strong> — use a symlink or thin wrapper so they cannot drift.</div><div class="sub-item">• <strong>Re-building complex native text-selection/markdown/terminal layers inside Expo</strong> unless mobile-first cross-platform parity is genuinely your core product (see <code>slopus/happy</code> for the opposite native bet).</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chunk 1 · Direct T3 Code Rivals — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: Chunk 1 · Direct T3 Code Rivals">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chunk 1 · Direct T3 Code Rivals — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: Chunk 1 · Direct T3 Code Rivals">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chunk 1 · Direct T3 Code Rivals — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: Chunk 1 · Direct T3 Code Rivals">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · Chunk 1 · Direct T3 Code Rivals</div>
+      
+    </div>
+    <article class="prose">
+      <h1 id="chunk-1-summary-direct-t3-code-rivals-worktree-orchestration-guis">Chunk 1 Summary — Direct T3 Code Rivals (Worktree Orchestration GUIs)</h1>
+<p><em>Snapshot date: 2026-11-25. Baseline: <code>pingdotgg/t3code</code> (78.8k★).</em></p>
+<h2 id="side-by-side-matrix">Side-by-Side Matrix</h2>
+<div class="table-wrap"><table class="md-table"><thead><tr><th style="text-align:left">Repo</th><th style="text-align:right">Stars</th><th style="text-align:left">Status</th><th style="text-align:left">Primary Stack</th><th style="text-align:left"><code>AGENTS.md</code> / <code>CLAUDE.md</code></th><th style="text-align:left">Lint / Static Gates</th><th style="text-align:right">CI Workflows</th><th style="text-align:left">Last-50 Velocity &amp; Hygiene</th></tr></thead><tbody><tr><td style="text-align:left"><strong><code>pingdotgg/t3code</code></strong> <em>(baseline)</em></td><td style="text-align:right">78.8k</td><td style="text-align:left">Active</td><td style="text-align:left">TS (Effect-TS, Vite+, Electron, RN)</td><td style="text-align:left">157 lines + <code>@AGENTS.md</code> + <code>docs/internals/</code> + 4 skills</td><td style="text-align:left">Custom <code>oxlint</code> plugin, <code>knip</code>, <code>check:changed</code>, <code>evals/</code>, PR limits/vouch</td><td style="text-align:right">29</td><td style="text-align:left">50 commits / <strong>7 hrs</strong> · 100% conv · 86% fix · 12% AI</td></tr><tr><td style="text-align:left"><strong><a href="../repos/paradev.html"><code>ParadevAI/Paradev</code></a></strong></td><td style="text-align:right">16.6k</td><td style="text-align:left">Active</td><td style="text-align:left">TS (Bun, Turbo, Electron, Next, Expo, tRPC, Drizzle) + TLA+</td><td style="text-align:left">292 lines + <code>@AGENTS.md</code> + 16 <code>.agents/skills/</code></td><td style="text-align:left"><code>biome.jsonc</code> domain <code>noRestrictedImports</code> ratchets, <code>sherif</code>, <code>vale</code>, <code>check:i18n</code>, <code>check:durable-objects</code></td><td style="text-align:right">22</td><td style="text-align:left">50 commits / <strong>3.2 days</strong> · 98% conv · 36% fix · 0% AI</td></tr><tr><td style="text-align:left"><strong><a href="../repos/vibe-kanban.html"><code>BloopAI/vibe-kanban</code></a></strong></td><td style="text-align:right">28.8k</td><td style="text-align:left"><strong>Sunsetting</strong></td><td style="text-align:left">30-crate Rust (<code>axum</code>/<code>sqlx</code>/<code>ts-rs</code>/<code>tauri</code>) + pnpm React</td><td style="text-align:left">59 lines + duplicated 59-line <code>CLAUDE.md</code> + crate guides</td><td style="text-align:left"><code>clippy -D warnings</code>, <code>ts-rs</code> typegen check, <code>sqlx</code> offline check, i18n &amp; legacy-path ratchets</td><td style="text-align:right">9</td><td style="text-align:left">50 commits / <strong>7.5 mos</strong> · 64% conv · 28% fix · 46% AI</td></tr><tr><td style="text-align:left"><strong><a href="../repos/emdash.html"><code>generalaction/emdash</code></a></strong></td><td style="text-align:right">6.3k</td><td style="text-align:left">Active</td><td style="text-align:left">TS (pnpm, Nx, Electron, Drizzle, Wire RPC, MobX)</td><td style="text-align:left">419 lines + <code>@AGENTS.md</code> + <code>agents/</code> + <code>CONTEXT.md</code></td><td style="text-align:left">Custom <code>oxlint</code> plugin (6 rules), <code>respectEslintDisableDirectives: false</code>, self-pruning allowlists, <code>nx affected</code></td><td style="text-align:right">6</td><td style="text-align:left">50 commits / <strong>22 days</strong> · 50% conv · 22% fix · 6% AI</td></tr><tr><td style="text-align:left"><strong><a href="../repos/1code.html"><code>21st-dev/1code</code></a></strong></td><td style="text-align:right">5.6k</td><td style="text-align:left"><strong>Archived</strong></td><td style="text-align:left">Single-pkg Electron + React + tRPC + Drizzle (Bun)</td><td style="text-align:left">18-line stub + stale 274-line <code>CLAUDE.md</code></td><td style="text-align:left">None (only <code>tsgo --noEmit</code>, 0 workflows, 0 tests)</td><td style="text-align:right">0</td><td style="text-align:left">Archived Mar 2026 (&lt; 2 mos public) · 24% conv · 22% AI</td></tr></tbody></table></div>
+<h2 id="key-patterns-across-direct-rivals">Key Patterns Across Direct Rivals</h2>
+<ol><li><strong>The survival divide is mechanical discipline + scope restraint, not initial launch hype.</strong><div class="sub-item">• <code>1code</code> (5.6k★) shipped fast with zero CI, zero tests, and a one-way <code>sync-to-public.sh</code> mirror — archived in 7 weeks.</div><div class="sub-item">• <code>vibe-kanban</code> (28.8k★) had real systems craft (<code>ts-rs</code>, <code>sqlx</code>, <code>clippy -D warnings</code>), but sprawled into 30 Rust crates + ElectricSQL + WebRTC relay + Tauri + Rust nightly on a 4-person team — and had to sunset.</div><div class="sub-item">• The three thriving control planes (<code>t3code</code>, <code>Paradev</code>, <code>emdash</code>) all converged on <strong>TypeScript monorepos + custom lint rules encoding domain invariants + <code>@AGENTS.md</code> single-source agent instructions + ACP for structured providers</strong>.</div></li></ol>
+<ol><li><strong>Custom lint rules are the #1 weapon against agent-generated regressions.</strong><div class="sub-item">• Every healthy team stopped relying on prose rules in <code>AGENTS.md</code> and encoded recurring failure modes into Biome or <code>oxlint</code> as <code>&quot;error&quot;</code>:</div><div class="sub-item">• <strong>Paradev:</strong> bans sync subprocesses on serving loops, bans raw <code>@vercel/sandbox</code> handles, bans cross-tenant admin queries, bans <code>&lt;Navigate&gt;</code>.</div><div class="sub-item">• <strong>Emdash:</strong> enforces module boundaries, sole-writer DB tables, <code>no-async-transaction-callback</code>, <strong>disables <code>eslint-disable</code> comments (<code>respectEslintDisableDirectives: false</code>)</strong>, and auto-prunes allowlists (<code>prune:boundary-allowlists</code>).</div><div class="sub-item">• <strong>T3 Code:</strong> custom <code>oxlint-plugin-t3code</code> (no low-value comments, no unreasoned state sync, no UI primitive restyle) + <code>knip</code> + <code>evals/</code>.</div></li></ol>
+<ol><li><strong>Zero-install &amp; zero-friction dev environments matter hugely for parallel worktrees.</strong><div class="sub-item">• Emdash&#x27;s <code>devEngines.runtime</code> (<code>onFail: &quot;download&quot;</code>) eliminates Node/pnpm mismatch across worktrees.</div><div class="sub-item">• Paradev&#x27;s <code>paradev schema</code> JSON introspection and CDP port verification (<code>DESKTOP_VITE_PORT</code> check) make self-testing safe when 5+ worktrees run concurrently.</div><div class="sub-item">• 1Code&#x27;s local NDJSON log collector (<code>localhost:7799/log</code>) is a cheap, high-leverage debugging primitive worth adopting.</div></li></ol>
+<ol><li><strong>T3 Code&#x27;s unique moats vs. every direct rival in Chunk 1:</strong><div class="sub-item">• <strong>Review-capacity defense:</strong> Only T3 Code has an explicit anti-slop governance system (<code>CONTRIBUTING.md</code>, <code>VOUCHED.td</code>, <code>pr-limits.yml</code>, <code>pr-size.yml</code>, <code>agent-context-budget.yml</code>, <code>contribution-triage</code> skill).</div><div class="sub-item">• <strong>Model-facing evals:</strong> None of the 4 Chunk 1 rivals have an <code>evals/</code> suite testing how real LLMs behave with their prompts/MCP tools.</div><div class="sub-item">• <strong>Shipping velocity:</strong> T3 Code&#x27;s last 50 commits landed in <strong>7 hours</strong> vs. Paradev&#x27;s 3.2 days and Emdash&#x27;s 22 days — though T3 Code&#x27;s 86% <code>fix:</code> ratio reflects rapid bug-burn stabilization on a massive 226 MB TS codebase.</div></li></ol>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

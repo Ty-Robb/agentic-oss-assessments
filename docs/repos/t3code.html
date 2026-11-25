@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pingdotgg/t3code — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: pingdotgg/t3code">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="pingdotgg/t3code — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: pingdotgg/t3code">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="pingdotgg/t3code — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: pingdotgg/t3code">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · Baseline · pingdotgg/t3code</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">Baseline</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/pingdotgg/t3code" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-01/pingdotgg__t3code.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>78.8k</strong> (78,816)</span>
+        <span class="meta-chip">Open Issues: <strong>3,681</strong></span>
+        <span class="meta-chip">Workflows: <strong>29</strong></span>
+        <span class="meta-chip">AI Signal: <strong>12%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>100%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 7.0 hrs</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="assessment-rubric">Assessment Rubric</h1>
+<p>Every repository in this study is evaluated against the same <strong>5 axes</strong> using primary-source GitHub data collected by <code>scripts/collect_chunk.py</code> (snapshot date: November 2026).</p>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li>Presence, size (lines / bytes), and structure of <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>.agents/skills/</code>, <code>.claude/</code>, <code>.cursor/rules/</code>.</li><li>Progressive disclosure vs. bloated mega-prompts.</li><li>Docs discipline: architecture/invariants docs vs. drifting feature catalogs or stale plans.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li>Linters, formatters, dead-code detectors (<code>oxlint</code>, <code>biome</code>, <code>eslint</code>, <code>knip</code>, <code>clippy</code>, <code>golangci-lint</code>), and strictness.</li><li>CI workflows (<code>.github/workflows/</code>): fast branch-scoped checks, PR-size / slop moderation, security scanning, release automation.</li><li>Testing &amp; evals: unit/integration/e2e coverage, model-facing eval suites, bug-proof discipline.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li>Stack &amp; packaging choices (monorepo vs. single binary, Electron vs. Tauri vs. native Swift/Rust, server/client separation).</li><li>Concurrency &amp; isolation model (git worktrees, containers/sandboxes, PTY/tmux, RPC/event sourcing).</li><li>Complexity budget: where complexity lives (adapter boundary vs. leaked into core/UI).</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li>Recent commit cadence, conventional commits usage, and fix/revert churn ratio.</li><li>Explicit AI co-authorship / agent-authored commit signal (<code>Co-Authored-By</code>, bot commits, PR velocity).</li><li>Maintainer concentration (bus factor vs. community scaling) and lifecycle health (active vs. archived / sunsetted).</li></ul>
+<h2 id="5-steal-vs-avoid-transferable-takeaways">5. Steal vs. Avoid (Transferable Takeaways)</h2>
+<ul><li><strong>Steal:</strong> Concrete patterns, scripts, configs, or architectural ideas directly transferable to our own repos.</li><li><strong>Avoid:</strong> Visible failure modes, complexity traps, or maintenance burdens exposed in the repo&#x27;s history.</li></ul>
+<hr>
+<h2 id="t3-code-pingdotgg-t3code-baseline-reference">T3 Code (<code>pingdotgg/t3code</code>) Baseline Reference</h2>
+<ul><li><strong>Scale:</strong> ~78.8k★, TypeScript monorepo (Effect-TS server, React/Vite web, Electron desktop, React Native mobile, shared <code>contracts</code> + <code>client-runtime</code>).</li><li><strong>Agent hygiene:</strong> Compact root <code>AGENTS.md</code> with pointer table to <code>docs/internals/00..17</code>, explicit &quot;no drifting docs&quot; rule, <code>.agents/skills/</code> for procedural playbooks.</li><li><strong>Mechanical gates:</strong> Custom lint rules (<code>oxlint</code> + custom plugins for comments, state sync, UI restyle), <code>vp run check:changed</code> for fast branch-scoped verification, <code>evals/</code> for model-facing text, PR contribution triage skill.</li><li><strong>Architecture:</strong> Event-sourced orchestration (<code>Orchestrator → EventSink → EffectWorker</code>), provider complexity isolated at adapter boundary, single-origin dev/remote WebSocket architecture.</li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

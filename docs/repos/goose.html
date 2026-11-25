@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aaif-goose/goose — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: aaif-goose/goose">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="aaif-goose/goose — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: aaif-goose/goose">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="aaif-goose/goose — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: aaif-goose/goose">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C3 · Autonomous · aaif-goose/goose</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C3 · Autonomous</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/aaif-goose/goose" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-03/aaif-goose__goose.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>57.0k</strong> (56,978)</span>
+        <span class="meta-chip">Open Issues: <strong>512</strong></span>
+        <span class="meta-chip">Workflows: <strong>39</strong></span>
+        <span class="meta-chip">AI Signal: <strong>64%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>94%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 5.0 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="goose-aaif-goose-goose-formerly-block-goose">Goose (<code>aaif-goose/goose</code>, formerly <code>block/goose</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>56,978★</code> · <code>6,670</code> forks · <strong><code>512</code> open issues</strong> · <code>Apache-2.0</code> · Active (Linux Foundation AAIF; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> Rust workspace (<code>oi-kit</code> reusable agent runtime + <code>goose</code> CLI/ACP backend, 11.1 MB Rust, <code>axum</code>, <code>rmcp</code>, <code>agent-client-protocol</code>, <code>candle</code> in-process local inference, <code>iroh</code> P2P relay, <code>tree-sitter</code>, OpenTelemetry) + Electron desktop UI (<code>ui/desktop</code>, 3.5 MB TS), <code>Justfile</code>, Hermit toolchain manager, Nix flake, <code>release-plz</code>.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-03/aaif-goose__goose.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-03/aaif-goose__goose.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Crisp 132-line <code>AGENTS.md</code> (6.2 KB) + 1-line <code>@AGENTS.md</code> <code>CLAUDE.md</code>:</strong> Clearly encodes issue-board governance, exact cargo/just/UI commands, Rust simplicity rules (no redundant <code>.context(&quot;Failed to X&quot;)</code>, booleans default to <code>false</code> not <code>Option&lt;bool&gt;</code>, trust the Rust type system instead of defensive checks), and concrete OS traps (never overwrite a live macOS binary in place — unlink/atomic-rename or macOS SIGKILLs with <code>Code Signature Invalid</code>!).</li><li><strong>Issue-first engineering culture (<code>CONTRIBUTING.md</code>):</strong><div class="sub-item">• Every external PR must implement an issue already in <strong>Ready</strong> status on the public Goose Issues board; <em>&quot;the unit of contribution is taking a problem to a verified solution, not writing the patch.&quot;</em></div><div class="sub-item">• Explicitly embraces AI-assisted contributions (<em>&quot;You are contributing to an agent, it would be odd if you had not&quot;</em>), requires addressing or rebutting every Codex AI code-review comment in one line, and coaches contributors on LLM failure modes (<em>&quot;Think first&quot;</em>, <em>&quot;Spot the laziness&quot;</em>).</div></li><li><strong>Retiring custom registries in favor of standards:</strong> Explicitly retiring its legacy <code>servers.json</code> MCP list in favor of the official MCP Registry and steering new LLM providers to user-installable JSON files rather than core PRs.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Strong Rust + multi-target CI (39 workflows):</strong><div class="sub-item">• <code>cargo fmt --check</code>, <code>cargo clippy --all-targets -- -D warnings</code>, <code>cargo-deny</code>, <code>cargo-machete</code> (unused Cargo deps — Rust equivalent of <code>knip</code>), OpenSSF <code>scorecard.yml</code>, <code>quarantine.yml</code> (flaky test isolation).</div><div class="sub-item">• <strong>Binary size &amp; Wasm budgets:</strong> <code>just check-lean-size</code> enforces a size budget on the lean ACP binary, and <code>rust-check-wasm</code> verifies <code>oi-kit</code> crates compile &amp; pass tests on <code>wasm32</code>.</div><div class="sub-item">• <strong>Protocol conformance suites:</strong> <code>mcp-conformance.yml</code> and <code>model-toolcall-conformance.yml</code> test real protocol &amp; tool-calling compliance.</div><div class="sub-item">• <strong>Release branch cherry-pick gate (<code>check-release-pr.yaml</code>):</strong> Runs <code>git cherry origin/main HEAD</code> to prove every commit in a <code>release/*</code> PR already exists on <code>main</code>, preventing hotfixes from getting stranded on release branches.</div></li><li><strong>Packed npm artifact verification (<code>ci.yml</code>):</strong> Packs <code>goose-acp</code> tarballs and validates <code>package.json</code> versions inside the extracted <code>.tgz</code> before publish.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Foundation-grade SDK split inside one repo (<code>oi-kit</code> + <code>goose</code>):</strong> Decomposed Goose&#x27;s core agent loop into reusable <code>oi-kit</code> Rust crates (state machine, operations, providers, compaction, with Python/Kotlin bindings and <code>wasm32</code> support) while keeping <code>goose</code> as the flagship CLI/Desktop/ACP reference app.</li><li><strong>ACP-native desktop architecture:</strong> <code>goose Desktop</code> talks to its own backend over <code>goose acp</code> (Agent Client Protocol) — explicitly banning legacy OpenAPI client generation (<code>@hey-api/openapi-ts</code>) in <code>ui/desktop</code>.</li><li><strong>In-process local inference (<code>candle</code>) + P2P networking (<code>iroh</code>):</strong> Unusual, forward-looking bets inside the Rust core that avoid requiring Ollama or centralized relays.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Low open-issue count (512 on 57k★)</strong> thanks to the <strong>Ready</strong>-board gate, <code>stale.yml</code>, and <code>take.yml</code>.</li><li><strong>Important metric nuance in last 50 commits (5 days, 2026-11-20 to 2026-11-25):</strong> 94% conventional commits, 16% fix/revert, and <code>64%</code> matched our bot/AI regex — <strong>because 29 of the last 50 commits (58%) are auto-merged <code>dependabot[bot]</code> PRs</strong> (<code>dependabot-auto-merge.yml</code>), while active human engineering in this window is heavily concentrated in <code>lifeizhou-ap</code> (13 commits) alongside broader Block/AAIF maintainers (<code>DOsinga</code>, <code>alexhancock</code>, <code>jamadeo</code>, <code>michaelneale</code>, <code>angiejones</code>).</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Board-gated <code>Ready</code> issue requirement:</strong> Forces design alignment and a verification plan <em>before</em> anyone (or any agent) writes code.</div><div class="sub-item">• <strong><code>check-release-pr.yaml</code> (<code>git cherry origin/main HEAD</code>):</strong> Tiny 60-line workflow guaranteeing release branches never diverge from <code>main</code>.</div><div class="sub-item">• <strong>Binary size budget (<code>check-lean-size</code>) + <code>cargo-machete</code> + protocol conformance CI</strong> (<code>mcp-conformance</code>, <code>model-toolcall-conformance</code>).</div><div class="sub-item">• <strong>Mandatory 1-line disposition of AI review findings</strong> (fix or write a 1-line reason why it&#x27;s a false positive) — keeps automated review high-signal.</div><div class="sub-item">• <strong>Dogfooding your own public protocol:</strong> Desktop talking to backend over ACP guarantees ACP never rots.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Unbundled Dependabot auto-merge storms</strong> (29 separate bump commits in 5 days) — group Dependabot updates by ecosystem/minor to keep <code>git log</code> readable.</div><div class="sub-item">• <strong>Root directory doc sprawl</strong> (<code>BUILDING_DOCKER.md</code>, <code>BUILDING_LINUX.md</code>, <code>CUSTOM_DISTROS.md</code>, <code>I18N.md</code>, <code>MERGE_FIXES.md</code>, <code>RELEASE_CHECKLIST.md</code>, <code>RISCV_SETUP.md</code> all sitting at root).</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

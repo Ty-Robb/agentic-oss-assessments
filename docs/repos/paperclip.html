@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>paperclipai/paperclip — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: paperclipai/paperclip">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="paperclipai/paperclip — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: paperclipai/paperclip">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="paperclipai/paperclip — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: paperclipai/paperclip">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C4 · Orchestration · paperclipai/paperclip</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C4 · Orchestration</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-04/paperclipai__paperclip.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>116.9k</strong> (116,922)</span>
+        <span class="meta-chip">Open Issues: <strong>6,812</strong></span>
+        <span class="meta-chip">Workflows: <strong>41</strong></span>
+        <span class="meta-chip">AI Signal: <strong>58%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>94%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 14.5 hrs</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="paperclip-paperclipai-paperclip">Paperclip (<code>paperclipai/paperclip</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>116,922★</code> · <code>19,415</code> forks · <code>6,812</code> open issues · <code>MIT</code> · Active (created Mar 2, 2026; default branch <code>master</code>; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> TypeScript pnpm + Turborepo monorepo (<strong>157.8 MB TypeScript</strong>, 4.75 MB Rust <code>paperclip-runner</code>), Express REST API (<code>server/</code>), React + Vite board UI (<code>ui/</code>), Drizzle + embedded/external Postgres (<code>packages/db/</code>), <code>cli/</code>, <code>packages/adapters/*</code>, <code>packages/plugins/*</code>, Vitest, Playwright, Storybook, Promptfoo (<code>evals/promptfoo/</code>), Allure TestOps.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-04/paperclipai__paperclip.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-04/paperclipai__paperclip.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Header-indexed <code>rules/*.mdc</code> progressive disclosure (<code>AGENTS.md</code>, 221 lines / 10.9 KB):</strong><div class="sub-item">• Instead of stuffing every architectural rule into <code>AGENTS.md</code>, Paperclip stores scoped rules in <code>rules/*.mdc</code> with frontmatter (<code>description</code>, <code>globs</code>, <code>alwaysApply</code>) and instructs agents to run <code>grep -E &#x27;^(description|globs|alwaysApply):&#x27; rules/*.mdc</code> first — reading full bodies only when a design decision requires it.</div><div class="sub-item">• Also pairs with <strong>37 <code>.agents/skills/</code></strong> (<code>verify-paperclip</code>, <code>create-verification-skill</code>, <code>maintain-verification-skill</code>, <code>fix-slow-queries</code>, <code>diagnose-why-work-stopped</code>, <code>pr-gardening</code>, <code>test-audit</code>, <code>honeycomb-tracing</code>, <code>terminal-bench-loop</code>) and machine-checked <strong><code>maps/feature-map/</code> + <code>maps/agent-access-map/</code></strong> (<code>check-maps.mjs</code>).</div></li><li><strong>Explicit truth hierarchy:</strong> States right in section 1 that <em>code and tests are source of truth; <code>doc/</code> is background and may be stale</em>.</li><li><strong>Dogfooding-aware PR hygiene (<code>CONTRIBUTING.md</code>):</strong><div class="sub-item">• <strong>&quot;No Internal Issue References&quot;</strong> rule prevents contributors running their own Paperclip instances from leaking private ticket IDs (<code>PAPA-123</code>) or <code>localhost</code> URLs into public PR bodies and branch names.</div><div class="sub-item">• Mandatory <strong>duplicate-PR search checkbox</strong> verified by <code>commitperclip</code> bot.</div><div class="sub-item">• Two bold mechanical anti-bloat PR rules: <strong>never push a code file across 1,000 lines</strong>, and <strong>zero code comments in PRs</strong>.</div></li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Best incremental local verification ergonomics (<code>pnpm verify</code> + exit code 2):</strong><div class="sub-item">• <code>pnpm verify</code> selects affected Vitest files using CI&#x27;s exact conservative dependency policy (covering committed + staged + unstaged + untracked changes against <code>origin/master</code>), supports <code>--explain</code> and caching, and returns <strong>exit code 2</strong> when a change is too broad for incremental local proof — explicitly instructing agents <em>not</em> to blindly fall back to a full repo-wide run!</div><div class="sub-item">• Even ships <code>scripts/typecheck-low-memory.mjs</code> for constrained agent sandboxes and <code>scripts/agent-preflight.mjs</code> to bootstrap new worktrees.</div></li><li><strong>Real PostgreSQL backup &amp; restore qualification CI (<code>backup-checkpoint-qualification.yml</code>):</strong> Spins up Postgres 17, runs real <code>pg_dump</code> + <code>psql</code> restore into a clean DB via wrapper scripts bound to the container&#x27;s matching client binaries, runs Vitest verification, and uploads a <code>qualification.json</code> evidence receipt!</li><li><strong>41 workflows covering chaos, crash points &amp; TestOps:</strong> <code>crash-points.yml</code>, <code>runner-chaos-evals.yml</code>, <code>runner-live-evals.yml</code>, <code>runner-protocol-live-evals.yml</code>, <code>ci-work-benchmark.yml</code>, <code>ci-test-durations.yml</code>, <code>storybook-visual.yml</code>, <code>sentry-contract.yml</code>, <code>commitperclip-review.yml</code>, plus custom scripts (<code>check:tokens</code>, <code>check:token-gates</code>, <code>check:no-git-push</code>, <code>check:module-boundaries</code>, <code>check:node-version</code>).</li><li><strong>Strong security boundary in TestOps workflows (<code>chat-catalog-testops-case.yml</code>):</strong> Checks out trusted helpers from <code>github.sha</code> into <code>.testops-trusted</code>, verifies the untrusted target SHA does not own <code>.testops-trusted</code>, verifies SHA-256 checksums of build artifacts, and runs with <code>NODE_OPTIONS=&#x27;&#x27;</code> and <code>AWS_EC2_METADATA_DISABLED=&#x27;true&#x27;</code>.</li><li><strong>Gap:</strong> No root <code>.oxlintrc.json</code> or <code>biome.json</code> detected (relies on custom <code>check:*</code> scripts, <code>rules/*.mdc</code>, Greptile 5/5 score requirement, and <code>commitperclip</code> review).</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Org-level control plane above coding agents:</strong> Treats agents as employees inside a company with strict domain invariants enforced everywhere: company-scoping on every entity/route, single-assignee tasks, atomic issue checkout, approval gates, hard-stop budget auto-pause, and full mutation activity logs.</li><li><strong>Core vs. Deployment Policy separation:</strong> Explicitly forbids hardcoding Cloud allowlists or deployment defaults into Core (<code>AGENTS.md</code> rule 5), keeping OSS Core generic and cleanly deployable.</li><li><strong>Rust runner + Node/TS server hybrid:</strong> Runs a TypeScript/Express control plane with a 4.75 MB Rust <code>paperclip-runner</code> and patches 11 upstream packages (<code>embedded-postgres</code>, <code>acpx</code>, Claude/Codex ACP adapters, Slack/Discord/Telegram/Teams chat adapters) to smooth multi-agent execution.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Blistering founder+agent velocity:</strong> <strong>50 commits in 14.5 hours</strong> (PR <code>#22,930</code> in just 8.5 months!), <strong>94% conventional commits</strong>, <strong>56% fix/revert</strong>, <strong>58% explicit AI co-author trailers</strong> (and PR template requires a <code>Model Used</code> field).</li><li><strong>Highly concentrated core:</strong> <code>cryppadotta</code> accounts for <strong>5,675 contributions</strong> (39 of last 50 commits!), with <code>devinfoley</code> (1,123) and <code>nickyleach</code> (585) next — while <code>open_issues</code> has surged to <code>6,812</code>.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong><code>grep</code>-indexed <code>rules/*.mdc</code> frontmatter</strong> so agents scan all architectural rules in one cheap grep and load full bodies only when relevant.</div><div class="sub-item">• <strong><code>pnpm verify</code> with <code>--explain</code> and exit-code-2 (&quot;too broad, let CI handle full suite&quot;)</strong> — huge time/token saver for agents.</div><div class="sub-item">• <strong>Real DB backup/restore CI (<code>backup-checkpoint-qualification.yml</code>)</strong> and <strong><code>crash-points.yml</code> / <code>runner-chaos-evals.yml</code></strong> for durable systems.</div><div class="sub-item">• <strong>1,000-line file ceiling rule</strong> in PR review + <strong><code>scripts/agent-preflight.mjs</code></strong> for one-command worktree readiness.</div><div class="sub-item">• <strong>Feature maps &amp; agent access maps</strong> (<code>maps/</code>) separating <em>coverage scope</em> from <em>live verification proof</em>.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Relying on Greptile scores + prose <code>rules/*.mdc</code> without a fast root static linter (<code>oxlint</code>/<code>biome</code>)</strong> — static lint rules catch violations in milliseconds before PR review.</div><div class="sub-item">• <strong>Committing <code>doc/plans/</code> AND <code>docs/plans/</code> AND <code>screenshots/</code> into the main repo</strong> alongside 158 MB of source — creates dual-docs drift (<code>doc/</code> vs. <code>docs/</code>).</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

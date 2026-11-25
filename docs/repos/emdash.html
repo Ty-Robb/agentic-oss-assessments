@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>generalaction/emdash — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: generalaction/emdash">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="generalaction/emdash — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: generalaction/emdash">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="generalaction/emdash — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: generalaction/emdash">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C1 · Rivals · generalaction/emdash</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C1 · Rivals</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/generalaction/emdash" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-01/generalaction__emdash.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>6.3k</strong> (6,306)</span>
+        <span class="meta-chip">Open Issues: <strong>92</strong></span>
+        <span class="meta-chip">Workflows: <strong>6</strong></span>
+        <span class="meta-chip">AI Signal: <strong>6%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>50%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 22 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="emdash-generalaction-emdash">Emdash (<code>generalaction/emdash</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>6,306★</code> · <code>676</code> forks · <code>92</code> open issues · <code>Apache-2.0</code> · Active (YC W26; pushed 2026-11-23)</li><li><strong>Primary Stack:</strong> TypeScript pnpm + Nx monorepo (21.2 MB TS), Electron desktop (<code>apps/emdash-desktop</code>) + remote <code>apps/workspace-server</code>, Drizzle + SQLite, custom typed <code>Wire</code> RPC protocol, MobX stores, <code>oxlint</code> + <code>oxfmt</code>, Vitest + Playwright browser tests.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-01/generalaction__emdash.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-01/generalaction__emdash.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Rich topic hierarchy, heavy root file:</strong> Root <code>AGENTS.md</code> is <strong>419 lines / 24.5 KB</strong> (largest in Chunk 1 — ~50% longer than Paradev&#x27;s and 2.6× T3 Code&#x27;s line count), though <code>CLAUDE.md</code> cleanly delegates via <code>@AGENTS.md</code>. Also maintains a dedicated <code>agents/</code> folder (including <code>agents/workflows/flows.md</code>, <code>agents/risky-areas/</code>) and <code>CONTEXT.md</code>.</li><li><strong>Clean ADR-only <code>docs/</code>:</strong> <code>docs/</code> contains only <code>adr/</code> (Architecture Decision Records), keeping prose docs disciplined while putting agent guidance in <code>agents/</code>.</li><li><strong>Noticeable duplication risk:</strong> <code>CONTRIBUTING.md</code> (453 lines / 14.7 KB) repeats much of <code>AGENTS.md</code>&#x27;s layout and command catalog.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Standout custom <code>oxlint</code> architecture plugin (<code>./tooling/oxlint/index.js</code>):</strong> Enables <code>typeAware: true</code>, <code>correctness: &quot;error&quot;</code>, <code>respectEslintDisableDirectives: false</code>, and 6 custom repo rules enforced as <code>&quot;error&quot;</code>:<div class="sub-item">• <code>emdash/core-host-boundaries</code> &amp; <code>emdash/core-module-boundaries</code></div><div class="sub-item">• <code>emdash/no-async-transaction-callback</code> (prevents subtle SQLite transaction corruption!)</div><div class="sub-item">• <code>emdash/no-dynamic-imports</code> &amp; <code>emdash/no-tsx-in-api</code> &amp; <code>emdash/no-tooling-imports</code></div></li><li><strong>Allowlist lifecycle automation:</strong> Ships both <code>check-allowlists.mjs</code> (in <code>lint</code>) AND <code>prune:boundary-allowlists</code> so stale lint exceptions are actively reaped as code improves!</li><li><strong>Sole-writer DB enforcement in <code>.oxlintrc.json</code>:</strong> <code>no-restricted-imports</code> forbids importing Drizzle&#x27;s <code>workspaces</code> or <code>conversations</code> tables anywhere outside their respective Registry modules; also forbids importing <code>electron</code> outside <code>main/{host,gateway,bootstrap,core,db}</code>.</li><li><strong>Smart, fast CI (<code>code-consistency-check.yml</code>):</strong><div class="sub-item">• Uses <code>pnpm nx affected -t &lt;format:check|lint|typecheck|test&gt;</code> with <code>pnpm install --frozen-lockfile --ignore-scripts</code> and retry logic.</div><div class="sub-item">• Solves the native-module CI headache cleanly: keeps <code>--ignore-scripts</code> for lint/typecheck/format, and for <code>test</code> only installs an anchored native side-project (<code>apps/emdash-desktop/tooling/node-deps</code>) + rebuilds <code>node-pty</code>.</div><div class="sub-item">• Dedicated <code>workspace-server-package-check.yml</code> verifies Linux x64 and Apple Silicon macOS packaging/installers on PRs touching server packages.</div></li><li><strong>One soft spot:</strong> <code>typescript/no-floating-promises</code>, <code>no-misused-promises</code>, and <code>await-thenable</code> are still <code>&quot;warn&quot;</code> (not <code>&quot;error&quot;</code>), and Playwright browser tests are skipped in CI.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Disciplined vertical-slice + Wire architecture:</strong> Features live under <code>src/core/features/&lt;feature&gt;/{api,node,browser,contributions}</code> and register through central manifests (<code>controllers.ts</code>, <code>browser-contributions.ts</code>, <code>task-tab-contributions.ts</code>, <code>command-catalog.ts</code>). Preload exposes only two primitives (<code>requestWirePort</code>, <code>getPathForFile</code>), keeping Electron IPC razor-thin.</li><li><strong>Zero-prerequisite toolchain provisioning:</strong> <code>package.json</code> uses pnpm&#x27;s <code>devEngines.runtime</code> (<code>node 24.14.0</code>, <code>onFail: &quot;download&quot;</code>) + <code>packageManager: pnpm@10.28.2</code>, so any contributor with <code>pnpm</code> gets the exact checksummed Node &amp; pnpm automatically — zero nvm/corepack friction.</li><li><strong>True local-first + SSH remote model:</strong> Local SQLite + SSH/SFTP + standalone <code>workspace-server</code> avoids Paradev&#x27;s cloud SaaS complexity while supporting macOS, Windows, and Linux (including Azure Trusted Signing for Windows and Apple notarization).</li><li><strong>Dual runtime path (PTY + ACP):</strong> Legacy TUI agents run over PTY while structured chat runs over ACP in a dedicated Wire worker — cleanly isolating provider chaos.</li><li><strong>Expected failures modeled with <code>Result&lt;T, E&gt;</code></strong> from <code>@emdash/shared</code> (lightweight alternative to Effect-TS).</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Steady core team:</strong> Last 50 commits span <strong>22 days</strong> (2026-11-01 to 2026-11-23), driven by ~5 core engineers (<code>jschwxrz</code> 2,863, <code>arnestrickmann</code> 2,758, <code>Davidknp</code> 2,209, <code>janburzinski</code> 1,123, <code>rabanspiegel</code> 785). Very healthy open-issue count (<code>92</code>).</li><li><strong>Merge-commit history:</strong> Uses GitHub merge commits (<code>Merge pull request #...</code>), which drops top-level conventional-commit ratio to 50% (actual feature commits inside PRs follow Conventional Commits). Low fix/revert ratio (<code>22%</code>) and low explicit AI trailer rate (<code>6%</code>), though branch names like <code>generalaction/codex/classic-readme</code> show active agent usage.</li><li><strong>Commercial positioning shift:</strong> Recent commits (<code>docs(readme): introduce Emdash Classic</code>) show the OSS desktop app being branded &quot;Emdash Classic&quot; alongside a hosted team product at <code>emdash.com</code>.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Sole-writer database table lint rules</strong> (<code>no-restricted-imports</code> restricting raw Drizzle table imports to one Registry module) + <code>no-async-transaction-callback</code>.</div><div class="sub-item">• <strong>Self-pruning boundary allowlists</strong> (<code>check-allowlists.mjs</code> + <code>prune:boundary-allowlists</code>) + <code>respectEslintDisableDirectives: false</code> in <code>.oxlintrc.json</code> so agents cannot silently silence lint rules with <code>// eslint-disable</code>!</div><div class="sub-item">• <strong>Zero-setup <code>devEngines.runtime</code> (<code>onFail: &quot;download&quot;</code>)</strong> in <code>package.json</code> to eliminate contributor/agent Node-version drift.</div><div class="sub-item">• <strong><code>--ignore-scripts</code> CI installs</strong> with isolated native test-only side projects — huge CI speed &amp; reliability win for Electron/SQLite/PTY repos.</div><div class="sub-item">• <strong><code>agents/risky-areas/</code></strong> targeted pre-edit checklists for high-blast-radius subsystems (DB, PTY, SSH, updater).</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Letting root <code>AGENTS.md</code> (419 lines) and <code>CONTRIBUTING.md</code> (453 lines) grow redundant</strong> — wastes agent context on every session and risks contradicting each other.</div><div class="sub-item">• <strong>Leaving <code>no-floating-promises</code> at <code>&quot;warn&quot;</code></strong> in an async-heavy Electron/IPC app.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

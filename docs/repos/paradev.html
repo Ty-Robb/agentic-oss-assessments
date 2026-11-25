@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ParadevAI/Paradev — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: ParadevAI/Paradev">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ParadevAI/Paradev — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: ParadevAI/Paradev">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ParadevAI/Paradev — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: ParadevAI/Paradev">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C1 · Rivals · ParadevAI/Paradev</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C1 · Rivals</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/ParadevAI/Paradev" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-01/ParadevAI__Paradev.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>16.6k</strong> (16,638)</span>
+        <span class="meta-chip">Open Issues: <strong>1,263</strong></span>
+        <span class="meta-chip">Workflows: <strong>22</strong></span>
+        <span class="meta-chip">AI Signal: <strong>0%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>98%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 3.2 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="paradev-paradevai-paradev-formerly-superset">Paradev (<code>ParadevAI/Paradev</code>, formerly Superset)</h1>
+<ul><li><strong>Snapshot:</strong> <code>16,638★</code> · <code>1,501</code> forks · <code>1,263</code> open issues · <code>MIT</code> · Active (pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> TypeScript monorepo (35.2 MB TS, 2.75 MB MDX, Swift, Kotlin, TLA+), Bun + Turborepo, Electron desktop, Next.js web/API, Expo mobile, Drizzle ORM (Postgres/Neon + local SQLite), tRPC, Lingui i18n.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-01/ParadevAI__Paradev.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-01/ParadevAI__Paradev.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Strong progressive disclosure:</strong> <code>AGENTS.md</code> is 292 lines (16.2 KB), <code>CLAUDE.md</code> is a 1-line <code>@AGENTS.md</code> pointer (zero drift), and deep procedural guides live in 16 <code>.agents/skills/</code> folders (<code>cdp-verification</code>, <code>mobile-sim-verification</code>, <code>db-migrations</code>, <code>trpc-compat</code>, <code>verify-sandbox-asleep</code>, <code>incident-triage</code>, <code>dev-doctor</code>, etc.) plus scoped package guides (<code>packages/trpc/AGENTS.md</code>, <code>apps/desktop/AGENTS.md</code>, <code>apps/mobile/AGENTS.md</code>).</li><li><strong>Lean <code>docs/</code> (only 5 root items):</strong> <code>agent-tooling.md</code>, <code>deploy-workflows.md</code>, <code>environment-variables.md</code>, <code>plugins.md</code>, <code>runbooks/</code>. Explicitly bans committing plans/specs/research to the public repo (<code>docs: move internal design notes to ParadevAI/plans (#10191)</code>).</li><li><strong>Self-driving CLI designed for agents:</strong> <code>paradev schema</code> outputs every CLI command/option as JSON so agents query it with <code>jq</code> instead of scraping <code>--help</code>, and <code>--json</code> auto-enables in agent environments.</li><li><strong>Comment discipline:</strong> Explicit anti-slop rule with C++ good/bad examples and ASD-STE100 Simplified Technical English guidance.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Best-in-class <code>biome.jsonc</code> architectural ratchets:</strong> Uses <code>noRestrictedImports</code> (as <code>&quot;error&quot;</code>) to encode hard-won production bugs directly in the linter:<div class="sub-item">• Bans <code>execSync</code>/<code>spawnSync</code>/<code>execFileSync</code> on Electron main, <code>host-service</code>, and <code>pty-daemon</code> event loops — paired with an explicit 3-file legacy allowlist frozen by ratchet tests.</div><div class="sub-item">• Bans direct <code>@vercel/sandbox</code> imports outside <code>packages/trpc/src/lib/sandbox</code> so callers cannot accidentally wake stopped sandboxes.</div><div class="sub-item">• Bans fleet-wide admin DB queries (<code>queryFleetCloudUsage*</code>) outside admin surfaces.</div><div class="sub-item">• Bans TanStack Router <code>&lt;Navigate&gt;</code> in the desktop renderer (prevents React error #185 infinite render loops).</div><div class="sub-item">• Bans <code>node:*</code> imports in renderer code.</div></li><li><strong>22 CI workflows</strong> with high operational maturity:<div class="sub-item">• <code>sherif</code> (monorepo dependency consistency), <code>vale</code> (prose lint for marketing copy), <code>check:versions</code> (desktop == host-service == cli lockstep), <code>check:plugins</code> (generated manifest drift), <code>check:i18n &amp;&amp; git diff --exit-code</code>, <code>check:durable-objects</code> (prevents silent storage loss when renaming Cloudflare Durable Objects).</div><div class="sub-item">• Production DB migrations run with <code>PGOPTIONS=&quot;-c lock_timeout=5s -c statement_timeout=60s&quot;</code>, <code>set -o pipefail</code>, targeted deadlock/lock-timeout retry loop, and a post-migration verification script.</div></li><li><strong>Hard test-speed budget:</strong> Whole CI targets ~2 minutes; <code>AGENTS.md</code> explicitly bans tests &gt; 5s, bans <code>mock.module</code> on shared modules, bans heavy real-git stress suites, and splits Node-only PTY suites into <code>*.node-test.ts</code> so Turborepo runs them beside Bun suites.</li><li><strong>Gap vs. T3 Code:</strong> No <code>evals/</code> directory for model-facing prompt/tool evaluation, and no <code>knip</code> dead-code gate yet (dead component cleanup appears manually in commits like <code>refactor(ui): delete the unused FileDiffTool component</code>).</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Full cloud + local + mobile SaaS platform:</strong> Unlike T3 Code&#x27;s single-server local/relay design, Paradev runs a full cloud backend (Next.js API, Neon Postgres with per-PR Neon branches, Vercel previews, Cloudflare Durable Objects, Vercel Sandboxes, Better Auth, billing via Autumn) alongside a local Electron desktop + <code>host-service</code> + <code>pty-daemon</code>.</li><li><strong>Formal verification signal:</strong> Contains <code>7.4 KB</code> of TLA+ specs — rare among agentic startups and signals serious concurrency modeling.</li><li><strong>Heavy dependency patch burden:</strong> 20 <code>patchedDependencies</code> in root <code>package.json</code> (<code>xterm</code> betas, <code>metro</code>, <code>react-native</code>, <code>node-pty</code>, <code>trpc-electron</code>, <code>@pierre/diffs</code>, <code>electron-chrome-extensions</code>).</li><li><strong>CDP-first visual verification:</strong> Dev desktop exposes Chrome DevTools Protocol (<code>RENDERER_REMOTE_DEBUG_PORT</code>) with an explicit safety check verifying <code>/json/list</code> matches the workspace&#x27;s <code>DESKTOP_VITE_PORT</code> before interacting.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>High velocity &amp; discipline:</strong> Last 50 commits span just <strong>3.2 days</strong> (2026-11-22 to 2026-11-25), <strong>98% conventional commits</strong>, <strong>36% fix/revert</strong> (healthy feature-to-fix balance), <strong>0% explicit AI co-author trailers</strong> (team strips or omits trailers even though agents clearly drive PRs; <code>paradev-app[bot]</code> has 25 contributions).</li><li><strong>Tight core team:</strong> 4 engineers dominate (<code>Kitenite</code> 2,848, <code>saddlepaddle</code> 1,943, <code>AviPeltz</code> 529, <code>harshithmullapudi</code> 201). CLA required for external contributors.</li><li><strong>Open issue pressure:</strong> 1,263 open issues, mitigated with <code>triage-issue.yml</code> and <code>stale-prs.yml</code>.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Domain-specific <code>noRestrictedImports</code> ratchets</strong> in Biome/oxlint (blocking sync subprocesses on serving loops, tenant-scoping DB queries, unsafe router primitives) with tiny shrinking legacy allowlists.</div><div class="sub-item">• <strong>2-minute test-suite culture</strong> codified in <code>AGENTS.md</code> (ban real waiting, ban <code>mock.module</code> on shared modules, isolate PTY tests into <code>*.node-test.ts</code>).</div><div class="sub-item">• <strong><code>paradev schema</code> JSON introspection + auto-JSON under agent envs</strong> for any CLI meant to be driven by coding agents.</div><div class="sub-item">• <strong>Deployment safety invariants</strong> (<code>check:durable-objects</code>, <code>lock_timeout=5s</code> + <code>pipefail</code> on Drizzle migrations, <code>sherif</code> for monorepo dep drift).</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Patching 20 upstream beta packages</strong> unless truly necessary — creates continuous upgrade drag.</div><div class="sub-item">• <strong>Mixing SaaS billing/cloud/admin/marketing/desktop/mobile into one monorepo</strong> unless you have dedicated infra engineers (45 KB <code>deploy-preview.yml</code> + 45 KB <code>deploy-production.yml</code>).</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

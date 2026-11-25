@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>anomalyco/opencode — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: anomalyco/opencode">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="anomalyco/opencode — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: anomalyco/opencode">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="anomalyco/opencode — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: anomalyco/opencode">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C2 · Harnesses · anomalyco/opencode</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C2 · Harnesses</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/anomalyco/opencode" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-02/anomalyco__opencode.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>229.1k</strong> (229,098)</span>
+        <span class="meta-chip">Open Issues: <strong>4,172</strong></span>
+        <span class="meta-chip">Workflows: <strong>21</strong></span>
+        <span class="meta-chip">AI Signal: <strong>4%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>100%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 12.3 hrs</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="opencode-anomalyco-opencode">OpenCode (<code>anomalyco/opencode</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>229,098★</code> · <code>31,187</code> forks · <code>4,172</code> open issues · <code>MIT</code> · Active (default branch <code>dev</code>; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> TypeScript monorepo (63.2 MB TS + 11.8 MB Rust process daemon), Bun + Turborepo, Effect-TS v4.1, SolidJS + OpenTUI, Electron desktop, Drizzle SQLite, Hono, Nix flake.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-02/anomalyco__opencode.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-02/anomalyco__opencode.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>High-signal, opinionated <code>AGENTS.md</code> (221 lines / 18.2 KB):</strong> Packs dense architectural invariants (dependency DAG: <code>Schema → Core/Protocol → Server</code>, event-sourced <code>Session Core</code> inbox admission, async non-blocking plugin loading, experimental API graduation, feature-flag deletion) plus a strict TypeScript style guide tailored to stop LLM bloat (no speculative defensive checks, no single-use helpers, no <code>import *</code>, no <code>else</code>, inline single-use bindings).</li><li><strong>Guard against accidental root test runs:</strong> <code>&quot;test&quot;: &quot;echo &#x27;do not run tests from root&#x27; &amp;&amp; exit 1&quot;</code> — forces agents to run package-scoped tests and consult <code>.opencode/skills/{unit-tests,tui-tests,app-e2e-tests,component-tests}</code>.</li><li><strong>TUI Storybook for agents:</strong> Fixture-driven TUI stories run via <code>OPENCODE_STORY=&lt;id&gt; bun run dev:live</code> with keybindings in <code>StoryFooter</code> so agents can inspect real components safely.</li><li><strong>Live-window CDP pitfall documented:</strong> Explicitly requires <code>chromium.connectOverCDP(endpoint, { noDefaults: true })</code> because Playwright otherwise flashes the user&#x27;s live desktop window into light mode.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Purpose-built <code>anti-slop</code> + <code>anti-slop-effect</code> <code>oxlint</code> plugins + tested <code>ast-grep</code> rules:</strong><div class="sub-item">• <code>.oxlintrc.json</code> loads <code>./script/oxlint/anti-slop/index.ts</code> and <code>./script/oxlint/anti-slop/effect/index.ts</code> with 24 custom rules targeting exact LLM bad habits: <code>no-chained-type-assertions</code>, <code>no-widen-then-assert</code>, <code>no-known-value-widening</code>, <code>no-shape-in-symbol-names</code>, <code>no-module-mocking</code>, <code>no-runtime-typeof</code>, <code>no-unsafe-dictionary-type</code>, <code>require-safety-comment-for-type-assertion</code>, <code>no-manual-effect-error-tag</code>, <code>prefer-effect-match</code>.</div><div class="sub-item">• Uses <code>ast-grep</code> for Effect pattern simplification, GUI plugin boundaries, and dialog sizes — with dedicated unit tests for the lint rules themselves (<code>test:lint-rules</code>, <code>test:effect-simplification-rules</code>)!</div><div class="sub-item">• Bans raw <code>fetch</code> and <code>HttpClient</code> in <code>packages/ai/src/**</code> so every HTTP request goes through <code>RequestExecutor</code> middleware; bans <code>createEffect</code>/<code>createRenderEffect</code>/<code>createComputed</code> in GUI plugins in favor of SDK primitives (<code>createKeyed</code>, <code>createLatest</code>, <code>createVisitState</code>).</div></li><li><strong>7 automated PR/issue triage workflows:</strong> <code>triage-slop.yml</code>, <code>triage-pr-standards.yml</code>, <code>triage-contributor.yml</code>, <code>triage-compliance-close.yml</code>, <code>triage-close-issues.yml</code>, <code>triage-close-linked.yml</code>, <code>triage-close-prs.yml</code>.</li><li><strong>Bot blast-radius containment (<code>check-bot-scope.yml</code>):</strong> Auto-merged bot branches (<code>bot/nix-hashes</code>) are mechanically verified to touch <em>only</em> <code>nix/hashes.json</code> and pass a validator from the base branch.</li><li><strong>Rust Miri verification (<code>check-process-daemon.yml</code>):</strong> Runs <strong>both Stacked Borrows and Tree Borrows</strong> under Miri on the Rust process daemon, plus Zig/Ghostty cross-compilation tests on Linux, macOS, and Windows ARM64.</li><li><strong>Dual typecheck strategy:</strong> Local <code>bun typecheck</code> uses fast <code>bun check</code>; CI uses official <code>@typescript/native</code> (<code>tsc -b</code>) via Turborepo <code>transit</code> hashes.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Event-sourced Session Core + durable inbox:</strong> Separates prompt admission (<code>session.inbox.enqueued</code> → <code>session_inbox</code>) from model execution (<code>SessionExecution.wake</code>), making ID reuse idempotent and projections minimal.</li><li><strong>Async non-blocking plugins by contract:</strong> Server handlers never await plugin activation or retry; they return current state while long-lived clients react to <code>*.updated</code> events — eliminating startup deadlocks.</li><li><strong>Feature-flag lifecycle:</strong> New user-visible or risky changes land behind <code>packages/schema/src/config/flag.ts</code> (default on in dev, off in release) and ship by <em>deleting</em> the flag.</li><li><strong>Generated SDK aliases on breaking moves:</strong> <code>compile(..., { aliases: true })</code> preserves <code>@deprecated</code> aliases for one minor automatically.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Extreme shipping velocity:</strong> Last 50 commits landed in <strong>12.3 hours</strong> (PR <code>#66,370</code>), <strong>100% conventional commits</strong>, <strong>60% fix/revert</strong>, <strong>4% explicit AI co-author trailers</strong> — yet <strong><code>opencode-agent[bot]</code> is the #3 all-time contributor (2,766 commits!)</strong> alongside <code>thdxr</code> (3,093), <code>rekram1-node</code> (2,894), <code>kitlangton</code> (2,497), and <code>adamdotdevin</code> (2,208).</li><li><strong>Massive open-source gravity:</strong> 229k stars, 31k forks, 4,172 open issues, 22 translated <code>README.*.md</code> files.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong><code>anti-slop</code> custom oxlint plugin + tested <code>ast-grep</code> rules</strong> encoding recurring LLM TypeScript mistakes (<code>no-widen-then-assert</code>, <code>no-runtime-typeof</code>, <code>no-module-mocking</code>, <code>require-safety-comment-for-type-assertion</code>).</div><div class="sub-item">• <strong>Blocking root <code>test</code> (<code>do-not-run-tests-from-root</code>)</strong> + <code>lint:changed</code> so agents iterate at package scope instead of burning minutes on full monorepo runs.</div><div class="sub-item">• <strong><code>check-bot-scope.yml</code></strong> path-pinning any auto-merged bot branch to its exact allowed file(s).</div><div class="sub-item">• <strong>Explicit &quot;validate once at trust boundary&quot; + &quot;ship by deleting the feature flag&quot;</strong> policies in <code>AGENTS.md</code>.</div><div class="sub-item">• <strong>Turborepo <code>transit</code> virtual dependency task</strong> so source-exported packages invalidate dependents&#x27; caches without requiring full build steps before tests.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Keeping all <code>anti-slop</code> rules at <code>&quot;warn&quot;</code> and turning off all built-in oxlint categories (<code>correctness: &quot;off&quot;</code>)</strong> — warnings erode over time unless promoted to <code>&quot;error&quot;</code> or checked on changed files only.</div><div class="sub-item">• <strong>22 manually mirrored root <code>README.*.md</code> files</strong> polluting the repo root.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

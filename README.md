@@ -1,5 +1,7 @@
 # Agentic OSS Assessments
 
+> **Live Website:** **[https://ty-robb.github.io/agentic-oss-assessments/](https://ty-robb.github.io/agentic-oss-assessments/)** — Interactive 34-repo explorer, charts, one-click Repo Upgrade Prompt, Playbook, Executive Brief, and individual audit pages.
+
 Structured, primary-source engineering and agent-workflow assessments of **T3 Code rivals**, **flagship AI coding harnesses**, **orchestration platforms**, and **agent skill/workflow stacks** (**34 repositories** — 33 assessed across 6 chunks + `pingdotgg/t3code` as baseline; **2.90M combined GitHub stars** as of **2026-11-25**).
 
 Every assessment inspects the real repository via GitHub API (file trees, `AGENTS.md`/`CLAUDE.md`, CI workflows, lint/type/eval gates, commit history, contributor distribution, and architectural boundaries) — not marketing copy.
@@ -38,7 +40,9 @@ Every assessment inspects the real repository via GitHub API (file trees, `AGENT
 ├── README.md
 ├── RUBRIC.md
 ├── scripts/
-│   └── collect_chunk.py         # Reproducible GitHub API primary-source collector
+│   ├── collect_chunk.py         # Reproducible GitHub API primary-source collector
+│   └── build_site.py            # Zero-dependency GitHub Pages site generator -> docs/
+├── docs/                        # Published GitHub Pages site (https://ty-robb.github.io/agentic-oss-assessments/)
 ├── data/                        # Raw JSON snapshots collected per chunk (git-tracked for auditability)
 │   ├── chunk-01/
 │   ├── chunk-02/

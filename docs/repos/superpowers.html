@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>obra/superpowers — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: obra/superpowers">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="obra/superpowers — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: obra/superpowers">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="obra/superpowers — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: obra/superpowers">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C6 · Skill Stacks · obra/superpowers</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C6 · Skill Stacks</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/obra__superpowers.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>326.5k</strong> (326,498)</span>
+        <span class="meta-chip">Open Issues: <strong>372</strong></span>
+        <span class="meta-chip">Workflows: <strong>0</strong></span>
+        <span class="meta-chip">AI Signal: <strong>14%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>78%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 4.0 mos</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="superpowers-obra-superpowers">Superpowers (<code>obra/superpowers</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>326,498★</code> · <code>28,969</code> forks · <code>372</code> open issues · <code>MIT</code> · Active (created Oct 9, 2025; pushed 2026-11-24)</li><li><strong>Primary Stack:</strong> Composable Markdown skills + 319 KB Shell + 197 KB JS + 24 KB Python + 9 KB TS; zero runtime dependencies; ships native plugin manifests for <strong>15+ harnesses</strong> (Claude Code, Antigravity, Codex, Cursor, Devin, Factory Droid, Gemini CLI, Copilot CLI, Grok Build, Kimi Code, OpenCode, Pi, Hermes, Muse).</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/obra__superpowers.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-06/obra__superpowers.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Most brutally candid anti-AI-slop <code>AGENTS.md</code> in the entire 34-repo study (121 lines / 9.9 KB):</strong><div class="sub-item">• Opens directly with: <strong>&quot;This repo has a 94% PR rejection rate. Almost every rejected PR was submitted by an agent that didn&#x27;t read or didn&#x27;t follow these guidelines. The maintainers close slop PRs within hours, often with public comments like &#x27;This pull request is slop that&#x27;s made of lies.&#x27;&quot;</strong></div><div class="sub-item">• Reframed the agent&#x27;s job cleanly: <em>&quot;Your job is to protect your human partner from that outcome... That is being a tool of embarrassment.&quot;</em></div><div class="sub-item">• <strong>Hard anti-slop PR rules:</strong></div><div class="sub-item">• Human-authored summary (&lt;200 words) — <em>&quot;if an agent writes it, the PR will be closed.&quot;</em></div><div class="sub-item">• Mandatory disclosure of model, harness, harness version, all installed plugins, and the human&#x27;s original prompt.</div><div class="sub-item">• <strong>Bans fixing someone else&#x27;s issue</strong> unless a maintainer asked (<em>&quot;An open issue in the tracker is not a request for a PR&quot;</em>), bans spray-and-pray batch PRs, bans theoretical/review-agent-only fixes, and bans &quot;compliance&quot; rewrites to match Anthropic&#x27;s skill docs without before/after eval evidence.</div><div class="sub-item">• All PRs must target <code>dev</code>, not <code>main</code>.</div></li><li><strong>Behavioral acceptance test for new harness ports:</strong> <em>&quot;Open a clean session and send <code>&#x27;Let&#x27;s make a react todo list&#x27;</code>. A working integration auto-triggers the <code>brainstorming</code> skill before any code is written. Without the <code>using-superpowers</code> bootstrap at session start, skills are dead weight.&quot;</em></li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Zero GitHub Actions workflows (<code>workflows: []</code>)</strong> inside <code>obra/superpowers</code> itself (uses <code>.pre-commit-config.yaml</code> + local <code>tests/</code>).</li><li><strong>Dedicated external real-CLI eval lab (<code>prime-radiant-inc/superpowers-evals</code>):</strong> Treats skills as <em>executable code that shapes agent behavior</em>, running Quorum + a Gauntlet QA agent against real Claude Code, Codex, and Gemini CLIs with adversarial pressure testing across multiple sessions plus deterministic post-checks.</li><li><strong>Compaction resilience &amp; circuit breakers:</strong> Recent releases (<code>v6.2.0</code> → <code>v7.0.2</code>) specifically hardened skills to <strong>survive context compaction</strong>, added a <strong>5-round fix-loop circuit breaker</strong> + rationalization tables, and ran compression sweeps to keep plans lean.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Zero-dependency, bootstrap-triggered methodology:</strong> Forces agents out of eager coding into a structured loop: <em>Brainstorm (tease out spec in readable chunks) → Implementation Plan (red/green TDD, YAGNI, DRY) → Subagent-Driven Development (isolated tasks + review loops)</em>.</li><li><strong>Cross-harness native packaging:</strong> Maintains first-class plugin/extension directories for every major harness (<code>.claude-plugin/</code>, <code>.codex-plugin/</code>, <code>.cursor-plugin/</code>, <code>.antigravity-plugin/</code>, <code>.opencode/</code>, <code>.pi/</code>, <code>.hermes-plugin/</code>, <code>.kimi-plugin/</code>, <code>.muse-plugin/</code>, <code>gemini-extension.json</code>) rather than relying on fragile <code>npx skills</code> copy shims.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Tight solo-curated release train:</strong> <strong>50 commits over 4 months</strong> (<code>2026-07-05</code> to <code>2026-11-03</code>, <code>v6.2.0</code> → <code>v7.0.2</code>), <strong>78% conventional</strong>, <strong>12% fix/revert</strong>, <strong>14% AI signal</strong>.</li><li><strong><code>obra</code> (Jesse Vincent) authored 46 of the last 50 commits</strong> (529 all-time; <code>arittr</code> 79). Despite <strong>326.5k★</strong> and <strong>28,969 forks</strong>, aggressive slop rejection keeps open issues to just <strong>372</strong>.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>&quot;Skills are code, not prose&quot; + adversarial pressure-test evals</strong> before merging wording changes to prompts or skills.</div><div class="sub-item">• <strong>Mandatory concrete acceptance test for integrations</strong> (<code>&quot;Let&#x27;s make a react todo list&quot;</code> must auto-trigger <code>brainstorming</code>).</div><div class="sub-item">• <strong>Hard-edged anti-slop <code>AGENTS.md</code> framing</strong> (<em>&quot;protect your human partner from embarrassment&quot;</em>, human-written &lt;200-word summary, full model/harness/plugin disclosure, <em>&quot;an open issue is not a request for a PR&quot;</em>).</div><div class="sub-item">• <strong>Designing skills to survive context compaction</strong> + <strong>5-round fix-loop circuit breakers</strong> preventing infinite agent thrashing.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Zero in-repo GitHub Actions CI</strong> — even a tiny markdown/manifest/test check in CI catches broken plugin manifests across 15+ harness directories before release.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

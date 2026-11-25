@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>slopus/happy — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: slopus/happy">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="slopus/happy — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: slopus/happy">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="slopus/happy — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: slopus/happy">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C5 · Specialists · slopus/happy</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C5 · Specialists</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/slopus/happy" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-05/slopus__happy.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>24.8k</strong> (24,822)</span>
+        <span class="meta-chip">Open Issues: <strong>1,154</strong></span>
+        <span class="meta-chip">Workflows: <strong>1</strong></span>
+        <span class="meta-chip">AI Signal: <strong>4%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>40%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 8.4 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="happy-slopus-happy">Happy (<code>slopus/happy</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>24,822★</code> · <code>2,139</code> forks · <code>1,154</code> open issues · <code>MIT</code> · Active (created Jul 18, 2025; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> <strong>22.3 MB Swift</strong> (native UIKit iOS app) + <strong>14.6 MB Kotlin</strong> (native Jetpack Compose Android app) + <strong>3.2 MB TypeScript</strong> (<code>happy-cli</code>, <code>happy-server</code> relay, <code>happy-wire</code>, Cloudflare Worker <code>happy-push-server</code>) + 628 KB Rust + <strong>23.5 KB Lean</strong>; pnpm 10 (<code>onlyBuiltDependencies</code>), Prisma/SQLite. Desktop (<code>slopus/happy-desktop</code>) and agent runtime (<code>slopus/happy-agent</code>) live in separate repos.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-05/slopus__happy.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-05/slopus__happy.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Ultra-lean, incident-scarred <code>AGENTS.md</code> (40 lines / 1.7 KB):</strong> Contains just three sharp operational rules — zero fluff, zero architecture essay:<div class="sub-item">• <strong>Release safety rule citing an exact production incident:</strong> <em>&quot;Release from a local <code>main</code> that is exactly <code>origin/main</code>, checked against a fetch made right then, with a clean tree. Not from a worktree. Not from a branch... Why: an OTA channel serves whatever was published last, not whatever is on <code>main</code>. On 2026-09-20 a preview OTA from a stale worktree silently rolled four shipped fixes off every preview phone for hours. Git looked fine the whole time.&quot;</em></div><div class="sub-item">• <strong>Hard ban on unapproved CI:</strong> <em>&quot;Never create or add GitHub Actions workflows, or add automatic triggers (<code>push</code>, <code>pull_request</code>, <code>schedule</code>) to existing ones, without an explicit user instruction. Actions minutes cost real money.&quot;</em></div><div class="sub-item">• <strong>Exact definition of colloquial team shorthand:</strong> Defines <code>sync to main</code> (including the founder&#x27;s typo <code>synt to main</code>!) as fetch → rebase on <code>origin/main</code> → <code>git push origin HEAD:main</code> (never force-push).</div></li><li><strong>Focused <code>.agents/skills/</code> (9 skills) &amp; 31 <code>docs/</code>:</strong> Operational procedures live in skills (<code>release</code>, <code>dev</code>, <code>maintain</code>, <code>agent-browser</code>, <code>terminal-emulator</code>, <code>metrics-graphana</code>, <code>sessions</code>, <code>control-flow</code>, <code>office-hours</code>), while architecture specs live in <code>docs/</code> (<code>encryption.md</code>, <code>protocol.md</code>, <code>realtime-sync-and-rpc.md</code>, <code>chat-list-scrolling.md</code>, <code>permission-resolution.md</code>, <code>analytics-catalog.json</code>).</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Only 1 GitHub Actions workflow (<code>release-happy-cli.yml</code>) in the entire repo:</strong> The most extreme anti-CI-bloat stance in the 24-repo study (contrast <code>cmux</code>&#x27;s 231 workflows and <code>openclaw</code>&#x27;s 133). There is <strong>no automated PR test/lint workflow</strong> in <code>slopus/happy</code>; quality relies on local developer/agent verification, release skills, and tight two-maintainer ownership.</li><li><strong>Isolated local dev-environment harness (<code>package.json</code>):</strong> Ships a first-class <code>packages/dev-environments</code> CLI (<code>pnpm env:new</code>, <code>env:up</code>, <code>env:up:authenticated</code>, <code>env:seed</code>, <code>env:server</code>, <code>env:cli</code>, <code>env:tailscale</code>, <code>env:down</code>) so agents and engineers spin up reproducible, authenticated local server+CLI stacks without touching production state.</li><li><strong>Supply-chain hygiene:</strong> Uses pnpm 10 <code>onlyBuiltDependencies</code> (<code>@prisma/client</code>, <code>better-sqlite3</code>, <code>esbuild</code>, <code>sharp</code>, <code>workerd</code>), explicit <code>pnpm.overrides</code>, and a small <code>Lean</code> formalization (23.5 KB) in the repo.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Boldest mobile engineering reversal in the study — abandoned Expo/EAS for pure native Swift (UIKit) + Kotlin (Jetpack Compose):</strong><div class="sub-item">• <code>AGENTS.md</code> explicitly records: <em>&quot;The former Expo/EAS app and OTA scripts have been removed; mobile clients are native iOS and Android.&quot;</em></div><div class="sub-item">• Replaced Expo&#x27;s push service with a dedicated Cloudflare Worker (<code>packages/happy-push-server</code>) talking directly to APNs/FCM, while sharing JSON translations in <code>packages/happy-i18n</code> and wire contracts in <code>packages/happy-wire</code>.</div><div class="sub-item">• Judging by the README badges (<strong>4.9★ on iOS App Store, 5.0★ from 3.1k+ Google Play reviews</strong>), native mobile craft is Happy&#x27;s signature differentiator.</div></li><li><strong>End-to-end encrypted multiplayer sessions:</strong> Wraps Claude Code, Codex, Grok, Gemini (Antigravity), OpenCode, and ACP agents; encrypts everything traversing the relay (<code>happy-server</code>); supports live multi-user session steering.</li><li><strong>Multi-repo split by surface:</strong> Keeps mobile+CLI+relay (<code>slopus/happy</code>) separate from Electron desktop (<code>slopus/happy-desktop</code>) and agent runtime (<code>slopus/happy-agent</code>) — avoiding the 475 MB monorepo CI blast radius, at the cost of cross-repo coordination.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Steady, high-craft 2-person velocity:</strong> <strong>50 commits in 8.4 days</strong> (<code>2026-11-17</code> to <code>2026-11-25</code>), <strong>40% conventional commits</strong>, <strong>20% fix/revert</strong>, <strong>4% AI signal</strong>.</li><li><strong>Ultra-tight core team:</strong> <code>ex3ndr</code> (<strong>2,841</strong> all-time; 13/50 recent) and <code>bra1nDump</code> (<strong>1,474</strong> all-time; 35/50 recent) account for <strong>48 of the last 50 commits</strong>, routinely landing paired <code>feat(ios):</code> and <code>feat(android):</code> commits within minutes of each other (e.g., <code>e6ede672</code> + <code>4daae8f8</code>, <code>10fd4240</code> + <code>57f31af2</code>), plus security hardening commits (<code>a4bada8b</code>, <code>8f935dfa</code>, <code>51312b7e</code>).</li><li><strong>Backlog:</strong> <code>1,154</code> open issues across mobile, CLI, and server — manageable for 24.8k★, though without PR CI gates outside contributors have no automated feedback loop.</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Incident-cited release invariant (<code>main == origin/main</code>, clean tree, never from a worktree)</strong> — prevents stale-worktree releases from silently rolling back production fixes.</div><div class="sub-item">• <strong>Explicit CI-cost guardrail in <code>AGENTS.md</code></strong> forbidding agents from creating ad-hoc GitHub Actions workflows or triggers without approval.</div><div class="sub-item">• <strong><code>pnpm env:up --template authenticated-empty</code> + <code>env:seed</code> + <code>env:tailscale</code></strong> — disposable, templated local environments built as a first-class repo CLI.</div><div class="sub-item">• <strong>Encoding team shorthand (even typos like <code>synt to main</code>)</strong> directly into <code>AGENTS.md</code> so agents execute exact, safe git flows instead of guessing.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Zero PR CI workflows</strong> — viable only for a tiny, high-trust 2-person core pushing directly to <code>main</code>; breaks down the moment multiple engineers or autonomous PR agents contribute concurrently.</div><div class="sub-item">• <strong>Splitting tightly coupled wire/client/desktop repos too early</strong> unless each surface has an independent release cadence and dedicated owner.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

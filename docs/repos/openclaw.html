@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>openclaw/openclaw — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: openclaw/openclaw">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="openclaw/openclaw — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: openclaw/openclaw">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="openclaw/openclaw — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: openclaw/openclaw">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C4 · Orchestration · openclaw/openclaw</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C4 · Orchestration</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-04/openclaw__openclaw.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>395.2k</strong> (395,184)</span>
+        <span class="meta-chip">Open Issues: <strong>9,182</strong></span>
+        <span class="meta-chip">Workflows: <strong>133</strong></span>
+        <span class="meta-chip">AI Signal: <strong>8%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>98%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 2.3 hrs</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="openclaw-openclaw-openclaw">OpenClaw (<code>openclaw/openclaw</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>395,184★</code> · <code>82,972</code> forks · <code>9,182</code> open issues · <code>MIT</code> · Active (OpenClaw Foundation 501(c)(3); created Nov 24, 2025; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> Massive multi-platform monorepo (<strong>474.7 MB TypeScript</strong>, 23.1 MB Swift, 14.2 MB JS, 10.2 MB Kotlin, 2.2 MB Rust, 1.4 MB Python), pnpm isolated linker + APFS clone installs, <code>oxlint</code> + <code>oxfmt</code>, Vitest, Kysely (SQLite + Postgres), SolidJS Control UI, native macOS/iOS/Android/Windows/Linux companions, 20+ messaging channels.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-04/openclaw__openclaw.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-04/openclaw__openclaw.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Hard-budgeted, battle-scarred <code>AGENTS.md</code> (123 dense lines / 19.7 KB):</strong> Explicitly capped under 20,000 characters (<em>&quot;the size OpenClaw loads whole&quot;</em>) with a strict anti-bloat rule: <strong>&quot;A new rule cites an incident.&quot;</strong></li><li><strong>Best anti-overengineering manifesto in the study (<code>Choose good compromises</code>):</strong><div class="sub-item">• Directly counters LLM tendencies to invent theoretical complexity: <em>&quot;Use cheap mechanisms: idempotency key, one check, retry, best-effort record with a warning. Fencing tokens, revocation generations, multi-phase admission, nonce-matched settlement and cross-thread handshakes need buy-in.&quot;</em></div><div class="sub-item">• <em>&quot;Name an accepted edge case in a comment or the PR. Do not write code for it. A rare, visible, recoverable fault is better than permanent complexity.&quot;</em></div><div class="sub-item">• <em>&quot;Delete before batching, cache last.&quot;</em></div></li><li><strong>55 <code>.agents/skills/</code></strong> covering every recurring operational loop (<code>pr-simplify</code>, <code>autoreview</code>, <code>claw-score</code>, <code>clawsweeper</code>, <code>openclaw-test-heap-leaks</code>, <code>openclaw-performance</code>, <code>security-triage</code>, <code>proof-video</code>, <code>telegram-e2e-userbot</code>, <code>discord-e2e</code>, <code>slack-e2e</code>, <code>control-ui-e2e</code>).</li><li><strong>One owner, complete cutover:</strong> Mandates tracing and removing retired paths/wrappers/tests/docs in the same PR so competing implementations never linger.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Strictest TypeScript <code>.oxlintrc.json</code> in the entire 23-repo study (557 lines):</strong><div class="sub-item">• Sets all three categories — <strong><code>correctness</code>, <code>perf</code>, and <code>suspicious</code> — to <code>&quot;error&quot;</code></strong>.</div><div class="sub-item">• Enforces <code>typescript/no-explicit-any: &quot;error&quot;</code>, <code>no-floating-promises: &quot;error&quot;</code>, <code>no-misused-promises: &quot;error&quot;</code>, <code>switch-exhaustiveness-check: &quot;error&quot;</code>, <code>oxc/no-accumulating-spread: &quot;error&quot;</code>, <code>oxc/no-async-endpoint-handlers: &quot;error&quot;</code>, <code>eslint/no-warning-comments: &quot;error&quot;</code>, and custom JS boundary rules (<code>scripts/oxlint-boundary-guards.mjs</code>, e.g., <code>openclaw-boundaries/no-recursive-readdir</code>).</div></li><li><strong>Prompt-prefix KV-cache stability test:</strong> <code>src/agents/agent-tools.prefix-stability.test.ts</code> mechanically guarantees that system prompts and tool definitions remain deterministic across turns so provider prompt caching never silently busts!</li><li><strong>Industrial-grade supply-chain hardening (<code>pnpm-workspace.yaml</code>):</strong><div class="sub-item">• <code>minimumReleaseAge: 10080</code> (7 days) + <code>minimumReleaseAgeStrict: true</code> + <code>blockExoticSubdeps: true</code>, with <strong>dated expiration comments</strong> on every single temporary exemption (<code># remove after 2026-11-30...</code>).</div><div class="sub-item">• <code>nodeLinker: isolated</code> + <code>packageImportMethod: clone-or-copy</code> + <code>verifyDepsBeforeRun: false</code> (prevents sibling worktrees from mutating shared <code>node_modules</code> or compiler <code>ctime</code>s).</div></li><li><strong>133 GitHub workflows</strong> covering everything from <code>opengrep-precise</code> SAST and CodeQL (Android/macOS/critical) to <code>ios-periphery</code> / <code>macos-periphery</code> dead-Swift checks, <code>dated-todo-sweep.yml</code>, <code>maturity-scorecard.yml</code>, <code>real-behavior-proof.yml</code>, <code>mantis-*-proof.yml</code> channel E2Es, and <code>ci-boat-recovery.yml</code> (auto-retrying quota-only runner setup failures with <code>zizmor</code> security audit annotations).</li><li><strong>PR governance:</strong> Hard cap of <strong>20 open PRs per author</strong> (<code>r: too-many-prs</code>), bans refactor-only PRs and test/CI-only PRs chasing known <code>main</code> failures, and routes features to third-party plugins via <code>openclaw/plugin-sdk/*</code>.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Trusted gateway + untrusted execution + plugin SDK:</strong> Local Gateway owns state/sessions/credentials; models, agent harnesses (Pi, Claude, Codex, local), and 20+ messaging channels plug in via documented <code>openclaw/plugin-sdk/*</code> contracts (no core internal imports allowed).</li><li><strong>Zero-trust cache key discipline:</strong> Mandates keying every cache/memo/in-flight join by <em>all</em> inputs affecting the answer (agent, account, credential, session, workspace, mode, deadline) and proving isolation with interleaved work-count tests.</li><li><strong>Egress-only log redaction:</strong> Logs write raw structured data and redact only at egress (<code>logs.tail</code>, support bundles, OTel export), while banning logging message/tool contents.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>Unprecedented OSS velocity:</strong> <strong>50 commits in 2 hours 20 minutes</strong> (PR <code>#205,351</code> in just 12 months of repo existence!!), <strong>98% conventional commits</strong>, <strong>64% fix/revert</strong>, <strong>8% AI trailer</strong> (explicitly bans agent-attribution trailers in <code>AGENTS.md</code>: <em>&quot;verified human credit, no agent-attribution trailers&quot;</em> — even while <code>roboclaw-bot</code> has 3,873 commits and <code>openclaw-mantis[bot]</code> has 1,001!).</li><li><strong>Hyper-prolific leadership:</strong> Founder <code>steipete</code> (Peter Steinberger) has <strong>70,042 contributions</strong>, followed by <code>vincentkoc</code> (17,667), <code>shakkernerd</code> (5,208), <code>obviyus</code> (3,595).</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>&quot;A new rule cites an incident&quot; + &quot;Choose good compromises&quot;</strong> — the single best antidote to both <code>AGENTS.md</code> bloat and LLM over-engineering.</div><div class="sub-item">• <strong>Strict <code>oxlint</code> triad (<code>correctness</code>, <code>perf</code>, <code>suspicious</code> = <code>&quot;error&quot;</code>)</strong> + <code>no-floating-promises</code> + <code>switch-exhaustiveness-check</code>.</div><div class="sub-item">• <strong>Prompt-prefix stability tests</strong> (<code>prefix-stability.test.ts</code>) for any agentic app relying on LLM prompt caching.</div><div class="sub-item">• <strong>Dated expiry comments on <code>minimumReleaseAgeExclude</code></strong> in <code>pnpm-workspace.yaml</code> + <code>dated-todo-sweep.yml</code>.</div><div class="sub-item">• <strong><code>pr-simplify</code> pre-PR self-review skill</strong> and <strong>dead-code checks across native codebases</strong> (<code>periphery</code> for Swift).</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>133 GitHub workflows &amp; 158 KB root <code>package.json</code></strong> — necessary at 395k-star multi-OS scale, catastrophic maintenance overhead for a normal product team.</div><div class="sub-item">• <strong>25+ <code>.mjs</code>/<code>.d.mts</code> bootstrap files scattered across the repo root</strong> (cleaner under <code>bin/</code> or <code>runtime/</code>).</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

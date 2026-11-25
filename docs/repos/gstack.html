@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>garrytan/gstack — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: garrytan/gstack">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="garrytan/gstack — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: garrytan/gstack">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="garrytan/gstack — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: garrytan/gstack">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C6 · Skill Stacks · garrytan/gstack</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C6 · Skill Stacks</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/garrytan/gstack" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/garrytan__gstack.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>142.6k</strong> (142,644)</span>
+        <span class="meta-chip">Open Issues: <strong>45</strong></span>
+        <span class="meta-chip">Workflows: <strong>38</strong></span>
+        <span class="meta-chip">AI Signal: <strong>100%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>0%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 1.8 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="gstack-garrytan-gstack">gstack (<code>garrytan/gstack</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>142,644★</code> · <code>21,048</code> forks · <strong><code>45</code> open issues</strong> · <code>MIT</code> · Hyper-active (created Mar 11, 2026; pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> <strong>45.1 MB TypeScript</strong> + 2.1 MB Shell + 1.5 MB Go Template + 484 KB JS + Swift/C; Bun <code>1.4.2+</code>, TypeScript 7 (<code>7.0.2</code>), Playwright + Aside browser integration, compiled standalone CLIs (<code>browse</code>, <code>make-pdf</code>), Chrome extension, Docker CSO security scanners.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-06/garrytan__gstack.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-06/garrytan__gstack.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>The most honest empirical self-eval in the entire 34-repo study (<code>README.md</code>):</strong> &gt; <em>&quot;What it doesn&#x27;t do: make your agent fix more bugs. In a November 2026 test on 100 everyday GitHub bugs and features, Claude Opus 5.5 fixed 58 with gstack installed and 61 of 99 without it (one task didn&#x27;t score). So gstack gave no gain, and the test rules out a gain bigger than about 2 points on those tasks. On 60 security fixes, both fixed 29. Use gstack for the workflow, the reviews, the shipping steps and the safety guards, not for a higher fix rate.&quot;</em></li><li><strong>Heavy, deeply battle-scarred agent instructions:</strong> Separate <code>AGENTS.md</code> (<strong>18.6 KB / 275 lines</strong> listing 60+ skills + a massive 9-point <code>Validation discipline</code>) AND <code>CLAUDE.md</code> (<strong>35.5 KB / 631 lines</strong>!) plus an 84.7 KB <code>CONTRIBUTING.md</code> and <strong>82 <code>docs/</code></strong> — powerful operational rigor, but heavy token weight and split across two large root instruction files.</li><li><strong>Template-generated <code>SKILL.md</code> discipline:</strong> <code>SKILL.md</code> files are compiled from <code>.tmpl</code> sources (<code>bun run gen:skill-docs</code>), never edited directly; merge conflicts must be resolved on <code>.tmpl</code> and regenerated.</li><li><strong>Built-in operational self-learning:</strong> Sessions log failures/quirks to <code>~/.gstack/projects/{slug}/learnings.jsonl</code> and surface them automatically (<code>/learn</code>).</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>38 GitHub Actions workflows</strong> — far heavier than a &quot;just Markdown&quot; repo because gstack is actually a 45 MB TypeScript browser/PDF/CSO/eval platform:<div class="sub-item">• <strong>Strict prompt &amp; catalog token budgets:</strong> <code>test/catalog-budget.test.ts</code> caps the always-loaded skill catalog at <code>2,292</code> token-equivalents; <code>test/context-budget-ratchet.test.ts</code> pins per-skill token ceilings against <code>test/fixtures/context-budget.json</code>.</div><div class="sub-item">• <strong>Egress receipts enforced in CI (<code>test/egress-receipt-wiring.test.ts</code>):</strong> Every off-machine send (<code>curl</code>, <code>git</code>, TS network calls) must write a local receipt <em>before</em> sending — CI fails on any unreceipted new network sink!</div><div class="sub-item">• <strong>Scientific paid-eval discipline (<code>eval-sweep.yml</code>, <code>evals.yml</code>, <code>evals-periodic.yml</code>):</strong></div><div class="sub-item">• Pre-registered trial counts before running (<code>rule</code>: 1 trial; <code>behavior</code>: 3-trial panel, pass ≥2/3; <code>judge</code>: 3-sample median) — <em>&quot;Never add trials, samples or dispatches after seeing a result.&quot;</em></div><div class="sub-item">• Hard <strong>$150/week USD spend cap</strong> shared across 7 days of sweeps, digest-pinned GHCR CI images, diff-selected paid PR probes (<code>touchfiles.ts</code>), and detached SIGTERM-proof runners (<code>eval:bg:pr</code>).</div><div class="sub-item">• <strong>Strict security &amp; hygiene checks:</strong> <code>typecheck:test</code> shrink-only ratchet, <code>test/spawnsync-timeout-tripwire.test.ts</code>, <code>bun run slop:diff</code>, digest-pinned <code>actionlint</code> Docker image (no repointable tags), <code>osv-scanner.yml</code>, <code>dependency-review.yml</code>, <code>mutation-report.yml</code>, and fail-closed attested CSO runtime promotions (<code>cso-runtime-promote.yml</code>).</div><div class="sub-item">• <strong>Test-value bar (<code>docs/test-value-bar.md</code>):</strong> Explicitly bans brittle prose-pinning tests on skill wording unless software parses the exact bytes or a recorded eval proves the wording matters.</div></li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>Role-based startup factory + real browser/PDF binaries:</strong> Pairs 60+ specialist slash commands (<code>/office-hours</code>, <code>/plan-ceo-review</code>, <code>/plan-eng-review</code>, <code>/review</code>, <code>/qa</code>, <code>/cso</code>, <code>/gstack-ship</code>, <code>/careful</code>, <code>/freeze</code>, <code>/guard</code>) with real compiled Bun binaries (<code>browse</code>, <code>make-pdf</code>), Aside browser automation with bundled headless fallback, and a Chrome extension.</li><li><strong>Release channels (<code>stable</code> vs. <code>main</code>):</strong> Defaults new installs to tagged <code>stable</code> releases (Mon/Thu) rather than raw <code>main</code>, while contributors and crew follow <code>main</code>.</li><li><strong>Platform-agnostic project discovery:</strong> Skills forbid hardcoding framework commands; they read project <code>CLAUDE.md</code>, ask once if missing, and persist the answer.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>High-intensity solo-founder + AI factory:</strong> <strong>50 commits in 43.8 hours (~1.8 days)</strong> (<code>2026-11-23</code> to <code>2026-11-25</code>, PR <code>#4,836</code>), <strong>0% conventional</strong> (plain descriptive sentences enforced by <code>plain-title.yml</code>), <strong>100% AI signal</strong>, and <strong><code>garrytan</code> authored 50 of the last 50 commits</strong> (1,444 all-time; next highest contributor has 17).</li><li>Remarkably clean tracker: only <strong><code>45</code> open issues</strong> at <strong>142.6k★</strong> (3,170 stars per open issue!).</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Radical benchmark honesty</strong> — testing your own skill pack head-to-head against bare models and publishing when fix rate shows zero lift (58 vs. 61/99).</div><div class="sub-item">• <strong>Prompt &amp; catalog token-budget ratchets</strong> (<code>catalog-budget.test.ts</code> + <code>context-budget-ratchet.test.ts</code>) so skills don&#x27;t silently bloat context windows.</div><div class="sub-item">• <strong>Pre-registered eval statistics + hard weekly USD spend caps</strong> (<code>$150/wk</code>, 3-trial behavioral panels, median-of-3 judges, no p-hacking retries).</div><div class="sub-item">• <strong>Mandatory egress receipts (<code>egress-receipt-wiring.test.ts</code>)</strong> for any tool/agent making outbound network calls.</div><div class="sub-item">• <strong>Digest-pinned third-party Docker images in CI</strong> (<code>actionlint@sha256:...</code>) and <strong><code>test-value-bar</code></strong> banning fragile prose-pinning tests.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Splitting 54 KB of instructions across separate <code>AGENTS.md</code> (18.6 KB) and <code>CLAUDE.md</code> (35.5 KB)</strong> — consolidate into one lean router + focused reference docs.</div><div class="sub-item">• <strong>Assuming 60+ skills improve raw coding accuracy</strong> — use skills for review, QA, safety guards, and shipping workflows, not as a substitute for model capability or repo lint/test gates.</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

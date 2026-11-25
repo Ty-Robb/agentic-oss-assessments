@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>earendil-works/pi — Agentic OSS Assessments</title>
+  <meta name="description" content="Primary-source engineering assessment: earendil-works/pi">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="earendil-works/pi — Agentic OSS Assessments">
+  <meta property="og:description" content="Primary-source engineering assessment: earendil-works/pi">
+  <meta property="og:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="earendil-works/pi — Agentic OSS Assessments">
+  <meta name="twitter:description" content="Primary-source engineering assessment: earendil-works/pi">
+  <meta name="twitter:image" content="https://ty-robb.github.io/agentic-oss-assessments/assets/x-article-cover-light.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  window.toggleTheme = function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = next === 'dark' ? '☀ Light' : '☾ Dark';
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = cur === 'dark' ? '☀ Light' : '☾ Dark';
+  });
+})();
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-badge">34</span>
+        <span>Agentic OSS Assessments</span>
+      </a>
+      <nav class="nav-links"><a href="../index.html" class="">Overview</a><a href="../index.html#explorer" class="active">34 Repos</a><a href="../playbook.html" class="">Playbook</a><a href="../brief.html" class="">Executive Brief</a><a href="../article.html" class="">Article</a><a href="../index.html#prompt" class="">Upgrade Prompt</a></nav>
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button" onclick="toggleTheme()">☾ Dark</button>
+        <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </header>
+
+  
+  <main class="container-narrow">
+    <div class="doc-header">
+      <div class="breadcrumbs"><a href="../index.html">← All 34 Repos</a> · C2 · Harnesses · earendil-works/pi</div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="tag tag-chunk">C2 · Harnesses</span>
+          <span class="tag tag-active" style="margin-left:6px">Active</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="icon-btn" href="https://github.com/earendil-works/pi" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a class="icon-btn" href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-02/earendil-works__pi.json" target="_blank" rel="noopener noreferrer">Raw JSON Snapshot ↗</a>
+        </div>
+      </div>
+      <div class="meta-strip">
+        <span class="meta-chip">Stars: <strong>123.8k</strong> (123,818)</span>
+        <span class="meta-chip">Open Issues: <strong>307</strong></span>
+        <span class="meta-chip">Workflows: <strong>16</strong></span>
+        <span class="meta-chip">AI Signal: <strong>2%</strong></span>
+        <span class="meta-chip">Conv. Commits: <strong>90%</strong></span>
+        <span class="meta-chip">Velocity: <strong>50 / 1.7 days</strong></span>
+      </div>
+
+    </div>
+    <article class="prose">
+      <h1 id="pi-earendil-works-pi-formerly-badlogic-pi-mono">Pi (<code>earendil-works/pi</code>, formerly <code>badlogic/pi-mono</code>)</h1>
+<ul><li><strong>Snapshot:</strong> <code>123,818★</code> · <code>15,995</code> forks · <strong><code>307</code> open issues</strong> · <code>MIT</code> · Active (pushed 2026-11-25)</li><li><strong>Primary Stack:</strong> Plain npm workspaces TypeScript monorepo (31.0 MB TS), Node &gt;= 22.19 <strong>erasable TypeScript</strong> (strip-only mode), Biome + GritQL plugin, Vitest + <code>node:test</code>, Nix flake. Core packages: <code>pi-ai</code>, <code>pi-agent-core</code>, <code>pi-coding-agent</code>, <code>pi-tui</code>, <code>pi-durable</code>, <code>chord</code>, <code>pi-telemetry</code>.</li><li><strong>Data source:</strong> <a href="https://github.com/Ty-Robb/agentic-oss-assessments/blob/main/data/chunk-02/earendil-works__pi.json" target="_blank" rel="noopener noreferrer"><code>data/chunk-02/earendil-works__pi.json</code></a></li></ul>
+<h2 id="1-agent-instruction-docs-hygiene">1. Agent Instruction &amp; Docs Hygiene</h2>
+<ul><li><strong>Masterclass in concise, high-density <code>AGENTS.md</code> (160 lines / 14.5 KB):</strong> Zero fluff, zero emojis, strict conversational rules (<em>&quot;state problem, concrete example/trace, then solution&quot;</em>; <em>&quot;explicitly say whether you agree or disagree before saying what you changed&quot;</em>), and razor-sharp engineering constraints.</li><li><strong>Multi-agent working-tree safety protocol:</strong> Explicitly assumes <strong>multiple parallel agents share one checkout</strong> — bans <code>git add -A</code>, <code>git add .</code>, <code>git stash</code>, <code>git reset --hard</code>, <code>git checkout .</code>, <code>git commit --no-verify</code>, and <code>gh pr checkout</code> / <code>git switch</code> during PR reviews (review via <code>gh pr diff</code> and <code>git show &lt;ref&gt;:&lt;path&gt;</code> instead!).</li><li><strong>Scoped vertical-slice specs &amp; runnable examples:</strong> <code>Chord v2</code> pairs <code>docs/design.md</code> + <code>docs/slices.md</code> (with explicit <code>Carry-over</code> lists) and requires numbered runnable examples (<code>test/examples/NN-topic.ts</code>) and GC tests for every <code>WeakMap</code> cache.</li><li><strong>Strict anti-defensive-coding rules:</strong> Bans runtime <code>typeof</code>/<code>instanceof</code>/<code>in</code> on already-typed values, mandates tagged unions (<code>kind</code>) over <code>in</code> narrowing, bans boolean flag parameters (use two functions or a tagged value), bans inline <code>await import()</code>.</li></ul>
+<h2 id="2-mechanical-gates-quality-control">2. Mechanical Gates &amp; Quality Control</h2>
+<ul><li><strong>Best anti-slop contributor gate in open source (<code>issue-gate.yml</code>, <code>pr-gate.yml</code>, <code>approve-contributor.yml</code>):</strong><div class="sub-item">• <strong>Every issue and PR from an unapproved contributor is auto-closed on arrival.</strong> Maintainers review auto-closed issues daily during working hours and reply <code>lgtmi</code> (issues) or <code>lgtm</code> (issues + PRs) to add the user to <code>.github/APPROVED_CONTRIBUTORS</code>.</div><div class="sub-item">• <strong>Result:</strong> Only <strong>307 open issues</strong> on a <strong>123.8k-star</strong> repo (10× lower than T3 Code, 13× lower than OpenCode, 93× lower than Codex!).</div><div class="sub-item">• Explicitly states in <code>CONTRIBUTING.md</code>: <em>&quot;Why not let AI triage everything? Polished AI-generated issues can still be wrong, misleading, or expensive to investigate. Human review remains the final gate.&quot;</em></div></li><li><strong>Obsessive supply-chain &amp; packaging discipline (<code>npm run check</code>):</strong><div class="sub-item">• <code>check:pinned-deps</code> (all direct &amp; workspace deps pinned to exact versions), <code>check:runtime-deps</code>, <code>check:ts-imports</code>, <code>check:entry-graphs</code>, <code>check:install-lock:coding-agent</code> (explicit allowlist for any dep with lifecycle scripts!), <code>check:released-changelogs</code> (ensures released changelog sections are immutable), <code>check:browser-smoke</code>, plus <code>npm ci --ignore-scripts</code> everywhere.</div><div class="sub-item">• Pre-commit hook <strong>blocks <code>package-lock.json</code> edits</strong> unless <code>PI_ALLOW_LOCKFILE_CHANGE=1</code>.</div></li><li><strong>Custom GritQL Biome plugin:</strong> <code>./scripts/biome/model-type-comparison.grit</code> enforces semantic checks alongside Biome.</li><li><strong>Evals &amp; conformance:</strong> Dedicated <code>@earendil-works/pi-evals</code> workspace, <code>test:mcp-conformance</code>, and faux-provider test harness (<code>test/suite/harness.ts</code>) so tests never touch paid APIs.</li></ul>
+<h2 id="3-architectural-bets-craft">3. Architectural Bets &amp; Craft</h2>
+<ul><li><strong>&quot;Minimal core + extensions&quot; philosophy:</strong> Intentionally skips built-in plan mode, subagents, and built-in permission sandboxes in core — instead exposes clean SDK, RPC, extensions, skills, and containerization patterns (Gondolin micro-VM, Docker, OpenShell). This is why huge downstream projects like OpenClaw build directly on Pi.</li><li><strong>Erasable TypeScript only:</strong> Forces Node strip-only compatibility (no <code>enum</code>, <code>namespace</code>, or parameter properties), keeping runtime execution fast and bundler-free where possible.</li><li><strong>Zero monorepo orchestration overhead:</strong> Uses plain <code>npm</code> workspaces and explicit topological scripts instead of Nx or Turborepo — honoring radical simplicity.</li><li><strong>Cost &amp; memory discipline:</strong> Bans module-level strong caches (require <code>WeakMap</code> + GC test) and adds in-memory telemetry cost guards to tests.</li></ul>
+<h2 id="4-commit-pr-maintenance-reality">4. Commit, PR &amp; Maintenance Reality</h2>
+<ul><li><strong>High craft, sustainable pace:</strong> Last 50 commits span <strong>1.7 days</strong> (2026-11-23 to 2026-11-25), <strong>90% conventional commits</strong>, <strong>60% fix/revert</strong>, <strong>2% explicit AI trailers</strong>.</li><li><strong>Elite small team:</strong> Led by <code>badlogic</code> (Mario Zechner, 4,535 commits) and <code>mitsuhiko</code> (Armin Ronacher, 1,042 commits) plus ~6 core engineers (<code>davidbrai</code>, <code>christianklotz</code>, <code>cristinaponcela</code>, <code>vegarsti</code>, <code>petrroll</code>) and <code>robopipi[bot]</code> (95 commits).</li></ul>
+<h2 id="5-steal-vs-avoid">5. Steal vs. Avoid</h2>
+<ul><li><strong>Steal:</strong><div class="sub-item">• <strong>Default-closed <code>lgtmi</code>/<code>lgtm</code> contributor gate</strong> if an open-source repo ever faces AI-slop PR/issue floods — proven to keep a 124k-star tracker down to 307 issues.</div><div class="sub-item">• <strong>Multi-agent safe Git rules in <code>AGENTS.md</code></strong> (explicit path staging, banning <code>git add -A</code>/<code>stash</code>/<code>reset --hard</code>, reviewing PRs without switching branches).</div><div class="sub-item">• <strong>Supply-chain lockfile &amp; lifecycle-script gates</strong> (<code>npm ci --ignore-scripts</code>, <code>check:pinned-deps</code>, <code>check:install-lock</code>, pre-commit lockfile guard).</div><div class="sub-item">• <strong>Erasable TypeScript + tagged-union-only narrowing + no boolean flag params</strong> — produces remarkably clean, agent-readable TypeScript.</div><div class="sub-item">• <strong><code>check:released-changelogs</code> &amp; <code>WeakMap</code> GC tests</strong> for long-lived server runtimes.</div></li><li><strong>Avoid:</strong><div class="sub-item">• <strong>Turning off <code>noExplicitAny</code> and <code>noNonNullAssertion</code> in <code>biome.json</code></strong> — relies on prose review instead of mechanical enforcement for those two rules.</div><div class="sub-item">• <strong>Manual sequential <code>cd packages/a &amp;&amp; npm run build &amp;&amp; cd ../b ...</code> chains</strong> once package count grows past ~12 (fragile compared to a real task graph).</div></li></ul>
+    </article>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Primary-source GitHub API audit · 34 repositories · 2.90M combined stars · Snapshot Nov 25, 2026</div>
+      <div>
+        <a href="../playbook.html">Playbook</a> ·
+        <a href="../brief.html">Brief</a> ·
+        <a href="../article.html">Article</a> ·
+        <a href="https://github.com/Ty-Robb/agentic-oss-assessments" target="_blank" rel="noopener noreferrer">Source & Raw JSONs ↗</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
