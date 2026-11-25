@@ -1,0 +1,352 @@
+{
+  "repo": "21st-dev/1code",
+  "meta": {
+    "description": "Orchestration layer for coding agents (Claude Code, Codex)",
+    "homepage": "https://1code.dev",
+    "license": "Apache-2.0",
+    "stars": 5565,
+    "forks": 606,
+    "open_issues": 45,
+    "archived": true,
+    "created_at": "2026-01-14T02:12:40Z",
+    "pushed_at": "2026-03-06T21:10:12Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "TypeScript": 5139718,
+    "JavaScript": 38958,
+    "CSS": 20126,
+    "HTML": 10851,
+    "Shell": 3880
+  },
+  "structure": {
+    "root": [
+      ".env.example",
+      ".gitignore",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "README.md",
+      "assets/",
+      "build/",
+      "bun.lock",
+      "bun.lockb",
+      "drizzle.config.ts",
+      "drizzle/",
+      "electron-builder.yml",
+      "electron-shim.js",
+      "electron.vite.config.ts",
+      "openspec/",
+      "package.json",
+      "postcss.config.js",
+      "resources/",
+      "scripts/",
+      "src/",
+      "tailwind.config.js",
+      "tsconfig.json"
+    ],
+    "workflows": [],
+    "docs": [],
+    "docs_count": 0,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 660,
+      "line_count": 18,
+      "truncated": false,
+      "excerpt": "<!-- OPENSPEC:START -->\n# OpenSpec Instructions\n\nThese instructions are for AI assistants working in this project.\n\nAlways open `@/openspec/AGENTS.md` when the request:\n- Mentions planning or proposals (words like proposal, spec, change, plan)\n- Introduces new capabilities, breaking changes, architecture shifts, or big performance/security work\n- Sounds ambiguous and you need the authoritative spec before coding\n\nUse `@/openspec/AGENTS.md` to learn:\n- How to create and apply change proposals\n- Spec format and conventions\n- Project structure and guidelines\n\nKeep this managed block so 'openspec update' can refresh the instructions.\n\n<!-- OPENSPEC:END -->"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 10680,
+      "line_count": 274,
+      "truncated": false,
+      "excerpt": "<!-- OPENSPEC:START -->\n# OpenSpec Instructions\n\nThese instructions are for AI assistants working in this project.\n\nAlways open `@/openspec/AGENTS.md` when the request:\n- Mentions planning or proposals (words like proposal, spec, change, plan)\n- Introduces new capabilities, breaking changes, architecture shifts, or big performance/security work\n- Sounds ambiguous and you need the authoritative spec before coding\n\nUse `@/openspec/AGENTS.md` to learn:\n- How to create and apply change proposals\n- Spec format and conventions\n- Project structure and guidelines\n\nKeep this managed block so 'openspec update' can refresh the instructions.\n\n<!-- OPENSPEC:END -->\n\n# CLAUDE.md\n\nThis file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.\n\n## What is this?\n\n**21st Agents** - A local-first Electron desktop app for AI-powered code assistance. Users create chat sessions linked to local project folders, interact with Claude in Plan or Agent mode, and see real-time tool execution (bash, file edits, web search, etc.).\n\n## Commands\n\n```bash\n# Development\nbun run dev              # Start Electron with hot reload\n\n# Build\nbun run build            # Compile app\nbun run package          # Package for current platform (dir)\nbun run package:mac      # Build macOS (DMG + ZIP)\nbun run package:win      # Build Windows (NSIS + portable)\nbun run package:linux    # Build Linux (AppImage + DEB)\n\n# Database (Drizzle + SQLite)\nbun run db:generate      # Generate migrations from schema\nbun run db:push          # Push schema directly (dev only)\n```\n\n## Architecture\n\n```\nsrc/\n\u251c\u2500\u2500 main/                    # Electron main process\n\u2502   \u251c\u2500\u2500 index.ts             # App entry, window lifecycle\n\u2502   \u251c\u2500\u2500 auth-manager.ts      # OAuth flow, token refresh\n\u2502   \u251c\u2500\u2500 auth-store.ts        # Encrypted credential storage (safeStorage)\n\u2502   \u251c\u2500\u2500 windows/main.ts      # Window creation, IPC handlers\n\u2502   \u2514\u2500\u2500 lib/\n\u2502       \u251c\u2500\u2500 db/              # Drizzle + SQLite\n\u2502       \u2502   \u251c\u2500\u2500 index.ts     # DB init, auto-migrate on startup\n\u2502       \u2502   \u251c\u2500\u2500 schema/      # Drizzle table definitions\n\u2502       \u2502   \u2514\u2500\u2500 utils.ts     # ID generation\n\u2502       \u2514\u2500\u2500 trpc/routers/    # tRPC routers (projects, chats, claude)\n\u2502\n\u251c\u2500\u2500 preload/                 # IPC bridge (context isolation)\n\u2502   \u2514\u2500\u2500 index.ts             # Exposes desktopApi + tRPC bridge\n\u2502\n\u2514\u2500\u2500 renderer/                # React 19 UI\n    \u251c\u2500\u2500 App.tsx              # Root with providers\n    \u251c\u2500\u2500 features/\n    \u2502   \u251c\u2500\u2500 agents/          # Main chat interface\n    \u2502   \u2502   \u251c\u2500\u2500 main/        # active-chat.tsx, new-chat-form.tsx\n    \u2502   \u2502   \u251c\u2500\u2500 ui/          # Tool renderers, preview, diff view\n    \u2502   \u2502   \u251c\u2500\u2500 commands/    # Slash commands (/plan, /agent, /clear)\n    \u2502   \u2502   \u251c\u2500\u2500 atoms/       # Jotai atoms for agent state\n    \u2502   \u2502   \u2514\u2500\u2500 stores/      # Zustand store for sub-chats\n    \u2502   \u251c\u2500\u2500 sidebar/         # Chat list, archive, navigation\n    \u2502   \u251c\u2500\u2500 sub-chats/       # Tab/sidebar sub-chat management\n    \u2502   \u2514\u2500\u2500 layout/          # Main layout with resizable panels\n    \u251c\u2500\u2500 components/ui/       # Radix UI wrappers (button, dialog, etc.)\n    \u2514\u2500\u2500 lib/\n        \u251c\u2500\u2500 atoms/           # Global Jotai atoms\n        \u251c\u2500\u2500 stores/          # Global Zustand stores\n        \u251c\u2500\u2500 trpc.ts          # Real tRPC client\n        \u2514\u2500\u2500 mock-api.ts      # DEPRECATED - being replaced with real tRPC\n```\n\n## Database (Drizzle ORM)\n\n**Location:** `{userData}/data/agents.db` (SQLite)\n\n**Schema:** `src/main/lib/db/schema/index.ts`\n\n```typescript\n// Three main tables:\nprojects    \u2192 id, name, path (local folder), timestamps\nchats       \u2192 id, name, projectId, worktree fields, timestamps\nsub_chats   \u2192 id, name, chatId, sessionId, mode, messages (JSON)\n```\n\n**Auto-migration:** On app start, `initDatabase()` runs migrations from `drizzle/` folder (dev) or `resources/migrations` (packaged).\n\n**Queries:**\n```typescript\nimport { getDatabase, projects, chats } from \"../lib/db\"\nimport { eq } from \"drizzle-orm\"\n\nconst db = getDatabase()\nconst allProjects = db.select().from(projects).all()\nconst projectChats = db.select().from(chats).where(eq(chats.projectId, id)).all()\n```\n\n## Key Patterns\n\n### IPC Communication\n- Uses **tRPC** with `trpc-electron` for type-safe main\u2194renderer communication\n- All backend calls go through tRPC routers, not raw IPC\n- Preload exposes `window.desktopApi` for native features (window controls, clipboard, notifications)\n\n### State Management\n- **Jotai**: UI state (selected chat, sidebar open, preview settings)\n- **Zustand**: Sub-chat tabs and pinned state (persisted to localStorage)\n- **React Query**: Server state via tRPC (auto-caching, refetch)\n\n### Claude Integration\n- Dynamic import of `@anthropic-ai/claude-code` SDK\n- Two modes: \"plan\" (read-only) and \"agent\" (full permissions)\n- Session resume via `sessionId` stored in SubChat\n- Message streaming via tRPC subscription (`claude.onMessage`)\n\n## Tech Stack\n\n| Layer | Tech |\n|-------|------|\n| Desktop | Electron 33.4.5, electron-vite, electron-builder |\n| UI | React 19, TypeScript 5.4.5, Tailwind CSS |\n| Components | Radix UI, Lucide icons, Motion, Sonner |\n| State | Jotai, Zustand, React Query |\n| Backend | tRPC, Drizzle ORM, better-sqlite3 |\n| AI | @anthropic-ai/claude-code |\n| Package Manager | bun |\n\n## File Naming\n\n- Components: PascalCase (`ActiveChat.tsx`, `AgentsSidebar.tsx`)\n- Utilities/hooks: camelCase (`useFileUpload.ts`, `formatters.ts`)\n- Stores: kebab-case (`sub-chat-store.ts`, `agent-chat-store.ts`)\n- Atoms: camelCase with `Atom` suffix (`selectedAgentChatIdAtom`)\n\n## Important Files\n\n- `electron.vite.config.ts` - Build config (main/preload/renderer entries)\n- `src/main/lib/db/schema/index.ts` - Drizzle schema (source of truth)\n- `src/main/lib/db/index.ts` - DB initialization + auto-migrate\n- `src/renderer/features/agents/atoms/index.ts` - Agent UI state atoms\n- `src/renderer/features/agents/main/active-chat.tsx` - Main chat component\n- `src/main/lib/trpc/routers/claude.ts` - Claude SDK integration\n\n## Debugging First Install Issues\n\nWhen testing auth flows or behavior for new users, you need to simulate a fresh install:\n\n```bash\n# 1. Clear all app data (auth, database, settings)\nrm -rf ~/Library/Application\\ Support/Agents\\ Dev/\n\n# 2. Reset macOS protocol handler registration (if testing deep links)\n/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user\n\n# 3. Clear app preferences\ndefaults delete dev.21st.agents.dev  # Dev mode\ndefaults delete dev.21st.agents      # Production\n\n# 4. Run in dev mode with clean state\ncd apps/desktop\nbun run dev\n```\n\n**Common First-Install Bugs:**\n- **OAuth deep link not working**: macOS Launch Services may not immediately recognize protocol handlers on first app launch. User may need to click \"Sign in\" again after the first attempt.\n- **Folder dialog not appearing**: Window focus timing issues on first launch. Fixed by ensuring window focus before showing `dialog.showOpenDialog()`.\n\n**Dev vs Production App:**\n- Dev mode uses `twentyfirst-agents-dev://` protocol\n- Dev mode uses separate userData path (`~/Library/Application Support/Agents Dev/`)\n- This prevents conflicts between dev and production installs\n\n## Releasing a New Version\n\n### Prerequisites for Notarization\n\n- Keychain profile: `21st-notarize`\n- Create with: `xcrun notarytool store-credentials \"21st-notarize\" --apple-id YOUR_APPLE_ID --team-id YOUR_TEAM_ID`\n\n### Release Commands\n\n```bash\n# Full release (build, sign, submit notarization, upload to CDN)\nbun run release\n\n# Or step by step:\nbun run build              # Compile TypeScript\nbun run package:mac        # Build & sign macOS app\nbun run dist:manifest      # Generate latest-mac.yml manifests\n./scripts/upload-release-wrangler.sh  # Submit notarization & upload to R2 CDN\n```\n\n### Bump Version Before Release\n\n```bash\nnpm version patch --no-git-tag-version  # 0.0.27 \u2192 0.0.28\n```\n\n### After Release Script Completes\n\n1. Wait for notarization (2-5 min): `xcrun notarytool history --keychain-profile \"21st-notarize\"`\n2. Staple DMGs: `cd release && xcrun stapler staple *.dmg`\n3. Re-upload stapled DMGs to R2 and GitHub (see RELEASE.md for commands)\n4. Update changelog: `gh release edit v0.0.X --notes \"...\"`\n5. **Upload manifests (triggers auto-updates!)** \u2014 see RELEASE.md\n6. Sync to public: `./scripts/sync-to-public.sh`\n\n### Files Uploaded to CDN\n\n| File | Purpose |\n|------|---------|\n| `latest-mac.yml` | Manifest for arm64 auto-updates |\n| `latest-mac-x64.yml` | Manifest for Intel auto-updates |\n| `1Code-{version}-arm64-mac.zip` | Auto-update payload (arm64) |\n| `1Code-{version}-mac.zip` | Auto-update payload (Intel) |\n| `1Code-{version}-arm64.dmg` | Manual download (arm64) |\n| `1Code-{version}.dmg` | Manual download (Intel) |\n\n### Auto-Update Flow\n\n1. App checks `https://cdn.21st.dev/releases/desktop/latest-mac.yml` on startup and when window regains focus (with 1 min cooldown)\n2. If version in manifest > current version, shows \"Update Available\" banner\n3. User clicks Download \u2192 downloads ZIP in background\n4. User clicks \"Restart Now\" \u2192 installs update and restarts\n\n## Current Status (WIP)\n\n**Done:**\n- Drizzle ORM setup with schema (projects, chats, sub_chats)\n- Auto-migration on app startup\n- tRPC routers structure\n\n**In Progress:**\n- Replacing `mock-api.ts` with real tRPC calls in renderer\n- ProjectSelector component (local folder picker)\n\n**Planned:**\n- Git worktree per chat (isolation)\n- Claude Code execution in worktree path\n- Full feature parity with web app\n\n## Debug Mode\n\nWhen debugging runtime issues in the renderer or main process, use the structured debug logging system. This avoids asking the user to manually copy-paste console output.\n\n**Start the server:**\n```bash\nbun packages/debug/src/server.ts &\n```\n\n**Instrument renderer code** (no import needed, fails silently):\n```js\nfetch('http://localhost:7799/log',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tag:'TAG',msg:'MESSAGE',data:{},ts:Date.now()})}).catch(()=>{});\n```\n\n**Read logs:** Read `.debug/logs.ndjson` - each line is a JSON object with `tag`, `msg`, `data`, `ts`.\n\n**Clear logs:** `curl -X DELETE http://localhost:7799/logs`\n\n**Workflow:** Hypothesize \u2192 instrument \u2192 user reproduces \u2192 read logs \u2192 fix with evidence \u2192 verify \u2192 remove instrumentation.\n\nSee `packages/debug/INSTRUCTIONS.md` for the full protocol.\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 1179,
+      "line_count": 45,
+      "truncated": false,
+      "excerpt": "# Contributing to 1Code\n\n## Building from Source\n\nPrerequisites: Bun, Python, Xcode Command Line Tools (macOS)\n\n```bash\nbun install\nbun run dev      # Development with hot reload\nbun run build    # Production build\nbun run package:mac  # Create distributable\n```\n\n## Open Source vs Hosted Version\n\nThis is the open-source version of 1Code. Some features require the hosted backend at 1code.dev:\n\n| Feature | Open Source | Hosted (1code.dev) |\n|---------|-------------|-------------------|\n| Local AI chat | Yes | Yes |\n| Claude Code integration | Yes | Yes |\n| Git worktrees | Yes | Yes |\n| Terminal | Yes | Yes |\n| Sign in / Sync | No | Yes |\n| Background agents | No | Yes |\n| Auto-updates | No | Yes |\n| Private Discord & support | No | Yes |\n| Early access to new features | No | Yes |\n\n## Analytics & Telemetry\n\nAnalytics (PostHog) and error tracking (Sentry) are **disabled by default** in open source builds. They only activate if you set the environment variables in `.env.local`.\n\n## Contributing\n\n1. Fork the repo\n2. Create a feature branch\n3. Make your changes\n4. Submit a PR\n\nJoin our [Discord](https://discord.gg/8ektTZGnj4) for discussions.\n\n## License\n\nApache 2.0\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 7446,
+      "line_count": 178,
+      "truncated": true,
+      "excerpt": "# 1Code\n\n[1Code.dev](https://1code.dev)\n\nOpen-source coding agent client. Run Claude Code, Codex, and more - locally or in the cloud.\n\nBy [21st.dev](https://21st.dev) team\n\n## Highlights\n\n- **Multi-Agent Support** - Claude Code and Codex in one app, switch instantly\n- **Visual UI** - Cursor-like desktop app with diff previews and real-time tool execution\n- **Custom Models & Providers (BYOK)** - Bring your own API keys\n- **Git Worktree Isolation** - Each chat runs in its own isolated worktree\n- **Background Agents** - Cloud sandboxes that run when your laptop sleeps\n- **Live Browser Previews** - Preview dev branches in a real browser\n- **Kanban Board** - Visualize agent sessions\n- **Built-in Git Client** - Visual staging, diffs, PR creation, push to GitHub\n- **File Viewer** - File preview with Cmd+P search and image viewer\n- **Integrated Terminal** - Sidebar or bottom panel with Cmd+J toggle\n- **Model Selector** - Switch between models and providers\n- **MCP & Plugins** - Server management, plugin marketplace, rich tool display\n- **Automations** - Trigger agents from GitHub, Linear, Slack, or manually from git events\n- **Chat Forking** - Fork a sub-chat from any assistant message\n- **Message Queue** - Queue prompts while an agent is working\n- **API** - Run agents programmatically with a single API call\n- **Voice Input** - Hold-to-talk dictation\n- **Plan Mode** - Structured plans with markdown preview\n- **Extended Thinking** - Enabled by default with visual UX\n- **Skills & Slash Commands** - Custom skills and slash commands\n- **Custom Sub-agents** - Visual task display in sidebar\n- **Memory** - CLAUDE.md and AGENTS.md support\n- **PWA** - Start and monitor background agents from your phone\n- **Cross Platform** - macOS desktop, web app, Windows and Linux\n\n## Features\n\n### Run coding agents the right way\n\nRun agents locally, in worktrees, in background - without touching main branch.\n\n![Worktree Demo](assets/worktree.gif)\n\n- **Git Worktree Isolation** - Each chat session runs in its own isolated worktree\n- **Background Execution** - Run agents in background while you continue working\n- **Local-first** - All code stays on your machine, no cloud sync required\n- **Branch Safety** - Never accidentally commit to main branch\n- **Shared Terminals** - Share terminal sessions across local-mode workspaces\n\n---\n\n### UI that finally respects your code\n\nCursor-like UI with diff previews, built-in git client, and the ability to see changes before they land.\n\n![Cursor UI Demo](assets/cursor-ui.gif)\n\n- **Diff Previews** - See exactly what changes the agent is making in real-time\n- **Built-in Git Client** - Stage, commit, push to GitHub, and manage branches without leaving the app\n- **Git Activity Badges** - See git operations directly on agent messages\n- **Rollback** - Roll back changes from any user message bubble\n- **Real-time Tool Execution** - See bash commands, file edits, and web searches as they happen\n- **File Viewer** - File preview with Cmd+P search, syntax highlighting, and image viewer\n- **Chat Forking** - Fork a sub-chat from any assistant message to explore alternatives\n- **Chat Export** - Export conversations for sharing or archival\n- **File Mentions** - Reference files directly in chat with @ mentions\n- **Message Queue** - Queue up prompts while an agent is working\n\n---\n\n### Plan mode that actually helps you think\n\nThe agent asks clarifying questions, builds structured plans, and shows clean markdown preview - all before execution.\n\n![Plan Mode Demo](assets/plan-mode.gif)\n\n- **Clarifying Questions** - The agent asks what it needs to know before starting\n- **Structured Plans** - See step-by-step breakdown of what will happen\n- **Clean Markdown Preview** - Review plans in readable format\n- **Review Before Execution** - Approve or modify the plan before the agent acts\n- **Extended Thinking** - Enabled by default with visual thinking gradient\n- **Sub-agents** - Visual task list for sub-agents in the details sidebar\n\n---\n\n### Background agents that never sleep\n\nClose your laptop. Your agents keep running in isolated cloud sandboxes with live browser previews.\n\n- **Runs When You Sleep** - Background agents continue working even when your laptop is closed\n- **Cloud Sandboxes** - Every background session runs in an isolated cloud environment\n- **Live Browser Previews** - See your dev branch running in a real browser\n\n---\n\n### Connect anything with MCP\n\nFull MCP server lifecycle management with a built-in plugin marketplace. No config files needed.\n\n- **MCP Server Management** - Toggle, configure, and delete MCP servers from the UI\n- **Plugin Marketplace** - Browse and install plugins with one click\n- **Rich Tool Display** - See MCP tool calls with formatted inputs and outputs\n- **@ Mentions** - Reference MCP servers directly in chat input\n\n---\n\n### Automations that work while you sleep\n\nTrigger agents from GitHub, Linear, Slack, or manually from git events. Auto-review PRs, fix CI failures, and complete tasks - all configurable.\n\n- **@1code Triggers** - Tag @1code in GitHub, Linear, or Slack to start agents\n- **Git Event Triggers** - Run automations on push, PR, or any git event\n- **Conditions & Filters** - Control when automations fire\n- **Execution Timeline** - Visual history of past runs\n- **Silent Mode** - Toggle respond-to-trigger for background automations\n\nAutomations require a [Pro or Max subscription](https://1code.dev/pro). Learn more at [1code.dev/agents/async](https://1code.dev/agents/async).\n\n\n## API\n\nRun coding agents programmatically. Point at a repo, give it a task - the agent runs in a sandbox and delivers a PR.\n\n```bash\ncurl -X POST https://1code.dev/api/v1/tasks \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -d '{\n    \"repository\": \"https://github.com/your-org/your-repo\",\n    \"prompt\": \"Fix the failing CI tests\"\n  }'\n```\n\n- **Remote Sandboxes** - Isolated cloud environment, repo cloned, dependencies installed\n- **Git & PR Integration** - Agent commits, pushes branches, opens PRs au"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 8038,
+      "line_count": 264,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"21st-desktop\",\n  \"version\": \"0.0.72\",\n  \"private\": true,\n  \"description\": \"1Code - UI for parallel work with AI agents\",\n  \"homepage\": \"https://21st.dev\",\n  \"author\": {\n    \"name\": \"21st.dev\",\n    \"email\": \"support@21st.dev\"\n  },\n  \"main\": \"out/main/index.js\",\n  \"scripts\": {\n    \"dev\": \"electron-vite dev\",\n    \"build\": \"electron-vite build\",\n    \"preview\": \"electron-vite preview\",\n    \"package\": \"electron-builder --dir\",\n    \"package:mac\": \"electron-builder --mac\",\n    \"package:win\": \"electron-builder --win\",\n    \"package:linux\": \"electron-builder --linux\",\n    \"dist\": \"electron-builder\",\n    \"dist:manifest\": \"node scripts/generate-update-manifest.mjs\",\n    \"dist:upload\": \"node scripts/upload-release.mjs\",\n    \"claude:download\": \"node scripts/download-claude-binary.mjs --version=2.1.45\",\n    \"claude:download:all\": \"node scripts/download-claude-binary.mjs --version=2.1.45 --all\",\n    \"codex:download\": \"node scripts/download-codex-binary.mjs --version=0.98.0\",\n    \"codex:download:all\": \"node scripts/download-codex-binary.mjs --version=0.98.0 --all\",\n    \"release\": \"rm -rf release && bun i && bun run claude:download && bun run codex:download && bun run build && bun run package:mac && bun run dist:manifest && ./scripts/upload-release-wrangler.sh\",\n    \"release:dev\": \"rm -rf release && bun run claude:download && bun run codex:download && bun run build && bun run package:mac && rm -rf node_modules && bun i\",\n    \"sync:public\": \"./scripts/sync-to-public.sh\",\n    \"icon:generate\": \"node scripts/generate-icon.mjs\",\n    \"db:generate\": \"drizzle-kit generate\",\n    \"db:push\": \"drizzle-kit push\",\n    \"db:studio\": \"drizzle-kit studio\",\n    \"ts:check\": \"tsgo --noEmit\",\n    \"postinstall\": \"node -e \\\"if(!process.env.VERCEL){require('child_process').execSync('electron-rebuild -f -w better-sqlite3,node-pty',{stdio:'inherit'})}\\\" && node scripts/patch-electron-dev.mjs\"\n  },\n  \"dependencies\": {\n    \"@ai-sdk/react\": \"^3.0.14\",\n    \"@anthropic-ai/claude-agent-sdk\": \"0.2.45\",\n    \"@git-diff-view/react\": \"^0.0.35\",\n    \"@git-diff-view/shiki\": \"^0.0.36\",\n    \"@mcpc-tech/acp-ai-provider\": \"^0.2.4\",\n    \"@modelcontextprotocol/sdk\": \"^1.25.3\",\n    \"@monaco-editor/react\": \"^4.7.0\",\n    \"@pierre/diffs\": \"^1.0.10\",\n    \"@radix-ui/react-accordion\": \"^1.2.12\",\n    \"@radix-ui/react-alert-dialog\": \"^1.1.15\",\n    \"@radix-ui/react-checkbox\": \"^1.3.3\",\n    \"@radix-ui/react-collapsible\": \"^1.1.12\",\n    \"@radix-ui/react-context-menu\": \"^2.2.16\",\n    \"@radix-ui/react-dialog\": \"^1.1.15\",\n    \"@radix-ui/react-dropdown-menu\": \"^2.1.16\",\n    \"@radix-ui/react-hover-card\": \"^1.1.15\",\n    \"@radix-ui/react-icons\": \"^1.3.2\",\n    \"@radix-ui/react-label\": \"^2.1.8\",\n    \"@radix-ui/react-popover\": \"^1.1.15\",\n    \"@radix-ui/react-progress\": \"^1.1.8\",\n    \"@radix-ui/react-select\": \"^2.2.6\",\n    \"@radix-ui/react-slot\": \"^1.2.4\",\n    \"@radix-ui/react-switch\": \"^1.2.6\",\n    \"@radix-ui/react-tabs\": \"^1.1.13\",\n    \"@radix-ui/react-tooltip\": \"^1.2.8\",\n    \"@sentry/electron\": \"^7.5.0\",\n    \"@tailwindcss/typography\": \"^0.5.19\",\n    \"@tanstack/react-query\": \"^5.90.10\",\n    \"@tanstack/react-virtual\": \"^3.13.18\",\n    \"@trpc/client\": \"^11.7.1\",\n    \"@trpc/react-query\": \"^11.7.1\",\n    \"@trpc/server\": \"^11.7.1\",\n    \"@xterm/addon-canvas\": \"^0.7.0\",\n    \"@xterm/addon-fit\": \"^0.11.0\",\n    \"@xterm/addon-search\": \"^0.16.0\",\n    \"@xterm/addon-serialize\": \"^0.14.0\",\n    \"@xterm/addon-web-links\": \"^0.12.0\",\n    \"@xterm/addon-webgl\": \"^0.19.0\",\n    \"@zed-industries/codex-acp\": \"0.9.3\",\n    \"ai\": \"^6.0.14\",\n    \"async-mutex\": \"^0.5.0\",\n    \"better-sqlite3\": \"^12.6.2\",\n    \"chokidar\": \"^5.0.0\",\n    \"class-variance-authority\": \"^0.7.1\",\n    \"clsx\": \"^2.1.1\",\n    \"date-fns\": \"^3.6.0\",\n    \"diff\": \"^8.0.3\",\n    \"drizzle-orm\": \"^0.45.1\",\n    \"electron-log\": \"^5.4.3\",\n    \"electron-updater\": \"^6.7.3\",\n    \"gray-matter\": \"^4.0.3\",\n    \"jotai\": \"^2.11.1\",\n    \"jsonc-parser\": \"^3.3.1\",\n    \"lucide-react\": \"^0.468.0\",\n    \"mermaid\": \"^11.12.2\",\n    \"monaco-editor\": \"^0.55.1\",\n    \"motion\": \"^11.15.0\",\n    \"next-themes\": \"^0.4.4\",\n    \"node-pty\": \"^1.1.0\",\n    \"pidtree\": \"^0.6.0\",\n    \"posthog-js\": \"^1.239.1\",\n    \"posthog-node\": \"^5.20.0\",\n    \"react\": \"19.2.1\",\n    \"react-dom\": \"19.2.1\",\n    \"react-hotkeys-hook\": \"^4.6.1\",\n    \"react-icons\": \"^5.5.0\",\n    \"react-zoom-pan-pinch\": \"^3.7.0\",\n    \"remark-breaks\": \"^4.0.0\",\n    \"remark-gfm\": \"^4.0.1\",\n    \"shiki\": \"^1.24.4\",\n    \"simple-git\": \"^3.28.0\",\n    \"sonner\": \"^1.7.1\",\n    \"streamdown\": \"^2.0.1\",\n    \"superjson\": \"^2.2.2\",\n    \"tailwind-merge\": \"^2.6.0\",\n    \"tailwindcss-animate\": \"^1.0.7\",\n    \"trpc-electron\": \"^0.1.2\",\n    \"unique-names-generator\": \"^4.7.1\",\n    \"xterm\": \"^5.3.0\",\n    \"zod\": \"^3.24.1\",\n    \"zustand\": \"^5.0.3\"\n  },\n  \"devDependencies\": {\n    \"@electron-toolkit/preload\": \"^3.0.1\",\n    \"@electron-toolkit/utils\": \"^4.0.0\",\n    \"@electron/rebuild\": \"^4.0.3\",\n    \"@tailwindcss/container-queries\": \"^0.1.1\",\n    \"@types/better-sqlite3\": \"^7.6.13\",\n    \"@types/diff\": \"^8.0.0\",\n    \"@types/node\": \"^20.17.50\",\n    \"@types/react\": \"^19.0.7\",\n    \"@types/react-dom\": \"^19.0.3\",\n    \"@vitejs/plugin-react\": \"^4.3.4\",\n    \"@welldone-software/why-did-you-render\": \"^10.0.1\",\n    \"autoprefixer\": \"^10.4.20\",\n    \"drizzle-kit\": \"^0.31.8\",\n    \"electron\": \"~39.4.0\",\n    \"electron-builder\": \"^25.1.8\",\n    \"electron-vite\": \"^3.0.0\",\n    \"postcss\": \"^8.5.1\",\n    \"tailwindcss\": \"^3.4.17\",\n    \"typescript\": \"^5.4.5\",\n    \"vite\": \"^6.3.4\"\n  },\n  \"build\": {\n    \"appId\": \"dev.21st.agents\",\n    \"productName\": \"1Code\",\n    \"npmRebuild\": true,\n    \"protocols\": [\n      {\n        \"name\": \"1Code\",\n        \"schemes\": [\n          \"twentyfirst-agents\"\n        ]\n      }\n    ],\n    \"directories\": {\n      \"buildResources\": \"build\",\n      \"output\": \"release\"\n    },\n    \"files\": [\n      \"out/**/*\"\n    ],\n    \"extraResources\": [\n      {\n        \"from\": \"drizzle\",\n        \"to\": \"migrations\"\n      },\n      {\n        \"from\": \"resources/bin/${platform}-${arch}\",\n        \"to\": \"bin\",\n        \"filter\": [\n          \"**/*\"\n        ]\n      },\n   "
+    }
+  },
+  "workflow_samples": {},
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-02-24T20:27:08Z",
+      "oldest": "2026-01-24T02:40:01Z"
+    },
+    "conventional_pct": 24.0,
+    "fix_revert_pct": 22.0,
+    "ai_coauthor_pct": 22.0,
+    "top_recent_authors": [
+      [
+        "serafimcloud",
+        32
+      ],
+      [
+        "21st-connector[bot]",
+        5
+      ],
+      [
+        "paul-bouzian",
+        4
+      ],
+      [
+        "jjjrmy",
+        3
+      ],
+      [
+        "ChrisPei",
+        2
+      ],
+      [
+        "github-actions[bot]",
+        1
+      ],
+      [
+        "amal-irgashev",
+        1
+      ],
+      [
+        "bunasQ",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "9f1bc76f",
+        "date": "2026-02-24T20:27:08Z",
+        "author": "github-actions[bot]",
+        "subject": "Release v0.0.72",
+        "ai_signal": false
+      },
+      {
+        "sha": "9178ae5d",
+        "date": "2026-02-18T20:19:42Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.66",
+        "ai_signal": false
+      },
+      {
+        "sha": "ca90e11d",
+        "date": "2026-02-18T01:38:14Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.65",
+        "ai_signal": false
+      },
+      {
+        "sha": "dd40cd1a",
+        "date": "2026-02-17T22:35:59Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.64",
+        "ai_signal": false
+      },
+      {
+        "sha": "ef2e48e0",
+        "date": "2026-02-16T01:13:48Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.63",
+        "ai_signal": false
+      },
+      {
+        "sha": "64fe2c6e",
+        "date": "2026-02-15T23:10:00Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.62",
+        "ai_signal": false
+      },
+      {
+        "sha": "aad4b92e",
+        "date": "2026-02-10T20:06:28Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.60-beta.4",
+        "ai_signal": false
+      },
+      {
+        "sha": "09a68807",
+        "date": "2026-02-10T17:10:04Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.60-beta.3",
+        "ai_signal": false
+      },
+      {
+        "sha": "8c86d39b",
+        "date": "2026-02-09T18:57:48Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.60-beta.2",
+        "ai_signal": false
+      },
+      {
+        "sha": "a2b01845",
+        "date": "2026-02-09T17:34:37Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.60-beta.1",
+        "ai_signal": false
+      },
+      {
+        "sha": "0d773a17",
+        "date": "2026-02-06T19:22:12Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.59",
+        "ai_signal": false
+      },
+      {
+        "sha": "57d5fd83",
+        "date": "2026-02-06T04:08:50Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.58",
+        "ai_signal": false
+      },
+      {
+        "sha": "783fe433",
+        "date": "2026-02-05T23:22:42Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.57",
+        "ai_signal": false
+      },
+      {
+        "sha": "c775621d",
+        "date": "2026-02-05T20:03:07Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.55",
+        "ai_signal": false
+      },
+      {
+        "sha": "b1cfa843",
+        "date": "2026-01-31T19:51:01Z",
+        "author": "serafimcloud",
+        "subject": "fix(build): pin source-map to 0.7.4 to fix electron-builder packaging error",
+        "ai_signal": true
+      },
+      {
+        "sha": "ad0c5738",
+        "date": "2026-01-31T19:24:37Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.54",
+        "ai_signal": false
+      },
+      {
+        "sha": "75fbcb65",
+        "date": "2026-01-30T23:33:41Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.53",
+        "ai_signal": false
+      },
+      {
+        "sha": "b192570e",
+        "date": "2026-01-30T07:11:59Z",
+        "author": "serafimcloud",
+        "subject": "Release v0.0.52",
+        "ai_signal": false
+      },
+      {
+        "sha": "4c67545b",
+        "date": "2026-01-30T01:34:34Z",
+        "author": "21st-connector[bot]",
+        "subject": "Add AGENTS.md support for project instructions (#142)",
+        "ai_signal": true
+      },
+      {
+        "sha": "31e27b2d",
+        "date": "2026-01-30T01:27:16Z",
+        "author": "amal-irgashev",
+        "subject": "fix: pass project path to skills and agents queries (#132)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "serafimcloud",
+      "contributions": 66
+    },
+    {
+      "login": "21st-connector[bot]",
+      "contributions": 5
+    },
+    {
+      "login": "bunasQ",
+      "contributions": 5
+    },
+    {
+      "login": "caffeinum",
+      "contributions": 4
+    },
+    {
+      "login": "ChrisPei",
+      "contributions": 4
+    },
+    {
+      "login": "paul-bouzian",
+      "contributions": 4
+    },
+    {
+      "login": "jjjrmy",
+      "contributions": 3
+    },
+    {
+      "login": "amal-irgashev",
+      "contributions": 1
+    },
+    {
+      "login": "Braunson",
+      "contributions": 1
+    },
+    {
+      "login": "CorentinLumineau",
+      "contributions": 1
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v0.0.84",
+      "published_at": "2026-03-06T21:10:12Z",
+      "name": "1Code v0.0.84"
+    },
+    {
+      "tag": "v0.0.83",
+      "published_at": "2026-03-03T20:28:52Z",
+      "name": "1Code v0.0.83"
+    },
+    {
+      "tag": "v0.0.82",
+      "published_at": "2026-03-03T02:14:30Z",
+      "name": "1Code v0.0.82 (hotfix)"
+    },
+    {
+      "tag": "v0.0.81",
+      "published_at": "2026-03-02T22:09:04Z",
+      "name": "1Code v0.0.81"
+    },
+    {
+      "tag": "v0.0.80",
+      "published_at": "2026-03-02T20:53:26Z",
+      "name": "1Code v0.0.80"
+    }
+  ]
+}

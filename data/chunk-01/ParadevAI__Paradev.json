@@ -1,0 +1,490 @@
+{
+  "repo": "ParadevAI/Paradev",
+  "meta": {
+    "description": "Paradev is an open-source Codex App and Conductor alternative. Orchestrate an army coding agents in parallel with your own subscriptions.",
+    "homepage": "https://paradev.com",
+    "license": "MIT",
+    "stars": 16638,
+    "forks": 1501,
+    "open_issues": 1263,
+    "archived": false,
+    "created_at": "2025-10-21T09:16:51Z",
+    "pushed_at": "2026-11-25T13:08:14Z",
+    "default_branch": "main",
+    "topics": [
+      "ade",
+      "agent",
+      "agent-orchestration",
+      "ai-agents",
+      "ai-coding",
+      "claude-code",
+      "cli",
+      "codex",
+      "coding-agents",
+      "conductor",
+      "cursor-agent",
+      "developer-tools",
+      "devtools",
+      "ide",
+      "macos",
+      "opencode",
+      "orchestration",
+      "parallel-agents",
+      "terminal",
+      "worktrees"
+    ]
+  },
+  "languages": {
+    "TypeScript": 35163284,
+    "MDX": 2750488,
+    "Shell": 304590,
+    "PLpgSQL": 275456,
+    "Swift": 233169,
+    "CSS": 95706,
+    "JavaScript": 57995,
+    "Python": 42010,
+    "Kotlin": 32443,
+    "TLA": 7449,
+    "Ruby": 7136,
+    "HTML": 5167,
+    "Tape": 5106,
+    "C++": 1612,
+    "Objective-C": 1148,
+    "Dockerfile": 805
+  },
+  "structure": {
+    "root": [
+      ".agent-marketplace.json",
+      ".agents/",
+      ".bun-version",
+      ".claude-plugin/",
+      ".claude/",
+      ".codex/",
+      ".cursor/",
+      ".dockerignore",
+      ".env.example",
+      ".env.local.example",
+      ".github/",
+      ".gitignore",
+      ".mastracode/",
+      ".paradev/",
+      "AGENTS.md",
+      "CLA.md",
+      "CLAUDE.md",
+      "CODEX.md",
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "DEVELOPMENT.md",
+      "LICENSE.md",
+      "README.md",
+      "SECURITY.md",
+      "WARP.md",
+      "apps/",
+      "biome.jsonc",
+      "bun.lock",
+      "bunfig.toml",
+      "docker-compose.yml",
+      "docs/",
+      "lingui.config.ts",
+      "opencode.json",
+      "package.json",
+      "packages/",
+      "patches/",
+      "plugins/",
+      "readme/",
+      "scripts/",
+      "signatures/",
+      "tooling/",
+      "turbo.jsonc"
+    ],
+    "workflows": [
+      "backfill-connections.yml",
+      "blob-port.yml",
+      "build-cli.yml",
+      "build-desktop.yml",
+      "bump-homebrew.yml",
+      "ci.yml",
+      "cla.yml",
+      "cleanup-preview.yml",
+      "deploy-paradev-staging.yml",
+      "deploy-preview.yml",
+      "deploy-production.yml",
+      "e2e-mobile.yml",
+      "import-autumn-subscriptions.yml",
+      "publish-cloud-workspace-job.yml",
+      "release-cli-lockstep.yml",
+      "release-cli.yml",
+      "release-desktop-canary.yml",
+      "release-desktop.yml",
+      "sandbox.yml",
+      "stale-prs.yml",
+      "tag-plugin-releases.yml",
+      "triage-issue.yml"
+    ],
+    "docs": [
+      "agent-tooling.md",
+      "deploy-workflows.md",
+      "environment-variables.md",
+      "plugins.md",
+      "runbooks/"
+    ],
+    "docs_count": 5,
+    "agents_dir": [
+      "commands/",
+      "skills/"
+    ],
+    "agents_skills": [
+      "autumn/",
+      "cdp-verification/",
+      "db-migrations/",
+      "decide/",
+      "dev-doctor/",
+      "incident-triage/",
+      "mobile-android-verification/",
+      "mobile-demo-film/",
+      "mobile-demo-record/",
+      "mobile-eas-dev/",
+      "mobile-sim-verification/",
+      "redesign/",
+      "superset-settings/",
+      "ticket-format/",
+      "trpc-compat/",
+      "verify-sandbox-asleep/"
+    ],
+    "claude_dir": [
+      "agents/",
+      "commands",
+      "settings.json",
+      "skills"
+    ],
+    "cursor_dir": [
+      "commands"
+    ],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 16205,
+      "line_count": 292,
+      "truncated": false,
+      "excerpt": "# Paradev Monorepo\n\nParadev is an agent-first development platform, with an Electron desktop IDE, Next.js web apps, and an Expo mobile app as the main customer-facing surfaces. It's a Turborepo monorepo, deployed apps are in apps/ and supporting packages are in packages/, and we use tRPC for the api.\n\nYou're working inside a Paradev workspace, an isolated checkout of this repo \u2014 a git worktree on a\nmachine someone owns, a plain clone at `/workspace` in a cloud workspace. \"Workspace\" in a user\nmessage means that, not an editor workspace.\n\n## Project Structure\n\nAll projects in this repo should be structured like this:\n\n```\napp/\n\u251c\u2500\u2500 page.tsx\n\u251c\u2500\u2500 dashboard/\n\u2502   \u251c\u2500\u2500 page.tsx\n\u2502   \u251c\u2500\u2500 components/\n\u2502   \u2502   \u2514\u2500\u2500 MetricsChart/\n\u2502   \u2502       \u251c\u2500\u2500 MetricsChart.tsx\n\u2502   \u2502       \u251c\u2500\u2500 MetricsChart.test.tsx      # Tests co-located\n\u2502   \u2502       \u251c\u2500\u2500 index.ts\n\u2502   \u2502       \u2514\u2500\u2500 constants.ts\n\u2502   \u251c\u2500\u2500 hooks/                             # Hooks used only in dashboard\n\u2502   \u2502   \u2514\u2500\u2500 useMetrics/\n\u2502   \u2502       \u251c\u2500\u2500 useMetrics.ts\n\u2502   \u2502       \u251c\u2500\u2500 useMetrics.test.ts\n\u2502   \u2502       \u2514\u2500\u2500 index.ts\n\u2502   \u251c\u2500\u2500 utils/                             # Utils used only in dashboard\n\u2502   \u2502   \u2514\u2500\u2500 formatData/\n\u2502   \u2502       \u251c\u2500\u2500 formatData.ts\n\u2502   \u2502       \u251c\u2500\u2500 formatData.test.ts\n\u2502   \u2502       \u2514\u2500\u2500 index.ts\n\u2502   \u251c\u2500\u2500 stores/                            # Stores used only in dashboard\n\u2502   \u2502   \u2514\u2500\u2500 dashboardStore/\n\u2502   \u2502       \u251c\u2500\u2500 dashboardStore.ts\n\u2502   \u2502       \u2514\u2500\u2500 index.ts\n\u2502   \u2514\u2500\u2500 providers/                         # Providers for dashboard context\n\u2502       \u2514\u2500\u2500 DashboardProvider/\n\u2502           \u251c\u2500\u2500 DashboardProvider.tsx\n\u2502           \u2514\u2500\u2500 index.ts\n\u2514\u2500\u2500 components/\n    \u251c\u2500\u2500 Sidebar/\n    \u2502   \u251c\u2500\u2500 Sidebar.tsx\n    \u2502   \u251c\u2500\u2500 Sidebar.test.tsx               # Tests co-located\n    \u2502   \u251c\u2500\u2500 index.ts\n    \u2502   \u251c\u2500\u2500 components/                    # Used 2+ times IN Sidebar\n    \u2502   \u2502   \u2514\u2500\u2500 SidebarButton/             # Shared by SidebarNav + SidebarFooter\n    \u2502   \u2502       \u251c\u2500\u2500 SidebarButton.tsx\n    \u2502   \u2502       \u251c\u2500\u2500 SidebarButton.test.tsx\n    \u2502   \u2502       \u2514\u2500\u2500 index.ts\n    \u2502   \u251c\u2500\u2500 SidebarNav/\n    \u2502   \u2502   \u251c\u2500\u2500 SidebarNav.tsx\n    \u2502   \u2502   \u2514\u2500\u2500 index.ts\n    \u2502   \u2514\u2500\u2500 SidebarFooter/\n    \u2502       \u251c\u2500\u2500 SidebarFooter.tsx\n    \u2502       \u2514\u2500\u2500 index.ts\n    \u2514\u2500\u2500 HeroSection/\n        \u251c\u2500\u2500 HeroSection.tsx\n        \u251c\u2500\u2500 HeroSection.test.tsx           # Tests co-located\n        \u251c\u2500\u2500 index.ts\n        \u2514\u2500\u2500 components/                    # Used ONLY by HeroSection\n            \u2514\u2500\u2500 HeroCanvas/\n                \u251c\u2500\u2500 HeroCanvas.tsx\n                \u251c\u2500\u2500 HeroCanvas.test.tsx\n                \u251c\u2500\u2500 HeroCanvas.stories.tsx\n                \u251c\u2500\u2500 index.ts\n                \u2514\u2500\u2500 config.ts\n\ncomponents/                                # Used in 2+ pages (last resort)\n\u2514\u2500\u2500 Header/\n```\n\n1. **One folder per component**: `ComponentName/ComponentName.tsx` + `index.ts` for barrel export\n2. **Co-locate by usage**: If used once, nest under parent's `components/`. If used 2+ times, promote to **highest shared parent's** `components/` (or `components/` as last resort)\n3. **One component per file**: No multi-component files\n4. **Co-locate dependencies**: Utils, hooks, constants, config, tests, stories live next to the file using them\n\n### Exception: shadcn/ui Components\n\nThe `src/components/ui/` and `src/components/ai-elements` directories contain shadcn/ui components. These use **kebab-case single files** (e.g., `button.tsx`, `base-node.tsx`) instead of the folder structure above. This is intentional\u2014shadcn CLI expects this format for updates via `bunx shadcn@latest add`.\n\n## Database\n\nDrizzle ORM, schema in `packages/db/src/`. Follow `.agents/skills/db-migrations/SKILL.md` to generate\nmigrations and to clear its production safety checklist before opening the PR. Never hand-edit `packages/db/drizzle/` (SQL, `meta/_journal.json`, snapshots) without\nexplicit user confirmation, and never apply migrations against a shared or production database.\n\n## Releases\n\nDesktop, host-service, and cli share one version; cut releases on a dedicated branch. Runbook:\n`scripts/release/README.md`. A *canary* is a separate thing: `bash scripts/release-canary.sh\n[commit]` builds the rolling internal `desktop-canary` prerelease, not a versioned release.\n\n## Plugins\n\nFirst-party plugins live in `plugins/<name>/`: a `plugin.json` manifest and `skills/`. A plugin\nships no code \u2014 agents reach its tools through `/mcp/plugins/<marketplace>/<plugin>` on the API,\nwhich proxies to the vendor's MCP server or, for the plugins named in the `SUPERSET_HOSTED_PLUGINS` constant,\nserves them from `packages/trpc/src/router/plugins/servers/`. A release is the git tag\n`<name>@<version>` on this repo \u2014 that tree is what a host\ndownloads \u2014 and `packages/shared/src/plugins/manifests.generated.ts` is the bundle the API resolves\nagainst, which is generated and must never be hand-edited. Change the source, then\n`paradev plugins publish <name> --bump patch`, which rewrites the marketplace entry in\n`.agent-marketplace.json` and the generated manifests; merging to main tags it. `bun run check:plugins` is what CI\nruns to catch a change that skipped that step; run it before pushing.\n\nInstalled plugins are recorded once per machine in\n`$SUPERSET_HOME_DIR/plugins/installed_plugins.json` (`SUPERSET_HOME` is the CLI's install prefix and\nmeans nothing here). Every provisioner reads that one file \u2014 the desktop at boot, `plugins sync`,\nthe host-service \u2014 because provisioning is declarative and reaps whatever is absent from the desired\nset. A caller that passes its own list instead makes the last writer delete the others' skills.\nDetails: `docs/plugins.md`.\n\n## Orchestrating agents and workspaces\n\nWhen work wants a fresh isolated environment, a parallel agent, or a long-running job, reach for the\n`paradev` CLI instead of hand-rolling git worktrees or doing it all serially in this one. It's\nalready on `PATH` in Paradev terminals, and we dogfood it. `superset` is an alias for the same\nbinary and must keep working; write `paradev` in help text and docs here. Code that runs the CLI\non another machine or from a released build's files still calls `superset`.\n\nReplace the capitalized placeholders before running these:\n\n```bash\nparadev ws create --local --project PROJECT_ID --name NAME --branch BRANCH --agent claude --prompt \"...\"\nparadev agents create --local --workspace WORKSPACE_ID --agent claude --prompt \"...\"\nparadev ws list --local\nparadev terminals read --local --workspace WORKSPACE_ID --terminal TERMINAL_ID\nparadev ws archive --local WORKSPACE_ID\n```\n\nIn order: an isolated workspace with an agent already working in it, another agent in an existing\nworkspace, what's running, what an agent is doing right now, and cleanup when you're done.\n\nThose agents run in terminals. A user who asks for a new *session* or a *chat* means a chat agent\nsession, which is a different namespace: use `paradev sessions`, not `agents create` or\n`terminals`. `terminals read` cannot read a chat session; prompt one with `sessions send`.\n\n```bash\nparadev sessions create --local --workspace WORKSPACE_ID --agent claude --prompt \"...\"\nparadev sessions list --local --workspace WORKSPACE_ID\nparadev sessions read --local --workspace WORKSPACE_ID --session SESSION_ID\nparadev sessions send --local --workspace WORKSPACE_ID --session SESSION_ID --prompt \"...\"\nparadev sessions close --local --workspace WORKSPACE_ID --session SESSION_ID\n```\n\n`resume`, `open`, and `import`, and which agents chat supports: `docs/agent-tooling.md`.\n\nSpawning several related workspaces? Add `--tag SOME_TAG` (repeatable) to `ws create` \u2014 tagged\nworkspaces group into a sidebar folder of that name automatically, so a batch files itself instead\nof scattering across the project. `ws list --local --tag SOME_TAG` filters to them, and\n`ws update WORKSPACE_ID --tag ...` retags (`--clear-tags` ungroups). Automation-created workspaces\nare tagged `automation` by default and collect in an \"automation\" folder.\n\n`paradev schema` prints every command, option and argument as JSON; read it with `jq` to learn the\nrest (tasks, automations, hosts, settings) instead of parsing `--help` text. To check only that a\ncommand exists, the exit code of `paradev <command> --help` is enough. Details and the version\ncaveat: `docs/agent-tooling.md`.\n\n```bash\nparadev schema | jq '.commands[] | select(.path==[\"terminals\"]) | .commands[] | {path, options: [.options[].name]}'\n```\n\nPass `--json` for parsable output; it's on by default under agent environments.\n\n## Internationalization\n\nUser-facing strings use Lingui macros with the English text as the message id \u2014\n`<Trans>Text</Trans>` or `useLingui()`'s `t({ message })` in React, `i18n._(msg({ message }))`\noutside React (Electron main). Identical English with different meanings gets a `context`\nso it translates separately. Numbers, currencies, and dates go through\n`@superset/i18n/format` helpers, never `new Intl.*(\"en-US\")` or `toLocale*` with a hardcoded\nlocale. After adding or changing strings, run `bun run check:i18n` (CI enforces it): it\nregenerates the catalogs and lists every untranslated message per locale. Write those\ntranslations yourself into each `locales/<locale>/messages.po` and commit the catalogs with\nthe change \u2014 nothing on CI fills translations for you. Conventions: `packages/i18n/README.md`;\nterms that never translate: `packages/i18n/glossary.md`.\nDirectories listed in `packages/i18n/test/enforced-dirs.ts` must not contain hardcoded\nJSX text \u2014 add a directory there once it is fully converted. `errorMessage()` output is potentially\ntranslated and is display-only: logs, Sentry/PostHog, and error classification use\n`rawErrorMessage()` or the error object (enforced by `packages/i18n/test/display-only.test.ts`).\n\n**Shipping locales.** `SUPPORTED_LOCALES` in `packages/i18n/src/locales.ts` is the single\nsource of truth \u2014 adding a locale there is what makes it appear in the Settings picker and\nthe optional onboarding step, and what `lingui.config.ts` must list. Every enabled locale\nmust be **fully translated**: `compile --strict` fails the build on a missing message, so\nfinish a translation before adding its locale. Native language names live in `LOCALE_LABELS`\nand are never translated \u2014 someone stuck in the wrong language has to recognize their own.\nRelative times use `formatRelativeTime`/`formatCompactRelativeTime`, not hand-rolled\n\"3d ago\" helpers; `Intl` already knows every locale's wording.\n\nThree traps worth knowing before you touch catalogs:\n\n- **Editing English copy re-keys the message.** The text is the id, so an edit creates a\n  new entry that is empty in every locale and `check:i18n` lists it. If the edit was cosmetic,\n  the old translations are still in `git diff` on the catalogs to copy from.\n- **Regenerate from a clean tree.** `lingui.config.ts` keeps `messages.po` deterministic:\n  `orderBy: \"message\"` fixes entry order, and `origins: false` drops the `#:` file\n  references, whose order follows filesystem traversal and differs between macOS and\n  Linux. A catalog regenerated on top of local experiments will still commit noise.\n- **`bun test` runs uncompiled source.** The Lingui macro rewrites `` message: `${n} items` ``\n  into a placeholder message plus values at build time, so the catalog stores `{n} items`.\n  Tests see neither, which is why `apps/desktop/test-setup.ts` shims the macros and `i18n._`.\n  Mock that module with a Proxy, never a spread \u2014 `i18n` is a class instance and a spread\n  drops `load`/`activate`.\n\n## Plans and design notes\n\nThis repository is public. Plans, design notes, research, findings, specs and TODO lists are not\ncommitted to any repo: publish them as an org page with `superset pages publish` (`/create-plan`\nfor a plan). Keep the source in `plans/local/`, which is gitignored. Do not point code, comments,\ndocs or PR descriptions at them.\n\n## Comments\n\nNever comment unless the thing can never be self-describing in the code. Name it, structure it,\nor type it first; a comment is the last resort for what the code genuinely cannot say \u2014 a\nconstraint that lives outside the repo, or a trap the next reader would walk into. Rationale goes\nin the commit message and the PR.\n\n## Tests\n\nCI runs every suite on each push, and the whole run is meant to stay near two minutes. A test\nearns its place by catching a regression quickly.\n\n- **No real waiting.** A test that needs more than bun's default 5 s timeout is too slow. Do not\n  raise the timeout: pass the delay, clock or retry count in and test with a small value. Never\n  wait for a real network or process timeout to fire.\n- **One test per behaviour.** Stress, fuzz and \"adversarial\" suites that build many real git\n  repositories or processes do not go in the repo. When a probe finds a bug, keep the one\n  regression test for it.\n- **Any order, clean checkout.** Each package's suite runs in one process, in an order that differs\n  between machines, with no root `.env`. Do not `mock.module` a module that other files import for\n  real (`env`, a client, a logger). Give the code its input instead: a parameter, a placeholder in\n  the package's test preload, or a local server.\n- **A flaky test is a broken test.** Fix the cause or delete it. Do not add retries or longer\n  timeouts.\n- **Node-only suites** (real PTYs, `node:test`) are `*.node-test.ts` files run by a turbo task, so\n  they run beside the bun suites and not after them.\n\n## Further reading\n\n- `.agents/skills/`: CDP UI verification, mobile simulator verification, DB migrations, tRPC\n  compatibility, ticket format, and more. Read the matching `SKILL.md` when a task fits its\n  description.\n- `.agents/skills/autumn/SKILL.md`: read first for anything billing.\n- `docs/agent-tooling.md`: where commands, skills, and per-agent-CLI config live.\n- `docs/plugins.md`: authoring, publishing, and installing marketplace plugins \u2014 the manifest\n  contract, the credential proxy, and which files are generated.\n- `docs/environment-variables.md`: read before adding an environment variable. Five places,\n  and missing one fails silently.\n- `docs/deploy-workflows.md`: read before writing or testing a deploy workflow step. `run:` has\n  no `pipefail` by default, and production secrets exist only in GitHub.\n- `packages/trpc/AGENTS.md`: read before changing any tRPC procedure, in `packages/trpc` or\n  `packages/host-service`. Released desktop, mobile, and CLI builds still call it.\n- `apps/desktop/AGENTS.md`: desktop specifics (notices, persisted renderer state).\n- `apps/mobile/AGENTS.md`: mobile structure and iOS-only scope.\n\n## Contributor responsibility\n\nContributors are responsible for every change they submit, including agent-generated code.\nThey must understand the changes, review the diff, and verify the behavior before requesting\nreview.\n\n- Ask for clarification when a request lacks enough context to make a correct change.\n- Explain changes and validation so the contributor can review and understand the result.\n- Agents may write commit messages and PR descriptions, commit changes, push branches, create\n  PRs, and address review feedback when authorized by the user.\n- Only post replies to reviewers when the user explicitly authorizes it.\n- Never claim that checks passed or behavior was verified unless it actually was.\n\n## Code standards\n\n- Keep code comments concise (usually 1-2 lines)\n- Avoid redundant or excessive inline commentary\n- Use ASD-STE100 Simplified Technical English, simple wordings\n\n### Examples\n\n```c++\n  // Good (no comment)\n\n  std::string module_name =\n    fmt::format(\"{}_{:x}\", name_, std::hash<std::string>{}(source_));\n\n  // Bad (excessive comment for explicit code)\n\n  // The module cache is keyed on this name, so it has to include the source:\n  // two kernels sharing a name but not a body would otherwise both run\n  // whichever was compiled first. Same fix as 3833 on the Metal side.\n```\n"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 10,
+      "line_count": 1,
+      "truncated": false,
+      "excerpt": "@AGENTS.md"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 4313,
+      "line_count": 61,
+      "truncated": false,
+      "excerpt": "# Contributing to Paradev\n\nThanks for contributing! Please follow our [code of conduct](./CODE_OF_CONDUCT.md).\n\n## Before you start\n\n- **Bug fixes, docs, and small improvements**: open a PR directly. No issue needed.\n- **New features or larger changes**: [open an issue](https://github.com/paradevai/paradev/issues/new/choose) first so we can agree on the approach before you build it.\n- **Questions**: ask in [Discord](https://discord.gg/cZeD9WYcV7) instead of opening an issue.\n\n## Local development\n\nDevelopment is expected to run from a Paradev workspace, which is a managed\ngit worktree. Add your clone to the installed Paradev app, create a workspace\nfor your change, then run the following commands in that workspace:\n\n```bash\n./.paradev/setup.local.sh\nbun run dev\n```\n\nRun `setup.local.sh` once in every new worktree before starting development. It\nconfigures workspace-specific app identity, ports, local services, and a seeded\ndevelopment account so the dev desktop app can run alongside the installed app.\nNo Neon or third-party credentials are needed.\n\nSee [**DEVELOPMENT.md**](./DEVELOPMENT.md) for the full guide.\n\n## Opening a pull request\n\n1. [Fork the repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) and branch from `main`.\n2. Make your change, then check it locally:\n   ```bash\n   bun run lint      # CI fails on warnings too. Run `bun run lint:fix` first.\n   bun run typecheck\n   bun run test\n   bun run check:i18n  # Only if you touched user-facing strings; commit the catalogs it regenerates.\n   ```\n3. [Open a PR from your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) and fill in the template. Check **\"Allow edits from maintainers\"** so we can touch up your branch. It speeds up review a lot.\n4. Sign the [Contributor License Agreement](./CLA.md). On your first PR, a bot asks you to comment `I have read the CLA Document and I hereby sign the CLA`. You sign once, and it covers all your future PRs. You keep the copyright in your work. We can't merge a PR until every commit author has signed.\n\n### What gets a PR merged fast\n\n- **A conventional-commit title.** We squash-merge with the title as the commit subject, so it needs to look like `feat(desktop): add copy-logs button` or `fix(web): guard against missing PR`.\n- **One change per PR.** Small PRs get reviewed in hours. If you found an unrelated bug along the way, open a second PR.\n- **Proof it works \u2014 screenshots strongly preferred.** Say what you ran or clicked, and show it. Any user-visible change needs a screenshot or recording in the PR description; for bug fixes, before/after screenshots are ideal. A PR with screenshots gets reviewed much faster than one we have to check out and run ourselves. See [capturing screenshots via CDP](#capturing-screenshots-via-cdp) below.\n- **A linked issue for non-trivial changes** so reviewers have the context.\n\n### Capturing screenshots via CDP\n\nThe dev desktop app exposes the Chrome DevTools Protocol, so you (or your coding agent) can drive the real app and capture screenshots without manual cropping:\n\n1. Launch the dev app with a debugging port: `RENDERER_REMOTE_DEBUG_PORT=9222 bun dev` (pick an unused port \u2014 multiple workspaces often run at once).\n2. Confirm you're attached to *this* workspace's app: fetch `http://127.0.0.1:<port>/json/list` and check the page target's URL matches your workspace's `DESKTOP_VITE_PORT` from `.env`. Never assume a responding CDP endpoint is yours.\n3. Navigate the real UI to the state you changed (real clicks and input, not injected DOM state), then capture with `Page.captureScreenshot`.\n\nFor the full workflow \u2014 attaching over WebSocket, matching the right renderer, repairing auth, and what counts as end-to-end evidence \u2014 see [`.agents/skills/cdp-verification/SKILL.md`](./.agents/skills/cdp-verification/SKILL.md). `apps/desktop/scripts/cdp-smoke-integrations.ts` is a working example script.\n\n## Style\n\nWe follow [Clean Code](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29) and the boy scout rule: leave the code cleaner than you found it. Biome enforces formatting and linting. Run `bun run lint:fix` and you're done.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 28063,
+      "line_count": 397,
+      "truncated": true,
+      "excerpt": "<div align=\"center\">\n\n<a href=\"https://paradev.com\"><img width=\"100%\" alt=\"Paradev: run many coding agents in parallel. The Paradev desktop app with a sidebar of agent sessions grouped by project, and Claude Code finishing one task while other agents work.\" src=\"apps/marketing/public/images/readme/banner.gif\" /></a>\n\n### Paradev\n\nThe open-source workspace for Claude Code, Codex, and any coding agent.\n\n**Download:** [**macOS**](https://github.com/paradevai/paradev/releases/latest) &nbsp;&bull;&nbsp; [**Linux**](https://paradev.com/download) &nbsp;&bull;&nbsp; [**iOS**](https://apps.apple.com/us/app/id6788926383) &nbsp;&bull;&nbsp; [**Android**](https://play.google.com/store/apps/details?id=com.paradev.mobile)\n\n[Documentation](https://docs.paradev.com) &nbsp;&bull;&nbsp; [Changelog](https://paradev.com/changelog) &nbsp;&bull;&nbsp; [Discord](https://discord.gg/cZeD9WYcV7)\n\n[![GitHub stars](https://img.shields.io/github/stars/paradevai/paradev?style=flat&logo=github)](https://github.com/paradevai/paradev/stargazers)\n[![License](https://img.shields.io/badge/license-MIT-blue?style=flat)](LICENSE.md)\n\n</div>\n\n## Why Paradev\n\nParadev is the workspace for running parallel coding agents. You can run any coding agent, like Claude Code or Codex.\n\n- **Agents run in parallel and never touch each other's files.** Every task gets its own worktree, branch, and terminal.\n- **Run on your laptop, in the cloud, or on a remote machine.** Closing your laptop doesn't kill your agents.\n- **Agents can drive it too.** Our CLI, MCP server, and skills let agents drive the entire app and orchestrate other agents.\n- **Check in from anywhere** with our mobile and web apps.\n- **View Git changes right in the app.** Read the diff, check the pull request, and merge without leaving.\n- **Use the agents you already have.** Paradev runs Claude Code, Codex, OpenCode, Gemini, Cursor Agent, and any other CLI agent on the plans and API keys you already have, in a terminal or as a chat.\n\n## Get started\n\n1. **Download the app.**\n   - macOS: [Apple Silicon (.dmg)](https://github.com/paradevai/paradev/releases/latest/download/Paradev-arm64.dmg) \u00b7 [Intel (.dmg)](https://github.com/paradevai/paradev/releases/latest/download/Paradev-x64.dmg)\n   - Linux: [x64 AppImage](https://github.com/paradevai/paradev/releases/latest/download/Paradev-x86_64.AppImage) (experimental)\n   - Windows: not yet available\n2. **Add a repository** from your computer, or clone one.\n3. **Create a workspace**, choose your CLI agent, and describe a small change.\n4. **Review the result** in **Changes**, run the tests, and preview your app in the browser pane before you commit.\n\nYou need [Git](https://git-scm.com/) and at least one coding agent you already use. [gh](https://cli.github.com/) is optional and enables the pull request workflows; Paradev offers to install it for you. For a full walkthrough, see [Your First Parallel Session](https://docs.paradev.com/first-workspace).\n\nThe `superset` CLI comes with the desktop app. You can also install it on its own:\n\n```bash\ncurl -fsSL https://paradev.com/cli/install.sh | sh\n# or\nbrew install paradevai/tap/superset\n```\n\nParadev was previously named Superset, so the command is still `superset`. It is unrelated to Apache Superset, the business intelligence tool.\n\n## Features\n\n<table>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Parallel workspaces\n\nEvery agent runs in its own Git worktree and branch, keeping working files separate. Try two approaches to one problem and keep the better one. Changes can still conflict when merged, and worktrees do not sandbox processes.\n\n[Docs \u2192](https://docs.paradev.com/workspaces)\n\n</td>\n<td width=\"50%\">\n<a href=\"https://docs.paradev.com/workspaces\"><img src=\"apps/marketing/public/images/readme/agents-working.gif\" alt=\"The Paradev sidebar with six agents in two projects, and Claude Code fixing flaky tests in the open workspace\" width=\"100%\" /></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Agent status\n\nTrack every agent from the sidebar. You get working indicators, a chime when an agent finishes, and a dock badge when one needs your attention.\n\n[Docs \u2192](https://docs.paradev.com/agent-integration)\n\n</td>\n<td width=\"50%\">\n<a href=\"https://docs.paradev.com/agent-integration\"><img src=\"apps/marketing/public/images/readme/agent-monitoring.gif\" alt=\"Sessions in the sidebar changing from working to waiting on you\" width=\"100%\" /></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Review and pull requests\n\nInspect, comment on, and edit agent changes in the diff viewer. Select diff lines to send feedback to an agent. Then watch the PR checks and merge without leaving the app.\n\n[Diff viewer \u2192](https://docs.paradev.com/diff-viewer) \u00b7 [Pull requests \u2192](https://docs.paradev.com/pull-requests)\n\n</td>\n<td width=\"50%\">\n<a href=\"https://docs.paradev.com/diff-viewer\"><img src=\"apps/marketing/public/images/readme/diff-viewer.png\" alt=\"A diff of an agent's change with a review comment on one line and an Ask Claude Code action\" width=\"100%\" /></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### In-app browser\n\nPreview your dev server next to your terminals, on the ports Paradev detects for each workspace. Turn on Design, click the part of the page you want to change, and describe the change to an agent. Your agent can click through the page and check its own work.\n\n[Docs \u2192](https://docs.paradev.com/browser)\n\n</td>\n<td width=\"50%\">\n<a href=\"https://docs.paradev.com/browser\"><img src=\"apps/marketing/public/images/readme/browser-ports.png\" alt=\"The in-app browser in Design mode with one element selected and a change request for Claude Code\" width=\"100%\" /></a>\n</td>\n</tr>\n<tr>\n<td width=\"50%\" valign=\"middle\">\n\n### Automations\n\nRun agents on a schedule or when something happens: a review request, a Slack message, a Linear issue, a Sentry issue, or a webhook. Each run opens a workspace you can review and continue. Automations need the Pro plan.\n\n[Docs \u2192](https://docs.paradev.com/automations)"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 5377,
+      "line_count": 126,
+      "truncated": false,
+      "excerpt": "{\n\t\"name\": \"@superset/repo\",\n\t\"version\": \"0.0.0\",\n\t\"repository\": {\n\t\t\"type\": \"git\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@biomejs/biome\": \"2.4.2\",\n\t\t\"@types/bun\": \"1.4.3\",\n\t\t\"@types/semver\": \"7.7.1\",\n\t\t\"@vercel/sandbox\": \"4.0.0\",\n\t\t\"babel-plugin-macros\": \"3.1.0\",\n\t\t\"dotenv-cli\": \"11.0.0\",\n\t\t\"semver\": \"7.7.4\",\n\t\t\"sherif\": \"1.11.0\",\n\t\t\"turbo\": \"2.10.9\",\n\t\t\"typescript\": \"7.0.2\"\n\t},\n\t\"description\": \"Superset Monorepo\",\n\t\"homepage\": \"https://paradev.com\",\n\t\"license\": \"MIT\",\n\t\"packageManager\": \"bun@1.4.3\",\n\t\"private\": true,\n\t\"scripts\": {\n\t\t\"predev\": \"bun scripts/check-dev-ports.ts\",\n\t\t\"dev\": \"turbo run dev --filter=@superset/api --filter=@superset/web --filter=@superset/desktop --filter=@superset/relay --filter=//\",\n\t\t\"dev:all\": \"turbo dev --concurrency=15\",\n\t\t\"predev:desktop\": \"bun scripts/check-dev-ports.ts\",\n\t\t\"dev:desktop\": \"turbo run dev --filter=@superset/api --filter=@superset/desktop --filter=@superset/relay --filter=//\",\n\t\t\"dev:docs\": \"turbo dev --filter=@superset/docs\",\n\t\t\"dev:marketing\": \"turbo dev --filter=@superset/marketing --filter=@superset/docs\",\n\t\t\"dev:relay\": \"turbo dev --filter=@superset/relay\",\n\t\t\"dev:realtime\": \"bash apps/realtime/scripts/dev-local.sh\",\n\t\t\"cli:dev\": \"bun scripts/dev-cli.ts\",\n\t\t\"dev:skills\": \"bun scripts/sync-dev-skills.ts\",\n\t\t\"build\": \"turbo build --filter=@superset/desktop\",\n\t\t\"test\": \"turbo test --concurrency=2\",\n\t\t\"lint\": \"./scripts/lint.sh\",\n\t\t\"lint:fix\": \"bunx @biomejs/biome@2.4.2 migrate --write && bunx @biomejs/biome@2.4.2 check --write --unsafe .\",\n\t\t\"format\": \"bunx @biomejs/biome@2.4.2 format --write .\",\n\t\t\"format:check\": \"bunx @biomejs/biome@2.4.2 format .\",\n\t\t\"typecheck\": \"turbo typecheck --concurrency=3\",\n\t\t\"ui-add\": \"turbo run ui-add\",\n\t\t\"postinstall\": \"./scripts/postinstall.sh\",\n\t\t\"clean\": \"git clean -xdf node_modules\",\n\t\t\"clean:workspaces\": \"turbo clean\",\n\t\t\"release\": \"bun scripts/release/release.ts\",\n\t\t\"release:desktop\": \"bun scripts/release/desktop.ts\",\n\t\t\"release:cli\": \"bun scripts/release/cli.ts\",\n\t\t\"release:canary\": \"./scripts/release-canary.sh\",\n\t\t\"check:versions\": \"bun scripts/release/check-versions.ts\",\n\t\t\"check:plugins\": \"bun scripts/check-plugins.ts\",\n\t\t\"check:i18n\": \"bun run --cwd packages/i18n check\",\n\t\t\"typecheck:release\": \"tsc -p scripts/release/tsconfig.json\",\n\t\t\"typecheck:test-preload\": \"tsc -p scripts/tsconfig.test-preload.json\",\n\t\t\"test:release\": \"bun test scripts/release\",\n\t\t\"db:push\": \"bun run --cwd packages/db push\",\n\t\t\"db:migrate\": \"bun run --cwd packages/db migrate\",\n\t\t\"db:seed-dev\": \"NODE_ENV=development bun run packages/auth/src/seed-dev.ts\",\n\t\t\"db:seed-cloud-auth-token\": \"bun run packages/auth/src/seed-cloud-auth-token.ts\",\n\t\t\"db:seed-cloud-mobile-token\": \"bun run packages/auth/src/seed-cloud-mobile-token.ts\",\n\t\t\"db:seed-local-mobile-token\": \"bun run packages/auth/src/seed-local-mobile-token.ts\",\n\t\t\"db:generate:desktop\": \"bun run --cwd packages/local-db generate\",\n\t\t\"db:seed-shared-environments\": \"bun run --cwd packages/sandbox seed\",\n\t\t\"sandbox:release\": \"bun run --cwd packages/sandbox release\",\n\t\t\"sandbox:measure\": \"bun run --cwd packages/sandbox measure\",\n\t\t\"check:durable-objects\": \"bun scripts/check-durable-objects.ts\"\n\t},\n\t\"type\": \"module\",\n\t\"workspaces\": [\n\t\t\"packages/*\",\n\t\t\"apps/*\",\n\t\t\"tooling/*\"\n\t],\n\t\"overrides\": {\n\t\t\"@modelcontextprotocol/sdk\": \"1.32.0\",\n\t\t\"@tiptap/extension-dropcursor\": \"3.30.5\",\n\t\t\"@tiptap/extension-floating-menu\": \"3.30.5\",\n\t\t\"@tiptap/extension-gapcursor\": \"3.30.5\",\n\t\t\"@tiptap/extension-list\": \"3.30.5\",\n\t\t\"@tiptap/extension-list-keymap\": \"3.30.5\",\n\t\t\"@tiptap/extensions\": \"3.30.5\",\n\t\t\"@types/hast\": \"3.0.5\",\n\t\t\"axios\": \"1.18.1\",\n\t\t\"happy-dom\": \"20.11.2\",\n\t\t\"hono\": \"4.13.11\",\n\t\t\"kysely\": \"0.28.17\",\n\t\t\"mdast-util-to-markdown\": \"2.1.2\",\n\t\t\"next\": \"16.4.5\",\n\t\t\"rollup\": \"4.62.3\",\n\t\t\"shell-quote\": \"1.11.0\"\n\t},\n\t\"trustedDependencies\": [\n\t\t\"better-sqlite3\",\n\t\t\"bufferutil\",\n\t\t\"electron\",\n\t\t\"esbuild\",\n\t\t\"koffi\",\n\t\t\"node-pty\",\n\t\t\"react-native-enriched-markdown\",\n\t\t\"sharp\",\n\t\t\"utf-8-validate\",\n\t\t\"workerd\"\n\t],\n\t\"patchedDependencies\": {\n\t\t\"@better-auth/oauth-provider@1.6.22\": \"patches/@better-auth%2Foauth-provider@1.6.22.patch\",\n\t\t\"metro@0.84.5\": \"patches/metro@0.84.5.patch\",\n\t\t\"metro@0.84.6\": \"patches/metro@0.84.6.patch\",\n\t\t\"metro@0.87.1\": \"patches/metro@0.87.1.patch\",\n\t\t\"node-pty@1.2.0-beta.14\": \"patches/node-pty@1.2.0-beta.14.patch\",\n\t\t\"trpc-electron@0.1.2\": \"patches/trpc-electron@0.1.2.patch\",\n\t\t\"react-native-screens@4.30.1\": \"patches/react-native-screens@4.30.1.patch\",\n\t\t\"expo-observe@58.0.16\": \"patches/expo-observe@58.0.16.patch\",\n\t\t\"@pierre/trees@1.0.0-beta.6\": \"patches/@pierre%2Ftrees@1.0.0-beta.6.patch\",\n\t\t\"@xterm/xterm@6.1.0-beta.315\": \"patches/@xterm%2Fxterm@6.1.0-beta.315.patch\",\n\t\t\"@xterm/addon-webgl@0.20.0-beta.309\": \"patches/@xterm%2Faddon-webgl@0.20.0-beta.309.patch\",\n\t\t\"@xterm/addon-ligatures@0.11.0-beta.310\": \"patches/@xterm%2Faddon-ligatures@0.11.0-beta.310.patch\",\n\t\t\"@xterm/addon-serialize@0.15.0-beta.310\": \"patches/@xterm%2Faddon-serialize@0.15.0-beta.310.patch\",\n\t\t\"react-native@0.88.1\": \"patches/react-native@0.88.1.patch\",\n\t\t\"@pierre/diffs@1.6.2\": \"patches/@pierre%2Fdiffs@1.6.2.patch\",\n\t\t\"electron-chrome-web-store@0.13.0\": \"patches/electron-chrome-web-store@0.13.0.patch\",\n\t\t\"electron-chrome-extensions@4.10.0\": \"patches/electron-chrome-extensions@4.10.0.patch\",\n\t\t\"@vercel/sandbox@4.0.0\": \"patches/@vercel%2Fsandbox@4.0.0.patch\",\n\t\t\"sonner@2.0.7\": \"patches/sonner@2.0.7.patch\"\n\t}\n}\n"
+    },
+    "biome.jsonc": {
+      "path": "biome.jsonc",
+      "size_bytes": 5329,
+      "line_count": 167,
+      "truncated": false,
+      "excerpt": "{\n\t\"$schema\": \"https://biomejs.dev/schemas/2.4.2/schema.json\",\n\t\"vcs\": {\n\t\t\"enabled\": true,\n\t\t\"clientKind\": \"git\",\n\t\t\"useIgnoreFile\": true\n\t},\n\t\"files\": {\n\t\t\"includes\": [\n\t\t\t\"**\",\n\t\t\t\"!**/drizzle\",\n\t\t\t\"!**/*.template.js\",\n\t\t\t\"!**/*.template.sh\",\n\t\t\t\"!**/*.template.ts\",\n\t\t\t\"!plans\",\n\t\t\t\"!apps/*/plans\",\n\t\t\t\"!**/*.generated.ts\",\n\t\t\t// Lingui catalogs: .po plus compiled messages.ts (lingui compile output).\n\t\t\t\"!packages/i18n/locales\",\n\t\t\t\"!apps/mobile/uniwind-types.d.ts\",\n\t\t\t\"!packages/sdk/src\",\n\t\t\t// Vendored Vale style packages (synced by `vale sync`); don't reformat.\n\t\t\t\"!apps/marketing/vale-styles\",\n\t\t\t// Written by the CLA bot on every signature; reformatting it would fight the bot.\n\t\t\t\"!signatures\"\n\t\t]\n\t},\n\t\"formatter\": {\n\t\t\"formatWithErrors\": true\n\t},\n\t\"css\": {\n\t\t\"parser\": {\n\t\t\t\"cssModules\": true,\n\t\t\t\"tailwindDirectives\": true\n\t\t}\n\t},\n\t\"linter\": {\n\t\t\"rules\": {\n\t\t\t\"recommended\": true,\n\t\t\t\"style\": {\n\t\t\t\t// Sync subprocesses block the serving event loop (Electron main,\n\t\t\t\t// host-service, pty-daemon). Companion to the per-package\n\t\t\t\t// no-*-blocking ratchet tests, which also catch namespace access\n\t\t\t\t// (childProcess.execSync) and allowlist the legacy call sites.\n\t\t\t\t\"noRestrictedImports\": {\n\t\t\t\t\t\"level\": \"error\",\n\t\t\t\t\t\"options\": {\n\t\t\t\t\t\t\"paths\": {\n\t\t\t\t\t\t\t\"node:child_process\": {\n\t\t\t\t\t\t\t\t\"importNames\": [\"execSync\", \"spawnSync\", \"execFileSync\"],\n\t\t\t\t\t\t\t\t\"message\": \"Sync subprocesses freeze the serving event loop (Electron main / host-service / pty-daemon) until the child exits \u2014 every request queues behind them. Prefer async spawn/execFile: the caller awaits the same result, but the loop keeps serving while the child runs. Git reads belong in the worker pools.\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"child_process\": {\n\t\t\t\t\t\t\t\t\"importNames\": [\"execSync\", \"spawnSync\", \"execFileSync\"],\n\t\t\t\t\t\t\t\t\"message\": \"Sync subprocesses freeze the serving event loop (Electron main / host-service / pty-daemon) until the child exits \u2014 every request queues behind them. Prefer async spawn/execFile: the caller awaits the same result, but the loop keeps serving while the child runs. Git reads belong in the worker pools.\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"@vercel/sandbox\": \"Most calls on a raw sandbox handle resume a stopped box. Use the functions in packages/trpc/src/lib/sandbox, where only a wake or a create may resume one.\",\n\t\t\t\t\t\t\t\"@superset/db/cloud-usage-query\": {\n\t\t\t\t\t\t\t\t\"importNames\": [\n\t\t\t\t\t\t\t\t\t\"queryFleetCloudUsage\",\n\t\t\t\t\t\t\t\t\t\"queryFleetCloudUsageByWorkspaceDay\",\n\t\t\t\t\t\t\t\t\t\"queryFleetCloudUsageSeries\",\n\t\t\t\t\t\t\t\t\t\"listFleetCloudBoots\",\n\t\t\t\t\t\t\t\t\t\"getFleetCloudBoot\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"message\": \"These read every organization and are for staff tools only (the admin app). A customer procedure uses queryCloudUsage and listCloudBoots, which take one organization.\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t},\n\t\"overrides\": [\n\t\t{\n\t\t\t\"includes\": [\"packages/cli-framework/**\", \"packages/cli/**\"],\n\t\t\t\"linter\": {\n\t\t\t\t\"rules\": {\n\t\t\t\t\t\"suspicious\": {\n\t\t\t\t\t\t\"noExplicitAny\": \"off\"\n\t\t\t\t\t},\n\t\t\t\t\t\"style\": {\n\t\t\t\t\t\t\"noNonNullAssertion\": \"off\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t// Tests, scripts, and build tooling don't run on a serving loop.\n\t\t\t\"includes\": [\n\t\t\t\t\"**/*.test.ts\",\n\t\t\t\t\"**/*.test.tsx\",\n\t\t\t\t\"**/*.node-test.ts\",\n\t\t\t\t\"**/*.bench.ts\",\n\t\t\t\t\"**/test/**\",\n\t\t\t\t\"**/test-helpers.ts\",\n\t\t\t\t\"**/scripts/**\"\n\t\t\t],\n\t\t\t\"linter\": {\n\t\t\t\t\"rules\": {\n\t\t\t\t\t\"style\": {\n\t\t\t\t\t\t\"noRestrictedImports\": \"off\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t// The one place that holds sandbox handles, and the release tooling that\n\t\t\t// builds its own boxes. Neither runs on a desktop or host-service loop.\n\t\t\t\"includes\": [\"packages/trpc/src/lib/sandbox/**\", \"packages/sandbox/**\"],\n\t\t\t\"linter\": {\n\t\t\t\t\"rules\": {\n\t\t\t\t\t\"style\": {\n\t\t\t\t\t\t\"noRestrictedImports\": \"off\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t// Legacy on-loop sync-subprocess call sites, frozen by the\n\t\t\t// no-*-blocking ratchet tests \u2014 delete entries here as they're fixed.\n\t\t\t\"includes\": [\n\t\t\t\t\"apps/desktop/src/main/lib/terminal-host/client.ts\",\n\t\t\t\t\"packages/pty-daemon/src/process-tree.ts\",\n\t\t\t\t\"packages/shared/src/host-info.ts\"\n\t\t\t],\n\t\t\t\"linter\": {\n\t\t\t\t\"rules\": {\n\t\t\t\t\t\"style\": {\n\t\t\t\t\t\t\"noRestrictedImports\": \"off\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"includes\": [\n\t\t\t\t\"apps/desktop/src/renderer/**\",\n\t\t\t\t\"!apps/desktop/src/renderer/components/RendererLayout/renderer-safety.test.ts\"\n\t\t\t],\n\t\t\t\"linter\": {\n\t\t\t\t\"rules\": {\n\t\t\t\t\t\"style\": {\n\t\t\t\t\t\t\"noRestrictedImports\": {\n\t\t\t\t\t\t\t\"level\": \"error\",\n\t\t\t\t\t\t\t\"options\": {\n\t\t\t\t\t\t\t\t\"paths\": {\n\t\t\t\t\t\t\t\t\t\"@superset/workspace-fs/host\": \"Renderer code must stay browser-compatible. Import Node filesystem helpers from the desktop server/host layer instead.\",\n\t\t\t\t\t\t\t\t\t\"@superset/workspace-fs/server\": \"Renderer code must stay browser-compatible. Import Node filesystem helpers from the desktop server/host layer instead.\",\n\t\t\t\t\t\t\t\t\t\"@tanstack/react-router\": {\n\t\t\t\t\t\t\t\t\t\t\"importNames\": [\"Navigate\"],\n\t\t\t\t\t\t\t\t\t\t\"message\": \"<Navigate> re-navigates whenever its props object identity changes \u2014 inline usage loops into React error #185 (#5729, SUPER-1814). Use Redirect from renderer/components/Redirect, or `beforeLoad: () => { throw redirect(...) }` for static targets.\"\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\"patterns\": [\n\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\"group\": [\"node:*\"],\n\t\t\t\t\t\t\t\t\t\t\"message\": \"Renderer code must not import Node builtins.\"\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t]\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t]\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 10361,
+      "line_count": 292,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    types: [opened, synchronize]\n\njobs:\n  sherif:\n    name: Sherif\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - name: Check out code\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - name: Setup Bun\n        id: setup-bun\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version-file: .bun-version\n\n      - name: Cache dependencies\n        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0\n        with:\n          path: ~/.bun/install/cache\n          key: ${{ runner.os }}-bun-${{ steps.setup-bun.outputs.bun-revision }}-${{ hashFiles('bun.lock') }}\n\n      - name: Install dependencies\n        run: bun install --frozen --ignore-scripts\n\n      - name: Sherif\n        run: bunx sherif\n\n  vale:\n    name: Vale prose lint\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    permissions:\n      contents: read\n    steps:\n      - name: Check out code\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - name: Install Vale\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          gh release download v3.17.1 --repo errata-ai/vale --pattern vale_3.17.1_Linux_64-bit.tar.gz --output /tmp/vale.tar.gz\n          echo \"db947f89f2292e6a0381a61de155f6a5f5cb4cb460ca178ea412ef605559cefd  /tmp/vale.tar.gz\" | sha256sum -c -\n          sudo tar -xzf /tmp/vale.tar.gz -C /usr/local/bin vale\n\n      - name: Setup Bun\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version-file: .bun-version\n\n      - name: Lint marketing content\n        working-directory: apps/marketing\n        run: bun run lint:prose\n\n  version-sync:\n    name: Version Sync\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - name: Check out code\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - name: Setup Bun\n        id: setup-bun\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version-file: .bun-version\n\n      - name: Cache dependencies\n        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0\n        with:\n          path: ~/.bun/install/cache\n          key: ${{ runner.os }}-bun-${{ steps.setup-bun.outputs.bun-revision }}-${{ hashFiles('bun.lock') }}\n\n      - name: Install dependencies\n        run: bun install --frozen --ignore-scripts\n\n      - name: Typecheck release scripts\n        run: bun run typecheck:release\n\n      - name: Test release scripts\n        run: bun run test:release\n\n      - name: Check unified versions (desktop == host-service == cli)\n        run: bun run check:versions\n\n  lint:\n    name: Lint\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - name: Check out code\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - name: Setup Bun\n        id: setup-bun\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version-file: .bun-version\n\n      - name: Cache dependencies\n        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0\n        with:\n          path: ~/.bun/install/cache\n          key: ${{ runner.os }}-bun-${{ steps.setup-bun.outputs.bun-revision }}-${{ hashFiles('bun.lock') }}\n\n      - name: Install dependencies\n        run: bun install --frozen --ignore-scripts\n\n      - name: Lint\n        run: bun run lint\n\n      - name: Check i18n catalogs\n        run: bun run check:i18n && git diff --exit-code --stat HEAD -- packages/i18n/locales\n\n      # `plugins/<name>/versions/<v>/` and the manifests bundled into\n      # @superset/shared are both written by `superset plugins publish`. An edit\n      # to a plugin that skipped publishing leaves the API resolving a stale\n      # manifest \u2014 and that manifest names the token_url and the proxy target.\n      - name: Audit plugin marketplace\n        run: bun run check:plugins\n\n      # Deleting or renaming a durable object class destroys every instance's\n      # storage, and the deploy that does it succeeds silently. A page's\n      # records live nowhere else.\n      - name: Check durable object classes\n        run: bun run check:durable-objects\n\n  test:\n    name: Test\n    runs-on: blacksmith-8vcpu-ubuntu-2404\n    timeout-minutes: 10\n    steps:\n      -"
+    },
+    "cleanup-preview.yml": {
+      "path": ".github/workflows/cleanup-preview.yml",
+      "size_bytes": 2027,
+      "line_count": 58,
+      "truncated": false,
+      "excerpt": "name: Cleanup Preview\n\non:\n  pull_request:\n    types: [closed]\n\njobs:\n  cleanup:\n    name: Cleanup Preview Resources\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    environment: preview\n    permissions:\n      contents: read\n      pull-requests: write\n\n    steps:\n      - name: Setup Bun for owned-domain cleanup\n        if: contains(github.event.pull_request.labels.*.name, 'domain-preview')\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6\n        with:\n          bun-version: 1.4.3\n\n      - name: Remove owned preview aliases\n        if: contains(github.event.pull_request.labels.*.name, 'domain-preview')\n        continue-on-error: true\n        env:\n          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}\n          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}\n          PR_NUMBER: ${{ github.event.pull_request.number }}\n        run: |\n          failed=0\n          for host in \"pr-$PR_NUMBER.paradev.com\" \"app.pr-$PR_NUMBER.paradev.com\" \"api.pr-$PR_NUMBER.paradev.com\"; do\n            bunx vercel@50.31.0 alias rm \"$host\" --yes --scope=\"$VERCEL_ORG_ID\" --token=\"$VERCEL_TOKEN\" || failed=1\n          done\n          exit \"$failed\"\n\n      - name: Delete Neon branch\n        id: neon-cleanup\n        uses: neondatabase/delete-branch-action@4468d825d5a88ef4012f1705a82f02ec3072f776 # v3.2.1\n        continue-on-error: true\n        with:\n          project_id: ${{ secrets.NEON_PROJECT_ID }}\n          branch: ${{ github.event.pull_request.head.ref }}\n          api_key: ${{ secrets.NEON_API_KEY }}\n\n      - name: Update comment\n        if: always()\n        uses: thollander/actions-comment-pull-request@24bffb9b452ba05a4f3f77933840a6a841d1b32b # v3.0.1\n        with:\n          message: |\n            ## \ud83e\uddf9 Preview Cleanup Complete\n\n            The following preview resources have been cleaned up:\n            - ${{ steps.neon-cleanup.outcome == 'success' && '\u2705' || '\u26a0\ufe0f' }} Neon database branch\n\n            Thank you for your contribution! \ud83c\udf89\n          comment-tag: \"\ud83d\ude80-preview-deployment\"\n"
+    },
+    "deploy-preview.yml": {
+      "path": ".github/workflows/deploy-preview.yml",
+      "size_bytes": 45316,
+      "line_count": 908,
+      "truncated": true,
+      "excerpt": "name: Deploy Preview\n\non:\n  pull_request:\n    types: [opened, synchronize, reopened]\n\nconcurrency:\n  group: preview-${{ github.event.pull_request.number }}\n  cancel-in-progress: true\n\nenv:\n  VERCEL_CLI_VERSION: 50.31.0\n  PR_NUMBER: ${{ github.event.pull_request.number }}\n  API_ALIAS: api-pr-${{ github.event.pull_request.number }}-superset.vercel.app\n  BROWSER_API_ALIAS: ${{ contains(github.event.pull_request.labels.*.name, 'domain-preview') && format('api.pr-{0}.paradev.com', github.event.pull_request.number) || format('api-pr-{0}-superset.vercel.app', github.event.pull_request.number) }}\n  WEB_ALIAS: ${{ contains(github.event.pull_request.labels.*.name, 'domain-preview') && format('app.pr-{0}.paradev.com', github.event.pull_request.number) || format('web-pr-{0}-superset.vercel.app', github.event.pull_request.number) }}\n  AGENTS_ALIAS: agents-pr-${{ github.event.pull_request.number }}-superset.vercel.app\n  MARKETING_ALIAS: ${{ contains(github.event.pull_request.labels.*.name, 'domain-preview') && format('pr-{0}.paradev.com', github.event.pull_request.number) || format('marketing-pr-{0}-superset.vercel.app', github.event.pull_request.number) }}\n  ADMIN_ALIAS: admin-pr-${{ github.event.pull_request.number }}-superset.vercel.app\n  DOCS_ALIAS: docs-pr-${{ github.event.pull_request.number }}-superset.vercel.app\n\njobs:\n  create-database:\n    name: Create Database (Neon)\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    environment: preview\n\n    steps:\n      - name: Validate Paradev project preview configuration\n        if: contains(github.event.pull_request.labels.*.name, 'paradev-project-preview')\n        env:\n          DOMAIN_PREVIEW: ${{ contains(github.event.pull_request.labels.*.name, 'domain-preview') }}\n          VERCEL_PARADEV_API_PROJECT_ID: ${{ vars.VERCEL_PARADEV_API_PROJECT_ID }}\n          VERCEL_PARADEV_WEB_PROJECT_ID: ${{ vars.VERCEL_PARADEV_WEB_PROJECT_ID }}\n        run: |\n          if [ \"$DOMAIN_PREVIEW\" != \"true\" ]; then\n            echo \"::error::paradev-project-preview requires the domain-preview PR label for browser API and OAuth hosts.\"\n            exit 1\n          fi\n          for name in VERCEL_PARADEV_API_PROJECT_ID VERCEL_PARADEV_WEB_PROJECT_ID; do\n            if [ -z \"${!name}\" ]; then\n              echo \"::error::paradev-project-preview requires the GitHub repository variable $name.\"\n              exit 1\n            fi\n          done\n\n      - name: Create Neon branch\n        id: create-branch\n        uses: neondatabase/create-branch-action@fb620d43d4c565abaf088b848a4e28e5c4ea4d9c # 6.3.1\n        with:\n          project_id: ${{ secrets.NEON_PROJECT_ID }}\n          branch_name: ${{ github.head_ref }}\n          api_key: ${{ secrets.NEON_API_KEY }}\n\n      - name: Save database connection\n        run: |\n          cat > database-status.env << EOF\n          DATABASE_STATUS=\"\u2705\"\n          DATABASE_LINK=\"<a href=\\\"https://console.neon.tech/app/projects/${{ secrets.NEON_PROJECT_ID }}/branches/${{ steps.create-branch.outputs.branch_id }}/tables\\\">View Branch</a>\"\n          DATABASE_URL=\"${{ steps.create-branch.outputs.db_url_pooled }}\"\n          DATABASE_URL_UNPOOLED=\"${{ steps.create-branch.outputs.db_url }}\"\n          BRANCH_ID=\"${{ steps.create-branch.outputs.branch_id }}\"\n          EOF\n\n      - name: Upload database status\n        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2\n        with:\n          name: database-status\n          path: database-status.env\n\n  deploy-database:\n    name: Deploy Database (Neon)\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    environment: preview\n    needs: create-database\n\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - name: Setup Bun\n        id: setup-bun\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version-file: .bun-version\n\n      - name: Cache dependencies\n        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0\n        with:\n          path: ~/.bun/install/cache\n          key: ${{ runner.os }}-bun-${{ steps.setup-bun.outputs.bun-revision }}-${{ hashFiles('bun.lock') }}\n\n      - name: Install dependencies\n        run: bun install --frozen --ignore-scripts\n\n      - name: Download database info\n        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0\n        with:\n          name: database-status\n\n      - name: Validate and p"
+    },
+    "deploy-production.yml": {
+      "path": ".github/workflows/deploy-production.yml",
+      "size_bytes": 45572,
+      "line_count": 958,
+      "truncated": true,
+      "excerpt": "name: Deploy Production\n\non:\n  push:\n    branches: [main]\n  workflow_dispatch:\n\nenv:\n  VERCEL_CLI_VERSION: 50.31.0\n\njobs:\n  deploy-database:\n    name: Deploy Database Migrations\n    runs-on: ubuntu-latest\n    timeout-minutes: 20\n    environment: production\n    concurrency:\n      group: production-database-migrations\n      cancel-in-progress: false\n\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - name: Setup Bun\n        id: setup-bun\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version-file: .bun-version\n\n      - name: Cache dependencies\n        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0\n        with:\n          path: ~/.bun/install/cache\n          key: ${{ runner.os }}-bun-${{ steps.setup-bun.outputs.bun-revision }}-${{ hashFiles('bun.lock') }}\n\n      - name: Install dependencies\n        run: bun install --frozen --ignore-scripts\n\n      - name: Run database migrations\n        working-directory: packages/db\n        env:\n          DATABASE_URL: ${{ secrets.DATABASE_URL_UNPOOLED }}\n          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}\n          # drizzle applies every pending migration in one transaction, so a\n          # migration that queues for a lock blocks all traffic behind it.\n          PGOPTIONS: -c lock_timeout=5s -c statement_timeout=60s\n        # Losing a lock race rolls back cleanly, so only that is retried.\n        run: |\n          # GitHub's default shell is `bash -e` without pipefail, so without this\n          # the `| tee` below reports a failed migration as a success.\n          set -o pipefail\n          for attempt in 1 2 3 4 5 6 7 8; do\n            if bun drizzle-kit migrate 2>&1 | tee migrate.log; then exit 0; fi\n            grep -qE \"deadlock detected|lock timeout\" migrate.log || exit 1\n            echo \"::warning::Migration lost a lock race (attempt $attempt), retrying\"\n            sleep $((attempt * 5))\n          done\n          exit 1\n\n      - name: Verify migrations applied\n        working-directory: packages/db\n        env:\n          DATABASE_URL: ${{ secrets.DATABASE_URL_UNPOOLED }}\n          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}\n        run: bun run src/verify-migrations-applied.ts\n\n  deploy-api:\n    name: Deploy API to Vercel\n    runs-on: blacksmith-4vcpu-ubuntu-2404\n    timeout-minutes: 10\n    environment: production\n    needs: [deploy-database, deploy-web]\n\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - name: Setup Bun\n        id: setup-bun\n        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0\n        with:\n          bun-version-file: .bun-version\n\n      - name: Cache dependencies\n        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0\n        with:\n          path: ~/.bun/install/cache\n          key: ${{ runner.os }}-bun-${{ steps.setup-bun.outputs.bun-revision }}-${{ hashFiles('bun.lock') }}\n\n      - name: Install Vercel CLI\n        run: bun add --global vercel@$VERCEL_CLI_VERSION\n\n      - name: Cache Next.js build cache\n        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0\n        with:\n          path: apps/api/.next/cache\n          key: next-api-${{ github.sha }}\n          restore-keys: next-api-\n\n      - name: Build and Deploy API\n        env:\n          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}\n          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}\n          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_API_PROJECT_ID }}\n          DATABASE_URL: ${{ secrets.DATABASE_URL }}\n          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}\n          DOMAIN_MOVE_ENABLED: ${{ secrets.DOMAIN_MOVE_ENABLED }}\n          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}\n          NEXT_PUBLIC_WEB_URL: ${{ secrets.NEXT_PUBLIC_WEB_URL }}\n          NEXT_PUBLIC_MARKETING_URL: ${{ secrets.NEXT_PUBLIC_MARKETING_URL }}\n          NEXT_PUBLIC_ROOT_DOMAIN: ${{ secrets.NEXT_PUBLIC_ROOT_DOMAIN }}\n          NEXT_PUBLIC_ADMIN_URL: ${{ secrets.NEXT_PUBLIC_ADMIN_URL }}\n          NEXT_PUBLIC_COOKIE_DOMAIN: ${{ secrets.NEXT_PUBLIC_COOKIE_DOMAIN }}\n          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}\n          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}\n          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}\n      "
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T12:19:40Z",
+      "oldest": "2026-11-22T07:34:36Z"
+    },
+    "conventional_pct": 98.0,
+    "fix_revert_pct": 36.0,
+    "ai_coauthor_pct": 0.0,
+    "top_recent_authors": [
+      [
+        "Kitenite",
+        30
+      ],
+      [
+        "saddlepaddle",
+        9
+      ],
+      [
+        "AviPeltz",
+        5
+      ],
+      [
+        "harshithmullapudi",
+        2
+      ],
+      [
+        "Bruno-rose",
+        2
+      ],
+      [
+        "itsNintu",
+        1
+      ],
+      [
+        "eaknathmanoj",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "64fa0243",
+        "date": "2026-11-25T12:19:40Z",
+        "author": "AviPeltz",
+        "subject": "feat(desktop): workspace deep links in chat open the workspace in the app (#10217)",
+        "ai_signal": false
+      },
+      {
+        "sha": "dcce0838",
+        "date": "2026-11-25T12:17:24Z",
+        "author": "AviPeltz",
+        "subject": "feat(chat): select reply text to add it to the chat as a quote (#9881)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3c43eb49",
+        "date": "2026-11-25T12:14:47Z",
+        "author": "AviPeltz",
+        "subject": "feat(pages): move Refresh from the page title menu to the top bar (#10210)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d3feccef",
+        "date": "2026-11-25T09:18:01Z",
+        "author": "AviPeltz",
+        "subject": "refactor(ui): delete the unused FileDiffTool component (#10209)",
+        "ai_signal": false
+      },
+      {
+        "sha": "7484895b",
+        "date": "2026-11-25T09:11:03Z",
+        "author": "Kitenite",
+        "subject": "fix(desktop): label the folder link editor action \"Open folder in editor\" (#10213)",
+        "ai_signal": false
+      },
+      {
+        "sha": "296f25b4",
+        "date": "2026-11-24T22:44:41Z",
+        "author": "itsNintu",
+        "subject": "feat(web): add Linux downloads to the web home and README (#10207)",
+        "ai_signal": false
+      },
+      {
+        "sha": "cd35edca",
+        "date": "2026-11-24T19:00:18Z",
+        "author": "Kitenite",
+        "subject": "docs(marketing): guide for Gemini 4 Neon, and OpenCode automations in the scheduling guide (#10206)",
+        "ai_signal": false
+      },
+      {
+        "sha": "cc4f7947",
+        "date": "2026-11-24T15:55:55Z",
+        "author": "harshithmullapudi",
+        "subject": "fix(chat): keep a chat on screen and load its history again when the host cannot read it (#9976)",
+        "ai_signal": false
+      },
+      {
+        "sha": "627d6063",
+        "date": "2026-11-24T11:54:25Z",
+        "author": "harshithmullapudi",
+        "subject": "fix(desktop): evict parked alternate-screen terminals last instead of never (#9935)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c9daa6ed",
+        "date": "2026-11-24T02:54:04Z",
+        "author": "AviPeltz",
+        "subject": "feat(desktop): show a Reconnect button on an account that needs reconnecting (#10197)",
+        "ai_signal": false
+      },
+      {
+        "sha": "eadb98ca",
+        "date": "2026-11-24T00:20:49Z",
+        "author": "saddlepaddle",
+        "subject": "feat(cli): show a plugin tool's schemas, and resolve a plugin by its plain name (#10196)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4b166447",
+        "date": "2026-11-23T19:11:36Z",
+        "author": "saddlepaddle",
+        "subject": "feat(plugins): show an organization plugin's icon before it is installed (#10192)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5c9b22fa",
+        "date": "2026-11-23T18:40:22Z",
+        "author": "saddlepaddle",
+        "subject": "docs: move internal design notes to ParadevAI/plans (#10191)",
+        "ai_signal": false
+      },
+      {
+        "sha": "92837386",
+        "date": "2026-11-23T18:33:11Z",
+        "author": "saddlepaddle",
+        "subject": "feat(billing): price cloud usage at the customer's own GB-hour rates (#10194)",
+        "ai_signal": false
+      },
+      {
+        "sha": "eac3ddf0",
+        "date": "2026-11-23T18:31:13Z",
+        "author": "saddlepaddle",
+        "subject": "feat(cloud): a wake not ready in 30 s shows could-not-start with Try again (#10190)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f2d5b719",
+        "date": "2026-11-23T18:24:01Z",
+        "author": "saddlepaddle",
+        "subject": "fix(host-service): tag box logs and errors with cloud_workspace.id and organization.id (#10193)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c3a67651",
+        "date": "2026-11-23T18:06:21Z",
+        "author": "saddlepaddle",
+        "subject": "feat(environments): spread daily builds over two hours (SUPER-3017) (#10188)",
+        "ai_signal": false
+      },
+      {
+        "sha": "df33c600",
+        "date": "2026-11-23T17:53:21Z",
+        "author": "saddlepaddle",
+        "subject": "fix(desktop): remove the usage warning dot from the chat pane title (#10189)",
+        "ai_signal": false
+      },
+      {
+        "sha": "17bbe650",
+        "date": "2026-11-23T06:42:54Z",
+        "author": "Kitenite",
+        "subject": "fix(desktop): say a host is offline when deleting its session (#10178)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a660d3f4",
+        "date": "2026-11-23T06:27:12Z",
+        "author": "Kitenite",
+        "subject": "fix(ui): make the Pro Features dialog fit narrow screens (#10181)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "Kitenite",
+      "contributions": 2848
+    },
+    {
+      "login": "saddlepaddle",
+      "contributions": 1943
+    },
+    {
+      "login": "AviPeltz",
+      "contributions": 529
+    },
+    {
+      "login": "harshithmullapudi",
+      "contributions": 201
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 34
+    },
+    {
+      "login": "superset-home",
+      "contributions": 32
+    },
+    {
+      "login": "paradev-app[bot]",
+      "contributions": 25
+    },
+    {
+      "login": "andreasasprou",
+      "contributions": 21
+    },
+    {
+      "login": "Roshvan",
+      "contributions": 16
+    },
+    {
+      "login": "kkjcheng",
+      "contributions": 13
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "desktop-canary",
+      "published_at": "2026-11-25T12:41:31Z",
+      "name": "Paradev Desktop Canary"
+    },
+    {
+      "tag": "desktop-v2.0.11",
+      "published_at": "2026-11-20T19:35:05Z",
+      "name": "Paradev Desktop desktop-v2.0.11"
+    },
+    {
+      "tag": "cli-v2.0.11",
+      "published_at": "2026-11-20T19:43:47Z",
+      "name": "Paradev CLI cli-v2.0.11"
+    },
+    {
+      "tag": "cli-latest",
+      "published_at": "2026-11-20T19:44:01Z",
+      "name": "Latest Paradev CLI"
+    },
+    {
+      "tag": "desktop-v2.0.10",
+      "published_at": "2026-11-19T06:54:07Z",
+      "name": "Paradev Desktop desktop-v2.0.10"
+    }
+  ]
+}

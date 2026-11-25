@@ -1,0 +1,419 @@
+{
+  "repo": "generalaction/emdash",
+  "meta": {
+    "description": "Emdash Classic is the open-source desktop app for running coding agents in parallel. Use your favorite agents in isolated Git worktrees, locally or over SSH.",
+    "homepage": "https://emdash.com/classic",
+    "license": "Apache-2.0",
+    "stars": 6306,
+    "forks": 676,
+    "open_issues": 92,
+    "archived": false,
+    "created_at": "2025-08-28T07:19:57Z",
+    "pushed_at": "2026-11-23T23:30:26Z",
+    "default_branch": "main",
+    "topics": [
+      "agenticdevelopment",
+      "agenticdevelopmentenvironment",
+      "ai",
+      "claude-code",
+      "cli",
+      "coding-agents",
+      "codingagents",
+      "containerization",
+      "docker",
+      "gitworktrees",
+      "jira",
+      "linear",
+      "llm",
+      "openai",
+      "opensource",
+      "orchestration",
+      "parallel-agents",
+      "parallelexecution",
+      "terminal"
+    ]
+  },
+  "languages": {
+    "TypeScript": 21188996,
+    "JavaScript": 70044,
+    "CSS": 64002,
+    "HTML": 14837,
+    "Nix": 8294,
+    "Shell": 6866,
+    "MDX": 2259,
+    "Dockerfile": 1779
+  },
+  "structure": {
+    "root": [
+      ".claude/",
+      ".emdash.json",
+      ".github/",
+      ".gitignore",
+      ".node-version",
+      ".npmrc",
+      ".nvmrc",
+      ".oxfmtrc.json",
+      ".oxlintrc.json",
+      ".prettierignore",
+      ".scratch/",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "CONTEXT.md",
+      "CONTRIBUTING.md",
+      "LICENSE.md",
+      "README.md",
+      "agents/",
+      "apps/",
+      "docs/",
+      "mise.toml",
+      "nx.json",
+      "package.json",
+      "packages/",
+      "patches/",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "tooling/",
+      "tsconfig.base.json"
+    ],
+    "workflows": [
+      "code-consistency-check.yml",
+      "release-canary.yml",
+      "release-linux.yml",
+      "release-prod.yml",
+      "release-workspace-server.yml",
+      "workspace-server-package-check.yml"
+    ],
+    "docs": [
+      "adr/"
+    ],
+    "docs_count": 1,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [
+      "settings.json"
+    ],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 24508,
+      "line_count": 419,
+      "truncated": true,
+      "excerpt": "# Project Overview\n\nEmdash is a local-first, cross-platform Electron app for running multiple AI coding\nagents in parallel. Each task is isolated in its own Git worktree and can run locally\nor over SSH, while the desktop app coordinates provider CLIs, ACP chat sessions,\nterminal sessions, issue and PR integrations, diff review, and release packaging.\n\n## Repository Structure\n\nThis is a pnpm workspace monorepo. The Electron app lives in\n`apps/emdash-desktop/` as `@emdash/emdash-desktop`; shared packages live under\n`packages/`. Unless a path is prefixed with `packages/` or another app, app paths\nsuch as `src/...`, `drizzle/`, `scripts/`, and `build/` are relative to\n`apps/emdash-desktop/`.\n\nRepo root:\n\n- `.claude/` - Local Claude agent settings for this checkout.\n- `.github/` - GitHub issue templates, reusable actions, CI, and release workflows.\n- `agents/` - Agent-facing architecture, workflow, convention, integration, and risk docs.\n- `apps/emdash-desktop/` - The Electron desktop app.\n- `apps/workspace-server/` - Remote workspace server and its Docker-based dev stack.\n- `packages/chat-ui/` - Shared transcript and ACP chat renderer with Storybook coverage.\n- `packages/core/` - Transport-agnostic runtime primitives, including ACP session logic.\n- `packages/plugins/` - Agent provider plugin definitions, hooks, and ACP adapters.\n- `packages/shared/` - Shared primitives such as result types, logging, and markdown helpers.\n- `packages/theme/` - Theme token codegen that emits the generated theme CSS.\n- `packages/ui/` - Shared React UI components, theme tokens, recipes, and primitives.\n- `packages/wire/` - Typed wire protocol contracts shared by app and workspace server.\n- `pnpm-workspace.yaml` - Workspace package globs for `apps/*` and `packages/**`.\n- Root config files - `package.json`, `nx.json`, `.nvmrc`, `.oxfmtrc.json`,\n  `.oxlintrc.json`, and lockfile/configuration owned at the workspace root.\n\nInside `apps/emdash-desktop/`:\n\n- `build/` - Electron packaging assets; avoid edits unless working on packaging/signing.\n- `drizzle/` - Generated Drizzle SQL migrations and metadata.\n- `scripts/` - Release, verification, and build support scripts.\n- `src/main/` - Electron main process: bootstrap, Wire gateway, DB, and host services.\n- `src/entry/` - Electron entry points: `main.ts` (main process) and `preload.ts`, the typed\n  preload bridge exposed to the renderer.\n- `src/renderer/` - React composition shell, shared browser infrastructure, and tests.\n- `src/core/` - Vertical slices with portable APIs, Node implementations, browser UI, and manifests.\n- `src/types/` - Ambient and cross-cutting TypeScript declarations.\n- `tooling/` - App-level development and test infrastructure not bundled into production.\n\n## Build & Development Commands\n\nThe only prerequisite is any `pnpm` on PATH: the root `package.json` pins\n`packageManager: pnpm@10.28.2` and `devEngines.runtime` node `24.14.0` with\n`onFail: \"download\"`, so pnpm provisions the pinned toolchain itself (no nvm or\ncorepack). The committed `mise.toml` is an optional convenience for mise users.\nRoot scripts are powered by Nx and run package targets in dependency order with\nlocal caching where configured.\n\nGolden-path commands (see [Developer flows](agents/workflows/flows.md) for the\nfull index \u2014 one blessed command per flow, database flows, Storybook,\npackaging, remote development, and escape hatches):\n\n```bash\npnpm install        # complete setup from the repo root \u2014 nothing else needed\npnpm run doctor     # report-only environment health check\npnpm run dev        # full workspace dev (root); app-only from apps/emdash-desktop/\npnpm run build      # build all workspace projects\npnpm run check      # full merge gate: format, lint, typecheck, test\n```\n\nThe four gate commands also run individually from the repo root:\n\n```bash\npnpm run format\npnpm run lint\npnpm run typecheck\npnpm run test\n```\n\nUse an isolated development database for schema or migration work:\n\n```bash\nEMDASH_DB_FILE=/tmp/emdash-scratch.db pnpm run dev\n```\n\nRun focused database validation from `apps/emdash-desktop/`:\n\n```bash\npnpm run db:fixtures\npnpm run test:migrations\n```\n\nDeploy releases only when explicitly asked to do release work:\n\n```bash\ngh workflow run release-prod.yml --ref main -f arch=both\ngh workflow run release-canary.yml --ref main -f arch=both\ngh workflow run release-workspace-server.yml --ref main -f channel=stable\n```\n\nProduction releases publish artifacts to GitHub Releases and Cloudflare R2. Canary\nreleases currently publish to R2 only. See\n[workspace-server packaging](apps/workspace-server/docs/packaging.md) for its independent release\nand channel rules.\n\n## Code Style & Conventions\n\n- Use `pnpm`; do not introduce npm or yarn lockfile churn.\n- Format with `oxfmt`; config is `.oxfmtrc.json`.\n- Keep formatted lines near the configured `printWidth` of 100 characters.\n- Use 2 spaces, semicolons, single quotes in TS, double quotes in JSX, LF endings,\n  trailing commas where valid in ES5, and sorted imports.\n- Lint with `oxlint`; config is `.oxlintrc.json` with correctness, TypeScript, React\n  hooks, and local repo rules enabled.\n- TypeScript strict mode is enabled; app targets share `apps/emdash-desktop/tsconfig.json`.\n- Avoid `any`; if a registry or boundary needs it, keep the escape local and documented.\n- Use top-level `import` statements; do not use `require()`.\n- Never re-export as a shortcut; import from the original source.\n- Components use `PascalCase`; hooks use `useX` camelCase or an existing local pattern.\n- Tests use `*.test.ts` or `*.test.tsx`.\n- Slice Wire controllers live in `src/core/features/<feature>/node/` and are aggregated by\n  `src/core/manifests/node/controllers.ts`; they delegate to imported operation or service\n  functions.\n- Renderer-main calls go through Wire via the seeded connection seam in\n  `src/core/primitives/wire/browser/connection.ts`: the renderer bootstrap seeds it once at\n  startup, and each slice exposes a typed domain client from its `api/` (for example\n  `getMcpClient()`) built on `domainClient`.\n- Feature UI lives under `src/core/features/<feature>/browser/`; the editor slice owns Monaco and\n  file rendering under `src/core/features/editor/browser/`; portable browser primitives (modals,\n  views, navigation, commands, scoped stores) live under `src/core/primitives/`; the thin\n  renderer host shell lives under `src/renderer/lib/`.\n- New feature modals and views must be exposed through the owning slice's `contributions/browser.ts`\n  and aggregated by `src/core/manifests/browser/browser-contributions.ts`.\n- New task tabs contribute providers through `src/core/features/<feature>/contributions/tabs.ts`,\n  aggregated by `src/core/manifests/browser/task-tab-contributions.ts`; the workbench registry\n  lives at `src/core/features/workbench/api/browser/task-tab-registry.ts`.\n- New commands are defined with `defineCommand` (`src/core/primitives/commands/`) in the owning\n  slice's `contributions/commands.ts`, aggregated by\n  `src/core/manifests/shared/command-catalog.ts`; view scopes\n  (`src/core/primitives/view-scopes/`) bind availability and implementation.\n- Commit messages should follow Conventional Commits:\n\n```text\n<type>(<scope>): <short imperative summary>\n\nExamples:\nfix(opencode): change initialPromptFlag from -p to --prompt for TUI\nfeat(docs): add changelog tab with GitHub releases integration\n```\n\n## Architecture Notes\n\n```mermaid\nflowchart LR\n  User[User] --> Renderer[React renderer]\n  Renderer --> Clients[Typed Wire domain clients]\n  Clients --> Seam[Seeded wire connection seam]\n  Seam --> Preload[Preload wire port]\n  Preload --> Main[Electron main process]\n  Main --> Gateway[Desktop Wire gateway]\n  Gateway --> Controllers[Slice Wire controllers]\n  Controllers --> Services[Domain services]\n  Services --> DB[(SQLite via Drizzle)]\n  Services --> Runtime[Runtime services]\n  Runtime --> PTY[PTY sessions]\n  Runtime --> ACP[ACP sessions]\n  Runtime --> SSH[SSH and SFTP]\n  Services --> VCS[Git, GitHub, GitLab, PRs]\n  Services --> Issues[Issue integrations]\n  Services --> MCP[MCP and skills]\n  ACP --> CoreAcp[@emdash/core ACP runtime]\n  ACP --> Plugins[@emdash/plugins providers]\n  Renderer --> ChatUI[@emdash/chat-ui]\n  Main --> Events[Live models and typed events]\n  Events --> Renderer\n```\n\nThe app boots from `src/entry/main.ts`, which runs the phased bootstrap in\n`src/main/bootstrap/` (environment, database, window creation, recovery). Renderer-main\ntraffic is served by the desktop Wire gateway (`src/main/gateway/desktop-wire.ts`) from the\ncontract assembled in `src/core/manifests/shared/desktop-wire-contract.ts` and the controllers\naggregated in `src/core/manifests/node/controllers.ts`. The preload bridge\n(`src/entry/preload.ts`) exposes only `requestWirePort` and `getPathForFile`. The renderer is\na React app that calls typed Wire domain clients, subscribes to live models and typed events,\nand coordinates views, tabs, modals, commands, project state, terminal state, and task\nworkflows.\n\nTask execution has two runtime paths. Legacy/TUI conversations run through PTY\nservices under `packages/core/src/services/pty/` and the terminal/TUI runtimes under\n`packages/core/src/runtimes/terminals/` and `packages/core/src/runtimes/tui-agents/`.\nStructured chat conversations use ACP: provider plugins in `packages/plugins/` expose\nACP behavior, `packages/core/src/runtimes/acp/` owns protocol/session state, terminal\nmanagement, and process hosting, the desktop launches that runtime as a Wire component worker\nfrom `src/main/gateway/entries/acp.ts` (`src/main/core/acp/` bridges agent status), and\n`src/core/features/conversations/browser/acp/` maps updates into `@emdash/chat-ui`.\n\nMain-process adapter domains live under `src/main/core/`: ACP, agent status, app,\ndependencies, file search, files, Git, preview servers, provider accounts, runtime,\nshared, terminal shell, and utils. Portable domain logic lives in vertical slices\nunder `src/core/` and in `packages/core/` (for example PTY services under\n`packages/core/src/services/pty/` and resource monitoring under\n`packages/core/src/runtimes/resource-usage/`). Expected failures should use the\n`Result<T, E>` pattern from `@emdash/shared` or the app-local result helpers.\n\n## Testing Strategy\n\nLocal merge gate:\n\n```bash\npnpm run format\npnpm run lint\npnpm run typecheck\npnpm run test\n```\n\n- Root `pnpm run test` uses Nx to run every workspace package test target.\n- App tests run with Vitest projects in `apps/emdash-desktop/vitest.config.ts`.\n- App `node` tests cover `src/**/*.test.ts` except DB, migration, and browser tests.\n- App `main-db` tests cover main-process integration tests that need real SQLite.\n- App `fixtures` tests generate DB fixtures via `pnpm run db:fixtures`.\n- App `migrations` tests validate Drizzle migrations via `pnpm run test:migrations`.\n- App `scripts` tests cover release and support scripts under `scripts/**/*.test.ts`.\n- App `browser` tests use Playwright-backed `@vitest/browser` for renderer behavior.\n- `packages/core` has ACP, dependency, plugin helper, Git, FS, and runtime unit tests.\n- `packages/chat-ui` has node, browser, perf, and benchmark test targets.\n- `packages/ui`, `packages/shared`, and `packages/plugins` run their package-local tests.\n- Integration-style tests create temporary repos and worktrees in `os.tmpdir()`.\n- CI runs `.github/workflows/code-consistency-check.yml` with `nx affected` for\n  `format:check`, `typecheck`, `lint`, and `test` on touched projects and\n  dependents; the Playwright-backed `browser` Vitest projects are skipped there.\n- Tests are still expected locally before merge even where CI coverage is narrower.\n\n## Security & Compliance\n\n- The project is licensed under Apache-2.0; see `LICENSE.md`.\n- Do not commit secrets, tokens, private keys, app databases, logs, build artifacts,\n  generated dependency folders, or release artifacts.\n- Application secrets are stored through encrypted app secret services and Electron\n  safe storage; SSH credentials are managed through SSH services and OS-backed storage.\n- Release secrets live in GitHub Actions secrets, including PostHog, Cloudflare R2,\n  Apple signing/notarization, Azure Trusted Signing, and Cachix credentials.\n- Telemetry must remain optional; users can disable it with `TELEMETRY_ENABLED=false`\n  or in app settings.\n- File logging must preserve redaction of common secret patterns.\n- PTY environment construction must go through `packages/core/src/services/pty/api/terminal-env.ts`.\n- Treat ACP process spawning, SSH command construction, shell escaping, PTY spawning,\n  and worktree paths as security-sensitive.\n- Do not bypass path-safety, shell escaping, or validation helpers.\n- Use `pnpm-lock.yaml` for dependency integrity and review dependency changes.\n- This checkout does not define repo-local Dependabot config, CODEOWNERS, or SECURITY.md;\n  do not assume extra repository-owned security automation beyond the workflows present\n  in `.github/workflows/`.\n- Dependency changes must keep `pnpm-lock.yaml` in sync, preserve `packageManager` and\n  `pnpm.onlyBuiltDependencies`, and avoid introducing new install scripts or native\n  builds without explicit review.\n- CI installs with `pnpm install --frozen-lockfile --ignore-scripts` in\n  `.github/workflows/code-consistency-check.yml`; changes that rely on install-time\n  side effects need clear justification.\n- Prefer existing dependencies and workspace packages over adding new third-party\n  packages. When adding a dependency, document why the existing stack is insufficient\n  and check license/security posture before committing the lockfile change.\n\n## Agent Guardrails\n\n- Start with this file for repo-wide context and required commands.\n- Load only the relevant `agents/` topic page for the area you are changing.\n- Prefer updating the smallest applicable `agents/` page over expanding this file.\n- If nested `AGENTS.md` files are added later, the closest file to the edited path wins.\n- Explicit user or maintainer instructions override this file.\n- Do not hand-edit numbered Drizzle migrations or `drizzle/meta/`.\n- Use `pnpm run db:generate` for new migrations, then update fixtures and migration tests.\n- Avoid editing `dist/`, `release/`, `out/`, `build/`, and generated package artifacts\n  unless the task is explicitly about packaging, signing, or release behavior.\n- Do not dispatch release workflows, publish packages, upload artifacts, or trigger\n  external deployments unless the user explicitly asks for release work.\n- Treat `src/main/core/acp/`, `packages/core/src/services/pty/`,\n  `src/core/services/ssh/`, `src/main/db/`, updater code, and provider process\n  spawning as high risk.\n- Read the matching `agents/risky-areas/` page before touching database, PTY, SSH, or\n  updater code.\n- Do not weaken shell quoting, spawn behavior, env allowlists, path validation, or\n  secret redaction casually.\n- Prefer existing service, provider, plugin, Wire, modal, view, tab, and store patterns\n  over new abstractions.\n- New Wire procedures belong in the owning slice's `api/` contract with a controller in\n  `node/`, registered through `src/core/manifests/shared/desktop-wire-contract.ts` and\n  `src/core/manifests/node/controllers.ts`.\n- Keep renderer-main calls on typed Wire contracts, live models, and typed events. The preload\n  bridge should stay small; add direct `window.electronAPI` surface only when an\n  Electron/browser primitive cannot fit the Wire path.\n- Access task and Project MobX stores through selectors and task view hooks:\n  `getTaskStore`, `asProvisioned`, `taskViewKind`, `getTaskManagerStore`,\n  `getProjectStore`, `asAvailableProject`, `getProjectHostAccess`, `useTaskViewKind`, `useWorkspace`,\n  `useWorkspaceId`, `useDevServers`, `useWorkspaceViewModel`, `useConversations`,\n  and `useTerminals`.\n- Never use `asProvisioned(...)!` or `asAvailableProject(...)!`; use explicit null checks.\n- State guards must check `kind !== 'ready'` rather than enumerating non-ready states.\n- Access task"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 11,
+      "line_count": 1,
+      "truncated": false,
+      "excerpt": "@AGENTS.md\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 14748,
+      "line_count": 453,
+      "truncated": true,
+      "excerpt": "# Contributing to Emdash\n\nThanks for your interest in contributing. We favor small, focused PRs with clear\nintent. This guide covers the local development setup, the commands that matter,\nand the conventions contributors should follow before opening a PR.\n\n## Quick Start\n\n### Prerequisites\n\n- Git\n- Any reasonably recent `pnpm` (install via Homebrew, `npm install -g pnpm`, or\n  `curl -fsSL https://get.pnpm.io/install.sh | sh -`)\n- Optional, but useful for integration work:\n  - GitHub CLI (`gh`)\n  - At least one supported coding agent CLI\n  - Docker, when working on remote development infrastructure\n\nThat is the whole toolchain requirement. `package.json` pins both the package\nmanager (`packageManager: pnpm@10.28.2`) and the Node runtime\n(`devEngines.runtime` with `onFail: \"download\"`), so any pnpm on PATH swaps\nitself to the pinned version and provisions the pinned Node \u2014 checksummed in\n`pnpm-lock.yaml` \u2014 when it runs in this repo. You do not need nvm, corepack, or\na preinstalled Node of the right version.\n\nIf you use [mise](https://mise.jdx.dev) for toolchain auto-switching, the\ncommitted `mise.toml` pins node and pnpm for you; it is optional and required\nby nothing. `.nvmrc` remains as a compatibility hint for other version\nmanagers.\n\n### Get The Source\n\nFork the repository on GitHub, then clone your fork:\n\n```bash\ngit clone https://github.com/<you>/emdash.git\ncd emdash\n```\n\n### Install\n\nFrom the repo root:\n\n```bash\npnpm install\n```\n\nThis single command provisions the pinned pnpm and Node if needed, installs\ndependencies, and prepares the native modules \u2014 after it succeeds the machine\nis ready for every dev flow.\n\nThis repository is a pnpm workspace. The Electron app is in\n`apps/emdash-desktop/`, and shared workspace packages live in `packages/`.\n\n### Start Development\n\nFor normal app development, run the full workspace dev command from the repo root:\n\n```bash\npnpm run dev\n```\n\nThe root `dev` command now does two things:\n\n1. Builds all packages under `packages/`.\n2. Starts package watch builds and the Electron desktop app in parallel.\n\nUse this command when you are changing code in `packages/` or when you want the\nsame startup path a fresh contributor will use.\n\nIf you are only working inside `apps/emdash-desktop/`, you can run the Electron\ndev server directly:\n\n```bash\ncd apps/emdash-desktop\npnpm run dev\n```\n\nImportant distinction:\n\n- `pnpm run dev` from the repo root starts the workspace package watchers and the\n  app together.\n- `pnpm run dev` from `apps/emdash-desktop/` starts only `electron-vite dev` for\n  the desktop app.\n- If app code imports changed package output, prefer the root command so package\n  `dist/` files stay current.\n\nRenderer changes usually hot reload. Main-process changes under\n`apps/emdash-desktop/src/main/` may require restarting the Electron dev app.\n\n## Repository Layout\n\nThis is a pnpm workspace monorepo.\n\n- `apps/emdash-desktop/` - Electron desktop app package\n- `apps/emdash-desktop/src/main/` - Electron main process, RPC controllers,\n  services, database, PTY, SSH, Git, GitHub, updates, and integrations\n- `apps/emdash-desktop/src/preload/` - typed Electron preload bridge\n- `apps/emdash-desktop/src/renderer/` - React composition shell and shared browser infrastructure\n- `apps/emdash-desktop/src/core/` - vertical slices with APIs, Node implementations, browser UI,\n  contributions, and manifests\n- `apps/emdash-desktop/drizzle/` - generated Drizzle migrations and metadata\n- `apps/emdash-desktop/scripts/` - release, verification, and build scripts\n- `packages/core/` - transport-agnostic core runtime primitives\n- `packages/shared/` - shared workspace primitives\n- `packages/ui/` - shared UI components and theme system\n- `packages/plugins/` - plugin interfaces and helpers\n- `agents/` - architecture, workflow, convention, integration, and risk docs\n\nRoot scripts are aggregate workspace scripts. Most app-specific commands live in\n`apps/emdash-desktop/package.json`.\n\n## Common Commands\n\nRun these from the repo root unless noted. Root scripts run through Nx, which\nbuilds projects in dependency order and caches results locally. A second run\nof any cached target (`build`, `test`, `typecheck`, `lint`, `format:check`)\nreplays instantly if inputs have not changed.\n\n```bash\npnpm run dev            # build packages, watch packages, and start the Electron app\npnpm run build          # build every workspace package\npnpm run format         # format with oxfmt\npnpm run format:check   # check formatting without writing\npnpm run lint           # lint with oxlint\npnpm run typecheck      # run TypeScript checks\npnpm run test           # run workspace tests\npnpm run affected       # lint, typecheck, and test only projects changed vs. main\npnpm run graph          # open the Nx project graph in the browser\n```\n\nIndividual project targets are addressable from the root without `cd`:\n\n```bash\nnx package:mac @emdash/emdash-desktop\nnx db:reset @emdash/emdash-desktop\nnx build:theme @emdash/ui\n```\n\nSee `agents/workflows/nx.md` for a full explanation of the Nx setup.\n\nUseful app-local commands from `apps/emdash-desktop/`:\n\n```bash\npnpm run dev            # start electron-vite dev for the desktop app only\npnpm run dev:debug      # start with debug logging\npnpm run dev:main       # watch the Electron main process\npnpm run dev:renderer   # watch the renderer\npnpm run build          # build the Electron app\npnpm run build:main     # build main process only\npnpm run build:renderer # build renderer only\npnpm run package        # build and package desktop artifacts\npnpm run rebuild        # rebuild native Electron dependencies\npnpm run reset          # clean app dependencies and reinstall\n```\n\nUseful package-local commands from a package under `packages/`:\n\n```bash\npnpm run dev            # watch-build that package with tsdown\npnpm run build          # build that package with tsdown\npnpm run test\npnpm run typecheck\n```\n\n## Local Validation\n\nBefore opening or merging a PR, run the local merge gate:\n\n``"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 5244,
+      "line_count": 91,
+      "truncated": false,
+      "excerpt": "# Emdash Classic\n\nEmdash Classic is the open-source desktop app for running coding agents in parallel. Run Claude Code, Codex, OpenCode, and more in separate Git worktrees, on your machine or over SSH. Review diffs and open PRs without leaving the app. Available for macOS, Windows, and Linux.\n\n<div align=\"center\">\n\n[Download](https://emdash.com/download) \u00b7 [Docs](https://emdash.com/docs) \u00b7 [Releases](https://github.com/generalaction/emdash/releases/latest) \u00b7 [Discord](https://discord.gg/f2fv7YxuR2) \u00b7 [Contributing](CONTRIBUTING.md)\n\n<br />\n\n[![Apache 2.0 License](https://img.shields.io/badge/License-Apache_2.0-555555.svg?labelColor=333333&color=666666)](./LICENSE.md)\n[![Downloads](https://img.shields.io/github/downloads/generalaction/emdash/total?labelColor=333333&color=666666)](https://github.com/generalaction/emdash/releases)\n[![GitHub Stars](https://img.shields.io/github/stars/generalaction/emdash?labelColor=333333&color=666666&logo=github)](https://github.com/generalaction/emdash)\n[![Last Commit](https://img.shields.io/github/last-commit/generalaction/emdash?labelColor=333333&color=666666)](https://github.com/generalaction/emdash/commits/main)\n[![Commit Activity](https://img.shields.io/github/commit-activity/m/generalaction/emdash?labelColor=333333&color=666666)](https://github.com/generalaction/emdash/graphs/commit-activity)\n\n[![Discord](https://img.shields.io/badge/Discord-join-%235462eb?labelColor=%235462eb&logo=discord&logoColor=%23f5f5f5)](https://discord.gg/f2fv7YxuR2)\n<a href=\"https://www.ycombinator.com\"><img src=\"https://img.shields.io/badge/Y%20Combinator-W26-orange\" alt=\"Y Combinator W26\"></a>\n[![Follow @emdashcom on X](https://img.shields.io/twitter/follow/emdashcom?logo=X&color=%23f5f5f5)](https://twitter.com/intent/follow?screen_name=emdashcom)\n\n</div>\n\n<img alt=\"Emdash Classic product screenshot\" src=\"https://emdash.com/media/blog/public-v1-beta/v1beta.jpg\" />\n\n## What You Can Do\n\n- Run multiple coding agents at once without juggling terminals.\n- Keep every agent isolated in its own Git worktree and branch.\n- Send issues and tickets from Linear, GitHub, Jira, GitLab, Asana, Featurebase,\n  Monday.com, Forgejo, Plain, or YouTrack into an agent.\n- Review diffs, create pull requests, inspect CI checks, and merge from one place.\n- Work locally or on your own remote machines over SSH/SFTP.\n\n## Installation\n\n| Platform | Install |\n| --- | --- |\n| macOS | `brew install --cask emdash` \u00b7 [Apple Silicon](https://github.com/generalaction/emdash/releases/latest/download/emdash-arm64.dmg) \u00b7 [Intel](https://github.com/generalaction/emdash/releases/latest/download/emdash-x64.dmg) |\n| Windows | [Installer](https://github.com/generalaction/emdash/releases/latest/download/emdash-x64.msi) \u00b7 [Portable](https://github.com/generalaction/emdash/releases/latest/download/emdash-x64.exe) |\n| Linux x64 | [AppImage](https://github.com/generalaction/emdash/releases/latest/download/emdash-x86_64.AppImage) \u00b7 [DEB](https://github.com/generalaction/emdash/releases/latest/download/emdash-amd64.deb) \u00b7 [RPM](https://github.com/generalaction/emdash/releases/latest/download/emdash-x86_64.rpm) |\n| Linux ARM64 | [AppImage](https://github.com/generalaction/emdash/releases/latest/download/emdash-arm64.AppImage) \u00b7 [DEB](https://github.com/generalaction/emdash/releases/latest/download/emdash-arm64.deb) \u00b7 [RPM](https://github.com/generalaction/emdash/releases/latest/download/emdash-aarch64.rpm) |\n\nSee the [latest release](https://github.com/generalaction/emdash/releases/latest) for\nall desktop builds.\n\n## Agents\n\nThe app automatically detects installed provider CLIs, including Claude Code, Codex, Cursor,\nOpenCode, Amp, Devin, Qwen Code, Droid, and GitHub Copilot.\n\nFor agents that support lifecycle hooks, the app adds marked entries to the agent's user config.\nThese hooks track status, enable notifications, and support resuming sessions. They do nothing\noutside sessions started in the app.\n\nSee [Providers](https://emdash.com/docs/providers) for the full list, setup commands,\nand provider-specific behavior.\n\n## Remote Projects\n\nConnect to remote machines with SSH/SFTP and run the same parallel workflow on remote\ncodebases. You can authenticate with an SSH agent, a key, or a password. OpenSSH certificates held\nby the agent also work. The app stores credentials in your OS keychain.\n\nSee [Remote Projects](https://emdash.com/docs/remote-development/remote-projects) for setup details.\n\n## Privacy\n\nThe app is local-first. It stores app state in a local SQLite database and does not send your code\nor chats to Emdash servers.\n\nAgent CLIs may send code, prompts, and context to their own providers. Their data\nhandling depends on the provider you choose.\n\nTelemetry is optional and can be disabled in Settings or by launching with:\n\n```bash\nTELEMETRY_ENABLED=false\n```\n\nSee [Telemetry](https://emdash.com/docs/telemetry) for details.\n\n## Contributing\n\nContributions are welcome. Read the [Contributing Guide](CONTRIBUTING.md), open an\nissue, or join the [Discord](https://discord.gg/f2fv7YxuR2).\n\n## License\n\nLicensed under the [Apache-2.0 license](LICENSE.md).\n\nLooking to run coding agents with your team, on your own infrastructure or in the cloud? See [Emdash](https://emdash.com).\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 3296,
+      "line_count": 104,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"emdash-monorepo\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"dev\": \"nx run-many -t dev --all --parallel=10\",\n    \"build\": \"nx run-many -t build --all\",\n    \"test\": \"node tooling/scripts/test.mjs\",\n    \"lint\": \"nx run-many -t lint --all && node tooling/oxlint/scripts/check-allowlists.mjs\",\n    \"format\": \"nx run-many -t format --all\",\n    \"format:check\": \"nx run-many -t format:check --all\",\n    \"typecheck\": \"nx run-many -t typecheck --all\",\n    \"affected\": \"nx affected -t lint typecheck test\",\n    \"check\": \"node tooling/scripts/check.mjs\",\n    \"doctor\": \"pnpm --dir apps/emdash-desktop run doctor\",\n    \"prune:boundary-allowlists\": \"node tooling/oxlint/scripts/prune-boundary-allowlists.mjs\",\n    \"graph\": \"nx graph\"\n  },\n  \"devDependencies\": {\n    \"nx\": \"^24.0.6\",\n    \"tsx\": \"^4.22.4\"\n  },\n  \"engines\": {\n    \"node\": \">=24.0.0\",\n    \"pnpm\": \">=10.28.0\"\n  },\n  \"devEngines\": {\n    \"runtime\": {\n      \"name\": \"node\",\n      \"version\": \"24.14.0\",\n      \"onFail\": \"download\"\n    }\n  },\n  \"packageManager\": \"pnpm@10.28.2\",\n  \"pnpm\": {\n    \"onlyBuiltDependencies\": [\n      \"better-sqlite3\",\n      \"core-js\",\n      \"electron\",\n      \"esbuild\",\n      \"node-pty\",\n      \"nx\",\n      \"protobufjs\",\n      \"sqlite3\"\n    ],\n    \"ignoredBuiltDependencies\": [\n      \"cpu-features\",\n      \"ssh2\"\n    ],\n    \"patchedDependencies\": {\n      \"ssh2@1.17.0\": \"patches/ssh2@1.17.0.patch\"\n    },\n    \"ignoredOptionalDependencies\": [\n      \"@anthropic-ai/claude-agent-sdk-darwin-arm64\",\n      \"@anthropic-ai/claude-agent-sdk-darwin-x64\",\n      \"@anthropic-ai/claude-agent-sdk-linux-arm64\",\n      \"@anthropic-ai/claude-agent-sdk-linux-arm64-musl\",\n      \"@anthropic-ai/claude-agent-sdk-linux-x64\",\n      \"@anthropic-ai/claude-agent-sdk-linux-x64-musl\",\n      \"@anthropic-ai/claude-agent-sdk-win32-arm64\",\n      \"@anthropic-ai/claude-agent-sdk-win32-x64\",\n      \"@openai/codex-darwin-arm64\",\n      \"@openai/codex-darwin-x64\",\n      \"@openai/codex-linux-arm64\",\n      \"@openai/codex-linux-x64\",\n      \"@openai/codex-win32-arm64\",\n      \"@openai/codex-win32-x64\"\n    ],\n    \"overrides\": {\n      \"@hono/node-server\": \"^2.1.9\",\n      \"@modelcontextprotocol/sdk\": \"^1.32.2\",\n      \"@xmldom/xmldom@<0.8.15\": \"^0.8.15\",\n      \"axios\": \"^1.21.1\",\n      \"baseline-browser-mapping@<2.11.0\": \"^2.11.39\",\n      \"body-parser@>=2.0.0 <2.4.0\": \"^2.4.0\",\n      \"brace-expansion@1\": \"^1.1.22\",\n      \"brace-expansion@2\": \"^2.1.8\",\n      \"brace-expansion@5\": \"^5.0.13\",\n      \"browserslist@<=4.28.6\": \"^4.29.6\",\n      \"dompurify\": \"^3.4.18\",\n      \"esbuild@<=0.24.2\": \"^0.25.12\",\n      \"fast-uri@>=3.0.0 <3.1.9\": \"^3.1.9\",\n      \"follow-redirects\": \"^1.16.3\",\n      \"form-data@>=4.0.0 <4.0.6\": \"^4.0.6\",\n      \"glob@>=9.0.0 <=14.0.1\": \"^14.0.6\",\n      \"hono\": \"^4.13.19\",\n      \"ip-address@<=10.7.3\": \"^10.7.6\",\n      \"js-yaml@>=4.0.0 <4.3.2\": \"^4.3.2\",\n      \"katex@<0.18.2\": \"^0.19.1\",\n      \"minimatch@>=7.0.0 <11.0.1\": \"^11.0.9\",\n      \"nanoid@<3.3.18\": \"^3.3.20\",\n      \"node-abi\": \"^4.43.0\",\n      \"node-gyp>undici\": \"^7.30.2\",\n      \"qs@>=6.0.0 <6.16.1\": \"^6.17.1\",\n      \"seroval@<1.6.11\": \"^1.6.12\",\n      \"source-map-js@<1.2.2\": \"^1.2.4\",\n      \"tar@<=7.5.20\": \"^7.5.23\",\n      \"undici@6\": \"^6.29.1\",\n      \"undici@7\": \"^7.30.2\",\n      \"vite-node>vite\": \"^7.3.8\",\n      \"zod\": \"^4.6.7\"\n    }\n  }\n}\n"
+    },
+    ".oxlintrc.json": {
+      "path": ".oxlintrc.json",
+      "size_bytes": 5639,
+      "line_count": 182,
+      "truncated": false,
+      "excerpt": "{\n  \"$schema\": \"./node_modules/oxlint/configuration_schema.json\",\n  \"plugins\": [\"eslint\", \"typescript\", \"react\"],\n  \"jsPlugins\": [\"./tooling/oxlint/index.js\"],\n  \"env\": {\n    \"browser\": true,\n    \"node\": true,\n    \"es2020\": true\n  },\n  \"categories\": {\n    \"correctness\": \"error\"\n  },\n  \"ignorePatterns\": [\"dist/**\", \"out/**\", \"build/**\", \"node_modules/**\", \"**/_*/**\"],\n  \"options\": {\n    \"typeAware\": true,\n    \"respectEslintDisableDirectives\": false,\n    \"reportUnusedDisableDirectives\": \"warn\"\n  },\n  \"rules\": {\n    \"no-unused-vars\": [\n      \"error\",\n      {\n        \"argsIgnorePattern\": \"^_\",\n        \"varsIgnorePattern\": \"^_\"\n      }\n    ],\n    \"prefer-const\": \"error\",\n    \"typescript/no-explicit-any\": \"warn\",\n    \"typescript/consistent-type-imports\": [\n      \"warn\",\n      {\n        \"prefer\": \"type-imports\",\n        \"fixStyle\": \"inline-type-imports\"\n      }\n    ],\n    \"no-empty\": [\"warn\", { \"allowEmptyCatch\": true }],\n    \"no-control-regex\": \"off\",\n    \"react/rules-of-hooks\": \"error\",\n    \"react/exhaustive-deps\": \"warn\",\n    \"typescript/no-floating-promises\": \"off\",\n    \"typescript/no-misused-promises\": \"off\",\n    \"typescript/await-thenable\": \"off\",\n    \"typescript/no-base-to-string\": \"off\",\n    \"typescript/no-meaningless-void-operator\": \"off\",\n    \"typescript/no-redundant-type-constituents\": \"off\",\n    \"typescript/no-useless-default-assignment\": \"off\",\n    \"typescript/restrict-template-expressions\": \"off\",\n    \"typescript/unbound-method\": \"off\",\n    \"emdash/core-host-boundaries\": \"error\",\n    \"emdash/core-module-boundaries\": \"error\",\n    \"emdash/no-async-transaction-callback\": \"error\",\n    \"emdash/no-dynamic-imports\": \"error\",\n    \"emdash/no-tsx-in-api\": \"error\"\n  },\n  \"overrides\": [\n    {\n      \"files\": [\"apps/emdash-desktop/src/core/**/*.{ts,tsx}\"],\n      \"rules\": {\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"paths\": [\n              {\n                \"name\": \"@core/services/app-db/node/schema\",\n                \"importNames\": [\"workspaces\"],\n                \"message\": \"The Workspace Registry is the sole writer. Import workspaceRegistryTable/liveWorkspaces from @core/features/workspaces/api/node/registry.\"\n              },\n              {\n                \"name\": \"@core/services/app-db/node/schema\",\n                \"importNames\": [\"conversations\"],\n                \"message\": \"The Conversation Registry is the sole writer. Import conversationRegistryTable/liveConversations from @core/features/conversations/api/node/registry.\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"files\": [\n        \"apps/emdash-desktop/src/core/features/workspaces/api/node/registry/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/core/features/conversations/api/node/registry/**/*.{ts,tsx}\"\n      ],\n      \"rules\": {\n        \"no-restricted-imports\": \"off\"\n      }\n    },\n    {\n      \"files\": [\"apps/emdash-desktop/src/**/*.{ts,tsx}\"],\n      \"rules\": {\n        \"typescript/no-floating-promises\": \"warn\",\n        \"typescript/no-misused-promises\": [\n          \"warn\",\n          {\n            \"checksVoidReturn\": {\n              \"attributes\": false\n            }\n          }\n        ],\n        \"typescript/await-thenable\": \"warn\"\n      }\n    },\n    {\n      \"files\": [\n        \"apps/emdash-desktop/src/entry/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/main/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/renderer/**/*.{ts,tsx}\"\n      ],\n      \"rules\": {\n        \"emdash/no-tooling-imports\": \"error\"\n      }\n    },\n    {\n      \"files\": [\"apps/emdash-desktop/src/main/**/*.{ts,tsx}\"],\n      \"rules\": {\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"paths\": [\n              {\n                \"name\": \"electron\",\n                \"message\": \"Import Electron only from main/host, main/gateway, or main/bootstrap.\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"files\": [\n        \"apps/emdash-desktop/src/main/host/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/main/gateway/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/main/bootstrap/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/main/core/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/main/db/**/*.{ts,tsx}\"\n      ],\n      \"rules\": {\n        \"no-restricted-imports\": \"off\"\n      }\n    },\n    {\n      \"files\": [\"apps/emdash-desktop/src/renderer/**/*.{ts,tsx}\"],\n      \"rules\": {\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"patterns\": [\n              {\n                \"group\": [\n                  \"@emdash/core/services/host-dependencies/api\",\n                  \"@emdash/core/services/host-dependencies/api/*\"\n                ],\n                \"message\": \"Import dependency types from @core/primitives/agents/api instead of @emdash/core/services/host-dependencies/api*.\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"files\": [\n        \"apps/emdash-desktop/src/entry/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/main/bootstrap/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/src/main/host/recovery/**/*.{ts,tsx}\",\n        \"apps/emdash-desktop/scripts/**\",\n        \"apps/emdash-desktop/src/core/features/editor/browser/monaco/monaco-bootstrap.ts\",\n        \"apps/workspace-server/scripts/**\",\n        \"packages/ui/src/react/components/markdown/highlight.ts\"\n      ],\n      \"rules\": {\n        \"emdash/no-dynamic-imports\": \"off\"\n      }\n    },\n    {\n      \"files\": [\"**/*.test.{js,jsx,ts,tsx}\"],\n      \"rules\": {\n        \"typescript/no-explicit-any\": \"off\",\n        \"emdash/no-dynamic-imports\": \"off\",\n        \"emdash/no-tooling-imports\": \"off\"\n      }\n    }\n  ]\n}\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 41,
+      "line_count": 3,
+      "truncated": false,
+      "excerpt": "packages:\n  - 'apps/*'\n  - 'packages/**'\n"
+    }
+  },
+  "workflow_samples": {
+    "code-consistency-check.yml": {
+      "path": ".github/workflows/code-consistency-check.yml",
+      "size_bytes": 3125,
+      "line_count": 97,
+      "truncated": false,
+      "excerpt": "name: Code Consistency Check\n\non:\n  pull_request:\n    branches: [main]\n  workflow_dispatch:\n\njobs:\n  checks:\n    name: ${{ matrix.name }}\n    runs-on: ubuntu-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - name: format-check\n            target: format:check\n          - name: lint\n            target: lint\n          - name: typecheck\n            target: typecheck\n          - name: test\n            target: test\n    env:\n      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'\n\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n\n      - name: Derive Nx SHAs for affected\n        uses: nrwl/nx-set-shas@v4\n\n      - name: Setup pnpm\n        uses: pnpm/action-setup@v4\n        with:\n          version: 10.28.2\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '24'\n          cache: 'pnpm'\n\n      - name: Install dependencies\n        # The checks only need JS/TS tooling from the workspace install. Skip\n        # lifecycle scripts to avoid flaky node-gyp/native module builds in CI.\n        run: |\n          for attempt in 1 2 3; do\n            pnpm install --frozen-lockfile --ignore-scripts && break\n            if [ \"$attempt\" -eq 3 ]; then\n              echo \"pnpm install failed after 3 attempts\"\n              exit 1\n            fi\n            echo \"Install failed (attempt $attempt). Retrying in 10s...\"\n            sleep 10\n          done\n\n      - name: Install native test dependencies\n        if: matrix.target == 'test'\n        # The install above keeps --ignore-scripts, so lifecycle scripts that\n        # provision native modules never run. Two are needed for tests:\n        # - the anchored native side project (system-Node better-sqlite3 copy)\n        #   used by the app's main-db/fixtures/migrations Vitest projects\n        # - node-pty's platform build, used by PTY-dependent worker specs\n        run: |\n          pnpm --dir apps/emdash-desktop/tooling/node-deps install --frozen-lockfile\n          pnpm --filter @emdash/core rebuild node-pty\n          pnpm --filter @emdash/core exec node -e \"require('node-pty')\"\n\n      - name: Run affected ${{ matrix.name }}\n        run: pnpm nx affected -t ${{ matrix.target }}\n\n  packaged-language-servers:\n    runs-on: ubuntu-22.04\n    steps:\n      - uses: actions/checkout@v4\n      - uses: pnpm/action-setup@v4\n        with:\n          version: 10.28.2\n      - uses: actions/setup-node@v4\n        with:\n          node-version: '24'\n          cache: 'pnpm'\n      - run: pnpm install --frozen-lockfile --ignore-scripts\n      - name: Install Electron system libraries for the packaged-app checks\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y libgtk-3-0 libnss3 libgbm1 libasound2\n      - run: pnpm exec nx build @emdash/core\n      - name: Build and exercise both channels' packaged language servers\n        working-directory: apps/emdash-desktop\n        env:\n          EMDASH_TEST_PACKAGED_LSP: '1'\n        run: pnpm exec vitest run --project scripts scripts/release/lib/packaged-language-servers.test.ts\n"
+    },
+    "release-prod.yml": {
+      "path": ".github/workflows/release-prod.yml",
+      "size_bytes": 6727,
+      "line_count": 206,
+      "truncated": true,
+      "excerpt": "name: Release (Production)\n\non:\n  workflow_dispatch:\n\npermissions:\n  contents: write\n\nconcurrency:\n  group: release-production\n  cancel-in-progress: false\n\njobs:\n  prepare-release:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    environment: release\n    outputs:\n      release_id: ${{ steps.prepare.outputs.release_id }}\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: pnpm/action-setup@v4\n        with:\n          version: 10.28.2\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version: '24'\n          cache: pnpm\n\n      - name: Install dependencies\n        run: pnpm install --frozen-lockfile\n\n      - name: Create or reuse draft release\n        id: prepare\n        working-directory: apps/emdash-desktop\n        env:\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n          GITHUB_SHA: ${{ github.sha }}\n        run: node --experimental-strip-types scripts/release/prepare-release.ts\n\n  release-linux:\n    needs: [prepare-release]\n    uses: ./.github/workflows/release-linux.yml\n    permissions:\n      contents: write\n    with:\n      channel: stable\n      release_id: ${{ needs.prepare-release.outputs.release_id }}\n    secrets:\n      POSTHOG_PROJECT_API_KEY: ${{ secrets.POSTHOG_PROJECT_API_KEY }}\n      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}\n\n  release-win:\n    needs: [prepare-release]\n    runs-on: windows-2022\n    permissions:\n      contents: write\n    environment: release\n    steps:\n      - uses: actions/checkout@v4\n      - uses: ./.github/actions/setup-build\n        with:\n          posthog-key: ${{ secrets.POSTHOG_PROJECT_API_KEY }}\n          posthog-host: ${{ secrets.POSTHOG_HOST }}\n          windows-native: 'true'\n      - name: Export Python path for native modules\n        shell: bash\n        run: echo \"python=$(which python)\" >> \"$GITHUB_ENV\"\n\n      - name: Build app\n        shell: bash\n        run: pnpm run build\n\n      - shell: bash\n        run: echo \"NODE_OPTIONS=${NODE_OPTIONS:-not set}\" && node --version\n\n      - name: Require Azure Trusted Signing secrets\n        shell: bash\n        env:\n          AZ_TENANT: ${{ secrets.AZURE_TENANT_ID }}\n          AZ_CLIENT: ${{ secrets.AZURE_CLIENT_ID }}\n          AZ_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}\n        run: |\n          if [ -n \"$AZ_TENANT\" ] && [ -n \"$AZ_CLIENT\" ] && [ -n \"$AZ_SECRET\" ]; then\n            echo \"Azure Trusted Signing is configured.\"\n          else\n            echo \"::error::Azure Trusted Signing secrets are required for a public release.\"\n            exit 1\n          fi\n\n      - name: Build Windows packages\n        shell: bash\n        working-directory: apps/emdash-desktop\n        env:\n          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}\n          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}\n          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n        run: >\n          node --experimental-strip-types scripts/release/build.ts\n          --platform win --arch x64\n          --release-id \"${{ needs.prepare-release.outputs.release_id }}\"\n\n      - name: Verify Windows code signature\n        shell: bash\n        working-directory: apps/emdash-desktop\n        run: node --experimental-strip-types scripts/release/verify-win.ts\n\n      - name: Upload verified Windows assets to owned draft\n        shell: bash\n        working-directory: apps/emdash-desktop\n        env:\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n        run: >\n          node --experimental-strip-types scripts/release/upload-github-assets.ts\n          --platform win --release-id \"${{ needs.prepare-release.outputs.release_id }}\"\n\n  release-mac:\n    needs: [prepare-release]\n    runs-on: macos-latest\n    env:\n      NODE_OPTIONS: --max-old-space-size=4096\n    permissions:\n      contents: write\n    environment: release\n    steps:\n      - uses: actions/checkout@v4\n      - uses: ./.github/actions/setup-build\n        with:\n          posthog-key: ${{ secrets.POSTHOG_PROJECT_API_KEY }}\n          posthog-host: ${{ secrets.POSTHOG_HOST }}\n\n      - name: Import Apple signing certificate\n        uses: apple-actions/import-codesign-certs@v2\n        with:\n          p12-file-base64: ${{ secrets.CERTIFICATE_P12 }}\n          p12-password: ${{ secrets.CERTIFICATE_PASSWORD }}\n\n      - run: pnpm run build\n\n      - run: echo \"NODE_OPTIONS=${NODE_OPTIONS:-not set}\" && node --version\n\n      - name: Build signed DMGs + ZIPs\n        working-directory: apps/emdash-desktop\n        env:\n          CSC_IDENTITY"
+    },
+    "workspace-server-package-check.yml": {
+      "path": ".github/workflows/workspace-server-package-check.yml",
+      "size_bytes": 2274,
+      "line_count": 87,
+      "truncated": false,
+      "excerpt": "name: Workspace Server Package Check\n\non:\n  pull_request:\n    branches: [main]\n    paths:\n      - 'apps/workspace-server/**'\n      - 'packages/core/**'\n      - 'packages/plugins/**'\n      - 'packages/shared/**'\n      - 'packages/wire/**'\n      - '.nvmrc'\n      - 'pnpm-lock.yaml'\n      - '.github/workflows/workspace-server-package-check.yml'\n  push:\n    branches: [main]\n    paths:\n      - 'apps/workspace-server/**'\n      - 'packages/core/**'\n      - 'packages/plugins/**'\n      - 'packages/shared/**'\n      - 'packages/wire/**'\n      - '.nvmrc'\n      - 'pnpm-lock.yaml'\n      - '.github/workflows/workspace-server-package-check.yml'\n  workflow_dispatch:\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: workspace-server-package-${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\njobs:\n  package-linux-x64:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: pnpm/action-setup@v4\n        with:\n          version: 10.28.2\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version-file: .nvmrc\n          cache: pnpm\n\n      - name: Cache packaged Node distribution\n        uses: actions/cache@v4\n        with:\n          path: ~/.cache/emdash/workspace-server\n          key: workspace-server-node-linux-x64-${{ hashFiles('.nvmrc') }}\n\n      - name: Set up Docker Buildx\n        uses: docker/setup-buildx-action@v3\n\n      - name: Install dependencies\n        run: pnpm install --frozen-lockfile --ignore-scripts\n\n      - name: Build and verify Linux x64 package\n        working-directory: apps/workspace-server\n        run: pnpm run package --target linux-x64 --verify\n\n  install-macos-arm64:\n    runs-on: macos-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: pnpm/action-setup@v4\n        with:\n          version: 10.28.2\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version-file: .nvmrc\n          cache: pnpm\n\n      - name: Install dependencies\n        run: pnpm install --frozen-lockfile --ignore-scripts\n\n      - name: Verify installer with native Apple silicon macOS tools\n        working-directory: apps/workspace-server\n        run: |\n          test \"$(uname -m)\" = arm64\n          pnpm exec vitest run scripts/install.test.ts scripts/install.macos.test.ts\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-23T23:30:26Z",
+      "oldest": "2026-11-01T23:52:49Z"
+    },
+    "conventional_pct": 50.0,
+    "fix_revert_pct": 22.0,
+    "ai_coauthor_pct": 6.0,
+    "top_recent_authors": [
+      [
+        "jschwxrz",
+        19
+      ],
+      [
+        "kdcokenny",
+        18
+      ],
+      [
+        "rabanspiegel",
+        7
+      ],
+      [
+        "Kulraj69",
+        3
+      ],
+      [
+        "devinmatte",
+        2
+      ],
+      [
+        "Shivy",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "c8769892",
+        "date": "2026-11-23T23:30:26Z",
+        "author": "rabanspiegel",
+        "subject": "Merge pull request #3443 from generalaction/feat/ibm-bob-provider",
+        "ai_signal": false
+      },
+      {
+        "sha": "eda78f9f",
+        "date": "2026-11-23T22:45:14Z",
+        "author": "rabanspiegel",
+        "subject": "refactor(agents): simplify Bob workspace trust",
+        "ai_signal": false
+      },
+      {
+        "sha": "e79cd130",
+        "date": "2026-11-23T22:32:42Z",
+        "author": "rabanspiegel",
+        "subject": "feat(agents): add IBM Bob provider",
+        "ai_signal": false
+      },
+      {
+        "sha": "2c48617e",
+        "date": "2026-11-23T21:48:12Z",
+        "author": "rabanspiegel",
+        "subject": "Merge pull request #3440 from shi-vy/fix/hermes-initial-prompt",
+        "ai_signal": false
+      },
+      {
+        "sha": "ff56c1a5",
+        "date": "2026-11-21T01:46:24Z",
+        "author": "Shivy",
+        "subject": "fix(hermes): deliver initial prompts in PTY sessions",
+        "ai_signal": false
+      },
+      {
+        "sha": "ae7df312",
+        "date": "2026-11-20T06:41:16Z",
+        "author": "rabanspiegel",
+        "subject": "Merge pull request #3434 from generalaction/codex/classic-readme",
+        "ai_signal": false
+      },
+      {
+        "sha": "06f374a7",
+        "date": "2026-11-20T06:29:54Z",
+        "author": "rabanspiegel",
+        "subject": "docs(readme): trim repeated Classic mentions",
+        "ai_signal": false
+      },
+      {
+        "sha": "5a3f5b4d",
+        "date": "2026-11-20T06:22:09Z",
+        "author": "rabanspiegel",
+        "subject": "docs(readme): introduce Emdash Classic",
+        "ai_signal": false
+      },
+      {
+        "sha": "0afda106",
+        "date": "2026-11-20T04:21:51Z",
+        "author": "kdcokenny",
+        "subject": "Merge pull request #3433 from generalaction/v1.2.14",
+        "ai_signal": false
+      },
+      {
+        "sha": "16d746b5",
+        "date": "2026-11-20T04:21:23Z",
+        "author": "kdcokenny",
+        "subject": "v1.2.14",
+        "ai_signal": true
+      },
+      {
+        "sha": "f257b8ae",
+        "date": "2026-11-20T02:55:59Z",
+        "author": "kdcokenny",
+        "subject": "Merge pull request #3432 from generalaction/fix/dependabot-security-updates",
+        "ai_signal": false
+      },
+      {
+        "sha": "a7a2cabd",
+        "date": "2026-11-19T23:38:48Z",
+        "author": "kdcokenny",
+        "subject": "chore(deps): resolve all Dependabot security alerts and upgrade to latest stable versions",
+        "ai_signal": true
+      },
+      {
+        "sha": "17f32be7",
+        "date": "2026-11-19T19:20:51Z",
+        "author": "kdcokenny",
+        "subject": "Merge pull request #3430 from generalaction/v1.2.13",
+        "ai_signal": false
+      },
+      {
+        "sha": "a03f218e",
+        "date": "2026-11-19T19:14:01Z",
+        "author": "kdcokenny",
+        "subject": "v1.2.13",
+        "ai_signal": true
+      },
+      {
+        "sha": "fcb5f988",
+        "date": "2026-11-19T19:11:17Z",
+        "author": "kdcokenny",
+        "subject": "Merge pull request #3429 from devinmatte/devin.matte/worktree-rescan-fix-8if1u",
+        "ai_signal": false
+      },
+      {
+        "sha": "261860ab",
+        "date": "2026-11-19T17:06:44Z",
+        "author": "devinmatte",
+        "subject": "fix(workspace-registry): keep sibling ref scans and absorb child scans into reconciles",
+        "ai_signal": false
+      },
+      {
+        "sha": "98d14542",
+        "date": "2026-11-19T16:45:12Z",
+        "author": "devinmatte",
+        "subject": "fix(workspace-registry): scan only the changed worktree on content events",
+        "ai_signal": false
+      },
+      {
+        "sha": "9e2942b8",
+        "date": "2026-11-19T02:03:45Z",
+        "author": "kdcokenny",
+        "subject": "Merge pull request #3427 from generalaction/v1.2.12",
+        "ai_signal": false
+      },
+      {
+        "sha": "244cfb2d",
+        "date": "2026-11-19T02:03:39Z",
+        "author": "kdcokenny",
+        "subject": "v1.2.12",
+        "ai_signal": false
+      },
+      {
+        "sha": "5d1c4965",
+        "date": "2026-11-19T02:00:20Z",
+        "author": "kdcokenny",
+        "subject": "Merge pull request #3425 from generalaction/feat/waitlist-api-endpoint",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "jschwxrz",
+      "contributions": 2863
+    },
+    {
+      "login": "arnestrickmann",
+      "contributions": 2758
+    },
+    {
+      "login": "Davidknp",
+      "contributions": 2209
+    },
+    {
+      "login": "janburzinski",
+      "contributions": 1123
+    },
+    {
+      "login": "rabanspiegel",
+      "contributions": 785
+    },
+    {
+      "login": "matsjfunke",
+      "contributions": 70
+    },
+    {
+      "login": "moritzWa",
+      "contributions": 55
+    },
+    {
+      "login": "prath47",
+      "contributions": 47
+    },
+    {
+      "login": "kchung",
+      "contributions": 41
+    },
+    {
+      "login": "Musti7even",
+      "contributions": 39
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.2.13",
+      "published_at": "2026-11-19T20:04:27Z",
+      "name": "v1.2.13"
+    },
+    {
+      "tag": "v1.2.12",
+      "published_at": "2026-11-19T02:41:27Z",
+      "name": "v1.2.12"
+    },
+    {
+      "tag": "v1.2.11",
+      "published_at": "2026-11-06T11:03:37Z",
+      "name": "v1.2.11"
+    },
+    {
+      "tag": "v1.2.10",
+      "published_at": "2026-10-30T12:59:45Z",
+      "name": "v1.2.10"
+    },
+    {
+      "tag": "v1.2.10-canary.102",
+      "published_at": "2026-10-26T16:28:05Z",
+      "name": "v1.2.10-canary.102"
+    }
+  ]
+}

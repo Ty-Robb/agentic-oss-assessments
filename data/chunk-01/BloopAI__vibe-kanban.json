@@ -1,0 +1,445 @@
+{
+  "repo": "BloopAI/vibe-kanban",
+  "meta": {
+    "description": "Get 10X more out of Claude Code, Codex or any coding agent",
+    "homepage": "https://www.vibekanban.com/",
+    "license": "Apache-2.0",
+    "stars": 28814,
+    "forks": 3072,
+    "open_issues": 537,
+    "archived": false,
+    "created_at": "2025-06-14T19:10:21Z",
+    "pushed_at": "2026-11-15T16:05:54Z",
+    "default_branch": "main",
+    "topics": [
+      "agent",
+      "ai-agents",
+      "kanban",
+      "management",
+      "task-manager"
+    ]
+  },
+  "languages": {
+    "Rust": 3887747,
+    "TypeScript": 3435587,
+    "JavaScript": 109928,
+    "CSS": 65510,
+    "Shell": 60945,
+    "HTML": 37901,
+    "PLpgSQL": 25019,
+    "Dockerfile": 15190,
+    "PowerShell": 1064
+  },
+  "structure": {
+    "root": [
+      ".cargo/",
+      ".dockerignore",
+      ".env.release.example",
+      ".github/",
+      ".gitignore",
+      ".npmrc",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "CODE-OF-CONDUCT.md",
+      "CONTRIBUTORS.md",
+      "Caddyfile.example",
+      "Cargo.lock",
+      "Cargo.toml",
+      "Dockerfile",
+      "LICENSE",
+      "README.md",
+      "RELEASING.md",
+      "SECURITY.md",
+      "assets/",
+      "bump-version.sh",
+      "crates/",
+      "dev_assets_seed/",
+      "docs/",
+      "local-build.sh",
+      "mobile-testing.md",
+      "npx-cli/",
+      "package.json",
+      "packages/",
+      "patches/",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "rust-toolchain.toml",
+      "rustfmt.toml",
+      "scripts/",
+      "shared/"
+    ],
+    "workflows": [
+      "pre-release.yml",
+      "publish.yml",
+      "relay-deploy-dev.yml",
+      "relay-deploy-prod.yml",
+      "relay-release.yml",
+      "remote-deploy-dev.yml",
+      "remote-deploy-prod.yml",
+      "remote-release.yml",
+      "test.yml"
+    ],
+    "docs": [
+      ".mintignore",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "README.md",
+      "agents/",
+      "browser-testing.mdx",
+      "cloud/",
+      "configuration-customisation/",
+      "core-features/",
+      "docs.json",
+      "frontend-ui-library-refactor-audit.md",
+      "getting-started.mdx",
+      "images/",
+      "index.mdx",
+      "integrations/",
+      "issue-management.mdx",
+      "logo/",
+      "remote-access.mdx",
+      "responsible-disclosure.mdx",
+      "reviewing-code.mdx",
+      "self-hosting/",
+      "settings/",
+      "supported-coding-agents.mdx",
+      "troubleshooting.mdx",
+      "workspaces/"
+    ],
+    "docs_count": 25,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 4081,
+      "line_count": 59,
+      "truncated": false,
+      "excerpt": "# Repository Guidelines\n\n## Project Structure & Module Organization\n- `crates/`: Rust workspace crates \u2014 `server` (API + bins), `db` (SQLx models/migrations), `executors`, `services`, `utils`, `git` (Git operations), `api-types` (shared API types for local + remote), `review` (PR review tool), `deployment`, `local-deployment`, `remote`.\n- `packages/local-web/`: Local React + TypeScript app entrypoint (Vite, Tailwind). Shell source in `packages/local-web/src`.\n- `packages/remote-web/`: Remote deployment frontend entrypoint.\n- `packages/web-core/`: Shared React + TypeScript frontend library used by local + remote web (`packages/web-core/src`).\n- `shared/`: Generated TypeScript types (`shared/types.ts`, `shared/remote-types.ts`) and agent tool schemas (`shared/schemas/`). Do not edit generated files directly.\n- `assets/`, `dev_assets_seed/`, `dev_assets/`: Packaged and local dev assets.\n- `npx-cli/`: Files published to the npm CLI package.\n- `scripts/`: Dev helpers (ports, DB preparation).\n- `docs/`: Documentation files.\n\n### Crate-specific guides\n- [`crates/remote/AGENTS.md`](crates/remote/AGENTS.md) \u2014 Remote server architecture, ElectricSQL integration, mutation patterns, environment variables.\n- [`docs/AGENTS.md`](docs/AGENTS.md) \u2014 Mintlify documentation writing guidelines and component reference.\n- [`packages/local-web/AGENTS.md`](packages/local-web/AGENTS.md) \u2014 Web app design system styling guidelines.\n\n## Managing Shared Types Between Rust and TypeScript\n\nts-rs allows you to derive TypeScript types from Rust structs/enums. By annotating your Rust types with #[derive(TS)] and related macros, ts-rs will generate .ts declaration files for those types.\nWhen making changes to the types, you can regenerate them using `pnpm run generate-types`\nDo not manually edit shared/types.ts, instead edit crates/server/src/bin/generate_types.rs\n\nFor remote/cloud types, regenerate using `pnpm run remote:generate-types`\nDo not manually edit shared/remote-types.ts, instead edit crates/remote/src/bin/remote-generate-types.rs (see crates/remote/AGENTS.md for details).\n\n## Build, Test, and Development Commands\n- Install: `pnpm i`\n- Run dev (web app + backend with ports auto-assigned): `pnpm run dev`\n- Backend (watch): `pnpm run backend:dev:watch`\n- Web app (dev): `pnpm run local-web:dev`\n- Type checks: `pnpm run check` (frontend + all backend Rust workspaces) and `pnpm run backend:check` (all backend Rust workspaces, including `crates/remote`)\n- Rust tests: `cargo test --workspace`\n- Generate TS types from Rust: `pnpm run generate-types` (or `generate-types:check` in CI)\n- Prepare SQLx (offline): `pnpm run prepare-db`\n- Prepare SQLx (remote package, postgres): `pnpm run remote:prepare-db`\n- Local NPX build: `pnpm run build:npx` then `pnpm pack` in `npx-cli/`\n- Release (npx, without CI): `scripts/release-local.sh`; see [`RELEASING.md`](RELEASING.md)\n- Format code: `pnpm run format` (runs `cargo fmt` for all backend Rust workspaces + web-core/web Prettier)\n- Lint: `pnpm run lint` (runs web/ui ESLint + `cargo clippy` for all backend Rust workspaces)\n\n## Before Completing a Task\n- Run `pnpm run format` to format all Rust workspaces and web code.\n\n## Coding Style & Naming Conventions\n- Rust: `rustfmt` enforced (`rustfmt.toml`); group imports by crate; snake_case modules, PascalCase types.\n- TypeScript/React: ESLint + Prettier (2 spaces, single quotes, 80 cols). PascalCase components, camelCase vars/functions, kebab-case file names where practical.\n- Keep functions small, add `Debug`/`Serialize`/`Deserialize` where useful.\n\n## Testing Guidelines\n- Rust: prefer unit tests alongside code (`#[cfg(test)]`), run `cargo test --workspace`. Add tests for new logic and edge cases.\n- Web app: ensure `pnpm run check` and `pnpm run lint` pass. If adding runtime logic, include lightweight tests (e.g., Vitest) in the same directory.\n\n## Security & Config Tips\n- Use `.env` for local overrides; never commit secrets. Key envs: `FRONTEND_PORT`, `BACKEND_PORT`, `HOST` \n- Dev ports and assets are managed by `scripts/setup-dev-environment.js`.\n\n\n"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 4081,
+      "line_count": 59,
+      "truncated": false,
+      "excerpt": "# Repository Guidelines\n\n## Project Structure & Module Organization\n- `crates/`: Rust workspace crates \u2014 `server` (API + bins), `db` (SQLx models/migrations), `executors`, `services`, `utils`, `git` (Git operations), `api-types` (shared API types for local + remote), `review` (PR review tool), `deployment`, `local-deployment`, `remote`.\n- `packages/local-web/`: Local React + TypeScript app entrypoint (Vite, Tailwind). Shell source in `packages/local-web/src`.\n- `packages/remote-web/`: Remote deployment frontend entrypoint.\n- `packages/web-core/`: Shared React + TypeScript frontend library used by local + remote web (`packages/web-core/src`).\n- `shared/`: Generated TypeScript types (`shared/types.ts`, `shared/remote-types.ts`) and agent tool schemas (`shared/schemas/`). Do not edit generated files directly.\n- `assets/`, `dev_assets_seed/`, `dev_assets/`: Packaged and local dev assets.\n- `npx-cli/`: Files published to the npm CLI package.\n- `scripts/`: Dev helpers (ports, DB preparation).\n- `docs/`: Documentation files.\n\n### Crate-specific guides\n- [`crates/remote/AGENTS.md`](crates/remote/AGENTS.md) \u2014 Remote server architecture, ElectricSQL integration, mutation patterns, environment variables.\n- [`docs/AGENTS.md`](docs/AGENTS.md) \u2014 Mintlify documentation writing guidelines and component reference.\n- [`packages/local-web/AGENTS.md`](packages/local-web/AGENTS.md) \u2014 Web app design system styling guidelines.\n\n## Managing Shared Types Between Rust and TypeScript\n\nts-rs allows you to derive TypeScript types from Rust structs/enums. By annotating your Rust types with #[derive(TS)] and related macros, ts-rs will generate .ts declaration files for those types.\nWhen making changes to the types, you can regenerate them using `pnpm run generate-types`\nDo not manually edit shared/types.ts, instead edit crates/server/src/bin/generate_types.rs\n\nFor remote/cloud types, regenerate using `pnpm run remote:generate-types`\nDo not manually edit shared/remote-types.ts, instead edit crates/remote/src/bin/remote-generate-types.rs (see crates/remote/AGENTS.md for details).\n\n## Build, Test, and Development Commands\n- Install: `pnpm i`\n- Run dev (web app + backend with ports auto-assigned): `pnpm run dev`\n- Backend (watch): `pnpm run backend:dev:watch`\n- Web app (dev): `pnpm run local-web:dev`\n- Type checks: `pnpm run check` (frontend + all backend Rust workspaces) and `pnpm run backend:check` (all backend Rust workspaces, including `crates/remote`)\n- Rust tests: `cargo test --workspace`\n- Generate TS types from Rust: `pnpm run generate-types` (or `generate-types:check` in CI)\n- Prepare SQLx (offline): `pnpm run prepare-db`\n- Prepare SQLx (remote package, postgres): `pnpm run remote:prepare-db`\n- Local NPX build: `pnpm run build:npx` then `pnpm pack` in `npx-cli/`\n- Release (npx, without CI): `scripts/release-local.sh`; see [`RELEASING.md`](RELEASING.md)\n- Format code: `pnpm run format` (runs `cargo fmt` for all backend Rust workspaces + web-core/web Prettier)\n- Lint: `pnpm run lint` (runs web/ui ESLint + `cargo clippy` for all backend Rust workspaces)\n\n## Before Completing a Task\n- Run `pnpm run format` to format all Rust workspaces and web code.\n\n## Coding Style & Naming Conventions\n- Rust: `rustfmt` enforced (`rustfmt.toml`); group imports by crate; snake_case modules, PascalCase types.\n- TypeScript/React: ESLint + Prettier (2 spaces, single quotes, 80 cols). PascalCase components, camelCase vars/functions, kebab-case file names where practical.\n- Keep functions small, add `Debug`/`Serialize`/`Deserialize` where useful.\n\n## Testing Guidelines\n- Rust: prefer unit tests alongside code (`#[cfg(test)]`), run `cargo test --workspace`. Add tests for new logic and edge cases.\n- Web app: ensure `pnpm run check` and `pnpm run lint` pass. If adding runtime logic, include lightweight tests (e.g., Vitest) in the same directory.\n\n## Security & Config Tips\n- Use `.env` for local overrides; never commit secrets. Key envs: `FRONTEND_PORT`, `BACKEND_PORT`, `HOST` \n- Dev ports and assets are managed by `scripts/setup-dev-environment.js`.\n\n\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 7427,
+      "line_count": 163,
+      "truncated": true,
+      "excerpt": "<p align=\"center\">\n  <a href=\"https://vibekanban.com\">\n    <picture>\n      <source srcset=\"packages/public/vibe-kanban-logo-dark.svg\" media=\"(prefers-color-scheme: dark)\">\n      <source srcset=\"packages/public/vibe-kanban-logo.svg\" media=\"(prefers-color-scheme: light)\">\n      <img src=\"packages/public/vibe-kanban-logo.svg\" alt=\"Vibe Kanban Logo\">\n    </picture>\n  </a>\n</p>\n\n<p align=\"center\">Get 10X more out of Claude Code, Gemini CLI, Codex, Amp and other coding agents...</p>\n<p align=\"center\">\n  <a href=\"https://www.npmjs.com/package/vibe-kanban\"><img alt=\"npm\" src=\"https://img.shields.io/npm/v/vibe-kanban?style=flat-square\" /></a>\n  <a href=\"https://github.com/BloopAI/vibe-kanban/blob/main/.github/workflows/publish.yml\"><img alt=\"Build status\" src=\"https://img.shields.io/github/actions/workflow/status/BloopAI/vibe-kanban/.github%2Fworkflows%2Fpublish.yml\" /></a>\n  <a href=\"https://deepwiki.com/BloopAI/vibe-kanban\"><img src=\"https://deepwiki.com/badge.svg\" alt=\"Ask DeepWiki\"></a>\n</p>\n\n<h1 align=\"center\">\n  <strong>Vibe Kanban is sunsetting.</strong>\n  <a href=\"https://www.vibekanban.com/blog/shutdown\">Read the announcement.</a>\n</h1>\n\n![](packages/public/vibe-kanban-screenshot-overview.png)\n\n## Overview\n\nIn a world where software engineers spend most of their time planning and reviewing coding agents, the most impactful way to ship more is to get faster at planning and review.\n\nVibe Kanban is built for this. Use kanban issues to plan work, either privately or with your team. When you're ready to begin, create workspaces where coding agents can execute.\n\n- **Plan with kanban issues** \u2014 create, prioritise, and assign issues on a kanban board\n- **Run coding agents in workspaces** \u2014 each workspace gives an agent a branch, a terminal, and a dev server\n- **Review diffs and leave inline comments** \u2014 send feedback directly to the agent without leaving the UI\n- **Preview your app** \u2014 built-in browser with devtools, inspect mode, and device emulation\n- **Switch between 10+ coding agents** \u2014 Claude Code, Codex, Gemini CLI, GitHub Copilot, Amp, Cursor, OpenCode, Droid, CCR, and Qwen Code\n- **Create pull requests and merge** \u2014 open PRs with AI-generated descriptions, review on GitHub, and merge\n\n![](packages/public/vibe-kanban-screenshot-workspace.png)\n\nOne command. Describe the work, review the diff, ship it.\n\n```bash\nnpx vibe-kanban\n```\n\n\n## Installation\n\nMake sure you have authenticated with your favourite coding agent. A full list of supported coding agents can be found in the [docs](https://vibekanban.com/docs/supported-coding-agents). Then in your terminal run:\n\n```bash\nnpx vibe-kanban\n```\n\n## Documentation\n\nHead to the [website](https://vibekanban.com/docs) for the latest documentation and user guides.\n\n## Self-Hosting\n\nWant to host your own Vibe Kanban Cloud instance? See our [self-hosting guide](https://vibekanban.com/docs/self-hosting/deploy-docker).\n\n## Support\n\nWe use [GitHub Discussions](https://github.com/BloopAI/vibe-kanban/discussions) for feature requests. Please open a discussion to create a feature request. For bugs please open an issue on this repo.\n\n## Contributing\n\nWe would prefer that ideas and changes are first raised with the core team via [GitHub Discussions](https://github.com/BloopAI/vibe-kanban/discussions) or [Discord](https://discord.gg/AC4nwVtJM3), where we can discuss implementation details and alignment with the existing roadmap. Please do not open PRs without first discussing your proposal with the team.\n\n## Development\n\n### Prerequisites\n\n- [Rust](https://rustup.rs/) (latest stable)\n- [Node.js](https://nodejs.org/) (>=20)\n- [pnpm](https://pnpm.io/) (>=8)\n\nAdditional development tools:\n```bash\ncargo install cargo-watch\ncargo install sqlx-cli\n```\n\nInstall dependencies:\n```bash\npnpm i\n```\n\n### Running the dev server\n\n```bash\npnpm run dev\n```\n\nThis will start the backend and web app. A blank DB will be copied from the `dev_assets_seed` folder.\n\n### Building the web app\n\nTo build just the web app:\n\n```bash\ncd packages/local-web\npnpm run build\n```\n\n### Build from source (macOS)\n\n1. Run `./local-build.sh`\n2. Test with `cd npx-cli && node bin/cli.js`\n\n### Environment Variables\n\nThe following environment variables can be configured at build time or runtime:\n\n| Variable | Type | Default | Description |\n|----------|------|---------|-------------|\n| `POSTHOG_API_KEY` | Build-time | Empty | PostHog analytics API key (disables analytics if empty) |\n| `POSTHOG_API_ENDPOINT` | Build-time | Empty | PostHog analytics endpoint (disables analytics if empty) |\n| `PORT` | Runtime | Auto-assign | **Production**: Server port. **Dev**: Frontend port (backend uses PORT+1) |\n| `BACKEND_PORT` | Runtime | `0` (auto-assign) | Backend server port (dev mode only, overrides PORT+1) |\n| `FRONTEND_PORT` | Runtime | `3000` | Frontend dev server port (dev mode only, overrides PORT) |\n| `HOST` | Runtime | `127.0.0.1` | Backend server host |\n| `MCP_HOST` | Runtime | Value of `HOST` | MCP server connection host (use `127.0.0.1` when `HOST=0.0.0.0` on Windows) |\n| `MCP_PORT` | Runtime | Value of `BACKEND_PORT` | MCP server connection port |\n| `DISABLE_WORKTREE_CLEANUP` | Runtime | Not set | Disable all git worktree cleanup including orphan and expired workspace cleanup (for debugging) |\n| `VK_ALLOWED_ORIGINS` | Runtime | Not set | Comma-separated list of origins that are allowed to make backend API requests (e.g., `https://my-vibekanban-frontend.com`) |\n| `VK_SHARED_API_BASE` | Runtime | Not set | Base URL for the remote/cloud API used by the local desktop app |\n| `VK_SHARED_RELAY_API_BASE` | Runtime | Not set | Base URL for the relay API used by tunnel-mode connections |\n| `VK_TUNNEL` | Runtime | Not set | Enable relay tunnel mode when set (requires relay API base URL) |\n\n**Build-time variables** must be set when running `pnpm run build`. **Runtime variables** are read when the application starts.\n\n#### Self-Hosting with a Reverse Proxy or Custom Domain\n\nWhen running Vibe Kanban behind a reverse proxy"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 5258,
+      "line_count": 69,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"vibe-kanban\",\n  \"version\": \"0.1.46\",\n  \"private\": true,\n  \"bin\": {\n    \"vibe-kanban\": \"npx-cli/bin/cli.js\"\n  },\n  \"files\": [\n    \"npx-cli/bin/cli.js\",\n    \"npx-cli/dist/**\"\n  ],\n  \"scripts\": {\n    \"lint\": \"pnpm run local-web:lint && pnpm run ui:lint && pnpm run backend:lint && node scripts/check-unused-i18n-keys.mjs\",\n    \"format\": \"pnpm run backend:format && pnpm run web-core:format && pnpm run local-web:format && pnpm run remote-web:format\",\n    \"check\": \"pnpm run local-web:legacy-path-guard && pnpm run local-web:check && pnpm run remote-web:check && pnpm run web-core:check && pnpm run ui:check && pnpm run backend:check\",\n    \"dev\": \"export FRONTEND_PORT=$(node scripts/setup-dev-environment.js frontend) && export BACKEND_PORT=$(node scripts/setup-dev-environment.js backend) && export PREVIEW_PROXY_PORT=$(node scripts/setup-dev-environment.js preview_proxy) && export VK_ALLOWED_ORIGINS=\\\"http://localhost:${FRONTEND_PORT}\\\" && export VITE_VK_SHARED_API_BASE=${VK_SHARED_API_BASE:-} && concurrently \\\"pnpm run backend:dev:watch\\\" \\\"pnpm run local-web:dev\\\"\",\n    \"test:npm\": \"./test-npm-package.sh\",\n    \"local-web:lint\": \"pnpm --filter @vibe/local-web run lint\",\n    \"local-web:legacy-path-guard\": \"./scripts/check-legacy-frontend-paths.sh\",\n    \"web-core:format\": \"pnpm --filter @vibe/web-core run format\",\n    \"web-core:check\": \"pnpm --filter @vibe/web-core run check\",\n    \"local-web:dev\": \"cd packages/local-web && pnpm run dev -- --port ${FRONTEND_PORT:-3000}\",\n    \"local-web:check\": \"pnpm --filter @vibe/local-web run check\",\n    \"remote-web:check\": \"pnpm --filter @vibe/remote-web run check\",\n    \"local-web:format\": \"pnpm --filter @vibe/local-web run format\",\n    \"remote-web:format\": \"pnpm --filter @vibe/remote-web run format\",\n    \"ui:lint\": \"pnpm --filter @vibe/ui run lint\",\n    \"ui:check\": \"pnpm --filter @vibe/ui run check\",\n    \"backend:lint\": \"cargo clippy --workspace --all-targets --features qa-mode -- -D warnings && cargo clippy --manifest-path crates/remote/Cargo.toml --all-targets -- -D warnings\",\n    \"backend:format\": \"cargo fmt --all && cargo fmt --all --manifest-path crates/remote/Cargo.toml\",\n    \"backend:dev\": \"BACKEND_PORT=$(node scripts/setup-dev-environment.js backend) pnpm run backend:dev:watch\",\n    \"backend:check\": \"cargo check --workspace && cargo check --manifest-path crates/remote/Cargo.toml\",\n    \"backend:dev:watch\": \"DISABLE_WORKTREE_CLEANUP=1 RUST_LOG=debug cargo watch -w crates -x 'run --bin server'\",\n    \"dev:qa\": \"export FRONTEND_PORT=$(node scripts/setup-dev-environment.js frontend) && export BACKEND_PORT=$(node scripts/setup-dev-environment.js backend) && export PREVIEW_PROXY_PORT=$(node scripts/setup-dev-environment.js preview_proxy) && export VK_ALLOWED_ORIGINS=\\\"http://localhost:${FRONTEND_PORT}\\\" && export VITE_VK_SHARED_API_BASE=${VK_SHARED_API_BASE:-} && concurrently \\\"pnpm run backend:dev:watch:qa\\\" \\\"pnpm run local-web:dev\\\"\",\n    \"generate-types\": \"cargo run --bin generate_types\",\n    \"generate-types:check\": \"cargo run --bin generate_types -- --check\",\n    \"remote:generate-types\": \"cargo run --manifest-path crates/remote/Cargo.toml --bin remote-generate-types\",\n    \"remote:generate-types:check\": \"cargo run --manifest-path crates/remote/Cargo.toml --bin remote-generate-types -- --check\",\n    \"prepare-db\": \"node scripts/prepare-db.js\",\n    \"prepare-db:check\": \"node scripts/prepare-db.js --check\",\n    \"build:bippy-bundle\": \"node scripts/build-bippy-bundle.mjs\",\n    \"build:npx\": \"bash ./local-build.sh\",\n    \"build:npx-cli\": \"cd npx-cli && npm ci && npm run build\",\n    \"check:npx-cli\": \"tsc --noEmit -p npx-cli/tsconfig.json\",\n    \"prepack\": \"pnpm run build:npx && pnpm run build:npx-cli\",\n    \"remote:dev\": \"cd crates/remote && docker compose --env-file .env.remote up --build ; docker compose --env-file .env.remote down -v\",\n    \"remote:dev:full\": \"cd crates/remote && docker compose --env-file .env.remote --profile relay --profile attachments up --build ; docker compose --env-file .env.remote down -v\",\n    \"remote:dev:clean\": \"cd crates/remote && docker compose --env-file .env.remote --profile relay --profile attachments down -v --remove-orphans\",\n    \"remote:prepare-db\": \"cd crates/remote && bash scripts/prepare-db.sh\",\n    \"remote:prepare-db:check\": \"cd crates/remote && bash scripts/prepare-db.sh --check\",\n    \"tauri:dev\": \"set -a && [ -f .env ] && . ./.env && set +a && export FRONTEND_PORT=$(node scripts/setup-dev-environment.js frontend) && export BACKEND_PORT=$(node scripts/setup-dev-environment.js backend) && export VK_ALLOWED_ORIGINS=\\\"http://localhost:${FRONTEND_PORT}\\\" && export DISABLE_WORKTREE_CLEANUP=1 && export RUST_LOG=debug && export VITE_VK_SHARED_API_BASE=${VK_SHARED_API_BASE:-} && cd crates/tauri-app && cargo tauri dev --config '{\\\"build\\\":{\\\"devUrl\\\":\\\"http://localhost:'\\\"${FRONTEND_PORT}\\\"'\\\"}}'\",\n    \"tauri:build\": \"cd crates/tauri-app && cargo tauri build\"\n  },\n  \"devDependencies\": {\n    \"@types/adm-zip\": \"^0.5.8\",\n    \"@types/node\": \"^20.19.43\",\n    \"bippy\": \"0.5.28\",\n    \"concurrently\": \"^8.2.2\",\n    \"esbuild\": \"^0.28.2\",\n    \"jwt-decode\": \"^4.0.0\",\n    \"typescript\": \"^5.9.3\",\n    \"vite\": \"^8.3.0\"\n  },\n  \"engines\": {\n    \"node\": \">=20\",\n    \"pnpm\": \">=8\"\n  },\n  \"packageManager\": \"pnpm@10.13.1\"\n}\n"
+    },
+    "Cargo.toml": {
+      "path": "Cargo.toml",
+      "size_bytes": 2061,
+      "line_count": 60,
+      "truncated": false,
+      "excerpt": "[workspace]\nresolver = \"3\"\nmembers = [\n    \"crates/api-types\",\n    \"crates/relay-client\",\n    \"crates/server\",\n    \"crates/relay-types\",\n    \"crates/trusted-key-auth\",\n    \"crates/mcp\",\n    \"crates/db\",\n    \"crates/executors\",\n    \"crates/services\",\n    \"crates/worktree-manager\",\n    \"crates/workspace-manager\",\n    \"crates/relay-control\",\n    \"crates/relay-protocol\",\n    \"crates/relay-ws\",\n    \"crates/ws-bridge\",\n    \"crates/relay-hosts\",\n    \"crates/client-info\",\n    \"crates/remote-info\",\n    \"crates/utils\",\n    \"crates/git\",\n    \"crates/git-host\",\n    \"crates/local-deployment\",\n    \"crates/deployment\",\n    \"crates/review\",\n    \"crates/embedded-ssh\",\n    \"crates/desktop-bridge\",\n    \"crates/tauri-app\",\n    \"crates/preview-proxy\",\n    \"crates/relay-tunnel-core\",\n    \"crates/relay-webrtc\",\n]\nexclude = [\"crates/remote\", \"crates/relay-tunnel\"]\n\n[workspace.dependencies]\ntokio = { version = \"1.0\", features = [\"full\"] }\naxum = { version = \"0.8.4\", features = [\"macros\", \"multipart\", \"ws\"] }\ntower-http = { version = \"0.5\", features = [\"cors\", \"request-id\", \"trace\", \"fs\", \"validate-request\", \"compression-gzip\", \"compression-br\"] }\nserde = { version = \"1.0\", features = [\"derive\"] }\nserde_json = { version = \"1.0\", features = [\"preserve_order\"] }\nanyhow = \"1.0\"\ngit2 = { version = \"0.20.3\", default-features = false }\nreqwest = { version = \"0.13\", default-features = false, features = [\"json\", \"query\", \"stream\", \"rustls\"] }\nrustls = { version = \"0.23\", default-features = false, features = [\"aws_lc_rs\", \"std\", \"tls12\"] }\nthiserror = \"2.0.12\"\ntracing = \"0.1.43\"\ntracing-subscriber = { version = \"0.3\", features = [\"env-filter\", \"fmt\", \"json\"] }\nts-rs = { git = \"https://github.com/xazukx/ts-rs.git\", branch = \"use-ts-enum\", features = [\"uuid-impl\", \"chrono-impl\", \"no-serde-warnings\", \"serde-json-impl\"] }\nschemars = { version = \"1.0.4\", features = [\"derive\", \"chrono04\", \"uuid1\", \"preserve_order\"] }\nserde_with = \"3\"\nasync-trait = \"0.1\"\naws-lc-sys = \"=0.37.0\"\naws-lc-rs = \"=1.16.0\"\n\n[profile.release]\ndebug = 1\nsplit-debuginfo = \"packed\"\nstrip = true\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 369,
+      "line_count": 17,
+      "truncated": false,
+      "excerpt": "packages:\n  - packages/*\n\nonlyBuiltDependencies:\n  - '@sentry/cli'\n  - core-js\n  - esbuild\n\noverrides:\n  diff@>=6.0.0 <8.0.3: '>=8.0.3'\n  esbuild@>=0.27.3 <0.28.1: '>=0.28.1'\n  minimatch@>=9.0.0 <9.0.7: '>=9.0.7'\n  picomatch@>=4.0.0 <4.0.4: '>=4.0.4'\n  uuid@>=13.0.0 <13.0.1: '>=13.0.1'\n\npatchedDependencies:\n  '@pierre/diffs@1.1.4': patches/@pierre__diffs@1.1.4.patch\n"
+    }
+  },
+  "workflow_samples": {
+    "pre-release.yml": {
+      "path": ".github/workflows/pre-release.yml",
+      "size_bytes": 47535,
+      "line_count": 1166,
+      "truncated": true,
+      "excerpt": "name: Create GitHub Pre-Release\n\non:\n  workflow_dispatch:\n    inputs:\n      version_type:\n        description: \"Version bump type\"\n        required: true\n        default: \"patch\"\n        type: choice\n        options:\n          - patch\n          - minor\n          - major\n          - prerelease\n\nconcurrency:\n  group: release-${{ github.ref_name }} # allow concurrent prerelease from different branches\n  cancel-in-progress: true\n\npermissions:\n  contents: write\n  packages: write\n  pull-requests: write\n\nenv:\n  NODE_VERSION: 22\n  PNPM_VERSION: 10.13.1\n  RUST_TOOLCHAIN: nightly-2026-08-01\n  CARGO_XWIN_VERSION: 0.20.2\n\njobs:\n  bump-version:\n    runs-on: ubuntu-24.04\n    outputs:\n      new_tag: ${{ steps.version.outputs.new_tag }}\n      new_version: ${{ steps.version.outputs.new_version }}\n      branch_suffix: ${{ steps.branch.outputs.suffix }}\n    steps:\n      - name: Install cargo-edit\n        uses: taiki-e/cache-cargo-install-action@34ce5120836e5f9f1508d8713d7fdea0e8facd6f # v3.0.1\n        with:\n          tool: cargo-edit\n          git: https://github.com/killercup/cargo-edit\n          rev: 96a3879fe3bafda6d0f943b642997fbf03e235cd # v0.13.9\n\n      - uses: actions/checkout@v6\n        with:\n          token: ${{ secrets.GITHUB_TOKEN }}\n          ssh-key: ${{ secrets.DEPLOY_KEY }}\n\n      - name: setup node\n        uses: ./.github/actions/setup-node\n\n      - name: Setup SSH Agent for private dependencies\n        id: ssh-setup\n        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}\n        uses: webfactory/ssh-agent@dc588b651fe13675774614f8e6a936a468676387 # v0.9.0\n        with:\n          ssh-private-key: ${{ secrets.VK_PRIVATE_DEPLOY_KEY }}\n\n      - name: Generate branch suffix\n        id: branch\n        run: |\n          branch_name=\"${{ github.ref_name }}\"\n          # Get last 6 characters of branch name, remove all special chars (including dashes)\n          suffix=$(echo \"$branch_name\" | tail -c 7 | sed 's/[^a-zA-Z0-9]//g' | tr '[:upper:]' '[:lower:]')\n          echo \"Branch: $branch_name\"\n          echo \"Suffix: $suffix\"\n          echo \"suffix=$suffix\" >> $GITHUB_OUTPUT\n\n      - name: Determine and update versions\n        id: version\n        run: |\n          # Get the latest version from npm registry\n          latest_npm_version=$(npm view vibe-kanban version 2>/dev/null || echo \"0.0.0\")\n          echo \"Latest npm version: $latest_npm_version\"\n\n          # Get current repo version\n          current_repo_version=$(node -p \"require('./package.json').version\")\n          echo \"Current repo version: $current_repo_version\"\n\n          # Use the higher of the two versions as the base (prevents downgrade errors with cargo set-version)\n          base_version=$(node -e \"\n            const npm = '$latest_npm_version'.split('.').map(Number);\n            const repo = '$current_repo_version'.split('.').map(Number);\n            for (let i = 0; i < 3; i++) {\n              if ((npm[i] || 0) > (repo[i] || 0)) { console.log('$latest_npm_version'); process.exit(); }\n              if ((npm[i] || 0) < (repo[i] || 0)) { console.log('$current_repo_version'); process.exit(); }\n            }\n            console.log('$current_repo_version');\n          \")\n          echo \"Base version for bump: $base_version\"\n\n          timestamp=$(date +%Y%m%d%H%M%S)\n\n          # Update root package.json based on base version\n          if [[ \"${{ github.event.inputs.version_type }}\" == \"prerelease\" ]]; then\n            # For prerelease, use current package.json version and add branch suffix\n            npm version prerelease --preid=\"${{ steps.branch.outputs.suffix }}\" --no-git-tag-version\n\n            new_version=$(node -p \"require('./package.json').version\")\n            new_tag=\"v${new_version}.${timestamp}\"\n          else\n            # For regular releases, use base version and bump it\n            npm version $base_version --no-git-tag-version --allow-same-version\n            npm version ${{ github.event.inputs.version_type }} --no-git-tag-version\n\n            new_version=$(node -p \"require('./package.json').version\")\n            new_tag=\"v${new_version}-${timestamp}\"\n          fi\n\n          # Update npx-cli package.json to match\n          (\n            cd npx-cli\n            npm version $new_version --no-git-tag-version --allow-same-version\n          )\n\n          # Update web app package.json to match\n          (\n            cd packages/local-web\n            npm version $new_version --no-git-tag-ver"
+    },
+    "relay-deploy-prod.yml": {
+      "path": ".github/workflows/relay-deploy-prod.yml",
+      "size_bytes": 3350,
+      "line_count": 104,
+      "truncated": false,
+      "excerpt": "name: Deploy Relay Prod\n\non:\n  workflow_dispatch:\n    inputs:\n      version_type:\n        description: \"Version bump type\"\n        required: true\n        default: \"patch\"\n        type: choice\n        options:\n          - patch\n          - minor\n          - major\n\nconcurrency:\n  group: relay-deploy-${{ github.ref_name }}\n  cancel-in-progress: true\n\npermissions:\n  contents: write\n\nenv:\n  RUST_TOOLCHAIN: nightly-2026-08-01\n\njobs:\n  release-and-deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Install cargo-edit\n        uses: taiki-e/cache-cargo-install-action@34ce5120836e5f9f1508d8713d7fdea0e8facd6f # v3.0.1\n        with:\n          tool: cargo-edit\n          git: https://github.com/killercup/cargo-edit\n          rev: 96a3879fe3bafda6d0f943b642997fbf03e235cd # v0.13.9\n\n      - uses: actions/checkout@v6\n        with:\n          token: ${{ secrets.GITHUB_TOKEN }}\n          ssh-key: ${{ secrets.DEPLOY_KEY }}\n\n      - name: Determine and update version\n        id: version\n        run: |\n          # Get current version from crates/relay-tunnel/Cargo.toml\n          current_version=$(grep '^version = ' crates/relay-tunnel/Cargo.toml | head -1 | sed 's/version = \"\\(.*\\)\"/\\1/')\n          echo \"Current relay-tunnel version: $current_version\"\n\n          # Parse version components\n          IFS='.' read -r major minor patch <<< \"$current_version\"\n\n          # Bump based on type\n          case \"${{ github.event.inputs.version_type }}\" in\n            major)\n              major=$((major + 1))\n              minor=0\n              patch=0\n              ;;\n            minor)\n              minor=$((minor + 1))\n              patch=0\n              ;;\n            patch)\n              patch=$((patch + 1))\n              ;;\n          esac\n\n          new_version=\"${major}.${minor}.${patch}\"\n          new_tag=\"relay-v${new_version}\"\n\n          # Update version in crates/relay-tunnel/Cargo.toml\n          cd crates/relay-tunnel\n          cargo set-version \"$new_version\"\n          cargo update relay-tunnel\n          cd ../..\n\n          echo \"New version: $new_version\"\n          echo \"New tag: $new_tag\"\n          echo \"new_version=$new_version\" >> $GITHUB_OUTPUT\n          echo \"new_tag=$new_tag\" >> $GITHUB_OUTPUT\n          echo \"new_ref=$new_tag\" >> $GITHUB_OUTPUT\n\n      - name: Commit changes and create tag\n        run: |\n          git config --local user.email \"action@github.com\"\n          git config --local user.name \"GitHub Action\"\n          git add crates/relay-tunnel/Cargo.toml crates/relay-tunnel/Cargo.lock\n          git commit -m \"chore: bump relay-tunnel version to ${{ steps.version.outputs.new_version }}\"\n          git tag -a ${{ steps.version.outputs.new_tag }} -m \"Relay release ${{ steps.version.outputs.new_tag }}\"\n          git push\n          git push --tags\n\n      - name: Dispatch relay deployment workflow\n        uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697 # v4.0.1\n        with:\n          token: ${{ secrets.REMOTE_DEPLOYMENT_TOKEN }}\n          repository: BloopAI/vibe-kanban-remote-deployment\n          event-type: vibe-kanban-relay-deploy-prod\n          client-payload: |\n            {\n              \"ref\": \"${{ steps.version.outputs.new_ref }}\",\n              \"sha\": \"${{ github.sha }}\",\n              \"version\": \"${{ steps.version.outputs.new_version }}\"\n            }\n"
+    },
+    "remote-deploy-prod.yml": {
+      "path": ".github/workflows/remote-deploy-prod.yml",
+      "size_bytes": 3577,
+      "line_count": 112,
+      "truncated": false,
+      "excerpt": "name: Deploy Remote Prod\n\non:\n  workflow_dispatch:\n    inputs:\n      version_type:\n        description: \"Version bump type\"\n        required: true\n        default: \"patch\"\n        type: choice\n        options:\n          - patch\n          - minor\n          - major\n\nconcurrency:\n  group: remote-deploy-${{ github.ref_name }}\n  cancel-in-progress: true\n\npermissions:\n  contents: write\n\nenv:\n  RUST_TOOLCHAIN: nightly-2026-08-01\n\njobs:\n  release-and-deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Install cargo-edit\n        uses: taiki-e/cache-cargo-install-action@34ce5120836e5f9f1508d8713d7fdea0e8facd6f # v3.0.1\n        with:\n          tool: cargo-edit\n          git: https://github.com/killercup/cargo-edit\n          rev: 96a3879fe3bafda6d0f943b642997fbf03e235cd # v0.13.9\n\n      - uses: actions/checkout@v6\n        with:\n          token: ${{ secrets.GITHUB_TOKEN }}\n          ssh-key: ${{ secrets.DEPLOY_KEY }}\n\n      - name: Setup SSH Agent for private dependencies\n        uses: webfactory/ssh-agent@dc588b651fe13675774614f8e6a936a468676387 # v0.9.0\n        with:\n          ssh-private-key: ${{ secrets.VK_PRIVATE_DEPLOY_KEY }}\n\n      - name: Determine and update version\n        id: version\n        run: |\n          # Get current version from crates/remote/Cargo.toml\n          current_version=$(grep '^version = ' crates/remote/Cargo.toml | head -1 | sed 's/version = \"\\(.*\\)\"/\\1/')\n          echo \"Current remote version: $current_version\"\n\n          # Parse version components\n          IFS='.' read -r major minor patch <<< \"$current_version\"\n\n          # Bump based on type\n          case \"${{ github.event.inputs.version_type }}\" in\n            major)\n              major=$((major + 1))\n              minor=0\n              patch=0\n              ;;\n            minor)\n              minor=$((minor + 1))\n              patch=0\n              ;;\n            patch)\n              patch=$((patch + 1))\n              ;;\n          esac\n\n          new_version=\"${major}.${minor}.${patch}\"\n          new_tag=\"remote-v${new_version}\"\n\n          # Update version in crates/remote/Cargo.toml\n          cd crates/remote\n          cargo set-version \"$new_version\"\n          cargo update remote\n          cd ../..\n\n          echo \"New version: $new_version\"\n          echo \"New tag: $new_tag\"\n          echo \"new_version=$new_version\" >> $GITHUB_OUTPUT\n          echo \"new_tag=$new_tag\" >> $GITHUB_OUTPUT\n          echo \"new_ref=$new_tag\" >> $GITHUB_OUTPUT\n\n      - name: Stop SSH agent\n        run: ssh-agent -k\n\n      - name: Commit changes and create tag\n        run: |\n          git config --local user.email \"action@github.com\"\n          git config --local user.name \"GitHub Action\"\n          git add crates/remote/Cargo.toml crates/remote/Cargo.lock\n          git commit -m \"chore: bump remote version to ${{ steps.version.outputs.new_version }}\"\n          git tag -a ${{ steps.version.outputs.new_tag }} -m \"Remote release ${{ steps.version.outputs.new_tag }}\"\n          git push\n          git push --tags\n\n      - name: Dispatch remote deployment workflow\n        uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697 # v4.0.1\n        with:\n          token: ${{ secrets.REMOTE_DEPLOYMENT_TOKEN }}\n          repository: BloopAI/vibe-kanban-remote-deployment\n          event-type: vibe-kanban-remote-deploy-prod\n          client-payload: |\n            {\n              \"ref\": \"${{ steps.version.outputs.new_ref }}\",\n              \"sha\": \"${{ github.sha }}\",\n              \"version\": \"${{ steps.version.outputs.new_version }}\"\n            }\n"
+    },
+    "test.yml": {
+      "path": ".github/workflows/test.yml",
+      "size_bytes": 12336,
+      "line_count": 347,
+      "truncated": true,
+      "excerpt": "name: Test\n\non:\n  pull_request:\n    branches:\n      - main\n    paths-ignore:\n      - .github/workflows/**\n      - '!.github/workflows/test.yml'\n  push:\n    branches:\n      - main\n  workflow_dispatch:\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}\n\nenv:\n  CARGO_TERM_COLOR: always\n  NODE_VERSION: 22\n  PNPM_VERSION: 10.13.1\n  RUST_TOOLCHAIN: nightly-2026-08-01\n  RUNNER_LABEL: &runner_label ubuntu-24.04\n\njobs:\n  changes:\n    runs-on: *runner_label\n    if: github.event_name == 'pull_request'\n    permissions:\n      contents: read\n      pull-requests: read\n    outputs:\n      frontend: ${{ steps.filter.outputs.frontend }}\n      backend: ${{ steps.filter.outputs.backend }}\n      backend-remote: ${{ steps.filter.outputs['backend-remote'] }}\n      tauri: ${{ steps.filter.outputs.tauri }}\n    steps:\n      - uses: actions/checkout@v6\n      - uses: dorny/paths-filter@0bc4621a3135347011ad047f9ecf449bf72ce2bd # v3.0.0\n        id: filter\n        with:\n          filters: |\n            frontend:\n              - 'packages/local-web/**'\n              - 'packages/web-core/**'\n              - 'packages/remote-web/**'\n              - 'packages/ui/**'\n              - 'shared/**'\n              - 'scripts/check-i18n.sh'\n              - 'scripts/check-unused-i18n-keys.mjs'\n              - 'scripts/check-legacy-frontend-paths.sh'\n              - 'scripts/legacy-frontend-paths-allowlist.txt'\n              - 'pnpm-lock.yaml'\n              - 'pnpm-workspace.yaml'\n              - 'package.json'\n              - '.npmrc'\n              - '.github/workflows/test.yml'\n              - '.github/actions/**'\n            backend:\n              - 'crates/api-types/**'\n              - 'crates/client-info/**'\n              - 'crates/db/**'\n              - 'crates/deployment/**'\n              - 'crates/desktop-bridge/**'\n              - 'crates/embedded-ssh/**'\n              - 'crates/executors/**'\n              - 'crates/git/**'\n              - 'crates/git-host/**'\n              - 'crates/local-deployment/**'\n              - 'crates/mcp/**'\n              - 'crates/preview-proxy/**'\n              - 'crates/relay-client/**'\n              - 'crates/relay-control/**'\n              - 'crates/relay-hosts/**'\n              - 'crates/relay-protocol/**'\n              - 'crates/relay-tunnel-core/**'\n              - 'crates/relay-types/**'\n              - 'crates/relay-webrtc/**'\n              - 'crates/relay-ws/**'\n              - 'crates/remote-info/**'\n              - 'crates/review/**'\n              - 'crates/server/**'\n              - 'crates/services/**'\n              - 'crates/trusted-key-auth/**'\n              - 'crates/utils/**'\n              - 'crates/workspace-manager/**'\n              - 'crates/worktree-manager/**'\n              - 'crates/ws-bridge/**'\n              - 'Cargo.toml'\n              - 'Cargo.lock'\n              - 'shared/**'\n              - 'scripts/prepare-db.js'\n              - 'pnpm-lock.yaml'\n              - 'package.json'\n              - 'rustfmt.toml'\n              - 'rust-toolchain.toml'\n              - '.cargo/**'\n              - '.github/workflows/test.yml'\n              - '.github/actions/**'\n            backend-remote:\n              - 'crates/remote/**'\n              - 'crates/relay-tunnel/**'\n              - 'crates/relay-tunnel-core/**'\n              - 'crates/ws-bridge/**'\n              - 'crates/api-types/**'\n              - 'crates/relay-types/**'\n              - 'crates/utils/**'\n              - 'Cargo.toml'\n              - 'Cargo.lock'\n              - 'shared/**'\n              - 'rustfmt.toml'\n              - 'rust-toolchain.toml'\n              - '.cargo/**'\n              - 'pnpm-lock.yaml'\n              - 'package.json'\n              - '.github/workflows/test.yml'\n              - '.github/actions/**'\n            tauri:\n              - 'crates/tauri-app/**'\n              - 'crates/api-types/**'\n              - 'crates/client-info/**'\n              - 'crates/db/**'\n              - 'crates/deployment/**'\n              - 'crates/desktop-bridge/**'\n              - 'crates/embedded-ssh/**'\n              - 'crates/executors/**'\n              - 'crates/git/**'\n              - 'crates/git-host/**'\n              - 'crates/local-deployment/**'\n              - 'crates/mcp/**'\n              - 'crates/preview-proxy/**'\n              - 'crates/relay-client/**'\n              - 'crates/relay-control/**'\n              - 'crates/relay-hosts/**'\n              - 'crates/rela"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-15T16:05:51Z",
+      "oldest": "2026-03-31T15:15:39Z"
+    },
+    "conventional_pct": 64.0,
+    "fix_revert_pct": 28.0,
+    "ai_coauthor_pct": 46.0,
+    "top_recent_authors": [
+      [
+        "anastasiya1155",
+        16
+      ],
+      [
+        "stunningpixels",
+        12
+      ],
+      [
+        "actions-user",
+        6
+      ],
+      [
+        "LSRCT",
+        6
+      ],
+      [
+        "rafaelfiguereod-stack",
+        3
+      ],
+      [
+        "Gabriel Gordon-Hall",
+        2
+      ],
+      [
+        "MannXo",
+        1
+      ],
+      [
+        "theworker02",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "3f095f01",
+        "date": "2026-11-15T16:05:51Z",
+        "author": "anastasiya1155",
+        "subject": "Release from a local script to GitHub Releases and npm (#3507)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4904666b",
+        "date": "2026-11-15T10:36:48Z",
+        "author": "MannXo",
+        "subject": "fix(executors): bump Codex to 0.132.0, whose macOS signature is valid (#3504)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5f06193e",
+        "date": "2026-11-12T13:46:13Z",
+        "author": "anastasiya1155",
+        "subject": "Turn off usage analytics and crash reports (#3503)",
+        "ai_signal": true
+      },
+      {
+        "sha": "b09ba136",
+        "date": "2026-11-12T07:48:40Z",
+        "author": "theworker02",
+        "subject": "fix(executors): sort copilot imports for rustfmt 2024 (#3473)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2d03b13c",
+        "date": "2026-11-11T11:10:44Z",
+        "author": "anastasiya1155",
+        "subject": "feat: sign in to Copilot from vibe-kanban, and restore the Sign in button (#3498)",
+        "ai_signal": true
+      },
+      {
+        "sha": "b4d98330",
+        "date": "2026-11-10T13:07:42Z",
+        "author": "anastasiya1155",
+        "subject": "feat(acp): copilot gets package from registry, no pin (#3497)",
+        "ai_signal": false
+      },
+      {
+        "sha": "72b3e817",
+        "date": "2026-11-10T10:58:31Z",
+        "author": "anastasiya1155",
+        "subject": "feat(acp): set model, reasoning, mode and permissions over ACP, with live Copilot models (#3496)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6883fac3",
+        "date": "2026-11-10T06:10:43Z",
+        "author": "anastasiya1155",
+        "subject": "feat: install and run agents from the ACP registry (#3489)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ad41bda0",
+        "date": "2026-11-09T10:54:32Z",
+        "author": "anastasiya1155",
+        "subject": "chore: bump Rust nightly to 2026-08-01 (#3495)",
+        "ai_signal": true
+      },
+      {
+        "sha": "08064e04",
+        "date": "2026-11-03T08:46:44Z",
+        "author": "anastasiya1155",
+        "subject": "chore: update Cargo.lock versions for relay-tunnel and remote crates (#3490)",
+        "ai_signal": false
+      },
+      {
+        "sha": "7c380708",
+        "date": "2026-10-28T10:37:38Z",
+        "author": "anastasiya1155",
+        "subject": "bugfix: copilot should not auto-approve if permissions is set to Ask, add Copilot to executors list with approval service (#3487)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a019cebf",
+        "date": "2026-10-26T08:23:13Z",
+        "author": "anastasiya1155",
+        "subject": "bugfix: copilot sessions namespace (#3485)",
+        "ai_signal": true
+      },
+      {
+        "sha": "041317e2",
+        "date": "2026-10-26T07:13:46Z",
+        "author": "anastasiya1155",
+        "subject": "feat: add local CI script to run GitHub workflow checks without Actions (Vibe Kanban) (#3484)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d5cbb538",
+        "date": "2026-09-19T06:51:27Z",
+        "author": "anastasiya1155",
+        "subject": "fix: Tanstack router api fix (#3464)",
+        "ai_signal": false
+      },
+      {
+        "sha": "13d81e23",
+        "date": "2026-09-19T06:19:55Z",
+        "author": "anastasiya1155",
+        "subject": "chore: bump version to 0.1.45 (#3462)",
+        "ai_signal": false
+      },
+      {
+        "sha": "78580443",
+        "date": "2026-09-18T06:43:05Z",
+        "author": "anastasiya1155",
+        "subject": "pnpm audit fixes (#3460)",
+        "ai_signal": false
+      },
+      {
+        "sha": "824b37cd",
+        "date": "2026-09-18T05:59:02Z",
+        "author": "isamu",
+        "subject": "fix: an Enter that confirms an IME candidate is not an Enter (#3459)",
+        "ai_signal": true
+      },
+      {
+        "sha": "a4274e43",
+        "date": "2026-09-17T10:24:40Z",
+        "author": "rafaelfiguereod-stack",
+        "subject": "fix: route server startup through startup::initialize_deployment (#3449)",
+        "ai_signal": true
+      },
+      {
+        "sha": "b36a567d",
+        "date": "2026-09-17T10:19:45Z",
+        "author": "rafaelfiguereod-stack",
+        "subject": "docs: add SECURITY.md (#3448)",
+        "ai_signal": true
+      },
+      {
+        "sha": "3b2e2866",
+        "date": "2026-09-17T10:18:54Z",
+        "author": "rafaelfiguereod-stack",
+        "subject": "fix: correct swapped stderr/stdout labels in git CLI error output (#3447)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "stunningpixels",
+      "contributions": 878
+    },
+    {
+      "login": "abcpro1",
+      "contributions": 257
+    },
+    {
+      "login": "LSRCT",
+      "contributions": 235
+    },
+    {
+      "login": "actions-user",
+      "contributions": 213
+    },
+    {
+      "login": "anastasiya1155",
+      "contributions": 128
+    },
+    {
+      "login": "britannio",
+      "contributions": 44
+    },
+    {
+      "login": "vdmkotai",
+      "contributions": 34
+    },
+    {
+      "login": "benodiwal",
+      "contributions": 23
+    },
+    {
+      "login": "t3dotgg",
+      "contributions": 4
+    },
+    {
+      "login": "knowsuchagency",
+      "contributions": 3
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v0.1.46.1794744340",
+      "published_at": "2026-11-15T13:16:39Z",
+      "name": "Release v0.1.46"
+    },
+    {
+      "tag": "v0.1.44-20260424091429",
+      "published_at": "2026-04-24T09:46:55Z",
+      "name": "Release v0.1.44"
+    },
+    {
+      "tag": "v0.1.43-20260417125614",
+      "published_at": "2026-04-17T13:33:00Z",
+      "name": "Release v0.1.43"
+    },
+    {
+      "tag": "v0.1.42-20260410131124",
+      "published_at": "2026-04-10T13:41:46Z",
+      "name": "Pre-release v0.1.42-20260410131124"
+    },
+    {
+      "tag": "v0.1.41-20260403182044",
+      "published_at": "2026-04-03T18:47:50Z",
+      "name": "Pre-release v0.1.41-20260403182044"
+    }
+  ]
+}
