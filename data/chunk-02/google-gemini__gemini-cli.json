@@ -1,0 +1,517 @@
+{
+  "repo": "google-gemini/gemini-cli",
+  "meta": {
+    "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
+    "homepage": "https://geminicli.com",
+    "license": "Apache-2.0",
+    "stars": 109097,
+    "forks": 15003,
+    "open_issues": 751,
+    "archived": false,
+    "created_at": "2025-04-17T17:04:31Z",
+    "pushed_at": "2026-11-25T01:08:48Z",
+    "default_branch": "main",
+    "topics": [
+      "ai",
+      "ai-agents",
+      "cli",
+      "gemini",
+      "gemini-api",
+      "mcp-client",
+      "mcp-server"
+    ]
+  },
+  "languages": {
+    "TypeScript": 23338043,
+    "JavaScript": 352824,
+    "Python": 221907,
+    "Shell": 31159,
+    "C#": 24798,
+    "Dockerfile": 8571,
+    "HTML": 5474,
+    "Makefile": 1336
+  },
+  "structure": {
+    "root": [
+      ".allstar/",
+      ".dockerignore",
+      ".editorconfig",
+      ".gcp/",
+      ".gemini/",
+      ".geminiignore",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".husky/",
+      ".lycheeignore",
+      ".npmrc",
+      ".nvmrc",
+      ".prettierignore",
+      ".prettierrc.json",
+      ".vscode/",
+      ".yamllint.yml",
+      "CONTRIBUTING.md",
+      "Dockerfile",
+      "GEMINI.md",
+      "LICENSE",
+      "Makefile",
+      "README.md",
+      "ROADMAP.md",
+      "SECURITY.md",
+      "docs/",
+      "esbuild.config.js",
+      "eslint.config.js",
+      "evals/",
+      "integration-tests/",
+      "memory-tests/",
+      "package-lock.json",
+      "package.json",
+      "packages/",
+      "perf-tests/",
+      "schemas/",
+      "scripts/",
+      "sea/",
+      "third_party/",
+      "tools/",
+      "tsconfig.json"
+    ],
+    "workflows": [
+      "agent-session-drift-check.yml",
+      "build-unsigned-mac-binaries.yml",
+      "chained_e2e.yml",
+      "ci.yml",
+      "community-report.yml",
+      "deflake.yml",
+      "docs-audit.yml",
+      "docs-page-action.yml",
+      "docs-rebuild.yml",
+      "eval-pr.yml",
+      "eval.yml",
+      "evals-nightly.yml",
+      "gemini-automated-issue-dedup.yml",
+      "gemini-automated-issue-triage.yml",
+      "gemini-cli-bot-brain.yml",
+      "gemini-cli-bot-pulse.yml",
+      "gemini-lifecycle-manager.yml",
+      "gemini-scheduled-issue-dedup.yml",
+      "gemini-scheduled-issue-triage.yml",
+      "gemini-scheduled-pr-triage.yml",
+      "gemini-self-assign-issue.yml",
+      "issue-opened-labeler.yml",
+      "label-backlog-child-issues.yml",
+      "label-workstream-rollup.yml",
+      "links.yml",
+      "memory-nightly.yml",
+      "perf-nightly.yml",
+      "pr-rate-limiter.yaml",
+      "pr-size-labeler-batch-run.yml",
+      "pr-size-labeler.yml",
+      "release-change-tags.yml",
+      "release-manual.yml",
+      "release-nightly.yml",
+      "release-notes.yml",
+      "release-patch-0-from-comment.yml",
+      "release-patch-1-create-pr.yml",
+      "release-patch-2-trigger.yml",
+      "release-patch-3-release.yml",
+      "release-promote.yml",
+      "release-rollback.yml",
+      "release-sandbox.yml",
+      "smoke-test.yml",
+      "test-build-binary.yml",
+      "tools-python-ci.yml",
+      "trigger_e2e.yml",
+      "unassign-inactive-assignees.yml",
+      "verify-release.yml"
+    ],
+    "docs": [
+      "CONTRIBUTING.md",
+      "admin/",
+      "assets/",
+      "behavioral-evals.md",
+      "changelogs/",
+      "cli/",
+      "core/",
+      "examples/",
+      "extensions/",
+      "get-started/",
+      "hooks/",
+      "ide-integration/",
+      "index.md",
+      "integration-tests.md",
+      "issue-and-pr-automation.md",
+      "local-development.md",
+      "mermaid/",
+      "npm.md",
+      "redirects.json",
+      "reference/",
+      "release-confidence.md",
+      "releases.md",
+      "resources/",
+      "sidebar.json",
+      "tools/"
+    ],
+    "docs_count": 25,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": [
+      "README.md",
+      "answer-vs-act.eval.ts",
+      "app-test-helper.ts",
+      "ask_user.eval.ts",
+      "auto_memory_contract.eval.ts",
+      "auto_memory_modes.eval.ts",
+      "automated-tool-use.eval.ts",
+      "background_processes.eval.ts",
+      "calendar-all-day.eval.ts",
+      "cli_help_delegation.eval.ts",
+      "component-test-helper.ts",
+      "concurrency-safety.eval.ts",
+      "edit-locations-eval.eval.ts",
+      "file_creation_behavior.eval.ts",
+      "frugalReads.eval.ts",
+      "frugalSearch.eval.ts",
+      "generalist_agent.eval.ts",
+      "generalist_delegation.eval.ts",
+      "gitRepo.eval.ts",
+      "grep_search_functionality.eval.ts",
+      "hierarchical_memory.eval.ts",
+      "interactive-hang.eval.ts",
+      "llm-judge.ts",
+      "memory_persistence.eval.ts",
+      "model_steering.eval.ts",
+      "plan_mode.eval.ts",
+      "prompt_injection_mcp.eval.ts",
+      "provenance_attribution.eval.ts",
+      "redundant_casts.eval.ts",
+      "sandbox_recovery.eval.ts",
+      "shell-efficiency.eval.ts",
+      "shell_command_safety.eval.ts",
+      "skill_extraction.eval.ts",
+      "snapshot_fidelity.eval.ts",
+      "statistics-helper.ts",
+      "subagents.eval.ts",
+      "subtask_delegation.eval.ts",
+      "test-helper.test.ts",
+      "test-helper.ts",
+      "tool_output_masking.eval.ts",
+      "tracker.eval.ts",
+      "tsconfig.json",
+      "unsafe-cloning.eval.ts",
+      "update_topic.eval.ts",
+      "validation_fidelity.eval.ts",
+      "validation_fidelity_pre_existing_errors.eval.ts",
+      "vitest.config.ts"
+    ]
+  },
+  "key_files": {
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 20400,
+      "line_count": 571,
+      "truncated": true,
+      "excerpt": "# How to contribute\n\nWe would love to accept your patches and contributions to this project. This\ndocument includes:\n\n- **[Before you begin](#before-you-begin):** Essential steps to take before\n  becoming a Gemini CLI contributor.\n- **[Code contribution process](#code-contribution-process):** How to contribute\n  code to Gemini CLI.\n- **[Development setup and workflow](#development-setup-and-workflow):** How to\n  set up your development environment and workflow.\n- **[Documentation contribution process](#documentation-contribution-process):**\n  How to contribute documentation to Gemini CLI.\n\nWe're looking forward to seeing your contributions!\n\n## Before you begin\n\n### Sign our Contributor License Agreement\n\nContributions to this project must be accompanied by a\n[Contributor License Agreement](https://cla.developers.google.com/about) (CLA).\nYou (or your employer) retain the copyright to your contribution; this simply\ngives us permission to use and redistribute your contributions as part of the\nproject.\n\nIf you or your current employer have already signed the Google CLA (even if it\nwas for a different project), you probably don't need to do it again.\n\nVisit <https://cla.developers.google.com/> to see your current agreements or to\nsign a new one.\n\n### Review our Community Guidelines\n\nThis project follows\n[Google's Open Source Community Guidelines](https://opensource.google/conduct/).\n\n## Code contribution process\n\n### Get started\n\nThe process for contributing code is as follows:\n\n1.  **Find an issue** that you want to work on. If an issue is tagged as\n    `\ud83d\udd12Maintainers only`, this means it is reserved for project maintainers. We\n    will not accept pull requests related to these issues. In the near future,\n    we will explicitly mark issues looking for contributions using the\n    `help-wanted` label. If you believe an issue is a good candidate for\n    community contribution, please leave a comment on the issue. A maintainer\n    will review it and apply the `help-wanted` label if appropriate. Only\n    maintainers should attempt to add the `help-wanted` label to an issue.\n2.  **Fork the repository** and create a new branch.\n3.  **Make your changes** in the `packages/` directory.\n4.  **Ensure all checks pass** by running `npm run preflight`.\n5.  **Open a pull request** with your changes.\n\n### Code reviews\n\nAll submissions, including submissions by project members, require review. We\nuse [GitHub pull requests](https://docs.github.com/articles/about-pull-requests)\nfor this purpose.\n\nTo assist with the review process, we provide an automated review tool that\nhelps detect common anti-patterns, testing issues, and other best practices that\nare easy to miss.\n\n#### Using the automated review tool\n\nYou can run the review tool in two ways:\n\n1.  **Using the helper script (Recommended):** We provide a script that\n    automatically handles checking out the PR into a separate worktree,\n    installing dependencies, building the project, and launching the review\n    tool.\n\n    ```bash\n    ./scripts/review.sh <PR_NUMBER> [model]\n    ```\n\n    **Warning:** If you run `scripts/review.sh`, you must have first verified\n    that the code for the PR being reviewed is safe to run and does not contain\n    data exfiltration attacks.\n\n    **Authors are strongly encouraged to run this script on their own PRs**\n    immediately after creation. This allows you to catch and fix simple issues\n    locally before a maintainer performs a full review.\n\n    **Note on Models:** By default, the script uses the latest Pro model\n    (`gemini-3.1-pro-preview`). If you do not have enough Pro quota, you can run\n    it with the latest Flash model instead:\n    `./scripts/review.sh <PR_NUMBER> gemini-3-flash-preview`.\n\n2.  **Manually from within Gemini CLI:** If you already have the PR checked out\n    and built, you can run the tool directly from the CLI prompt:\n\n    ```text\n    /review-frontend <PR_NUMBER>\n    ```\n\nReplace `<PR_NUMBER>` with your pull request number. Reviewers should use this\ntool to augment, not replace, their manual review process.\n\n### Self-assigning and unassigning issues\n\nTo assign an issue to yourself, simply add a comment with the text `/assign`. To\nunassign yourself from an issue, add a comment with the text `/unassign`.\n\nThe comment must contain only that text and nothing else. These commands will\nassign or unassign the issue as requested, provided the conditions are met\n(e.g., an issue must be unassigned to be assigned).\n\nPlease note that you can have a maximum of 3 issues assigned to you at any given\ntime and that only\n[issues labeled \"help wanted\"](https://github.com/google-gemini/gemini-cli/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22help%20wanted%22)\nmay be self-assigned.\n\n### Pull request guidelines\n\nTo help us review and merge your PRs quickly, please follow these guidelines.\nPRs that do not meet these standards may be closed.\n\n#### 1. Link to an existing issue\n\nAll PRs should be linked to an existing issue in our tracker. This ensures that\nevery change has been discussed and is aligned with the project's goals before\nany code is written.\n\n- **For bug fixes:** The PR should be linked to the bug report issue.\n- **For features:** The PR should be linked to the feature request or proposal\n  issue that has been approved by a maintainer.\n\nIf an issue for your change doesn't exist, we will automatically close your PR\nalong with a comment reminding you to associate the PR with an issue. The ideal\nworkflow starts with an issue that has been reviewed and approved by a\nmaintainer. Please **open the issue first** and wait for feedback before you\nstart coding.\n\n#### 2. Keep it small and focused\n\nWe favor small, atomic PRs that address a single issue or add a single,\nself-contained feature.\n\n- **Do:** Create a PR that fixes one specific bug or adds one specific feature.\n- **Don't:** Bundle multiple unrelated changes (e.g., a bug fix, a new feature,\n  and a refactor) into a single PR.\n\nLarge changes should be broken do"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 13488,
+      "line_count": 371,
+      "truncated": true,
+      "excerpt": "# Gemini CLI\n\n[![Gemini CLI CI](https://github.com/google-gemini/gemini-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/google-gemini/gemini-cli/actions/workflows/ci.yml)\n[![Gemini CLI E2E (Chained)](https://github.com/google-gemini/gemini-cli/actions/workflows/chained_e2e.yml/badge.svg)](https://github.com/google-gemini/gemini-cli/actions/workflows/chained_e2e.yml)\n[![Version](https://img.shields.io/npm/v/@google/gemini-cli)](https://www.npmjs.com/package/@google/gemini-cli)\n[![License](https://img.shields.io/github/license/google-gemini/gemini-cli)](https://github.com/google-gemini/gemini-cli/blob/main/LICENSE)\n[![View Code Wiki](https://assets.codewiki.google/readme-badge/static.svg)](https://codewiki.google/github.com/google-gemini/gemini-cli?utm_source=badge&utm_medium=github&utm_campaign=github.com/google-gemini/gemini-cli)\n\n<!-- prettier-ignore -->\n> [!IMPORTANT]\n> **Read before installing \u2014 Gemini CLI status & tool guide**\n>\n> - **Enterprise Code Assist only:** Designed for **Gemini Code Assist Standard / Enterprise** licenses and **Code Assist for GitHub** on Google Cloud (your access remains unchanged).\n> - **No free tier or Google AI plans:** Free individual access and **Google AI Pro / Ultra** (Google One) moved to [Antigravity CLI](https://antigravity.google/product/antigravity-cli) on June 18, 2026 ([transition post](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)).\n> - **Not optimized for Gemini 4+:** Not tuned for the **Gemini 4** series (for example, [Gemini 4 Argon](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)) or future releases in this or later generations.\n> - **Not for model benchmarks:** Don't use Gemini CLI to benchmark Gemini models\u2014its harness isn't tuned for Gemini 4+ and produces unrepresentative scores.\n>\n> **Which Google CLI do you need?**\n>\n> | Tool | Best for | Links |\n> | :--- | :--- | :--- |\n> | **[Antigravity CLI](https://antigravity.google/product/antigravity-cli)** (`agy`) | Interactive multi-agent coding terminal. Use for **Gemini 4 Argon**+, free / **Google AI Pro & Ultra** accounts, or Google Cloud. | [Download](https://antigravity.google/download) \u00b7 [Migrate](https://antigravity.google/docs/cli/gcli-migration) \u00b7 [Argon post](https://antigravity.google/blog/gemini-4-argon-in-google-antigravity) |\n> | **[Gemini API CLI](https://github.com/google-gemini/gemini-api-cli)** (`gemini-api`) | Stateless API CLI *(not a coding harness)*. Gives agents (`agy`, Claude Code, Codex), scripts, and CI direct commands for Gemini models, media gen, file analysis, and managed agents. | [GitHub](https://github.com/google-gemini/gemini-api-cli) \u00b7 [Releases](https://github.com/google-gemini/gemini-api-cli/releases) \u00b7 [API docs](https://ai.google.dev/gemini-api/docs) |\n> | **Gemini CLI** (`gemini`, *this repo*) | Organizations with **Gemini Code Assist Standard / Enterprise** or **Code Assist for GitHub** on Google Cloud *(plus legacy paid API / Vertex keys)*. | [Docs](https://geminicli.com/docs/) |\n\nGemini CLI (`gemini`) is an open-source terminal agent maintained for enterprise\nGemini Code Assist workflows on Google Cloud. Learn more in the\n[Gemini CLI documentation](https://geminicli.com/docs/).\n\n## \ud83d\udce6 Installation\n\nSee\n[Gemini CLI installation, execution, and releases](https://www.geminicli.com/docs/get-started/installation)\nfor recommended system specifications and a detailed installation guide.\n\n### Quick Install\n\n#### Run instantly with npx\n\n```bash\n# Using npx (no installation required)\nnpx @google/gemini-cli\n```\n\n#### Install globally with npm\n\n```bash\nnpm install -g @google/gemini-cli\n```\n\n#### Install globally with Homebrew (macOS/Linux)\n\n```bash\nbrew install gemini-cli\n```\n\n#### Install globally with MacPorts (macOS)\n\n```bash\nsudo port install gemini-cli\n```\n\n#### Install with Anaconda (for restricted environments)\n\n```bash\n# Create and activate a new environment\nconda create -y -n gemini_env -c conda-forge nodejs\nconda activate gemini_env\n\n# Install Gemini CLI globally via npm (inside the environment)\nnpm install -g @google/gemini-cli\n```\n\n## Release Channels\n\nSee [Releases](https://www.geminicli.com/docs/changelogs) for more details.\n\n### Preview\n\nNew preview releases will be published each week at UTC 23:59 on Tuesdays. These\nreleases will not have been fully vetted and may contain regressions or other\noutstanding issues. Please help us test and install with `preview` tag.\n\n```bash\nnpm install -g @google/gemini-cli@preview\n```\n\n### Stable\n\n- New stable releases will be published each week at UTC 20:00 on Tuesdays, this\n  will be the full promotion of last week's `preview` release + any bug fixes\n  and validations. Use `latest` tag.\n\n```bash\nnpm install -g @google/gemini-cli@latest\n```\n\n### Nightly\n\n- New releases will be published each day at UTC 00:00. This will be all changes\n  from the main branch as represented at time of release. It should be assumed\n  there are pending validations and issues. Use `nightly` tag.\n\n```bash\nnpm install -g @google/gemini-cli@nightly\n```\n\n## \ud83d\udccb Key Features\n\n### Code Understanding & Generation\n\n- Query and edit large codebases\n- Generate new apps from PDFs, images, or sketches using multimodal capabilities\n- Debug issues and troubleshoot with natural language\n\n### Automation & Integration\n\n- Automate operational tasks like querying pull requests or handling complex\n  rebases\n- Use MCP servers to connect new capabilities, including\n  [media generation with Imagen, Veo or Lyria](https://github.com/GoogleCloudPlatform/vertex-ai-creative-studio/tree/main/experiments/mcp-genmedia)\n- Run non-interactively in scripts for workflow automation\n\n## \ud83d\udd10 Authentication Options\n\nChoose the authentication method that best fits your needs:\n\n### Option 1: Sign in with Google (OAuth login using your Google Account)\n\n#### When using a paid Code Assist License from your organization, remember to set the Google Cloud Project\n\n```bash\n# Set y"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 9085,
+      "line_count": 225,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"@google/gemini-cli\",\n  \"version\": \"0.73.0-nightly.20261123.gaafdfdfb5\",\n  \"engines\": {\n    \"node\": \">=20.0.0\"\n  },\n  \"type\": \"module\",\n  \"workspaces\": [\n    \"packages/*\"\n  ],\n  \"private\": \"true\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/google-gemini/gemini-cli.git\"\n  },\n  \"config\": {\n    \"sandboxImageUri\": \"us-docker.pkg.dev/gemini-code-dev/gemini-cli/sandbox:0.73.0-nightly.20261123.gaafdfdfb5\"\n  },\n  \"scripts\": {\n    \"start\": \"cross-env NODE_ENV=development node scripts/start.js\",\n    \"start:prod\": \"cross-env NODE_ENV=production node scripts/start.js\",\n    \"start:a2a-server\": \"CODER_AGENT_PORT=41242 npm run start --workspace @google/gemini-cli-a2a-server\",\n    \"debug\": \"cross-env DEBUG=1 node --inspect-brk scripts/start.js\",\n    \"deflake\": \"node scripts/deflake.js\",\n    \"deflake:test:integration:sandbox:none\": \"npm run deflake -- --command=\\\"npm run test:integration:sandbox:none -- --retry=0\\\"\",\n    \"deflake:test:integration:sandbox:docker\": \"npm run deflake -- --command=\\\"npm run test:integration:sandbox:docker -- --retry=0\\\"\",\n    \"auth:npm\": \"npx google-artifactregistry-auth\",\n    \"auth:docker\": \"gcloud auth configure-docker us-west1-docker.pkg.dev\",\n    \"auth\": \"npm run auth:npm && npm run auth:docker\",\n    \"generate\": \"node scripts/generate-git-commit-info.js\",\n    \"predocs:settings\": \"npm run build --workspace @google/gemini-cli-core\",\n    \"schema:settings\": \"tsx ./scripts/generate-settings-schema.ts\",\n    \"docs:settings\": \"tsx ./scripts/generate-settings-doc.ts\",\n    \"docs:keybindings\": \"tsx ./scripts/generate-keybindings-doc.ts\",\n    \"eval:validate\": \"tsx ./scripts/eval-validate-cli.ts\",\n    \"eval:inventory\": \"tsx ./scripts/eval-inventory-cli.ts\",\n    \"eval:inventory:json\": \"tsx ./scripts/eval-inventory-cli.ts --json\",\n    \"eval:report\": \"tsx ./scripts/eval-report-cli.ts\",\n    \"eval:coverage\": \"tsx ./scripts/eval-coverage-cli.ts\",\n    \"build\": \"node scripts/build.js\",\n    \"build-and-start\": \"npm run build && npm run start --\",\n    \"build:vscode\": \"node scripts/build_vscode_companion.js\",\n    \"build:all\": \"npm run build && npm run build:sandbox && npm run build:vscode\",\n    \"build:packages\": \"npm run build --workspaces\",\n    \"build:sandbox\": \"node scripts/build_sandbox.js\",\n    \"build:binary\": \"node scripts/build_binary.js\",\n    \"bundle\": \"npm run generate && npm run build --workspace=@google/gemini-cli-devtools && npm run bundle:browser-mcp -w @google/gemini-cli-core && node esbuild.config.js && node scripts/copy_bundle_assets.js\",\n    \"test\": \"npm run test --workspaces --if-present && npm run test:sea-launch\",\n    \"test:ci\": \"npm run test:ci --workspaces --if-present && npm run test:scripts && npm run test:sea-launch\",\n    \"test:scripts\": \"vitest run --config ./scripts/tests/vitest.config.ts\",\n    \"test:sea-launch\": \"vitest run sea/sea-launch.test.js\",\n    \"posttest\": \"npm run build\",\n    \"test:always_passing_evals\": \"vitest run --config evals/vitest.config.ts\",\n    \"test:all_evals\": \"cross-env RUN_EVALS=1 vitest run --config evals/vitest.config.ts\",\n    \"test:e2e\": \"cross-env VERBOSE=true KEEP_OUTPUT=true npm run test:integration:sandbox:none\",\n    \"test:integration:all\": \"npm run test:integration:sandbox:none && npm run test:integration:sandbox:docker && npm run test:integration:sandbox:podman\",\n    \"test:integration:flaky\": \"cross-env RUN_FLAKY_INTEGRATION=1 npm run test:integration:sandbox:none\",\n    \"test:integration:sandbox:none\": \"cross-env GEMINI_SANDBOX=false vitest run --root ./integration-tests\",\n    \"test:memory\": \"vitest run --root ./memory-tests\",\n    \"test:memory:update-baselines\": \"cross-env UPDATE_MEMORY_BASELINES=true vitest run --root ./memory-tests\",\n    \"test:perf\": \"vitest run --root ./perf-tests\",\n    \"test:perf:update-baselines\": \"cross-env UPDATE_PERF_BASELINES=true vitest run --root ./perf-tests\",\n    \"test:integration:sandbox:docker\": \"cross-env GEMINI_SANDBOX=docker npm run build:sandbox && cross-env GEMINI_SANDBOX=docker vitest run --root ./integration-tests\",\n    \"test:integration:sandbox:podman\": \"cross-env GEMINI_SANDBOX=podman vitest run --root ./integration-tests\",\n    \"test:integration:vscode\": \"npm run test:integration -w gemini-cli-vscode-ide-companion\",\n    \"lint\": \"cross-env NODE_OPTIONS=\\\"--max-old-space-size=8192\\\" eslint . --cache --max-warnings 0\",\n    \"lint:fix\": \"eslint . --fix --ext .ts,.tsx && eslint integration-tests --fix && eslint scripts --fix && npm run format\",\n    \"lint:ci\": \"npm run lint:all\",\n    \"lint:all\": \"node scripts/lint.js\",\n    \"format\": \"prettier --experimental-cli --write .\",\n    \"typecheck\": \"npm run typecheck --workspaces --if-present && tsc -b evals/tsconfig.json integration-tests/tsconfig.json memory-tests/tsconfig.json\",\n    \"preflight\": \"npm run clean && npm ci && npm run format && npm run build && npm run lint:ci && npm run typecheck && npm run test:ci\",\n    \"prepare\": \"husky && npm run bundle\",\n    \"prepare:package\": \"node scripts/prepare-package.js\",\n    \"release:version\": \"node scripts/version.js\",\n    \"telemetry\": \"node scripts/telemetry.js\",\n    \"check:lockfile\": \"node scripts/check-lockfile.js\",\n    \"clean\": \"node scripts/clean.js\",\n    \"pre-commit\": \"node scripts/pre-commit.js\"\n  },\n  \"overrides\": {\n    \"ink\": \"npm:@jrichman/ink@6.6.9\",\n    \"wrap-ansi\": \"9.0.2\",\n    \"cliui\": {\n      \"wrap-ansi\": \"7.0.0\"\n    },\n    \"glob\": \"14.0.3\",\n    \"minimatch@^11.0.0\": \"11.0.2\",\n    \"brace-expansion@^5.0.0\": \"5.0.12\",\n    \"@isaacs/nonrecursive-glob-match\": \"1.0.2\",\n    \"node-domexception\": \"npm:empty@^0.10.1\",\n    \"prebuild-install\": \"npm:nop@1.0.0\",\n    \"cross-spawn\": \"7.0.6\",\n    \"basic-ftp\": \"6.2.3\",\n    \"ip-address\": \"10.7.5\",\n    \"fast-uri\": \"3.1.9\",\n    \"hono\": \"4.13.16\",\n    \"@hono/node-server\": \"2.1.6\",\n    \"jose\": \"6.2.13\",\n    \"express-rate-limit\": \"8.7.1\",\n    \"qs\": \"6.17.0\",\n    \"@grpc/grpc-js\": \"1.14.6\",\n    \"@opentelemetry/core\": \"2.11.0\",\n    \"@opentelemetry/resources\": \"2.11.0\",\n    \"@opentelemetry/sdk-metrics\": \"2.11.0\",\n    \"@opentelemetry/sdk-trace\""
+    }
+  },
+  "workflow_samples": {
+    "agent-session-drift-check.yml": {
+      "path": ".github/workflows/agent-session-drift-check.yml",
+      "size_bytes": 4901,
+      "line_count": 132,
+      "truncated": true,
+      "excerpt": "# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json\n\nname: 'Agent Session Drift Check'\n\non:\n  pull_request:\n    branches:\n      - 'main'\n      - 'release/**'\n    paths:\n      - 'packages/cli/src/nonInteractiveCli.ts'\n      - 'packages/cli/src/nonInteractiveCliAgentSession.ts'\n\nconcurrency:\n  group: '${{ github.workflow }}-${{ github.head_ref || github.ref }}'\n  cancel-in-progress: true\n\njobs:\n  check-drift:\n    name: 'Check Agent Session Drift'\n    runs-on: 'ubuntu-latest'\n    if: \"github.repository == 'google-gemini/gemini-cli'\"\n    permissions:\n      contents: 'read'\n      pull-requests: 'write'\n    steps:\n      - name: 'Detect drift and comment'\n        uses: 'actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea' # ratchet:actions/github-script@v8\n        with:\n          script: |-\n            // === Pair configuration \u2014 append here to cover more pairs ===\n            const PAIRS = [\n              {\n                legacy: 'packages/cli/src/nonInteractiveCli.ts',\n                session: 'packages/cli/src/nonInteractiveCliAgentSession.ts',\n                label: 'non-interactive CLI',\n              },\n              // Future pairs can be added here. Remember to also add both\n              // paths to the `paths:` filter at the top of this workflow.\n              // Example:\n              // {\n              //   legacy: 'packages/core/src/agents/local-invocation.ts',\n              //   session: 'packages/core/src/agents/local-session-invocation.ts',\n              //   label: 'local subagent invocation',\n              // },\n            ];\n            // ============================================================\n\n            const prNumber = context.payload.pull_request.number;\n            const { owner, repo } = context.repo;\n\n            // Use the API to list changed files \u2014 no checkout/git diff needed.\n            const files = await github.paginate(github.rest.pulls.listFiles, {\n              owner,\n              repo,\n              pull_number: prNumber,\n              per_page: 100,\n            });\n            const changed = new Set(files.map((f) => f.filename));\n\n            const warnings = [];\n            for (const { legacy, session, label } of PAIRS) {\n              const legacyChanged = changed.has(legacy);\n              const sessionChanged = changed.has(session);\n              if (legacyChanged && !sessionChanged) {\n                warnings.push(\n                  `**${label}**: \\`${legacy}\\` was modified but \\`${session}\\` was not.`,\n                );\n              } else if (!legacyChanged && sessionChanged) {\n                warnings.push(\n                  `**${label}**: \\`${session}\\` was modified but \\`${legacy}\\` was not.`,\n                );\n              }\n            }\n\n            const MARKER = '<!-- agent-session-drift-check -->';\n\n            // Look up our existing drift comment (for upsert/cleanup).\n            const comments = await github.paginate(github.rest.issues.listComments, {\n              owner,\n              repo,\n              issue_number: prNumber,\n              per_page: 100,\n            });\n            const existing = comments.find(\n              (c) => c.user?.type === 'Bot' && c.body?.includes(MARKER),\n            );\n\n            if (warnings.length === 0) {\n              core.info('No drift detected.');\n              // If drift was previously flagged and is now resolved, remove the comment.\n              if (existing) {\n                await github.rest.issues.deleteComment({\n                  owner,\n                  repo,\n                  comment_id: existing.id,\n                });\n                core.info(`Deleted stale drift comment ${existing.id}.`);\n              }\n              return;\n            }\n\n            const body = [\n              MARKER,\n              '### \u26a0\ufe0f Invocation Drift Warning',\n              '',\n              'The following file pairs should generally be kept in sync during the AgentSession migration:',\n              '',\n              ...warnings.map((w) => `- ${w}`),\n              '',\n              'If this is intentional (e.g., a bug fix specific to one implementation), you can ignore this comment.',\n              '',\n              '_This check will be removed once the legacy implementations are deleted._',\n            ].join('\\n');\n\n            if (existing) {\n              core.info(`Updating existing drift comment ${existing.id}.`);\n              await github.rest.issues.updateComment({\n    "
+    },
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 19121,
+      "line_count": 519,
+      "truncated": true,
+      "excerpt": "name: 'Testing: CI'\n\non:\n  push:\n    branches:\n      - 'main'\n      - 'release/**'\n  pull_request:\n    branches:\n      - 'main'\n      - 'release/**'\n  merge_group:\n  workflow_dispatch:\n    inputs:\n      branch_ref:\n        description: 'Branch to run on'\n        required: true\n        default: 'main'\n        type: 'string'\n\nconcurrency:\n  group: '${{ github.workflow }}-${{ github.head_ref || github.ref }}'\n  cancel-in-progress: |-\n    ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/heads/release/') }}\n\npermissions:\n  contents: 'read'\n\ndefaults:\n  run:\n    shell: 'bash'\n\njobs:\n  merge_queue_skipper:\n    permissions:\n      checks: 'read'\n      contents: 'read'\n      pull-requests: 'read'\n    name: 'Merge Queue Skipper'\n    runs-on: 'gemini-cli-ubuntu-16-core'\n    if: \"github.repository == 'google-gemini/gemini-cli'\"\n    outputs:\n      skip: '${{ steps.merge-queue-ci-skipper.outputs.skip-check }}'\n    steps:\n      - id: 'merge-queue-ci-skipper'\n        uses: 'cariad-tech/merge-queue-ci-skipper@1032489e59437862c90a08a2c92809c903883772' # ratchet:cariad-tech/merge-queue-ci-skipper@main\n        with:\n          secret: '${{ secrets.GEMINI_CLI_ROBOT_GITHUB_PAT }}'\n\n  lint:\n    name: 'Lint'\n    runs-on: 'gemini-cli-ubuntu-16-core'\n    needs: 'merge_queue_skipper'\n    if: \"github.repository == 'google-gemini/gemini-cli' && needs.merge_queue_skipper.outputs.skip == 'false'\"\n    env:\n      GEMINI_LINT_TEMP_DIR: '${{ github.workspace }}/.gemini-linters'\n    steps:\n      - name: 'Checkout'\n        uses: 'actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8' # ratchet:actions/checkout@v5\n        with:\n          persist-credentials: false\n          ref: '${{ github.event.inputs.branch_ref || github.ref }}'\n          fetch-depth: 0\n\n      - name: 'Set up Node.js'\n        uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' # ratchet:actions/setup-node@v4.4.0\n        with:\n          node-version-file: '.nvmrc'\n          cache: 'npm'\n\n      - name: 'Cache Linters'\n        uses: 'actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830' # ratchet:actions/cache@v4\n        with:\n          path: '${{ env.GEMINI_LINT_TEMP_DIR }}'\n          key: \"${{ runner.os }}-${{ runner.arch }}-linters-${{ hashFiles('scripts/lint.js') }}\"\n\n      - name: 'Install dependencies'\n        run: 'npm ci'\n\n      - name: 'Cache ESLint'\n        uses: 'actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830' # ratchet:actions/cache@v4\n        with:\n          path: '.eslintcache'\n          key: \"${{ runner.os }}-eslint-${{ hashFiles('package-lock.json', 'eslint.config.js') }}\"\n\n      - name: 'Validate NOTICES.txt'\n        run: 'git diff --exit-code packages/vscode-ide-companion/NOTICES.txt'\n\n      - name: 'Check lockfile'\n        run: 'npm run check:lockfile'\n\n      - name: 'Install linters'\n        run: 'node scripts/lint.js --setup'\n\n      - name: 'Run ESLint'\n        run: 'node scripts/lint.js --eslint'\n\n      - name: 'Run actionlint'\n        run: 'node scripts/lint.js --actionlint'\n\n      - name: 'Run shellcheck'\n        run: 'node scripts/lint.js --shellcheck'\n\n      - name: 'Run yamllint'\n        run: 'node scripts/lint.js --yamllint'\n\n      - name: 'Build project for typecheck'\n        run: 'npm run build'\n\n      - name: 'Run typecheck'\n        run: 'npm run typecheck'\n\n      - name: 'Run Prettier'\n        run: 'node scripts/lint.js --prettier'\n\n      - name: 'Build docs prerequisites'\n        run: 'npm run predocs:settings'\n\n      - name: 'Verify settings docs'\n        run: 'npm run docs:settings -- --check'\n\n      - name: 'Run sensitive keyword linter'\n        run: 'node scripts/lint.js --sensitive-keywords'\n\n      - name: 'Run GitHub Actions pinning linter'\n        run: 'node scripts/lint.js --check-github-actions-pinning'\n\n  link_checker:\n    name: 'Link Checker'\n    runs-on: 'ubuntu-latest'\n    if: \"github.repository == 'google-gemini/gemini-cli'\"\n    steps:\n      - name: 'Checkout'\n        uses: 'actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8' # ratchet:actions/checkout@v5\n        with:\n          persist-credentials: false\n      - name: 'Link Checker'\n        uses: 'lycheeverse/lychee-action@885c65f3dc543b57c898c8099f4e08c8afd178a2' # ratchet: lycheeverse/lychee-action@v2.6.1\n        with:\n          args: '--verbose --accept 200,503 ./**/*.md'\n          fail: true\n  test_linux:\n    name: 'Test (Linux) - ${{ matrix.node-version }}, ${{ matrix.shard }}'\n    runs-on: 'gemini-cli-ubuntu-16-core'\n    needs:\n  "
+    },
+    "eval-pr.yml": {
+      "path": ".github/workflows/eval-pr.yml",
+      "size_bytes": 9249,
+      "line_count": 211,
+      "truncated": true,
+      "excerpt": "name: 'Evals: PR Evaluation & Regression'\n\non:\n  pull_request_target:\n    types: ['opened', 'synchronize', 'reopened', 'ready_for_review']\n    paths:\n      - 'packages/core/src/prompts/**'\n      - 'packages/core/src/tools/**'\n      - 'packages/core/src/agents/**'\n      - 'evals/**'\n      - '!**/*.test.ts'\n      - '!**/*.test.tsx'\n  workflow_dispatch:\n\n# Prevents multiple runs for the same PR simultaneously (saves tokens)\nconcurrency:\n  group: '${{ github.workflow }}-${{ github.head_ref || github.ref }}'\n  cancel-in-progress: true\n\npermissions:\n  pull-requests: 'write'\n  contents: 'read'\n  actions: 'read'\n\njobs:\n  detect-changes:\n    name: 'Detect Steering Changes'\n    runs-on: 'gemini-cli-ubuntu-16-core'\n    # Security: pull_request_target allows secrets, so we must gate carefully.\n    # Detection should not run code from the fork.\n    if: \"github.repository == 'google-gemini/gemini-cli' && github.event.pull_request.draft == false\"\n    outputs:\n      SHOULD_RUN: '${{ steps.detect.outputs.SHOULD_RUN }}'\n      STEERING_DETECTED: '${{ steps.detect.outputs.STEERING_DETECTED }}'\n    steps:\n      - name: 'Checkout'\n        uses: 'actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955' # ratchet:actions/checkout@v5\n        with:\n          # Check out the trusted code from main for detection\n          fetch-depth: 0\n          persist-credentials: false\n\n      - name: 'Detect Steering Changes'\n        id: 'detect'\n        env:\n          # Use the PR's head SHA for comparison without checking it out\n          PR_HEAD_SHA: '${{ github.event.pull_request.head.sha }}'\n        run: |\n          # Fetch the fork's PR branch for analysis\n          git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-head\n\n          # Run the trusted script from main\n          SHOULD_RUN=$(node scripts/changed_prompt.js)\n          STEERING_DETECTED=$(node scripts/changed_prompt.js --steering-only)\n          echo \"SHOULD_RUN=$SHOULD_RUN\" >> \"$GITHUB_OUTPUT\"\n          echo \"STEERING_DETECTED=$STEERING_DETECTED\" >> \"$GITHUB_OUTPUT\"\n\n      - name: 'Notify Approval Required'\n        if: \"steps.detect.outputs.SHOULD_RUN == 'true'\"\n        env:\n          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'\n        run: |\n          RUN_URL=\"https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"\n          COMMENT_BODY=\"### \ud83d\uded1 Action Required: Evaluation Approval\n\n          Steering changes have been detected in this PR. To prevent regressions, a maintainer must approve the evaluation run before this PR can be merged.\n\n          **Maintainers:**\n          1. Go to the [**Workflow Run Summary**]($RUN_URL).\n          2. Click the yellow **'Review deployments'** button.\n          3. Select the **'eval-gate'** environment and click **'Approve'**.\n\n          Once approved, the evaluation results will be posted here automatically.\n\n          <!-- eval-approval-notification -->\"\n\n          # Check if comment already exists to avoid spamming\n          COMMENT_ID=$(gh pr view ${{ github.event.pull_request.number }} --json comments --jq '.comments[] | select(.body | contains(\"<!-- eval-approval-notification -->\")) | .url' | grep -oE \"[0-9]+$\" | head -n 1)\n\n          if [ -z \"$COMMENT_ID\" ]; then\n            gh pr comment ${{ github.event.pull_request.number }} --body \"$COMMENT_BODY\"\n          else\n            echo \"Updating existing notification comment $COMMENT_ID...\"\n            gh api -X PATCH \"repos/${{ github.repository }}/issues/comments/$COMMENT_ID\" -F body=\"$COMMENT_BODY\"\n          fi\n\n  pr-evaluation:\n    name: 'Evaluate Steering & Regressions'\n    needs: 'detect-changes'\n    if: \"needs.detect-changes.outputs.SHOULD_RUN == 'true'\"\n    # Manual approval gate via environment\n    environment: 'eval-gate'\n    runs-on: 'gemini-cli-ubuntu-16-core'\n    env:\n      # CENTRALIZED MODEL LIST\n      MODEL_LIST: 'gemini-3-flash-preview'\n\n    steps:\n      - name: 'Checkout'\n        uses: 'actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955' # ratchet:actions/checkout@v5\n        with:\n          # Check out the fork's PR code for the actual evaluation\n          # This only runs AFTER manual approval\n          ref: '${{ github.event.pull_request.head.sha }}'\n          fetch-depth: 0\n          persist-credentials: false\n\n      - name: 'Remove Approval Notification'\n        # Run even if other steps fail, to ensure we clean up the \"Action Required\" message\n        if: 'always()'\n        env:\n          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'\n     "
+    },
+    "eval.yml": {
+      "path": ".github/workflows/eval.yml",
+      "size_bytes": 1853,
+      "line_count": 48,
+      "truncated": false,
+      "excerpt": "name: 'Eval'\n\non:\n  workflow_dispatch:\n\ndefaults:\n  run:\n    shell: 'bash'\n\npermissions:\n  contents: 'read'\n  id-token: 'write'\n  packages: 'read'\n\njobs:\n  eval:\n    name: 'Eval'\n    if: >-\n      github.repository == 'google-gemini/gemini-cli'\n    runs-on: 'ubuntu-latest'\n    container:\n      image: 'ghcr.io/google-gemini/gemini-cli-swe-agent-eval@sha256:cd5edc4afd2245c1f575e791c0859b3c084a86bb3bd9a6762296da5162b35a8f'\n      credentials:\n        username: '${{ github.actor }}'\n        password: '${{ secrets.GITHUB_TOKEN }}'\n      env:\n        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'\n        DEFAULT_VERTEXAI_PROJECT: '${{ vars.GOOGLE_CLOUD_PROJECT }}'\n        GOOGLE_CLOUD_PROJECT: '${{ vars.GOOGLE_CLOUD_PROJECT }}'\n        GEMINI_API_KEY: '${{ secrets.EVAL_GEMINI_API_KEY }}'\n        GCLI_LOCAL_FILE_TELEMETRY: 'True'\n        EVAL_GCS_BUCKET: '${{ vars.EVAL_GCS_ARTIFACTS_BUCKET }}'\n    steps:\n      - name: 'Authenticate to Google Cloud'\n        id: 'auth'\n        uses: 'google-github-actions/auth@c200f3691d83b41bf9bbd8638997a462592937ed' # ratchet:exclude pin@v2.1.7\n        with:\n          project_id: '${{ vars.GOOGLE_CLOUD_PROJECT }}'\n          workload_identity_provider: '${{ vars.GCP_WIF_PROVIDER }}'\n          service_account: '${{ vars.SERVICE_ACCOUNT_EMAIL }}'\n          token_format: 'access_token'\n          access_token_scopes: 'https://www.googleapis.com/auth/cloud-platform'\n\n      - name: 'Run evaluation'\n        working-directory: '/app'\n        run: |\n          poetry run exp_run --experiment-mode=on-demand --branch-or-commit=\"${GITHUB_REF_NAME}\" --model-name=gemini-2.5-pro --dataset=swebench_verified --concurrency=15\n          poetry run python agent_prototypes/scripts/parse_gcli_logs_experiment.py --experiment_dir=experiments/adhoc/gcli_temp_exp --gcs-bucket=\"${EVAL_GCS_BUCKET}\" --gcs-path=gh_action_artifacts\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-24T23:51:44Z",
+      "oldest": "2026-11-06T20:22:28Z"
+    },
+    "conventional_pct": 88.0,
+    "fix_revert_pct": 70.0,
+    "ai_coauthor_pct": 14.0,
+    "top_recent_authors": [
+      [
+        "urielefrenvirtusa",
+        11
+      ],
+      [
+        "gemini-cli-robot",
+        9
+      ],
+      [
+        "tadipavan",
+        8
+      ],
+      [
+        "diegogodinezr",
+        4
+      ],
+      [
+        "luisfelipe-alt",
+        4
+      ],
+      [
+        "DavidAPierce",
+        3
+      ],
+      [
+        "duvanka-prasad",
+        3
+      ],
+      [
+        "jesussamuel-byte",
+        2
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "08e9a20f",
+        "date": "2026-11-24T23:51:44Z",
+        "author": "jesussamuel-byte",
+        "subject": "fix(core): normalize hook command names with leading environment variable assignments (#30448)",
+        "ai_signal": false
+      },
+      {
+        "sha": "14459def",
+        "date": "2026-11-24T22:12:59Z",
+        "author": "urielefrenvirtusa",
+        "subject": "fix(core): quote IDE CLI command path on Windows for cmd.exe (#30390)",
+        "ai_signal": false
+      },
+      {
+        "sha": "03862c41",
+        "date": "2026-11-24T03:16:03Z",
+        "author": "gemini-cli-robot",
+        "subject": "chore(release): bump version to 0.73.0-nightly.20261123.gaafdfdfb5 (#30428)",
+        "ai_signal": false
+      },
+      {
+        "sha": "7f8f423f",
+        "date": "2026-11-24T02:39:20Z",
+        "author": "gemini-cli-robot",
+        "subject": "Changelog for v0.71.0 (#30426)",
+        "ai_signal": true
+      },
+      {
+        "sha": "aafdfdfb",
+        "date": "2026-11-23T21:54:40Z",
+        "author": "diegogodinezr",
+        "subject": "fix(a2a-server): enforce bearer token authentication and request input validation (#30420)",
+        "ai_signal": false
+      },
+      {
+        "sha": "eecccfcd",
+        "date": "2026-11-20T19:19:05Z",
+        "author": "urielefrenvirtusa",
+        "subject": "fix(cli): resume most recently active session instead of most recently started (#30389)",
+        "ai_signal": false
+      },
+      {
+        "sha": "addc194f",
+        "date": "2026-11-20T17:21:35Z",
+        "author": "urielefrenvirtusa",
+        "subject": "fix(cli): expand Windows home-relative paths using tilde and backslash (#30376)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d4cb1713",
+        "date": "2026-11-19T21:45:31Z",
+        "author": "urielefrenvirtusa",
+        "subject": "fix(core): handle nested .gitignore negations under dir/** patterns (#30370)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ce0a92d7",
+        "date": "2026-11-19T21:35:03Z",
+        "author": "gemini-cli-robot",
+        "subject": "Changelog for v0.70.0 (#30380)",
+        "ai_signal": true
+      },
+      {
+        "sha": "808199f5",
+        "date": "2026-11-19T18:14:17Z",
+        "author": "DavidAPierce",
+        "subject": "chore(gcp): push development worker to private artifact registry (#30319)",
+        "ai_signal": false
+      },
+      {
+        "sha": "db1bbead",
+        "date": "2026-11-19T17:54:26Z",
+        "author": "tadipavan",
+        "subject": "fix(core,cli): parse PowerShell commands asynchronously to prevent UI spinner freeze (#30334)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d6fc2ef0",
+        "date": "2026-11-19T17:11:47Z",
+        "author": "gemini-cli-robot",
+        "subject": "Changelog for v0.69.0 (#30365)",
+        "ai_signal": true
+      },
+      {
+        "sha": "acfb42d0",
+        "date": "2026-11-19T08:50:50Z",
+        "author": "gemini-cli-robot",
+        "subject": "chore(release): bump version to 0.71.0-nightly.20261118.g615d6bc8c (#30366)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4f547a05",
+        "date": "2026-11-19T08:44:29Z",
+        "author": "gemini-cli-robot",
+        "subject": "Changelog for v0.70.0-preview.0 (#30361)",
+        "ai_signal": true
+      },
+      {
+        "sha": "615d6bc8",
+        "date": "2026-11-18T22:59:01Z",
+        "author": "DavidAPierce",
+        "subject": "chore(deps): adjust workspace dependency pins and update simple-git (#30356)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f10b8c76",
+        "date": "2026-11-18T21:04:27Z",
+        "author": "luisfelipe-alt",
+        "subject": "fix(core): match commandPrefix and commandRegex rules against the top-level command argument (#30355)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3aa930d6",
+        "date": "2026-11-18T19:20:26Z",
+        "author": "luisfelipe-alt",
+        "subject": "fix(core): keep ASK_USER for shell commands with unresolved expansion (#30338)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4f343cab",
+        "date": "2026-11-18T00:38:51Z",
+        "author": "diegogodinezr",
+        "subject": "ci: pre-pull triage image and clear Docker login in dedup workflows (#30342)",
+        "ai_signal": false
+      },
+      {
+        "sha": "17720a50",
+        "date": "2026-11-18T00:36:31Z",
+        "author": "villahernandez-coder",
+        "subject": "fix(ide): use per-user discovery directory and atomic port file writes (#30340)",
+        "ai_signal": false
+      },
+      {
+        "sha": "35b1a3c9",
+        "date": "2026-11-18T00:12:13Z",
+        "author": "tadipavan",
+        "subject": "fix(cli): detect local git clone from CLI path instead of cwd (#30315)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "scidomino",
+      "contributions": 391
+    },
+    {
+      "login": "NTaylorMullen",
+      "contributions": 332
+    },
+    {
+      "login": "abhipatel12",
+      "contributions": 273
+    },
+    {
+      "login": "jacob314",
+      "contributions": 273
+    },
+    {
+      "login": "SandyTao520",
+      "contributions": 230
+    },
+    {
+      "login": "gemini-cli-robot",
+      "contributions": 195
+    },
+    {
+      "login": "mattKorwel",
+      "contributions": 172
+    },
+    {
+      "login": "olcan",
+      "contributions": 170
+    },
+    {
+      "login": "jerop",
+      "contributions": 167
+    },
+    {
+      "login": "chrstnb",
+      "contributions": 156
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v0.72.0-preview.0",
+      "published_at": "2026-11-24T00:34:15Z",
+      "name": "Release v0.72.0-preview.0"
+    },
+    {
+      "tag": "v0.71.1",
+      "published_at": "2026-11-24T03:50:24Z",
+      "name": "Release v0.71.1"
+    },
+    {
+      "tag": "v0.71.0",
+      "published_at": "2026-11-24T01:16:44Z",
+      "name": "Release v0.71.0"
+    },
+    {
+      "tag": "v0.71.0-nightly.20261124.gaafdfdfb5",
+      "published_at": "2026-11-24T01:13:47Z",
+      "name": "Release v0.71.0-nightly.20261124.gaafdfdfb5"
+    },
+    {
+      "tag": "v0.71.0-nightly.20261123.geecccfcd5",
+      "published_at": "2026-11-23T01:21:53Z",
+      "name": "Release v0.71.0-nightly.20261123.geecccfcd5"
+    }
+  ]
+}

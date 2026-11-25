@@ -1,0 +1,446 @@
+{
+  "repo": "openai/codex",
+  "meta": {
+    "description": "Lightweight coding agent that runs in your terminal",
+    "homepage": "",
+    "license": "Apache-2.0",
+    "stars": 136407,
+    "forks": 21631,
+    "open_issues": 28619,
+    "archived": false,
+    "created_at": "2025-04-13T05:37:54Z",
+    "pushed_at": "2026-11-25T12:08:18Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "Rust": 90715826,
+    "Python": 1772912,
+    "Starlark": 174059,
+    "TypeScript": 102577,
+    "PowerShell": 82281,
+    "Shell": 78180,
+    "JavaScript": 44559,
+    "HTML": 41145,
+    "CSS": 35839,
+    "Jupyter Notebook": 20546,
+    "Smarty": 7627,
+    "Just": 7519,
+    "Nix": 4349,
+    "Batchfile": 389,
+    "C": 52
+  },
+  "structure": {
+    "root": [
+      ".bazelignore",
+      ".bazelrc",
+      ".bazelversion",
+      ".cargo/",
+      ".codespellignore",
+      ".codespellrc",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".markdownlint-cli2.yaml",
+      ".npmrc",
+      ".nvmrc",
+      ".prettierignore",
+      ".prettierrc.toml",
+      ".vscode/",
+      ".worktreeinclude",
+      "BUILD.bazel",
+      "CHANGELOG.md",
+      "LICENSE",
+      "MODULE.bazel",
+      "MODULE.bazel.lock",
+      "NOTICE",
+      "README.md",
+      "SECURITY.md",
+      "announcement_tip.toml",
+      "bazel/",
+      "codex-cli/",
+      "codex-rs/",
+      "defs.bzl",
+      "docs/",
+      "flake.lock",
+      "flake.nix",
+      "justfile",
+      "package.json",
+      "patches/",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "rbe.bzl",
+      "ruff.toml",
+      "scripts/",
+      "sdk/",
+      "third_party/",
+      "tools/",
+      "workspace_root_test_launcher.bat.tpl",
+      "workspace_root_test_launcher.sh.tpl"
+    ],
+    "workflows": [
+      "Dockerfile.bazel",
+      "README.md",
+      "bazel.yml",
+      "blob-size-policy.yml",
+      "blocking-ci.yml",
+      "cargo-deny.yml",
+      "cla.yml",
+      "close-stale-contributor-prs.yml",
+      "codespell.yml",
+      "issue-deduplicator.yml",
+      "issue-labeler.yml",
+      "issue-translator.yml",
+      "postmerge-ci.yml",
+      "python-runtime-build.yml",
+      "python-runtime-release.yml",
+      "python-sdk-build.yml",
+      "python-sdk-cli-release.yml",
+      "python-sdk-release.yml",
+      "r2-release.yml",
+      "repo-checks.yml",
+      "rust-ci-full-nextest-platform.yml",
+      "rust-ci-full.yml",
+      "rust-ci.yml",
+      "rust-release-argument-comment-lint.yml",
+      "rust-release-provisioned-macos.yml",
+      "rust-release-windows.yml",
+      "rust-release.yml",
+      "rusty-v8-release.yml",
+      "sdk.yml",
+      "v8-canary.yml",
+      "zstd"
+    ],
+    "docs": [
+      "CLA.md",
+      "agents_md.md",
+      "authentication.md",
+      "config.md",
+      "contributing.md",
+      "example-config.md",
+      "exec.md",
+      "execpolicy.md",
+      "getting-started.md",
+      "install.md",
+      "license.md",
+      "open-source-fund.md",
+      "sandbox.md",
+      "skills.md",
+      "slash_commands.md"
+    ],
+    "docs_count": 15,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 3334,
+      "line_count": 81,
+      "truncated": false,
+      "excerpt": "<p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer.\n<p align=\"center\">\n  <img src=\"https://github.com/openai/codex/blob/main/.github/codex-cli-splash.png\" alt=\"Codex CLI splash\" width=\"80%\" />\n</p>\n</br>\nIf you want Codex in your code editor (VS Code, Cursor, Windsurf), <a href=\"https://developers.openai.com/codex/ide\">install in your IDE.</a>\n</br>If you want the desktop app experience, run <code>codex app</code> or visit <a href=\"https://chatgpt.com/codex?app-landing-page=true\">the Codex App page</a>.\n</br>If you are looking for the <em>cloud-based agent</em> from OpenAI, <strong>Codex Web</strong>, go to <a href=\"https://chatgpt.com/codex\">chatgpt.com/codex</a>.</p>\n\n---\n\n## Quickstart\n\n### Installing and running Codex CLI\n\nRun the following on Mac or Linux to install Codex CLI:\n\n```shell\ncurl -fsSL https://chatgpt.com/codex/install.sh | sh\n```\n\nRun the following on Windows to install Codex CLI:\n\n```shell\npowershell -ExecutionPolicy ByPass -c \"irm https://chatgpt.com/codex/install.ps1 | iex\"\n```\n\nThe standalone installers download from `https://releases.openai.com/codex` by default and fall back to GitHub Releases if a metadata or asset download is unavailable. To force GitHub Releases, set `CODEX_INSTALLER_USE_RELEASES_OPENAI_COM` to `false` (`0` and `no` are also accepted):\n\n```shell\ncurl -fsSL https://chatgpt.com/codex/install.sh | CODEX_INSTALLER_USE_RELEASES_OPENAI_COM=false sh\n```\n\n```powershell\n$env:CODEX_INSTALLER_USE_RELEASES_OPENAI_COM='false'; irm https://chatgpt.com/codex/install.ps1 | iex\n```\n\nCodex CLI can also be installed via the following package managers:\n\n```shell\n# Install using npm\nnpm install -g @openai/codex\n```\n\n```shell\n# Install using Homebrew\nbrew install --cask codex\n```\n\nThen simply run `codex` to get started.\n\n<details>\n<summary>You can also go to the <a href=\"https://github.com/openai/codex/releases/latest\">latest GitHub Release</a> and download the appropriate binary for your platform.</summary>\n\nEach GitHub Release contains many executables, but in practice, you likely want one of these:\n\n- macOS\n  - Apple Silicon/arm64: `codex-aarch64-apple-darwin.tar.gz`\n  - x86_64 (older Mac hardware): `codex-x86_64-apple-darwin.tar.gz`\n- Linux\n  - x86_64: `codex-x86_64-unknown-linux-musl.tar.gz`\n  - arm64: `codex-aarch64-unknown-linux-musl.tar.gz`\n\nEach archive contains a single entry with the platform baked into the name (e.g., `codex-x86_64-unknown-linux-musl`), so you likely want to rename it to `codex` after extracting it.\n\n</details>\n\n### Using Codex with your ChatGPT plan\n\nRun `codex` and select **Sign in with ChatGPT**. We recommend signing into your ChatGPT account to use Codex as part of your Plus, Pro, Business, Edu, or Enterprise plan. [Learn more about what's included in your ChatGPT plan](https://help.openai.com/en/articles/11369540-codex-in-chatgpt).\n\nYou can also use Codex with an API key, but this requires [additional setup](https://developers.openai.com/codex/auth#sign-in-with-an-api-key).\n\n## Docs\n\n- [**Codex Documentation**](https://developers.openai.com/codex)\n- [**Contributing**](./docs/contributing.md)\n- [**Installing & building**](./docs/install.md)\n- [**Open source fund**](./docs/open-source-fund.md)\n\nThis repository is licensed under the [Apache-2.0 License](LICENSE).\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 1247,
+      "line_count": 39,
+      "truncated": false,
+      "excerpt": "{\n  \"name\": \"codex-monorepo\",\n  \"private\": true,\n  \"description\": \"Tools for repo-wide maintenance.\",\n  \"scripts\": {\n    \"format\": \"prettier --check *.json *.md docs/*.md .github/workflows/*.yml **/*.js\",\n    \"format:fix\": \"prettier --write *.json *.md docs/*.md .github/workflows/*.yml **/*.js\",\n    \"write-hooks-schema\": \"cargo run --manifest-path ./codex-rs/Cargo.toml -p codex-hooks --bin write_hooks_schema_fixtures\"\n  },\n  \"devDependencies\": {\n    \"prettier\": \"^3.5.3\"\n  },\n  \"resolutions\": {\n    \"@modelcontextprotocol/sdk\": \"1.32.0\",\n    \"braces\": \"^3.0.3\",\n    \"esbuild\": \"0.28.1\",\n    \"fast-uri\": \"3.1.1\",\n    \"flatted\": \"3.4.2\",\n    \"glob@10.4.5\": \"10.5.0\",\n    \"handlebars\": \"4.7.9\",\n    \"hono\": \"4.12.25\",\n    \"micromatch\": \"^4.0.8\",\n    \"minimatch@3.1.2\": \"3.1.4\",\n    \"minimatch@9.0.5\": \"9.0.7\",\n    \"path-to-regexp\": \"8.4.0\",\n    \"picomatch@2.3.1\": \"2.3.2\",\n    \"picomatch@4.0.3\": \"4.0.4\",\n    \"rollup\": \"4.59.0\",\n    \"semver\": \"^7.7.1\"\n  },\n  \"overrides\": {\n    \"punycode\": \"^2.3.1\"\n  },\n  \"engines\": {\n    \"node\": \">=24.22.1\",\n    \"pnpm\": \">=10.34.5\"\n  },\n  \"packageManager\": \"pnpm@10.34.5+sha512.a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e\"\n}\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 545,
+      "line_count": 19,
+      "truncated": false,
+      "excerpt": "packages:\n  - codex-cli\n  - codex-rs/responses-api-proxy/npm\n  - sdk/typescript\n\nignoredBuiltDependencies:\n  - esbuild\n\nminimumReleaseAge: 10080\nminimumReleaseAgeExclude: []\n\nblockExoticSubdeps: true\nstrictDepBuilds: true\ntrustPolicy: no-downgrade\ntrustPolicyIgnoreAfter: 10080\ntrustPolicyExclude: []\nallowBuilds:\n  # Build only the official MCP conformance CLI pinned by the TypeScript SDK.\n  \"@modelcontextprotocol/conformance@https://codeload.github.com/modelcontextprotocol/conformance/tar.gz/49103de6ed70804e940637bf3e9e29e4a3f54e64\": true\n"
+    }
+  },
+  "workflow_samples": {
+    "blocking-ci.yml": {
+      "path": ".github/workflows/blocking-ci.yml",
+      "size_bytes": 2343,
+      "line_count": 91,
+      "truncated": false,
+      "excerpt": "name: blocking-ci\n\n# This is the single entrypoint for checks that block a PR merge. It also runs\n# after pushes to main so the same check family stays grouped in the Actions UI.\non:\n  pull_request: {}\n  push:\n    branches: [main]\n\njobs:\n  # Keep reusable workflow calls alphabetized. The `required` job below is the\n  # version-controlled list that the main-branch ruleset should require.\n  bazel:\n    permissions:\n      contents: read\n      id-token: write\n    name: Bazel\n    uses: ./.github/workflows/bazel.yml\n    secrets: inherit\n\n  bazel-result:\n    name: Bazel result\n    needs: bazel\n    if: ${{ always() }}\n    runs-on: ubuntu-24.04\n    steps:\n      - name: Require the Bazel workflow to succeed\n        env:\n          BAZEL_RESULT: ${{ needs.bazel.result }}\n        run: test \"$BAZEL_RESULT\" = success\n\n  blob-size-policy:\n    name: Blob size policy\n    uses: ./.github/workflows/blob-size-policy.yml\n    secrets: inherit\n\n  cargo-deny:\n    name: cargo-deny\n    uses: ./.github/workflows/cargo-deny.yml\n    secrets: inherit\n\n  codespell:\n    name: Codespell\n    uses: ./.github/workflows/codespell.yml\n    secrets: inherit\n\n  repo-checks:\n    name: repo-checks\n    uses: ./.github/workflows/repo-checks.yml\n    secrets: inherit\n\n  rust-ci:\n    permissions:\n      contents: read\n      id-token: write\n    name: rust-ci\n    uses: ./.github/workflows/rust-ci.yml\n    secrets: inherit\n\n  sdk:\n    permissions:\n      contents: read\n      id-token: write\n    name: sdk\n    uses: ./.github/workflows/sdk.yml\n    secrets: inherit\n\n  required:\n    name: CI required\n    # Without `always()`, GitHub skips this job after a failed dependency and a\n    # required check can appear successful instead of reporting the failure.\n    if: ${{ always() }}\n    needs:\n      - blob-size-policy\n      - cargo-deny\n      - codespell\n      - repo-checks\n      - rust-ci\n      - sdk\n    runs-on: ubuntu-24.04\n    steps:\n      # Keep the helper on the same combined revision as the child workflows so\n      # the merge gate evaluates the exact candidate they validated.\n      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n        with:\n          persist-credentials: false\n\n      - name: Require successful dependencies\n        env:\n          NEEDS: ${{ toJSON(needs) }}\n        run: python3 .github/scripts/check_ci_results.py\n"
+    },
+    "close-stale-contributor-prs.yml": {
+      "path": ".github/workflows/close-stale-contributor-prs.yml",
+      "size_bytes": 3519,
+      "line_count": 107,
+      "truncated": false,
+      "excerpt": "name: Close stale contributor PRs\n\non:\n  workflow_dispatch:\n  schedule:\n    - cron: \"0 6 * * *\"\n\npermissions:\n  contents: read\n  issues: write\n  pull-requests: write\n\njobs:\n  close-stale-contributor-prs:\n    # Prevent scheduled runs on forks\n    if: github.repository == 'openai/codex'\n    runs-on: ubuntu-latest\n    steps:\n      - name: Close inactive PRs from contributors\n        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0\n        with:\n          github-token: ${{ secrets.GITHUB_TOKEN }}\n          script: |\n            const DAYS_INACTIVE = 14;\n            const cutoff = new Date(Date.now() - DAYS_INACTIVE * 24 * 60 * 60 * 1000);\n            const { owner, repo } = context.repo;\n            const dryRun = false;\n            const stalePrs = [];\n\n            core.info(`Dry run mode: ${dryRun}`);\n\n            const prs = await github.paginate(github.rest.pulls.list, {\n              owner,\n              repo,\n              state: \"open\",\n              per_page: 100,\n              sort: \"updated\",\n              direction: \"asc\",\n            });\n\n            for (const pr of prs) {\n              const lastUpdated = new Date(pr.updated_at);\n              if (lastUpdated > cutoff) {\n                core.info(`PR ${pr.number} is fresh`);\n                continue;\n              }\n\n              if (!pr.user || pr.user.type !== \"User\") {\n                core.info(`PR ${pr.number} wasn't created by a user`);\n                continue;\n              }\n\n              let permission;\n              try {\n                const permissionResponse = await github.rest.repos.getCollaboratorPermissionLevel({\n                  owner,\n                  repo,\n                  username: pr.user.login,\n                });\n                permission = permissionResponse.data.permission;\n              } catch (error) {\n                if (error.status === 404) {\n                  core.info(`Author ${pr.user.login} is not a collaborator; skipping #${pr.number}`);\n                  continue;\n                }\n                throw error;\n              }\n\n              const hasContributorAccess = [\"admin\", \"maintain\", \"write\"].includes(permission);\n              if (!hasContributorAccess) {\n                core.info(`Author ${pr.user.login} has ${permission} access; skipping #${pr.number}`);\n                continue;\n              }\n\n              stalePrs.push(pr);\n            }\n\n            if (!stalePrs.length) {\n              core.info(\"No stale contributor pull requests found.\");\n              return;\n            }\n\n            for (const pr of stalePrs) {\n              const issue_number = pr.number;\n              const closeComment = `Closing this pull request because it has had no updates for more than ${DAYS_INACTIVE} days. If you plan to continue working on it, feel free to reopen or open a new PR.`;\n\n              if (dryRun) {\n                core.info(`[dry-run] Would close contributor PR #${issue_number} from ${pr.user.login}`);\n                continue;\n              }\n\n              await github.rest.issues.createComment({\n                owner,\n                repo,\n                issue_number,\n                body: closeComment,\n              });\n\n              await github.rest.pulls.update({\n                owner,\n                repo,\n                pull_number: issue_number,\n                state: \"closed\",\n              });\n\n              core.info(`Closed contributor PR #${issue_number} from ${pr.user.login}`);\n            }\n"
+    },
+    "postmerge-ci.yml": {
+      "path": ".github/workflows/postmerge-ci.yml",
+      "size_bytes": 1313,
+      "line_count": 46,
+      "truncated": false,
+      "excerpt": "name: postmerge-ci\n\n# This is the single entrypoint for main-only CI that is intentionally outside\n# the merge-blocking suite. It keeps the broader postmerge signal in one run.\non:\n  push:\n    branches: [main]\n\njobs:\n  # Keep reusable workflow calls alphabetized. Each child retains its own\n  # workflow_dispatch trigger so maintainers can rerun flaky suites directly.\n  rust-ci-full:\n    permissions:\n      contents: read\n      id-token: write\n    name: rust-ci-full\n    uses: ./.github/workflows/rust-ci-full.yml\n    secrets: inherit\n\n  v8-canary:\n    permissions:\n      contents: read\n      id-token: write\n    name: v8-canary\n    uses: ./.github/workflows/v8-canary.yml\n    secrets: inherit\n\n  results:\n    name: Postmerge CI results\n    needs:\n      - rust-ci-full\n      - v8-canary\n    if: ${{ always() }}\n    runs-on: ubuntu-24.04\n    steps:\n      # Postmerge runs use the pushed main commit, so this helper always comes\n      # from the same revision that defined the parent workflow.\n      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n        with:\n          ref: ${{ github.sha }}\n          persist-credentials: false\n\n      - name: Require successful dependencies\n        env:\n          NEEDS: ${{ toJSON(needs) }}\n        run: python3 .github/scripts/check_ci_results.py\n"
+    },
+    "repo-checks.yml": {
+      "path": ".github/workflows/repo-checks.yml",
+      "size_bytes": 2723,
+      "line_count": 78,
+      "truncated": false,
+      "excerpt": "name: repo-checks\n\non:\n  workflow_call:\n\njobs:\n  build-test:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    env:\n      NODE_OPTIONS: --max-old-space-size=4096\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n        with:\n          persist-credentials: false\n\n      - uses: ./.github/actions/setup-ci\n\n      - name: Verify codex-rs Cargo manifests inherit workspace settings\n        run: python3 .github/scripts/verify_cargo_workspace_manifests.py\n\n      - name: Verify codex-tui does not import codex-core directly\n        run: python3 .github/scripts/verify_tui_core_boundary.py\n\n      - name: Verify Bazel clippy flags match Cargo workspace lints\n        run: python3 .github/scripts/verify_bazel_clippy_lints.py\n\n      - name: Install uv\n        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2\n        with:\n          version: \"0.13.5\"\n\n      - name: Test downstream Python release resolution\n        run: python3 -m unittest discover -s .github/scripts -p 'test_resolve_python_cli_release.py'\n\n      - name: Test release version comparison\n        run: python3 -m unittest discover -s .github/scripts -p 'test_releases.py'\n\n      - name: Test PyPI release verification\n        run: uv run --no-project --with packaging==26.2 python -m unittest discover -s .github/scripts -p 'test_verify_pypi_release.py'\n\n      - name: Test Codex package builder\n        run: python3 -m unittest discover -s scripts/codex_package -p 'test_*.py'\n\n      - name: Test standalone installer\n        run: python3 -m unittest discover -s scripts/install -p 'test_*.py'\n\n      - name: Test macOS signing and notarization\n        run: python3 -m unittest discover -s .github/scripts/macos-signing -p 'test_*.py'\n\n      - name: Setup pnpm\n        uses: pnpm/action-setup@a8198c4bff370c8506180b035930dea56dbd5288 # v5\n        with:\n          run_install: false\n\n      - name: Setup Node.js\n        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0\n        with:\n          node-version-file: .nvmrc\n\n      - name: Install dependencies\n        run: pnpm install --frozen-lockfile\n\n      - name: Ensure root README.md contains only ASCII and certain Unicode code points\n        run: ./scripts/asciicheck.py README.md\n      - name: Check root README ToC\n        run: python3 scripts/readme_toc.py README.md\n\n      - name: Check formatting (run `just fmt` to fix)\n        run: just fmt-check\n\n      - name: Prettier (run `pnpm run format:fix` to fix)\n        run: pnpm run format\n\n      - name: Check for a clean worktree\n        if: always() && !cancelled()\n        uses: ./.github/actions/check-clean-worktree\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T11:28:16Z",
+      "oldest": "2026-11-24T20:43:40Z"
+    },
+    "conventional_pct": 0.0,
+    "fix_revert_pct": 6.0,
+    "ai_coauthor_pct": 0.0,
+    "top_recent_authors": [
+      [
+        "etraut-openai",
+        15
+      ],
+      [
+        "dylan-hurd-oai",
+        4
+      ],
+      [
+        "charliemarsh-oai",
+        4
+      ],
+      [
+        "joesavona",
+        4
+      ],
+      [
+        "jif-oai",
+        3
+      ],
+      [
+        "viyatb-oai",
+        3
+      ],
+      [
+        "iceweasel-oai",
+        2
+      ],
+      [
+        "fcoury-oai",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "9f3cb259",
+        "date": "2026-11-25T11:28:16Z",
+        "author": "jif-oai",
+        "subject": "Drop the production dependency on `codex-core` from app-server transport (#63898)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f0f3d650",
+        "date": "2026-11-25T11:28:05Z",
+        "author": "jif-oai",
+        "subject": "Move plugin skill namespace resolution into the skills loader (#63897)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1c69d014",
+        "date": "2026-11-25T10:11:31Z",
+        "author": "jif-oai",
+        "subject": "Publish process exit status and exit code together (#63896)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6cb4fd1d",
+        "date": "2026-11-25T06:05:42Z",
+        "author": "dylan-hurd-oai",
+        "subject": "Drain stdout through closure in the PTY attachment test (#63894)",
+        "ai_signal": false
+      },
+      {
+        "sha": "077eab36",
+        "date": "2026-11-25T06:05:15Z",
+        "author": "dylan-hurd-oai",
+        "subject": "Isolate Git discovery in remote apply_patch turn diff tests (#63889)",
+        "ai_signal": false
+      },
+      {
+        "sha": "590be70f",
+        "date": "2026-11-25T05:35:48Z",
+        "author": "etraut-openai",
+        "subject": "Fix pasting packed bitmap images on Windows (#63888)",
+        "ai_signal": false
+      },
+      {
+        "sha": "600595d6",
+        "date": "2026-11-25T03:50:09Z",
+        "author": "fcoury-oai",
+        "subject": "Wait for subagent transcripts before enabling sidebar selection (#63887)",
+        "ai_signal": false
+      },
+      {
+        "sha": "16466d9e",
+        "date": "2026-11-25T02:19:33Z",
+        "author": "psachdeva-oai",
+        "subject": "Carry prompt wellbeing results through answer moderation (#63886)",
+        "ai_signal": false
+      },
+      {
+        "sha": "cec14d27",
+        "date": "2026-11-25T02:16:54Z",
+        "author": "etraut-openai",
+        "subject": "Show the quota plan in `/status` (#63877)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ebd0765a",
+        "date": "2026-11-25T02:15:58Z",
+        "author": "etraut-openai",
+        "subject": "Render bidirectional text in full-screen transcripts (#63845)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f0c0f0a1",
+        "date": "2026-11-25T02:15:58Z",
+        "author": "etraut-openai",
+        "subject": "Render bidirectional transcript text on terminals without native ordering (#63844)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ba4e2782",
+        "date": "2026-11-25T02:14:15Z",
+        "author": "pakrym-oai",
+        "subject": "Raise the per-value additional context limit to 10,000 tokens (#63843)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1698314b",
+        "date": "2026-11-25T02:01:50Z",
+        "author": "etraut-openai",
+        "subject": "Scope TUI rate limits to the active thread's provider (#63838)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1ed2a3f2",
+        "date": "2026-11-25T01:51:18Z",
+        "author": "eddie-openai",
+        "subject": "Record root turn IDs in Guardian review analytics (#63837)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c265acf3",
+        "date": "2026-11-25T01:40:10Z",
+        "author": "charliemarsh-oai",
+        "subject": "Reduce n-gram allocations in dynamic skill selection (#63834)",
+        "ai_signal": false
+      },
+      {
+        "sha": "62f3c95a",
+        "date": "2026-11-25T01:40:10Z",
+        "author": "charliemarsh-oai",
+        "subject": "Skip shadow skill selection without a metrics client (#63832)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3f65e9f1",
+        "date": "2026-11-25T01:38:15Z",
+        "author": "charliemarsh-oai",
+        "subject": "Enable fixed launch directories for shared MCP REPL servers (#63821)",
+        "ai_signal": false
+      },
+      {
+        "sha": "87de5e93",
+        "date": "2026-11-25T01:34:01Z",
+        "author": "charliemarsh-oai",
+        "subject": "Update packaged ripgrep to 16.0.0 (#63811)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e2c31f62",
+        "date": "2026-11-25T01:14:06Z",
+        "author": "jacksonmoody-oai",
+        "subject": "Use ChatGPT account preferences for Codex voice chat (#63810)",
+        "ai_signal": false
+      },
+      {
+        "sha": "986a6b3b",
+        "date": "2026-11-25T01:06:19Z",
+        "author": "jamy-OAI",
+        "subject": "Preserve the saved Daybreak choice across live goal continuations (#63809)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "jif-oai",
+      "contributions": 2105
+    },
+    {
+      "login": "etraut-openai",
+      "contributions": 1149
+    },
+    {
+      "login": "bolinfest",
+      "contributions": 1057
+    },
+    {
+      "login": "pakrym-oai",
+      "contributions": 623
+    },
+    {
+      "login": "aibrahim-oai",
+      "contributions": 620
+    },
+    {
+      "login": "felixxia-oai",
+      "contributions": 323
+    },
+    {
+      "login": "charliemarsh-oai",
+      "contributions": 320
+    },
+    {
+      "login": "fcoury-oai",
+      "contributions": 319
+    },
+    {
+      "login": "anp-oai",
+      "contributions": 311
+    },
+    {
+      "login": "dylan-hurd-oai",
+      "contributions": 304
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "rust-v0.174.0-alpha.5",
+      "published_at": "2026-11-25T01:11:35Z",
+      "name": "0.174.0-alpha.5"
+    },
+    {
+      "tag": "rust-v0.174.0-alpha.4",
+      "published_at": "2026-11-24T23:01:51Z",
+      "name": "0.174.0-alpha.4"
+    },
+    {
+      "tag": "rust-v0.174.0-alpha.3",
+      "published_at": "2026-11-24T20:14:27Z",
+      "name": "0.174.0-alpha.3"
+    },
+    {
+      "tag": "rust-v0.174.0-alpha.2",
+      "published_at": "2026-11-24T16:14:14Z",
+      "name": "0.174.0-alpha.2"
+    },
+    {
+      "tag": "rust-v0.174.0-alpha.1",
+      "published_at": "2026-11-24T01:46:17Z",
+      "name": "0.174.0-alpha.1"
+    }
+  ]
+}

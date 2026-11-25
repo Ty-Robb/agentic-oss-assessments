@@ -1,0 +1,451 @@
+{
+  "repo": "anomalyco/opencode",
+  "meta": {
+    "description": "The open source coding agent.",
+    "homepage": "https://opencode.ai",
+    "license": "MIT",
+    "stars": 229098,
+    "forks": 31187,
+    "open_issues": 4172,
+    "archived": false,
+    "created_at": "2025-04-30T20:08:00Z",
+    "pushed_at": "2026-11-25T13:18:12Z",
+    "default_branch": "dev",
+    "topics": []
+  },
+  "languages": {
+    "TypeScript": 63243922,
+    "Rust": 11838111,
+    "MDX": 7464556,
+    "CSS": 2184626,
+    "Luau": 202367,
+    "JavaScript": 81506,
+    "Shell": 46348,
+    "Nix": 14202,
+    "HTML": 12282,
+    "NSIS": 9397,
+    "PowerShell": 6681,
+    "Python": 3642,
+    "Dockerfile": 533
+  },
+  "structure": {
+    "root": [
+      ".dockerignore",
+      ".editorconfig",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".gitleaksignore",
+      ".husky/",
+      ".opencode/",
+      ".oxlintrc.json",
+      ".prettierignore",
+      ".vscode/",
+      ".zed/",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "README.ar.md",
+      "README.bn.md",
+      "README.br.md",
+      "README.bs.md",
+      "README.da.md",
+      "README.de.md",
+      "README.es.md",
+      "README.fr.md",
+      "README.gr.md",
+      "README.it.md",
+      "README.ja.md",
+      "README.ko.md",
+      "README.md",
+      "README.no.md",
+      "README.pl.md",
+      "README.ru.md",
+      "README.th.md",
+      "README.tr.md",
+      "README.uk.md",
+      "README.vi.md",
+      "README.zh.md",
+      "README.zht.md",
+      "SECURITY.md",
+      "bun.lock",
+      "bunfig.toml",
+      "flake.lock",
+      "flake.nix",
+      "install",
+      "nix/",
+      "package.json",
+      "packages/",
+      "patches/",
+      "salesforce/",
+      "screenshot-uk.png",
+      "script/",
+      "sdks/",
+      "services/",
+      "specs/",
+      "strobe.json",
+      "tsconfig.json",
+      "turbo.json"
+    ],
+    "workflows": [
+      "bot-nix-hashes.yml",
+      "check-bot-scope.yml",
+      "check-docs.yml",
+      "check-nix.yml",
+      "check-process-daemon.yml",
+      "check-test.yml",
+      "check.yml",
+      "deploy-files.yml",
+      "deploy-site.yml",
+      "deploy-update.yml",
+      "deploy.yml",
+      "nightly-beta.yml",
+      "release-process-daemon.yml",
+      "release.yml",
+      "triage-close-issues.yml",
+      "triage-close-linked.yml",
+      "triage-close-prs.yml",
+      "triage-compliance-close.yml",
+      "triage-contributor.yml",
+      "triage-pr-standards.yml",
+      "triage-slop.yml"
+    ],
+    "docs": [],
+    "docs_count": 0,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 18219,
+      "line_count": 221,
+      "truncated": true,
+      "excerpt": "- After changing the public Protocol or Server `HttpApi`, run `bun run generate` from `packages/client`. Do not edit generated client files directly.\n- Keep runtime dependencies directed from Schema to Core and Protocol, then from Core and Protocol to Server. Client runtime code may depend on Schema and Protocol but never Core or Server; `sdk` composes Client, Core, and Server.\n- This repository does not use Changesets. Do not add `.changeset` files; follow the existing release workflow instead.\n- The default branch is `dev`. Base branches and worktrees on `origin/dev`, target PRs at `dev`, and diff against `origin/dev` unless told otherwise.\n\n## Live TUI Testing\n\n- Run `bun run dev:live` from a development worktree to test its TUI against the currently elected `opencode` background server and live sessions.\n- Pass a directory after the script when needed, for example `bun run dev:live /path/to/project`.\n- The script discovers the server with `opencode service status`, injects its private local credential from `opencode service get password`, and uses the `dev` TUI storage channel so tabs and other client-local state match the installed client.\n- Prefer `dev:live` over plain `bun run dev` for this workflow. An implicit managed-service connection may replace the live server when the worktree client version differs; explicit `--server` warns and continues without replacing it.\n\n## Live Desktop Diagnostics\n\n- When attaching Playwright to a running desktop app, use `chromium.connectOverCDP(endpoint, { noDefaults: true })`.\n- Without `noDefaults`, Playwright applies light-mode media emulation during attachment. An app following the system theme then flashes light until the connection closes. The option also preserves the existing focus and other media preferences.\n- Do not emulate a color scheme or reduced-motion preference on the user's live window unless explicitly requested; use an isolated test context for those scenarios.\n\n## TUI Stories\n\n- When a user asks for a TUI story, add a fixture-driven story under `packages/tui/src/feature-plugins/system/storybook` and register it in `index.tsx`.\n- Render the real production component rather than a visual copy. Keep submissions and other side effects local to the story so it is safe to explore repeatedly.\n- Expose the meaningful state dimensions through story keybindings and list them in `StoryFooter`; include a reset command when combinations can leave the fixture in a confusing state.\n- Run a specific story with `OPENCODE_STORY=<story-id> bun run dev:live` from the development worktree, and exercise narrow and wide terminal sizes when layout is relevant.\n\n## TUI Theme Tokens\n\n- Choose theme tokens by semantic role, not by their current color. Do not use raw `theme.hue` values or borrow an unrelated semantic token to achieve a preferred appearance.\n- Use `text.feedback` and `background.feedback` only for outcome or status feedback such as errors, warnings, success messages, and informational messages. Use `formfield` states for form-control text, ordinals, and selection markers, and `action` states for actions.\n- If the theme does not expose a token for the required semantic role, extend the theme schema, defaults, resolution, and types with that role before using it in a component. Do not repurpose the nearest-looking existing token.\n- When changing the public theme token surface, verify the built-in light and dark defaults and the custom-theme fallback path in addition to the affected TUI component.\n\n## Branch Names\n\nUse a short branch name of at most three words, separated by hyphens. Do not use slashes or type prefixes such as `feat/` or `fix/`.\n\nExamples: `session-recovery`, `fix-scroll-state`, `regenerate-sdk`.\n\n## Commits and PR Titles\n\nUse conventional commit-style messages and PR titles: `type(scope): summary`.\n\nValid types are `feat`, `fix`, `docs`, `chore`, `refactor`, and `test`. Scopes are optional; use the affected package or area when helpful, e.g. `core`, `opencode`, `tui`, `app`, `desktop`, `sdk`, or `plugin`.\n\nExamples: `fix(tui): simplify thinking toggle styling`, `docs: update contributing guide`, `chore(sdk): regenerate types`.\n\n## Style Guide\n\n### General Principles\n\n- Keep things in one function unless composable or reusable\n- Validate unknown values once at the boundary that owns them. Pass typed values inward instead of repeating `typeof value === \"object\"` and property-existence checks. Do not defensively revalidate values already guaranteed by a schema, constructor, or internal type.\n- Do not extract single-use helpers preemptively. Inline the logic at the call site unless the helper is reused, hides a genuinely complex boundary, or has a clear independent name that improves the caller.\n- Before adding complexity for a speculative or vanishingly unlikely race or security edge case, explain the concrete failure mode, likelihood, and complexity cost to the user and get their buy-in. Do not silently expand scope for theoretical robustness.\n- Avoid `try`/`catch` where possible\n- Avoid using the `any` type\n- Use Bun APIs when possible, like `Bun.file()`\n- Rely on type inference when possible; avoid explicit type annotations or interfaces unless necessary for exports or clarity\n- Prefer functional array methods (flatMap, filter, map) over for loops; use type guards on filter to maintain type inference downstream\n- In `src/config`, follow the existing self-export pattern at the top of the file (for example `export * as ConfigAgent from \"./agent.js\"`) when adding a new config module.\n- In Effect generators, bind services to named variables before calling methods. Do not use nested service yields such as `yield* (yield* Foo.Service).bar()`.\n\nReduce total variable count by inlining when a value is only used once.\n\n```ts\n// Good\nconst journal = await Bun.file(path.join(dir, \"journal.json\")).json()\n\n// Bad\nconst journalPath = path.join(dir, \"journal.json\")\nconst journal = await Bun.file(journalPath).json()\n```\n\n### Destructuring\n\nAvoid unnecessary destructuring. Use dot notation to preserve context.\n\n```ts\n// Good\nobj.a\nobj.b\n\n// Bad\nconst { a, b } = obj\n```\n\n### Imports\n\n- Never alias imports. Do not use `import { foo as bar } from \"...\"` or renamed imports like `resolve as pathResolve`.\n- Never use type-position `import(\"...\")` references such as `Schema.declare<import(\"@opencode/plugin/effect/plugin\").Plugin[\"effect\"]>`. Only when two imports genuinely collide on a name and no other option exists, an aliased type import (`import type { Plugin as PluginDefinition } from \"...\"`) is permitted as a last resort \u2014 still strongly preferred not to.\n- Never use star imports. Do not use `import * as Foo from \"...\"` or `import type * as Foo from \"...\"`.\n- If a namespace-style value is needed, import the module's own exported namespace by name, for example `import { Project } from \"@opencode/core/project\"`, then reference `Project.ID`.\n- Prefer dynamic imports for heavy modules that are only needed in selected code paths, especially in startup-sensitive entrypoints. Destructure dynamic import bindings near the top of the narrowest scope that needs them so they read like normal imports. Avoid inline chains such as `await import(\"./module\").then((mod) => mod.value())` or `(await import(\"./module\")).value()`. Keep branch-specific imports inside the branch that needs them to preserve lazy loading.\n\n### Variables\n\nPrefer `const` over `let`. Use ternaries or early returns instead of reassignment.\n\n```ts\n// Good\nconst foo = condition ? 1 : 2\n\n// Bad\nlet foo\nif (condition) foo = 1\nelse foo = 2\n```\n\n### Control Flow\n\nAvoid `else` statements. Prefer early returns.\n\n```ts\n// Good\nfunction foo() {\n  if (condition) return 1\n  return 2\n}\n\n// Bad\nfunction foo() {\n  if (condition) return 1\n  else return 2\n}\n```\n\n### Complex Logic\n\nWhen a function has several validation branches or supporting details, make the main function read as the happy path and move supporting details into small helpers below it.\n\n```ts\n// Good\nexport function loadThing(input: unknown) {\n  const config = requireConfig(input)\n  const metadata = readMetadata(input)\n  return createThing({ config, metadata })\n}\n\nfunction requireConfig(input: unknown) {\n  ...\n}\n```\n\n- Keep helpers close to the code they support, below the main export when that improves readability.\n- Do not over-abstract simple expressions into many single-use helpers; extract only when it names a real concept like `requireConfig` or `readMetadata`.\n- Do not return `Effect` from helpers unless they actually perform effectful work. Synchronous parsing, validation, and option building should stay synchronous.\n- Prefer Effect schema helpers such as `Schema.UnknownFromJsonString` and `Schema.decodeUnknownOption` over manual `JSON.parse` wrapped in `Effect.try` when parsing untrusted JSON strings.\n- Add comments for non-obvious constraints and surprising behavior, not for obvious assignments or control flow.\n\n### Schema Definitions (Drizzle)\n\nUse snake_case for field names so column names don't need to be redefined as strings.\n\n```ts\n// Good\nconst table = sqliteTable(\"session\", {\n  id: text().primaryKey(),\n  project_id: text().notNull(),\n  created_at: integer().notNull(),\n})\n\n// Bad\nconst table = sqliteTable(\"session\", {\n  id: text(\"id\").primaryKey(),\n  projectID: text(\"project_id\").notNull(),\n  createdAt: integer(\"created_at\").notNull(),\n})\n```\n\n### Experimental API\n\n- An experimental endpoint lives at `/api/experimental/<group>/...`, its OpenAPI identifier is `experimental.<group>.<method>`, and it lands in the SDK as `client.experimental.<group>.<method>`. Its description says \"Experimental: may change without compatibility guarantees.\"\n- `packages/protocol/test/experimental-identifiers.test.ts` enforces the path and identifier match in both directions; the SDK namespace follows from the path.\n- An experimental field or parameter on a stable endpoint goes under an `experimental` key (`experimental.<name>`), the same way config does (`config.experimental.*`).\n- New endpoints and new default behaviors start experimental.\n- To graduate one, move the route out of `/api/experimental`, drop the `experimental.` prefix, and note it in `CHANGELOG.md`.\n- Experimental HTTP routes change without aliases: rename or remove the route, then update the callers.\n- A breaking move of shipped SDK or plugin API (including moving it under `experimental`) keeps the old path and type names as deprecated aliases of the new ones until the next minor, each marked `@deprecated` with the replacement and \"Removed in the next minor\". Generated SDK moves get them from the codegen (`compile(..., { aliases: true })` in `packages/client/script/generate.ts`), not by hand.\n- Experimental plugin hooks are named `experimental.*` (`experimental.ws.handshake`).\n\n### Feature Flags\n\n- When you open a PR, decide whether the change needs a flag: new user-visible behavior, risky core changes, and anything not ready to release get one; fixes, refactors, docs and tests do not.\n- Gate risky behavior, or behavior that lands over several PRs, with a key and a description in `packages/schema/src/config/flag.ts`, and read it with `Flag.enabled(\"<key>\")` from `@opencode/core/flag`.\n- Flags default to on in local and dev builds and off in releases, except `optInOnly` flags (such as `todo`), which require an explicit `OPENCODE_FLAGS=<key>` or `experimental.<key>: true` in every build.\n- Say in the PR body which flag guards the change. The reserved switches `OPENCODE_FLAGS=all` and `experimental.all_flags: true` skip opt-in-only flags; use `all,-<key>` or `experimental.<key>: false` to opt out within the respective source.\n- Ship a feature by deleting its flag and the checks that read it.\n\n## Testing\n\n- Avoid mocks as much as possible, you shouldn't be using globalThis.\\* at all unless it's the only option.\n- Test actual implementation, do not duplicate logic into tests\n- Tests cannot run from repo root (guard: `do-not-run-tests-from-root`); run from package directories such as `packages/core`.\n- Before writing or changing tests, read the matching skill in `.opencode/skills`: `unit-tests` (bun test), `tui-tests` (OpenTUI renderer tests), `app-e2e-tests` (Playwright in `packages/app/e2e`) or `component-tests` (Playwright on stories, `packages/stories`). They cover what has made tests slow or flaky in CI.\n\n## Checks\n\n- Run `bun run check` from the repository root as the canonical full lint and type-check verification.\n- During focused iteration, run `bun typecheck` from the affected package directory (for example, `packages/core`). Never run `tsc` directly.\n- Local `typecheck` scripts use `bun check`. CI and package publishing run `typecheck:tsc`, which uses the official TypeScript compiler (`@typescript/native`). When the two disagree, `tsc` is the source of truth; reproduce with `bun run typecheck:tsc` from the package directory.\n- `bun check` aims to match TypeScript 7.1, not the `7.0.2` that `process.versions.typescript` reports (oven-sh/bun#46536). When `bun check` and `tsc` from the pinned `@typescript/native` report different errors, file a minimal, dependency-free repro at https://github.com/oven-sh/bun/issues, with the output of both. `bun check` writes no declaration files, so declaration-emit errors such as TS5088 or TS2883 are expected to appear only in `tsc`; do not report those.\n\n## Plugin Loading\n\n- Plugins load asynchronously. Server handlers never wait for them (`Plugin.awaitActivation`), never retry until something appears, and never turn slow plugins into a timeout or 503. This applies to reads and to actions such as `generate.*`, `rpc.call`, `vcs.init` and `websearch.query`.\n- The server answers with what is loaded now: lists may be empty or partial on a cold Location, and an action whose model, provider or RPC hasn't loaded yet fails with not-found. That is expected, not a bug to fix on the server.\n- Clients are responsible for making sure what they need is loaded before they call. Long-lived clients refresh on the matching `*.updated` event (`model.updated`, `agent.updated`, `skill.updated`, `integration.updated`, `plugin.updated`, ...). One-shot clients (CLI commands, ACP, SDK callers) wait on their side, for example by polling `plugin.list` or the entry they need. See `packages/cli/src/services/plugin-startup.ts`.\n- Running the hooks that are registered and waiting for their result is fine (for example `hooks.trigger(\"session\", \"http.request\", ...)`). What is not allowed is waiting for plugins to load first: if the plugin that adds a hook hasn't loaded yet, the call runs without that hook.\n\n## Session Core\n\n- Keep durable events minimal: record irreducible new facts and do not repeat state derivable by folding the ordered aggregate history. Enrich projections and read models with previous or derived state when consumers need self-contained views.\n- Keep durable prompt admission separate from model execution. `Session.prompt(...)` publishes `session.inbox.enqueued`, whose projection inserts one durable `session_inbox` row, before scheduling advisory `SessionExecution.wake(sessionID)` unless `resume: false` requests admit-only behavior. Delivery publishes `session.inbox.delivered`; its projection consumes the inbox row and inserts the visible message in the same transaction. `session_inbox` stores only unconsumed work.\n- Reusing a Session ID adopts the existing Session. Reusing a user or synthetic inbox item ID is idempotent when Session and type match: the first admission wins and the retried payload, metadata, and delivery mode are ignored, whether the item is still pending or already delivered (reconciled from the projected message without retained enqueue history). Cross-Session or cross-type reuse fails. Control items keep their operation-specific conflict behavior.\n- Keep `SessionExecution` process-global and Session-ID based. Its local implementation owns the process-local Session coordinator and discovers placement through `SessionStore` plus `LocationSer"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 4557,
+      "line_count": 112,
+      "truncated": false,
+      "excerpt": "# Contributing to OpenCode\n\nThe changes most likely to be accepted are:\n\n- Bug fixes\n- Additional LSPs and formatters\n- LLM performance improvements\n- Environment-specific fixes\n- Missing standard behavior\n- Documentation improvements\n\nUI and core product features require design review before implementation. If you are unsure whether a change fits, ask a maintainer or choose an issue labeled [`help wanted`](https://github.com/anomalyco/opencode/issues?q=is%3Aissue%20state%3Aopen%20label%3Ahelp-wanted), [`good first issue`](https://github.com/anomalyco/opencode/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22), [`bug`](https://github.com/anomalyco/opencode/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug), or [`perf`](https://github.com/anomalyco/opencode/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22perf%22).\n\nWant to take on an issue? Leave a comment and a maintainer may assign it unless it is already being worked on.\n\n> [!NOTE]\n> PRs that ignore these guardrails will likely be closed.\n\n## Adding Providers\n\nNew providers should rarely require OpenCode changes. Add the provider to [models.dev](https://github.com/anomalyco/models.dev) first.\n\n## Development\n\nOpenCode requires the Bun version in the `packageManager` field of [`package.json`](./package.json) or newer. From the repository root:\n\n```bash\nbun install\nbun dev [directory]\n```\n\n`bun dev` runs the V2 CLI and TUI. Pass a directory to open another project, or `.` to open this repository.\n\nTo test a development TUI against your installed OpenCode V2 background service and live sessions:\n\n```bash\nbun run dev:live [directory]\n```\n\nFor web development, run the backend and app in separate terminals. Other interfaces have root scripts:\n\n```bash\nbun dev serve --port 4096\nbun run dev:web\nbun run dev:desktop\nbun run dev:site\n```\n\n### Packages\n\n- `packages/schema`: shared wire and storage contracts\n- `packages/core`: domain behavior and persistence\n- `packages/protocol`: public API definitions\n- `packages/server`: HTTP server and runtime composition\n- `packages/client`: generated TypeScript clients\n- `packages/cli`: command-line entrypoint and service lifecycle\n- `packages/tui`: terminal interface\n- `packages/app`: shared web interface\n- `packages/desktop`: Electron desktop application\n- `packages/plugin`: plugin API\n\n### Verification\n\nRun typechecks, and tests where defined, from the affected package rather than the repository root:\n\n```bash\ncd packages/core\nbun run test\nbun typecheck\n```\n\nFollow package-specific instructions in nearby `AGENTS.md` files. After changing the public Protocol or Server `HttpApi`, run `bun run generate` from `packages/client`; never edit generated client files directly.\n\nFollow the repository [style guide](./AGENTS.md).\n\n## Pull Requests\n\n### Link Issues When Required\n\nBug fixes, chores, and tests must reference an existing issue. Documentation, refactor, and feature PRs are exempt from the automated linked-issue check. When required, use `Fixes #123` or `Closes #123` in the PR description.\n\nBefore implementing new functionality, open a feature request describing the problem, why it belongs in OpenCode, and your proposed approach if you have one. Wait for design approval before opening the implementation PR.\n\nBase branches on `dev` and complete the provided pull request template.\n\n### Keep It Focused\n\n- Keep PRs small and focused.\n- Explain the problem and why the change fixes it.\n- Check whether the functionality already exists.\n- For UI changes, include before-and-after screenshots or video.\n- For logic changes, explain what you tested and how a reviewer can verify it.\n\n### Keep It Brief\n\nLong, AI-generated PR descriptions and issues may be ignored. Write a short explanation in your own words. If the change cannot be explained briefly, the PR may be too large.\n\n### Use Conventional Titles\n\nUse `type(scope): summary`. Supported types are `feat`, `fix`, `docs`, `chore`, `refactor`, and `test`. The scope is optional.\n\nExamples:\n\n- `docs: update contributing guide`\n- `fix(tui): restore scroll position`\n- `feat(app): add workspace search`\n\n## Issues\n\nBug reports and feature requests must use their issue templates. Blank issues are not allowed; ask support and how-to questions in the [Discord community](https://discord.gg/opencode).\n\nAutomated checks flag missing templates, placeholder text, AI-generated walls of text, and missing meaningful content. You have two hours to correct a flagged issue before it closes automatically. Ask a maintainer if an issue was flagged incorrectly.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 4626,
+      "line_count": 114,
+      "truncated": false,
+      "excerpt": "<p align=\"center\">\n  <a href=\"https://opencode.ai\">\n    <picture>\n      <source srcset=\".github/assets/logo-ornate-dark.svg\" media=\"(prefers-color-scheme: dark)\">\n      <source srcset=\".github/assets/logo-ornate-light.svg\" media=\"(prefers-color-scheme: light)\">\n      <img src=\".github/assets/logo-ornate-light.svg\" alt=\"OpenCode logo\">\n    </picture>\n  </a>\n</p>\n<p align=\"center\">The open source AI coding agent.</p>\n<p align=\"center\">\n  <a href=\"https://opencode.ai/discord\"><img alt=\"Discord\" src=\"https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord\" /></a>\n  <a href=\"https://www.npmjs.com/package/@opencode/cli\"><img alt=\"npm\" src=\"https://img.shields.io/npm/v/@opencode/cli?style=flat-square\" /></a>\n  <a href=\"https://github.com/anomalyco/opencode/actions/workflows/release.yml\"><img alt=\"Build status\" src=\"https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/release.yml?style=flat-square&branch=dev\" /></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"README.md\">English</a> |\n  <a href=\"README.zh.md\">\u7b80\u4f53\u4e2d\u6587</a> |\n  <a href=\"README.zht.md\">\u7e41\u9ad4\u4e2d\u6587</a> |\n  <a href=\"README.ko.md\">\ud55c\uad6d\uc5b4</a> |\n  <a href=\"README.de.md\">Deutsch</a> |\n  <a href=\"README.es.md\">Espa\u00f1ol</a> |\n  <a href=\"README.fr.md\">Fran\u00e7ais</a> |\n  <a href=\"README.it.md\">Italiano</a> |\n  <a href=\"README.da.md\">Dansk</a> |\n  <a href=\"README.ja.md\">\u65e5\u672c\u8a9e</a> |\n  <a href=\"README.pl.md\">Polski</a> |\n  <a href=\"README.ru.md\">\u0420\u0443\u0441\u0441\u043a\u0438\u0439</a> |\n  <a href=\"README.bs.md\">Bosanski</a> |\n  <a href=\"README.ar.md\">\u0627\u0644\u0639\u0631\u0628\u064a\u0629</a> |\n  <a href=\"README.no.md\">Norsk</a> |\n  <a href=\"README.br.md\">Portugu\u00eas (Brasil)</a> |\n  <a href=\"README.th.md\">\u0e44\u0e17\u0e22</a> |\n  <a href=\"README.tr.md\">T\u00fcrk\u00e7e</a> |\n  <a href=\"README.uk.md\">\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430</a> |\n  <a href=\"README.bn.md\">\u09ac\u09be\u0982\u09b2\u09be</a> |\n  <a href=\"README.gr.md\">\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac</a> |\n  <a href=\"README.vi.md\">Ti\u1ebfng Vi\u1ec7t</a>\n</p>\n\n[![OpenCode Terminal UI](services/site/public/v1/docs/assets/lander/screenshot.png)](https://opencode.ai)\n\n---\n\n### Installation\n\n```bash\n# YOLO\ncurl -fsSL https://opencode.ai/v2/install | bash\n\n# Package managers\nnpm i -g @opencode/cli@latest      # or bun/pnpm/yarn\nbrew install anomalyco/tap/opencode-v2 # macOS and Linux (recommended, always up to date)\nbrew install opencode              # macOS and Linux (official brew formula, updated less)\nsudo pacman -S opencode            # Arch Linux (Stable)\nparu -S opencode-beta              # Arch Linux (Latest from AUR)\nmise use -g opencode               # Any OS\nnix run github:anomalyco/opencode  # Nix\n```\n\n> [!TIP]\n> Remove versions older than 0.1.x before installing.\n\n### Desktop App (BETA)\n\nOpenCode is also available as a desktop application. Download it from [opencode.ai/download](https://opencode.ai/download).\n\n| Platform              | Download                           |\n| --------------------- | ---------------------------------- |\n| macOS (Apple Silicon) | `opencode-desktop-mac-arm64.dmg`   |\n| macOS (Intel)         | `opencode-desktop-mac-x64.dmg`     |\n| Windows               | `opencode-desktop-win-x64.exe`     |\n| Linux                 | `.deb`, `.rpm`, or `.AppImage`     |\n\n```bash\n# macOS (Homebrew)\nbrew install --cask opencode-desktop\n```\n\n#### Installation Directory\n\nThe install script installs OpenCode to `$HOME/.opencode/bin`.\n\n### Agents\n\nOpenCode includes two built-in agents you can switch between with the `Tab` key.\n\n- **build** - Default, full-access agent for development work\n- **plan** - Read-only agent for analysis and code exploration\n  - Denies file edits by default\n  - Asks permission before running bash commands\n  - Ideal for exploring unfamiliar codebases or planning changes\n\nAlso included is a **general** subagent for complex searches and multistep tasks.\nThis is used internally and can be invoked using `@general` in messages.\n\nLearn more about [agents](https://opencode.ai/docs/agents).\n\n### Documentation\n\nFor more info on how to configure OpenCode, [**head over to our docs**](https://opencode.ai/docs).\n\n### Contributing\n\nIf you're interested in contributing to OpenCode, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.\n\n### Building on OpenCode\n\nIf you are working on a project that's related to OpenCode and is using \"opencode\" as part of its name, for example \"opencode-dashboard\" or \"opencode-mobile\", please add a note to your README to clarify that it is not built by the OpenCode team and is not affiliated with us in any way.\n\n---\n\n**Join our community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 7395,
+      "line_count": 180,
+      "truncated": true,
+      "excerpt": "{\n  \"$schema\": \"https://json.schemastore.org/package.json\",\n  \"name\": \"opencode\",\n  \"description\": \"AI-powered development tool\",\n  \"version\": \"2.4.1\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"packageManager\": \"bun@1.4.4\",\n  \"scripts\": {\n    \"dev\": \"bun run --cwd packages/cli src/index.ts\",\n    \"dev:live\": \"sh -c 'OPENCODE_TUI_CHANNEL=dev OPENCODE_PASSWORD=\\\"$(opencode service get password)\\\" exec bun run dev \\\"$@\\\" --server \\\"$(opencode service status)\\\"' --\",\n    \"dev:vite\": \"bun run --cwd packages/cli --conditions=browser dev/vite.ts\",\n    \"dev:vite:live\": \"sh -c 'OPENCODE_TUI_CHANNEL=dev OPENCODE_PASSWORD=\\\"$(opencode service get password)\\\" exec bun run dev:vite \\\"$@\\\" --server \\\"$(opencode service status)\\\"' --\",\n    \"dev:desktop\": \"bun --cwd packages/desktop dev\",\n    \"dev:web\": \"bun --cwd packages/app dev\",\n    \"dev:site\": \"bun run --cwd services/site dev\",\n    \"lint\": \"oxlint && ast-grep scan -c script/ast-grep/gui-plugins/sgconfig.yml && ast-grep scan --rule script/ast-grep/dialog-size.yml packages && bun script/sdk-docs.ts && bun script/check-greys.ts\",\n    \"lint:changed\": \"bun script/lint-changed.ts\",\n    \"lint:effect-patterns\": \"ast-grep scan -c script/ast-grep/sgconfig.yml packages/util/src packages/core/src packages/server/src packages/protocol/src packages/cli/src\",\n    \"lint:effect-simplifications\": \"ast-grep scan -c script/ast-grep/effect-simplifications/sgconfig.yml --off=unused-suppression packages\",\n    \"test:lint-rules\": \"ast-grep test -c script/ast-grep/sgconfig.yml\",\n    \"test:effect-simplification-rules\": \"ast-grep test -c script/ast-grep/effect-simplifications/sgconfig.yml\",\n    \"typecheck\": \"bun turbo typecheck --concurrency=3\",\n    \"typecheck:tsc\": \"bun turbo typecheck:tsc --concurrency=3\",\n    \"check\": \"bun run lint && bun run typecheck\",\n    \"typecheck:profile\": \"bun script/profile-typecheck.ts\",\n    \"typecheck:profile:packages\": \"bun script/profile-typecheck-packages.ts\",\n    \"pack\": \"bun run script/pack.ts\",\n    \"upgrade-opentui\": \"bun run script/upgrade-opentui.ts\",\n    \"postinstall\": \"bun run --cwd packages/core fix-node-pty\",\n    \"prepare\": \"husky\",\n    \"random\": \"echo 'Random script'\",\n    \"sso\": \"aws sso login --sso-session=opencode --no-browser\",\n    \"test\": \"echo 'do not run tests from root' && exit 1\"\n  },\n  \"workspaces\": {\n    \"packages\": [\n      \"packages/*\",\n      \"packages/plugins/*\",\n      \"services/*\",\n      \"packages/data/*\"\n    ],\n    \"catalog\": {\n      \"@effect/opentelemetry\": \"4.1.0\",\n      \"@effect/platform-node\": \"4.1.0\",\n      \"@effect/platform-node-shared\": \"4.1.0\",\n      \"@effect/sql-sqlite-bun\": \"4.1.0\",\n      \"@effect/sql-sqlite-node\": \"4.1.0\",\n      \"@npmcli/arborist\": \"9.4.0\",\n      \"@types/bun\": \"1.4.3\",\n      \"@hona/strobe\": \"0.44.1\",\n      \"@types/cross-spawn\": \"6.0.6\",\n      \"@octokit/rest\": \"22.0.0\",\n      \"@opentui/core\": \"0.9.9\",\n      \"@opentui/keymap\": \"0.9.9\",\n      \"@opentui/solid\": \"0.9.9\",\n      \"@tanstack/solid-virtual\": \"3.13.37\",\n      \"@standard-schema/spec\": \"1.1.0\",\n      \"@kobalte/core\": \"0.13.13\",\n      \"@corvu/drawer\": \"0.2.4\",\n      \"@types/luxon\": \"3.7.1\",\n      \"@types/node\": \"24.12.2\",\n      \"@types/semver\": \"7.7.1\",\n      \"@tsconfig/node22\": \"22.0.2\",\n      \"@tsconfig/bun\": \"1.0.9\",\n      \"@cloudflare/workers-types\": \"4.20251008.0\",\n      \"@pierre/diffs\": \"1.6.1\",\n      \"@pierre/highlights\": \"0.2.0\",\n      \"@solid-primitives/event-listener\": \"2.4.6\",\n      \"@solid-primitives/media\": \"2.3.6\",\n      \"@solid-primitives/resize-observer\": \"2.2.0\",\n      \"@solid-primitives/storage\": \"4.4.0\",\n      \"@tailwindcss/vite\": \"4.1.11\",\n      \"diff\": \"8.0.4\",\n      \"dompurify\": \"3.4.17\",\n      \"drizzle-kit\": \"1.0.0-rc.5-ab785fc\",\n      \"drizzle-orm\": \"1.0.0-rc.5-169397b\",\n      \"effect\": \"4.1.0\",\n      \"fast-check\": \"4.9.0\",\n      \"cross-spawn\": \"7.0.6\",\n      \"hono\": \"4.13.13\",\n      \"fuzzysort\": \"3.1.0\",\n      \"get-east-asian-width\": \"1.6.0\",\n      \"luxon\": \"3.6.1\",\n      \"marked\": \"18.0.11\",\n      \"marked-shiki\": \"1.2.1\",\n      \"@playwright/test\": \"1.60.0\",\n      \"semver\": \"7.7.4\",\n      \"typescript\": \"npm:@typescript/typescript6@6.0.2\",\n      \"@typescript/native\": \"npm:typescript@7.1.0-beta\",\n      \"zod\": \"4.6.7\",\n      \"remeda\": \"2.26.0\",\n      \"shiki\": \"4.4.3\",\n      \"solid-list\": \"0.3.0\",\n      \"string-width\": \"7.2.0\",\n      \"tailwindcss\": \"4.1.11\",\n      \"vite\": \"7.3.7\",\n      \"@solidjs/meta\": \"0.29.4\",\n      \"@solidjs/router\": \"1.0.0\",\n      \"@solidjs/start\": \"2.1.0\",\n      \"@sentry/solid\": \"10.71.0\",\n      \"@sentry/vite-plugin\": \"5.4.0\",\n      \"solid-js\": \"1.9.17\",\n      \"solid-sonner\": \"0.3.1\",\n      \"vite-plugin-solid\": \"2.11.10\",\n      \"@lydell/node-pty\": \"1.2.0-beta.12\"\n    }\n  },\n  \"devDependencies\": {\n    \"@ast-grep/cli\": \"0.44.0\",\n    \"@hona/strobe\": \"catalog:\",\n    \"@opencode/client\": \"workspace:*\",\n    \"@oxlint/plugins\": \"1.93.0\",\n    \"@tsconfig/bun\": \"catalog:\",\n    \"@types/bun\": \"catalog:\",\n    \"@types/mime-types\": \"3.0.1\",\n    \"@types/react\": \"19.2.17\",\n    \"@typescript/native\": \"catalog:\",\n    \"glob\": \"13.0.5\",\n    \"husky\": \"9.1.7\",\n    \"oxlint\": \"1.93.0\",\n    \"prettier\": \"3.6.2\",\n    \"semver\": \"^7.6.0\",\n    \"turbo\": \"2.10.2\"\n  },\n  \"dependencies\": {\n    \"@opencode/plugin\": \"workspace:*\",\n    \"@opencode/script\": \"workspace:*\",\n    \"typescript\": \"catalog:\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/anomalyco/opencode\"\n  },\n  \"license\": \"MIT\",\n  \"prettier\": {\n    \"semi\": false,\n    \"printWidth\": 120\n  },\n  \"trustedDependencies\": [\n    \"esbuild\",\n    \"node-pty\",\n    \"protobufjs\",\n    \"electron\"\n  ],\n  \"overrides\": {\n    \"@opentui/core\": \"catalog:\",\n    \"@opentui/keymap\": \"catalog:\",\n    \"@opentui/solid\": \"catalog:\",\n    \"@effect/platform-node-shared\": \"catalog:\",\n    \"@types/bun\": \"catalog:\",\n    \"@types/node\": \"catalog:\",\n    \"bun-types\": \"1.4.4\",\n    \"effect\": \"catalog:\",\n    \"open\": \"11.0.4\",\n    \"solid-js\": \"catalog:\"\n  },\n  \"patchedDependencies\": {\n    \"@ai-sdk/openai-compatible@2.0.41\": \"patches/@ai-sdk%2Fopenai-compatible@2.0.41.patch\",\n    \"@dnd-kit/dom@0.5.0\""
+    },
+    ".oxlintrc.json": {
+      "path": ".oxlintrc.json",
+      "size_bytes": 7176,
+      "line_count": 208,
+      "truncated": true,
+      "excerpt": "{\n  \"$schema\": \"https://raw.githubusercontent.com/nicolo-ribaudo/oxc-project.github.io/refs/heads/json-schema/src/public/.oxlintrc.schema.json\",\n  \"jsPlugins\": [\n    { \"name\": \"anti-slop\", \"specifier\": \"./script/oxlint/anti-slop/index.ts\" },\n    { \"name\": \"anti-slop-effect\", \"specifier\": \"./script/oxlint/anti-slop/effect/index.ts\" }\n  ],\n  \"categories\": {\n    \"correctness\": \"off\",\n    \"suspicious\": \"off\",\n    \"pedantic\": \"off\",\n    \"perf\": \"off\",\n    \"style\": \"off\",\n    \"restriction\": \"off\",\n    \"nursery\": \"off\"\n  },\n  \"rules\": {\n    \"no-restricted-globals\": [\n      \"error\",\n      {\n        \"name\": \"Reflect\",\n        \"message\": \"Use typed property access or direct invocation. Suppress this rule only for genuine reflection.\"\n      }\n    ]\n  },\n  \"overrides\": [\n    {\n      \"files\": [\"packages/ai/src/**\"],\n      \"rules\": {\n        \"no-restricted-globals\": [\n          \"error\",\n          {\n            \"name\": \"Reflect\",\n            \"message\": \"Use typed property access or direct invocation. Suppress this rule only for genuine reflection.\"\n          },\n          {\n            \"name\": \"fetch\",\n            \"message\": \"Send HTTP through RequestExecutor, which applies executor-wide and scoped middleware (HTTP hooks). A request sent any other way skips them.\"\n          }\n        ],\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"paths\": [\n              {\n                \"name\": \"effect/http\",\n                \"importNames\": [\"HttpClient\", \"FetchHttpClient\"],\n                \"message\": \"Send HTTP through RequestExecutor, which applies executor-wide and scoped middleware (HTTP hooks). Only route/executor.ts holds the HTTP client.\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"files\": [\"packages/ai/src/route/executor.ts\"],\n      \"rules\": {\n        \"no-restricted-imports\": \"off\"\n      }\n    },\n    {\n      \"files\": [\n        \"packages/app/**\",\n        \"packages/desktop/**\",\n        \"packages/gui-plugins/**\",\n        \"packages/plugin/src/gui/**\",\n        \"packages/ui/**\",\n        \"packages/session-ui/**\"\n      ],\n      \"rules\": {\n        \"oxc/no-accumulating-spread\": \"warn\",\n        \"anti-slop/no-array-filter-map\": \"warn\",\n        \"anti-slop/no-reduce-accumulator-copy\": \"warn\",\n        \"anti-slop/no-chained-type-assertions\": \"warn\",\n        \"anti-slop/no-conditional-empty-object-spread\": \"warn\",\n        \"anti-slop/no-known-value-widening\": \"warn\",\n        \"anti-slop/no-module-mocking\": \"warn\",\n        \"anti-slop/no-object-parameters\": \"warn\",\n        \"anti-slop/no-reflect-apply\": \"warn\",\n        \"anti-slop/no-reflect-get\": \"warn\",\n        \"anti-slop/no-runtime-typeof\": \"warn\",\n        \"anti-slop/no-shape-in-symbol-names\": \"warn\",\n        \"anti-slop/no-unknown-parameters\": \"warn\",\n        \"anti-slop/no-unknown-returns\": \"warn\",\n        \"anti-slop/no-unknown-type-aliases\": \"warn\",\n        \"anti-slop/no-unsafe-dictionary-type\": \"warn\",\n        \"anti-slop/no-widen-then-assert\": \"warn\",\n        \"anti-slop/require-readable-spacing\": \"warn\",\n        \"anti-slop/require-safety-comment-for-type-assertion\": \"warn\"\n      }\n    },\n    {\n      \"files\": [\n        \"packages/app/**\",\n        \"packages/desktop/**\",\n        \"packages/gui-plugins/**\",\n        \"packages/plugin/src/gui/**\",\n        \"packages/session-ui/**\"\n      ],\n      \"rules\": {\n        \"anti-slop-effect/no-manual-effect-error-tag\": \"warn\",\n        \"anti-slop-effect/no-manual-tag-comparison\": \"warn\",\n        \"anti-slop-effect/no-manual-tagged-construction\": \"warn\",\n        \"anti-slop-effect/no-service-constructor-imports\": \"warn\",\n        \"anti-slop-effect/prefer-effect-match\": \"warn\"\n      }\n    },\n    {\n      \"files\": [\"packages/gui-plugins/src/*.ts\", \"packages/gui-plugins/src/*.tsx\"],\n      \"rules\": {\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"paths\": [\n              {\n                \"name\": \"solid-js\",\n                \"importNames\": [\"createEffect\", \"createRenderEffect\", \"createComputed\"],\n                \"message\": \"GUI plugin code runs side effects through the SDK: createKeyed(source, fn, { otherwise }) per provider generation or value, createMemo or a plain function for derived values, createLatest for async data, createVisitState for per-visit state, and the handler for logic a user action causes. An escape hatch needs an oxlint-disable comment with a reason.\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"files\": [\"packages/gui-plugins/src/*/**\"],\n      \"rules\": {\n        \"no-restricted-imports\": [\n          \"error\",\n          {\n            \"paths\": [\n              {\n                \"name\": \"solid-js\",\n                \"importNames\": [\"createEffect\", \"createRenderEffect\", \"createComputed\"],\n                \"message\": \"GUI plugin code runs side effects through the SDK: createKeyed(source, fn, { otherwise }) per provider generation or value, createMemo or a plain function for derived values, createLatest for async data, createVisitState for per-visit state, and the handler for logic a user action causes. An escape hatch needs an oxlint-disable comment with a reason.\"\n              }\n            ],\n            \"patterns\": [\n              {\n                \"regex\": \"^@opencode/(app|desktop)(/|$)\",\n                \"message\": \"GUI plugins never import the app or desktop packages. Use the SDK.\"\n              },\n              {\n                \"regex\": \"^@/\",\n                \"message\": \"GUI plugins never import app internals. Use the SDK.\"\n              },\n              {\n                \"group\": [\"../*/*\", \"!../*/contract\"],\n                \"message\": \"Import another built-in plugin only through its contract.ts.\"\n              },\n              {\n                \"regex\": \"\\\\.css$\",\n                \"message\": \"Import CSS with ?inline and contribute it with ctx.add(Style, css).\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"files\": [\"packages/plugin/src/gui/**\"],\n      \"rules\": {\n        \"no-r"
+    },
+    "turbo.json": {
+      "path": "turbo.json",
+      "size_bytes": 2356,
+      "line_count": 68,
+      "truncated": false,
+      "excerpt": "{\n  \"$schema\": \"https://v2-8-13.turborepo.dev/schema.json\",\n  \"globalDependencies\": [\n    \"patches/**\",\n    \"bunfig.toml\",\n    \".npmrc\",\n    \".github/actions/setup-bun/**\",\n    \".github/workflows/check-test.yml\",\n    \"package.json\"\n  ],\n  \"globalEnv\": [\"CI\", \"OPENCODE_DISABLE_SHARE\"],\n  \"globalPassThroughEnv\": [\"CI\", \"OPENCODE_DISABLE_SHARE\"],\n  \"tasks\": {\n    // `transit` folds every workspace dependency into the hash, so a change in a dependency re-checks its dependents\n    // instead of replaying their cached result. Local `typecheck` runs `bun check`, which reads dependency sources\n    // directly and needs no build order.\n    \"typecheck\": {\n      \"dependsOn\": [\"transit\"]\n    },\n    // CI checks types with the official TypeScript compiler. tsc -b writes core's declarations for the packages that\n    // reference it, so those packages also wait for core. Package entries replace the generic one, so they repeat\n    // `transit`.\n    \"typecheck:tsc\": {\n      \"dependsOn\": [\"transit\"]\n    },\n    \"@opencode/cli#typecheck:tsc\": {\n      \"dependsOn\": [\"transit\", \"@opencode/core#typecheck:tsc\"]\n    },\n    \"@opencode/sdk#typecheck:tsc\": {\n      \"dependsOn\": [\"transit\", \"@opencode/core#typecheck:tsc\"]\n    },\n    \"@opencode/server#typecheck:tsc\": {\n      \"dependsOn\": [\"transit\", \"@opencode/core#typecheck:tsc\"]\n    },\n    \"@opencode/simulation#typecheck:tsc\": {\n      \"dependsOn\": [\"transit\", \"@opencode/core#typecheck:tsc\"]\n    },\n    \"@opencode/tui#typecheck:tsc\": {\n      \"dependsOn\": [\"transit\", \"@opencode/core#typecheck:tsc\"]\n    },\n    \"test:components\": {\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"build\": {\n      \"dependsOn\": [\"transit\"],\n      \"outputs\": [\"dist/**\"]\n    },\n    // Workspace packages export their sources, so tests never wait for a dependency's build; the build job in\n    // check-test.yml checks the library builds. No package has a transit script: it runs nothing and only folds every\n    // workspace dependency into the test hash.\n    \"transit\": {\n      \"dependsOn\": [\"^transit\"]\n    },\n    // Every package with a test script runs here, so a new suite cannot be left out of CI.\n    \"test\": {\n      \"dependsOn\": [\"transit\"],\n      \"outputs\": []\n    },\n    \"@opencode/desktop#test\": {\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"@opencode/sdk#verify:package\": {\n      \"outputs\": []\n    }\n  }\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "check-bot-scope.yml": {
+      "path": ".github/workflows/check-bot-scope.yml",
+      "size_bytes": 2259,
+      "line_count": 63,
+      "truncated": false,
+      "excerpt": "name: check-bot-scope\n\n# Required on dev. bot-nix-hashes.yml pushes bot/nix-hashes and auto-merges its pull request without review, so this\n# fails that branch unless it changes nothing but a valid nix/hashes.json. Every other branch passes. The bot's own\n# pushes start no workflows, so bot-nix-hashes.yml dispatches this; pull_request covers anyone else pushing the branch.\n\non:\n  pull_request:\n    types: [opened, synchronize, reopened, ready_for_review]\n  workflow_dispatch:\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}\n  cancel-in-progress: true\n\npermissions:\n  contents: read\n\njobs:\n  bot-scope:\n    name: bot-scope\n    runs-on: ubuntu-24.04\n    timeout-minutes: 10\n    steps:\n      - name: Check branch\n        id: branch\n        env:\n          HEAD_REF: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}\n        run: |\n          if [ \"$HEAD_REF\" = bot/nix-hashes ]; then\n            echo \"bot=true\" >> \"$GITHUB_OUTPUT\"\n          else\n            echo \"$HEAD_REF is not a bot branch; nothing to check\"\n          fi\n\n      - name: Checkout repository\n        if: steps.branch.outputs.bot == 'true'\n        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n        with:\n          ref: ${{ github.event.pull_request.head.sha || github.sha }}\n          fetch-depth: 0\n          filter: blob:none\n          persist-credentials: false\n\n      - name: Check changed files\n        if: steps.branch.outputs.bot == 'true'\n        env:\n          BASE: ${{ github.base_ref || 'dev' }}\n        run: |\n          set -euo pipefail\n          git fetch --no-tags --filter=blob:none origin \"+refs/heads/$BASE:refs/remotes/origin/$BASE\"\n          changed=$(git diff --name-only \"origin/$BASE...HEAD\")\n          echo \"Changed files:\"\n          echo \"$changed\"\n          if [ \"$changed\" != nix/hashes.json ]; then\n            echo \"::error::bot/nix-hashes may change only nix/hashes.json\"\n            exit 1\n          fi\n\n      # Runs dev's validator: the step above proved this branch leaves .github/ unchanged.\n      - name: Validate nix/hashes.json\n        if: steps.branch.outputs.bot == 'true'\n        run: bash .github/nix-hashes/validate.sh nix/hashes.json\n"
+    },
+    "check-docs.yml": {
+      "path": ".github/workflows/check-docs.yml",
+      "size_bytes": 1326,
+      "line_count": 42,
+      "truncated": false,
+      "excerpt": "name: check-docs\n\n# Builds the V2 docs on their own (services/site/src/docs/script/build.ts): compiles every MDX page,\n# prerenders it, builds search, checks every link and that pages load nothing from outside /docs. The\n# site's deploy runs the same step, so a broken page fails here instead of blocking the deploy.\non:\n  pull_request:\n    types: [opened, synchronize, reopened, ready_for_review]\n    paths:\n      - services/site/**\n      - packages/protocol/openapi.json\n      - packages/cli/src/config/**\n      - .github/workflows/check-docs.yml\n  workflow_dispatch:\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}\n  cancel-in-progress: true\n\njobs:\n  docs:\n    name: docs build\n    if: ${{ !github.event.pull_request.draft }}\n    runs-on: blacksmith-4vcpu-ubuntu-2404\n    timeout-minutes: 10\n    defaults:\n      run:\n        working-directory: services/site\n    steps:\n      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1\n\n      - uses: ./.github/actions/setup-bun\n\n      # The API reference and the config schema the pages link (/docs/openapi.json, /v2/cli.json).\n      - name: Generate\n        run: bun run generate\n\n      - name: Build docs\n        run: bun src/docs/script/build.ts --out \"$RUNNER_TEMP/docs\"\n"
+    },
+    "check-nix.yml": {
+      "path": ".github/workflows/check-nix.yml",
+      "size_bytes": 2839,
+      "line_count": 97,
+      "truncated": false,
+      "excerpt": "name: check-nix\n\non:\n  push:\n    branches: [dev]\n  pull_request:\n    branches: [dev]\n    types: [opened, synchronize, reopened, ready_for_review]\n  workflow_dispatch:\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\npermissions:\n  contents: read\n\njobs:\n  nix-eval:\n    if: ${{ !github.event.pull_request.draft }}\n    runs-on: blacksmith-4vcpu-ubuntu-2404\n    timeout-minutes: 15\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n\n      - name: Setup Nix\n        uses: nixbuild/nix-quick-install-action@2c9db80fb984ceb1bcaa77cdda3fdf8cfba92035 # v34\n\n      - name: Evaluate flake outputs (all systems)\n        run: |\n          set -euo pipefail\n          nix --version\n\n          echo \"=== Flake metadata ===\"\n          nix flake metadata\n\n          echo \"\"\n          echo \"=== Flake structure ===\"\n          nix flake show --all-systems\n\n          SYSTEMS=\"x86_64-linux aarch64-linux aarch64-darwin\"\n          PACKAGES=\"opencode\"\n          # TODO: move 'desktop' to PACKAGES when #11755 is fixed\n          OPTIONAL_PACKAGES=\"desktop\"\n\n          echo \"\"\n          echo \"=== Evaluating packages for all systems ===\"\n          for system in $SYSTEMS; do\n            echo \"\"\n            echo \"--- $system ---\"\n            for pkg in $PACKAGES; do\n              printf \"  %s: \" \"$pkg\"\n              if output=$(nix eval \".#packages.$system.$pkg.drvPath\" --raw 2>&1); then\n                echo \"\u2713\"\n              else\n                echo \"\u2717\"\n                echo \"::error::Evaluation failed for packages.$system.$pkg\"\n                echo \"$output\"\n                exit 1\n              fi\n            done\n          done\n\n          echo \"\"\n          echo \"=== Evaluating optional packages ===\"\n          for system in $SYSTEMS; do\n            echo \"\"\n            echo \"--- $system ---\"\n            for pkg in $OPTIONAL_PACKAGES; do\n              printf \"  %s: \" \"$pkg\"\n              if output=$(nix eval \".#packages.$system.$pkg.drvPath\" --raw 2>&1); then\n                echo \"\u2713\"\n              else\n                echo \"\u2717\"\n                echo \"::warning::Evaluation failed for packages.$system.$pkg\"\n                echo \"$output\"\n              fi\n            done\n          done\n\n          echo \"\"\n          echo \"=== Evaluating devShells for all systems ===\"\n          for system in $SYSTEMS; do\n            printf \"%s: \" \"$system\"\n            if output=$(nix eval \".#devShells.$system.default.drvPath\" --raw 2>&1); then\n              echo \"\u2713\"\n            else\n              echo \"\u2717\"\n              echo \"::error::Evaluation failed for devShells.$system.default\"\n              echo \"$output\"\n              exit 1\n            fi\n          done\n\n          echo \"\"\n          echo \"=== All evaluations passed ===\"\n"
+    },
+    "check-process-daemon.yml": {
+      "path": ".github/workflows/check-process-daemon.yml",
+      "size_bytes": 12806,
+      "line_count": 253,
+      "truncated": true,
+      "excerpt": "name: Process daemon\n\non:\n  pull_request:\n    paths:\n      - packages/process-daemon/**\n      - .github/actions/prefetch-ghostty/**\n      - .github/workflows/check-process-daemon.yml\n  push:\n    branches: [dev]\n    paths:\n      - packages/process-daemon/**\n      - .github/actions/prefetch-ghostty/**\n      - .github/workflows/check-process-daemon.yml\n  workflow_dispatch:\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}\n  cancel-in-progress: ${{ github.event_name == 'pull_request' }}\n\ndefaults:\n  run:\n    working-directory: packages/process-daemon\n\njobs:\n  miri:\n    name: Miri (callback ownership)\n    runs-on: ubuntu-22.04\n    timeout-minutes: 15\n    env:\n      CARGO_TARGET_DIR: target/miri\n    steps:\n      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2\n      - name: Install Miri\n        run: rustup toolchain install nightly-2026-09-02 --profile minimal --component miri --component rust-src\n      - run: cargo +nightly-2026-09-02 miri setup\n      - name: Check Stacked Borrows\n        run: |\n          cargo +nightly-2026-09-02 miri test --locked --manifest-path tests/ghostty-effects/Cargo.toml\n          cargo +nightly-2026-09-02 miri test --locked --manifest-path tests/transport-retained/Cargo.toml\n      - name: Check Tree Borrows\n        env:\n          MIRIFLAGS: -Zmiri-tree-borrows\n        run: |\n          cargo +nightly-2026-09-02 miri test --locked --manifest-path tests/ghostty-effects/Cargo.toml\n          cargo +nightly-2026-09-02 miri test --locked --manifest-path tests/transport-retained/Cargo.toml\n\n  test:\n    name: Core (${{ matrix.os }})\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 30\n    strategy:\n      fail-fast: false\n      matrix:\n        os: [ubuntu-22.04, blacksmith-6vcpu-macos-15]\n    steps:\n      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2\n      - uses: mlugg/setup-zig@8d6198c65fb0feaa111df26e6b467fea8345e46f # v2.0.5\n        with:\n          version: 0.16.0\n          use-cache: false\n      - uses: ./.github/actions/prefetch-ghostty\n      - name: Install Rust\n        run: rustup toolchain install 1.90.0 --profile minimal --component rustfmt --component clippy\n      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2\n        with:\n          key: core-${{ matrix.os }}-zig-0.16.0\n          workspaces: packages/process-daemon -> target\n          cache-workspace-crates: true\n      - run: cargo fmt --check\n      - run: cargo clippy --locked --all-targets --all-features -- -D warnings\n      - name: Test Linux\n        if: runner.os == 'Linux'\n        run: cargo test --locked\n      # Match the release workflow's macOS playground exclusion.\n      - name: Test macOS\n        if: runner.os == 'macOS'\n        run: cargo test --locked --lib --test service --test runtime --test ownership --test pipe --test rows --test ghostty-effects\n\n  windows:\n    name: Windows (${{ matrix.arch }})\n    runs-on: ${{ matrix.runner }}\n    timeout-minutes: 45\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - arch: x64\n            runner: windows-2025\n            target: x86_64-pc-windows-msvc\n            machine: \"8664\"\n          - arch: arm64\n            runner: windows-11-arm\n            target: aarch64-pc-windows-msvc\n            machine: \"aa64\"\n    defaults:\n      run:\n        shell: pwsh\n        working-directory: packages/process-daemon\n    env:\n      CARGO_TERM_COLOR: always\n      CARGO_BUILD_TARGET: ${{ matrix.target }}\n      RUSTUP_TOOLCHAIN: 1.90.0-x86_64-pc-windows-msvc\n      RUST_BACKTRACE: \"1\"\n    steps:\n      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2\n      - name: Enable long dependency paths\n        run: git config --global core.longpaths true\n      - uses: mlugg/setup-zig@8d6198c65fb0feaa111df26e6b467fea8345e46f # v2.0.5\n        if: matrix.arch == 'x64'\n        with:\n          version: 0.16.0\n          use-cache: false\n      # Zig 0.16 crashes when building Ghostty on the native ARM64 host.\n      # Use x64-hosted compilers on this ARM64 runner, but execute ARM64 tests natively.\n      - name: Install x64 Zig for ARM64 cross-compilation\n        if: matrix.arch == 'arm64'\n        run: |\n          $archive = Join-Path $env:RUNNER_TEMP 'zig-x64.zip'\n          Invoke-WebRequest 'https://ziglang.org/download/0.16.0/zig-x86_64-windows-0.16.0.zip' -OutFile $archive\n          if ((Get-FileHash $archive -A"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T13:18:09Z",
+      "oldest": "2026-11-25T00:57:35Z"
+    },
+    "conventional_pct": 100.0,
+    "fix_revert_pct": 60.0,
+    "ai_coauthor_pct": 4.0,
+    "top_recent_authors": [
+      [
+        "rekram1-node",
+        16
+      ],
+      [
+        "arvsrn",
+        8
+      ],
+      [
+        "opencode-agent[bot]",
+        4
+      ],
+      [
+        "kitlangton",
+        4
+      ],
+      [
+        "Tarquinen",
+        3
+      ],
+      [
+        "hearnadam",
+        3
+      ],
+      [
+        "neriousy",
+        2
+      ],
+      [
+        "usrnk1",
+        2
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "ea8aa5b0",
+        "date": "2026-11-25T13:18:09Z",
+        "author": "neriousy",
+        "subject": "fix(tui): keep the model picker responsive with large catalogs (#66370)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d06f8695",
+        "date": "2026-11-25T12:48:14Z",
+        "author": "vimtor",
+        "subject": "fix(tui): list every provider of a just-connected integration (#66363)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c9afad62",
+        "date": "2026-11-25T12:45:10Z",
+        "author": "neriousy",
+        "subject": "feat(core): preserve subagent session IDs across compaction (#65136)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e8224c82",
+        "date": "2026-11-25T12:36:46Z",
+        "author": "adamdotdevin",
+        "subject": "feat(data): feature breakout launches in new models (#65884)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5050225a",
+        "date": "2026-11-25T11:48:08Z",
+        "author": "arvsrn",
+        "subject": "fix(app): redesign the add extension dialog (#66355)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f8fc24ea",
+        "date": "2026-11-25T11:16:07Z",
+        "author": "opencode-agent[bot]",
+        "subject": "fix(server): unarchive a session when a person sends it input (#66348)",
+        "ai_signal": false
+      },
+      {
+        "sha": "204d38da",
+        "date": "2026-11-25T11:16:04Z",
+        "author": "arvsrn",
+        "subject": "feat(app): group tabs by project or server in Consolidated (#66350)",
+        "ai_signal": false
+      },
+      {
+        "sha": "59a7e1cc",
+        "date": "2026-11-25T11:12:39Z",
+        "author": "arvsrn",
+        "subject": "feat(app): join consecutive thoughts in the new timeline (#66349)",
+        "ai_signal": false
+      },
+      {
+        "sha": "64324cf3",
+        "date": "2026-11-25T10:44:19Z",
+        "author": "usrnk1",
+        "subject": "fix(app): show keyboard focus in the worktree picker and What's New (#66340)",
+        "ai_signal": false
+      },
+      {
+        "sha": "fe4535ad",
+        "date": "2026-11-25T10:28:58Z",
+        "author": "opencode-agent[bot]",
+        "subject": "fix(release): publish blockmaps for signed desktop installers (#66042)",
+        "ai_signal": false
+      },
+      {
+        "sha": "eec153e7",
+        "date": "2026-11-25T10:22:45Z",
+        "author": "arvsrn",
+        "subject": "fix(app): split the browser import dialog into what to import and which sites (#66339)",
+        "ai_signal": false
+      },
+      {
+        "sha": "31459a2c",
+        "date": "2026-11-25T10:22:07Z",
+        "author": "arvsrn",
+        "subject": "fix(app): remove the gap inside top tab groups (#66343)",
+        "ai_signal": false
+      },
+      {
+        "sha": "879d7dc8",
+        "date": "2026-11-25T10:18:04Z",
+        "author": "usrnk1",
+        "subject": "docs: check Tab and Shift+Tab when focus behaviour changes (#66338)",
+        "ai_signal": false
+      },
+      {
+        "sha": "acce96c3",
+        "date": "2026-11-25T09:37:20Z",
+        "author": "opencode-agent[bot]",
+        "subject": "fix(app): inbox sidebar \u2014 archived sessions needing attention, archive toggle, session shortcuts (#66327)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b5dba31b",
+        "date": "2026-11-25T07:47:57Z",
+        "author": "rekram1-node",
+        "subject": "feat(core): add gpt-6.2 system prompt and routing (#66297)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a73e0db2",
+        "date": "2026-11-25T07:45:30Z",
+        "author": "rekram1-node",
+        "subject": "docs(protocol): name HTTP routes in session prompt description (#66306)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e54fbacb",
+        "date": "2026-11-25T07:33:35Z",
+        "author": "arvsrn",
+        "subject": "fix(ui): update settings icon hexagon (#66308)",
+        "ai_signal": false
+      },
+      {
+        "sha": "af4c1155",
+        "date": "2026-11-25T07:16:52Z",
+        "author": "kitlangton",
+        "subject": "fix(core): normalize Link welcome label for Workspace.IDs and validate in Link.dial (#66298)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1aee987a",
+        "date": "2026-11-25T07:13:15Z",
+        "author": "rekram1-node",
+        "subject": "fix(core): fix errors in the opencode skill and API reference (#66300)",
+        "ai_signal": false
+      },
+      {
+        "sha": "df2f7837",
+        "date": "2026-11-25T07:02:26Z",
+        "author": "rekram1-node",
+        "subject": "perf(core): cut repeated work in Code Mode runs (#66250)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "thdxr",
+      "contributions": 3093
+    },
+    {
+      "login": "rekram1-node",
+      "contributions": 2894
+    },
+    {
+      "login": "opencode-agent[bot]",
+      "contributions": 2766
+    },
+    {
+      "login": "kitlangton",
+      "contributions": 2497
+    },
+    {
+      "login": "adamdotdevin",
+      "contributions": 2208
+    },
+    {
+      "login": "Hona",
+      "contributions": 1047
+    },
+    {
+      "login": "actions-user",
+      "contributions": 981
+    },
+    {
+      "login": "iamdavidhill",
+      "contributions": 653
+    },
+    {
+      "login": "Brendonovich",
+      "contributions": 555
+    },
+    {
+      "login": "fwang",
+      "contributions": 511
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v2.4.1",
+      "published_at": "2026-11-23T15:57:40Z",
+      "name": "v2.4.1"
+    },
+    {
+      "tag": "v2.4.0",
+      "published_at": "2026-11-23T09:22:21Z",
+      "name": "v2.4.0"
+    },
+    {
+      "tag": "v2.3.2",
+      "published_at": "2026-11-18T01:35:12Z",
+      "name": "v2.3.2"
+    },
+    {
+      "tag": "v2.3.1",
+      "published_at": "2026-11-18T00:17:57Z",
+      "name": "v2.3.1"
+    },
+    {
+      "tag": "v1.19.6",
+      "published_at": "2026-11-17T07:21:32Z",
+      "name": "v1.19.6"
+    }
+  ]
+}
