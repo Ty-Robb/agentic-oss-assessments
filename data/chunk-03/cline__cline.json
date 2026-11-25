@@ -1,0 +1,469 @@
+{
+  "repo": "cline/cline",
+  "meta": {
+    "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
+    "homepage": "https://cline.bot",
+    "license": "Apache-2.0",
+    "stars": 71891,
+    "forks": 7962,
+    "open_issues": 1833,
+    "archived": false,
+    "created_at": "2024-07-06T07:28:10Z",
+    "pushed_at": "2026-11-23T23:35:30Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "TypeScript": 32666382,
+    "JavaScript": 297931,
+    "CSS": 207889,
+    "Rust": 143075,
+    "HTML": 35832,
+    "Shell": 26817,
+    "Python": 7735,
+    "PowerShell": 7486,
+    "NSIS": 3111
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".claude/",
+      ".cline/",
+      ".clinerules/",
+      ".codex/",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".gitleaks.toml",
+      ".gitmodules",
+      ".greptile/",
+      ".husky/",
+      ".kanban/",
+      ".nvmrc",
+      ".tool-versions",
+      ".vscode/",
+      ".worktreeinclude",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "README.md",
+      "SECURITY.md",
+      "apps/",
+      "assets/",
+      "biome.json",
+      "bun.lock",
+      "docs/",
+      "evals/",
+      "package.json",
+      "patches/",
+      "scripts/",
+      "sdk/",
+      "vitest.config.ts"
+    ],
+    "workflows": [
+      "cli-publish.yml",
+      "desktop-publish.yml",
+      "desktop-test.yml",
+      "ext-jb-test-integration.yml",
+      "ext-vscode-ab-package.yml",
+      "ext-vscode-publish-legacy.yml",
+      "ext-vscode-publish-nightly.yml",
+      "ext-vscode-publish-stable.yml",
+      "ext-vscode-publish.yml",
+      "ext-vscode-test-e2e.yml",
+      "ext-vscode-test.yml",
+      "repo-delete-agent-promo-comments.yml",
+      "repo-label-issues.yml",
+      "repo-stale-issues.yml",
+      "repo-strip-agent-badges.yml",
+      "sdk-publish.yml",
+      "sdk-test.yml"
+    ],
+    "docs": [
+      "api/",
+      "assets/",
+      "best-practices/",
+      "cli/",
+      "cline-overview.mdx",
+      "core-workflows/",
+      "customization/",
+      "docs.json",
+      "enterprise-solutions/",
+      "features/",
+      "getting-started/",
+      "hubspot.js",
+      "kanban/",
+      "mcp/",
+      "package-lock.json",
+      "package.json",
+      "pr-assets/",
+      "provider-config/",
+      "pull-requests/",
+      "resources/",
+      "running-models-locally/",
+      "sdk/",
+      "styles.css",
+      "tools-reference/",
+      "troubleshooting/",
+      "usage/"
+    ],
+    "docs_count": 26,
+    "agents_dir": [
+      "skills/"
+    ],
+    "agents_skills": [
+      "cline-sdk/",
+      "create-pull-request/",
+      "desktop-whats-new",
+      "opentui/",
+      "publish-cli",
+      "publish-desktop",
+      "publish-extension",
+      "tuistory"
+    ],
+    "claude_dir": [
+      "commands/",
+      "hooks/",
+      "settings.json",
+      "skills/"
+    ],
+    "cursor_dir": [],
+    "evals_dir": [
+      ".gitignore",
+      "ARCHITECTURE.md",
+      "README.md",
+      "analysis/",
+      "benchmarks/",
+      "cline-bench",
+      "e2e/",
+      "package-lock.json",
+      "package.json",
+      "smoke-tests/",
+      "tsconfig.json"
+    ]
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 5449,
+      "line_count": 34,
+      "truncated": false,
+      "excerpt": "This is the **Cline** monorepo. Toolchain is **Bun 1.4.2** (package manager + task runner) with **Node >=22** as the runtime. Do not use npm/yarn/pnpm.\n\nDon't add `.changeset/` files or other per-PR changelog entries; changesets aren't used here. Release notes are written into the relevant `CHANGELOG.md` at release time.\n\n## Cloud Agent Instructions\n\n### Cline CLI\n- Run from source: `bun run cli` (interactive: `bun run cli -i`; one-shot: append a prompt). This resolves to `apps/cli` and **auto-spawns the `@cline/cline-hub` daemon** \u2014 you do not start the hub separately.\n- Inspect local health with `bun run cli doctor`; `bun run cli version` prints the version.\n- An actual agent turn requires an **LLM provider credential**. With no credentials the default `cline` provider fails fast with an `Unauthorized` error and the interactive TUI shows a provider sign-in screen. Configure via `cline auth` or provider env vars (e.g. `ANTHROPIC_API_KEY`, `CLINE_API_KEY`, `OPENROUTER_API_KEY`); see `apps/cli/README.md`.\n\n### Build / Lint / test\n- SDK packages (`@cline/shared|llms|agents|core|sdk`) resolve each other through compiled `dist/` (their `exports` point only at `dist/`, with no `development` source condition). You **must** run `bun run build:sdk` after changing SDK dependencies/source before running the CLI or SDK tests, otherwise imports fail with missing `@cline/*` / missing `dist/` errors. Running processes do **not** hot-reload SDK source changes \u2014 rebuild and restart.\\\n- Known cloud-env test artifact: `@cline/core` test `src/services/workspace/workspace-manifest.test.ts > readGitWorkspaceState > prefers origin and returns the current branch` fails because cloud VMs configure git `insteadOf` rules that rewrite GitHub remotes to `https://x-access-token:...@github.com/...`. This is an environment artifact, not a code bug.\n- Some `@cline/cli` e2e assertions (`bun -F @cline/cli test:e2e`) may fail on exact tool-listing string formats; treat as pre-existing test drift, not an environment problem.\n\n### GUI display\n- A virtual X display is live at **`DISPLAY=:1`** (the same desktop used for screenshots). GUI apps (VS Code, the Tauri desktop window) launched with `DISPLAY=:1` render there and can be screenshotted \u2014 no need to start your own `xvfb`. Prefer starting long-running GUI/dev processes in a `tmux` session (see the tmux guidance) so they survive.\n\n### VS Code extension (`apps/vscode`, package `claude-dev`)\nToolchain is pre-installed and persisted in the VM: generated gRPC/proto code, the bundled `ripgrep` binaries (`apps/vscode/bin/`), the built webview (`webview-ui/build`), the esbuild bundle (`dist/extension.js`), VS Code itself (`/usr/bin/code`), and the GUI system libraries its tests need.\n- **Codegen prerequisite:** `bun run protos` (from `apps/vscode`) regenerates `src/generated/*` and the webview grpc client. The `dev`, `build:webview`, and `check-types` scripts already run it, so proto changes are picked up by those commands; run it manually only if you edit `.proto` files without a full build.\n- **Build:** `bun run build:webview` (webview UI, ~15s) then `bun esbuild.mjs` (extension bundle). `bun run package` does the full production build.\n- **Run it (dev host):** `DISPLAY=:1 code --no-sandbox --user-data-dir=/tmp/vscode-userdata --extensionDevelopmentPath=/workspace/apps/vscode <some-folder>`, then click the Cline icon in the Activity Bar to open the webview. (`--no-sandbox` is required in this container.)\n- **Test:** `bun run test:unit` (bun-based, ~984 tests, no VS Code host needed). `bun run test:integration` (`@vscode/test-electron`, downloads a VS Code build, runs under the GUI libs) and `bun run test:e2e` (Playwright) exercise a real extension host \u2014 heavier, and the GUI libs for them are already installed.\n- One-time deps (already installed, listed here in case they must be recreated): ripgrep via `bun run download-ripgrep`; VS Code test GUI libs per `CONTRIBUTING.md` (`libnss3`, `libatk*`, `libgbm1`, `xvfb`, etc.).\n\n### Desktop app (`apps/examples/desktop-app`, package `@cline/code`)\nA Tauri v2 (Rust) shell + Next.js webview + a Bun \"sidecar\" backend. Rust and the Tauri Linux system libs are pre-installed and persisted.\n- **Headless (no Rust/window):** run the backend and UI separately \u2014 `bun run dev:sidecar` (Bun backend on `127.0.0.1:3126`, serves `ws://.../transport`) and `bun run dev:web` (Next.js UI on `http://localhost:3125`).\n- **Native window:** `bun run dev` (`tauri dev`) \u2014 its `beforeDevCommand` builds the sidecar binary and starts `dev:web` (`:3125`), then Rust `main.rs` spawns the sidecar; so free ports `3125`/`3126` first. Launch with `DISPLAY=:1` to see the window. A `libEGL: DRI3 error` warning is benign (software rendering) \u2014 the WebKitGTK window still renders.\n- **Rust version caveat:** the crate graph needs Cargo's `edition2024` feature, so **Rust \u22651.85** is required (the VM's base 1.83 fails with \"feature `edition2024` is required\"). The toolchain here was updated via `rustup default stable` (currently 1.97). First `cargo` build downloads/compiles the full Tauri crate graph (a few minutes); subsequent builds are cached.\n- **System libs (already installed):** `libwebkit2gtk-4.1-dev`, `libgtk-3-dev`, `libayatana-appindicator3-dev`, `librsvg2-dev`, `libxdo-dev`, `libssl-dev`, `build-essential`.\n- **Test/typecheck:** `bun run typecheck`, `bun run test:chat-ui` (Vitest). Both trigger `build:ui` first.\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 8769,
+      "line_count": 209,
+      "truncated": true,
+      "excerpt": "# Contributing to Cline\n\nWe're thrilled you're interested in contributing to Cline. Whether you're fixing a bug, adding a feature, or improving our docs, every contribution makes Cline smarter! To keep our community vibrant and welcoming, all members must adhere to our [Code of Conduct](CODE_OF_CONDUCT.md).\n\n## Reporting Bugs or Issues\n\nBug reports help make Cline better for everyone! Before creating a new issue, please [search existing ones](https://github.com/cline/cline/issues) to avoid duplicates. When you're ready to report a bug, head over to our [issues page](https://github.com/cline/cline/issues/new/choose) where you'll find a template to help you with filling out the relevant information.\n\n<blockquote class='warning-note'>\n     \ud83d\udd10 <b>Important:</b> If you discover a security vulnerability, please use the <a href=\"https://github.com/cline/cline/security/advisories/new\">GitHub security tool to report it privately</a>.\n</blockquote>\n\n\n## Before Contributing\n\nAll contributions must begin with a GitHub Issue, unless the change is for small bug fixes, typo corrections, minor wording improvements, or simple type fixes that don't change functionality.\n**For features and contributions**:\n- First check the [Feature Requests discussions board](https://github.com/cline/cline/discussions/categories/feature-requests) for similar ideas\n- If your idea is new, create a new feature request  \n- Wait for approval from core maintainers before starting implementation\n- Once approved, feel free to begin working on a PR with the help of our community!\n\n**PRs without approved issues may be closed.**\n\n\n## Deciding What to Work On\n\nLooking for a good first contribution? Check out issues labeled [\"good first issue\"](https://github.com/cline/cline/labels/good%20first%20issue) or [\"help wanted\"](https://github.com/cline/cline/labels/help%20wanted). These are specifically curated for new contributors and areas where we'd love some help!\n\nWe also welcome contributions to our [documentation](https://github.com/cline/cline/tree/main/docs)! Whether it's fixing typos, improving existing guides, or creating new educational content - we'd love to build a community-driven repository of resources that helps everyone get the most out of Cline. You can start by diving into `/docs` and looking for areas that need improvement.\n\n## Development Setup\n\n\n### Local Development Instructions\n\n1. Clone the repository _(Requires [git-lfs](https://git-lfs.com/))_:\n    ```bash\n    git clone https://github.com/cline/cline.git\n    ```\n2. Open the project in VSCode:\n    ```bash\n    code cline\n    ```\n3. Install [bun](https://bun.com)\n4. Install the necessary dependencies for the extension and webview-gui:\n    ```bash\n    cd apps/vscode && bun run install:all && cd ../..\n    cd sdk && bun run build && cd ..\n    ```\n5. Generate Protocol Buffer files (required before first build):\n6. Launch by pressing `F5` (or `Run`->`Start Debugging`) to open a new VSCode window with the extension loaded. (You may need to install the [esbuild problem matchers extension](https://marketplace.visualstudio.com/items?itemName=connor4312.esbuild-problem-matchers) if you run into issues building the project.)\n\n\n\n\n### Creating a Pull Request\n\n1. Commit your changes.\n\n2. Push your branch and create a PR on GitHub. Our CI will:\n   - Run tests and checks\n3. Testing\n    - Run `cd apps/vscode && bun run test` to run tests locally. \n    - Before submitting PR, run `bun run format:fix` to format your code\n\n### Extension\n\n1. **VS Code Extensions**\n\n    - When opening the project, VS Code will prompt you to install recommended extensions\n    - These extensions are required for development - please accept all installation prompts\n    - If you dismissed the prompts, you can install them manually from the Extensions panel\n\n2. **Local Development**\n    - cd into the vscode extension, `cd apps/vscode`\n    - Run `bun run install:all` to install dependencies\n    - Run `bun run protos` to generate Protocol Buffer files (required before first build)\n    - Run `bun run test` to run tests locally\n    - Run \u2192 Start Debugging or `>Debug: Select and Start Debugging` and wait for a new VS Code instance to open\n    - **Terminal Workflow**: Use `bun run dev` (generates protos + runs watch mode) or `bun run watch` (if protos already generated)\n    - Before submitting PR, run `bun run format:fix` to format your code\n\n3. **Linux-specific Setup**\n    VS Code extension tests on Linux require the following system libraries:\n\n    - `dbus`\n    - `libasound2`\n    - `libatk-bridge2.0-0`\n    - `libatk1.0-0`\n    - `libdrm2`\n    - `libgbm1`\n    - `libgtk-3-0`\n    - `libnss3`\n    - `libx11-xcb1`\n    - `libxcomposite1`\n    - `libxdamage1`\n    - `libxfixes3`\n    - `libxkbfile1`\n    - `libxrandr2`\n    - `xvfb`\n\n    These libraries provide necessary GUI components and system services for the test environment.\n\n    For example, on Debian-based distributions (e.g., Ubuntu), you can install these libraries using apt:\n    ```bash\n    sudo apt update\n    sudo apt install -y \\\n      dbus \\\n      libasound2 \\\n      libatk-bridge2.0-0 \\\n      libatk1.0-0 \\\n      libdrm2 \\\n      libgbm1 \\\n      libgtk-3-0 \\\n      libnss3 \\\n      libx11-xcb1 \\\n      libxcomposite1 \\\n      libxdamage1 \\\n      libxfixes3 \\\n      libxkbfile1 \\\n      libxrandr2 \\\n      xvfb\n    ```\n\n## Writing and Submitting Code\n\nAnyone can contribute code to Cline, but we ask that you follow these guidelines to ensure your contributions can be smoothly integrated:\n\n1. **Keep Pull Requests Focused**\n\n    - Limit PRs to a single feature or bug fix\n    - Split larger changes into smaller, related PRs\n    - Break changes into logical commits that can be reviewed independently\n\n2. **Code Quality**\n\n    - Run `bun run lint` to check code style\n    - Run `bun run format` to automatically format code\n    - All PRs must pass CI checks which include both linting and formatting\n    - Address any warnings or errors from linter before submitting\n    - Follow Type"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 9244,
+      "line_count": 235,
+      "truncated": true,
+      "excerpt": "<p align=\"center\">\n  <img src=\"assets/icons/icon.png\" width=\"80\" alt=\"Cline\" />\n</p>\n\n<h1 align=\"center\">Cline</h1>\n\n<p align=\"center\">\nThe open source coding agent in your IDE, terminal, & desktop!\n</p>\n\n<div align=\"center\">\n\n<div align=\"center\">\n<table>\n<tbody>\n<td align=\"center\">\n<a href=\"https://docs.cline.bot\" target=\"_blank\"><strong>Docs</strong></a>\n</td>\n<td align=\"center\">\n<a href=\"https://discord.gg/cline\" target=\"_blank\"><strong>Discord</strong></a>\n</td>\n<td align=\"center\">\n<a href=\"https://www.reddit.com/r/cline/\" target=\"_blank\"><strong>r/cline</strong></a>\n</td>\n<td align=\"center\">\n<a href=\"https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop\" target=\"_blank\"><strong>Feature Requests</strong></a>\n</td>\n<td align=\"center\">\n<a href=\"https://cline.bot/join-us\" target=\"_blank\"><strong>Join us!</strong></a>\n</td>\n</tbody>\n</table>\n</div>\n\n</div>\n\n<br>\n\n<div align=\"center\">\n<table>\n<tr>\n<td align=\"center\" width=\"50%\">\n\n### CLI\n\nRun Cline in your terminal.\nInteractive chat or fully headless \nfor CI/CD and scripting.\n\n```\nnpm i -g cline\n```\n\n<a href=\"./apps/cli/README.md\">Learn more</a>\n<br><br>\n\n</td>\n<td align=\"center\" width=\"50%\">\n\n### Desktop App\n\nCline as a native app for macOS and Windows.\nRun agent sessions in any folder, schedule\nroutines, and manage models, plugins, and MCP servers.\n\n<a href=\"https://cline.bot/desktop\">Download for macOS and Windows</a>\n<br><br>\n\n</td>\n</tr>\n<tr>\n<td align=\"center\" width=\"50%\">\n\n### VS Code Extension\n\nAI coding assistant in your editor.\nCreate files, run commands, browse the web,\nand use tools with human-in-the-loop approval.\n\n<a href=\"https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev\">Install from VS Marketplace</a>\n<br><br>\n\n</td>\n<td align=\"center\" width=\"50%\">\n\n### JetBrains Plugin\n\nThe same Cline experience in IntelliJ IDEA,\nPyCharm, WebStorm, GoLand, and the rest of\nthe JetBrains family.\n\n<a href=\"https://plugins.jetbrains.com/plugin/28247-cline\">Install from JetBrains Marketplace</a>\n<br><br>\n\n</td>\n</tr>\n</table>\n</div>\n\n<div align=\"center\">\n<table>\n<tr>\n<td align=\"center\">\n\n### SDK\n\nBuild your own AI agents and integrations powered by the same engine that runs the CLI, desktop app, VS Code extension, and JetBrains plugin. Custom tools, multi-agent teams, connectors, scheduled automations, and more.\n\n```\nnpm install @cline/sdk\n```\n\n<a href=\"https://docs.cline.bot/cline-sdk/overview\">Documentation</a>\n<br><br>\n\n</td>\n</tr>\n</table>\n</div>\n\n---\n\n## Index\n\n| Product | Description | Location | CHANGELOG |\n|---------|------------|--------------|--------------|\n| **SDK** | Node.js programmatic agent API and extension exports. | [`sdk/`](https://github.com/cline/cline/tree/main/sdk) | [CHANGELOG.md](https://github.com/cline/cline/blob/main/sdk/CHANGELOG.md) |\n| **CLI** | Terminal UI, headless mode, shell commands, and CLI-specific flows. | [`apps/cli/`](https://github.com/cline/cline/tree/main/apps/cli) | [CHANGELOG.md](https://github.com/cline/cline/blob/main/apps/cli/CHANGELOG.md) |\n| **VS Code Extension** | The Marketplace extension and extension host integration. | [`apps/vscode/`](https://github.com/cline/cline/tree/main/apps/vscode) | [CHANGELOG.md](https://github.com/cline/cline/blob/main/CHANGELOG.md) |\n| **Desktop App** | Native macOS and Windows app (Tauri shell, Bun sidecar, Next.js UI). | [`apps/examples/desktop-app/`](https://github.com/cline/cline/tree/main/apps/examples/desktop-app) | [CHANGELOG.md](https://github.com/cline/cline/blob/main/apps/examples/desktop-app/CHANGELOG.md) |\n| **JetBrains Plugin** | JetBrains-hosted client that talks to the shared agent core. | Currently we are not open-sourcing JetBrains plugins | - |\n| **Docs site** | Public documentation pages. | [`docs/`](https://docs.cline.bot/) | - |\n\n## Edits Code Across Your Project\n\nCline reads your project structure, understands the relationships between files, and makes coordinated changes across your codebase. It monitors linter and compiler errors as it works, fixing issues like missing imports, type mismatches, and syntax errors before you even see them. In VS Code and JetBrains, every edit shows up as a diff you can review, modify, or revert. All changes are tracked with checkpoints, so you can easily undo the agent's work.\n\n## Runs Bash Commands\n\nCline executes commands directly in your terminal and watches the output in real time. Install packages, run build scripts, execute tests, deploy applications, manage databases. For long-running processes like dev servers, Cline continues working in the background and reacts to new output as it appears, catching compile errors, test failures, and server crashes as they happen.\n\n## Plan and Act\n\nToggle between Plan mode and Act mode. In Plan mode, Cline explores your codebase, asks clarifying questions, and lays out a strategy. Once you're aligned, switch to Act mode and Cline executes the plan. Every file edit and terminal command requires your approval, so you stay in control of what actually changes. Or toggle auto-approve and let Cline run autonomously.\n\n## Rules and Skills\n\nDefine project-specific rules in `.clinerules` files that guide how Cline works in your codebase: coding standards, architecture conventions, deployment procedures, testing requirements. Rules are picked up automatically by the CLI, VS Code extension, and JetBrains plugin. Use skills to let the model load specific rules when needed.\n\n## Works With Every Model\n\nCline is not locked to a single AI provider. Use whichever model fits your workflow:\n\n| Provider | Models |\n|----------|--------|\n| Anthropic | Claude Opus, Sonnet, Haiku |\n| OpenAI | GPT series models |\n| Google | Gemini series models |\n| OpenRouter | 200+ models from any provider |\n| Vercel AI Gateway | Route to many providers through one gateway |\n| AWS Bedrock | Claude, Llama, and more |\n| Azure / GCP Vertex | All hosted models |\n| Cerebras / Groq | Fast inference m"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 4538,
+      "line_count": 98,
+      "truncated": false,
+      "excerpt": "{\n    \"name\": \"@cline/packages\",\n    \"private\": true,\n    \"workspaces\": [\n        \"sdk/packages/*\",\n        \"apps/*\",\n        \"apps/vscode/webview-ui\",\n        \"apps/vscode/testing-platform\",\n        \"apps/cline-hub/src/webview\",\n        \"apps/examples/*\",\n        \"apps/examples/vscode/src/webview\",\n        \"sdk/examples\",\n        \"sdk/examples/plugins/*\"\n    ],\n    \"scripts\": {\n        \"prepare\": \"husky\",\n        \"build\": \"bun run clean && bun install && bun run build:sdk && bun -F @cline/cli build\",\n        \"build:sdk\": \"bun --production -F './sdk/packages/*' build && bun sdk/packages/core/build-plugin-runtime.mts\",\n        \"build:apps\": \"bun -F './apps/**' --production build\",\n        \"build:models\": \"bun -F @cline/llms generate:models && bun format --write\",\n        \"dev\": \"bun --conditions=development run build:sdk && bun run cli && bun run cli hub stop\",\n        \"cli\": \"bun --conditions=development --cwd apps/cli dev\",\n        \"code\": \"bun --conditions=development -F @cline/code dev\",\n        \"clean\": \"bun run sdk/scripts/clean.ts\",\n        \"types\": \"bun --parallel -F '*' typecheck\",\n        \"test\": \"bun --parallel -F './sdk/packages/**' -F @cline/cli -F @cline/cline-hub -F @cline/vscode test\",\n        \"test:unit\": \"bash -lc 'set -euo pipefail; bun -F @cline/agents test & p1=$!; bun -F @cline/llms test & p2=$!; bun -F @cline/core test:unit & p3=$!; bun -F @cline/cli test:unit & p4=$!; bun -F @cline/cline-hub test & p5=$!; bun -F @cline/vscode test & p6=$!; wait $p1; wait $p2; wait $p3; wait $p4; wait $p5; wait $p6'\",\n        \"test:e2e\": \"bun -F @cline/core test:e2e && bun -F @cline/cli test:e2e\",\n        \"test:e2e:interactive\": \"bun -F @cline/cli test:e2e:interactive\",\n        \"verify:routines\": \"zsh -lc 'cd sdk/packages/core && bunx vitest run src/cron/schedule-service.test.ts --config vitest.config.ts'\",\n        \"verify:workos-device-auth\": \"bun sdk/scripts/verify-workos-device-auth.ts\",\n        \"biome\": \"bunx --bun @biomejs/biome\",\n        \"format\": \"bun biome format sdk/ apps/cli/ apps/cline-hub/ apps/examples/\",\n        \"lint\": \"bun biome lint sdk/ apps/cli/ apps/cline-hub/ apps/examples/\",\n        \"fix\": \"bun biome check --write --unsafe --diagnostic-level=error sdk/ apps/cli/ apps/cline-hub/ apps/examples/\",\n        \"check\": \"bun biome check --diagnostic-level=error sdk/ apps/cli/ apps/cline-hub/ apps/examples/ && bun run build:sdk && bun run -F @cline/cli build && bun -F @cline/cline-hub build:webview && bun --parallel -F './sdk/packages/**' -F @cline/cli -F @cline/cline-hub typecheck && bun sdk/scripts/check-publish.ts\",\n        \"version\": \"bun run types && bun sdk/scripts/version.ts\",\n        \"release\": \"bun sdk/scripts/release.ts\"\n    },\n    \"lint-staged\": {\n        \"sdk/**\": [\n            \"sh -c 'bun run types'\",\n            \"bun biome check --no-errors-on-unmatched --files-ignore-unknown=true\"\n        ],\n        \"apps/{cli,cline-hub,examples}/**\": [\n            \"sh -c 'bun run types'\",\n            \"bun biome check --no-errors-on-unmatched --files-ignore-unknown=true\"\n        ]\n    },\n    \"module\": \"index.ts\",\n    \"type\": \"module\",\n    \"engines\": {\n        \"bun\": \"1.4.2\",\n        \"node\": \">=22\"\n    },\n    \"devDependencies\": {\n        \"@biomejs/biome\": \"2.4.5\",\n        \"@types/bun\": \"^1.4.2\",\n        \"@types/node\": \"^25.3.5\",\n        \"husky\": \"^9.1.7\",\n        \"lint-staged\": \"^16.3.2\",\n        \"vitest\": \"^4.0.18\"\n    },\n    \"peerDependencies\": {\n        \"nanoid\": \"^5.1.7\",\n        \"typescript\": \"^5.9.3\"\n    },\n    \"overrides\": {\n        \"@pierre/diffs\": \"1.6.2\",\n        \"axios\": \"1.20.0\",\n        \"fast-uri\": \">=3.1.4\",\n        \"undici\": \">=7.30.1 <8\",\n        \"@opentui/core\": \"0.4.3\",\n        \"@opentui/react\": \"0.4.3\",\n        \"tar-fs\": \">=3.1.1\",\n        \"tar\": \"^7.5.2\",\n        \"js-yaml\": \">=4.3.2 <5\",\n        \"serialize-javascript\": \">=7.0.3\",\n        \"protobufjs\": \"7.6.5\",\n        \"mermaid\": \"11.16.1\",\n        \"diff\": \"8.0.4\",\n        \"@sap-cloud-sdk/connectivity\": \"4.9.1\",\n        \"@sap-cloud-sdk/http-client\": \"4.9.1\",\n        \"@sap-cloud-sdk/openapi\": \"4.9.1\",\n        \"@sap-cloud-sdk/resilience\": \"4.9.1\",\n        \"@sap-cloud-sdk/util\": \"4.9.1\"\n    },\n    \"trustedDependencies\": [\n        \"better-sqlite3\",\n        \"grpc-tools\"\n    ],\n    \"packageManager\": \"bun@1.4.2\",\n    \"patchedDependencies\": {\n        \"@opentui-ui/dialog@0.1.2\": \"patches/@opentui-ui%2Fdialog@0.1.2.patch\",\n        \"ollama-ai-provider-v2@4.0.1\": \"patches/ollama-ai-provider-v2@4.0.1.patch\",\n        \"@shadcn/react@0.3.1\": \"patches/@shadcn%2Freact@0.3.1.patch\"\n    }\n}\n"
+    },
+    "biome.json": {
+      "path": "biome.json",
+      "size_bytes": 4598,
+      "line_count": 123,
+      "truncated": false,
+      "excerpt": "{\n    \"$schema\": \"https://biomejs.dev/schemas/2.4.5/schema.json\",\n    \"vcs\": {\n        \"enabled\": true,\n        \"clientKind\": \"git\",\n        \"useIgnoreFile\": true,\n        \"defaultBranch\": \"main\"\n    },\n    \"files\": {\n        \"ignoreUnknown\": true\n    },\n    \"formatter\": {\n        \"enabled\": true,\n        \"indentStyle\": \"tab\"\n    },\n    \"linter\": {\n        \"enabled\": true\n    },\n    \"overrides\": [\n        {\n            \"includes\": [\n                \"apps/vscode/**\"\n            ],\n            \"assist\": {\n                \"enabled\": true,\n                \"actions\": {\n                    \"source\": {\n                        \"organizeImports\": \"on\",\n                        \"useSortedAttributes\": \"on\"\n                    }\n                }\n            },\n            \"linter\": {\n                \"rules\": {\n                    \"recommended\": true,\n                    \"correctness\": {\n                        \"useExhaustiveDependencies\": \"info\",\n                        \"noUndeclaredVariables\": \"off\",\n                        \"noEmptyPattern\": \"info\",\n                        \"useJsxKeyInIterable\": \"off\",\n                        \"noInnerDeclarations\": \"off\",\n                        \"useHookAtTopLevel\": \"info\",\n                        \"useYield\": \"info\",\n                        \"noConstructorReturn\": \"off\",\n                        \"noInvalidPositionAtImportRule\": \"off\",\n                        \"noSwitchDeclarations\": \"off\",\n                        \"noUnusedImports\": \"error\"\n                    },\n                    \"a11y\": \"info\",\n                    \"style\": {\n                        \"useNodejsImportProtocol\": \"off\",\n                        \"useImportType\": \"off\",\n                        \"useBlockStatements\": \"off\",\n                        \"useNamingConvention\": \"off\",\n                        \"useThrowOnlyError\": \"info\",\n                        \"useConsistentArrayType\": \"off\",\n                        \"noParameterAssign\": \"off\",\n                        \"useAsConstAssertion\": \"off\",\n                        \"useDefaultParameterLast\": \"off\",\n                        \"noNonNullAssertion\": \"info\",\n                        \"useEnumInitializers\": \"off\",\n                        \"useSelfClosingElements\": \"info\",\n                        \"useSingleVarDeclarator\": \"off\",\n                        \"useNumberNamespace\": \"off\",\n                        \"noInferrableTypes\": \"off\",\n                        \"useTemplate\": \"info\",\n                        \"noUselessElse\": \"info\"\n                    },\n                    \"suspicious\": {\n                        \"noDoubleEquals\": \"warn\",\n                        \"noImplicitAnyLet\": \"info\",\n                        \"noThenProperty\": \"off\",\n                        \"noAsyncPromiseExecutor\": \"info\",\n                        \"noImportAssign\": \"off\",\n                        \"noExplicitAny\": \"info\",\n                        \"noControlCharactersInRegex\": \"warn\",\n                        \"noShadowRestrictedNames\": \"off\",\n                        \"noArrayIndexKey\": \"info\",\n                        \"noAssignInExpressions\": \"info\",\n                        \"useIterableCallbackReturn\": \"info\"\n                    },\n                    \"complexity\": {\n                        \"noUselessConstructor\": \"info\",\n                        \"useOptionalChain\": \"info\",\n                        \"noBannedTypes\": \"warn\",\n                        \"useLiteralKeys\": \"info\",\n                        \"noUselessCatch\": \"info\",\n                        \"noUselessSwitchCase\": \"info\",\n                        \"noStaticOnlyClass\": \"info\"\n                    },\n                    \"security\": {\n                        \"noDangerouslySetInnerHtml\": \"info\"\n                    }\n                }\n            },\n            \"formatter\": {\n                \"enabled\": true,\n                \"indentStyle\": \"tab\",\n                \"indentWidth\": 4,\n                \"lineWidth\": 130,\n                \"lineEnding\": \"lf\",\n                \"formatWithErrors\": true\n            },\n            \"javascript\": {\n                \"formatter\": {\n                    \"semicolons\": \"asNeeded\",\n                    \"arrowParentheses\": \"always\",\n                    \"bracketSameLine\": true,\n                    \"bracketSpacing\": true,\n                    \"jsxQuoteStyle\": \"double\",\n                    \"quoteProperties\": \"asNeeded\",\n                    \"trailingCommas\": \"all\"\n                }\n            },\n            \"json\": {\n                \"formatter\": {\n                    \"trailingCommas\": \"none\",\n                    \"expand\": \"always\"\n                }\n            }\n        }\n    ]\n}\n"
+    }
+  },
+  "workflow_samples": {
+    "desktop-test.yml": {
+      "path": ".github/workflows/desktop-test.yml",
+      "size_bytes": 3677,
+      "line_count": 97,
+      "truncated": false,
+      "excerpt": "name: desktop-test\n\non:\n  push:\n    branches:\n      - main\n      - desktop-experimental\n    paths:\n      - \"apps/examples/desktop-app/package.json\"\n      - \"apps/examples/desktop-app/scripts/dmg-background.ts\"\n      - \"apps/examples/desktop-app/scripts/dmg-background.test.ts\"\n      - \"apps/examples/desktop-app/scripts/windows-installer.test.ts\"\n      - \"apps/examples/desktop-app/src-tauri/nsis/**\"\n      # windows-installer.test.ts pins the @tauri-apps/cli version bun.lock resolves.\n      - \"bun.lock\"\n      - \"apps/examples/desktop-app/src-tauri/dmg/background.png\"\n      - \"apps/examples/desktop-app/src-tauri/dmg/background@2x.png\"\n      - \".github/workflows/desktop-test.yml\"\n  pull_request:\n    branches:\n      - main\n      - desktop-experimental\n    paths:\n      - \"apps/examples/desktop-app/package.json\"\n      - \"apps/examples/desktop-app/scripts/dmg-background.ts\"\n      - \"apps/examples/desktop-app/scripts/dmg-background.test.ts\"\n      - \"apps/examples/desktop-app/scripts/windows-installer.test.ts\"\n      - \"apps/examples/desktop-app/src-tauri/nsis/**\"\n      # windows-installer.test.ts pins the @tauri-apps/cli version bun.lock resolves.\n      - \"bun.lock\"\n      - \"apps/examples/desktop-app/src-tauri/dmg/background.png\"\n      - \"apps/examples/desktop-app/src-tauri/dmg/background@2x.png\"\n      - \".github/workflows/desktop-test.yml\"\n  workflow_dispatch:\n\npermissions:\n  contents: read\n\njobs:\n  dmg-background:\n    name: Test DMG background tooling\n    runs-on: ubuntu-latest\n    defaults:\n      run:\n        working-directory: apps/examples/desktop-app\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n\n      - name: Setup Bun\n        uses: oven-sh/setup-bun@v2\n        with:\n          bun-version: \"1.4.2\"\n\n      # The suite only uses Bun/Node built-ins and committed artwork, so it does\n      # not need a workspace dependency install or macOS runner.\n      - name: Test DMG background tooling\n        run: bun run test:dmg-background\n\n  windows-installer:\n    name: Test x86 installer against x64 app executables\n    runs-on: windows-latest\n    timeout-minutes: 10\n    defaults:\n      run:\n        working-directory: apps/examples/desktop-app\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n\n      - name: Setup Bun\n        uses: oven-sh/setup-bun@v2\n        with:\n          bun-version: \"1.4.2\"\n          # This job installs no dependencies, so there is nothing to cache;\n          # setup-bun's cache-save post step otherwise hangs on Windows until\n          # the job times out, cancelling an already-passed run.\n          no-cache: true\n\n      # Use the same NSIS distribution as the locked Tauri CLI. No workspace\n      # install or full desktop build: the test compiles a disposable fixture executable.\n      # The test asserts makensis reports NSIS_VERSION and that bun.lock still\n      # resolves TAURI_CLI_VERSION, so changing this download or bumping the\n      # CLI without updating windows-installer.test.ts fails the job.\n      - name: Setup NSIS\n        shell: pwsh\n        run: |\n          $zip = Join-Path $env:RUNNER_TEMP 'nsis.zip'\n          Invoke-WebRequest 'https://github.com/tauri-apps/binary-releases/releases/download/nsis-3.13/nsis-3.13.zip' -OutFile $zip\n          if ((Get-FileHash $zip -Algorithm SHA1).Hash -ne 'DB14F8AF2EA346B786C6AE19343F61AAF5E09B8E') {\n            throw 'NSIS distribution checksum mismatch'\n          }\n          Expand-Archive $zip -DestinationPath $env:RUNNER_TEMP\n          \"MAKENSIS_PATH=$env:RUNNER_TEMP/nsis-3.13/makensis.exe\" >> $env:GITHUB_ENV\n\n      - name: Test install and uninstall process cleanup\n        run: bun run test:windows-installer\n"
+    },
+    "ext-jb-test-integration.yml": {
+      "path": ".github/workflows/ext-jb-test-integration.yml",
+      "size_bytes": 4445,
+      "line_count": 100,
+      "truncated": false,
+      "excerpt": "name: ext-jb-test-integration\non:\n  pull_request_target:\n    types: [opened, reopened]\n  issue_comment:\n    types: [created]\npermissions:\n  contents: read\n  pull-requests: read\nconcurrency:\n  group: jetbrains-trigger-${{ github.event.pull_request.number || github.event.issue.number }}\n  cancel-in-progress: true\n\njobs:\n  trigger-integration-test:\n    name: Run Tests\n    runs-on: ubuntu-latest\n    # Auto-run only for trusted PR authors. Anyone else needs a maintainer\n    # to opt their PR in by commenting /test-jetbrains.\n    if: |\n      (github.event_name == 'pull_request_target' &&\n       contains(fromJSON('[\"MEMBER\",\"OWNER\",\"COLLABORATOR\"]'), github.event.pull_request.author_association)) ||\n      (github.event_name == 'issue_comment' &&\n       github.event.issue.pull_request &&\n       contains(github.event.comment.body, '/test-jetbrains') &&\n       contains(fromJSON('[\"MEMBER\",\"OWNER\",\"COLLABORATOR\"]'), github.event.comment.author_association))\n    steps:\n      - name: Generate GitHub App Token\n        id: app-token\n        uses: actions/create-github-app-token@v1\n        with:\n          app-id: ${{ vars.CLINE_JETBRAINS_APP_ID }}\n          private-key: ${{ secrets.CLINE_JETBRAINS_APP_KEY }}\n          owner: cline\n          repositories: intellij-plugin\n\n      - name: Get PR details (for issue_comment trigger)\n        id: pr-details\n        if: github.event_name == 'issue_comment'\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          PR_DATA=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.issue.number }})\n          echo \"head_ref=$(echo \"$PR_DATA\" | jq -r '.head.ref')\" >> $GITHUB_OUTPUT\n          echo \"head_sha=$(echo \"$PR_DATA\" | jq -r '.head.sha')\" >> $GITHUB_OUTPUT\n          echo \"title=$(echo \"$PR_DATA\" | jq -r '.title')\" >> $GITHUB_OUTPUT\n          echo \"html_url=$(echo \"$PR_DATA\" | jq -r '.html_url')\" >> $GITHUB_OUTPUT\n\n      - name: Sanitize untrusted inputs\n        id: sanitize\n        env:\n          RAW_BRANCH_NAME: ${{ github.event_name == 'pull_request_target' && github.head_ref || steps.pr-details.outputs.head_ref }}\n          RAW_PR_TITLE: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.title || steps.pr-details.outputs.title }}\n        run: |\n          # Sanitize branch name for JSON\n          BRANCH_NAME_JSON=$(jq -n --arg b \"$RAW_BRANCH_NAME\" '$b')\n          echo \"branch_name=$BRANCH_NAME_JSON\" >> $GITHUB_OUTPUT\n\n          # Sanitize PR title for JSON\n          PR_TITLE_JSON=$(jq -n --arg t \"$RAW_PR_TITLE\" '$t')\n          echo \"pr_title=$PR_TITLE_JSON\" >> $GITHUB_OUTPUT\n\n      - name: Trigger IntelliJ Plugin Integration Test\n        env:\n          BRANCH_NAME: ${{ steps.sanitize.outputs.branch_name }}\n          PR_TITLE: ${{ steps.sanitize.outputs.pr_title }}\n          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}\n          PR_SHA: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || steps.pr-details.outputs.head_sha }}\n          PR_URL: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.html_url || steps.pr-details.outputs.html_url }}\n        run: |\n          curl -X POST \\\n            -H \"Authorization: Bearer ${{ steps.app-token.outputs.token }}\" \\\n            -H \"Accept: application/vnd.github.v3+json\" \\\n            -H \"User-Agent: cline-pr-trigger\" \\\n            -H \"Content-Type: application/json\" \\\n            https://api.github.com/repos/cline/intellij-plugin/dispatches \\\n            -d @- <<EOF\n          {\n            \"event_type\": \"cline-pr-check\",\n            \"client_payload\": {\n              \"pr_number\": \"$PR_NUMBER\",\n              \"branch_name\": $BRANCH_NAME,\n              \"action\": \"${{ github.event.action }}\",\n              \"sha\": \"$PR_SHA\",\n              \"pr_title\": $PR_TITLE,\n              \"pr_url\": \"$PR_URL\"\n            }\n          }\n          EOF\n\n      - name: Log trigger details\n        env:\n          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}\n          PR_SHA: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || steps.pr-details.outputs.head_sha }}\n        run: |\n          echo \"Triggered IntelliJ Plugin integration test for:\"\n          echo \"  PR #$PR_NUMBER\"\n          echo \"  Trigger: ${{ github.event_name }}\"\n          echo \"  Action: ${{ github.event.action }}\"\n          echo \"  SHA: $PR_SHA\"\n"
+    },
+    "ext-vscode-test-e2e.yml": {
+      "path": ".github/workflows/ext-vscode-test-e2e.yml",
+      "size_bytes": 6589,
+      "line_count": 158,
+      "truncated": true,
+      "excerpt": "name: ext-vscode-test-e2e\n\non:\n    push:\n        branches:\n            - main\n    pull_request:\n        types: [opened, reopened, synchronize, ready_for_review]\n    workflow_dispatch:\n\nconcurrency:\n    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}\n    cancel-in-progress: true\n\npermissions:\n    contents: read\n    pull-requests: read\n\njobs:\n    detect-changes:\n        runs-on: ubuntu-latest\n        name: Detect Changes\n        outputs:\n            e2e: ${{ steps.force.outputs.run_all == 'true' || steps.filter.outputs.e2e == 'true' }}\n        steps:\n            - id: force\n              if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'\n              run: echo \"run_all=true\" >> \"$GITHUB_OUTPUT\"\n\n            - uses: actions/checkout@v4\n              if: steps.force.outputs.run_all != 'true'\n\n            - uses: dorny/paths-filter@v3\n              if: steps.force.outputs.run_all != 'true'\n              id: filter\n              with:\n                  filters: |\n                      e2e:\n                          - 'apps/vscode/src/**'\n                          - 'apps/vscode/webview-ui/**'\n                          - 'apps/vscode/proto/**'\n                          - 'apps/vscode/tests/**'\n                          - 'apps/vscode/scripts/**'\n                          - 'apps/vscode/standalone/**'\n                          - 'apps/vscode/assets/**'\n                          - 'apps/vscode/walkthrough/**'\n                          - 'apps/vscode/package.json'\n                          - 'apps/vscode/webview-ui/package.json'\n                          # Root bun lockfile is authoritative for the whole workspace (incl. apps/vscode).\n                          - 'bun.lock'\n                          # SDK source packages are local workspace symlinks (@cline/*), so SDK changes affect the build.\n                          - 'sdk/packages/**'\n                          - 'apps/vscode/buf.yaml'\n                          - 'apps/vscode/tsconfig*.json'\n                          - 'apps/vscode/biome.jsonc'\n                          - 'apps/vscode/esbuild.mjs'\n                          - 'apps/vscode/bunfig.toml'\n                          - 'apps/vscode/.vscode-test.mjs'\n                          - 'apps/vscode/playwright*.ts'\n                          - '.github/workflows/ext-vscode-test-e2e.yml'\n\n    matrix_prep:\n        needs: detect-changes\n        if: needs.detect-changes.outputs.e2e == 'true'\n        runs-on: ubuntu-latest\n        outputs:\n            matrix: ${{ steps.set-matrix.outputs.matrix }}\n        steps:\n            - id: set-matrix\n              run: |\n                  echo 'matrix=[{\"runner\":\"ubuntu\"},{\"runner\":\"windows\"},{\"runner\":\"macos\"}]' >> $GITHUB_OUTPUT\n\n    e2e:\n        needs: [detect-changes, matrix_prep]\n        if: needs.detect-changes.outputs.e2e == 'true'\n        strategy:\n            fail-fast: false\n            matrix:\n                include: ${{ fromJson(needs.matrix_prep.outputs.matrix) }}\n        runs-on: ${{ matrix.runner }}-latest\n        timeout-minutes: 20\n        # Nothing in this job uses OIDC, so it does not need an id-token\n        # permission.\n        permissions:\n            contents: read\n        defaults:\n            run:\n                working-directory: apps/vscode\n        steps:\n            - uses: actions/checkout@v4\n            - name: Setup Bun\n              uses: oven-sh/setup-bun@v2\n              with:\n                  bun-version: \"1.4.2\"\n\n            # Bun's install cache is not cached. On every runner, restoring it\n            # and then installing took about as long as installing without it,\n            # as ext-vscode-test does.\n\n            # Cache VS Code installation. The key is exact-match only (no\n            # restore-keys prefix fallbacks); a miss just downloads VS Code.\n            - name: Cache VS Code\n              uses: actions/cache@v4\n              id: vscode-cache\n              with:\n                  path: apps/vscode/.vscode-test\n                  key: vscode-${{ runner.os }}-stable-${{ hashFiles('apps/vscode/.vscode-test.mjs', 'apps/vscode/package.json') }}\n\n            # Single root install resolves the entire bun workspace at once (replaces\n            # the per-package `npm ci` steps for apps/vscode + webview-ui).\n            - name: Install workspace dependencies\n              working-directory: ${{ github.workspace }}\n              run: bun install --frozen-lockfile\n              env:\n       "
+    },
+    "ext-vscode-test.yml": {
+      "path": ".github/workflows/ext-vscode-test.yml",
+      "size_bytes": 20391,
+      "line_count": 439,
+      "truncated": true,
+      "excerpt": "name: ext-vscode-test\n\non:\n    push:\n        branches:\n            - main\n    workflow_dispatch:\n    pull_request:\n        branches:\n            - main\n    workflow_call:\n\n# Set default permissions for all jobs\npermissions:\n    contents: read # Needed to check out code\n    pull-requests: read # Needed for changed-file detection on pull requests\n\njobs:\n    detect-changes:\n        runs-on: ubuntu-latest\n        name: Detect Changes\n        outputs:\n            vscode: ${{ steps.force.outputs.run_all == 'true' || steps.filter.outputs.vscode == 'true' }}\n            testing_platform: ${{ steps.force.outputs.run_all == 'true' || steps.filter.outputs.testing_platform == 'true' }}\n        steps:\n            - id: force\n              if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call'\n              run: echo \"run_all=true\" >> \"$GITHUB_OUTPUT\"\n\n            - uses: actions/checkout@v4\n              if: steps.force.outputs.run_all != 'true'\n\n            - uses: dorny/paths-filter@v3\n              if: steps.force.outputs.run_all != 'true'\n              id: filter\n              with:\n                  filters: |\n                      vscode:\n                          - 'apps/vscode/src/**'\n                          - 'apps/vscode/webview-ui/**'\n                          - 'apps/vscode/proto/**'\n                          - 'apps/vscode/tests/**'\n                          - 'apps/vscode/scripts/**'\n                          - 'apps/vscode/standalone/**'\n                          - 'apps/vscode/assets/**'\n                          - 'apps/vscode/walkthrough/**'\n                          - 'apps/vscode/package.json'\n                          - 'apps/vscode/webview-ui/package.json'\n                          # Root bun lockfile is authoritative for the whole workspace (incl. apps/vscode).\n                          - 'bun.lock'\n                          # SDK source packages are local workspace symlinks (@cline/*), so SDK changes affect the build.\n                          - 'sdk/packages/**'\n                          - 'apps/vscode/buf.yaml'\n                          - 'apps/vscode/tsconfig*.json'\n                          - 'apps/vscode/biome.jsonc'\n                          - 'apps/vscode/esbuild.mjs'\n                          - 'apps/vscode/bunfig.toml'\n                          - 'apps/vscode/.vscode-test.mjs'\n                          # ext-vscode-test-e2e builds without lint; list its Playwright config\n                          # here so Quality Checks lints it.\n                          - 'apps/vscode/playwright*.ts'\n                          - 'apps/vscode/test-setup.js'\n                          - '.github/workflows/ext-vscode-test.yml'\n                      testing_platform:\n                          - 'apps/vscode/src/**'\n                          - 'apps/vscode/proto/**'\n                          - 'apps/vscode/standalone/**'\n                          - 'apps/vscode/testing-platform/**'\n                          - 'apps/vscode/testing-platform/package.json'\n                          - 'apps/vscode/tests/specs/**'\n                          - 'apps/vscode/package.json'\n                          # Root bun lockfile is authoritative for the whole workspace (incl. apps/vscode).\n                          - 'bun.lock'\n                          # SDK source packages are local workspace symlinks (@cline/*), so SDK changes affect the build.\n                          - 'sdk/packages/**'\n                          - 'apps/vscode/buf.yaml'\n                          - 'apps/vscode/tsconfig*.json'\n                          - 'apps/vscode/esbuild.mjs'\n                          - 'apps/vscode/.vscodeignore'\n                          - 'apps/vscode/scripts/**'\n                          - '.github/workflows/ext-vscode-test.yml'\n\n    quality-checks:\n        needs: detect-changes\n        if: needs.detect-changes.outputs.vscode == 'true' || needs.detect-changes.outputs.testing_platform == 'true'\n        runs-on: ubuntu-latest\n        name: Quality Checks\n        defaults:\n          run:\n            working-directory: apps/vscode\n        steps:\n            - name: Checkout code\n              uses: actions/checkout@v4\n\n            - name: Setup Bun\n              uses: oven-sh/setup-bun@v2\n              with:\n                  bun-version: \"1.4.2\"\n\n            # Single root install resolves the entire bun workspace (apps/vscode,\n            # webview-ui, testing-platform and the @cline/"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-23T12:06:22Z",
+      "oldest": "2026-11-04T00:40:07Z"
+    },
+    "conventional_pct": 86.0,
+    "fix_revert_pct": 32.0,
+    "ai_coauthor_pct": 6.0,
+    "top_recent_authors": [
+      [
+        "saoudrizwan",
+        9
+      ],
+      [
+        "mkondratek",
+        8
+      ],
+      [
+        "BarreiroT",
+        6
+      ],
+      [
+        "dominiccooney",
+        5
+      ],
+      [
+        "johnwschoi",
+        5
+      ],
+      [
+        "haleyparkdesign",
+        3
+      ],
+      [
+        "abeatrix",
+        3
+      ],
+      [
+        "maxpaulus43",
+        3
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "34c104e6",
+        "date": "2026-11-23T12:06:22Z",
+        "author": "BarreiroT",
+        "subject": "Move the third party notices to the root on the CLI install (#15836)",
+        "ai_signal": false
+      },
+      {
+        "sha": "8075d2e3",
+        "date": "2026-11-21T05:37:41Z",
+        "author": "saoudrizwan",
+        "subject": "chore(vscode): release v4.1.27",
+        "ai_signal": false
+      },
+      {
+        "sha": "e68fba63",
+        "date": "2026-11-21T05:35:39Z",
+        "author": "saoudrizwan",
+        "subject": "docs(desktop): drop flag-gated cloud items from the 0.0.50 notes",
+        "ai_signal": false
+      },
+      {
+        "sha": "4e3add85",
+        "date": "2026-11-21T05:32:03Z",
+        "author": "saoudrizwan",
+        "subject": "chore(desktop): release v0.0.50",
+        "ai_signal": false
+      },
+      {
+        "sha": "06f0ec71",
+        "date": "2026-11-21T05:02:33Z",
+        "author": "saoudrizwan",
+        "subject": "chore(cli): release v3.0.75",
+        "ai_signal": false
+      },
+      {
+        "sha": "0905e828",
+        "date": "2026-11-21T04:52:13Z",
+        "author": "saoudrizwan",
+        "subject": "chore(sdk): release v0.2.1",
+        "ai_signal": false
+      },
+      {
+        "sha": "0d7f2b18",
+        "date": "2026-11-21T04:52:13Z",
+        "author": "saoudrizwan",
+        "subject": "test(llms): accept tiered Qwen families in the prompt-cache route test",
+        "ai_signal": false
+      },
+      {
+        "sha": "9f750b8a",
+        "date": "2026-11-21T02:19:45Z",
+        "author": "BarreiroT",
+        "subject": "Add third party licenses to the desktop app (#15816)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4a5c5919",
+        "date": "2026-11-21T02:02:22Z",
+        "author": "BarreiroT",
+        "subject": "Add the third party notices to the CLI (#15811)",
+        "ai_signal": false
+      },
+      {
+        "sha": "456a695f",
+        "date": "2026-11-21T01:00:43Z",
+        "author": "BarreiroT",
+        "subject": "Attach the third party notices on our VSIX (#15809)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e8227d6f",
+        "date": "2026-11-20T21:58:49Z",
+        "author": "saoudrizwan",
+        "subject": "test(llms): remove image-model assertion on the generated catalog (#15815)",
+        "ai_signal": false
+      },
+      {
+        "sha": "aa84c549",
+        "date": "2026-11-20T21:11:34Z",
+        "author": "saoudrizwan",
+        "subject": "fix(sdk): keep bun.lock when bumping SDK versions (#15810)",
+        "ai_signal": false
+      },
+      {
+        "sha": "fcd95029",
+        "date": "2026-11-20T20:54:22Z",
+        "author": "arafatkatze",
+        "subject": "fix(cli): do not read .env or bunfig.toml from the launch directory (#15781)",
+        "ai_signal": true
+      },
+      {
+        "sha": "85d18153",
+        "date": "2026-11-20T18:17:45Z",
+        "author": "mkondratek",
+        "subject": "fix(cli): keep /team one-shot prompts in act mode and unbreak headless e2e (#15748)",
+        "ai_signal": false
+      },
+      {
+        "sha": "52f5154c",
+        "date": "2026-11-20T17:50:02Z",
+        "author": "BarreiroT",
+        "subject": "Add the license to the SDK packages [ENG-2594] (#15788)",
+        "ai_signal": false
+      },
+      {
+        "sha": "20b04272",
+        "date": "2026-11-19T18:06:58Z",
+        "author": "haleyparkdesign",
+        "subject": "feat(ui): components - SectionHeading, Banner, ItemCard, DetailList and Dialog and more (#15588)",
+        "ai_signal": false
+      },
+      {
+        "sha": "eff43e19",
+        "date": "2026-11-17T13:18:29Z",
+        "author": "pei711",
+        "subject": "fix(core): do not use LiteLLM legacy max_tokens as input budget when max_output_tokens is set (#15499)",
+        "ai_signal": false
+      },
+      {
+        "sha": "4cdfb19a",
+        "date": "2026-11-17T09:13:09Z",
+        "author": "mkondratek",
+        "subject": "feat(mcp): carry tool annotations and session mode through the MCP paths (#15381)",
+        "ai_signal": false
+      },
+      {
+        "sha": "146894b6",
+        "date": "2026-11-16T11:52:17Z",
+        "author": "pei711",
+        "subject": "docs: fix broken relative links in SDK, package, and example READMEs (#15506)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0eeb3231",
+        "date": "2026-11-16T11:05:16Z",
+        "author": "Eapp1e",
+        "subject": "fix: pass commit search terms to git as arguments, not shell text (#15378)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "saoudrizwan",
+      "contributions": 2880
+    },
+    {
+      "login": "abeatrix",
+      "contributions": 1019
+    },
+    {
+      "login": "celestial-vault",
+      "contributions": 374
+    },
+    {
+      "login": "arafatkatze",
+      "contributions": 329
+    },
+    {
+      "login": "BarreiroT",
+      "contributions": 294
+    },
+    {
+      "login": "sjf",
+      "contributions": 272
+    },
+    {
+      "login": "pashpashpash",
+      "contributions": 207
+    },
+    {
+      "login": "canvrno",
+      "contributions": 204
+    },
+    {
+      "login": "robinnewhouse",
+      "contributions": 158
+    },
+    {
+      "login": "0xToshii",
+      "contributions": 149
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v4.1.27",
+      "published_at": "2026-11-21T06:05:04Z",
+      "name": "v4.1.27"
+    },
+    {
+      "tag": "sdk/sdk/v0.2.1",
+      "published_at": "2026-11-21T05:19:22Z",
+      "name": "SDK v0.2.1"
+    },
+    {
+      "tag": "desktop-v0.0.50",
+      "published_at": "2026-11-21T05:54:06Z",
+      "name": "Desktop v0.0.50"
+    },
+    {
+      "tag": "cli-v3.0.75",
+      "published_at": "2026-11-21T05:30:43Z",
+      "name": "CLI v3.0.75"
+    },
+    {
+      "tag": "v4.1.26",
+      "published_at": "2026-10-26T09:06:50Z",
+      "name": "v4.1.26"
+    }
+  ]
+}

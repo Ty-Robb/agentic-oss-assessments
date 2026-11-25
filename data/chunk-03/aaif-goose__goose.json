@@ -1,0 +1,464 @@
+{
+  "repo": "aaif-goose/goose",
+  "meta": {
+    "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
+    "homepage": "https://goose-docs.ai/",
+    "license": "Apache-2.0",
+    "stars": 56978,
+    "forks": 6670,
+    "open_issues": 512,
+    "archived": false,
+    "created_at": "2024-08-23T19:03:36Z",
+    "pushed_at": "2026-11-25T12:22:34Z",
+    "default_branch": "main",
+    "topics": [
+      "acp",
+      "ai",
+      "ai-agents",
+      "mcp"
+    ]
+  },
+  "languages": {
+    "Rust": 11066808,
+    "TypeScript": 3531419,
+    "Python": 188218,
+    "JavaScript": 168092,
+    "Shell": 154818,
+    "HTML": 102286,
+    "CSS": 44331,
+    "Just": 26705,
+    "PowerShell": 13213,
+    "Kotlin": 5046,
+    "Nix": 4036,
+    "Dockerfile": 3252,
+    "Batchfile": 2880,
+    "NSIS": 166,
+    "HCL": 42
+  },
+  "structure": {
+    "root": [
+      ".blox/",
+      ".cargo/",
+      ".devcontainer/",
+      ".dockerignore",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".goosehints",
+      ".intersect/",
+      "AGENTS.md",
+      "BUILDING_DOCKER.md",
+      "BUILDING_LINUX.md",
+      "CLAUDE.md",
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "CUSTOM_DISTROS.md",
+      "Cargo.lock",
+      "Cargo.toml",
+      "Dockerfile",
+      "GOVERNANCE.md",
+      "I18N.md",
+      "Justfile",
+      "LICENSE",
+      "MAINTAINERS.md",
+      "MERGE_FIXES.md",
+      "README.md",
+      "RELEASE.md",
+      "RELEASE_CHECKLIST.md",
+      "RISCV_SETUP.md",
+      "SECURITY.md",
+      "bin/",
+      "buzz/",
+      "clippy.toml",
+      "crates/",
+      "deny.toml",
+      "documentation/",
+      "download_cli.ps1",
+      "download_cli.sh",
+      "evals/",
+      "examples/",
+      "flake.lock",
+      "flake.nix",
+      "oidc-proxy/",
+      "release-plz.toml",
+      "rust-toolchain.toml",
+      "scripts/",
+      "services/",
+      "test_acp_client.py",
+      "ui/",
+      "workflow_recipes/"
+    ],
+    "workflows": [
+      "build-acp.yml",
+      "build-cli-linux.yml",
+      "build-notify.yml",
+      "bundle-macos.yml",
+      "bundle-windows.yml",
+      "buzz-automation.yml",
+      "canary.yml",
+      "cargo-deny.yml",
+      "cargo-machete.yml",
+      "check-release-pr.yaml",
+      "ci.yml",
+      "close-release-pr-on-tag.yaml",
+      "create-release-branch.yaml",
+      "create-version-bump-pr.yaml",
+      "dependabot-auto-merge.yml",
+      "deploy-docs-and-extensions.yml",
+      "docs-update-oi-kit-api.yml",
+      "goose-release-notes.yml",
+      "maven-sdk.yml",
+      "mcp-conformance.yml",
+      "minor-release.yaml",
+      "model-toolcall-conformance.yml",
+      "oi-kit-release-pr.yml",
+      "oi-kit-release.yml",
+      "patch-release.yaml",
+      "pr-smoke-test.yml",
+      "pr-website-preview.yml",
+      "publish-ask-ai-bot.yml",
+      "publish-docker.yml",
+      "publish-npm.yml",
+      "python-sdk-wheels.yml",
+      "quarantine.yml",
+      "release-branches.yml",
+      "release.yml",
+      "scorecard.yml",
+      "stale.yml",
+      "take.yml",
+      "update-health-dashboard.yml",
+      "update-release-pr.yaml"
+    ],
+    "docs": [],
+    "docs_count": 0,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": [
+      "harbor/"
+    ]
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 6242,
+      "line_count": 132,
+      "truncated": false,
+      "excerpt": "# AGENTS Instructions\n\ngoose is an AI agent framework in Rust with CLI and Electron desktop interfaces.\n\n## Contribution Workflow\n\nThe issue is the source of truth for work intended for an upstream pull request. Track issue status on the [Goose Issues board](https://github.com/orgs/aaif-goose/projects/1).\n\n- Before implementing an issue for a pull request, confirm that it is on the board with Status **Ready**.\n- Do not implement issues in **Inbox**, **Needs info**, or **Accepted / design**. Help resolve the issue discussion instead.\n- Read the agreed design, constraints, non-goals, and verification plan before changing code.\n- Keep the implementation within the issue's agreed scope.\n- If implementation reveals a material design change, return to the issue before continuing.\n- Every external pull request must link the Ready issue it implements and explain how the verification plan was performed.\n- Structure new issues on the matching template in `.github/ISSUE_TEMPLATE/` and set the issue type (e.g. Bug, Feature). `gh issue create` does not apply templates automatically.\n\nMaintainer-directed work, urgent security fixes, release automation, and local or exploratory changes do not require a Ready issue.\n\n## MCP Server Directory\n\ngoose is retiring its project-specific MCP server directory in favor of the [official MCP Registry](https://github.com/modelcontextprotocol/registry) and its `server.json` format.\n\n- Do not add new third-party servers to `documentation/static/servers.json`; these contributions are no longer accepted.\n- Direct server authors to publish to the official MCP Registry instead.\n- Treat the existing goose directory as legacy data while registry-backed discovery and installation are implemented.\n- Changes that maintain, migrate, or remove existing directory entries are allowed when they support the migration and are within an approved issue's scope.\n\nSee [Discussion #10830](https://github.com/aaif-goose/goose/discussions/10830) for the decision and migration direction.\n\n## GitHub Communication\n\nWrite issue and pull request comments for humans, not as exhaustive work logs.\n\n- Lead with the conclusion or action needed.\n- Keep comments concise; do not repeat context already present in the thread.\n- Use short paragraphs or bullets, and include implementation details only when they affect a decision or review.\n- Prefer one clear summary over multiple incremental comments.\n\n## Setup\n```bash\nsource bin/activate-hermit\ncargo build\n```\n\n## Commands\n\n### Build\n```bash\ncargo build                   # debug\ncargo build --release         # release  \njust release-binary           # release binary\n```\n\n### Test\n```bash\nexport GOOSE_DISABLE_KEYRING=1  # avoid system keyring prompts\ncargo test                   # all tests\ncargo test -p goose          # specific crate\ncargo test --package goose --test mcp_integration_test\njust record-mcp-tests        # record MCP\n```\n\n### Lint/Format\n```bash\ncargo fmt\ncargo clippy --all-targets -- -D warnings\n```\n\n### UI\n```bash\njust run-ui                  # start desktop\ncd ui/desktop && pnpm run typecheck\ncd ui/desktop && pnpm test   # test UI\n```\n\n## Structure\n```\ncrates/       # Rust workspace members \u2014 see root Cargo.toml (`members = [\"crates/*\"]`)\nui/desktop/   # Electron app\nui/text/      # deprecated ACP TUI (see ui/text/README.md)\n```\n\nSome workspace crates, including those that make up oi-kit, are published to crates.io and expose public APIs. The authoritative list of oi-kit crates is the `release = true`, `version_group = \"oi-kit\"` package set in `release-plz.toml`, which drives oi-kit release; run `python3 crates/oi-kit-bindings/scripts/oi-kit-release.py crates` to print it. Other crates, such as `goose` and `goose-cli`, do not provide stable public APIs; their `pub` items are internal implementation details and may change without notice.\n\n## Development Loop\n```bash\n# 1. source bin/activate-hermit\n# 2. Make changes\n# 3. cargo fmt\n```\n\n### Run these only if the user has asked you to build/test your changes:\n```\n# 1. cargo build\n# 2. GOOSE_DISABLE_KEYRING=1 cargo test -p <crate>\n# 3. cargo clippy --all-targets -- -D warnings\n```\n\n## Rules\n\n- Test: Prefer tests/ folder, e.g. crates/goose/tests/\n- Error: Use anyhow::Result\n- Provider: Implement Provider trait see providers/base.rs\n- MCP: Extensions in crates/goose-mcp/\n- UI Desktop: Use ACP SDK types or local `src/types/*` types. Do not import generated OpenAPI types/client code from `ui/desktop/src/api`\n\n## Code Quality\n\n- Comments: Write self-documenting code - prefer clear names over comments\n- Comments: Never add comments that restate what code does\n- Comments: Only comment for complex algorithms, non-obvious business logic, or \"why\" not \"what\"\n- Simplicity: Don't make things optional that don't need to be - the compiler will enforce\n- Simplicity: Booleans should default to false, not be optional\n- Errors: Don't add error context that doesn't add useful information (e.g., `.context(\"Failed to X\")` when error already says it failed)\n- Simplicity: Avoid overly defensive code - trust Rust's type system\n- Logging: Clean up existing logs, don't add more unless for errors or security events\n\n## Never\n\n- Never: Recreate `ui/desktop/src/api` or add `@hey-api/openapi-ts` to `ui/desktop`\n- Cargo.toml: For human-authored dependency changes, use `cargo add` instead of manually editing dependency entries unless there is a specific reason not to.\n- Cargo.toml: Automated dependency bump PRs are exempt; when manual edits are necessary, keep `Cargo.lock` consistent.\n- Never: Skip cargo fmt\n- Never: Merge without running clippy\n- Never: Comment self-evident operations (`// Initialize`, `// Return result`), getters/setters, constructors, or standard Rust idioms\n- Never: Overwrite a live binary in place (e.g. `cp`/`fs.copyFileSync` onto an existing executable) - unlink or atomic-rename the destination first, otherwise macOS SIGKILLs running processes with \"Code Signature Invalid\"\n\n## Entry Points\n- CLI: crates/goose-cli/src/main.rs\n- UI: ui/desktop/src/main.ts\n- Agent: crates/goose/src/agents/services.rs (`reply`)\n- Agent loop: crates/goose/src/agents/state_machine_builder.rs (the ordered operations), run by crates/goose/src/agents/state_machine/\n"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 11,
+      "line_count": 1,
+      "truncated": false,
+      "excerpt": "@AGENTS.md\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 17189,
+      "line_count": 363,
+      "truncated": true,
+      "excerpt": "# Contribution Guide\n\ngoose is open source, and code is not the only way to contribute. Reporting a problem, reproducing it, sharing domain knowledge, shaping the design, implementing the solution, and verifying the result are all valuable work.\n\nWe organize this work on the public [Goose Issues board](https://github.com/orgs/aaif-goose/projects/1). The issue is the main record of a contribution, from the first report through design, implementation, and verification.\n\n> [!TIP]\n> Beyond code, check out [other ways to contribute](#other-ways-to-contribute)\n\n---\n\n## Issue Workflow\n\nEvery open issue is tracked on the [Goose Issues board](https://github.com/orgs/aaif-goose/projects/1):\n\n- **Inbox**: The issue is waiting for triage.\n- **Needs info**: More information is needed before the issue can progress.\n- **Accepted / design**: We want to solve the problem and are working out the design, constraints, and verification plan.\n- **Ready**: The intended solution is settled and implementation can begin.\n- **In progress**: Implementation is underway.\n- **Verification**: The implementation is ready for a human to confirm that it works.\n- **Done**: The result has been verified and the issue is closed.\n\nIssues we do not plan to pursue are closed with an explanation. We do not use rejection labels.\n\nFeature requests should describe a broadly useful problem rather than only a preferred implementation. Adding features is easy; maintaining them is a long-term cost, so we may decline features that add complexity without enough general benefit.\n\nDiscord and GitHub Discussions remain useful for informal conversation, but decisions that affect an implementation should be captured in the issue.\n\n## How to Contribute\n\nIf you find a bug or want a new feature, [open an issue](https://github.com/aaif-goose/goose/issues/new/choose). A good issue explains the problem, who it affects, and why it matters. For bugs, include clear reproduction steps and a diagnostics report when possible.\nPlease write the issue yourself. Your agent can do the research and help you explore, but you should understand the issue. You can\nsuggest a solution direction, but refrain from a detailed solution especially code.\n\nThe best place to contribute is the discussion between **Accepted / design** and **Ready**. This is where the engineering happens: turning a worthwhile problem into a specific solution that an agent can implement. Take part in the issue discussion by bringing context and domain knowledge, challenging assumptions, comparing approaches, identifying constraints and trade-offs, and agreeing on how the result will be verified.\n\nSubstantial contributors at any stage may be recognized as co-authors. The unit of contribution is taking a problem to a verified solution, not writing the patch.\n\n## LLM Provider Integrations\n\nIf you run an LLM service that uses an OpenAI, Anthropic, or Ollama compatible API, the best way to support goose users is usually to publish a goose custom-provider JSON file with your own documentation. Users can download that file into their local `custom_providers` directory and select the provider without waiting for a goose release.\n\nSee [Custom Provider configuration](documentation/docs/getting-started/providers.md#configure-custom-provider) for the JSON format and installation location. Include clear setup instructions for credentials, supported models, streaming support, and any custom headers your service requires. Do not include real API keys, tokens, tenant secrets, or other credentials in the JSON file.\n\nIssues opened for custom LLM providers will only occasionally be accepted by exception. The best way to support goose users is to provide a documented provider config that users can install themselves.\n\n## From Issue to Pull Request\n\nDo not begin implementation or open a pull request until the issue has reached **Ready** on the Goose Issues board.\n\nEvery external pull request must:\n\n- link the Ready issue it implements;\n- stay within the design and scope agreed in the issue;\n- explain how the issue's verification plan was carried out; and\n- return material design changes to the issue for discussion.\n\nPull requests that do not implement a Ready issue will be closed. Automated dependency and release pull requests, urgent security fixes, and work explicitly directed by the core team are exempt.\n\nDon't open many pull requests in quick succession. Submit them in order of preference and wait for them to land before opening more.\n\n## AI Code Reviews\n\nWe use codex as an AI code reviewer. AI code reviewing has come a long way and more often than not points\nout real issues. So we expect you to address all of them by either fixing the code or adding a one-line\nanswer as to why this is not an issue or not worth fixing.\n\nIf not, we might close the PR and/or reply with a link to this section. Once you address the comments, you\ncan always reopen.\n\n## Quick Responsible AI Tips\n\nThere's no need to tell us you used AI in your work. You are contributing to an agent, it would be odd if \nyou had not. Our general thinking is, use AI any way you want, but until the robot revolution comes, you\nare responsible for the final code. Before submitting a PR for review, make sure you have reviewed it yourself.\nWe'll close any vibe coded submissions that obviously skip this step.\n\nYou can use whatever agent and whatever methodology you like as long as you stick to that principle. We hope\nyou like goose of course and use that. One thing to watch out for is LLM eagerness. They like to please and\nare in a hurry. \n\n   * **Think first**. Agents tend to jump straight to code writing. Explain the architecture you want first to \n      avoid this behavior, based on your own understanding of the code, or have the agent explore the code first and\n      suggest approaches. If the first implementation doesn't look quite right, just start over and use\n      what you learned to do better next time.\n   * **Spot the laziness**. LLMs will make their"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 5753,
+      "line_count": 91,
+      "truncated": false,
+      "excerpt": "<div align=\"center\">\n\n# Open Intelligence Kit (oi-kit) and goose\n\n_Build agents that run anywhere with oi-kit._\n\n<p align=\"center\">\n  <a href=\"https://opensource.org/licenses/Apache-2.0\"\n    ><img src=\"https://img.shields.io/badge/License-Apache_2.0-blue.svg\"></a>\n  <a href=\"https://discord.gg/n8R5VaWDAn\"\n    ><img src=\"https://img.shields.io/discord/1287729918100246654?logo=discord&logoColor=white&label=Join+Us&color=blueviolet\" alt=\"Discord\"></a>\n  <a href=\"https://github.com/aaif-goose/goose/actions/workflows/ci.yml\"\n     ><img src=\"https://img.shields.io/github/actions/workflow/status/aaif-goose/goose/ci.yml?branch=main\" alt=\"CI\"></a>\n  <a href=\"https://insights.linuxfoundation.org/project/goose\"><img src=\"https://insights.linuxfoundation.org/api/badge/health-score?project=goose\"></a>\n  <a href=\"https://repology.org/project/goose-cli/versions\"><img src=\"https://repology.org/badge/tiny-repos/goose-cli.svg\" alt=\"Packaging status\"></a>\n</p>\n\n<a href=\"https://trendshift.io/repositories/25298?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-25298\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/25298\" alt=\"aaif-goose%2Fgoose | Trendshift\" width=\"250\" height=\"55\"/></a>\n\n</div>\n\n\n[oi-kit](https://goose-docs.ai/docs/oi-kit/) provides the reusable Rust components for building agents. [goose](https://goose-docs.ai/docs/quickstart) is a complete agent built with oi-kit: use its desktop app or CLI, or make it the agent backend for your own application over ACP.\n\nBoth live in this repository. goose is part of the [Agentic AI Foundation (AAIF)](https://aaif.io/) at the Linux Foundation.\n\n## Build with oi-kit\n\nCompose an agent from a state machine, operations, tools, model providers, and context management. Your application owns the interface, policies, and storage.\n\n- **Control how the agent works.** Compose operations for tool execution, approvals, compaction, and your application's own behavior.\n- **Resume from saved state.** Supply your own storage and let the state machine determine what to do next from the persisted conversation.\n- **Run in different environments.** Use the core runtime in native applications, on servers, or in WebAssembly hosts.\n- **Run models in-process.** Load supported local models directly, without Ollama or a separate inference server, with control over model loading and inference.\n\nRust exposes the full agent runtime. Python and Kotlin bindings currently cover model providers, streaming, and conversation compaction. oi-kit is in alpha; use the documentation version that matches your dependencies.\n\n- [Getting Started](https://goose-docs.ai/docs/oi-kit/hello-world) \u2014 build a small Rust agent with tools, streaming, and a saved conversation.\n- [Demos](https://goose-docs.ai/docs/oi-kit/demos) \u2014 explore working applications and their source code.\n- [Concepts](https://goose-docs.ai/docs/oi-kit/concepts) \u2014 understand the state machine, operations, providers, and authentication.\n- [Reference](https://goose-docs.ai/docs/oi-kit/reference) \u2014 choose crates and find generated Rust, Python, and Kotlin API documentation.\n\n## Use goose\n\ngoose is a general-purpose agent for coding, research, writing, automation, and data analysis. Use the native desktop app on macOS, Linux, or Windows, or work from the terminal with the CLI. Connect tools and data through the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/).\n\nLoad local models directly inside goose, without a separate model server, or connect to [over 85 providers](https://goose-docs.ai/docs/getting-started/providers), including Anthropic, OpenAI, Gemini, OpenRouter, and Amazon Bedrock.\n\n**[Download the desktop app](https://goose-docs.ai/docs/getting-started/installation)** for macOS, Linux, and Windows.\n\nOr install the CLI:\n\n```bash\ncurl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash\n```\n\nThen follow the [goose Quickstart](https://goose-docs.ai/docs/quickstart) to configure a model and start a session.\n\n## Build an app over ACP\n\nUse the pre-built goose binary as the agent behind your own application through the [Agent Client Protocol (ACP)](https://agentclientprotocol.com/). Start it as a subprocess:\n\n```bash\ngoose acp\n```\n\nYour app sends prompts and receives streamed responses, tool activity, and permission requests. goose supplies the agent, model connections, tools, and saved conversations; your app owns the interface and workflow. This is also how goose Desktop talks to its backend.\n\nFollow [Build an app over ACP](https://goose-docs.ai/docs/oi-kit/acp/) for a working client example, then consult the [ACP extensions reference](https://goose-docs.ai/docs/oi-kit/acp/reference) for goose-specific capabilities.\n\n## Quick links\n\n- [Quickstart](https://goose-docs.ai/docs/quickstart)\n- [Installation](https://goose-docs.ai/docs/getting-started/installation)\n- [Tutorials](https://goose-docs.ai/docs/category/tutorials)\n- [Documentation](https://goose-docs.ai/docs/category/getting-started)\n- [Contributing](CONTRIBUTING.md)\n- [Governance](https://github.com/aaif-goose/goose/blob/main/GOVERNANCE.md)\n- [Custom Distributions](https://github.com/aaif-goose/goose/blob/main/CUSTOM_DISTROS.md) \u2014 build your own goose distro with preconfigured providers, extensions, and branding\n\n## Need help?\n\n- [Diagnostics & Reporting](https://goose-docs.ai/docs/troubleshooting/diagnostics-and-reporting)\n- [Known Issues](https://goose-docs.ai/docs/troubleshooting/known-issues)\n\n## Community\n\n- [Discord](https://discord.gg/n8R5VaWDAn)\n- [YouTube](https://www.youtube.com/@goose-oss)\n- [LinkedIn](https://www.linkedin.com/company/goose-oss)\n- [Twitter/X](https://x.com/goose_oss)\n"
+    },
+    "Cargo.toml": {
+      "path": "Cargo.toml",
+      "size_bytes": 7366,
+      "line_count": 126,
+      "truncated": true,
+      "excerpt": "[workspace]\nmembers = [\n    \"crates/*\",\n]\nresolver = \"2\"\n\n[workspace.package]\nedition = \"2021\"\nversion = \"1.61.0\"\nrust-version = \"1.95.0\"\nauthors = [\"AAIF <ai-oss-tools@block.xyz>\"]\nlicense = \"Apache-2.0\"\nrepository = \"https://github.com/aaif-goose/goose\"\ndescription = \"An AI agent\"\n\n[workspace.lints.clippy]\nuninlined_format_args = \"allow\"\nstring_slice = \"warn\"\n\n[workspace.dependencies]\nrmcp = { version = \"3.9.0\", default-features = false, features = [\"schemars\"] }\nagent-client-protocol-schema = { version = \"=1.9.1\", default-features = false }\nagent-client-protocol = { version = \"2.2.0\", default-features = false }\nagent-client-protocol-http = { version = \"2.2.0\", default-features = false }\narboard = { version = \"3\", default-features = false }\nanyhow = { version = \"1.0.102\", default-features = false, features = [\"std\"] }\nasync-stream = { version = \"0.3.6\", default-features = false }\nasync-trait = { version = \"0.1.89\", default-features = false }\naxum = { version = \"0.8\", default-features = false, features = [\"http1\", \"http2\", \"json\", \"tokio\", \"query\"] }\naxum-server = { version = \"0.9\", default-features = false }\nbase64 = { version = \"0.23.0\", default-features = false, features = [\"std\"] }\nbytes = { version = \"1.10.1\", default-features = false, features = [\"std\"] }\ncandle-core = { version = \"0.11\", default-features = false }\ncandle-nn = { version = \"0.11\", default-features = false }\nchrono = { version = \"0.4.44\", default-features = false, features = [\"serde\", \"std\"] }\nclap = { version = \"4.1.14\", default-features = false, features = [\"derive\", \"std\", \"help\", \"suggestions\", \"usage\", \"color\", \"error-context\"] }\ndirs = { version = \"7\", default-features = false }\ndotenvy = { version = \"0.15.7\", default-features = false }\nenv-lock = { version = \"1\", default-features = false }\netcetera = { version = \"0.11\", default-features = false }\nfs2 = { version = \"0.4\", default-features = false }\nfutures = { version = \"0.3.32\", default-features = false, features = [\"std\"] }\nhttp = { version = \"1.1\", default-features = false, features = [\"std\"] }\nignore = { version = \"0.4.12\", default-features = false }\ninclude_dir = { version = \"0.7\", default-features = false }\nindoc = { version = \"2\", default-features = false }\niroh = { version = \"1.2.0\", default-features = false }\niroh-relay = { version = \"1\", default-features = false }\nkeyring = { version = \"3.6.3\", default-features = false, features = [\"vendored\"] }\nlru = { version = \"0.19\", default-features = false }\nonce_cell = { version = \"1.21.3\", default-features = false, features = [\"std\"] }\nrand = \"0.10.1\"\nregex = { version = \"1.12.3\", default-features = false, features = [\"std\"] }\nreqwest = { version = \"0.13.2\", default-features = false, features = [\"multipart\", \"form\"] }\nrustls = { version = \"0.23.31\", default-features = false, features = [\"aws_lc_rs\", \"std\"] }\nschemars = { version = \"1.0.2\", default-features = false, features = [\"std\"] }\nserde = { version = \"1.0.228\", default-features = false, features = [\"derive\", \"std\"] }\nserde_json = { version = \"1.0.145\", default-features = false, features = [\"std\"] }\nserde_yaml = { version = \"0.9.32\", default-features = false }\nshellexpand = { version = \"3\", default-features = false, features = [\"base-0\", \"tilde\"] }\nstrum = { version = \"0.28.0\", default-features = false, features = [\"derive\", \"std\"] }\ntempfile = { version = \"3.10.1\", default-features = false }\nthiserror = { version = \"2.0.18\", default-features = false }\ntokio = { version = \"1.48\", default-features = false }\ntokio-stream = { version = \"0.1.16\", default-features = false }\ntokio-util = { version = \"0.7.12\", default-features = false }\ntower-http = { version = \"0.7.0\", default-features = false }\ntracing = { version = \"0.1.43\", default-features = false, features = [\"std\"] }\ntracing-appender = { version = \"0.2.1\", default-features = false }\ntracing-futures = { version = \"0.2.4\", default-features = false, features = [\"futures-03\", \"std\", \"std-future\"] }\ntracing-subscriber = { version = \"0.3.22\", default-features = false, features = [\"std\"] }\nurlencoding = { version = \"2.1\", default-features = false }\nuuid = { version = \"1.23\", default-features = false, features = [\"v4\", \"std\"] }\nwebbrowser = { version = \"1\", default-features = false }\nwhich = { version = \"8\", default-features = false, features = [\"real-sys\"] }\nwinapi = { version = \"0.3.9\", default-features = false, features = [\"wincred\", \"std\"] }\nwiremock = { version = \"0.6\", default-features = false }\nzip = { version = \"9\", default-features = false, features = [\"deflate\"] }\nserial_test = { version = \"4\", default-features = false }\nsha2 = { version = \"0.11\", default-features = false }\nshell-words = { version = \"1\", default-features = false, features = [\"std\"] }\nsnap = { version = \"1\", default-features = false }\ntest-case = { version = \"3\", default-features = false }\nurl = { version = \"2.5.4\", default-features = false, features = [\"std\"] }\nopentelemetry = { version = \"0.33\", default-features = false }\nopentelemetry_sdk = { version = \"0.33\", default-features = false, features = [\"metrics\"] }\nopentelemetry-otlp = { version = \"0.33\", default-features = false, features = [\"http-proto\", \"internal-logs\", \"logs\", \"metrics\", \"reqwest-client\", \"trace\"] }\nopentelemetry-appender-tracing = { version = \"0.33\", default-features = false, features = [\"experimental_span_attributes\"] }\nopentelemetry-stdout = { version = \"0.33\", default-features = false, features = [\"trace\", \"metrics\", \"logs\"] }\ntracing-opentelemetry = { version = \"0.34\", default-features = false, features = [\"metrics\"] }\n\nrayon = { version = \"1.10\", default-features = false }\ntree-sitter = { version = \"0.27\", default-features = false, features = [\"std\"] }\ntree-sitter-go = { version = \"0.25\", default-features = false }\ntree-sitter-java = { version = \"0.23\", default-features = false }\ntree-sitter-javascript = { version = \"0.25\", default-features = false }\ntree-sitter-kotlin-ng = { version = \"1\", default-features = false }\ntree-sitter-python = { version = \"0.25\", defau"
+    }
+  },
+  "workflow_samples": {
+    "check-release-pr.yaml": {
+      "path": ".github/workflows/check-release-pr.yaml",
+      "size_bytes": 1692,
+      "line_count": 63,
+      "truncated": false,
+      "excerpt": "name: Check Release PR\n\non:\n  pull_request:\n    types:\n      - opened\n      - synchronize\n    branches:\n      - main\n\njobs:\n  check-commits:\n    runs-on: ubuntu-latest\n    if: startsWith(github.head_ref, 'release/')\n    steps:\n    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n      with:\n        ref: ${{ github.head_ref }}\n        fetch-depth: 0\n\n    - name: Check all PR commits are empty or cherry-picked from main\n      run: |\n        git fetch origin main\n\n        CHERRY_OUTPUT=$(git cherry origin/main HEAD)\n\n        if [ -z \"$CHERRY_OUTPUT\" ]; then\n          echo \"\u2705 All commits already exist in main\"\n          exit 0\n        fi\n\n        echo \"Cherry check results:\"\n        echo \"$CHERRY_OUTPUT\"\n\n        MISSING_COMMITS=$(echo \"$CHERRY_OUTPUT\" | grep '^+' | cut -d' ' -f2)\n\n        if [ -z \"$MISSING_COMMITS\" ]; then\n          echo \"\u2705 All commits exist in main\"\n          exit 0\n        fi\n\n        ALL_EMPTY=true\n        for commit in $MISSING_COMMITS; do\n          if [ -n \"$(git diff-tree --no-commit-id --name-only -r \"$commit\")\" ]; then\n            ALL_EMPTY=false\n            break\n          fi\n        done\n\n        if [ \"$ALL_EMPTY\" = true ]; then\n          echo \"\u2705 Only empty commits (release branch markers) are unique\"\n          for commit in $MISSING_COMMITS; do\n            git log --oneline -1 \"$commit\"\n          done\n          exit 0\n        fi\n\n        echo \"\u274c Found commits with changes that don't exist in main:\"\n        for commit in $MISSING_COMMITS; do\n          git log --oneline -1 \"$commit\"\n        done\n        echo \"Cherry-pick these commits into main first, or re-run this job after updating main.\"\n        exit 1\n"
+    },
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 15257,
+      "line_count": 450,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n  merge_group:\n    branches:\n      - main\n  workflow_dispatch:\n\njobs:\n  changes:\n    runs-on: ubuntu-latest\n    outputs:\n      docs-only: ${{ steps.filter.outputs.docs-only }}\n      code: ${{ steps.filter.outputs.code }}\n    steps:\n      - name: Checkout Code\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n\n      - name: Check for file changes\n        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # pin@v3\n        id: filter\n        with:\n          filters: |\n            docs-only:\n              - 'documentation/**'\n            code:\n              - '!documentation/**'\n\n  goose-acp-npm-packages:\n    name: goose ACP npm packages\n    runs-on: ubuntu-latest\n    needs: changes\n    if: needs.changes.outputs.code == 'true' || github.event_name != 'pull_request'\n    steps:\n      - name: Checkout Code\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n\n      - name: Install dependencies\n        run: source bin/activate-hermit && pnpm --dir ui install --frozen-lockfile\n\n      - name: Check npm versions\n        run: source bin/activate-hermit && node ui/scripts/npm-versions.mjs check\n\n      - name: Test goose-acp\n        run: source bin/activate-hermit && pnpm --dir ui/goose-acp test\n\n      - name: Pack npm packages\n        run: |\n          source bin/activate-hermit\n          set -euo pipefail\n          client_pack_dir=\"$RUNNER_TEMP/goose-acp-client\"\n          wrapper_pack_dir=\"$RUNNER_TEMP/goose-acp\"\n          mkdir -p \"$client_pack_dir\" \"$wrapper_pack_dir\"\n\n          pnpm --dir ui/goose-acp-client pack --pack-destination \"$client_pack_dir\"\n          pnpm --dir ui/goose-acp pack --pack-destination \"$wrapper_pack_dir\"\n\n          wrapper_tarball=$(find \"$wrapper_pack_dir\" -name '*.tgz' -print -quit)\n          tar -xzf \"$wrapper_tarball\" -C \"$wrapper_pack_dir\"\n          node ui/scripts/npm-versions.mjs check-packed-wrapper \\\n            \"$wrapper_pack_dir/package/package.json\"\n\n  rust-format:\n    name: Check Rust Code Format\n    runs-on: ubuntu-latest\n    needs: changes\n    if: needs.changes.outputs.code == 'true' || github.event_name != 'pull_request'\n    steps:\n      - name: Checkout Code\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n\n      - uses: actions-rust-lang/setup-rust-toolchain@a188e68d0fd2bd36ad51dccb2b07ba6e75105f30 # v2.0.1\n        with:\n          cache: false\n\n      - name: Run cargo fmt\n        run: cargo fmt --check\n\n  rust-build-and-test:\n    name: Build and Test Rust Project\n    runs-on: ubuntu-latest\n    needs: changes\n    if: needs.changes.outputs.code == 'true' || github.event_name != 'pull_request'\n    steps:\n      - name: Checkout Code\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n\n      - uses: actions-rust-lang/setup-rust-toolchain@a188e68d0fd2bd36ad51dccb2b07ba6e75105f30 # v2.0.1\n\n      - name: Install Dependencies\n        run: |\n          sudo apt update -y\n          sudo apt install -y libdbus-1-dev libxcb1-dev\n\n      - name: Build and Test\n        run: |\n          export CARGO_INCREMENTAL=0\n          cargo test --locked\n        working-directory: crates\n        env:\n          RUST_MIN_STACK: 8388608\n          GOOSE_DISABLE_KEYRING: 1\n\n  rust-build-lean:\n    name: Build Lean ACP Binary\n    runs-on: ubuntu-latest\n    needs: changes\n    if: needs.changes.outputs.code == 'true' || github.event_name != 'pull_request'\n    steps:\n      - name: Checkout Code\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n\n      - uses: actions-rust-lang/setup-rust-toolchain@a188e68d0fd2bd36ad51dccb2b07ba6e75105f30 # v2.0.1\n\n      - name: Cache Cargo artifacts\n        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0  # v2.9.3\n        with:\n          key: lean-acp\n\n      - name: Build lean configuration and check its size budget\n        run: |\n          source ./bin/activate-hermit\n          # use the non-hermit rust toolchain because the rust-cache action does not\n          # play nicely with hermit-managed rust\n          hermit uninstall rustup\n          just check-lean-size\n\n  rust-check-wasm:\n    name: Check and Test oi-kit Agent Crates on wasm32\n    runs-on: ubuntu-latest\n    needs: changes\n    if: needs.changes.outputs.code == 'true' || github.event_name != 'pull_request'\n    steps:\n      - name: Checkout Code\n        uses:"
+    },
+    "close-release-pr-on-tag.yaml": {
+      "path": ".github/workflows/close-release-pr-on-tag.yaml",
+      "size_bytes": 1728,
+      "line_count": 59,
+      "truncated": false,
+      "excerpt": "name: Close release PR on tag push\n\non:\n  push:\n    tags:\n      - 'v[0-9]+.[0-9]+.[0-9]+'\n\npermissions:\n  actions: write\n  contents: write\n  pull-requests: write\n\njobs:\n  close-release-pr:\n    runs-on: ubuntu-latest\n\n    steps:\n    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1\n\n    - name: Extract version from tag\n      id: version\n      env:\n        TAG: ${{ github.ref_name }}\n      run: |\n        VERSION=${TAG#v}\n        BRANCH=\"release/${VERSION}\"\n\n        echo \"tag=${TAG}\" >> $GITHUB_OUTPUT\n        echo \"version=${VERSION}\" >> $GITHUB_OUTPUT\n        echo \"branch=${BRANCH}\" >> $GITHUB_OUTPUT\n\n        echo \"Tag: ${TAG}\"\n        echo \"Version: ${VERSION}\"\n        echo \"Expected branch: ${BRANCH}\"\n\n    - name: Find and close matching PR\n      env:\n        GH_TOKEN: ${{ github.token }}\n        BRANCH: ${{ steps.version.outputs.branch }}\n        TAG: ${{ steps.version.outputs.tag }}\n        VERSION: ${{ steps.version.outputs.version }}\n      run: |\n        PR_NUMBER=$(gh pr list --head \"$BRANCH\" --state open --json number --jq '.[0].number // empty')\n\n        if [ -z \"$PR_NUMBER\" ]; then\n          echo \"\u2139\ufe0f No open PR found for branch: $BRANCH (may already be closed)\"\n        else\n          echo \"\u2705 Found PR #$PR_NUMBER for branch: $BRANCH\"\n          gh pr close \"$PR_NUMBER\" --comment \"Release $TAG has been tagged and pushed. Closing this PR (version bump was already merged to main).\"\n          echo \"\u2705 Closed PR #$PR_NUMBER\"\n        fi\n\n    - name: Trigger patch release\n      env:\n        BRANCH: ${{ steps.version.outputs.branch }}\n        GH_TOKEN: ${{ github.token }}\n      run: |\n        gh workflow run patch-release.yaml \\\n          --field target_branch=$BRANCH\n"
+    },
+    "create-version-bump-pr.yaml": {
+      "path": ".github/workflows/create-version-bump-pr.yaml",
+      "size_bytes": 3135,
+      "line_count": 101,
+      "truncated": false,
+      "excerpt": "name: Create Version Bump PR\n\non:\n  workflow_call:\n    secrets:\n      ANTHROPIC_API_KEY:\n        required: false\n      OPENAI_API_KEY:\n        required: false\n      GOOGLE_API_KEY:\n        required: false\n      OPENROUTER_API_KEY:\n        required: false\n      XAI_API_KEY:\n        required: false\n      TETRATE_API_KEY:\n        required: false\n\npermissions:\n  contents: write\n  pull-requests: write\n\njobs:\n  create-version-bump:\n    runs-on: ubuntu-latest\n\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          ref: main\n          fetch-depth: 0\n\n      - uses: cashapp/activate-hermit@cea9af7913204a965fd488637a8d1811bba2e616 # v1\n      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0\n\n      - name: install dependencies\n        run: |\n          sudo apt update -y\n          sudo apt install -y libdbus-1-dev gnome-keyring libxcb1-dev\n\n      - name: Compute version and create bump branch\n        env:\n          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}\n          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}\n          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}\n          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}\n          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}\n          TETRATE_API_KEY: ${{ secrets.TETRATE_API_KEY }}\n        run: |\n          VERSION=$(just get-next-minor-version)\n          echo \"version=$VERSION\" >> $GITHUB_ENV\n          echo \"Version: $VERSION (minor bump on main)\"\n\n          git config --local user.email \"41898282+github-actions[bot]@users.noreply.github.com\"\n          git config --local user.name \"github-actions[bot]\"\n\n          BRANCH_NAME=\"version-bump/$VERSION\"\n          git switch -C \"$BRANCH_NAME\"\n\n          just prepare-release $VERSION\n\n          echo \"branch_name=$BRANCH_NAME\" >> $GITHUB_ENV\n\n      - name: Push bump branch\n        run: |\n          git push --force-with-lease origin \"${{ env.branch_name }}\"\n\n      - name: Create Pull Request if needed\n        run: |\n          EXISTING_PR_URL=$(gh pr list \\\n            --base main \\\n            --head \"${{ env.branch_name }}\" \\\n            --state open \\\n            --json url \\\n            --jq '.[0].url // empty')\n\n          if [ -n \"$EXISTING_PR_URL\" ]; then\n            echo \"Existing PR found: $EXISTING_PR_URL\"\n            echo \"pr_url=$EXISTING_PR_URL\" >> $GITHUB_ENV\n            exit 0\n          fi\n\n          PR_BODY=$(cat <<'EOF'\n          Bumps version to **${{ env.version }}**.\n\n          **Please follow these steps:**\n\n          1. Approve workflows for this PR to trigger CI checks.\n          2. Review and resolve any merge conflicts.\n          3. Approve and merge this PR.\n          4. The `release/${{ env.version }}` PR will be created automatically.\n          EOF\n          )\n          PR_URL=$(gh pr create \\\n            -B main \\\n            -H \"${{ env.branch_name }}\" \\\n            --title \"chore(release): bump version to ${{ env.version }} (minor)\" \\\n            --body \"$PR_BODY\")\n          echo \"pr_url=$PR_URL\" >> $GITHUB_ENV\n        env:\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T10:35:11Z",
+      "oldest": "2026-11-20T14:32:23Z"
+    },
+    "conventional_pct": 94.0,
+    "fix_revert_pct": 16.0,
+    "ai_coauthor_pct": 64.0,
+    "top_recent_authors": [
+      [
+        "dependabot[bot]",
+        29
+      ],
+      [
+        "lifeizhou-ap",
+        13
+      ],
+      [
+        "github-actions[bot]",
+        2
+      ],
+      [
+        "Alhibb",
+        1
+      ],
+      [
+        "burrows99",
+        1
+      ],
+      [
+        "willemave",
+        1
+      ],
+      [
+        "ramit-mitra",
+        1
+      ],
+      [
+        "Lee-Si-Yoon",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "8256b9ac",
+        "date": "2026-11-25T10:35:11Z",
+        "author": "lifeizhou-ap",
+        "subject": "Merge commit from fork",
+        "ai_signal": false
+      },
+      {
+        "sha": "7480eba8",
+        "date": "2026-11-25T10:25:11Z",
+        "author": "lifeizhou-ap",
+        "subject": "Merge commit from fork",
+        "ai_signal": false
+      },
+      {
+        "sha": "820b4e53",
+        "date": "2026-11-25T05:26:46Z",
+        "author": "lifeizhou-ap",
+        "subject": "Update cookie to 0.18.3 to fix RUSTSEC-2026-0594 (#13810)",
+        "ai_signal": false
+      },
+      {
+        "sha": "766923df",
+        "date": "2026-11-25T04:38:40Z",
+        "author": "github-actions[bot]",
+        "subject": "chore(oi-kit): release v0.1.0-alpha.16 (#13580)",
+        "ai_signal": true
+      },
+      {
+        "sha": "15dfc609",
+        "date": "2026-11-25T02:46:01Z",
+        "author": "lifeizhou-ap",
+        "subject": "test(desktop): speed up flaky CustomProviderForm tests (#13782)",
+        "ai_signal": false
+      },
+      {
+        "sha": "1551ae80",
+        "date": "2026-11-25T00:48:55Z",
+        "author": "github-actions[bot]",
+        "subject": "chore(release): bump version to 1.61.0 (minor) (#13772)",
+        "ai_signal": true
+      },
+      {
+        "sha": "02acced1",
+        "date": "2026-11-24T22:56:00Z",
+        "author": "lifeizhou-ap",
+        "subject": "fix(deps): override vulnerable yaml, brace-expansion, js-yaml and picomatch in /ui (#13781)",
+        "ai_signal": false
+      },
+      {
+        "sha": "5d03d873",
+        "date": "2026-11-24T22:54:56Z",
+        "author": "lifeizhou-ap",
+        "subject": "chore(deps): raise Dependabot open PR limit for /ui to 20 (#13767)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c2e9d41a",
+        "date": "2026-11-24T20:06:19Z",
+        "author": "lifeizhou-ap",
+        "subject": "fix: end TTFT when the first text, thinking or tool call starts (#13780)",
+        "ai_signal": false
+      },
+      {
+        "sha": "03a343f9",
+        "date": "2026-11-24T06:20:41Z",
+        "author": "lifeizhou-ap",
+        "subject": "fix(acp): make providers/inventory/refresh wait for the refresh, and drop the refresh field from config responses (#13740)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2bf1aa6f",
+        "date": "2026-11-24T03:59:25Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps-dev): bump eslint from 9.39.4 to 10.15.0 in /ui (#13747)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4380c8ef",
+        "date": "2026-11-24T03:06:18Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump @babel/core from 7.28.5 to 7.29.13 in /documentation (#13770)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7a0cdaad",
+        "date": "2026-11-24T02:58:26Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump @babel/core from 7.29.0 to 7.29.13 in /ui (#13771)",
+        "ai_signal": true
+      },
+      {
+        "sha": "8abdd97b",
+        "date": "2026-11-24T02:48:35Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump http-proxy-middleware from 2.0.9 to 2.0.12 in /documentation (#13769)",
+        "ai_signal": true
+      },
+      {
+        "sha": "00f75295",
+        "date": "2026-11-24T02:48:26Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump ws from 8.20.0 to 8.23.0 in /ui (#13768)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e13598a1",
+        "date": "2026-11-24T02:23:24Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump zod from 4.1.12 to 4.6.7 in /documentation (#13765)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d695f2b6",
+        "date": "2026-11-24T02:12:55Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump compression from 1.8.1 to 1.8.2 in /documentation (#13764)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e299df2a",
+        "date": "2026-11-24T01:55:49Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump nanoid from 3.3.16 to 3.3.20 in /documentation (#13763)",
+        "ai_signal": true
+      },
+      {
+        "sha": "76ccadf9",
+        "date": "2026-11-24T01:47:06Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump @humanfs/node from 0.16.7 to 0.16.8 in /ui (#13762)",
+        "ai_signal": true
+      },
+      {
+        "sha": "23e99a52",
+        "date": "2026-11-24T01:38:14Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump body-parser from 1.20.6 to 1.20.9 in /documentation (#13759)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "dependabot[bot]",
+      "contributions": 376
+    },
+    {
+      "login": "lifeizhou-ap",
+      "contributions": 347
+    },
+    {
+      "login": "DOsinga",
+      "contributions": 341
+    },
+    {
+      "login": "alexhancock",
+      "contributions": 311
+    },
+    {
+      "login": "jamadeo",
+      "contributions": 303
+    },
+    {
+      "login": "michaelneale",
+      "contributions": 258
+    },
+    {
+      "login": "zanesq",
+      "contributions": 255
+    },
+    {
+      "login": "angiejones",
+      "contributions": 222
+    },
+    {
+      "login": "blackgirlbytes",
+      "contributions": 183
+    },
+    {
+      "login": "dianed-square",
+      "contributions": 177
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.61.0",
+      "published_at": "2026-11-25T03:31:49Z",
+      "name": "v1.61.0"
+    },
+    {
+      "tag": "v1.60.2",
+      "published_at": "2026-11-20T06:18:55Z",
+      "name": "v1.60.2"
+    },
+    {
+      "tag": "v1.60.1",
+      "published_at": "2026-11-18T01:21:19Z",
+      "name": "v1.60.1"
+    },
+    {
+      "tag": "v1.60.0",
+      "published_at": "2026-11-17T23:08:54Z",
+      "name": "v1.60.0"
+    },
+    {
+      "tag": "v1.59.2",
+      "published_at": "2026-11-16T05:26:30Z",
+      "name": "v1.59.2"
+    }
+  ]
+}

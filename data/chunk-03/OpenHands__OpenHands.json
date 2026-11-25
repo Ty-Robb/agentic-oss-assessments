@@ -1,0 +1,462 @@
+{
+  "repo": "OpenHands/OpenHands",
+  "meta": {
+    "description": "\ud83d\ude4c OpenHands: AI-Driven Development",
+    "homepage": "https://openhands.dev",
+    "license": "MIT",
+    "stars": 94306,
+    "forks": 12632,
+    "open_issues": 1252,
+    "archived": false,
+    "created_at": "2024-03-13T03:33:31Z",
+    "pushed_at": "2026-11-25T13:18:03Z",
+    "default_branch": "main",
+    "topics": [
+      "agent",
+      "artificial-intelligence",
+      "chatgpt",
+      "claude-ai",
+      "cli",
+      "developer-tools",
+      "gpt",
+      "llm",
+      "openai"
+    ]
+  },
+  "languages": {
+    "TypeScript": 15794804,
+    "JavaScript": 1195628,
+    "Python": 63330,
+    "Shell": 50478,
+    "CSS": 48827,
+    "HTML": 12038,
+    "Dockerfile": 11158,
+    "Go Template": 3195
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".dockerignore",
+      ".env.sample",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".husky/",
+      ".npmignore",
+      ".openhands/",
+      ".pr/",
+      ".prettierrc.json",
+      ".release-please-manifest.json",
+      ".screenshots/",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "LICENSE",
+      "README.md",
+      "README.windows.md",
+      "__mocks__/",
+      "__tests__/",
+      "bin/",
+      "config/",
+      "docker/",
+      "docs/",
+      "electron-builder.config.mjs",
+      "electron/",
+      "eslint.config.js",
+      "examples/",
+      "global.d.ts",
+      "helm/",
+      "hero.ts",
+      "package-lock.json",
+      "package.json",
+      "playwright.bind-policy.config.ts",
+      "playwright.config.ts",
+      "playwright.live.config.ts",
+      "playwright.mock-llm-docker.config.ts",
+      "playwright.mock-llm.config.ts",
+      "playwright.windows-install.config.ts",
+      "public/",
+      "react-router.config.ts",
+      "release-please-config.json",
+      "scripts/",
+      "src/",
+      "stryker.config.mjs",
+      "tailwind.config.js",
+      "test-evidence/",
+      "test-utils.tsx",
+      "tests/",
+      "tools/",
+      "tsconfig.json",
+      "tsconfig.lib.json",
+      "vercel.json",
+      "vite-env.d.ts",
+      "vite.config.ts",
+      "vitest.setup.ts"
+    ],
+    "workflows": [
+      "bump-chart.yml",
+      "bump-pins.yml",
+      "ci-script-tests.yml",
+      "ci.yml",
+      "desktop-linux.yml",
+      "desktop-macos.yml",
+      "desktop-windows.yml",
+      "docker.yml",
+      "issue-duplicate-checker.yml",
+      "issue-readiness-check.yml",
+      "mock-llm-docker-e2e.yml",
+      "mock-llm-e2e.yml",
+      "npm-publish.yml",
+      "pr-artifacts-tests.yml",
+      "pr-artifacts.yml",
+      "pr-description-check.yml",
+      "pr.yml",
+      "release-ready.yml",
+      "release.yml",
+      "remove-duplicate-candidate-label.yml",
+      "sdk-version-sync.yml",
+      "update-debian-snapshot.yml",
+      "verify-skill-isolation-tests.yml",
+      "verify-skill-isolation.yml",
+      "windows-install-e2e.yml"
+    ],
+    "docs": [
+      "ACP_AGENTS.md",
+      "CANVAS_EXTENSIONS_TESTING.md",
+      "DEVELOPMENT.md",
+      "DefenseClaw.md",
+      "README.md",
+      "SELF_HOSTING.md",
+      "TESTING_MATRIX.md",
+      "architecture.md",
+      "pr-screenshots/",
+      "verification/"
+    ],
+    "docs_count": 10,
+    "agents_dir": [
+      "skills/"
+    ],
+    "agents_skills": [
+      "custom-codereview-guide.md",
+      "desktop-electron/",
+      "e2e-testing/",
+      "frontend-api-contracts/",
+      "frontend-development/",
+      "local-stack-runtime/",
+      "pr-design-doc/",
+      "release.md",
+      "telemetry-analytics/",
+      "verify-openhands/"
+    ],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 10552,
+      "line_count": 133,
+      "truncated": false,
+      "excerpt": "# Repository Notes\n\n## General\n\n- This repository is the OpenHands Agent Canvas React/TypeScript frontend.\n\n## i18n workflow\n- After editing `src/i18n/translation.json`, run `npm run make-i18n` to\n  regenerate `src/i18n/declaration.ts` (gitignored, auto-generated) and\n  `scripts/check-translation-completeness.cjs` to confirm full locale coverage.\n- Removing an i18n key: delete the whole locale block from translation.json,\n  then `make-i18n`, then remove any test-mock entries (tests inline a\n  `translations` map in the `useTranslation` vi.mock).\n\n## Commit messages\n- The persistent shell can garble long multi-line `commit -m` bodies (echo\n  loop corrupts the stored message). Use `git commit -F <file>` with a\n  written temp file instead of `-m` for any non-trivial message.\n\n- Primary verification commands are `npm run lint`, `npm test`, `npm run build`, and `npm run build:lib`.\n- Direct dependencies and dev dependencies are exact-pinned. Use the committed `package-lock.json` with `npm ci`, and update `package.json` and `package-lock.json` together through npm.\n- Public skills come from `@openhands/extensions`; project-specific contributor guidance lives under `.agents/skills/`.\n- Default working-directory behavior must reuse `DEFAULT_WORKING_DIR` from `src/api/agent-server-config.ts` rather than hardcoding `/workspace/project`.\n- All pull requests must comply with [`.agents/skills/custom-codereview-guide.md`](.agents/skills/custom-codereview-guide.md), in addition to the general contribution requirements and CI checks.\n\n## Repository Ownership\n\nBefore adding code, confirm that the change belongs in this repository.\n\n| Repository | Owns | Add code there when\u2026 |\n|---|---|---|\n| [`OpenHands/OpenHands`](https://github.com/OpenHands/OpenHands) | Agent Canvas UI, frontend state, backend selection, frontend service integration, and local-stack orchestration. | Changing UI, frontend state, or how Canvas consumes an existing API. |\n| [`OpenHands/software-agent-sdk`](https://github.com/OpenHands/software-agent-sdk) | Python SDK, Agent Server, agents/tools, conversations, events, canonical REST/WebSocket API, and `clients/typescript/`. | Adding or changing backend behavior, endpoints, wire contracts, or typed client access. |\n| [`OpenHands/extensions`](https://github.com/OpenHands/extensions) | Reusable public skills, automations, plugins, and integrations. | Adding or editing reusable extension content rather than Canvas behavior. |\n| [`OpenHands/automation`](https://github.com/OpenHands/automation) | Automation definitions, scheduling, webhooks, run history, and dispatch. | Changing when automations run or their scheduling/webhook lifecycle. |\n\nThe normal dependency direction is Agent Server contract \u2192 TypeScript client \u2192 Agent Canvas. Do not reimplement Agent Server endpoints or contracts in Canvas.\n\n## Shared Frontend Change Checklist\n\nBefore changing a shared adapter, conversation builder, setting, state selector, or presentation helper:\n\n- Raise `compatibility.minimumAgentServer` in `config/defaults.json` when Canvas begins requiring a new Agent Server endpoint, field, schema, or behavior.\n- Enumerate affected consumers across Local and Cloud backends, OpenHands and ACP agents, standard/planning/delegated conversations, and standalone and embedded Canvas. Test every path with distinct control or data flow without testing an irrelevant Cartesian product.\n- Give durable frontend state one named owner and one obvious writer. Handle existing-state hydration or migration and all supported create, update, delete, default, and active-item transitions. Leave destructive transitions in a deterministic valid state or an explicit empty state handled by the UI.\n\n## PR Description Human Check\n\nThe `HUMAN:` section in PR descriptions is reserved for human contributors only. AI agents must not add to, edit, move, or remove it. If validation fails because it is missing or empty, stop and ask the human user to update it in their own words. If a human already updated it, report the exact validator error rather than editing it.\n\n## Functionality-Specific Skills\n\nDetailed contributor knowledge is split into skills so it loads only for relevant work. Invoke every applicable skill before changing that area; cross-cutting changes may require several skills.\n\n| Skill | Use for |\n|---|---|\n| [`telemetry-analytics`](.agents/skills/telemetry-analytics/SKILL.md) | PostHog, telemetry consent/identity, typed tracking events, Cloud funnel observability, and onboarding instrumentation. |\n| [`e2e-testing`](.agents/skills/e2e-testing/SKILL.md) | Live or mock-LLM Playwright suites, Docker E2E, E2E CI/reporting, artifacts, and failure diagnosis. |\n| [`frontend-api-contracts`](.agents/skills/frontend-api-contracts/SKILL.md) | `src/api`, typed Agent Server calls, Cloud/runtime transport, compatibility, backends, settings, secrets, auth, and conversation contracts. |\n| [`local-stack-runtime`](.agents/skills/local-stack-runtime/SKILL.md) | Dev launchers, runtime-services metadata, ingress, automation startup, process shutdown, centralized versions, and Docker. |\n| [`desktop-electron`](.agents/skills/desktop-electron/SKILL.md) | Electron startup, branding, packaging, bundled Node/uv, universal macOS builds, and desktop CI. |\n| [`frontend-development`](.agents/skills/frontend-development/SKILL.md) | React/UI work, i18n, named identifiers, MSW mock mode, lazy loading, bundle performance, and feature-specific UI invariants. |\n| [`pr-design-doc`](.agents/skills/pr-design-doc/SKILL.md) | Writing the PR design document stored in the PR body. |\n| [`release`](.agents/skills/release.md) | Cutting and verifying an `@openhands/agent-canvas` release. |\n| [`verify-openhands`](.agents/skills/verify-openhands/SKILL.md) | Driving the real app like a user with `control-openhands` and checking behavior against the existing feature map. |\n\nThe detailed rules live in each skill's `references/guide.md`; do not copy them back into this file. Update the owning contributor skill when its invariant changes, except for the independent verification skills described below.\n\n### Verification Skill Independence\n\nImplementor agents must use `.agents/skills/verify-*/` as read-only verification tools. Do not update their feature maps, expected results, known-bug recipes, drivers, or fixtures while implementing a product change. This separation applies even when an issue's acceptance criteria ask for verification-skill updates. Report a mismatch or missing coverage instead of changing the specification to match the implementation.\n\nVerification-skill maintenance belongs in a separate PR and a separate agent context. For a product fix, make that follow-up after the fix lands. A verify-skill PR may include only verify-skill paths, `AGENTS.md` files, and root `.pr/` evidence. Product source, tests, CI, and other docs must stay separate.\n\n## Testing Baseline\n\nCreate TDD tests for behavioral changes. Keep tests focused on user behavior and real code paths:\n\n- Use Arrange, Act, Assert structure and clear test data.\n- Avoid duplicate cases and duplicate assertions.\n- Mock an underlying service rather than the hook that consumes it.\n- Extend an existing test file when it is a natural home; create a new file only when necessary.\n- Avoid brittle presentation-only assertions. Test functional CSS contracts directly when they are behavior.\n- Do not mirror literal source, fixture, translation, or class-string definitions in tests. Assert consumer behavior or an actual build/runtime contract instead, and do not export internals solely to make them testable. Preserve coverage for routing, accessibility, async behavior, behavioral contracts, and functional CSS/build contracts.\n- Use the minimum number of cases that fully cover the intended behavior and edge cases.\n\nUse the `e2e-testing` skill for suite selection and E2E-specific requirements.\n\n## Releases\n\n- Follow `.agents/skills/release.md` for release automation. Never hand-edit a release-please branch.\n\n## DigitalOcean Managed Agents\n\nBefore changing `scripts/mars-*` / `scripts/tunnel-*`, `src/api/mars/`, the Managed Agents UI (`src/components/features/backends/managed-agents/`) or the MARS hooks, read `src/api/mars/AGENTS.md`.\n\n## Dependency release-age policy\n\n- Wait at least seven days after publication before adding or updating a\n  third-party npm or PyPI version, including transitive lockfile changes.\n  A weekly update schedule alone does not enforce this minimum age.\n- Keep the npm Dependabot `cooldown.default-days: 7`. This repository has\n  no Python Dependabot entry or uv project/lock. Apply the PyPI age rule to\n  version changes in Docker or launcher install commands as well.\n  Existing named first-party exceptions do not exempt their third-party\n  dependencies. Do not add broad exemptions or disable the cutoff to make a\n  resolver succeed.\n- Verify the exact version's publication/upload time from npm or PyPI metadata\n  rather than the package's creation date.\n  If age cannot be established, report the missing evidence rather than guess.\n- Security updates can bypass Dependabot cooldown. An urgent exception needs\n  explicit maintainer approval recorded in the PR with the package, version,\n  advisory/reason, and publication time. Agents must not grant themselves an\n  exception. Keep overrides narrow and remove temporary exceptions afterward.\n- Repository resolver settings do not protect downstream `pip install` or\n  `uv tool install` consumers, and do not retroactively validate existing locks.\n  Use the committed lock for reproducible installs; review newly resolved\n  artifacts before committing a lock update.\n\nThis repository pins npm 11.12.1 in `package.json` (`packageManager` and Volta);\nuse `npm --version` to confirm the active tool. The previous npm 10.5.0 pin\nsilently ignored `--min-release-age`. For manual npm dependency resolution, run\n`npm install --min-release-age=7` (days), or verify registry timestamps before\ncommitting the result. The option requires npm >= 11.10. `npm ci` replays the\nlock and is not proof that newly locked versions meet the age rule.\n\n## Release E2E isolation\n\nWhen reproducing release E2E locally, unset `OH_AGENT_SERVER_LOCAL_PATH` and\n`OH_AUTOMATION_LOCAL_PATH` (and git-ref overrides) to test `config/defaults.json`\nversions rather than developer checkouts. Confirm the package versions in the\nruntime log. On a running Canvas host, use isolated backend/automation/ingress\nports and a dedicated state directory; never stop the host stack to free ports.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 15412,
+      "line_count": 230,
+      "truncated": true,
+      "excerpt": "<a name=\"readme-top\"></a>\n\n<div align=\"center\">\n  <img src=\"https://assets.openhands.dev/logo-whitebackground.png\" alt=\"OpenHands logo\" width=\"340\">\n  <h1 align=\"center\" style=\"border-bottom: none\">Agent Canvas</h1>\n  <p align=\"center\">\n    <strong>The self-hosted developer control center for coding agents and automations.</strong>\n  </p>\n  <p align=\"center\">\n    Run OpenHands, Claude Code, Codex, Gemini, Pi, OpenCode, or any ACP-compatible agent across local, remote, and cloud backends.\n  </p>\n</div>\n<div align=\"center\">\n  <a href=\"https://github.com/OpenHands/OpenHands/actions/workflows/ci.yml\"><img src=\"https://img.shields.io/github/actions/workflow/status/OpenHands/OpenHands/ci.yml?branch=main&style=for-the-badge\" alt=\"CI status\"></a>\n  <a href=\"https://www.npmjs.com/package/@openhands/agent-canvas\"><img src=\"https://img.shields.io/npm/v/%40openhands%2Fagent-canvas?style=for-the-badge&logo=npm\" alt=\"npm version\"></a>\n  <a href=\"https://docs.openhands.dev/openhands/usage/agent-canvas/backends\"><img src=\"https://img.shields.io/badge/Documentation-000?logo=googledocs&logoColor=FFE165&style=for-the-badge\" alt=\"Documentation\"></a>\n  <a href=\"https://go.openhands.dev/slack\"><img src=\"https://img.shields.io/badge/Slack-Join%20the%20community-611f69?logo=slack&logoColor=white&style=for-the-badge\" alt=\"Join us on Slack\"></a>\n</div>\n<div align=\"center\">\n  <a href=\"#quickstart\">Quickstart</a> |\n  <a href=\"./docs/README.md\">Docs</a> |\n  <a href=\"./docs/SELF_HOSTING.md\">Self-Hosting</a> |\n  <a href=\"https://docs.openhands.dev/openhands/usage/agent-canvas/acp-agents\">ACP Agents</a> |\n  <a href=\"https://docs.openhands.dev/openhands/usage/agent-canvas/prebuilt-automations\">Automations</a> |\n  <a href=\"https://go.openhands.dev/slack\">Slack</a>\n</div>\n<p align=\"center\">\n  <img src=\"https://assets.openhands.dev/screenshot/automation-preview.png\" alt=\"Agent Canvas automation preview\" width=\"100%\">\n</p>\n<hr>\n\nOpenHands Agent Canvas turns your coding agents into a self-hosted, always-on engineering team. It's a developer control center for starting conversations and automating everyday tasks \u2014 like generating reports that publish to Slack or automatically decomposing GitHub issues into tasks.\n\nIt runs locally on your machine by default, but can connect to multiple \u201cagent backends\u201d, e.g. running agents in Docker containers, on VMs, or within your company infrastructure. You can optionally choose to run agents on OpenHands Cloud or OpenHands Enterprise infrastructure.\n\nAgent Canvas runs the open source OpenHands agent out-of-the-box, but can use third-party agents such as Claude Code, Codex, Gemini CLI, Pi, and OpenCode.\n\n|                                                                                                                      |                                                                                                                                          |\n| -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |\n| [**Self-host your way**](https://docs.openhands.dev/openhands/usage/agent-canvas/backend-setup/vm)                   | Run agents locally, in Docker, on VMs, or anywhere you can run an agent server backend                                                   |\n| [**Switch between different backends**](https://docs.openhands.dev/openhands/usage/agent-canvas/backends)            | Switch between local, remote, and cloud agents without losing focus                                                                      |\n| [**Create automations**](https://docs.openhands.dev/openhands/usage/agent-canvas/prebuilt-automations)               | Create automations and workflows that integrate with Slack, GitHub, Linear, and more. Run on a schedule or in response to webhook events |\n| [**Integrate with the tools you use**](https://docs.openhands.dev/openhands/usage/agent-canvas/prebuilt-automations) | Connect your automations with third-party services like Slack, GitHub, Notion, and more to automate workflows                            |\n| [**Bring your own model**](https://docs.openhands.dev/openhands/usage/settings/llm-settings#llm-profiles)            | Use with any LLM                                                                                                                         |\n| [**Use with any agent**](https://docs.openhands.dev/openhands/usage/agent-canvas/acp-agents)                         | Use with OpenHands, Claude Code, Codex, Gemini, Pi, OpenCode, or any agent with Agent-Client Protocol (ACP).                             |\n\nIf you have questions or feedback, please open a GitHub issue or join the [#proj-agent-canvas channel in Slack](https://openhands.dev/joinslack).\n\n## Quickstart\n\nYou can install OpenHands to run agents on any machine: on your laptop, on a dedicated computer like a Mac Mini,\nor on a server in the cloud.\n\nThe most powerful way to run OpenHands is on a server in the cloud. This allows your agents to continue running\neven when your laptop is shut, and makes it easier to trigger your agents through third-party services\nlike Slack, GitHub, and Datadog. See [SELF_HOSTING.md](docs/SELF_HOSTING.md) for details, especially with respect to security hardening.\n\nNotably, you can run the backend in _multiple different environments_, and switch between\nthem from the same Agent Canvas frontend. E.g. you can share an Agent Server with your team for agents doing\ncode review and dependency updates, then have your personal agents running on your laptop.\n\n### Option 1: Without a Sandbox\n\n> [!WARNING]\n> This runs the agent-server directly on the machine you're installing on \u2014 the agent will have full access to your filesystem!\n\n**Prerequisites**: [Node.js](https://nodejs.org/) 24 or later, `uv`\n\n```sh\nnpm install -g @openhands/agent-canvas\nagent-canvas\n```\n\nThe `agent-ca"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 10411,
+      "line_count": 282,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"@openhands/agent-canvas\",\n  \"version\": \"1.45.0\",\n  \"description\": \"Agent Canvas UI for OpenHands - run AI coding agents with a visual interface\",\n  \"license\": \"MIT\",\n  \"private\": false,\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/OpenHands/OpenHands\"\n  },\n  \"homepage\": \"https://github.com/OpenHands/OpenHands#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/OpenHands/OpenHands/issues\"\n  },\n  \"bin\": {\n    \"agent-canvas\": \"bin/agent-canvas.mjs\"\n  },\n  \"engines\": {\n    \"node\": \">=24\"\n  },\n  \"dependencies\": {\n    \"@heroui/react\": \"3.2.7\",\n    \"@heroui/styles\": \"3.2.7\",\n    \"@microlink/react-json-view\": \"1.31.51\",\n    \"@monaco-editor/react\": \"4.7.0\",\n    \"@openhands/extensions\": \"0.44.0\",\n    \"@openhands/typescript-client\": \"1.64.0\",\n    \"@react-router/node\": \"8.5.1\",\n    \"@tailwindcss/vite\": \"4.3.3\",\n    \"@tanstack/react-query\": \"5.108.0\",\n    \"@tanstack/react-virtual\": \"3.14.26\",\n    \"@types/shell-quote\": \"1.7.5\",\n    \"@uidotdev/usehooks\": \"2.4.1\",\n    \"@xterm/addon-fit\": \"0.11.0\",\n    \"@xterm/xterm\": \"6.0.0\",\n    \"axios\": \"1.21.1\",\n    \"class-variance-authority\": \"0.7.1\",\n    \"clsx\": \"2.1.1\",\n    \"downshift\": \"9.5.0\",\n    \"driver.js\": \"1.14.0\",\n    \"framer-motion\": \"14.14.0\",\n    \"httpxy\": \"0.5.6\",\n    \"i18next\": \"27.1.5\",\n    \"i18next-browser-languagedetector\": \"8.3.1\",\n    \"i18next-http-backend\": \"4.0.10\",\n    \"isbot\": \"5.2.3\",\n    \"lucide-react\": \"1.74.0\",\n    \"mdast-util-from-markdown\": \"2.1.0\",\n    \"mermaid\": \"12.3.0\",\n    \"monaco-editor\": \"0.57.0\",\n    \"posthog-js\": \"1.450.1\",\n    \"react\": \"19.3.1\",\n    \"react-aria\": \"3.53.1\",\n    \"react-aria-components\": \"1.22.1\",\n    \"react-dom\": \"19.3.1\",\n    \"react-hot-toast\": \"2.6.1\",\n    \"react-i18next\": \"18.0.2\",\n    \"react-icons\": \"5.7.0\",\n    \"react-markdown\": \"10.1.0\",\n    \"react-router\": \"8.5.1\",\n    \"react-syntax-highlighter\": \"16.1.2\",\n    \"rehype-raw\": \"7.0.0\",\n    \"rehype-sanitize\": \"6.0.0\",\n    \"remark-breaks\": \"4.0.0\",\n    \"remark-gfm\": \"4.0.1\",\n    \"shell-quote\": \"1.12.0\",\n    \"sirv\": \"3.0.2\",\n    \"sirv-cli\": \"3.0.1\",\n    \"tailwind-merge\": \"3.7.0\",\n    \"tailwind-scrollbar\": \"4.0.2\",\n    \"tw-animate-css\": \"1.4.0\",\n    \"unist-util-visit\": \"5.2.0\",\n    \"uuid\": \"14.0.3\",\n    \"vite\": \"8.3.8\",\n    \"winston\": \"3.19.0\",\n    \"winston-daily-rotate-file\": \"5.0.0\",\n    \"ws\": \"8.23.0\",\n    \"zustand\": \"5.1.0\"\n  },\n  \"scripts\": {\n    \"dev\": \"node --env-file-if-exists=.env scripts/dev-with-automation.mjs\",\n    \"dev:static\": \"node --env-file-if-exists=.env scripts/dev-static.mjs\",\n    \"dev:extra-backend\": \"node --env-file-if-exists=.env scripts/dev-extra-backend.mjs\",\n    \"dev:minimal\": \"node --env-file-if-exists=.env scripts/dev-safe.mjs\",\n    \"dev:frontend\": \"npm run make-i18n && cross-env VITE_MOCK_API=false react-router dev\",\n    \"dev:mock\": \"npm run make-i18n && cross-env VITE_MOCK_API=true react-router dev\",\n    \"build\": \"npm run build:app\",\n    \"build:mock\": \"npm run make-i18n && cross-env VITE_MOCK_API=true react-router build\",\n    \"start\": \"npx sirv-cli build/ --single\",\n    \"test\": \"npm run make-i18n && vitest run\",\n    \"test:e2e\": \"playwright test --pass-with-no-tests\",\n    \"test:e2e:live\": \"node --env-file-if-exists=.env tests/e2e/live/scripts/run-live-e2e.mjs\",\n    \"test:e2e:mock-llm\": \"playwright test --config=playwright.mock-llm.config.ts\",\n    \"test:e2e:mock-llm:docker\": \"playwright test --config=playwright.mock-llm-docker.config.ts\",\n    \"test:e2e:bind-policy\": \"playwright test --config=playwright.bind-policy.config.ts\",\n    \"test:coverage\": \"npm run make-i18n && vitest run --coverage\",\n    \"test:mutation\": \"npm run make-i18n && stryker run\",\n    \"test:mutation:diff\": \"npm run make-i18n && node scripts/stryker-diff.mjs\",\n    \"test:mutation:incremental\": \"npm run make-i18n && stryker run --incremental\",\n    \"dev_wsl\": \"VITE_WATCH_USE_POLLING=true vite\",\n    \"preview\": \"vite preview\",\n    \"make-i18n\": \"node scripts/make-i18n-translations.cjs\",\n    \"prelint\": \"npm run make-i18n\",\n    \"lint\": \"npm run typecheck && eslint src && prettier --check src/**/*.{ts,tsx}\",\n    \"lint:fix\": \"eslint src --fix && prettier --write src/**/*.{ts,tsx}\",\n    \"postinstall\": \"node -e \\\"if (process.env.npm_config_global === 'true') { console.log('\\\\n\\\\x1b[32m\\\\x1b[1m\\\\u2713 @openhands/agent-canvas installed!\\\\x1b[0m\\\\n\\\\nTo start Agent Canvas, run:\\\\n\\\\n  \\\\x1b[36m\\\\x1b[1magent-canvas\\\\x1b[0m\\\\n\\\\nThis launches the full stack at \\\\x1b[36mhttp://localhost:8000\\\\x1b[0m.\\\\n\\\\nDocs: https://docs.openhands.dev/openhands/usage/agent-canvas/setup\\\\n') }\\\"\",\n    \"prepare\": \"husky\",\n    \"typecheck\": \"react-router typegen && tsc\",\n    \"typecheck:staged\": \"react-router typegen && npx tsc --noEmit --skipLibCheck\",\n    \"check-translation-completeness\": \"node scripts/check-translation-completeness.cjs\",\n    \"build:app\": \"npm run make-i18n && react-router build\",\n    \"build:lib\": \"npm run make-i18n && react-router typegen && cross-env BUILD_LIB=true vite build && tsc -p tsconfig.lib.json\",\n    \"build:docker\": \"node scripts/docker-build.mjs\",\n    \"example:acp-docker:env\": \"node scripts/gen-acp-docker-env.mjs\",\n    \"predesktop\": \"node scripts/brand-dev-electron.mjs\",\n    \"desktop\": \"npm run build:app && electron electron\",\n    \"build:desktop\": \"npm run build:app && node scripts/download-uv.mjs && node scripts/download-node.mjs && electron-builder --config electron-builder.config.mjs --publish never\",\n    \"build:desktop:universal\": \"npm run build:app && cross-env ELECTRON_ARCH=universal node scripts/download-uv.mjs && cross-env ELECTRON_ARCH=universal node scripts/download-node.mjs && cross-env ELECTRON_ARCH=universal electron-builder --config electron-builder.config.mjs --publish never\",\n    \"download-uv\": \"node scripts/download-uv.mjs\",\n    \"download-node\": \"node scripts/download-node.mjs\",\n    \"generate-icons\": \"node scripts/generate-icons.mjs\"\n  },\n  \"lint-staged\": {\n    \"src/**/*.{ts,tsx,js}\": [\n      \"eslint --fix\",\n      \"prettier --write\"\n    ],\n    \"src/**/*.{ts,tsx}\": [\n      \"node scripts/run-staged-typech"
+    }
+  },
+  "workflow_samples": {
+    "ci-script-tests.yml": {
+      "path": ".github/workflows/ci-script-tests.yml",
+      "size_bytes": 949,
+      "line_count": 37,
+      "truncated": false,
+      "excerpt": "---\nname: CI Script Tests\n\n# Runs the pytest suite for .github/scripts/ \u2014 the Python checkers that power\n# the issue-readiness and PR-description gates. This catches regressions in the\n# checking logic whenever those scripts are modified.\n\non:\n    pull_request:\n        paths:\n            - \".github/scripts/**\"\n            - \".github/workflows/ci-script-tests.yml\"\n    push:\n        branches: [main]\n        paths:\n            - \".github/scripts/**\"\n            - \".github/workflows/ci-script-tests.yml\"\n\npermissions:\n    contents: read\n\njobs:\n    test:\n        runs-on: ubuntu-24.04\n        timeout-minutes: 5\n        steps:\n            - uses: actions/checkout@v7\n\n            - uses: actions/setup-python@v7\n              with:\n                  python-version: \"3.13\"\n\n            - name: Install pytest\n              run: pip install pytest\n\n            - name: Run script tests\n              run: python -m pytest .github/scripts/tests/ -v\n"
+    },
+    "ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 21852,
+      "line_count": 517,
+      "truncated": true,
+      "excerpt": "name: CI\n\non:\n  pull_request:\n  push:\n    branches:\n      - main\n      - \"rel-*\"\n      - \"release/**\"\n  workflow_dispatch:\n    inputs:\n      pr_number:\n        description: PR number to run live QA against when running manually.\n        required: true\n\nconcurrency:\n  # Push runs get a per-COMMIT group and never cancel: the \"Release Tag\" ruleset\n  # requires `test-and-build (ubuntu)` to be green on the exact commit release-please\n  # tags (the release-PR merge commit), so a later push to main must not cancel an\n  # earlier commit's checks. PR/dispatch runs keep cheap cancel-on-update.\n  group: ci-${{ github.workflow }}-${{ github.event_name == 'push' && github.sha || github.ref }}\n  cancel-in-progress: ${{ github.event_name != 'push' }}\n\npermissions:\n  contents: read\n\njobs:\n  prepare-test-matrix:\n    runs-on: ubuntu-24.04\n    outputs:\n      matrix: ${{ steps.matrix.outputs.matrix }}\n\n    steps:\n      - name: Build test matrix\n        id: matrix\n        run: |\n          echo 'matrix={\"include\":[{\"name\":\"ubuntu\",\"os\":\"ubuntu-24.04\",\"full_checks\":true},{\"name\":\"windows\",\"os\":\"windows-latest\",\"full_checks\":false}]}' >> \"$GITHUB_OUTPUT\"\n\n  test-and-build:\n    needs: prepare-test-matrix\n    name: test-and-build (${{ matrix.name }})\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 25\n    strategy:\n      fail-fast: false\n      matrix: ${{ fromJSON(needs.prepare-test-matrix.outputs.matrix) }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v7\n\n      - name: Reject temporary artifacts in release PRs\n        if: >-\n          matrix.full_checks &&\n          github.event_name == 'pull_request' &&\n          startsWith(github.head_ref, 'release-please--')\n        run: |\n          set -euo pipefail\n          artifacts=\"$(git ls-tree -r --name-only HEAD -- .pr)\"\n          if [ -n \"$artifacts\" ]; then\n            echo \"::error::Release PR contains temporary .pr artifacts. Refresh the release PR (rerun the latest release workflow on its target branch) so release-please removes them, then let this check rerun before merging.\"\n            printf '%s\\n' \"$artifacts\"\n            exit 1\n          fi\n\n      - name: Set up Node.js with npm cache\n        uses: actions/setup-node@v7\n        with:\n          node-version: \"24.22.1\"\n          cache: npm\n\n      - name: Use pinned npm\n        run: npm install --global npm@11.12.1 --ignore-scripts --no-audit --no-fund\n\n      - name: Install dependencies\n        run: npm ci\n\n      - name: Lint\n        if: matrix.full_checks\n        run: npm run lint\n\n      - name: Test\n        if: matrix.full_checks\n        run: npm test\n\n      - name: Build app\n        run: npm run build\n\n      - name: Build library\n        if: matrix.full_checks\n        run: npm run build:lib\n\n      - name: Verify package contents\n        if: matrix.full_checks\n        run: npm pack --dry-run\n\n  live-e2e:\n    if: >-\n      github.event_name == 'workflow_dispatch' ||\n      (github.event_name == 'push' && github.ref == 'refs/heads/main')\n    runs-on: ubuntu-24.04\n    timeout-minutes: 30\n    concurrency:\n      group: live-e2e-${{ inputs.pr_number || github.ref }}\n      cancel-in-progress: false\n    permissions:\n      contents: write\n      issues: write\n      pull-requests: write\n    env:\n      LIVE_E2E_LLM_BASE_URL: ${{ vars.LIVE_E2E_LLM_BASE_URL || 'https://llm-proxy.app.all-hands.dev' }}\n      LIVE_E2E_LLM_MODEL: ${{ vars.LIVE_E2E_LLM_MODEL || 'openhands/claude-haiku-4-5-20251001' }}\n      LIVE_E2E_PR_NUMBER: ${{ inputs.pr_number || '' }}\n      LIVE_E2E_REPORT_PATH: live-e2e-report.md\n      LIVE_E2E_RECORD_VIDEO: \"on\"\n      LIVE_E2E_WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n      LIVE_E2E_PR_ARTIFACT_KEEP_RUNS: 3\n\n    steps:\n      - name: Resolve live E2E source context\n        id: pr_context\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          set -euo pipefail\n\n          if [ -z \"$LIVE_E2E_PR_NUMBER\" ]; then\n            echo \"has_pr=false\" >> \"$GITHUB_OUTPUT\"\n            echo \"head_repo=$GITHUB_REPOSITORY\" >> \"$GITHUB_OUTPUT\"\n            echo \"head_ref=$GITHUB_REF_NAME\" >> \"$GITHUB_OUTPUT\"\n            echo \"head_sha=$GITHUB_SHA\" >> \"$GITHUB_OUTPUT\"\n            echo \"is_fork=false\" >> \"$GITHUB_OUTPUT\"\n            echo \"is_release_pr=false\" >> \"$GITHUB_OUTPUT\"\n            exit 0\n          fi\n          case \"$LIVE_E2E_PR_NUMBER\" in\n            *[!0-9]*)\n              echo \"::error::Invalid PR number: $LIVE_E2E_PR_NUMBER\"\n    "
+    },
+    "issue-duplicate-checker.yml": {
+      "path": ".github/workflows/issue-duplicate-checker.yml",
+      "size_bytes": 3633,
+      "line_count": 92,
+      "truncated": false,
+      "excerpt": "---\nname: Issue Duplicate Check via OpenHands Cloud\n\non:\n    issues:\n        types: [opened]\n    schedule:\n        - cron: 0 9 * * *\n    workflow_dispatch:\n        inputs:\n            mode:\n                description: Which workflow path to run\n                required: true\n                type: choice\n                options:\n                    - smoke-clone\n                    - issue-check\n                    - auto-close\n                default: smoke-clone\n            issue_number:\n                description: Existing issue number to analyze when mode is issue-check\n                required: false\n                type: number\n            close_after_days:\n                description: Days to wait before auto-closing duplicate candidates in auto-close mode\n                required: false\n                type: number\n                default: 3\n\npermissions:\n    contents: read\n    issues: write\n\njobs:\n    smoke-clone:\n        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'smoke-clone'\n        runs-on: ubuntu-latest\n        timeout-minutes: 5\n        steps:\n            - name: Clone repository\n              env:\n                  REPOSITORY: ${{ github.repository }}\n              run: |\n                  git clone --depth 1 \"https://github.com/${REPOSITORY}.git\" /tmp/repo-clone\n                  echo \"REPO_HEAD=$(git -C /tmp/repo-clone rev-parse --short HEAD)\" >> \"$GITHUB_ENV\"\n\n            - name: Summarize smoke test\n              run: |\n                  {\n                    echo \"## Smoke clone completed\"\n                    echo\n                    echo \"- Repository cloned to /tmp/repo-clone\"\n                    echo \"- Repository HEAD: ${REPO_HEAD}\"\n                  } >> \"$GITHUB_STEP_SUMMARY\"\n\n    issue-duplicate-check:\n        if: |\n            github.event_name == 'issues' ||\n            (github.event_name == 'workflow_dispatch' && inputs.mode == 'issue-check' && inputs.issue_number != '')\n        runs-on: ubuntu-latest\n        timeout-minutes: 35\n        concurrency:\n            group: issue-duplicate-check-${{ github.repository }}-${{ github.event.issue.number || inputs.issue_number }}\n            cancel-in-progress: false\n        steps:\n            - name: Run issue duplicate check\n              uses: OpenHands/extensions/plugins/issue-duplicate-checker@fb020c71eb8e7cd2678f0251ab24327d3738da7d\n              with:\n                  mode: issue-check\n                  repository: ${{ github.repository }}\n                  issue-number: ${{ github.event.issue.number || inputs.issue_number }}\n                  close-after-days: ${{ inputs.close_after_days || '3' }}\n                  openhands-api-key: ${{ secrets.OPENHANDS_API_KEY }}\n                  github-token: ${{ secrets.OPENHANDS_BOT_GITHUB_PAT_PUBLIC || github.token }}\n\n    auto-close-duplicates:\n        if: |\n            github.event_name == 'schedule' ||\n            (github.event_name == 'workflow_dispatch' && inputs.mode == 'auto-close')\n        runs-on: ubuntu-latest\n        timeout-minutes: 20\n        concurrency:\n            group: auto-close-duplicates-${{ github.repository }}\n            cancel-in-progress: false\n        steps:\n            - name: Auto-close aged duplicate candidates\n              uses: OpenHands/extensions/plugins/issue-duplicate-checker@fb020c71eb8e7cd2678f0251ab24327d3738da7d\n              with:\n                  mode: auto-close\n                  repository: ${{ github.repository }}\n                  close-after-days: ${{ inputs.close_after_days || '3' }}\n                  github-token: ${{ secrets.OPENHANDS_BOT_GITHUB_PAT_PUBLIC || github.token }}\n"
+    },
+    "issue-readiness-check.yml": {
+      "path": ".github/workflows/issue-readiness-check.yml",
+      "size_bytes": 1437,
+      "line_count": 43,
+      "truncated": false,
+      "excerpt": "---\nname: Ready-for-dev Label Policy\n\n# The issue-triage automation and repository writers may grant ready-for-dev.\n# Labels from any other actor are removed.\n\non:\n    issues:\n        types: [labeled]\n\nconcurrency:\n    group: ready-for-dev-policy-${{ github.event.issue.number }}\n    cancel-in-progress: false\n\njobs:\n    enforce-label-policy:\n        name: Enforce ready-for-dev label policy\n        if: >-\n            github.event.issue.state == 'open'\n            && github.event.issue.pull_request == null\n            && github.event.label.name == 'ready-for-dev'\n        runs-on: ubuntu-24.04\n        timeout-minutes: 5\n        permissions:\n            issues: write\n        steps:\n            - name: Check label actor\n              env:\n                  GH_TOKEN: ${{ github.token }}\n                  ACTOR: ${{ github.event.sender.login }}\n                  REPOSITORY: ${{ github.repository }}\n                  ISSUE_NUMBER: ${{ github.event.issue.number }}\n              run: |\n                  set -euo pipefail\n\n                  permission=\"$(gh api \"repos/$REPOSITORY/collaborators/$ACTOR/permission\" --jq .permission 2>/dev/null || true)\"\n                  case \"$permission\" in\n                    write|maintain|admin)\n                      ;;\n                    *)\n                      gh issue edit \"$ISSUE_NUMBER\" --repo \"$REPOSITORY\" --remove-label ready-for-dev\n                      ;;\n                  esac\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T12:51:51Z",
+      "oldest": "2026-11-23T13:47:51Z"
+    },
+    "conventional_pct": 100.0,
+    "fix_revert_pct": 36.0,
+    "ai_coauthor_pct": 26.0,
+    "top_recent_authors": [
+      [
+        "enyst",
+        13
+      ],
+      [
+        "dependabot[bot]",
+        11
+      ],
+      [
+        "malhotra5",
+        10
+      ],
+      [
+        "openhands-release-bot[bot]",
+        5
+      ],
+      [
+        "jpshackelford",
+        4
+      ],
+      [
+        "hieptl",
+        2
+      ],
+      [
+        "DevinVinson",
+        1
+      ],
+      [
+        "neubig",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "ede44c2d",
+        "date": "2026-11-25T12:51:51Z",
+        "author": "hieptl",
+        "subject": "feat(automations): add a Git Sync switch to keep activation status local (OHE-3927) (#19925)",
+        "ai_signal": false
+      },
+      {
+        "sha": "c11b5fc6",
+        "date": "2026-11-25T12:01:28Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump the i18next group with 2 updates (#20063)",
+        "ai_signal": false
+      },
+      {
+        "sha": "98dda68f",
+        "date": "2026-11-25T12:01:21Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump the tanstack group with 2 updates (#20062)",
+        "ai_signal": false
+      },
+      {
+        "sha": "9587d540",
+        "date": "2026-11-25T12:01:14Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps-dev): bump electron from 45.3.3 to 45.3.4 (#20065)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b6a0075a",
+        "date": "2026-11-25T12:01:07Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump lucide-react from 1.73.0 to 1.74.0 (#20064)",
+        "ai_signal": false
+      },
+      {
+        "sha": "dbcbce39",
+        "date": "2026-11-25T12:01:00Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump @microlink/react-json-view from 1.31.50 to 1.31.51 (#20066)",
+        "ai_signal": false
+      },
+      {
+        "sha": "82e3e361",
+        "date": "2026-11-25T12:00:53Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump posthog-js from 1.450.0 to 1.450.1 (#20067)",
+        "ai_signal": false
+      },
+      {
+        "sha": "adf71d62",
+        "date": "2026-11-25T04:20:32Z",
+        "author": "DevinVinson",
+        "subject": "feat: add Feedback button and submission flow (#19272)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d56c1ab8",
+        "date": "2026-11-25T03:22:36Z",
+        "author": "hieptl",
+        "subject": "feat(conversation): list and unshare the conversations shared with a team org (OHE-4205) (#19954)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f16d9d99",
+        "date": "2026-11-24T17:41:42Z",
+        "author": "openhands-release-bot[bot]",
+        "subject": "chore: bump agent-server to 1.64.0, automation to 1.35.2, extensions to 0.44.0 (#20056)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d5dcd45d",
+        "date": "2026-11-24T12:01:16Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump the i18next group with 2 updates (#20022)",
+        "ai_signal": false
+      },
+      {
+        "sha": "b97ae3cd",
+        "date": "2026-11-24T12:01:09Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps-dev): bump the eslint group with 2 updates (#20023)",
+        "ai_signal": false
+      },
+      {
+        "sha": "bcb29faa",
+        "date": "2026-11-24T12:01:02Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps-dev): bump electron from 45.3.2 to 45.3.3 (#20024)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6c222eb9",
+        "date": "2026-11-24T12:00:55Z",
+        "author": "dependabot[bot]",
+        "subject": "chore(deps): bump @tanstack/react-virtual from 3.11.3 to 3.14.26 in the tanstack group across 1 directory (#19864)",
+        "ai_signal": false
+      },
+      {
+        "sha": "9dfc6ced",
+        "date": "2026-11-24T11:57:18Z",
+        "author": "openhands-release-bot[bot]",
+        "subject": "chore: bump agent-server to 1.63.1, automation to 1.35.1, extensions to 0.44.0 (#20026)",
+        "ai_signal": true
+      },
+      {
+        "sha": "47eed012",
+        "date": "2026-11-24T08:59:49Z",
+        "author": "openhands-release-bot[bot]",
+        "subject": "chore(main): release 1.45.0 (#20014)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7a9425ac",
+        "date": "2026-11-24T00:58:18Z",
+        "author": "neubig",
+        "subject": "feat(frontend): nest sub-agent conversations under their parent (#20010)",
+        "ai_signal": false
+      },
+      {
+        "sha": "cd22e079",
+        "date": "2026-11-24T00:52:29Z",
+        "author": "enyst",
+        "subject": "fix(chat): close the agent profile and model pill popovers on Escape (#18812)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d6161fd3",
+        "date": "2026-11-23T23:10:15Z",
+        "author": "malhotra5",
+        "subject": "fix(sidebar): trap mobile drawer focus (#19999)",
+        "ai_signal": false
+      },
+      {
+        "sha": "997618d3",
+        "date": "2026-11-23T22:06:46Z",
+        "author": "malhotra5",
+        "subject": "fix(conversation): cancel inline rename on Escape (#19997)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "dependabot[bot]",
+      "contributions": 1193
+    },
+    {
+      "login": "hieptl",
+      "contributions": 733
+    },
+    {
+      "login": "tofarr",
+      "contributions": 667
+    },
+    {
+      "login": "enyst",
+      "contributions": 666
+    },
+    {
+      "login": "xingyaoww",
+      "contributions": 642
+    },
+    {
+      "login": "rbren",
+      "contributions": 558
+    },
+    {
+      "login": "malhotra5",
+      "contributions": 534
+    },
+    {
+      "login": "neubig",
+      "contributions": 509
+    },
+    {
+      "login": "amanape",
+      "contributions": 376
+    },
+    {
+      "login": "aivong-openhands",
+      "contributions": 187
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.45.0",
+      "published_at": "2026-11-24T09:13:54Z",
+      "name": "v1.45.0"
+    },
+    {
+      "tag": "v1.44.0",
+      "published_at": "2026-11-23T15:29:47Z",
+      "name": "v1.44.0"
+    },
+    {
+      "tag": "v1.43.0",
+      "published_at": "2026-11-20T18:51:00Z",
+      "name": "v1.43.0"
+    },
+    {
+      "tag": "v1.42.0",
+      "published_at": "2026-11-18T16:36:17Z",
+      "name": "v1.42.0"
+    },
+    {
+      "tag": "v1.41.0",
+      "published_at": "2026-11-16T20:46:02Z",
+      "name": "v1.41.0"
+    }
+  ]
+}

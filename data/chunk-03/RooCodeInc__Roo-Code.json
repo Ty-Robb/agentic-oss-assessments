@@ -1,0 +1,383 @@
+{
+  "repo": "RooCodeInc/Roo-Code",
+  "meta": {
+    "description": "Roo Code gives you a whole dev team of AI agents in your code editor.",
+    "homepage": "https://roocode.com",
+    "license": "Apache-2.0",
+    "stars": 24234,
+    "forks": 3449,
+    "open_issues": 1025,
+    "archived": true,
+    "created_at": "2024-10-31T17:56:50Z",
+    "pushed_at": "2026-05-15T18:08:47Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "languages": {
+    "TypeScript": 10942825,
+    "MDX": 940691,
+    "CSS": 116751,
+    "JavaScript": 56550,
+    "Shell": 20071,
+    "HTML": 282
+  },
+  "structure": {
+    "root": [
+      ".changeset/",
+      ".dockerignore",
+      ".env.sample",
+      ".git-blame-ignore-revs",
+      ".gitattributes",
+      ".gitconfig",
+      ".github/",
+      ".gitignore",
+      ".husky/",
+      ".nvmrc",
+      ".prettierrc.json",
+      ".roo/",
+      ".rooignore",
+      ".roomodes",
+      ".tool-versions",
+      ".vscode/",
+      "AGENTS.md",
+      "CHANGELOG.md",
+      "LICENSE",
+      "PRIVACY.md",
+      "README.md",
+      "SECURITY.md",
+      "apps/",
+      "ellipsis.yaml",
+      "knip.json",
+      "locales/",
+      "package.json",
+      "packages/",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "progress.txt",
+      "releases/",
+      "renovate.json",
+      "schemas/",
+      "scripts/",
+      "src/",
+      "tsconfig.json",
+      "turbo.json",
+      "webview-ui/"
+    ],
+    "workflows": [
+      "changeset-release.yml",
+      "cli-release.yml",
+      "code-qa.yml",
+      "codeql.yml",
+      "docs-pages.yml",
+      "marketplace-publish.yml",
+      "nightly-publish.yml"
+    ],
+    "docs": [],
+    "docs_count": 0,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 445,
+      "line_count": 5,
+      "truncated": false,
+      "excerpt": "# AGENTS.md\n\nThis file provides guidance to agents when working with code in this repository.\n\n- Settings View Pattern: When working on `SettingsView`, inputs must bind to the local `cachedState`, NOT the live `useExtensionState()`. The `cachedState` acts as a buffer for user edits, isolating them from the `ContextProxy` source-of-truth until the user explicitly clicks \"Save\". Wiring inputs directly to the live state causes race conditions.\n"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 3387,
+      "line_count": 77,
+      "truncated": false,
+      "excerpt": "<p align=\"center\">\n  <a href=\"https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline\"><img src=\"https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white\" alt=\"VS Code Marketplace\"></a>  \n</p>\n\n# Roo Code\n\n> Your AI-Powered Dev Team, Right in Your Editor\n\n<details>\n  <summary>\ud83c\udf10 Available languages</summary>\n\n- [English](README.md)\n- [Catal\u00e0](locales/ca/README.md)\n- [Deutsch](locales/de/README.md)\n- [Espa\u00f1ol](locales/es/README.md)\n- [Fran\u00e7ais](locales/fr/README.md)\n- [\u0939\u093f\u0902\u0926\u0940](locales/hi/README.md)\n- [Bahasa Indonesia](locales/id/README.md)\n- [Italiano](locales/it/README.md)\n- [\u65e5\u672c\u8a9e](locales/ja/README.md)\n- [\ud55c\uad6d\uc5b4](locales/ko/README.md)\n- [Nederlands](locales/nl/README.md)\n- [Polski](locales/pl/README.md)\n- [Portugu\u00eas (BR)](locales/pt-BR/README.md)\n- [\u0420\u0443\u0441\u0441\u043a\u0438\u0439](locales/ru/README.md)\n- [T\u00fcrk\u00e7e](locales/tr/README.md)\n- [Ti\u1ebfng Vi\u1ec7t](locales/vi/README.md)\n- [\u7b80\u4f53\u4e2d\u6587](locales/zh-CN/README.md)\n- [\u7e41\u9ad4\u4e2d\u6587](locales/zh-TW/README.md)\n- ...\n    </details>\n\n---\n\n## What Can Roo Code Do For YOU?\n\n- Generate Code from natural language descriptions and specs\n- Adapt with Modes: Code, Architect, Ask, Debug, and Custom Modes\n- Refactor & Debug existing code\n- Write & Update documentation\n- Answer Questions about your codebase\n- Automate repetitive tasks\n- Utilize MCP Servers\n\n## Modes\n\nRoo Code adapts to how you work:\n\n- Code Mode: everyday coding, edits, and file ops\n- Architect Mode: plan systems, specs, and migrations\n- Ask Mode: fast answers, explanations, and docs\n- Debug Mode: trace issues, add logs, isolate root causes\n- Custom Modes: build specialized modes for your team or workflow\n\nLearn more: [Using Modes](https://roocodeinc.github.io/Roo-Code/basic-usage/using-modes) \u2022 [Custom Modes](https://roocodeinc.github.io/Roo-Code/advanced-usage/custom-modes)\n\n## Resources\n\n- **[Documentation](https://roocodeinc.github.io/Roo-Code/):** The official guide to installing, configuring, and mastering Roo Code.\n- **[GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues):** Report bugs and track development.\n\n---\n\n## Disclaimer\n\nThe Roo Code Extension was shut down on May 15th.\n\n- If you're looking for an alternative, check out [ZooCode](https://github.com/Zoo-Code-Org/Zoo-Code/) (a fork started by the Roo Code community) and [Cline](https://cline.bot/) (from where Roo Code originated).\n- If you were a paying user and have billing questions, please write [billing@roocode.com](mailto:billing@roocode.com).\n\n**Please note** that Roo Code, Inc does **not** make any representations or warranties regarding any code, models, or other tools provided or made available in connection with Roo Code, any associated third-party tools, or any resulting outputs. You assume **all risks** associated with the use of any such tools or outputs; such tools are provided on an **\"AS IS\"** and **\"AS AVAILABLE\"** basis. Such risks may include, without limitation, intellectual property infringement, cyber vulnerabilities or attacks, bias, inaccuracies, errors, defects, viruses, downtime, property loss or damage, and/or personal injury. You are solely responsible for your use of any such tools or outputs (including, without limitation, the legality, appropriateness, and results thereof).\n\n---\n\n## License\n\n[Apache 2.0 \u00a9 2026 Roo Code, Inc.](./LICENSE)\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 2542,
+      "line_count": 73,
+      "truncated": false,
+      "excerpt": "{\n\t\"name\": \"roo-code\",\n\t\"packageManager\": \"pnpm@10.8.1\",\n\t\"engines\": {\n\t\t\"node\": \"20.19.2\"\n\t},\n\t\"scripts\": {\n\t\t\"preinstall\": \"node scripts/bootstrap.mjs\",\n\t\t\"prepare\": \"husky\",\n\t\t\"install\": \"node scripts/bootstrap.mjs\",\n\t\t\"install:all\": \"node scripts/bootstrap.mjs\",\n\t\t\"lint\": \"turbo lint --log-order grouped --output-logs new-only\",\n\t\t\"check-types\": \"turbo check-types --log-order grouped --output-logs new-only\",\n\t\t\"test\": \"turbo test --log-order grouped --output-logs new-only\",\n\t\t\"format\": \"turbo format --log-order grouped --output-logs new-only\",\n\t\t\"build\": \"turbo build --log-order grouped --output-logs new-only\",\n\t\t\"bundle\": \"turbo bundle --log-order grouped --output-logs new-only\",\n\t\t\"bundle:nightly\": \"turbo bundle:nightly --log-order grouped --output-logs new-only\",\n\t\t\"vsix\": \"turbo vsix --log-order grouped --output-logs new-only\",\n\t\t\"vsix:nightly\": \"turbo vsix:nightly --log-order grouped --output-logs new-only\",\n\t\t\"clean\": \"turbo clean --log-order grouped --output-logs new-only && rimraf dist out bin .vite-port .turbo\",\n\t\t\"install:vsix\": \"pnpm install --frozen-lockfile && pnpm clean && pnpm vsix && node scripts/install-vsix.js\",\n\t\t\"install:vsix:nightly\": \"pnpm install --frozen-lockfile && pnpm clean && pnpm vsix:nightly && node scripts/install-vsix.js --nightly\",\n\t\t\"code-server:install\": \"node scripts/code-server.js\",\n\t\t\"changeset:version\": \"cp CHANGELOG.md src/CHANGELOG.md && changeset version && cp -vf src/CHANGELOG.md .\",\n\t\t\"knip\": \"knip --include files\",\n\t\t\"npm:publish:types\": \"pnpm --filter @roo-code/types npm:publish\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@changesets/cli\": \"^2.27.10\",\n\t\t\"@dotenvx/dotenvx\": \"^1.34.0\",\n\t\t\"@roo-code/config-typescript\": \"workspace:^\",\n\t\t\"@types/glob\": \"^9.0.0\",\n\t\t\"@types/node\": \"^24.1.0\",\n\t\t\"@vscode/vsce\": \"3.3.2\",\n\t\t\"esbuild\": \"^0.25.0\",\n\t\t\"eslint\": \"^9.27.0\",\n\t\t\"glob\": \"^11.1.0\",\n\t\t\"husky\": \"^9.1.7\",\n\t\t\"knip\": \"^5.44.4\",\n\t\t\"lint-staged\": \"^16.0.0\",\n\t\t\"mkdirp\": \"^3.0.1\",\n\t\t\"only-allow\": \"^1.2.1\",\n\t\t\"ovsx\": \"0.10.4\",\n\t\t\"prettier\": \"^3.4.2\",\n\t\t\"rimraf\": \"^6.0.1\",\n\t\t\"tsx\": \"^4.19.3\",\n\t\t\"turbo\": \"^2.5.6\",\n\t\t\"typescript\": \"5.8.3\"\n\t},\n\t\"lint-staged\": {\n\t\t\"*.{js,jsx,ts,tsx,json,css,md}\": [\n\t\t\t\"prettier --write\"\n\t\t]\n\t},\n\t\"pnpm\": {\n\t\t\"onlyBuiltDependencies\": [\n\t\t\t\"@vscode/ripgrep\"\n\t\t],\n\t\t\"overrides\": {\n\t\t\t\"tar-fs\": \">=3.1.1\",\n\t\t\t\"esbuild\": \">=0.25.0\",\n\t\t\t\"undici\": \">=5.29.0\",\n\t\t\t\"brace-expansion\": \"^2.0.2\",\n\t\t\t\"form-data\": \">=4.0.4\",\n\t\t\t\"bluebird\": \">=3.7.2\",\n\t\t\t\"glob\": \">=11.1.0\",\n\t\t\t\"@types/react\": \"^18.3.23\",\n\t\t\t\"@types/react-dom\": \"^18.3.5\",\n\t\t\t\"zod\": \"3.25.76\"\n\t\t}\n\t}\n}\n"
+    },
+    "knip.json": {
+      "path": "knip.json",
+      "size_bytes": 708,
+      "line_count": 30,
+      "truncated": false,
+      "excerpt": "{\n\t\"$schema\": \"https://unpkg.com/knip@latest/schema.json\",\n\t\"ignore\": [\n\t\t\"**/__tests__/**\",\n\t\t\"apps/vscode-e2e/**\",\n\t\t\"src/extension/api.ts\",\n\t\t\"src/activate/**\",\n\t\t\"src/workers/countTokens.ts\",\n\t\t\"src/extension.ts\",\n\t\t\"scripts/**\",\n\t\t\"apps/cli/scripts/**\"\n\t],\n\t\"workspaces\": {\n\t\t\"src\": {\n\t\t\t\"entry\": [\"extension.ts\"],\n\t\t\t\"project\": [\"**/*.ts\"]\n\t\t},\n\t\t\"webview-ui\": {\n\t\t\t\"entry\": [\"src/index.tsx\"],\n\t\t\t\"project\": [\"src/**/*.{ts,tsx}\", \"../src/shared/*.ts\"]\n\t\t},\n\t\t\"apps/docs\": {\n\t\t\t\"entry\": [\"src/clientModules/**/*.{ts,tsx}\", \"src/components/**/*.{ts,tsx}\", \"src/theme/**/*.{ts,tsx}\"],\n\t\t\t\"project\": [\"src/**/*.{ts,tsx}\"]\n\t\t},\n\t\t\"packages/{build,evals,ipc,types}\": {\n\t\t\t\"project\": [\"src/**/*.ts\"]\n\t\t}\n\t}\n}\n"
+    },
+    "turbo.json": {
+      "path": "turbo.json",
+      "size_bytes": 389,
+      "line_count": 21,
+      "truncated": false,
+      "excerpt": "{\n\t\"$schema\": \"https://turbo.build/schema.json\",\n\t\"tasks\": {\n\t\t\"lint\": {},\n\t\t\"check-types\": {},\n\t\t\"test\": {\n\t\t\t\"dependsOn\": [\"@roo-code/types#build\"]\n\t\t},\n\t\t\"format\": {},\n\t\t\"clean\": {\n\t\t\t\"cache\": false\n\t\t},\n\t\t\"build\": {\n\t\t\t\"outputs\": [\"dist/**\"],\n\t\t\t\"inputs\": [\"src/**\", \"package.json\", \"tsconfig.json\", \"tsup.config.ts\", \"vite.config.ts\"]\n\t\t},\n\t\t\"watch:tsc\": {\n\t\t\t\"cache\": false\n\t\t}\n\t}\n}\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 131,
+      "line_count": 5,
+      "truncated": false,
+      "excerpt": "packages:\n    - \"src\" # Should be apps/vscode\n    - \"webview-ui\" # Should be apps/vscode-webview\n    - \"apps/*\"\n    - \"packages/*\"\n"
+    }
+  },
+  "workflow_samples": {},
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-05-15T18:04:45Z",
+      "oldest": "2026-03-04T07:37:56Z"
+    },
+    "conventional_pct": 34.0,
+    "fix_revert_pct": 4.0,
+    "ai_coauthor_pct": 10.0,
+    "top_recent_authors": [
+      [
+        "mrubens",
+        13
+      ],
+      [
+        "hannesrudolph",
+        6
+      ],
+      [
+        "roomote-v0[bot]",
+        6
+      ],
+      [
+        "brunobergher",
+        5
+      ],
+      [
+        "github-actions[bot]",
+        5
+      ],
+      [
+        "cte",
+        3
+      ],
+      [
+        "saneroen",
+        2
+      ],
+      [
+        "carlesso",
+        2
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "b867ec91",
+        "date": "2026-05-15T18:04:45Z",
+        "author": "mrubens",
+        "subject": "Remove roocode.com web app (#12375)",
+        "ai_signal": false
+      },
+      {
+        "sha": "8b94deca",
+        "date": "2026-05-15T17:55:24Z",
+        "author": "mrubens",
+        "subject": "Redirect roocode.com to roomote.dev (#12374)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f49f0ce5",
+        "date": "2026-05-15T17:42:49Z",
+        "author": "hannesrudolph",
+        "subject": "Release v3.54.0 (#12369)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d82583c9",
+        "date": "2026-05-15T17:30:03Z",
+        "author": "mrubens",
+        "subject": "Update README.md",
+        "ai_signal": false
+      },
+      {
+        "sha": "6ae816f2",
+        "date": "2026-05-15T17:29:02Z",
+        "author": "mrubens",
+        "subject": "Remove stale roocode.github.io docs references (#12372)",
+        "ai_signal": false
+      },
+      {
+        "sha": "f5cad409",
+        "date": "2026-05-15T17:22:06Z",
+        "author": "mrubens",
+        "subject": "Update package.json",
+        "ai_signal": false
+      },
+      {
+        "sha": "15542fcb",
+        "date": "2026-05-15T17:20:20Z",
+        "author": "mrubens",
+        "subject": "Update docs links to GitHub Pages (#12371)",
+        "ai_signal": false
+      },
+      {
+        "sha": "d229002c",
+        "date": "2026-05-15T17:07:01Z",
+        "author": "mrubens",
+        "subject": "Update README.md",
+        "ai_signal": false
+      },
+      {
+        "sha": "06777a51",
+        "date": "2026-05-15T17:06:24Z",
+        "author": "mrubens",
+        "subject": "Update README.md",
+        "ai_signal": false
+      },
+      {
+        "sha": "5641ccd5",
+        "date": "2026-05-15T17:05:47Z",
+        "author": "mrubens",
+        "subject": "Fix docs GitHub Pages base URL (#12370)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e921f9d2",
+        "date": "2026-05-12T15:33:09Z",
+        "author": "brunobergher",
+        "subject": "Remove contributor and community references (#12347)",
+        "ai_signal": false
+      },
+      {
+        "sha": "28acb6ac",
+        "date": "2026-05-12T13:23:21Z",
+        "author": "brunobergher",
+        "subject": "Add docs app and GitHub Pages deploy (#12344)",
+        "ai_signal": false
+      },
+      {
+        "sha": "24281998",
+        "date": "2026-05-12T13:23:08Z",
+        "author": "brunobergher",
+        "subject": "Remove corporate extension support links (#12341)",
+        "ai_signal": false
+      },
+      {
+        "sha": "89224186",
+        "date": "2026-05-12T02:43:45Z",
+        "author": "mrubens",
+        "subject": "Remove Roo Code Cloud and evals (#12328)",
+        "ai_signal": false
+      },
+      {
+        "sha": "22d845ce",
+        "date": "2026-05-11T22:19:08Z",
+        "author": "mrubens",
+        "subject": "Remove the MCP marketplace (#12326)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ff16c9c2",
+        "date": "2026-05-11T21:34:58Z",
+        "author": "mrubens",
+        "subject": "Remove all telemetry (#12324)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3d37e054",
+        "date": "2026-05-11T19:42:02Z",
+        "author": "mrubens",
+        "subject": "Remove MDM and organization membership enforcement (#12323)",
+        "ai_signal": false
+      },
+      {
+        "sha": "ad256349",
+        "date": "2026-04-24T13:56:42Z",
+        "author": "brunobergher",
+        "subject": "web: Simplifies the website to be almost strictly about the extension (#12180)",
+        "ai_signal": false
+      },
+      {
+        "sha": "96d6e436",
+        "date": "2026-04-23T21:26:28Z",
+        "author": "github-actions[bot]",
+        "subject": "Changeset version bump (#12172)",
+        "ai_signal": true
+      },
+      {
+        "sha": "14922f12",
+        "date": "2026-04-23T21:02:08Z",
+        "author": "hannesrudolph",
+        "subject": "Release v3.53.0 (#12171)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "mrubens",
+      "contributions": 2068
+    },
+    {
+      "login": "saoudrizwan",
+      "contributions": 962
+    },
+    {
+      "login": "cte",
+      "contributions": 716
+    },
+    {
+      "login": "daniel-lxs",
+      "contributions": 444
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 377
+    },
+    {
+      "login": "hannesrudolph",
+      "contributions": 352
+    },
+    {
+      "login": "renovate[bot]",
+      "contributions": 153
+    },
+    {
+      "login": "samhvw8",
+      "contributions": 127
+    },
+    {
+      "login": "brunobergher",
+      "contributions": 60
+    },
+    {
+      "login": "R00-B0T",
+      "contributions": 57
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v3.54.0",
+      "published_at": "2026-05-15T17:52:24Z",
+      "name": "Release v3.54.0"
+    },
+    {
+      "tag": "v3.53.0",
+      "published_at": "2026-04-23T21:28:55Z",
+      "name": "Release v3.53.0"
+    },
+    {
+      "tag": "v3.52.1",
+      "published_at": "2026-04-13T22:33:01Z",
+      "name": "Release v3.52.1"
+    },
+    {
+      "tag": "v3.52.0",
+      "published_at": "2026-04-08T21:18:42Z",
+      "name": "Release v3.52.0"
+    },
+    {
+      "tag": "v3.51.1",
+      "published_at": "2026-03-08T02:25:17Z",
+      "name": "Release v3.51.1"
+    }
+  ]
+}
