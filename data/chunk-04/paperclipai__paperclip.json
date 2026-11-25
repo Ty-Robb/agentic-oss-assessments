@@ -1,0 +1,551 @@
+{
+  "repo": "paperclipai/paperclip",
+  "meta": {
+    "description": "The open-source app everyone uses to manage agents at work",
+    "homepage": "https://paperclip.ing",
+    "license": "MIT",
+    "stars": 116922,
+    "forks": 19415,
+    "open_issues": 6812,
+    "archived": false,
+    "created_at": "2026-03-02T15:01:51Z",
+    "pushed_at": "2026-11-25T13:20:55Z",
+    "default_branch": "master",
+    "topics": [
+      "acpx",
+      "agent-orchestration",
+      "agent-skills",
+      "agentic-ai",
+      "ai-agents",
+      "ai-engineering",
+      "ai-governance",
+      "ai-tools",
+      "autonomous-agents",
+      "claude",
+      "claude-code",
+      "claude-skills",
+      "codex",
+      "hermes",
+      "llm",
+      "mcp",
+      "multi-agent",
+      "openclaw",
+      "project-management",
+      "workflow-automation"
+    ]
+  },
+  "languages": {
+    "TypeScript": 157770893,
+    "JavaScript": 6415168,
+    "Rust": 4754574,
+    "PLpgSQL": 700386,
+    "Python": 592704,
+    "CSS": 525342,
+    "Shell": 452081,
+    "HTML": 64156,
+    "Dockerfile": 49711,
+    "Go": 2459,
+    "C": 2313,
+    "HCL": 2195
+  },
+  "structure": {
+    "root": [
+      ".agents/",
+      ".claude/",
+      ".codex/",
+      ".devin/",
+      ".dockerignore",
+      ".env.example",
+      ".env.runner-e2e.example",
+      ".gitattributes",
+      ".github/",
+      ".gitignore",
+      ".greptile/",
+      ".mailmap",
+      ".npmrc",
+      ".nvmrc",
+      "AGENTS.md",
+      "CONTRIBUTING.md",
+      "DESIGN.md",
+      "Dockerfile",
+      "LICENSE",
+      "README.md",
+      "ROADMAP.md",
+      "SECURITY.md",
+      "adapter-plugin.md",
+      "announcements/",
+      "cli/",
+      "doc/",
+      "docker/",
+      "docs/",
+      "evals/",
+      "integrations/",
+      "maps/",
+      "package.json",
+      "packages/",
+      "patches/",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "releases/",
+      "report/",
+      "rules/",
+      "screenshots/",
+      "scripts/",
+      "server/",
+      "skills-releases/",
+      "skills/",
+      "tests/",
+      "tools/",
+      "tsconfig.base.json",
+      "tsconfig.json",
+      "turbo.json",
+      "ui/",
+      "vitest.config.ts"
+    ],
+    "workflows": [
+      "agent-runtime-images.yml",
+      "backup-checkpoint-qualification.yml",
+      "canary-finalize.yml",
+      "chat-catalog-testops-case.yml",
+      "chat-catalog-testops.yml",
+      "chat-feature-testops-retained-verification.yml",
+      "ci-incremental-qualification.yml",
+      "ci-profile.yml",
+      "ci-routing.yml",
+      "ci-runner-loss-rerun.yml",
+      "ci-test-durations.yml",
+      "ci-work-benchmark.yml",
+      "cloud-migrator-artifacts.yml",
+      "cloud-readiness.yml",
+      "commitperclip-review.yml",
+      "crash-points.yml",
+      "docker-app-check.yml",
+      "docker-merge-group.yml",
+      "docker-runner-check.yml",
+      "docker.yml",
+      "e2e.yml",
+      "macos-runner-runtime.yml",
+      "merge-queue-checks.yml",
+      "pr-merge-review.yml",
+      "pr-review-api-access.yml",
+      "pr-trusted.yml",
+      "pr.yml",
+      "refresh-lockfile.yml",
+      "release-smoke.yml",
+      "release-verify.yml",
+      "release.yml",
+      "runner-chaos-evals.yml",
+      "runner-e2e-testops-registration.yml",
+      "runner-full-stack-e2e.yml",
+      "runner-image.yml",
+      "runner-live-evals.yml",
+      "runner-protocol-live-evals.yml",
+      "runner-windows.yml",
+      "sentry-contract.yml",
+      "storybook-deploy.yml",
+      "storybook-visual.yml"
+    ],
+    "docs": [
+      "adapters/",
+      "agents-runtime.md",
+      "api/",
+      "assets/",
+      "built-in-agents.md",
+      "cli/",
+      "companies/",
+      "deploy/",
+      "docs.json",
+      "favicon.svg",
+      "feedback-voting.md",
+      "guides/",
+      "images/",
+      "performance/",
+      "plans/",
+      "pr-screenshots/",
+      "specs/",
+      "start/"
+    ],
+    "docs_count": 18,
+    "agents_dir": [
+      "skills/"
+    ],
+    "agents_skills": [
+      "add-product-e2e-eval/",
+      "add-runner-eval/",
+      "check-pr/",
+      "company-creator/",
+      "create-agent-adapter/",
+      "create-case/",
+      "create-external-bot-integration/",
+      "create-issue-interaction-ui/",
+      "create-paperclip-bundled-skill/",
+      "create-runner-adapter/",
+      "create-verification-skill/",
+      "deal-with-security-advisory/",
+      "diagnose-why-work-stopped/",
+      "directions-lab/",
+      "doc-maintenance/",
+      "fix-failed-paperclip-run/",
+      "fix-slow-queries/",
+      "garden-inbox/",
+      "honeycomb-tracing/",
+      "maintain-storybook/",
+      "maintain-verification-skill/",
+      "paperclip-create-plugin/",
+      "paperclip-dev-workspace-run-verify-fix/",
+      "paperclip-evals/",
+      "paperclip-page/",
+      "pr-gardening/",
+      "pr-report/",
+      "prcheckloop/",
+      "prepare-paperclip-pr/",
+      "release-changelog-discord-message/",
+      "release-changelog/",
+      "release/",
+      "review-storybook/",
+      "setup-code-maintenance-bot/",
+      "terminal-bench-loop/",
+      "test-audit/",
+      "verify-paperclip/"
+    ],
+    "claude_dir": [
+      "agents/",
+      "launch.json",
+      "skills/"
+    ],
+    "cursor_dir": [],
+    "evals_dir": [
+      "README.md",
+      "promptfoo/"
+    ]
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 10945,
+      "line_count": 221,
+      "truncated": false,
+      "excerpt": "# AGENTS.md\n\nGuidance for human and AI contributors working in this repository.\n\nThis codebase is yours: what it's for and how it's built are your call, and you'll keep building on it.\nThe invariants and rules below record what has been decided so far. If you think one of them is wrong, say so and propose the change; do not work around it.\n\n## 1. Purpose\n\nPaperclip is a control plane for AI-agent companies.\nThe code and its tests are the source of truth for current behavior.\nThe focused docs under `doc/` are background. They can be out of date, so do not treat them as requirements when they disagree with the code or with the task.\n\n## 2. Read This First\n\nRead the doc that matches your change before you start:\n\n| Your change touches | Read |\n| --- | --- |\n| Product behavior or scope | `doc/GOAL.md`, `doc/PRODUCT.md` |\n| Setup, commands, testing, worktrees | `doc/DEVELOPING.md` |\n| Schema, migrations, DB clients | `doc/DATABASE.md` |\n| An Apps catalog connection | `doc/connections/CONNECTOR-PLAYBOOK.md` (the canonical connection authoring runbook) |\n| Anything under `ui/` | `DESIGN.md` |\n\n### Scoped repository rules\n\n`rules/*.mdc` holds the architecture rules that reviewers apply to a pull\nrequest. Each file starts with a short header: `description` is a one-sentence\nsummary of the rule, `globs` lists the files it covers, and `alwaysApply: true`\nmeans it covers the whole repository.\n\nYou do not need to read the rule bodies before every change. List the headers to\nsee which rules exist and what each one asks for:\n\n```sh\ngrep -E '^(description|globs|alwaysApply):' rules/*.mdc\n```\n\nWrite the change so that it satisfies the descriptions of the rules that cover\nyour files. Read the full body of a rule only in these cases:\n\n- You are making a design decision in the area the rule covers, such as adding a\n  module, a background worker, or persisted state.\n- The description does not tell you whether your change complies.\n- A reviewer cites the rule.\n\nThese rules supplement this file and any applicable nested `AGENTS.md`\ninstructions. See [`rules/README.md`](rules/README.md) for rule authoring and\nGreptile setup.\n\n## 3. Repo Map\n\n- `server/`: Express REST API and orchestration services\n- `ui/`: React + Vite board UI\n- `packages/db/`: Drizzle schema, migrations, DB clients\n- `packages/shared/`: shared types, constants, validators, API path constants\n- `packages/adapters/`: agent adapter implementations (Claude, Codex, Cursor, etc.)\n- `packages/adapter-utils/`: shared adapter utilities\n- `packages/plugins/`: plugin system packages\n- `packages/skills-catalog/`: app-shipped skills catalog (`@paperclipai/skills-catalog`)\n- `packages/teams-catalog/`: app-shipped teams catalog (`@paperclipai/teams-catalog`)\n- `cli/`: `paperclipai` CLI package (published bin, agent-facing commands)\n- `skills/`: Paperclip runtime/operational skills (not part of the app catalog)\n- `doc/`: operational and product docs\n- `doc/plans/`: dated repo plan docs, named `YYYY-MM-DD-slug.md`. A plan for a Paperclip issue goes in the issue's `plan` document instead.\n- `rules/`: scoped repository rules (see section 2)\n\n## 4. Dev Setup\n\n```sh\nnode scripts/agent-preflight.mjs   # prepare a new or updated worktree\npnpm dev                           # API and UI at http://localhost:3100\n```\n\nLeave `DATABASE_URL` unset to use the embedded database. See \"Agent worktree\npreflight\", \"Start Dev\", \"Quick Health Checks\", and \"Database in Dev\" in\n`doc/DEVELOPING.md`.\n\n## 5. Core Engineering Rules\n\n1. **Keep changes company-scoped.**\n   Every domain entity should be scoped to a company and company boundaries must be enforced in routes/services. The few instance-wide exceptions are listed in [`rules/company-scope-exceptions.mdc`](rules/company-scope-exceptions.mdc). Do not add another without adding it to that list.\n\n2. **Keep contracts synchronized.**\n   If you change schema/API behavior, update all impacted layers:\n   - `packages/db` schema and exports\n   - `packages/shared` types/constants/validators\n   - `server` routes/services\n   - `ui` API clients and pages\n\n3. **Preserve control-plane invariants.**\n   - Single-assignee task model\n   - Atomic issue checkout semantics\n   - Approval gates for governed actions\n   - Budget hard-stop auto-pause behavior\n   - Activity logging for mutating actions\n\n4. **Keep behavior with its owning module.**\n   Provider protocols, payload parsing, and feature-specific sequencing belong to the module that owns them. Shared code uses narrow, normalized contracts. Explain any substantive change outside the owning module. See [`rules/module-boundaries.mdc`](rules/module-boundaries.mdc).\n\n5. **Keep deployment policy out of Core.**\n   Do not hardcode Cloud allowlists, provider choices, or deployment-specific\n   defaults here. Core provides generic, documented configuration mechanisms;\n   the deployment repository supplies and owns its policy. Changing a Cloud\n   policy must not require a Core code change. See\n   [harness availability](doc/harness-availability.md) for an example contract.\n\n## 6. Database Changes\n\nFollow \"Schema change workflow\" in `doc/DATABASE.md`: edit the schema, run\n`pnpm db:generate`, then typecheck.\n\n## 7. Verification Before Hand-off\n\nRun the smallest check that proves the change. The default local and agent path is:\n\n```sh\npnpm verify\n```\n\nThis selects affected Vitest files with the same conservative dependency policy\nas CI. It includes committed, staged, unstaged, and untracked changes against the\nmerge base with local `origin/master` (or `master`), and it reuses passing checks\nwhose inputs are unchanged. Use `--base <ref>` for another base, `--explain` to\ninspect the selection, and `--no-cache` for fresh execution. See \"Incremental\nlocal verification\" in `doc/DEVELOPING.md` for how reuse and invalidation work.\n\nFollow these rules:\n\n- **Exit 2 means the change needs broader verification.** Run focused checks and\n  let required CI supply that coverage, or explicitly use `pnpm verify --full`\n  for the full local Vitest suite. Do not automatically follow exit 2 with a full\n  local run.\n- **Do not default to repo-wide checks.** Do not run repo-wide typecheck, build,\n  or test on every heartbeat when a narrower check is enough to prove the change.\n  Use the broad checks below only when they resolve an actual remaining gap, such\n  as a local platform fault or explicit full-suite qualification.\n- **Browser suites stay opt-in.** Run `pnpm test:e2e` and\n  `pnpm test:release-smoke` only when your change touches them or when you are\n  explicitly verifying CI/release flows.\n- **CI covers the final revision.** For a PR-ready handoff, run the relevant local\n  checks and require the applicable CI typecheck, build, and test checks to pass\n  for the final tested revision. Record their scope, revision, environment, and\n  result links. Fresh CI can supply broad coverage; do not duplicate a full local\n  run merely to prepare a PR, resume a chat, or repeat unchanged passing\n  verification. A selected local pass does not replace required CI, release\n  qualification, browser acceptance, or a local/platform-specific regression.\n- **Evidence expires.** After edits or a rebase, rerun affected checks and\n  invalidate evidence whose inputs or required coverage changed. Failed or\n  interrupted attempts are never passes.\n- **Report gaps.** If anything cannot be run, explicitly report what was not run\n  and why.\n- **Attach deliverables.** When you work a Paperclip issue and produce a file for\n  the user to inspect, attach it as the `paperclip` skill and\n  `doc/AGENT-ARTIFACTS.md` describe. A local filesystem path is not enough.\n\nBroad local checks:\n\n```sh\npnpm -r typecheck\npnpm test:run\npnpm build\n```\n\n`pnpm test` and `pnpm test:run` run the full suite. If memory is limited, use\n`node scripts/typecheck-low-memory.mjs` instead of `pnpm -r typecheck`. See\n\"Typecheck memory\" in `doc/test-infrastructure.md`.\n\n### Maps and Storybook\n\nThe [feature map](maps/feature-map/README.md) and the sibling\n[agent access map](maps/agent-access-map/README.md) are optional references for\nuser entry points, agent entry points, permission boundaries, verification\nrecipes, and coverage gaps. They record coverage scope, not proof that a live\njourney passed. Routine fixes, polish, refactors, and test changes do not require\nmap updates. When you do edit a map, follow\n[the feature-map scope rule](rules/feature-map-scope.mdc) and\n[the map contract](maps/README.md), then run `node scripts/check-maps.mjs`.\n\nAfter story or recipe changes, update the affected source annotations or recipe\nand run `node scripts/storybook-catalog.mjs`. Indexes are generated and ignored;\nnever commit them. See the [Storybook feature catalog](maps/storybook-map/README.md)\nfor the full workflow. Structural checks are not production acceptance.\n\n## 8. API and Auth\n\nEvery route under `server/src/routes/` that reads or writes company data checks\ncompany access and actor permissions, logs mutations to the activity log, and\nreturns consistent HTTP errors. See [`rules/api-route-expectations.mdc`](rules/api-route-expectations.mdc).\n\n## 9. UI Expectations\n\n- Keep routes and nav aligned with available API surface\n- Use company selection context for company-scoped pages\n- Surface failures clearly; do not silently ignore API errors\n- Follow `DESIGN.md` for every UI design decision, including the token-only rule and form footers.\n\n## 10. Fixing a Bug\n\nWhen you are asked to fix a bug, attempt to use test-driven development and prove the fix red-green:\n\n1. Reproduce the error yourself.\n2. Write a test that fails because of the bug.\n3. Write the fix.\n4. Run the test and confirm that it passes.\n5. Verify that the fix worked: repeat the reproduction from step 1 and confirm that the error is gone.\n\n## 11. Pull Requests\n\nFill in every section of [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md), however you create the pull request. Do not write an ad-hoc body. See \"PR Requirements\" in `CONTRIBUTING.md` for the details and thinking-path examples.\n\n## 12. Definition of Done\n\nA change is done when all are true:\n\n1. Behavior matches what the task asked for and preserves the invariants in section 5\n2. Relevant local verification and required CI typecheck, test, and build checks pass for the final revision, with any acceptance or platform-specific gaps resolved (section 7)\n3. Contracts are synced across db/shared/server/ui\n4. Docs updated when behavior or commands change. `doc/DEVELOPING.md` holds setup, commands, and everyday workflow only, and `doc/DATABASE.md` holds database setup and the rules for every schema change. Put a note about how a subsystem behaves in that subsystem's doc (see \"More documentation\" in `doc/DEVELOPING.md`), or leave it in the PR description when the code and tests already say it.\n5. PR description follows the [PR template](.github/PULL_REQUEST_TEMPLATE.md) with all sections filled in (including Model Used)\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 13003,
+      "line_count": 208,
+      "truncated": true,
+      "excerpt": "# Contributing Guide\n\nThanks for wanting to contribute!\n\nWe really appreciate both small fixes and thoughtful larger changes.\n\n## Before You Start: Search First\n\nBefore you start work, **search GitHub** for existing PRs and issues that touch the same area:\n\n- Look for **duplicate or in-flight PRs**. If something close already exists, prefer helping that PR over the line (see [Helping Other Contributors](#helping-other-contributors)) instead of opening a parallel one.\n- Look for **related open issues**. Link them in your PR body.\n- If an older PR is effectively dead (stale, unmaintained, would be painful to rebase/merge), a fresh PR is fine \u2014 just call out the prior PR in your description so the reviewer has context.\n\nDuplicate PRs create extra work for reviewers and make merging harder. A 60-second search saves hours later.\n\nAffirm that you did this search by checking the dedup-search box in the PR template (`I have searched GitHub for duplicate or related PRs and linked them above`). Commitperclip checks for this checkbox on non-trivial PRs.\n\n## Two Paths to Get Your Pull Request Accepted\n\n### Path 1: Small, Focused Changes (Fastest way to get merged)\n\n- Pick **one** clear thing to fix/improve\n- Touch the **smallest possible number of files**\n- Make sure the change is very targeted and easy to review\n- All tests pass and CI is green\n- Greptile score is 5/5 with all comments addressed\n- Use the [PR template](.github/PULL_REQUEST_TEMPLATE.md)\n\nThese almost always get merged quickly when they're clean.\n\n### Path 2: Bigger or Impactful Changes\n\n- **First** talk about it in Discord \u2192 #dev channel  \n  \u2192 Describe what you're trying to solve  \n  \u2192 Share rough ideas / approach\n- Once there's rough agreement, build it\n- In your PR include:\n  - Clear description of what & why\n  - Proof it works (manual testing notes)\n  - All tests passing and CI green\n  - Greptile score 5/5 with all comments addressed\n  - [PR template](.github/PULL_REQUEST_TEMPLATE.md) fully filled out\n\nPRs that follow this path are **much** more likely to be accepted, even when they're large.\n\n## PR Requirements (all PRs)\n\n- Do not submit a PR that moves a code file from less than 1,000 lines of code to more than 1,000 lines of code.\n- Do not submit a PR that includes code comments.\n\n### Use the PR Template\n\nEvery pull request **must** follow the PR template at [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md). If you create a PR via the GitHub API or other tooling that bypasses the template, copy its contents into your PR description manually. The template includes required sections: Thinking Path, What Changed, Verification, Risks, Model Used, and a Checklist.\n\n### Link Issues or Describe Them In-PR\n\nWe do not gate PRs on a pre-existing issue. Two acceptable paths:\n\n1. **Issue exists** \u2014 search the [Issues database](https://github.com/paperclipai/paperclip/issues) for anything this PR addresses and tag each one with `Fixes: #123` / `Closes #123` / `Refs #123` so GitHub auto-links them. If there are **duplicate or closely related issues**, link all of them, not just the one you picked. If there are **related PRs** (prior attempts, dependent work, follow-ups, abandoned predecessors), link those too.\n2. **No issue exists** \u2014 describe the problem directly in your PR body, following one of our [issue templates](.github/ISSUE_TEMPLATE/) so a reviewer has the same fields they'd get from a filed issue:\n   - **Bug fix:** what happened, expected behavior, steps to reproduce, Paperclip version/commit, deployment mode. See [`bug_report.yml`](.github/ISSUE_TEMPLATE/bug_report.yml).\n   - **Feature:** problem/motivation, proposed solution, alternatives considered, roadmap alignment. See [`feature_request.yml`](.github/ISSUE_TEMPLATE/feature_request.yml).\n   - **New adapter:** agent or provider, why it's useful, how it's invoked. See [`adapter_request.yml`](.github/ISSUE_TEMPLATE/adapter_request.yml).\n\nEither way, a reviewer should be able to understand the underlying issue without leaving the PR. Commitperclip may check that one of these two paths is satisfied. Only link **public** GitHub issues \u2014 see [No Internal Issue References](#no-internal-issue-references) for what to leave out.\n\n### No Internal Issue References\n\nMany contributors run their own Paperclip instance to manage their work. Issue ids and links from *your* instance are private \u2014 reviewers and other contributors cannot open them, so they show up as clutter or broken links.\n\nIn your PR title, description, commits, and comments, **only reference public GitHub issues and PRs** \u2014 `#123`, `Fixes #123` / `Closes #123` / `Refs #123`, or full `https://github.com/paperclipai/paperclip/...` URLs.\n\nDo **not** include references to internal/instance-local Paperclip work, such as:\n\n- Internal ticket ids like `PAPA-123`, `PAP-224`, or any `{PREFIX}-{NUMBER}` identifier that isn't a public GitHub issue number.\n- Instance UI links such as `/PAP/issues/...`, `/PAP/agents/...`, `agent://...`, or document deep links.\n- `localhost`, private IP, or tailnet URLs pointing at your own instance.\n\nIf an internal issue captured useful context, restate that context in plain English in the PR body instead of linking to it.\n\n### Branch Naming\n\nTooling (including Paperclip) often names a working branch after an internal issue and task \u2014 e.g. `PAPA-42-why-did-this-break`. That name leaks instance-local context, isn't meaningful to reviewers, and ends up as the public branch on your PR.\n\nBefore you push, **rename the branch to something descriptive of the change itself**, not of your instance:\n\n- Use short, kebab-case names scoped to the change, optionally with a conventional prefix: `docs/no-internal-issue-references`, `fix/sandbox-secret-resolution`, `feat/adapter-retry-backoff`.\n- Do **not** include internal Paperclip ticket ids (`PAPA-123`, `PAP-224`), instance task slugs, or other instance-derived details in the branch name.\n\nTo rename and push under the new name:\n\n```bash\ngit branch "
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 35773,
+      "line_count": 600,
+      "truncated": true,
+      "excerpt": "<p align=\"center\">\n  <img src=\"doc/assets/banner.jpg\" alt=\"Paperclip is the app people use to manage AI agents for work.\" width=\"720\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"#quickstart\"><strong>Quickstart</strong></a> &middot;\n  <a href=\"https://docs.paperclip.ing\"><strong>Docs</strong></a> &middot;\n  <a href=\"https://github.com/paperclipai/paperclip\"><strong>GitHub</strong></a> &middot;\n  <a href=\"https://discord.gg/paperclipai\"><strong>Discord</strong></a> &middot;\n  <a href=\"https://x.com/papercliping\"><strong>Twitter</strong></a> &middot;\n  <a href=\"https://paperclip.ing\"><strong>Website</strong></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/paperclipai/paperclip/blob/master/LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-blue\" alt=\"MIT License\" /></a>\n  <a href=\"https://github.com/paperclipai/paperclip/stargazers\"><img src=\"https://img.shields.io/github/stars/paperclipai/paperclip?style=flat\" alt=\"Stars\" /></a>\n  <a href=\"https://discord.gg/paperclipai\"><img src=\"https://img.shields.io/badge/discord-join-7289da\" alt=\"Discord\" /></a>\n  <a href=\"https://superagent.sh\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.superagent.sh/api/badge/paperclipai/paperclip/shield.svg?theme=dark&accent=teal&variant=scanned\" /><img src=\"https://www.superagent.sh/api/badge/paperclipai/paperclip/shield.svg?theme=light&accent=teal&variant=scanned\" alt=\"Security posture verified by Superagent\" /></picture></a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://www.star-history.com/paperclipai/paperclip\"><img src=\"https://api.star-history.com/badge?repo=paperclipai/paperclip\" alt=\"Star History Rank\" /></a>\n</p>\n\n<br/>\n\n<div align=\"center\">\n  <video src=\"https://github.com/user-attachments/assets/773bdfb2-6d1e-4e30-8c5f-3487d5b70c8f\" width=\"600\" controls></video>\n</div>\n\n<p align=\"center\">\n  <a href=\"https://paperclip.ing/waitlist/\"><strong>Sign up for the Paperclip Cloud waitlist \u2192</strong></a>\n</p>\n\n<br/>\n\n# Paperclip is the app people use to manage AI agents for work.\n\nOpen-source orchestration for teams of AI agents.\n\n**If OpenClaw is an _employee_, Paperclip is the _company_.**\n\nPaperclip is a Node.js server and React UI that orchestrates a team of AI agents to run a business. Bring your own agents, assign goals, and track work and costs from one dashboard. Choose models and harnesses per agent while keeping your team's tasks, skills, permissions, and history in one place.\n\nIt looks like a task manager. Under the hood: org charts, budgets, governance, goal alignment, and agent coordination.\n\n**Manage business goals, not pull requests.**\n\n|        | Step            | Example                                                            |\n| ------ | --------------- | ------------------------------------------------------------------ |\n| **01** | Define the goal | _\"Build the #1 AI note-taking app to $1M MRR.\"_                    |\n| **02** | Hire the team   | CEO, CTO, engineers, designers, marketers \u2014 any bot, any provider. |\n| **03** | Approve and run | Review strategy. Set budgets. Hit go. Monitor from the dashboard.  |\n\n<br/>\n\n<div align=\"center\">\n<table>\n  <tr>\n    <td align=\"center\" rowspan=\"2\"><strong>Works<br/>with</strong></td>\n    <td align=\"center\" valign=\"top\"><img src=\"doc/assets/logos/openclaw.svg\" width=\"32\" height=\"32\" alt=\"OpenClaw\" /><br/><sub>OpenClaw</sub></td>\n    <td align=\"center\" valign=\"top\"><img src=\"doc/assets/logos/claude.svg\" width=\"32\" height=\"32\" alt=\"Claude Code\" /><br/><sub>Claude Code</sub></td>\n    <td align=\"center\" valign=\"top\"><img src=\"ui/public/brands/codex-color.svg\" width=\"32\" height=\"32\" alt=\"Codex\" /><br/><sub>Codex</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/cursor-dark.svg\" /><img src=\"ui/public/brands/adapters/cursor.svg\" width=\"32\" height=\"32\" alt=\"Cursor and Cursor Cloud\" /></picture><br/><sub>Cursor<br/>+ Cloud</sub></td>\n    <td align=\"center\" valign=\"top\"><img src=\"ui/public/brands/adapters/gemini-color.svg\" width=\"32\" height=\"32\" alt=\"Gemini CLI\" /><br/><sub>Gemini CLI</sub></td>\n  </tr>\n  <tr>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/opencode-logo-dark-square.svg\" /><img src=\"ui/public/brands/opencode-logo-light-square.svg\" width=\"32\" height=\"32\" alt=\"OpenCode\" /></picture><br/><sub>OpenCode</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/pi-dark.svg\" /><img src=\"ui/public/brands/adapters/pi.svg\" width=\"32\" height=\"32\" alt=\"Pi\" /></picture><br/><sub>Pi</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/hermesagent-dark.svg\" /><img src=\"ui/public/brands/adapters/hermesagent.svg\" width=\"32\" height=\"32\" alt=\"Hermes and Hermes Gateway\" /></picture><br/><sub>Hermes<br/>+ Gateway</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/grok-dark.svg\" /><img src=\"ui/public/brands/adapters/grok.svg\" width=\"32\" height=\"32\" alt=\"Grok Build\" /></picture><br/><sub>Grok Build</sub></td>\n    <td align=\"center\" valign=\"top\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"ui/public/brands/adapters/kimi-color.svg\" /><img src=\"ui/public/brands/adapters/kimi-color-light.svg\" width=\"32\" height=\"32\" alt=\"Kimi Code\" /></picture><br/><sub>Kimi Code</sub></td>\n  </tr>\n</table>\n\n<em>If it can receive a heartbeat, it's hired.</em>\n\n</div>\n\nCustom processes, HTTP endpoints, and external adapter packages extend the roster. See the [adapter overview](https://docs.paperclip.ing/reference/adapters/overview/) for setup and capabilities.\n\n<br/>\n\n## Paperclip is right for you if\n\n- \u2705 You want to build **autonomous AI organizations**\n- \u2705 You **coordinate many different agents** (OpenClaw, Codex, Claude, Cursor) toward a com"
+    },
+    "package.json": {
+      "path": "package.json",
+      "size_bytes": 12348,
+      "line_count": 140,
+      "truncated": true,
+      "excerpt": "{\n  \"name\": \"paperclip\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"perf:workspace-admission\": \"node --import ./server/node_modules/tsx/dist/loader.mjs server/scripts/benchmark-workspace-admission.ts\",\n    \"postinstall\": \"node scripts/link-plugin-dev-sdk.mjs\",\n    \"preflight:workspace-links\": \"node scripts/ensure-workspace-package-links.mjs\",\n    \"dev\": \"pnpm --filter @paperclipai/server exec tsx ../scripts/dev-runner.ts watch\",\n    \"dev:watch\": \"pnpm --filter @paperclipai/server exec tsx ../scripts/dev-runner.ts watch\",\n    \"dev:once\": \"pnpm --filter @paperclipai/server exec tsx ../scripts/dev-runner.ts dev\",\n    \"dev:list\": \"pnpm --filter @paperclipai/server exec tsx ../scripts/dev-service.ts list\",\n    \"dev:stop\": \"pnpm --filter @paperclipai/server exec tsx ../scripts/dev-service.ts stop\",\n    \"dev:server\": \"pnpm --filter @paperclipai/server dev\",\n    \"dev:ui\": \"pnpm --filter @paperclipai/ui dev\",\n    \"dev:mobile\": \"pnpm --filter @paperclipai/ui build && pnpm --filter @paperclipai/ui preview\",\n    \"dev:both\": \"node scripts/dev-both.mjs\",\n    \"prototype:dot\": \"pnpm --filter @paperclipai/server exec tsx scripts/dot-runner-demo.ts\",\n    \"prototype:dot:live\": \"pnpm --filter @paperclipai/server exec tsx scripts/dot-runner-live.ts\",\n    \"storybook\": \"pnpm --filter @paperclipai/ui storybook\",\n    \"build-storybook\": \"pnpm --filter @paperclipai/ui build-storybook\",\n    \"build\": \"pnpm run preflight:workspace-links && pnpm -r build\",\n    \"build:feature-catalog\": \"node cli/node_modules/tsx/dist/cli.mjs scripts/generate-feature-catalog.ts\",\n    \"typecheck\": \"pnpm run preflight:workspace-links && pnpm -r typecheck\",\n    \"typecheck:build-gaps\": \"pnpm run preflight:workspace-links && pnpm --filter @paperclipai/plugin-sdk ensure-build-deps && pnpm --filter @paperclipai/server build && node scripts/run-typecheck-build-gaps.mjs\",\n    \"test\": \"pnpm run test:run\",\n    \"test:watch\": \"pnpm run preflight:workspace-links && vitest\",\n    \"test:run\": \"pnpm run preflight:workspace-links && node scripts/run-vitest-stable.mjs\",\n    \"test:runner-acceptance\": \"vitest run --config tests/runner-acceptance/vitest.config.ts\",\n    \"test:runner-acceptance:typecheck\": \"tsc -p tests/runner-acceptance/tsconfig.json\",\n    \"test:run:general\": \"node scripts/ensure-workspace-package-links.mjs && node scripts/ensure-plugin-build-deps.mjs && node scripts/run-vitest-stable.mjs --mode general\",\n    \"test:run:serialized\": \"node scripts/ensure-workspace-package-links.mjs && node scripts/ensure-plugin-build-deps.mjs && node scripts/run-vitest-stable.mjs --mode serialized\",\n    \"db:generate\": \"pnpm --filter @paperclipai/db generate\",\n    \"db:migrate\": \"pnpm --filter @paperclipai/db migrate\",\n    \"issue-references:backfill\": \"pnpm run preflight:workspace-links && tsx scripts/backfill-issue-reference-mentions.ts\",\n    \"secrets:migrate-inline-env\": \"tsx scripts/migrate-inline-env-secrets.ts\",\n    \"db:backup\": \"./scripts/backup-db.sh\",\n    \"paperclipai\": \"node cli/node_modules/tsx/dist/cli.mjs cli/src/index.ts\",\n    \"build:npm\": \"./scripts/build-npm.sh\",\n    \"release\": \"./scripts/release.sh\",\n    \"release:canary\": \"./scripts/release.sh canary\",\n    \"release:stable\": \"./scripts/release.sh stable\",\n    \"release:github\": \"./scripts/create-github-release.sh\",\n    \"release:rollback\": \"./scripts/rollback-latest.sh\",\n    \"release:bootstrap-package\": \"node scripts/bootstrap-npm-package.mjs\",\n    \"check:tokens\": \"node scripts/check-forbidden-tokens.mjs\",\n    \"check:token-gates\": \"node scripts/check-token-gates.mjs && node scripts/sync-agent-palette-tokens.mjs --check && node scripts/sync-cliplab-character.mjs --check\",\n    \"check:node-version\": \"node scripts/check-node-version-policy.mjs\",\n    \"check:no-git-push\": \"node scripts/check-no-git-push.mjs\",\n    \"check:module-boundaries\": \"node scripts/check-module-boundaries.mjs\",\n    \"test:check-no-git-push\": \"node --test scripts/check-no-git-push.test.mjs\",\n    \"test:install-sh-docker\": \"./scripts/test-install-sh-docker.sh\",\n    \"test:hermes-gateway-smoke\": \"node --test scripts/smoke/hermes-gateway-smoke.test.mjs\",\n    \"docs:dev\": \"cd docs && npx mintlify dev\",\n    \"smoke:hermes-gateway-join\": \"./scripts/smoke/hermes-gateway-join.sh\",\n    \"smoke:hermes-gateway-e2e\": \"./scripts/smoke/hermes-gateway-e2e.sh\",\n    \"smoke:openclaw-join\": \"./scripts/smoke/openclaw-join.sh\",\n    \"smoke:openclaw-docker-ui\": \"./scripts/smoke/openclaw-docker-ui.sh\",\n    \"smoke:openclaw-sse-standalone\": \"./scripts/smoke/openclaw-sse-standalone.sh\",\n    \"smoke:mcp-fixtures\": \"node scripts/smoke/mcp-fixture-harness.mjs\",\n    \"smoke:notion-generic-live\": \"node scripts/smoke/notion-generic-live.mjs\",\n    \"smoke:posthog-live\": \"node scripts/smoke/posthog-live.mjs\",\n    \"smoke:terminal-bench-loop-skill\": \"node scripts/smoke/terminal-bench-loop-skill-smoke.mjs\",\n    \"test:release-registry\": \"node scripts/ci-profile/node-test.mjs scripts/macos-runner-runtime.test.mjs scripts/macos-runner-runtime-cache.test.mjs scripts/macos-runner-runtime-workflow.test.mjs scripts/ci-profile/reporters.test.mjs scripts/ci/retry-reporter.test.mjs scripts/ci/stalled-file-reporter.test.mjs scripts/__tests__/runner-vitest-package-lanes.test.mjs scripts/__tests__/canary-startup-playwright.test.mjs scripts/__tests__/cursor-public-install-sandbox.test.mjs scripts/__tests__/grok-public-install-sandbox.test.mjs scripts/__tests__/public-install-closure.test.mjs scripts/__tests__/public-install-registry.test.mjs scripts/__tests__/prefetch-child.test.mjs scripts/__tests__/stage-bundled-packages.test.mjs scripts/__tests__/pack-staged-packages.test.mjs scripts/__tests__/retain-runner-qualification-packages.test.mjs scripts/__tests__/runner-release-crate-cache.test.mjs scripts/__tests__/runner-debug-crate-cache.test.mjs scripts/__tests__/agent-build-cache.test.mjs scripts/__tests__/agent-preflight.test.mjs scripts/__tests__/vitest-worker-isolation.test.mjs scripts/verify-release-registry-state.test.mjs scripts/release-package-map.test.mjs scripts/check-re"
+    },
+    "turbo.json": {
+      "path": "turbo.json",
+      "size_bytes": 9093,
+      "line_count": 339,
+      "truncated": true,
+      "excerpt": "{\n  \"$schema\": \"https://turborepo.dev/schema.json\",\n  \"globalDependencies\": [\n    \"*\",\n    \"**/package.json\",\n    \"pnpm-lock.yaml\",\n    \"pnpm-workspace.yaml\",\n    \".npmrc\",\n    \"tsconfig*.json\",\n    \"vitest.config.ts\",\n    \"**/vitest.config.*\",\n    \"**/vite.config.*\",\n    \"**/vitest.setup.*\",\n    \"**/tsconfig*.json\",\n    \"scripts/**\",\n    \".github/**\",\n    \"patches/**\",\n    \"tests/fixtures/**\",\n    \"tests/helpers/**\",\n    \"tests/runner-e2e/fixtures/**\",\n    \"tests/tsconfig.playwright.json\",\n    \"tests/acpx-qualification-models.ts\",\n    \"doc/**\",\n    \"docs/**\",\n    \"skills/**\",\n    \".agents/**\",\n    \"maps/**\",\n    \".claude/**\"\n  ],\n  \"globalEnv\": [\n    \"CI\",\n    \"CI_TASK_CACHE_SCOPE\",\n    \"GITHUB_WORKFLOW\",\n    \"NODE_OPTIONS\",\n    \"TZ\",\n    \"PAPERCLIP_*\",\n    \"TEST_*\",\n    \"VITE_*\",\n    \"DATABASE_URL\",\n    \"PG*\",\n    \"RUST*\",\n    \"CARGO*\",\n    \"NODE_ENV\",\n    \"XDG_*\",\n    \"LANG\",\n    \"LC_*\",\n    \"GIT_*\",\n    \"NPM_CONFIG_*\",\n    \"npm_config_*\"\n  ],\n  \"globalPassThroughEnv\": [\n    \"GITHUB_*\",\n    \"RUNNER_*\",\n    \"SSH_AUTH_SOCK\",\n    \"TMPDIR\",\n    \"TMP\",\n    \"TEMP\",\n    \"HOME\",\n    \"USER\",\n    \"SHELL\"\n  ],\n  \"tasks\": {\n    \"//#ci:server\": {\n      \"inputs\": [\n        \"server/**\",\n        \"cli/**\",\n        \"packages/**\",\n        \"ui/src/lib/**\",\n        \"ui/src/api/**\",\n        \"ui/src/types/**\",\n        \"ui/src/index.css\",\n        \"ui/src/bootstrapSetup.ts\",\n        \"ui/src/pages/CompanyExport.tsx\",\n        \"ui/*\",\n        \"ui/src/components/MarkdownBody.tsx\"\n      ],\n      \"outputs\": [],\n      \"cache\": true\n    },\n    \"//#ci:chat\": {\n      \"inputs\": [\n        \"server/**\",\n        \"cli/**\",\n        \"packages/**\",\n        \"ui/src/lib/**\",\n        \"ui/src/api/**\",\n        \"ui/src/types/**\",\n        \"ui/src/index.css\",\n        \"ui/src/bootstrapSetup.ts\",\n        \"ui/src/pages/CompanyExport.tsx\",\n        \"ui/*\",\n        \"ui/src/components/MarkdownBody.tsx\"\n      ],\n      \"outputs\": [],\n      \"cache\": true\n    },\n    \"//#ci:workspaces-a\": {\n      \"inputs\": [\n        \"ui/**\",\n        \"cli/**\",\n        \"packages/db/**\",\n        \"packages/shared/**\",\n        \"packages/adapter-utils/**\",\n        \"packages/adapters/**\",\n        \"packages/paperclip-runner/**\",\n        \"packages/plugins/**\",\n        \"server/src/services/agent-conversations.ts\",\n        \"announcements/examples/animated/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": true\n    },\n    \"//#ci:workspaces-b\": {\n      \"inputs\": [\n        \"server/**\",\n        \"cli/**\",\n        \"packages/**\",\n        \"ui/src/lib/**\",\n        \"ui/public/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": true\n    },\n    \"//#ci:db\": {\n      \"inputs\": [\n        \"packages/db/**\",\n        \"packages/shared/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": true\n    },\n    \"//#ci:serialized\": {\n      \"inputs\": [\n        \"server/**\",\n        \"cli/**\",\n        \"packages/**\",\n        \"ui/src/lib/**\",\n        \"ui/src/api/**\",\n        \"ui/src/types/**\",\n        \"ui/src/index.css\",\n        \"ui/src/bootstrapSetup.ts\",\n        \"ui/src/pages/CompanyExport.tsx\",\n        \"ui/*\",\n        \"ui/src/components/MarkdownBody.tsx\"\n      ],\n      \"outputs\": [],\n      \"cache\": true\n    },\n    \"//#ci:runner-static\": {\n      \"inputs\": [\n        \"server/**\",\n        \"packages/**\",\n        \"tests/runner-e2e/**\",\n        \"ui/src/lib/**\",\n        \"ui/src/api/**\",\n        \"ui/src/types/**\",\n        \"ui/src/index.css\",\n        \"ui/src/bootstrapSetup.ts\",\n        \"ui/src/pages/CompanyExport.tsx\",\n        \"ui/*\",\n        \"ui/src/components/MarkdownBody.tsx\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:runner-rust\": {\n      \"inputs\": [\n        \"packages/paperclip-runner/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": true\n    },\n    \"//#ci:runner-package\": {\n      \"inputs\": [\n        \"packages/paperclip-runner/**\",\n        \"packages/paperclip-eval-kernel/**\",\n        \"packages/adapters/codex-local/**\",\n        \"packages/adapter-utils/**\",\n        \"tests/runner-e2e/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:runner-vitest\": {\n      \"inputs\": [\n        \"server/**\",\n        \"packages/**\",\n        \"ui/src/lib/**\",\n        \"ui/src/api/**\",\n        \"ui/src/types/**\",\n        \"ui/src/index.css\",\n        \"ui/src/bootstrapSetup.ts\",\n        \"ui/src/pages/CompanyExport.tsx\",\n        \"ui/*\",\n        \"ui/src/components/MarkdownBody.tsx\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:typecheck\": {\n      \"inputs\": [\n        \"server/**\",\n        \"cli/**\",\n        \"packages/**\",\n        \"ui/**\",\n        \"tests/e2e/**\",\n        \"tests/runner-e2e/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:build\": {\n      \"inputs\": [\n        \"server/**\",\n        \"cli/**\",\n        \"packages/**\",\n        \"ui/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:sandbox-providers\": {\n      \"inputs\": [\n        \"packages/plugins/sandbox-providers/**\",\n        \"packages/plugins/sdk/**\",\n        \"packages/shared/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:docker\": {\n      \"inputs\": [\n        \"packages/paperclip-runner/**\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:canary\": {\n      \"inputs\": [\n        \"scripts/release*\",\n        \"scripts/build-npm.sh\",\n        \"scripts/build-standalone-public-packages.mjs\",\n        \"scripts/cli-bundled-npm-dependencies.mjs\",\n        \"scripts/link-plugin-dev-sdk.mjs\",\n        \"scripts/prefetch-child.mjs\",\n        \"scripts/stage-bundled-packages.mjs\",\n        \"scripts/pack-staged-packages.mjs\",\n        \"scripts/prepare-bundled-package.mjs\",\n        \"scripts/prepare-server-ui-dist.sh\",\n        \"scripts/generate-npm-package-json.mjs\",\n        \"scripts/prepare-npm-readme.mjs\",\n        \"scripts/check-forbidden-tokens.mjs\",\n        \"scripts/confirm-canary-publication.sh\",\n        \"scripts/create-github-release.sh\"\n      ],\n      \"outputs\": [],\n      \"cache\": false\n    },\n    \"//#ci:e2e\": {\n      \"inputs\": [\n        \"server/**\",\n        \"cli/**\",\n"
+    },
+    "pnpm-workspace.yaml": {
+      "path": "pnpm-workspace.yaml",
+      "size_bytes": 2493,
+      "line_count": 48,
+      "truncated": false,
+      "excerpt": "packages:\n  - packages/*\n  - packages/adapters/*\n  - packages/plugins/*\n  # Keep sandbox-provider plugins installable as standalone packages without\n  # forcing root pnpm-lock.yaml churn for their third-party deps.\n  - \"!packages/plugins/sandbox-providers/**\"\n  - packages/plugins/examples/*\n  # Keep this smoke fixture installable as a local plugin example without\n  # forcing PRs to commit pnpm-lock.yaml for a new workspace importer.\n  - \"!packages/plugins/examples/plugin-orchestration-smoke-example\"\n  - server\n  - ui\n  - cli\n\n# Keep in sync with package.json#pnpm.patchedDependencies. Newer pnpm\n# versions read patch configuration only from the workspace manifest.\npatchedDependencies:\n  postgres@3.4.9: patches/postgres@3.4.9.patch\n  embedded-postgres@18.1.0-beta.16: patches/embedded-postgres@18.1.0-beta.16.patch\n  acpx@0.22.0: patches/acpx@0.22.0.patch\n  \"@agentclientprotocol/claude-agent-acp@0.73.0\": patches/@agentclientprotocol__claude-agent-acp@0.73.0.patch\n  \"@agentclientprotocol/codex-acp@1.6.2\": patches/@agentclientprotocol__codex-acp@1.6.2.patch\n  \"@chat-adapter/slack@4.39.0\": patches/@chat-adapter__slack@4.39.0.patch\n  \"@chat-adapter/discord@4.39.0\": patches/@chat-adapter__discord@4.39.0.patch\n  \"@chat-adapter/telegram@4.39.0\": patches/@chat-adapter__telegram@4.39.0.patch\n  \"@chat-adapter/teams@4.39.0\": patches/@chat-adapter__teams@4.39.0.patch\n  \"@chat-adapter/github@4.39.0\": patches/@chat-adapter__github@4.39.0.patch\n  \"@discordjs/ws@1.2.3\": patches/@discordjs__ws@1.2.3.patch\n\n# Agent CLIs share the current runtime used by the native provider pack.\n# pnpm patches change package files, but overrides control dependency resolution.\noverrides:\n  \"@agentclientprotocol/codex-acp@1.6.2>@openai/codex\": \"0.170.0\"\n  \"@agentclientprotocol/claude-agent-acp@0.73.0>@anthropic-ai/claude-agent-sdk\": \"0.3.328\"\n  rollup: \">=4.59.0\"\n  react: \"^19.2.8\"\n  react-dom: \"^19.2.8\"\n  # CodeMirror validates extensions with instanceof, so exactly one copy of\n  # these two packages may resolve. Different CodeMirror packages pin\n  # different transitive minors, which resolves two copies and crashes the\n  # editor with \"Unrecognized extension value in extension set\". A shared\n  # range forces every consumer onto one resolution.\n  \"@codemirror/state\": \"^6.7.2\"\n  \"@codemirror/view\": \"^6.43.11\"\n  # Parsers and highlighters must share NodeProp IDs from one Lezer instance.\n  # Mixed copies can interpret unrelated node metadata as highlighting tags.\n  \"@lezer/common\": \"^1.5.2\"\n"
+    }
+  },
+  "workflow_samples": {
+    "backup-checkpoint-qualification.yml": {
+      "path": ".github/workflows/backup-checkpoint-qualification.yml",
+      "size_bytes": 3834,
+      "line_count": 81,
+      "truncated": false,
+      "excerpt": "name: Backup checkpoint qualification\non:\n  pull_request:\n    paths:\n      - 'packages/db/**'\n      - 'server/src/services/*backup*'\n      - 'server/src/lib/dedicated-test-database-url.ts'\n      - 'server/src/__tests__/*backup*'\n      - 'server/src/__tests__/fixtures/database-backup-worker.ts'\n      - 'server/src/index.ts'\n      - 'server/scripts/*backup*'\n      - 'server/scripts/lib/backup-qualification.ts'\n      - 'server/vitest.backup-qualification.config.ts'\n      - '.github/workflows/backup-checkpoint-qualification.yml'\n      - '.github/actions/setup-ci-dependencies/**'\n      - 'package.json'\n      - 'pnpm-lock.yaml'\n  push:\n    branches: [master]\npermissions:\n  contents: read\njobs:\n  backup-checkpoint:\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n    services:\n      postgres:\n        image: postgres:17\n        env:\n          POSTGRES_USER: paperclip\n          POSTGRES_PASSWORD: backup-qualification-fixture\n          POSTGRES_DB: backup_source_test\n        ports: ['5432:5432']\n        options: >-\n          --health-cmd \"pg_isready -U paperclip -d backup_source_test\"\n          --health-interval 5s --health-timeout 5s --health-retries 12\n    env:\n      PAPERCLIP_BACKUP_CHECKPOINT_SOURCE_TEST_DATABASE_URL: postgres://paperclip:backup-qualification-fixture@127.0.0.1:5432/backup_source_test\n      PAPERCLIP_BACKUP_CHECKPOINT_RESTORE_TEST_DATABASE_URL: postgres://paperclip:backup-qualification-fixture@127.0.0.1:5432/backup_restore_test\n      PAPERCLIP_BACKUP_QUALIFICATION_RECEIPT: ${{ github.workspace }}/backup-checkpoint-evidence/qualification.json\n    steps:\n      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683\n      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86\n        with:\n          version: 9.15.4\n      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020\n        with:\n          node-version: '24'\n          package-manager-cache: false\n      # Installs dependencies and builds the shared and plugin SDK packages.\n      - name: Restore materialized dependencies and shared builds\n        uses: ./.github/actions/setup-ci-dependencies\n      - name: Build the database package\n        run: pnpm --filter @paperclipai/db build\n      - name: Use the service image's matching real PostgreSQL clients\n        env:\n          PG_CONTAINER: ${{ job.services.postgres.id }}\n        run: |\n          mkdir -p \"$RUNNER_TEMP/backup-clients\" backup-checkpoint-evidence\n          for binary in pg_dump psql; do\n            printf '#!/bin/sh\\nexec docker exec --interactive %s %s \"$@\"\\n' \"$PG_CONTAINER\" \"$binary\" > \"$RUNNER_TEMP/backup-clients/$binary\"\n            chmod 700 \"$RUNNER_TEMP/backup-clients/$binary\"\n          done\n          echo \"PAPERCLIP_PG_DUMP_PATH=$RUNNER_TEMP/backup-clients/pg_dump\" >> \"$GITHUB_ENV\"\n          echo \"PAPERCLIP_PSQL_PATH=$RUNNER_TEMP/backup-clients/psql\" >> \"$GITHUB_ENV\"\n          \"$RUNNER_TEMP/backup-clients/pg_dump\" --version\n          \"$RUNNER_TEMP/backup-clients/psql\" --version\n          \"$RUNNER_TEMP/backup-clients/psql\" \"$PAPERCLIP_BACKUP_CHECKPOINT_SOURCE_TEST_DATABASE_URL\" --set=ON_ERROR_STOP=1 -c 'CREATE DATABASE backup_restore_test'\n      - name: Migrate only the owned source fixture\n        env:\n          DATABASE_URL: ${{ env.PAPERCLIP_BACKUP_CHECKPOINT_SOURCE_TEST_DATABASE_URL }}\n        run: pnpm --filter @paperclipai/db exec tsx src/migrate.ts\n      - name: Run required real checkpoint and restore proof\n        run: pnpm --filter @paperclipai/server exec vitest run --config vitest.backup-qualification.config.ts\n      - name: Attach qualification receipt\n        if: always()\n        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02\n        with:\n          name: backup-checkpoint-evidence\n          path: backup-checkpoint-evidence/\n          if-no-files-found: warn\n"
+    },
+    "chat-catalog-testops-case.yml": {
+      "path": ".github/workflows/chat-catalog-testops-case.yml",
+      "size_bytes": 15951,
+      "line_count": 323,
+      "truncated": true,
+      "excerpt": "name: Chat catalog TestOps case\n\non:\n  workflow_call:\n    inputs:\n      protocol:\n        type: string\n        required: true\n      cell:\n        type: string\n        required: true\n      target_sha:\n        type: string\n        required: true\n      runner:\n        type: string\n        required: true\n      selection_artifact_id:\n        type: string\n        required: true\n      selection_sha256:\n        type: string\n        required: true\n      build_artifact_id:\n        type: string\n        required: true\n      ALLURE_JOB_RUN_ID:\n        type: string\n        required: true\n    secrets:\n      OPENROUTER_API_KEY:\n        required: false\n      ANTHROPIC_API_KEY:\n        required: false\n      ALLURE_TOKEN:\n        required: false\n\npermissions:\n  contents: read\n  actions: read\n\nenv:\n  NODE_OPTIONS: ''\n  NODE_PATH: ''\n  AWS_EC2_METADATA_DISABLED: 'true'\n\njobs:\n  chat:\n    name: Execute the original selected case\n    runs-on: ${{ inputs.runner }}\n    timeout-minutes: ${{ fromJSON(inputs.cell).timeout_minutes }}\n    environment: runner-e2e-private-paid\n    permissions:\n      contents: read\n      actions: read\n      id-token: write\n    env: &retention\n      TARGET_SHA: ${{ inputs.target_sha }}\n      MANUAL_PRIVATE_IDS: ${{ fromJSON(inputs.cell).private_ids }}\n      MANUAL_PRIVATE_APPROVALS_JSON: ${{ fromJSON(inputs.cell).private_policy }}\n      RUNNER_E2E_PRIVATE_HISTORY_S3_BUCKET: ${{ vars.RUNNER_E2E_PRIVATE_HISTORY_S3_BUCKET }}\n    steps:\n      - &checkout\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n        with:\n          ref: ${{ github.sha }}\n          persist-credentials: false\n      - &node\n        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7\n        with:\n          node-version: 24\n      - &guard\n        name: Verify the exact reusable protocol and main-only caller\n        env:\n          GH_TOKEN: ${{ github.token }}\n          TESTOPS_ALLOWED_ACTOR_IDS: ${{ vars.RUNNER_E2E_ALLOWED_ACTOR_IDS }}\n          CHAT_TESTOPS_PROTOCOL: ${{ inputs.protocol }}\n        run: |\n          test \"$CHAT_TESTOPS_PROTOCOL\" = streaming-v1\n          node tests/runner-e2e/chat-completion-testops-cli.mjs guard\n      - &pnpm\n        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6\n        env:\n          NPM_CONFIG_AUDIT: 'false'\n          NPM_CONFIG_FUND: 'false'\n          NPM_CONFIG_UPDATE_NOTIFIER: 'false'\n        with:\n          version: 9.15.4\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n        with:\n          ref: ${{ inputs.target_sha }}\n          persist-credentials: false\n      - name: Reject target-owned trusted helper paths\n        id: target_boundary\n        run: test -z \"$(git ls-tree --name-only HEAD -- .testops-trusted)\"\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n        with:\n          ref: ${{ github.sha }}\n          path: .testops-trusted\n          persist-credentials: false\n      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8\n        with:\n          artifact-ids: ${{ inputs.build_artifact_id }}\n          path: chat-completion-build\n      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8\n        with:\n          artifact-ids: ${{ inputs.selection_artifact_id }}\n          path: chat-completion-testops-selection\n      - name: Verify source-bound build and authenticated selection before credentials\n        env:\n          GH_TOKEN: ${{ github.token }}\n          TESTOPS_ALLOWED_ACTOR_IDS: ${{ vars.RUNNER_E2E_ALLOWED_ACTOR_IDS }}\n          EXPECTED_SELECTION_SHA256: ${{ inputs.selection_sha256 }}\n          ALLURE_JOB_RUN_ID: ${{ inputs.ALLURE_JOB_RUN_ID }}\n        run: |\n          set -euo pipefail\n          test \"$(git -C .testops-trusted rev-parse HEAD)\" = \"$GITHUB_SHA\"\n          node .testops-trusted/tests/runner-e2e/chat-completion-testops-cli.mjs verify-selection chat-completion-testops-selection/testops-pilot-selection.json\n          (cd chat-completion-build && sha256sum -c chat-completion-build.tar.gz.sha256)\n          tar -xzf chat-completion-build/chat-completion-build.tar.gz -C \"$GITHUB_WORKSPACE\"\n          pnpm install --frozen-lockfile --ignore-scripts\n          (cd .testops-trusted && node tests/runner-e2e/prepare-report-lock.mjs && pnpm install --frozen-lockfile --ignore-scripts --store-dir \"$RUNNER_TEMP/chat-completion-retention-store\")\n      - name: Qualify the pinned provider runtime and preinstalled browser\n"
+    },
+    "chat-catalog-testops.yml": {
+      "path": ".github/workflows/chat-catalog-testops.yml",
+      "size_bytes": 18173,
+      "line_count": 377,
+      "truncated": true,
+      "excerpt": "name: Chat catalog TestOps\nrun-name: Chat catalog TestOps / ${{ inputs.operation || 'evaluate' }} / ${{ inputs.ALLURE_JOB_RUN_ID || github.run_id }}\n\non:\n  workflow_dispatch:\n    inputs:\n      operation:\n        type: choice\n        options: [evaluate, bootstrap]\n        default: evaluate\n        description: Run the exact TestOps selection, or register its catalog plan\n      ALLURE_JOB_RUN_ID:\n        type: string\n        required: false\n        description: TestOps job-run identity; source, model and clocks are fixed\n      ALLURE_USERNAME:\n        type: string\n        required: false\n        description: Reserved service metadata; never grants authority\n\npermissions:\n  contents: read\n  actions: read\n\nconcurrency:\n  group: chat-catalog-testops-streaming-v1\n  cancel-in-progress: false\n\nenv:\n  NODE_OPTIONS: ''\n  NODE_PATH: ''\n  AWS_EC2_METADATA_DISABLED: 'true'\n\njobs:\n  authorize:\n    runs-on: ${{ github.repository == 'paperclipai/paperclip' && github.repository_id == '1170821064' && github.workflow_ref == 'paperclipai/paperclip/.github/workflows/chat-catalog-testops.yml@refs/heads/master' && github.ref == 'refs/heads/master' && github.event_name == 'workflow_dispatch' && github.actor_id == '34892728' && github.run_attempt == '1' && github.triggering_actor == github.actor && 'runs-on/fleet=paperclip-public-pr-x64/env=public-ci' || 'ubuntu-latest' }}\n    timeout-minutes: 5\n    outputs:\n      operation: ${{ steps.guard.outputs.operation }}\n      target_sha: ${{ steps.guard.outputs.target_sha }}\n      runner: runs-on/fleet=paperclip-public-pr-x64/env=public-ci\n    steps:\n      - &checkout\n        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n        with:\n          ref: ${{ github.sha }}\n          persist-credentials: false\n      - &node\n        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7\n        with:\n          node-version: 24\n      - &guard\n        name: Verify actual main-only dispatch and both actors\n        id: guard\n        env:\n          GH_TOKEN: ${{ github.token }}\n          TESTOPS_ALLOWED_ACTOR_IDS: ${{ vars.RUNNER_E2E_ALLOWED_ACTOR_IDS }}\n        run: node tests/runner-e2e/chat-completion-testops-cli.mjs guard\n\n  select:\n    name: Register the dedicated plan or validate its real TestOps selection\n    needs: authorize\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n    environment: runner-e2e-testops-reporting\n    outputs:\n      artifact_id: ${{ steps.selection_upload.outputs.artifact-id }}\n      selection_sha256: ${{ steps.selection.outputs.selection_sha256 }}\n      execution_ids: ${{ steps.selection.outputs.execution_ids }}\n      matrix: ${{ steps.selection.outputs.matrix }}\n      native_matrix: ${{ steps.selection.outputs.native_matrix }}\n      external_matrix: ${{ steps.selection.outputs.external_matrix }}\n      native_count: ${{ steps.selection.outputs.native_count }}\n      external_count: ${{ steps.selection.outputs.external_count }}\n      parallelism: ${{ steps.selection.outputs.parallelism }}\n      policy: ${{ steps.selection.outputs.policy }}\n    steps:\n      - *checkout\n      - *node\n      - *guard\n      - if: needs.authorize.outputs.operation != 'launch-plan'\n        uses: allure-framework/setup-allurectl@2d89ee0b7ba2f59dbe9849b6df5763cab78e14db # v1\n        with:\n          allurectl-version: 2.23.1\n          allure-endpoint: https://paperclip.testops.cloud\n          allure-project-id: '1'\n          allure-token: ${{ secrets.ALLURE_TOKEN }}\n      - name: Register all 244 catalog cases without synthetic results\n        if: needs.authorize.outputs.operation == 'bootstrap'\n        env:\n          GH_TOKEN: ${{ github.token }}\n          TESTOPS_ALLOWED_ACTOR_IDS: ${{ vars.RUNNER_E2E_ALLOWED_ACTOR_IDS }}\n          ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}\n          ALLURE_ENDPOINT: https://paperclip.testops.cloud\n          ALLURE_PROJECT_ID: '1'\n          ALLURE_RESULTS: ${{ runner.temp }}/chat-completion-bootstrap-results\n          CHAT_TESTOPS_INTEGRATION_ID: ${{ vars.CHAT_TESTOPS_INTEGRATION_ID }}\n        run: |\n          mkdir -m 700 \"$ALLURE_RESULTS\"\n          allurectl watch -- node tests/runner-e2e/chat-completion-testops-cli.mjs bootstrap\n          node tests/runner-e2e/chat-completion-testops-cli.mjs bootstrap-context\n      - name: Validate case, plan, job, launch and same-run source before provider access\n        id: selection\n        if: needs.authorize.outputs.operation == 'evaluate'\n        env:\n          GH_TOKEN: ${{ github.token }}\n    "
+    },
+    "chat-feature-testops-retained-verification.yml": {
+      "path": ".github/workflows/chat-feature-testops-retained-verification.yml",
+      "size_bytes": 1767,
+      "line_count": 47,
+      "truncated": false,
+      "excerpt": "name: Read-only retained chat TestOps verification\nrun-name: Read-only retained chat verification / origin 41217990335 / ${{ github.run_id }}\n\non:\n  workflow_dispatch:\n\npermissions:\n  contents: read\n  actions: read\n\nconcurrency:\n  group: chat-feature-testops-retained-verification\n  cancel-in-progress: false\n\njobs:\n  verify:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    environment: runner-e2e-testops-reporting\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\n        with:\n          ref: ${{ github.sha }}\n          persist-credentials: false\n      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020\n        with:\n          node-version: 24\n      - name: Check the credential-free retained-verification controls\n        run: node --test tests/runner-e2e/chat-feature-testops-retained-verification.node-test.mjs\n      - name: Read only the fixed retained measurement with separate executor identity\n        env:\n          GH_TOKEN: ${{ github.token }}\n          TESTOPS_ALLOWED_ACTOR_IDS: ${{ vars.RUNNER_E2E_ALLOWED_ACTOR_IDS }}\n          ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}\n          NODE_OPTIONS: ''\n          NODE_PATH: ''\n        run: node tests/runner-e2e/testops-chat-retained-verification.mjs\n      - name: Retain only closed verification metadata\n        if: always()\n        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a\n        with:\n          name: chat-testops-retained-verification-${{ github.run_id }}-1\n          path: |\n            ${{ runner.temp }}/chat-testops-retained-verification/retained-verification.json\n            ${{ runner.temp }}/chat-testops-retained-verification/failure.json\n          if-no-files-found: error\n          retention-days: 30\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-25T13:03:49Z",
+      "oldest": "2026-11-24T22:34:32Z"
+    },
+    "conventional_pct": 94.0,
+    "fix_revert_pct": 56.0,
+    "ai_coauthor_pct": 58.0,
+    "top_recent_authors": [
+      [
+        "cryppadotta",
+        39
+      ],
+      [
+        "devinfoley",
+        4
+      ],
+      [
+        "commitperclip[bot]",
+        2
+      ],
+      [
+        "scotttong",
+        1
+      ],
+      [
+        "appleguy",
+        1
+      ],
+      [
+        "eroslifestyle",
+        1
+      ],
+      [
+        "nickyleach",
+        1
+      ],
+      [
+        "nguyenm7",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "07d444a7",
+        "date": "2026-11-25T13:03:49Z",
+        "author": "cryppadotta",
+        "subject": "feat(plugins): carry a Gemini API key to plugin Runners for Google Antigravity (#22930)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4ade8a9e",
+        "date": "2026-11-25T12:37:02Z",
+        "author": "cryppadotta",
+        "subject": "docs(plans): plan the Google Antigravity rollout to Paperclip Cloud (#22923)",
+        "ai_signal": true
+      },
+      {
+        "sha": "e198f77c",
+        "date": "2026-11-25T12:14:45Z",
+        "author": "cryppadotta",
+        "subject": "fix(ui): remove obsolete Experimental harness picker from new agent dialog (#22919)",
+        "ai_signal": false
+      },
+      {
+        "sha": "87083fe9",
+        "date": "2026-11-25T12:03:23Z",
+        "author": "cryppadotta",
+        "subject": "fix(e2e): retry transient journey API read failures (#22917)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4622965a",
+        "date": "2026-11-25T11:42:24Z",
+        "author": "cryppadotta",
+        "subject": "fix(github): recover response requests that ran out of retries; restore lost regression tests (#22906)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4aaa77e6",
+        "date": "2026-11-25T11:28:53Z",
+        "author": "cryppadotta",
+        "subject": "perf(ci): split 6 single-file Vitest stragglers across runner, chat, server, and serialized lanes (#22916)",
+        "ai_signal": false
+      },
+      {
+        "sha": "371ece93",
+        "date": "2026-11-25T11:25:51Z",
+        "author": "cryppadotta",
+        "subject": "fix(tool-access): do not store provider-removed actions in the connection profile (#22908)",
+        "ai_signal": true
+      },
+      {
+        "sha": "007d1c2e",
+        "date": "2026-11-25T11:22:08Z",
+        "author": "cryppadotta",
+        "subject": "perf(runner): parallelize static checks and memoize contract fingerprinting (#22912)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0e4dcd9b",
+        "date": "2026-11-25T11:18:07Z",
+        "author": "cryppadotta",
+        "subject": "fix(e2e): wait for hire retries and keep API failure codes in journey evidence (#22914)",
+        "ai_signal": true
+      },
+      {
+        "sha": "91e9365d",
+        "date": "2026-11-25T11:05:02Z",
+        "author": "cryppadotta",
+        "subject": "perf(ci): compact PR shard matrices for GitHub-hosted ubuntu-latest runners (#22911)",
+        "ai_signal": false
+      },
+      {
+        "sha": "10cd186a",
+        "date": "2026-11-25T10:52:11Z",
+        "author": "cryppadotta",
+        "subject": "feat(antigravity): carry the agent's own instructions into a /swarm turn (#22905)",
+        "ai_signal": true
+      },
+      {
+        "sha": "1ad5dd9d",
+        "date": "2026-11-25T10:44:10Z",
+        "author": "cryppadotta",
+        "subject": "fix(runner): preserve admitted remote provider pack across reattach and relaunch (#22850)",
+        "ai_signal": false
+      },
+      {
+        "sha": "9bb4789c",
+        "date": "2026-11-25T10:37:02Z",
+        "author": "cryppadotta",
+        "subject": "fix(heartbeat): park deferred issue monitors and preserve updated_at (#22851)",
+        "ai_signal": false
+      },
+      {
+        "sha": "6b070dc7",
+        "date": "2026-11-25T10:36:24Z",
+        "author": "cryppadotta",
+        "subject": "fix(workspaces): name incompatible Core project storage on plugin environments (#22849)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0e12237d",
+        "date": "2026-11-25T10:34:26Z",
+        "author": "cryppadotta",
+        "subject": "fix(workspaces): classify Git storage guard failures during clone and archive (#22848)",
+        "ai_signal": false
+      },
+      {
+        "sha": "cd02a8e0",
+        "date": "2026-11-25T10:34:15Z",
+        "author": "cryppadotta",
+        "subject": "fix(workspaces): release superseded ended writers and resolve expired reusable leases on writer holds (#22847)",
+        "ai_signal": false
+      },
+      {
+        "sha": "585f58ae",
+        "date": "2026-11-25T10:34:03Z",
+        "author": "cryppadotta",
+        "subject": "fix(workspaces): stop retrying copy-back when a Git operation is in progress (#22844)",
+        "ai_signal": false
+      },
+      {
+        "sha": "95ffa0c8",
+        "date": "2026-11-25T10:32:38Z",
+        "author": "cryppadotta",
+        "subject": "fix(agents): state the follow-up request plainly and keep run ids out of the prompt (#22899)",
+        "ai_signal": true
+      },
+      {
+        "sha": "8de66867",
+        "date": "2026-11-25T10:32:26Z",
+        "author": "cryppadotta",
+        "subject": "fix(apps): save action choices when the provider no longer offers some actions (#22877)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d63325ee",
+        "date": "2026-11-25T10:26:49Z",
+        "author": "cryppadotta",
+        "subject": "fix(workspaces): restore on a new sandbox when a resumed sandbox disk is full (#22837)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "cryppadotta",
+      "contributions": 5675
+    },
+    {
+      "login": "devinfoley",
+      "contributions": 1123
+    },
+    {
+      "login": "nickyleach",
+      "contributions": 585
+    },
+    {
+      "login": "dependabot[bot]",
+      "contributions": 221
+    },
+    {
+      "login": "github-actions[bot]",
+      "contributions": 111
+    },
+    {
+      "login": "scotttong",
+      "contributions": 77
+    },
+    {
+      "login": "tonio-alucema",
+      "contributions": 63
+    },
+    {
+      "login": "paperclipbugbot",
+      "contributions": 41
+    },
+    {
+      "login": "stubbi",
+      "contributions": 35
+    },
+    {
+      "login": "nguyenm7",
+      "contributions": 34
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v2026.1117.0",
+      "published_at": "2026-11-18T22:20:29Z",
+      "name": "v2026.1117.0"
+    },
+    {
+      "tag": "v2026.1106.0",
+      "published_at": "2026-11-06T22:31:53Z",
+      "name": "v2026.1106.0"
+    },
+    {
+      "tag": "v2026.1023.0",
+      "published_at": "2026-10-24T00:03:59Z",
+      "name": "v2026.1023.0"
+    },
+    {
+      "tag": "v2026.1012.0",
+      "published_at": "2026-10-12T21:06:53Z",
+      "name": "v2026.1012.0"
+    },
+    {
+      "tag": "v2026.1005.0",
+      "published_at": "2026-10-06T16:40:49Z",
+      "name": "v2026.1005.0"
+    }
+  ]
+}

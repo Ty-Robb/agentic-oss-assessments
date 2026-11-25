@@ -1,0 +1,501 @@
+{
+  "repo": "gastownhall/beads",
+  "meta": {
+    "description": "Beads - A memory upgrade for your coding agent",
+    "homepage": "https://beads.gascity.com",
+    "license": "MIT",
+    "stars": 29048,
+    "forks": 1960,
+    "open_issues": 1828,
+    "archived": false,
+    "created_at": "2025-10-12T03:09:46Z",
+    "pushed_at": "2026-11-24T14:46:19Z",
+    "default_branch": "main",
+    "topics": [
+      "agents",
+      "claude-code",
+      "coding"
+    ]
+  },
+  "languages": {
+    "Go": 51441293,
+    "Python": 831736,
+    "Starlark": 739502,
+    "Shell": 715204,
+    "Rust": 73163,
+    "JavaScript": 41878,
+    "PowerShell": 40623,
+    "Makefile": 27877,
+    "Go Template": 6922,
+    "Nix": 5312
+  },
+  "structure": {
+    "root": [
+      ".agent/",
+      ".bazelignore",
+      ".bazelrc",
+      ".bazelversion",
+      ".beads/",
+      ".buildflags",
+      ".claude-plugin/",
+      ".claude/",
+      ".devcontainer/",
+      ".gitattributes",
+      ".githooks/",
+      ".github/",
+      ".gitignore",
+      ".golangci.yml",
+      ".goreleaser.yml",
+      ".pre-commit-config.yaml",
+      ".test-skip",
+      "AGENTS.md",
+      "AGENT_INSTRUCTIONS.md",
+      "ARTICLES.md",
+      "BENCHMARKS.md",
+      "BUILD.bazel",
+      "CHANGELOG.md",
+      "CLAUDE.md",
+      "CONTRIBUTING.md",
+      "CONTRIBUTING_PR_GUIDELINES.md",
+      "FEDERATION-SETUP.md",
+      "LICENSE",
+      "MODULE.bazel",
+      "MODULE.bazel.lock",
+      "Makefile",
+      "NEWSLETTER.md",
+      "PROPOSAL-cas-conditional-update.md",
+      "PROPOSAL-pluggable-storage-backends.md",
+      "PROPOSAL-pull-config-wedge.md",
+      "PR_MAINTAINER_GUIDELINES.md",
+      "README.md",
+      "RELEASING.md",
+      "ROADMAP.md",
+      "SECURITY.md",
+      "THIRD_PARTY_LICENSES",
+      "VERSIONED-BEADS-WRITE-PATHS.md",
+      "backend/",
+      "beads.go",
+      "beads_cgo.go",
+      "beads_gated_test.go",
+      "beads_nocgo.go",
+      "beads_test.go",
+      "beadserrors/",
+      "build-docs.md",
+      "claim.go",
+      "claim_roundtrip_test.go",
+      "claim_test.go",
+      "cmd/",
+      "codecov.yml",
+      "default.nix",
+      "docs/",
+      "engdocs/",
+      "errors_test.go",
+      "examples/",
+      "export_dependency_add_options_test.go",
+      "flake.lock",
+      "flake.nix",
+      "format/",
+      "gazelle.go.work",
+      "go.mod",
+      "go.sum",
+      "install.ps1",
+      "integrations/",
+      "internal/",
+      "issue_lifecycle_external_test.go",
+      "issue_roles_external_test.go",
+      "issueops/",
+      "issues.jsonl",
+      "journalops/",
+      "memoryops/",
+      "mint.sh",
+      "npm-package/",
+      "open_backend_selection_test.go",
+      "open_nocgo_test.go",
+      "open_proxied_server_test.go",
+      "overlay.nix",
+      "packages.nix",
+      "platforms/",
+      "plugins/",
+      "query_interfaces_cgo_test.go",
+      "query_interfaces_test.go",
+      "release-gates/",
+      "renovate.json",
+      "schema/",
+      "scripts/",
+      "test/",
+      "tests/",
+      "third_party/",
+      "tools/",
+      "winget/"
+    ],
+    "workflows": [
+      "bazel-autofix.yml",
+      "bazel-farm.yml",
+      "bazel.yml",
+      "close-stale-needs.yml",
+      "deploy-pages-redirect.yml",
+      "docs-autofix.yml",
+      "docs-mintlify.yml",
+      "main-ci-alert.yml",
+      "main.yml",
+      "nightly.yml",
+      "nix-build.yml",
+      "pr-risk.yml",
+      "pr.yml",
+      "release.yml",
+      "remove-needs-info.yml",
+      "remove-needs-triage.yml",
+      "request-needs-info.yml",
+      "test-pypi.yml",
+      "triage-label.yml",
+      "update-flake-lock.yml",
+      "update-vendor-hash.yml",
+      "worker-env-autosync.yml",
+      "worker-env-sync-automerge.yml"
+    ],
+    "docs": [
+      "CLI_REFERENCE.md",
+      "RECOVERY.md",
+      "architecture/",
+      "cli-docs.pin",
+      "cli-reference/",
+      "community-tools.md",
+      "core-concepts/",
+      "diagrams/",
+      "docs.json",
+      "getting-started/",
+      "images/",
+      "index.md",
+      "integrations/",
+      "multi-agent/",
+      "recovery/",
+      "reference/",
+      "related-projects.md",
+      "workflows/"
+    ],
+    "docs_count": 18,
+    "agents_dir": [],
+    "agents_skills": [],
+    "claude_dir": [
+      "hooks/",
+      "settings.json",
+      "skills/"
+    ],
+    "cursor_dir": [],
+    "evals_dir": []
+  },
+  "key_files": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "size_bytes": 13557,
+      "line_count": 245,
+      "truncated": false,
+      "excerpt": "# Beads \u2014 Contributor Agent Instructions\n\nThis file is for agents and humans **developing beads** (`bd`). If you are\nusing `bd` to track work in your own project, read the user docs instead:\n[docs site](https://beads.gascity.com/) and\n[IDE and agent setup](docs/getting-started/ide-setup.md).\n\n<!-- Contributor-only file. Do not run `bd setup` or `bd init` against this\ncheckout: they would inject the end-user beads integration block here. -->\n\nNested `AGENTS.md` files hold area-specific rules; the routing table at the\nend lists them. `CLAUDE.md` files are symlinks to their sibling `AGENTS.md`.\n\n## How work flows here\n\nGitHub Issues is the public tracker. Use an issue when it adds context\nreviewers need: a user-visible bug, a behavior or design change worth\ndiscussing, or work that spans several PRs. The issue carries the\nreproduction, impact, and evidence for a bug, or the motivation, impact, risk,\nand verification plan for a change. Small, self-explanatory changes (typos,\nflaky tests, refactors, CI or docs tweaks) can go straight to a PR whose body\nexplains the why.\n\n1. If the change warrants an issue, find or file one with the bug or feature\n   form. It does not need maintainer approval first; file it before or\n   alongside the PR.\n2. Work on a branch, open a PR against `main` (its body says\n   `Closes #<issue>` when there is one), and let CI and review run.\n3. Maintainers triage issues with `status/needs-triage`, `status/needs-info`,\n   `status/needs-repro`, `status/needs-design`, and `status/accepted`\n   (confirmed); see [CONTRIBUTING.md](CONTRIBUTING.md).\n\nMaintainers also keep an internal bd ledger. It is optional for contributors\nand not a substitute for the GitHub issue.\n\n## Agent contribution policy\n\n- File an issue when the change warrants one (see above). When you do, use\n  the bug or feature form fields, fill each from evidence, and answer\n  `NOT_ENOUGH_INFO` where the evidence runs out.\n- A human reviews and stands behind every issue and PR an agent drafts.\n  Evidence that the change works end-to-end is required; \"unit tests pass\"\n  alone is not evidence.\n- Before implementing work, opening a PR, or merging/closing a PR, run the PR\n  preflight:\n  ```bash\n  scripts/pr-preflight.sh --search \"<topic keywords>\" --repo gastownhall/beads\n  scripts/pr-preflight.sh <pr-number> --repo gastownhall/beads\n  ```\n  The preflight is the agent gate for PR handling; do not rely on\n  auto-discovery of CONTRIBUTING.md.\n- Use `gh` for GitHub issues and PRs, not browser tools. Write PR, issue,\n  comment, and review bodies to a file, run `scripts/gh-body-lint <body-file>`,\n  and pass the file with `gh ... --body-file`. Sign agent-written GitHub\n  comments and reviews per [engdocs/AGENT_SIGNING.md](engdocs/AGENT_SIGNING.md).\n\n## Contributor protection\n\nExternal contributor PRs have priority. Read [CONTRIBUTING.md](CONTRIBUTING.md)\n\u2014 it contains promises we've made to contributors \u2014 and, before triaging,\nreviewing, landing, closing, or otherwise maintaining PRs,\n[PR_MAINTAINER_GUIDELINES.md](PR_MAINTAINER_GUIDELINES.md). The maintainer\npolicy is to maximize community throughput: find useful contributor value,\nabsorb or transform it locally when practical, preserve attribution, and use\nrequest-changes only as a last resort.\n\nBefore implementing any feature or fix, check for existing open PRs on the\nsame topic. If one exists:\n\n1. **Review it first** \u2014 read the diff, understand the approach.\n2. **Build on their work, don't rewrite it** \u2014 check out their branch,\n   fix/adapt as needed.\n3. **Preserve their tests** \u2014 keep them unless they're wrong.\n4. **Attribute properly** \u2014 `Co-authored-by:` in commits, reference their PR.\n5. **Never close or supersede their PR silently.** If a rewrite is\n   unavoidable, explain why on the original PR and credit their design/tests.\n\n## Scope: where a change belongs\n\nRead [engdocs/PROJECT_CHARTER.md](engdocs/PROJECT_CHARTER.md) before adding\nfeature surface area. Beads owns issue tracking primitives and should not\nencode orchestration-layer policy, become a storage engine, or casually expand\nthe database schema when metadata would work. Prefer, in order: issue\nmetadata over new fields, a flag on an existing command over a new command,\nan integration or plugin over core, and leave orchestration policy to the\norchestration layer.\n\n**Storage boundary.** Beads talks to storage through a driver interface\n(`dolthub/driver` for Dolt). Do not add beads-side flocks, engine\nintrospection, storage-specific retry or crash-recovery logic, or public SDK\nreturn types that leak driver internals. If the boundary is too narrow, widen\nthe interface or route the issue to the driver instead of patching around it\nin beads. One maintainer-granted exception: `databaseLocked` in\n`internal/doltserver` takes a shared, non-blocking lock on Dolt's own\n`.dolt/noms/LOCK` and releases it at once (it never creates or writes the\nfile), only to decide whether the workspace's Dolt database directory (the\nstore's CLI directory: `.beads/dolt/<db>` by default, or `<db>` under a\ncustom `dolt_data_dir` or under the shared server's data directory) is served\nby a live dolt process, so bd runs the dolt CLI there only for a served\ndirectory. A busy lock (another process holds it, as every dolt process with\nthe database open does) counts as served. A probe\nthat cannot open the file, or whose lock call fails for any other reason,\ncounts as not served, which sends bd through the SQL server (the safe\ndirection). The exception ends once the Dolt driver can report whether a\ndirectory is served, and covers no other lock (the test-only\n`testutil.HoldDoltDatabaseLock` is outside it). The same proof also reads\nDolt's `.dolt/sql-server.info` for the port and PID it names, as the dolt CLI\ndoes, the way bd already reads the remotes in Dolt's repo state file\n(`PersistedRemoteInfos`). `bd doctor` support for\nembedded mode is enabled one subcommand at a time, each human-vetted\n(GH#3794): do not lift the embedded-mode gate in\n`cmd/bd/doctor.go` wholesale, and keep database-layer checks and fixes\nserver-gated until the driver interface covers them.\n\n**Layering.** Schema \u2192 `internal/storage/issueops` \u2192 `cmd/bd`. Add new\nprimitives at the lowest layer first, one layer per PR, stacked when a fix\nspans layers. See\n[CONTRIBUTING_PR_GUIDELINES.md](CONTRIBUTING_PR_GUIDELINES.md).\n\n## Build, test, lint\n\nBazel is the build and test system: CI gates on the `bazel test` lanes in\n`.github/workflows/bazel.yml`, and nogo (lint + vet), gofmt and the repository\nguards exist only as Bazel targets. Install\n[Bazelisk](https://github.com/bazelbuild/bazelisk) as `bazel`; the pre-commit\nand pre-push hooks need it.\n\n```bash\nmake test          # bazel test //... --config=ci: the CI test lane (nogo, gofmt, guards, unit tests)\nmake check         # testing.Short policy + make ci-pr-lint + make test\nmake ci-pr-lint    # nogo lint + vet gate, native plus windows/darwin\nmake check-docs    # bazel docsync + doc freshness, then the CLI flag check\nmake bazel-sync    # after adding/removing/renaming Go files or changing imports/go.mod\nmake install       # build and install bd to ~/.local/bin (canonical)\n```\n\n- Each other tier has its own lane (`--config=integration`, `doltserver`,\n  `embedded`, ...); [engdocs/TESTING.md](engdocs/TESTING.md) lists the exact\n  command per lane and is the canonical source for test selection, design,\n  and PR-readiness gates.\n- Where actions run: contributors add `--config=fork-cache` (rbe-west's\n  anonymous read-only cache; nothing is uploaded), maintainers with an rbe-west\n  certificate `--config=remote-exec`, agent hosts whose `~/.bazelrc` names the\n  executor neither. Make yours the default with a `build --config=...` line in\n  the gitignored `.bazelrc.local`, or pass `BAZEL_FLAGS=...` to make.\n- Agents run tests only with `bazel test`, also while iterating on one\n  behavior:\n\n  ```bash\n  bazel test //cmd/bd:bd_test --config=ci --test_filter='^TestName$' --test_output=all\n  ```\n\n  A target also passes when the test never ran (a filter that matches\n  nothing, a skip, a file the configuration does not compile), so count a run\n  only when its log shows `--- PASS: TestName` and no `--- SKIP` for the test\n  or a `TestName/...` subtest: Go prints `--- PASS` for a test whose every\n  subtest skipped. \"Check That the Test Ran\" in\n  [engdocs/TESTING.md](engdocs/TESTING.md) names the tests `--config=ci` does\n  not run (Dolt-backed, `-short`-gated, integration-tagged, `TestEmbedded*`\n  and embedded-Dolt, files `BUILD.bazel` does not list) and the way into\n  each. An unchanged target returns its cached result, which is the same\n  evidence. Finish with `make test`.\n- Agents do not run `go test` (`./scripts/test.sh`, `make test-go`): CI does\n  not enforce it, it skips nogo, gofmt and the guards, and agent hosts may\n  refuse it. It stays a convenience for humans working offline. The exception\n  is regenerating golden files (`make corpus-regen`, `make githooks-regen`,\n  `BD_UPDATE_GOLDEN=1`), which Bazel cannot do: see \"Regenerating Golden\n  Files\" in [engdocs/TESTING.md](engdocs/TESTING.md).\n- **Do NOT** use `go build -o bd ./cmd/bd`, `go install ./cmd/bd`, or raw\n  `go run ./cmd/bd ...`: they bypass the canonical build path, leave stale\n  binaries, and raw `go run` misses the `gms_pure_go` tag. Use `make install`,\n  `./bd`, or `go run -tags gms_pure_go ./cmd/bd ...`.\n- All new features need tests.\n- **Never pollute a production database with test issues.** Use `t.TempDir()`\n  in Go tests and a disposable working directory for manual `bd` experiments.\n- `make ci-pr-lint` must pass with zero issues; see\n  [engdocs/LINTING.md](engdocs/LINTING.md).\n- If BUILD files are out of sync and you cannot run `make bazel-sync`, CI\n  syncs them: on same-repo PRs the bazel-autofix workflow pushes the fix to\n  your branch (pull before pushing again); fork PRs get a comment with an\n  apply recipe.\n- If you changed behavior, update the user docs (`docs/`, via the\n  `beads-docs` skill) or README in the same PR.\n\n## Commits and PRs\n\n- Conventional Commits: `type(scope): summary` (`fix`, `feat`, `docs`,\n  `test`, `refactor`, `chore`, `ci`, `perf`).\n- For agent-prepared commits, include the `Agent-Signature:` trailer described\n  in [engdocs/AGENT_SIGNING.md](engdocs/AGENT_SIGNING.md). Use\n  `unknown-model` or `unknown-reasoning` when reliable runtime metadata is\n  unavailable.\n- Maintainers working from the internal ledger may also end the subject with\n  the bead ID, e.g. `(bd-abc)`, so `bd doctor` can detect orphaned issues.\n- Work on a feature branch and open a PR against `main`; direct pushes to\n  `main` are reserved for releases and narrow operational fixes.\n- When the user asks to bump the version, use `./scripts/bump-version.sh`; the\n  full release process is in [RELEASING.md](RELEASING.md).\n\n## Ending a session\n\nDo not push to `main`. Before handing off:\n\n1. Run the quality gates your change needs (`make test`, `make ci-pr-lint`,\n   and the other Bazel lanes [engdocs/TESTING.md](engdocs/TESTING.md)\n   selects). If gates are broken on `main`, report it as a P0 issue.\n2. Record follow-up work as GitHub issues (or ledger beads, for maintainers).\n3. Commit, push, or open a PR only when the person you are working for asked\n   you to. Report changed files, validation run, and anything left open.\n\n## CLI output\n\n**NEVER use emoji-style icons** (\ud83d\udd34\ud83d\udfe0\ud83d\udfe1\ud83d\udd35\u26aa) in CLI output. **ALWAYS use small\nUnicode symbols** with semantic colors: status `\u25cb \u25d0 \u25cf \u2713 \u2744`; priority as a\n`P0`\u2013`P4` label with color (no status glyph). The full visual design system\nand CLI design principles are in\n[engdocs/UI_PHILOSOPHY.md](engdocs/UI_PHILOSOPHY.md).\n\n## Non-interactive shell commands\n\nAgents cannot answer prompts. Use `cp -f`, `mv -f`, `rm -f`, `rm -rf`,\n`cp -rf` (these may be aliased to `-i`); `scp`/`ssh -o BatchMode=yes`;\n`apt-get -y`; `HOMEBREW_NO_AUTO_UPDATE=1 brew`. **DO NOT use `bd edit`** \u2014 it\nopens `$EDITOR`; use `bd update <id> --title/--description/--design/--acceptance/--append-notes`\n(pipe text with special characters via `--description=-`).\n\n## Routing table\n\n| When you are touching\u2026 | Read first |\n|---|---|\n| `cmd/bd/` (commands, output, proxied-server routes) | [cmd/bd/AGENTS.md](cmd/bd/AGENTS.md) |\n| `engdocs/` (contributor and internals docs) | [engdocs/AGENTS.md](engdocs/AGENTS.md) |\n| `docs/` (the published user docs) | `.claude/skills/beads-docs/SKILL.md` |\n| Any Go test | [engdocs/TESTING.md](engdocs/TESTING.md) |\n| Lint failures or `.golangci.yml` | [engdocs/LINTING.md](engdocs/LINTING.md) |\n| A new storage operation or issueops role | [engdocs/ADDING_AN_ISSUEOPS_ROLE.md](engdocs/ADDING_AN_ISSUEOPS_ROLE.md) |\n| Schema migrations | [internal/storage/schema/migrations/README.md](internal/storage/schema/migrations/README.md) |\n| Dolt concurrency, server vs embedded mode | [engdocs/design/dolt-concurrency.md](engdocs/design/dolt-concurrency.md) |\n| Errors returned to users | [engdocs/ERROR_HANDLING.md](engdocs/ERROR_HANDLING.md) |\n| The `bd serve` HTTP surface | [engdocs/SERVE_RUNBOOK.md](engdocs/SERVE_RUNBOOK.md) |\n| BDP, the Beads Protocol (bring-up, `third_party/bdp/` and its pin bumps) | [engdocs/design/bdp.md](engdocs/design/bdp.md) |\n| A new example under `examples/` | `examples/README.md` \u2014 give the example its own README and link it there |\n| Releases and version bumps | [RELEASING.md](RELEASING.md) |\n| Scope questions | [engdocs/PROJECT_CHARTER.md](engdocs/PROJECT_CHARTER.md) |\n| Planned work and priorities | [ROADMAP.md](ROADMAP.md) |\n"
+    },
+    "CLAUDE.md": {
+      "path": "CLAUDE.md",
+      "size_bytes": 13557,
+      "line_count": 245,
+      "truncated": false,
+      "excerpt": "# Beads \u2014 Contributor Agent Instructions\n\nThis file is for agents and humans **developing beads** (`bd`). If you are\nusing `bd` to track work in your own project, read the user docs instead:\n[docs site](https://beads.gascity.com/) and\n[IDE and agent setup](docs/getting-started/ide-setup.md).\n\n<!-- Contributor-only file. Do not run `bd setup` or `bd init` against this\ncheckout: they would inject the end-user beads integration block here. -->\n\nNested `AGENTS.md` files hold area-specific rules; the routing table at the\nend lists them. `CLAUDE.md` files are symlinks to their sibling `AGENTS.md`.\n\n## How work flows here\n\nGitHub Issues is the public tracker. Use an issue when it adds context\nreviewers need: a user-visible bug, a behavior or design change worth\ndiscussing, or work that spans several PRs. The issue carries the\nreproduction, impact, and evidence for a bug, or the motivation, impact, risk,\nand verification plan for a change. Small, self-explanatory changes (typos,\nflaky tests, refactors, CI or docs tweaks) can go straight to a PR whose body\nexplains the why.\n\n1. If the change warrants an issue, find or file one with the bug or feature\n   form. It does not need maintainer approval first; file it before or\n   alongside the PR.\n2. Work on a branch, open a PR against `main` (its body says\n   `Closes #<issue>` when there is one), and let CI and review run.\n3. Maintainers triage issues with `status/needs-triage`, `status/needs-info`,\n   `status/needs-repro`, `status/needs-design`, and `status/accepted`\n   (confirmed); see [CONTRIBUTING.md](CONTRIBUTING.md).\n\nMaintainers also keep an internal bd ledger. It is optional for contributors\nand not a substitute for the GitHub issue.\n\n## Agent contribution policy\n\n- File an issue when the change warrants one (see above). When you do, use\n  the bug or feature form fields, fill each from evidence, and answer\n  `NOT_ENOUGH_INFO` where the evidence runs out.\n- A human reviews and stands behind every issue and PR an agent drafts.\n  Evidence that the change works end-to-end is required; \"unit tests pass\"\n  alone is not evidence.\n- Before implementing work, opening a PR, or merging/closing a PR, run the PR\n  preflight:\n  ```bash\n  scripts/pr-preflight.sh --search \"<topic keywords>\" --repo gastownhall/beads\n  scripts/pr-preflight.sh <pr-number> --repo gastownhall/beads\n  ```\n  The preflight is the agent gate for PR handling; do not rely on\n  auto-discovery of CONTRIBUTING.md.\n- Use `gh` for GitHub issues and PRs, not browser tools. Write PR, issue,\n  comment, and review bodies to a file, run `scripts/gh-body-lint <body-file>`,\n  and pass the file with `gh ... --body-file`. Sign agent-written GitHub\n  comments and reviews per [engdocs/AGENT_SIGNING.md](engdocs/AGENT_SIGNING.md).\n\n## Contributor protection\n\nExternal contributor PRs have priority. Read [CONTRIBUTING.md](CONTRIBUTING.md)\n\u2014 it contains promises we've made to contributors \u2014 and, before triaging,\nreviewing, landing, closing, or otherwise maintaining PRs,\n[PR_MAINTAINER_GUIDELINES.md](PR_MAINTAINER_GUIDELINES.md). The maintainer\npolicy is to maximize community throughput: find useful contributor value,\nabsorb or transform it locally when practical, preserve attribution, and use\nrequest-changes only as a last resort.\n\nBefore implementing any feature or fix, check for existing open PRs on the\nsame topic. If one exists:\n\n1. **Review it first** \u2014 read the diff, understand the approach.\n2. **Build on their work, don't rewrite it** \u2014 check out their branch,\n   fix/adapt as needed.\n3. **Preserve their tests** \u2014 keep them unless they're wrong.\n4. **Attribute properly** \u2014 `Co-authored-by:` in commits, reference their PR.\n5. **Never close or supersede their PR silently.** If a rewrite is\n   unavoidable, explain why on the original PR and credit their design/tests.\n\n## Scope: where a change belongs\n\nRead [engdocs/PROJECT_CHARTER.md](engdocs/PROJECT_CHARTER.md) before adding\nfeature surface area. Beads owns issue tracking primitives and should not\nencode orchestration-layer policy, become a storage engine, or casually expand\nthe database schema when metadata would work. Prefer, in order: issue\nmetadata over new fields, a flag on an existing command over a new command,\nan integration or plugin over core, and leave orchestration policy to the\norchestration layer.\n\n**Storage boundary.** Beads talks to storage through a driver interface\n(`dolthub/driver` for Dolt). Do not add beads-side flocks, engine\nintrospection, storage-specific retry or crash-recovery logic, or public SDK\nreturn types that leak driver internals. If the boundary is too narrow, widen\nthe interface or route the issue to the driver instead of patching around it\nin beads. One maintainer-granted exception: `databaseLocked` in\n`internal/doltserver` takes a shared, non-blocking lock on Dolt's own\n`.dolt/noms/LOCK` and releases it at once (it never creates or writes the\nfile), only to decide whether the workspace's Dolt database directory (the\nstore's CLI directory: `.beads/dolt/<db>` by default, or `<db>` under a\ncustom `dolt_data_dir` or under the shared server's data directory) is served\nby a live dolt process, so bd runs the dolt CLI there only for a served\ndirectory. A busy lock (another process holds it, as every dolt process with\nthe database open does) counts as served. A probe\nthat cannot open the file, or whose lock call fails for any other reason,\ncounts as not served, which sends bd through the SQL server (the safe\ndirection). The exception ends once the Dolt driver can report whether a\ndirectory is served, and covers no other lock (the test-only\n`testutil.HoldDoltDatabaseLock` is outside it). The same proof also reads\nDolt's `.dolt/sql-server.info` for the port and PID it names, as the dolt CLI\ndoes, the way bd already reads the remotes in Dolt's repo state file\n(`PersistedRemoteInfos`). `bd doctor` support for\nembedded mode is enabled one subcommand at a time, each human-vetted\n(GH#3794): do not lift the embedded-mode gate in\n`cmd/bd/doctor.go` wholesale, and keep database-layer checks and fixes\nserver-gated until the driver interface covers them.\n\n**Layering.** Schema \u2192 `internal/storage/issueops` \u2192 `cmd/bd`. Add new\nprimitives at the lowest layer first, one layer per PR, stacked when a fix\nspans layers. See\n[CONTRIBUTING_PR_GUIDELINES.md](CONTRIBUTING_PR_GUIDELINES.md).\n\n## Build, test, lint\n\nBazel is the build and test system: CI gates on the `bazel test` lanes in\n`.github/workflows/bazel.yml`, and nogo (lint + vet), gofmt and the repository\nguards exist only as Bazel targets. Install\n[Bazelisk](https://github.com/bazelbuild/bazelisk) as `bazel`; the pre-commit\nand pre-push hooks need it.\n\n```bash\nmake test          # bazel test //... --config=ci: the CI test lane (nogo, gofmt, guards, unit tests)\nmake check         # testing.Short policy + make ci-pr-lint + make test\nmake ci-pr-lint    # nogo lint + vet gate, native plus windows/darwin\nmake check-docs    # bazel docsync + doc freshness, then the CLI flag check\nmake bazel-sync    # after adding/removing/renaming Go files or changing imports/go.mod\nmake install       # build and install bd to ~/.local/bin (canonical)\n```\n\n- Each other tier has its own lane (`--config=integration`, `doltserver`,\n  `embedded`, ...); [engdocs/TESTING.md](engdocs/TESTING.md) lists the exact\n  command per lane and is the canonical source for test selection, design,\n  and PR-readiness gates.\n- Where actions run: contributors add `--config=fork-cache` (rbe-west's\n  anonymous read-only cache; nothing is uploaded), maintainers with an rbe-west\n  certificate `--config=remote-exec`, agent hosts whose `~/.bazelrc` names the\n  executor neither. Make yours the default with a `build --config=...` line in\n  the gitignored `.bazelrc.local`, or pass `BAZEL_FLAGS=...` to make.\n- Agents run tests only with `bazel test`, also while iterating on one\n  behavior:\n\n  ```bash\n  bazel test //cmd/bd:bd_test --config=ci --test_filter='^TestName$' --test_output=all\n  ```\n\n  A target also passes when the test never ran (a filter that matches\n  nothing, a skip, a file the configuration does not compile), so count a run\n  only when its log shows `--- PASS: TestName` and no `--- SKIP` for the test\n  or a `TestName/...` subtest: Go prints `--- PASS` for a test whose every\n  subtest skipped. \"Check That the Test Ran\" in\n  [engdocs/TESTING.md](engdocs/TESTING.md) names the tests `--config=ci` does\n  not run (Dolt-backed, `-short`-gated, integration-tagged, `TestEmbedded*`\n  and embedded-Dolt, files `BUILD.bazel` does not list) and the way into\n  each. An unchanged target returns its cached result, which is the same\n  evidence. Finish with `make test`.\n- Agents do not run `go test` (`./scripts/test.sh`, `make test-go`): CI does\n  not enforce it, it skips nogo, gofmt and the guards, and agent hosts may\n  refuse it. It stays a convenience for humans working offline. The exception\n  is regenerating golden files (`make corpus-regen`, `make githooks-regen`,\n  `BD_UPDATE_GOLDEN=1`), which Bazel cannot do: see \"Regenerating Golden\n  Files\" in [engdocs/TESTING.md](engdocs/TESTING.md).\n- **Do NOT** use `go build -o bd ./cmd/bd`, `go install ./cmd/bd`, or raw\n  `go run ./cmd/bd ...`: they bypass the canonical build path, leave stale\n  binaries, and raw `go run` misses the `gms_pure_go` tag. Use `make install`,\n  `./bd`, or `go run -tags gms_pure_go ./cmd/bd ...`.\n- All new features need tests.\n- **Never pollute a production database with test issues.** Use `t.TempDir()`\n  in Go tests and a disposable working directory for manual `bd` experiments.\n- `make ci-pr-lint` must pass with zero issues; see\n  [engdocs/LINTING.md](engdocs/LINTING.md).\n- If BUILD files are out of sync and you cannot run `make bazel-sync`, CI\n  syncs them: on same-repo PRs the bazel-autofix workflow pushes the fix to\n  your branch (pull before pushing again); fork PRs get a comment with an\n  apply recipe.\n- If you changed behavior, update the user docs (`docs/`, via the\n  `beads-docs` skill) or README in the same PR.\n\n## Commits and PRs\n\n- Conventional Commits: `type(scope): summary` (`fix`, `feat`, `docs`,\n  `test`, `refactor`, `chore`, `ci`, `perf`).\n- For agent-prepared commits, include the `Agent-Signature:` trailer described\n  in [engdocs/AGENT_SIGNING.md](engdocs/AGENT_SIGNING.md). Use\n  `unknown-model` or `unknown-reasoning` when reliable runtime metadata is\n  unavailable.\n- Maintainers working from the internal ledger may also end the subject with\n  the bead ID, e.g. `(bd-abc)`, so `bd doctor` can detect orphaned issues.\n- Work on a feature branch and open a PR against `main`; direct pushes to\n  `main` are reserved for releases and narrow operational fixes.\n- When the user asks to bump the version, use `./scripts/bump-version.sh`; the\n  full release process is in [RELEASING.md](RELEASING.md).\n\n## Ending a session\n\nDo not push to `main`. Before handing off:\n\n1. Run the quality gates your change needs (`make test`, `make ci-pr-lint`,\n   and the other Bazel lanes [engdocs/TESTING.md](engdocs/TESTING.md)\n   selects). If gates are broken on `main`, report it as a P0 issue.\n2. Record follow-up work as GitHub issues (or ledger beads, for maintainers).\n3. Commit, push, or open a PR only when the person you are working for asked\n   you to. Report changed files, validation run, and anything left open.\n\n## CLI output\n\n**NEVER use emoji-style icons** (\ud83d\udd34\ud83d\udfe0\ud83d\udfe1\ud83d\udd35\u26aa) in CLI output. **ALWAYS use small\nUnicode symbols** with semantic colors: status `\u25cb \u25d0 \u25cf \u2713 \u2744`; priority as a\n`P0`\u2013`P4` label with color (no status glyph). The full visual design system\nand CLI design principles are in\n[engdocs/UI_PHILOSOPHY.md](engdocs/UI_PHILOSOPHY.md).\n\n## Non-interactive shell commands\n\nAgents cannot answer prompts. Use `cp -f`, `mv -f`, `rm -f`, `rm -rf`,\n`cp -rf` (these may be aliased to `-i`); `scp`/`ssh -o BatchMode=yes`;\n`apt-get -y`; `HOMEBREW_NO_AUTO_UPDATE=1 brew`. **DO NOT use `bd edit`** \u2014 it\nopens `$EDITOR`; use `bd update <id> --title/--description/--design/--acceptance/--append-notes`\n(pipe text with special characters via `--description=-`).\n\n## Routing table\n\n| When you are touching\u2026 | Read first |\n|---|---|\n| `cmd/bd/` (commands, output, proxied-server routes) | [cmd/bd/AGENTS.md](cmd/bd/AGENTS.md) |\n| `engdocs/` (contributor and internals docs) | [engdocs/AGENTS.md](engdocs/AGENTS.md) |\n| `docs/` (the published user docs) | `.claude/skills/beads-docs/SKILL.md` |\n| Any Go test | [engdocs/TESTING.md](engdocs/TESTING.md) |\n| Lint failures or `.golangci.yml` | [engdocs/LINTING.md](engdocs/LINTING.md) |\n| A new storage operation or issueops role | [engdocs/ADDING_AN_ISSUEOPS_ROLE.md](engdocs/ADDING_AN_ISSUEOPS_ROLE.md) |\n| Schema migrations | [internal/storage/schema/migrations/README.md](internal/storage/schema/migrations/README.md) |\n| Dolt concurrency, server vs embedded mode | [engdocs/design/dolt-concurrency.md](engdocs/design/dolt-concurrency.md) |\n| Errors returned to users | [engdocs/ERROR_HANDLING.md](engdocs/ERROR_HANDLING.md) |\n| The `bd serve` HTTP surface | [engdocs/SERVE_RUNBOOK.md](engdocs/SERVE_RUNBOOK.md) |\n| BDP, the Beads Protocol (bring-up, `third_party/bdp/` and its pin bumps) | [engdocs/design/bdp.md](engdocs/design/bdp.md) |\n| A new example under `examples/` | `examples/README.md` \u2014 give the example its own README and link it there |\n| Releases and version bumps | [RELEASING.md](RELEASING.md) |\n| Scope questions | [engdocs/PROJECT_CHARTER.md](engdocs/PROJECT_CHARTER.md) |\n| Planned work and priorities | [ROADMAP.md](ROADMAP.md) |\n"
+    },
+    "CONTRIBUTING.md": {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 18735,
+      "line_count": 415,
+      "truncated": true,
+      "excerpt": "# Contributing to bd\n\nThank you for your interest in contributing to bd! This document provides guidelines and instructions for contributing.\n\n## Issues and pull requests\n\nGitHub Issues is the public tracker. Use an issue when it adds context\nreviewers need: a user-visible bug, a behavior or design change worth\ndiscussing first, or work that spans several pull requests. The issue holds\nwhy the change is needed, what it affects, and how we will know it works; file\nit with the bug or feature form before or alongside your pull request, and it\ndoes not need maintainer approval first. Small, self-explanatory changes\n(typos, flaky tests, refactors, CI or docs tweaks) can go straight to a pull\nrequest whose description explains the why.\n\n### Triage labels\n\n| Label | Meaning | Applied by |\n|---|---|---|\n| `status/needs-triage` | Awaiting initial triage. | Automation, on every new issue |\n| `status/needs-info` | Waiting on essential information from the reporter. | Maintainers |\n| `status/needs-repro` | Needs a reproducible bug report. | Maintainers |\n| `status/needs-design` | The direction needs a design decision before work starts. | Maintainers |\n| `status/accepted` | Confirmed and on our radar. | Maintainers |\n\nIssues left in `status/needs-info` or `status/needs-repro` are closed after 14\ndays without a reply to the request; reply with the details and a\nmaintainer will reopen them.\nPriority (`priority/p0`\u2013`priority/p3`) and kind (`kind/bug`, `kind/feature`,\n`kind/docs`, `kind/chore`) labels are set during triage.\n\n### Pull request pipeline labels\n\nThese labels drive the maintainers' automated review and merge workflow. They\nare applied by maintainers and automation; contributors don't need to set\nthem.\n\n| Label | Meaning |\n|---|---|\n| `status/needs-review` | Request the PR review workflow. |\n| `status/needs-review-auto` | Request the automated PR review workflow. |\n| `status/reviewing` | The PR review workflow is running. |\n| `status/review-failed` | The PR review workflow failed before merge-ready. |\n| `status/merge-ready` | The PR is ready for the merge workflow. |\n| `status/merge-queued` | Queued for deterministic PR-review merge. |\n| `status/merge-failed` | The merge queue needs operator attention. |\n| `status/needs-bugflow` | Request the bugflow investigation workflow. |\n\nThe current priorities are on the [roadmap](ROADMAP.md); work in a priority\narea is reviewed first.\n\n## Development Setup\n\n### Prerequisites\n\n- [Bazelisk](https://github.com/bazelbuild/bazelisk), installed as `bazel`\n  (it reads `.bazelversion`). **Required:** Bazel is the build and test system\n  CI gates on, and the pre-commit (nogo lint) and pre-push (test suite) hooks\n  run it.\n- Go (see `go.mod` for the required version; currently 1.26+), for `make\n  install` and the `go test` inner loop\n- Git\n- A C compiler (CGO is required for the embedded Dolt database)\n- ICU headers are **not required** for building -- see [engdocs/ICU-POLICY.md](engdocs/ICU-POLICY.md)\n\n### Getting Started\n\n```bash\n# Clone the repository\ngit clone https://github.com/gastownhall/beads\ncd beads\n\n# Read rbe-west's anonymous, read-only cache: everything CI already built and\n# tested is a cache hit, and nothing you build is uploaded.\necho 'build --config=fork-cache' >> .bazelrc.local\n\n# Run the test suite CI gates on (bazel test //... --config=ci)\nmake test\n\n# Build and install bd to ~/.local/bin (also enables the git hooks)\nmake install\n```\n\n### Building and Testing\n\nBazel is the gate: `.github/workflows/bazel.yml` runs every pull request's\ntests as `bazel test` lanes, and nogo (lint + vet), gofmt and the repository\nguards exist only as Bazel targets. The make targets run the same commands:\n\n| Command | Runs |\n|---|---|\n| `make test` | `bazel test //... --config=ci`: the test lane (unit tests, nogo, gofmt, repository guards) |\n| `make check` | the testing.Short policy, `make ci-pr-lint` and `make test` |\n| `make ci-pr-lint` | nogo natively plus the windows/amd64 and darwin/arm64 passes |\n| `make check-docs` | the Bazel docsync and doc-freshness tests, then the CLI flag check |\n| `bazel test //... --config=integration` | the integration lane; [engdocs/TESTING.md](engdocs/TESTING.md) lists every other lane's command |\n\nWhere actions run is your choice, set in the gitignored `.bazelrc.local` (or\nper command with `make test BAZEL_FLAGS=--config=...`):\n\n- `--config=fork-cache` (contributors): reads the anonymous cache, runs misses\n  on your machine, uploads nothing.\n- `--config=remote-exec` (maintainers with an rbe-west client certificate):\n  executes remotely; the executor and TLS lines stay in your `user.bazelrc` or\n  `.bazelrc.local`.\n\n`go test` (`./scripts/test.sh`, or `make test-go` / `make check-go` /\n`make check-docs-go`) still works as an inner-loop convenience, but CI does not\nenforce it and it skips nogo, gofmt and the guards. Finish with `make test`.\n\n## Project Structure\n\n```\nbeads/\n\u251c\u2500\u2500 cmd/bd/              # CLI entry point and commands\n\u251c\u2500\u2500 internal/\n\u2502   \u251c\u2500\u2500 types/           # Core data types (Issue, Dependency, etc.)\n\u2502   \u2514\u2500\u2500 storage/         # Storage interface and implementations\n\u2502       \u2514\u2500\u2500 dolt/        # Dolt database backend\n\u251c\u2500\u2500 .golangci.yml        # Linter configuration (applied by nogo, tools/nogo)\n\u2514\u2500\u2500 .github/workflows/   # CI/CD pipelines\n```\n\n## Running Tests\n\nUse the canonical [testing guide](engdocs/TESTING.md) to choose focused tests,\nthe proportional validation budget, and any applicable CI wrapper. The setup\nand safety notes in this file supplement that guide; they do not define a\nsecond test policy.\n\n## Code Style\n\nWe follow standard Go conventions:\n\n- Use `gofmt` to format your code (runs automatically in most editors)\n- Follow the [Effective Go](https://golang.org/doc/effective_go) guidelines\n- Keep functions small and focused\n- Write clear, descriptive variable names\n- Add comments for exported functions and types\n\n### Linting\n\nLint and vet run as nogo under Bazel: go test's vet checks plus the\ngolangci-lint linters `.gol"
+    },
+    "README.md": {
+      "path": "README.md",
+      "size_bytes": 25770,
+      "line_count": 446,
+      "truncated": true,
+      "excerpt": "# bd - Beads\n\n**Distributed graph issue tracker for AI agents, powered by [Dolt](https://github.com/dolthub/dolt).**\n\n**Platforms:** macOS, Linux, Windows, FreeBSD\n\n[![License](https://img.shields.io/github/license/gastownhall/beads)](LICENSE)\n[![Go Report Card](https://goreportcard.com/badge/github.com/steveyegge/beads)](https://goreportcard.com/report/github.com/steveyegge/beads)\n[![Release](https://img.shields.io/github/v/release/gastownhall/beads)](https://github.com/gastownhall/beads/releases)\n[![npm version](https://img.shields.io/npm/v/@beads/bd)](https://www.npmjs.com/package/@beads/bd)\n[![PyPI](https://img.shields.io/pypi/v/beads-mcp)](https://pypi.org/project/beads-mcp/)\n\n**Docs:** https://beads.gascity.com/\n\nBeads provides a persistent, structured memory for coding agents. It replaces messy markdown plans with a dependency-aware graph, allowing agents to handle long-horizon tasks without losing context.\n\n```mermaid\nflowchart LR\n    create[\"bd create<br/>new bead\"] --> depgraph[\"dependency<br/>graph\"]\n    depgraph --> ready[\"bd ready<br/>claimable work\"]\n    ready --> claim[\"bd update --claim<br/>agent takes it\"]\n    claim --> close[\"bd close<br/>work done\"]\n    close -->|blockers released| ready\n    depgraph <-->|\"bd dolt push / pull\"| remote[(\"other machines<br/>and agents\")]\n```\n\n## \u26a1 Quick Start\n\n```bash\n# Install beads CLI (system-wide - don't clone this repo into your project)\ncurl -fsSL https://raw.githubusercontent.com/gastownhall/beads/main/scripts/install.sh | bash\n\n# Initialize in YOUR project\ncd your-project\nbd init\n\n# Optional: refresh or install richer instructions for your agent\nbd setup codex    # Codex CLI - installs skill, AGENTS.md guidance, and hooks\nbd setup claude   # Claude Code - installs hooks/settings\nbd setup factory  # Factory.ai Droid - creates/updates AGENTS.md\n```\n\n**Note:** Beads is a CLI tool you install once and use everywhere. You don't need to clone this repository into your project.\n\n`bd init` creates or updates `AGENTS.md` by default so agents can discover the beads workflow, and also installs the project Claude Code, Codex, and Cursor integrations unless you pass `--skip-agents` or `--stealth`. Use `bd setup --list` to see supported integrations, including `bd setup codex`, `bd setup factory`, `bd setup claude`, `bd setup mux`, `bd setup cursor`, and more. See [Agent and IDE setup](docs/getting-started/ide-setup.md).\n\nManual copy-paste is only for unsupported agents, existing projects where you cannot rerun `bd init`/`bd setup`, or custom instruction files. In those cases, run `bd onboard` and paste the printed snippet into the file your agent reads.\n\nIf your agent is not covered by `bd setup`, add this minimal `AGENTS.md` section:\n\n```markdown\nThis project uses bd (beads) for issue tracking.\n\n- Run `bd prime` for workflow context and command guidance.\n- Use `bd ready`, `bd show <id>`, `bd update <id> --claim`, and `bd close <id>`.\n- Use `bd remember \"a project insight\"` for durable project facts; keep per-operator preferences in your harness's own memory.\n- Do not use markdown TODO lists for task tracking.\n```\n\n## \ud83d\udee0 Features\n\n* **[Dolt](https://github.com/dolthub/dolt)-Powered:** Version-controlled SQL database with cell-level merge, native branching, and built-in sync via Dolt remotes.\n* **Agent-Optimized:** JSON output, dependency tracking, and auto-ready task detection.\n* **Zero Conflict:** Hash-based IDs (`bd-a1b2`) prevent merge collisions in multi-agent/multi-branch workflows.\n* **Compaction:** Semantic \"memory decay\" summarizes old closed tasks to save context window.\n* **Messaging:** Message issue type with threading (`--thread`), ephemeral lifecycle, and mail delegation.\n* **Graph Links:** `relates-to`, `duplicates`, `supersedes`, and `replies-to` for knowledge graphs.\n\n## \ud83d\udcd6 Essential Commands\n\n| Command | Action |\n| --- | --- |\n| `bd ready` | List tasks with no open blockers. |\n| `bd create \"Title\" -p 0` | Create a P0 task. |\n| `bd update <id> --claim` | Atomically claim a task (sets assignee + in_progress). |\n| `bd dep add <child> <parent>` | Link tasks (blocks, related, parent-child). |\n| `bd show <id>` | View task details and audit trail. |\n| `bd prime` | Print agent workflow context and persistent memories. |\n| `bd remember \"a project insight\"` | Store project memory that `bd prime` injects later. |\n| `bd remember some-key` | Recall an exact key, including long and dotted ones like `api.v2`; a missing key fails without storing anything. Use `--key some-key` to write single-word content, and `bd recall` for keys with other characters. |\n\n## \ud83d\udd17 Hierarchy & Workflow\n\nBeads supports hierarchical IDs for epics:\n\n* `bd-a3f8` (Epic)\n* `bd-a3f8.1` (Task)\n* `bd-a3f8.1.1` (Sub-task)\n\nDeferring a parent hides its direct children from `bd ready` too, whether it\nwas deferred to a date (`bd defer --until`) or indefinitely (plain `bd defer`).\n`bd ready --include-deferred` lists those children again; the deferred parent\nitself still stays out of the listing. Once a dated deferral's date passes, the\nnext `bd ready` returns the parent to open, and its children with it. A read\nthat cannot write that change, such as `bd --readonly ready`, keeps the\nchildren hidden until a writable read has woken the parent.\n\n**Stealth Mode:** Run `bd init --stealth` to use Beads locally without committing files to the main repo. Perfect for personal use on shared projects. See [Git-Free Usage](#-git-free-usage) below.\n\n**Contributor vs Maintainer:** When working on open-source projects:\n\n* **Contributors** (forked repos): Run `bd init --contributor` to route planning issues to a separate repo (e.g., `~/.beads-planning`). Keeps experimental work out of PRs.\n* **Maintainers** (write access): Beads auto-detects maintainer role via SSH URLs or HTTPS with credentials. Only need `git config beads.role maintainer` if using GitHub HTTPS without credentials but you have write access.\n\n## \ud83d\udce6 Installation\n\n```bash\nbrew install beads           # macOS / Linux (recommended)\nn"
+    },
+    "go.mod": {
+      "path": "go.mod",
+      "size_bytes": 15251,
+      "line_count": 291,
+      "truncated": true,
+      "excerpt": "module github.com/steveyegge/beads\n\ngo 1.27.3\n\ntoolchain go1.27.4\n\nrequire (\n\tcharm.land/glamour/v2 v2.0.1\n\tcharm.land/huh/v2 v2.0.3\n\tcharm.land/lipgloss/v2 v2.0.6\n\tgithub.com/BurntSushi/toml v1.6.0\n\tgithub.com/DATA-DOG/go-sqlmock v1.5.2\n\tgithub.com/JohannesKaufmann/html-to-markdown/v2 v2.5.2\n\tgithub.com/anthropics/anthropic-sdk-go v1.80.0\n\tgithub.com/cenkalti/backoff/v4 v4.3.0\n\tgithub.com/charmbracelet/x/ansi v0.11.9\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/dolthub/dolt/go v0.40.5-0.20261023035229-05e6bceb1a21\n\tgithub.com/dolthub/driver/v2 v2.4.1\n\tgithub.com/dolthub/eventkit v0.0.0-20260611184414-99f5693e696a\n\tgithub.com/dolthub/go-mysql-server v0.20.1-0.20261023021128-38a1fb50b434\n\tgithub.com/dolthub/vitess v0.0.0-20261014211039-3e903c0f05d3\n\tgithub.com/go-sql-driver/mysql v1.10.1\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/gowebpki/jcs v1.0.2\n\tgithub.com/invopop/jsonschema v0.14.0\n\tgithub.com/mattn/go-sqlite3 v1.14.52\n\tgithub.com/microcosm-cc/bluemonday v1.0.27\n\tgithub.com/olebedev/when v1.1.0\n\tgithub.com/spf13/cobra v1.10.2\n\tgithub.com/spf13/pflag v1.0.10\n\tgithub.com/spf13/viper v1.21.0\n\tgithub.com/stretchr/testify v1.12.1\n\tgithub.com/subosito/gotenv v1.6.0\n\tgithub.com/testcontainers/testcontainers-go v0.43.0\n\tgithub.com/testcontainers/testcontainers-go/modules/dolt v0.43.0\n\tgithub.com/yuin/goldmark v1.8.6\n\tgo.opentelemetry.io/otel v1.47.0\n\tgo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.47.0\n\tgo.opentelemetry.io/otel/exporters/stdout/stdoutmetric v1.47.0\n\tgo.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.47.0\n\tgo.opentelemetry.io/otel/metric v1.47.0\n\tgo.opentelemetry.io/otel/sdk v1.47.0\n\tgo.opentelemetry.io/otel/sdk/metric v1.47.0\n\tgo.opentelemetry.io/otel/trace v1.47.0\n\tgolang.org/x/mod v0.41.0\n\tgolang.org/x/net v0.62.0\n\tgolang.org/x/sync v0.24.0\n\tgolang.org/x/sys v0.49.0\n\tgolang.org/x/term v0.47.0\n\tgopkg.in/yaml.v3 v3.0.1\n\trsc.io/script v0.0.2\n)\n\nrequire (\n\tcel.dev/expr v0.25.2 // indirect\n\tcharm.land/bubbles/v2 v2.0.0 // indirect\n\tcharm.land/bubbletea/v2 v2.0.2 // indirect\n\tcloud.google.com/go v0.121.6 // indirect\n\tcloud.google.com/go/auth v0.18.2 // indirect\n\tcloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect\n\tcloud.google.com/go/compute/metadata v0.9.0 // indirect\n\tcloud.google.com/go/iam v1.5.3 // indirect\n\tcloud.google.com/go/monitoring v1.24.3 // indirect\n\tcloud.google.com/go/storage v1.56.0 // indirect\n\tdario.cat/mergo v1.0.2 // indirect\n\tfilippo.io/edwards25519 v1.2.0 // indirect\n\tgithub.com/AlekSi/pointer v1.0.0 // indirect\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azcore v1.21.0 // indirect\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azidentity v1.13.1 // indirect\n\tgithub.com/Azure/azure-sdk-for-go/sdk/internal v1.11.2 // indirect\n\tgithub.com/Azure/azure-sdk-for-go/sdk/storage/azblob v1.6.4 // indirect\n\tgithub.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c // indirect\n\tgithub.com/AzureAD/microsoft-authentication-library-for-go v1.6.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.33.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.53.0 // indirect\n\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.53.0 // indirect\n\tgithub.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect\n\tgithub.com/JohannesKaufmann/dom v0.3.1 // indirect\n\tgithub.com/Microsoft/go-winio v0.6.2 // indirect\n\tgithub.com/abiosoft/readline v0.0.0-20180607040430-155bce2042db // indirect\n\tgithub.com/alecthomas/chroma/v2 v2.20.0 // indirect\n\tgithub.com/aliyun/aliyun-oss-go-sdk v3.0.2+incompatible // indirect\n\tgithub.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883 // indirect\n\tgithub.com/apache/arrow/go/arrow v0.0.0-20211112161151-bc219186db40 // indirect\n\tgithub.com/apache/thrift v0.24.0 // indirect\n\tgithub.com/atotto/clipboard v0.1.4 // indirect\n\tgithub.com/aws/aws-sdk-go-v2 v1.41.5 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.8 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/config v1.29.8 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/credentials v1.17.61 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.30 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/feature/s3/manager v1.17.64 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/configsources v1.4.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.7.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/ini v1.8.3 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/internal/v4a v1.4.22 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/dynamodb v1.41.0 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.7 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/checksum v1.9.13 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.10.15 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.13.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.19.21 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/s3 v1.97.3 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/sso v1.25.0 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/ssooidc v1.29.0 // indirect\n\tgithub.com/aws/aws-sdk-go-v2/service/sts v1.33.16 // indirect\n\tgithub.com/aws/smithy-go v1.24.2 // indirect\n\tgithub.com/aymerick/douceur v0.2.0 // indirect\n\tgithub.com/bahlo/generic-list-go v0.2.0 // indirect\n\tgithub.com/bcicen/jstream v1.0.1 // indirect\n\tgithub.com/buger/jsonparser v1.1.2 // indirect\n\tgithub.com/catppuccin/go v0.3.0 // indirect\n\tgithub.com/cenkalti/backoff/v5 v5.0.3 // indirect\n\tgithub.com/cespare/xxhash/v2 v2.3.0 // indirect\n\tgithub.com/charmbracelet/colorprofile v0.4.3 // indirect\n\tgithub.com/charmbracelet/ultraviolet v0.0.0-20260811164956-006e29f97886 // indirect\n\tgithub.com/charmbracelet/x/exp/ordered v0.1.0 // indirect\n\tgithub.com/charmbracelet/x/exp/slice v0.0.0-20250327172914-2fdc97757edf // indirect\n\tgithub.com/charmbracelet/x/exp/strings v0.0.0-20240722160745-212f7b056ed0 // indirect\n\tgithub."
+    }
+  },
+  "workflow_samples": {
+    "main-ci-alert.yml": {
+      "path": ".github/workflows/main-ci-alert.yml",
+      "size_bytes": 3284,
+      "line_count": 68,
+      "truncated": false,
+      "excerpt": "# How a red main surfaces (engdocs/CI_REQUIRED_CHECK_TOPOLOGY.md, \"Merge\n# Queue\"). A merge group runs the fast build and unit set only: the Windows,\n# macOS and Nix jobs and the Dolt-tier Bazel lanes first run on main's push,\n# after the merge (pr.yml's and pr-risk.yml's push runs, bazel.yml's own push\n# run). When one of those push runs, or main.yml's, ends red, this opens the\n# ci/main-red issue (one at a time: later reds comment on it) naming every PR\n# of the pushed range as a candidate (the queue lands a batch as one push),\n# and, when the run turns that workflow red, comments on each of them; when\n# the workflow is green again it says so, and it closes the issue once no\n# tracked workflow's latest push run on main is red\n# (.github/scripts/main-ci-alert.sh).\n#\n# workflow_run runs this file, and the script from the default branch's head,\n# never a PR's copy. It acts only on this repository's push runs on main (a\n# fork PR from the fork's own main branch also reports head_branch main). It\n# reads the run's metadata and job list (actions: read) and the pushed\n# commits' subjects (contents: read), fetches nothing the reported run\n# produced and runs none of its code, and writes only the issue and the PR\n# comments. Policy: scripts/main_ci_alert_test.go.\nname: Main CI alert\n\non:\n  workflow_run:\n    workflows: [\"PR\", \"PR Risk\", \"Bazel\", \"Main\"]\n    types: [completed]\n    branches: [main]\n\npermissions:\n  contents: read\n\njobs:\n  alert:\n    name: Report main's push CI\n    if: github.event.workflow_run.event == 'push' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository\n    runs-on: ubuntu-latest\n    timeout-minutes: 5\n    permissions:\n      contents: read # the sparse checkout of the script; the pushed range's commits\n      issues: write # the ci/main-red issue\n      pull-requests: write # the comments on the candidate PRs\n      actions: read # the run's jobs, and each tracked workflow's latest push runs\n    # One at a time: two reds finishing together must not both open an\n    # issue. queue: max keeps every waiting run (by default a group keeps\n    # one pending run and cancels the rest); it cannot be combined with\n    # cancel-in-progress.\n    concurrency:\n      group: main-ci-alert\n      queue: max\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          ref: ${{ github.sha }}\n          persist-credentials: false\n          sparse-checkout: .github/scripts/main-ci-alert.sh\n          sparse-checkout-cone-mode: false\n\n      - name: Open, update or close the ci/main-red issue\n        env:\n          GH_TOKEN: ${{ github.token }}\n          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}\n          RUN_ID: ${{ github.event.workflow_run.id }}\n          RUN_URL: ${{ github.event.workflow_run.html_url }}\n          RUN_CREATED_AT: ${{ github.event.workflow_run.created_at }}\n          RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}\n          CONCLUSION: ${{ github.event.workflow_run.conclusion }}\n          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}\n          HEAD_COMMIT_MESSAGE: ${{ github.event.workflow_run.head_commit.message }}\n        run: bash .github/scripts/main-ci-alert.sh\n"
+    },
+    "pr-risk.yml": {
+      "path": ".github/workflows/pr-risk.yml",
+      "size_bytes": 7318,
+      "line_count": 151,
+      "truncated": true,
+      "excerpt": "name: PR Risk\n\non:\n  pull_request:\n    branches: [ main, 'release/**', 'hotfix/**' ]\n  # Merge queue (engdocs/CI_REQUIRED_CHECK_TOPOLOGY.md, \"Merge Queue\"):\n  # the ruleset's required gate must also report on each queue entry's\n  # merge-group commit, or a queued PR waits until the queue times it out.\n  # checks_requested is the queue asking for those checks; pinned\n  # explicitly (scripts/ci_merge_queue_test.go). The concurrency group\n  # below keys a merge group on its own gh-readonly-queue/* ref, so queue\n  # runs never cancel each other or a PR's own runs. A merge group skips\n  # the Nix job (the scope job below); the push to main that lands it (with\n  # its batch) runs it.\n  merge_group:\n    types: [ checks_requested ]\n  # The post-merge complement: the Nix job a merge group skipped runs on\n  # every push to main, whose head is the last entry of a merge-queue batch\n  # (its tested merge-group tree, containing every entry of the batch). A\n  # red run opens the ci/main-red issue (main-ci-alert.yml).\n  push:\n    branches: [ main ]\n\n# A push to main keys on its commit: no push's complement run cancels\n# another's or waits behind it.\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || (github.event_name == 'push' && github.sha) || github.ref }}\n  cancel-in-progress: true\n\nenv:\n  BD_DISABLE_METRICS: \"1\"\n  BD_DISABLE_EVENT_FLUSH: \"1\"\n\n# The legacy Go test tiers this workflow used to run (embedded Dolt storage,\n# conformance and cmd shards; proxied-server cmd shards; server-Dolt storage\n# and full suite) are pr.yml's Bazel lanes on rbe-west now: `embedded Dolt\n# tier`, `proxied-server tier` (`dolt-race`, with the dolt-server lane, in\n# mode remote) and `server-Dolt storage tier` (bazel.yml), which pr.yml's\n# `CI Gate / Required` requires to have run remotely and passed on every\n# pull_request, fork and Dependabot PRs included (ga-96smfk.22); a merge\n# group skips these Dolt tiers and main's push run of bazel.yml runs them.\n# What remains is the Nix packaging check, which no Bazel target can stand\n# in for: it builds the package Nix users install.\n\njobs:\n  # What this event runs: the same job as pr.yml's\n  # (.github/scripts/ci-scope.sh; engdocs/CI_REQUIRED_CHECK_TOPOLOGY.md,\n  # \"Merge Queue\"). Here only its platforms switch matters: test-nix runs on\n  # pull requests and on pushes to main, not in a merge group.\n  scope:\n    name: Scope\n    runs-on: ${{ (github.event_name == 'merge_group' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]')) && 'blacksmith-2vcpu-ubuntu-2404' || 'ubuntu-latest' }}\n    timeout-minutes: 5\n    permissions:\n      contents: read\n    outputs:\n      platforms: ${{ steps.decide.outputs.platforms }}\n      dolt-tiers: ${{ steps.decide.outputs.dolt-tiers }}\n      linux: ${{ steps.decide.outputs.linux }}\n      advisory: ${{ steps.decide.outputs.advisory }}\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1\n        with:\n          persist-credentials: false\n          sparse-checkout: .github/scripts/ci-scope.sh\n          sparse-checkout-cone-mode: false\n\n      - name: Decide what this event runs\n        id: decide\n        run: bash .github/scripts/ci-scope.sh decide\n\n  test-nix:\n    name: Test Nix Flake\n    needs: scope\n    if: ${{ needs.scope.outputs.platforms == 'true' }}\n    # F7a: cache-free (no GitHub-saved cache restored/saved here) same-repo\n    # job moved onto Blacksmith at 4 vCPU; forks, Dependabot and any other\n    # event stay GitHub-hosted. Must match TestSameRepoBlacksmithRunners.\n    runs-on: ${{ (github.event_name == 'merge_group' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]')) && 'blacksmith-4vcpu-ubuntu-2404' || 'ubuntu-latest' }}\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v6\n      - uses: DeterminateSystems/determinate-nix-action@527f17dd63d2d60d3e5552934bc84b9a33a14d11 # v3\n      - name: Run bd help via Nix\n        id: nix_help\n        run: |\n          nix run .#default -- --help > help.txt\n      # A packaging check, not a test: evaluates every flake output (packages,\n      # apps, devShells, overlay) for every system the flake declares. The\n      # flake has no `checks`: its one check, hook-timeout-backends, runs\n      # unde"
+    },
+    "pr.yml": {
+      "path": ".github/workflows/pr.yml",
+      "size_bytes": 90451,
+      "line_count": 1735,
+      "truncated": true,
+      "excerpt": "name: PR\n\non:\n  pull_request:\n    # release/** is here because release-prep and release-fix PRs are based on\n    # the release branch, not on main. Without it they run almost no CI and the\n    # first full signal is the tag build, where a failure burns the tag.\n    branches: [ main, 'release/**', 'hotfix/**' ]\n  # Merge queue (engdocs/CI_REQUIRED_CHECK_TOPOLOGY.md, \"Merge Queue\"):\n  # the ruleset's required gate must also report on each queue entry's\n  # merge-group commit, or a queued PR waits until the queue times it out.\n  # checks_requested is the queue asking for those checks; pinned\n  # explicitly (scripts/ci_merge_queue_test.go). The concurrency group\n  # below keys a merge group on its own gh-readonly-queue/* ref, so queue\n  # runs never cancel each other or a PR's own runs. A merge group runs the\n  # fast set only (the scope job below): no Windows or macOS job, and the\n  # Bazel call without its Dolt-tier lanes.\n  merge_group:\n    types: [ checks_requested ]\n  # The post-merge complement: the Windows and macOS jobs a merge group\n  # skipped run on every push to main. The queue lands a batch of entries\n  # as one push of its last entry (main fast-forwards to that entry's tested\n  # merge-group commit, the same tree), so a push head's tree contains every\n  # entry of its batch; an earlier entry gets the complement only as part\n  # of it. bazel.yml's own push run is every Bazel lane, so this run calls\n  # none. A red push run opens the ci/main-red issue (main-ci-alert.yml).\n  push:\n    branches: [ main ]\n\n# A push to main keys on its commit: no push's complement run cancels\n# another's or waits behind it (GitHub cancels a group's pending run when a\n# newer one queues).\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || (github.event_name == 'push' && github.sha) || github.ref }}\n  cancel-in-progress: true\n\nenv:\n  BD_DISABLE_METRICS: \"1\"\n  BD_DISABLE_EVENT_FLUSH: \"1\"\n  # step's run script. Committed, not a repo variable, so a re-run can never\n  # change it.\n  # bazel.yml's bazel-cmd-dolt lane (the cmd/bd Dolt-server tier: the\n  # Dolt-gated cmd/bd tests no other lane runs) is advisory while this is\n  # \"false\": it runs and reports in the bazel call (continue-on-error, so a\n  # failure never turns the call's aggregate red), and ci-gate ignores its\n  # BAZEL_CMD_DOLT result. \"true\" adds BAZEL_CMD_DOLT to CI_GATE_REQUIRED in\n  # the \"Evaluate CI gate\" step's run script; bazel-gate.sh still accepts\n  # its skip in modes skip and local. Committed, not a repo variable, so a\n  # re-run can never change it. The `bazel` job's cmd-dolt-required\n  # input must equal it (a `with:` cannot read env; policy-tested): \"true\"\n  # also drops //cmd/bd:bd_test from bazel-integration, because the required\n  # lane runs the same integration-build bd_test without the dolt skip, so\n  # each cmd/bd test runs once. Rollback: commit \"false\" here and false in\n  # that input together; bazel-integration runs bd_test again on the next run.\n  # The flag decides only what this gate requires: a merge group skips the\n  # tier (the scope's dolt-tiers), and main's push run of bazel.yml fails on\n  # a cmd/bd tier failure either way (bazel-dolt-int's last step).\n  BAZEL_CMD_DOLT_REQUIRED: \"true\"\n\njobs:\n\n  # What this event runs (.github/scripts/ci-scope.sh, the same job as\n  # pr-risk.yml's): a pull request everything; a merge group the fast set\n  # (linux: the Linux jobs and the Bazel call, dolt-tiers off: no Dolt-tier\n  # lane; no platforms job, no advisory report); a push to main the\n  # complement (platforms: the Windows and macOS jobs). Every other job\n  # needs it and runs on one of its switches, and ci-gate excuses a skip\n  # only where it says so (engdocs/CI_REQUIRED_CHECK_TOPOLOGY.md, \"Merge\n  # Queue\"). The one place that reads the event; only the script is checked\n  # out.\n  scope:\n    name: Scope\n    runs-on: ${{ (github.event_name == 'merge_group' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]')) && 'blacksmith-2vcpu-ubuntu-2404' || 'ubuntu-latest' }}\n    timeout-minutes: 5\n    permissions:\n      contents: read\n    outputs:\n      platforms: ${{ steps.decide.outputs.platforms }}\n      dolt-tiers: ${{ steps.decide.outputs.dolt-tiers }}\n      linux: ${{ steps.decide.outputs.linux }}\n      advisory: ${{ steps.decide.outputs.advisory }}\n    steps:\n      - uses: actions/checkout@3d3c42e5aa"
+    },
+    "remove-needs-triage.yml": {
+      "path": ".github/workflows/remove-needs-triage.yml",
+      "size_bytes": 2372,
+      "line_count": 61,
+      "truncated": false,
+      "excerpt": "name: Remove needs-triage when triaged\n\non:\n  issues:\n    types: [labeled]\n  pull_request_target:\n    types: [labeled]\n\npermissions: {}\n\njobs:\n  # pull_request_target is safe here because this job never checks out or runs\n  # pull request code; it only removes labels from the issue/PR metadata.\n  remove-triage-label:\n    # Olivia owns label, comment, and inbox removal as one recoverable transaction.\n    if: github.event.sender.login != 'gascityinc-sarah[bot]'\n    runs-on: ubuntu-latest\n    permissions:\n      issues: write\n      pull-requests: write\n    steps:\n      - name: Remove needs-triage when a non-status label is added\n        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8\n        with:\n          script: |\n            const added = context.payload.label.name;\n            if (added.startsWith('status/')) return;\n\n            const number = context.issue?.number || context.payload.pull_request?.number;\n            const target = 'status/needs-triage';\n\n            const current = await github.rest.issues.listLabelsOnIssue({\n              owner: context.repo.owner,\n              repo: context.repo.repo,\n              issue_number: number,\n            });\n\n            if (!current.data.some(l => l.name === target)) return;\n\n            // The check above narrows a race but cannot close it: adding\n            // several non-status labels at once fires one `labeled` event\n            // (and one job) each, and they run concurrently. Every run sees\n            // the label present here, then all race to remove it. The winner\n            // gets 204; the losers get 404 \"Label does not exist\". Treat an\n            // already-absent label as success so a benign lost race does not\n            // paint a red X on the PR's checks.\n            try {\n              await github.rest.issues.removeLabel({\n                owner: context.repo.owner,\n                repo: context.repo.repo,\n                issue_number: number,\n                name: target,\n              });\n              console.log(`Removed '${target}' from #${number} (triaged with '${added}')`);\n            } catch (err) {\n              if (err.status === 404) {\n                console.log(`'${target}' already absent from #${number} (concurrent removal); nothing to do`);\n                return;\n              }\n              throw err;\n            }\n"
+    }
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-20T20:42:29Z",
+      "oldest": "2026-11-12T21:53:44Z"
+    },
+    "conventional_pct": 100.0,
+    "fix_revert_pct": 82.0,
+    "ai_coauthor_pct": 100.0,
+    "top_recent_authors": [
+      [
+        "gascity-eddie[bot]",
+        41
+      ],
+      [
+        "julianknutsen",
+        3
+      ],
+      [
+        "rjgeng",
+        2
+      ],
+      [
+        "donnabox",
+        2
+      ],
+      [
+        "raymond-w-ko",
+        1
+      ],
+      [
+        "bee-ghosttrack",
+        1
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "78624109",
+        "date": "2026-11-20T20:42:29Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(migrate): stop promising that reads keep working before a schema migration (#8571)",
+        "ai_signal": true
+      },
+      {
+        "sha": "dc545e87",
+        "date": "2026-11-20T18:22:02Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(migrate): give proxied-server workspaces a remote-migrate refusal they can act on (bd-5hl9dg) (#8568)",
+        "ai_signal": true
+      },
+      {
+        "sha": "3a274fbf",
+        "date": "2026-11-19T18:32:19Z",
+        "author": "julianknutsen",
+        "subject": "fix(config): stop reading ~/Library/Application Support on macOS; keep user config merge (GH#8113) (#8533)",
+        "ai_signal": true
+      },
+      {
+        "sha": "4bc06dca",
+        "date": "2026-11-19T17:57:07Z",
+        "author": "julianknutsen",
+        "subject": "feat(sdk): route proxied-server workspaces through the bd proxy (GH#8323) (#8558)",
+        "ai_signal": true
+      },
+      {
+        "sha": "2549ece6",
+        "date": "2026-11-18T19:36:02Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(storage): a rolled-back create empties the IDs it filled on the caller's structs (bd-wm5ahf) (#8470)",
+        "ai_signal": true
+      },
+      {
+        "sha": "dfcf7198",
+        "date": "2026-11-18T19:23:54Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(audit): journal --claim and --claim-next to the interactions sidecar (#8336)",
+        "ai_signal": true
+      },
+      {
+        "sha": "1df7fc65",
+        "date": "2026-11-18T19:19:37Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(cmd/bd): open a metadata-less embedded workspace's sole database and retire no-db (GH#4135) (#8339)",
+        "ai_signal": true
+      },
+      {
+        "sha": "13128f06",
+        "date": "2026-11-18T19:17:14Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(ready): hide children of parents deferred without a date (supersedes #7304) (#8346)",
+        "ai_signal": true
+      },
+      {
+        "sha": "cb399c94",
+        "date": "2026-11-18T19:16:24Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(wisp): commit forced closed-wisp GC in 200-id chunks and keep progress on failure (bd-d2zqqc) (#8334)",
+        "ai_signal": true
+      },
+      {
+        "sha": "82c5b606",
+        "date": "2026-11-18T19:01:30Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(storage): counter mint skips ids a live row holds, however far it lags (#8456) (#8466)",
+        "ai_signal": true
+      },
+      {
+        "sha": "9cbc4f0c",
+        "date": "2026-11-18T18:58:59Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(init): require consent before adopting origin Dolt history; add bd dolt drop-database (#8353)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ead6dd1b",
+        "date": "2026-11-18T18:57:26Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(show): explain unrouted foreign-prefix misses (#8344)",
+        "ai_signal": true
+      },
+      {
+        "sha": "67b2d842",
+        "date": "2026-11-18T18:17:55Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(update): refuse --claim on an issue with an open local blocker (supersedes #7049) (#8360)",
+        "ai_signal": true
+      },
+      {
+        "sha": "d2ed4aa7",
+        "date": "2026-11-18T18:17:08Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(dolt): distinguish a failed pre-push fsck from reported corruption (#8332)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ead6beb5",
+        "date": "2026-11-18T18:09:11Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(storage): keep child suffixes reserved across create, rename and removal (GH#4750) (#8410)",
+        "ai_signal": true
+      },
+      {
+        "sha": "dc16c1ec",
+        "date": "2026-11-18T18:08:24Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(delete): stop a deleted id from matching inside its descendants' ids (supersedes #7377) (#8451)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ae13ad8b",
+        "date": "2026-11-18T18:06:52Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "docs(troubleshooting): explain SSH conjoin failures on git+ssh pushes (#8342)",
+        "ai_signal": true
+      },
+      {
+        "sha": "9a62f775",
+        "date": "2026-11-18T18:00:38Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(schema): refuse drift-stopped migrations with a typed, runbook-linked error (#8361)",
+        "ai_signal": true
+      },
+      {
+        "sha": "8c08060e",
+        "date": "2026-11-18T17:55:36Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(proxy): refuse bd migrate schema on proxied workspaces unless --force (bd-n5e58c) (#8387)",
+        "ai_signal": true
+      },
+      {
+        "sha": "f2c69650",
+        "date": "2026-11-18T17:54:51Z",
+        "author": "gascity-eddie[bot]",
+        "subject": "fix(mcp): keep comment completeness on reads, add show include_comments (supersedes #5982) (#8350)",
+        "ai_signal": true
+      }
+    ]
+  },
+  "top_contributors": [
+    {
+      "login": "steveyegge",
+      "contributions": 4805
+    },
+    {
+      "login": "maphew",
+      "contributions": 776
+    },
+    {
+      "login": "julianknutsen",
+      "contributions": 699
+    },
+    {
+      "login": "coffeegoddd",
+      "contributions": 616
+    },
+    {
+      "login": "gascity-eddie[bot]",
+      "contributions": 156
+    },
+    {
+      "login": "quad341",
+      "contributions": 155
+    },
+    {
+      "login": "dependabot[bot]",
+      "contributions": 123
+    },
+    {
+      "login": "harry-miller-trimble",
+      "contributions": 118
+    },
+    {
+      "login": "turian",
+      "contributions": 98
+    },
+    {
+      "login": "kevglynn",
+      "contributions": 95
+    }
+  ],
+  "recent_releases": [
+    {
+      "tag": "v1.4.0-rc.4",
+      "published_at": "2026-11-20T21:56:01Z",
+      "name": "v1.4.0-rc.4"
+    },
+    {
+      "tag": "v1.4.0-rc.3",
+      "published_at": "2026-11-18T00:55:10Z",
+      "name": "v1.4.0-rc.3"
+    },
+    {
+      "tag": "v1.4.0-rc.2",
+      "published_at": "2026-11-13T07:49:25Z",
+      "name": "v1.4.0-rc.2"
+    },
+    {
+      "tag": "v1.4.0-rc.1",
+      "published_at": "2026-11-12T21:35:59Z",
+      "name": "v1.4.0-rc.1"
+    },
+    {
+      "tag": "v1.3.4",
+      "published_at": "2026-11-04T09:22:51Z",
+      "name": "v1.3.4"
+    }
+  ]
+}
