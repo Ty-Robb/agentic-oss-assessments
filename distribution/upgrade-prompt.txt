@@ -6,39 +6,39 @@ Audit this repository and propose a scoped Week 1 patch that hardens agentic eng
 <workflow>
 1. Inspect the repository first (root files, AGENTS.md/CLAUDE.md, linter/formatter config, package manager/lockfile, CI workflows, PR template, and recent git/PR history if available).
 2. Report current gaps in a short table and propose a Week 1 PR plan.
-3. STOP and wait for approval before editing files unless the user explicitly told you to implement immediately.
-4. After edits, run the diff-scoped check once and report Observed vs. Not run.
+3. STOP and wait for explicit human approval before editing any files. Do not modify files or delete tests until the user confirms the plan.
+4. After approved edits, run the diff-scoped check once and report Observed vs. Not run.
 </workflow>
 
 <week_1_guardrails>
 1. Single-source instructions:
-   - Keep root AGENTS.md concise and open with the exact local check command. Move long reference material into docs/.
+   - Keep root AGENTS.md concise and open with the exact local check command (wired to a real script in this repo). Move long reference material into docs/.
    - Put a 1-line `@AGENTS.md` include in CLAUDE.md (safer than symlinks on Windows; never overwrite an existing CLAUDE.md without merging its unique rules first).
-   - Every new rule must cite a real bug, incident, or failure mode. Prefer deleting an instruction to hedging it.
-   - Add four compact invariants:
+   - Every new rule added to AGENTS.md must cite a real bug, incident, or failure mode from this repo (or carry an explicit `# TODO: cite incident or delete` marker for human review). Prefer deleting an instruction to hedging it.
+   - Propose four compact invariants (only include the ones relevant to this repo):
      * Choose good compromises: prefer idempotency key + check + retry over speculative abstractions.
      * Doc voice: avoid filler ("It's not X, it's Y", "robust", "seamless", "and that matters"); integrate doc edits instead of appending.
      * Multi-agent Git safety: never run `git add -A`, `git stash`, or `git reset --hard`; never kill processes by name pattern.
-     * Tests are the exception: prove behavior by running the real app/CLI; commit automated tests only where a silent regression is expensive (parsers/codecs, security boundaries, persistence/migrations, concurrency/state machines, cross-platform paths). Delete brittle mock/UI tests you touch instead of updating them.
+     * Selective tests: prove behavior by running the real app/CLI; commit automated tests where a silent regression is expensive (parsers/codecs, security boundaries, persistence/migrations, concurrency/state machines, cross-platform paths). Flag brittle mock/UI tests for removal in the PR plan rather than silently deleting them.
 
 2. One cached diff-scoped local check:
-   - Wire or document one fast diff-scoped check command (e.g. `check:changed` or `verify`).
+   - Wire or document one fast diff-scoped check command (e.g. `check:changed` or `verify`) that actually exists in this repo's task runner.
    - State in AGENTS.md: run it once when done editing; if cached/passing, do not also re-run the full typecheck, linter, or full test suite, and never pass `--no-verify`.
 
 3. Honest PR template & review hygiene:
-   - Add three compact sections to the PR template:
-     * `### Observed / Not run` (exact commands run, observed output, and what was skipped).
+   - Add two compact sections to `.github/pull_request_template.md` (using empty placeholders, never prefilled as passed):
+     * `## Observed / Not Run` (exact commands run, observed output, and what was skipped).
      * `## Performance` (hot-path impact; explicitly allow `None, because ...` so agents do not invent benchmarks).
-   - Keep local QA screenshots/logs gitignored and fail CI if scratch or evidence files get tracked.
+   - Keep local QA screenshots/logs gitignored, and optionally add a CI check that fails if scratch or evidence files are committed.
    - Only create `REVIEW.md` if you can seed it from real PR review catches in git/`gh` history; if history is unavailable, skip it rather than fabricating rules.
 </week_1_guardrails>
 
 <conditional_checks>
 Apply ONLY if the condition already holds in this repo:
-- Path-filtered CI exists: add one `if: always()` `CI required` aggregator job as the sole required branch-protection check. Fail on `failure` or `cancelled`; treat `skipped` as pass ONLY when caused by path filters.
-- GitHub Actions PR CI exists: consider a zero-checkout `ubuntu-slim` workflow (fetching its script from the default branch) that posts a test LoC vs. non-test LoC table on PRs.
-- Existing linter (oxlint/Biome/Ruff/golangci-lint): commit a baseline first before turning 3-5 recurring real review bugs into hard errors; use per-file allowlists, never directory-wide disables. Do not add a rising test-coverage floor that fights deleting low-value tests.
-- Repo already ships `SKILL.md` files: validate frontmatter in CI using the installer's YAML parser, cap loaded catalog tokens, and mark manual/destructive skills with BOTH `disable-model-invocation: true` (Claude) and `agents/openai.yaml` `policy.allow_implicit_invocation: false` (Codex).
+- Path-filtered CI exists: add one `if: always()` `CI required` aggregator job inside the SAME workflow file as the jobs it depends on, include the path-filter job in `needs` (requiring it to succeed), fail on `failure` or `cancelled`, and treat downstream `skipped` jobs as pass ONLY when the filter job succeeded. Make this job the sole required branch-protection check.
+- GitHub Actions PR CI exists: consider a zero-checkout `ubuntu-slim` workflow (fetching its helper script from `default_branch`) that logs a test LoC vs. non-test LoC breakdown on PRs, and handles fork PR 403s gracefully (skipping comment writes when the token is read-only).
+- Existing linter (oxlint/Biome/Ruff/golangci-lint): commit a debt baseline first before turning 3-5 recurring real review bugs into hard errors; use per-file allowlists, never directory-wide disables. Do not add a rising test-coverage floor that fights pruning low-value tests.
+- Repo already ships `SKILL.md` files: validate frontmatter in CI using the installer's YAML parser, cap loaded catalog tokens, and mark manual/destructive skills with BOTH `disable-model-invocation: true` (Claude) and a per-skill `agents/openai.yaml` (`policy.allow_implicit_invocation: false`) for Codex.
 - Multi-platform optional dependencies exist (e.g. bundled platform CLIs): ignore unused host platforms with an inline comment explaining why.
 </conditional_checks>
 </prompt>

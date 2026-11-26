@@ -1,13 +1,13 @@
 # Chunk 6 Summary — Agent Skill, Spec & Workflow Stacks
 
-*Snapshot date: 2026-11-25. Combined stars in this chunk: **1,168,180★** across 10 repositories (bringing the full 34-repo study to **2,903,100★ / ~2.90M combined stars**).*
+*Snapshot date: 2026-11-25. Combined stars in this chunk: **1,168,180★** across 10 repositories (bringing the full 35-repo study, including `stablyai/orca` in Chunk 1, to **3,040,947★ / ~3.04M combined stars**).*
 
 ## Side-by-Side Matrix
 
 | Repo | Who Built It | Stars | Open Issues | Status | Primary Stack | `AGENTS.md` / Policy | Signature Mechanical Gate | Workflows | Last-50 Velocity & Hygiene |
 | --- | --- | ---: | ---: | --- | --- | --- | --- | ---: | --- |
 | **[`mattpocock/skills`](mattpocock-skills.md)** | **Matt Pocock** | 332.8k | 251 | Active | Markdown skills + 20 KB Shell/JS, Changesets | 33-line `AGENTS.md`, collaborators-only PRs, `SCOPE.md`, zero em-dashes, fresh-context subagents | Installer-parity YAML frontmatter CI (`check-frontmatter.mjs`), `disable-model-invocation` + `agents/openai.yaml` | 4 | 50 / **7.1 wks** · 16% conv · 6% fix · 66% AI |
-| **[`mattpocock/sandcastle`](mattpocock-sandcastle.md)** | **Matt Pocock** | 9.3k | 137 | Active | 2.6 MB TS, TS 7, Effect, `oxlint-tsgolint`, Biome fmt | 41-line `AGENTS.md` + `GLOSSARY.md` | **All-5-category `oxlint` straitjacket + automated `lint-shrink.yml` bot**, real `bwrap`/Windows/macOS CI, `tests/docs-guide.test.ts`, `api-report/` | 8 | 50 / **6.0 days** · **98% conv** · 8% fix · 98% AI |
+| **[`mattpocock/sandcastle`](mattpocock-sandcastle.md)** | **Matt Pocock** | 9.3k | 137 | Active | 2.6 MB TS, TS 7, Effect, `oxlint-tsgolint`, Biome fmt | 41-line `AGENTS.md` + `GLOSSARY.md` | **All-5-category `oxlint` straitjacket + automated `lint-shrink.yml` bot**, real `bwrap`/Windows/macOS CI, `tests/docs-guide.test.ts`, `api-report/` | 8 | 50 / **5.9 days** · **98% conv** · 8% fix · 98% AI |
 | **[`obra/superpowers`](superpowers.md)** | **Jesse Vincent** (`obra`) | 326.5k | 372 | Active | Markdown skills + 520 KB Shell/JS, 15+ harness plugins | 121-line `AGENTS.md` (**94% PR rejection rate**), human <200w summary, full model/plugin disclosure | External real-CLI eval lab (`superpowers-evals`: Quorum + Gauntlet QA), `"react todo list"` bootstrap acceptance test | **0** | 50 / **4.0 mos** · 78% conv · 12% fix · 14% AI |
 | **[`github/spec-kit`](spec-kit.md)** | **GitHub** | 151.4k | 230 | Active | 11.9 MB Python (`uv`, Typer, MCP SDK, Hatchling) | 76-line `AGENTS.md` + **Evidence Gate** (`CONTRIBUTING.md`) | **GitHub Agentic Workflows (`gh-aw`)** in digest-pinned firewall containers + constrained `safe-outputs`, Ruff `S602`–`S605` | 29 | 50 / **7.0 days** · 78% conv · 60% fix · 34% AI |
 | **[`garrytan/gstack`](gstack.md)** | **Garry Tan** (YC CEO) | 142.6k | **45** | Active | **45.1 MB TS** + Bun + Playwright/Aside + compiled CLIs | 18.6 KB `AGENTS.md` + 35.5 KB `CLAUDE.md` + honest **58 vs 61/99** benchmark admission | `catalog-budget` & `context-budget` ratchets, `egress-receipt-wiring.test.ts`, `$150/wk`-capped pre-registered eval sweeps | 38 | 50 / **1.8 days** · 0% conv (plain titles) · **100% AI** (`garrytan` = 50/50) |

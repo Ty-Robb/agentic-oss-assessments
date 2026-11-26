@@ -31,7 +31,7 @@
 ## 5. Steal vs. Avoid
 - **Steal:**
   1. **Verification Skill Independence (`verify-skill-isolation.yml`):** Mechanically forbid an implementing PR from editing its own verification specs/skills — closes the "agent weakens the test to make CI green" loophole.
-  2. **Diff-scoped mutation testing (`stryker-diff.mjs`):** Run Stryker only on changed lines to prove agent-written tests actually catch real bugs.
+  2. **Diff-scoped mutation testing (`stryker-diff.mjs`):** Run Stryker across changed production TypeScript files (`git diff --name-only`) to prove agent-written tests actually catch real bugs.
   3. **`HUMAN:` PR section validator (`pr-description-check.yml`)** + unit tests for CI scripts (`ci-script-tests.yml`).
   4. **7-day npm/PyPI release-age policy** (`npm@>=11.10` `--min-release-age=7` + Dependabot cooldown) + exact-pinned deps.
   5. **Mock-LLM Playwright E2E** (`playwright.mock-llm.config.ts`) for deterministic, zero-token end-to-end UI verification of agent conversations.

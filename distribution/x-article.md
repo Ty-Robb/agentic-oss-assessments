@@ -60,7 +60,7 @@ When anyone can prompt an agent to open a PR in 90 seconds, open-by-default trac
 - **`openclaw/openclaw`** (395.2k★, 20-PR author cap + bot sweepers): **9,182**
 - **`pingdotgg/t3code`** (78.8k★, `VOUCHED.td` + PR limits): **3,681**
 - **`aaif-goose/goose`** (57.0k★, `Ready`-board gate): **512**
-- **`obra/superpowers`** (326.5k★, maintainer-reported *"94% PR rejection rate"* on line 1 of `AGENTS.md`): **372**
+- **`obra/superpowers`** (326.5k★, maintainer-reported *"94% PR rejection rate"* near the top of `AGENTS.md`, line 7): **372**
 - **`earendil-works/pi`** (123.8k★, default-closed `lgtmi`/`lgtm` auto-close): **307**
 
 `codex` had **93.2×** as many open items as `pi` at collection — though `pi`'s 307 is partly true by construction because unapproved items are auto-closed on arrival (which trades away public bug discoverability). Counter-example inside our own cohort: `paseo` (`25.3k★`, `2,203` open) runs *"PRs closed by default"* yet carries more open items per star than open-tracker `opencode`.

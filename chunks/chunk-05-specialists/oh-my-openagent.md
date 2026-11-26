@@ -5,7 +5,7 @@
 - **Data source:** [`data/chunk-05/code-yeongyu__oh-my-openagent.json`](../../data/chunk-05/code-yeongyu__oh-my-openagent.json)
 
 ## 1. Agent Instruction & Docs Hygiene
-- **Largest and loudest `AGENTS.md` in the 24-repo study (70.8 KB / 479 lines, duplicated byte-for-byte in `CLAUDE.md`):**
+- **Largest and loudest `AGENTS.md` in the 35-repo study (70.8 KB / 479 lines, duplicated byte-for-byte in `CLAUDE.md`):**
   - Opens with an ALL-CAPS profanity alert (*"HOLD THE FUCK UP. THIS ENTIRE GODDAMN CODEBASE IS BEING RIPPED APART AND REBUILT RIGHT NOW..."*), followed by an exhaustive multi-screen `STOP. QA IS MANDATORY` directive and a 7-step `MANDATORY CHANGE-EXECUTION PROTOCOL` (Explore → Plan on disk → Ultra-detailed todos → Fresh worktree → Open PR & stay until merged → `ulw-loop` → Obsessive todo tracking).
   - **Self-inflicted token & drift penalty:** Even with a `Generated: 2026-08-24` timestamp at the top (3 months stale relative to `v5.1.83` in Nov 2026!), 70.8 KB burns massive prompt context on every turn and relies on ALL-CAPS shouting where shorter, mechanically enforced rules work better.
 - **High-craft operational patterns underneath the shouting:**
@@ -17,7 +17,7 @@
   1. **Local-only `.omo/evidence/` + `sha256sum` PR proof + anti-commit CI test (`script/tracked-evidence-paths-audit.test.ts`):** Agents must drive the real harness (`opencode`, `codex app-server`, `senpi`) in isolated XDG/`CODEX_HOME`/`SENPI_CODING_AGENT_DIR` sandboxes, prove real user configs (`~/.codex/config.toml`, `opencode.db`) were untouched (via shasum / SQLite `SELECT count(*) FROM session` before & after), save captures to gitignored `.omo/evidence/<YYYYMMDD>-<slug>/`, paste decisive excerpts + `sha256sum` lines in the PR body — and CI **fails the build** if any evidence file is ever committed!
   2. **Root hermetic-test & temp-leak guards:** Ships dedicated meta-tests (`test-hermetic-home.test.ts`, `test-hermetic-home-teardown.test.ts`, `test-temp-leak-match.test.ts`, `test-temp-root.test.ts`, `test-git-environment.test.ts`) preventing tests from writing to real `$HOME` or leaking temp directories.
   3. **Strict `.oxlintrc.json` + `lint-ratchet`:** Unconditional 3-minute `lint-ratchet` job runs on *every* CI event regardless of docs/web fast-paths, requiring tracked file debt counts to match or drop below the committed baseline. Custom `./script/oxlint/biome-ports.ts` ports Biome rules into `oxlint`, paired with `typescript/no-explicit-any`, `no-non-null-assertion`, `ban-ts-comment`, and `knip`.
-- **48 GitHub workflows (`ci.yml` alone is 1,905 lines / 91.8 KB!):**
+- **43 YAML GitHub workflows (48 total entries in `.github/workflows/`; `ci.yml` alone is 1,905 lines / 91.8 KB!):**
   - **Measured p95×2 job timeouts** (commented with exact measurement date & PR `#14573`) so regressions fail loudly instead of creeping.
   - **Cost-guarded `ci:full-matrix` label (`ci-full-matrix-label.yml` + `pr-platform-decision.yml`):** Refuses expensive macOS/Windows matrices in seconds on Linux unless platform paths changed or the PR body includes `Platform-reason: <why>`.
   - **Real installer integration testing (`get-worker-ci.yml`):** Runs `shellcheck` on `install.sh`, `PSScriptAnalyzer` on `install.ps1`, installs twice into an isolated `HOME` (proving idempotency and single `.bashrc` block), and tests fallback to GitHub Releases when the mirror domain is unreachable (`OMO_INSTALL_BASE_URL=https://get.omo.invalid`).

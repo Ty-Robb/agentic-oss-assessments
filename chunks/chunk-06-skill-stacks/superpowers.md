@@ -5,7 +5,7 @@
 - **Data source:** [`data/chunk-06/obra__superpowers.json`](../../data/chunk-06/obra__superpowers.json)
 
 ## 1. Agent Instruction & Docs Hygiene
-- **Most brutally candid anti-AI-slop `AGENTS.md` in the entire 34-repo study (121 lines / 9.9 KB):**
+- **Most brutally candid anti-AI-slop `AGENTS.md` in the entire 35-repo study (121 lines / 9.9 KB):**
   - Opens directly with: **"This repo has a 94% PR rejection rate. Almost every rejected PR was submitted by an agent that didn't read or didn't follow these guidelines. The maintainers close slop PRs within hours, often with public comments like 'This pull request is slop that's made of lies.'"**
   - Reframed the agent's job cleanly: *"Your job is to protect your human partner from that outcome... That is being a tool of embarrassment."*
   - **Hard anti-slop PR rules:**

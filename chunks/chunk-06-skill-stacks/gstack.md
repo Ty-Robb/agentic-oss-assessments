@@ -5,7 +5,7 @@
 - **Data source:** [`data/chunk-06/garrytan__gstack.json`](../../data/chunk-06/garrytan__gstack.json)
 
 ## 1. Agent Instruction & Docs Hygiene
-- **The most honest empirical self-eval in the entire 34-repo study (`README.md`):**
+- **The most honest empirical self-eval in the entire 35-repo study (`README.md`):**
   > *"What it doesn't do: make your agent fix more bugs. In a November 2026 test on 100 everyday GitHub bugs and features, Claude Opus 5.5 fixed 58 with gstack installed and 61 of 99 without it (one task didn't score). So gstack gave no gain, and the test rules out a gain bigger than about 2 points on those tasks. On 60 security fixes, both fixed 29. Use gstack for the workflow, the reviews, the shipping steps and the safety guards, not for a higher fix rate."*
 - **Heavy, deeply battle-scarred agent instructions:** Separate `AGENTS.md` (**18.6 KB / 275 lines** listing 60+ skills + a massive 9-point `Validation discipline`) AND `CLAUDE.md` (**35.5 KB / 631 lines**!) plus an 84.7 KB `CONTRIBUTING.md` and **82 `docs/`** — powerful operational rigor, but heavy token weight and split across two large root instruction files.
 - **Template-generated `SKILL.md` discipline:** `SKILL.md` files are compiled from `.tmpl` sources (`bun run gen:skill-docs`), never edited directly; merge conflicts must be resolved on `.tmpl` and regenerated.

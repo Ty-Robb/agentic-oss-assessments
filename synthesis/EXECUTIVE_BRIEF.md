@@ -51,7 +51,7 @@ When an agent makes a mistake twice, **move the rule out of prose and into a lin
 
 - **Match CI to team size (typically 8–30 YAML workflows for small/mid teams):**
   - Pair path-filtered CI with one **`if: always()` `CI required` aggregator** (explicitly failing on `failure`/`cancelled`, treating `skipped` as success only when caused by path filters) and one **cached diff-scoped local command** (`pnpm check:changed` — *"do not also re-run the full suite"*).
-  - High-workflow stacks (`openclaw` 133, `orca` 67, `gemini-cli` 47) require dedicated runner/cache maintenance; at the extreme (`cmux`, 231 YAML workflows), 17 of 20 stored Nov 25 commits by one dev were CI/release maintenance.
+  - High-workflow stacks (`openclaw` 133, `orca` 67, `gemini-cli` 47) require dedicated runner/cache maintenance; at the extreme (`cmux`, 231 YAML workflows), ~17 of 20 stored Nov 25 commit subjects (19/20 by `teamleaderleo`, 1 CI commit by `austinywang`) touched CI/release maintenance.
 - **Supply-chain locks (`codex`, `openclaw`, `orca`, `OpenSpec`, `paseo`):** `minimumReleaseAge` (3d `4320` or 7d `10080`), commented `allowBuilds`, dated expiry comments + sweeper, GHSA overrides in `pnpm-workspace.yaml`, and `lockfile-lint`.
 - **Trigger-gated infra proofs:** `lock_timeout = '5s'` migrations (`Paradev`), CI Postgres `pg_dump`/restore (`paperclip`), prod Docker `curl` health check (`bolt.diy`), real `bwrap` OS-sandbox CI (`sandcastle`), `prefix-stability.test.ts` (`openclaw`), and `eval-gate` environment-approved behavioral `evals/` (`gemini-cli`: 38 `*.eval.ts` files).
 

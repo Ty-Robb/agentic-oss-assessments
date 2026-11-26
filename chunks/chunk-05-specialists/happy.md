@@ -12,7 +12,7 @@
 - **Focused `.agents/skills/` (9 skills) & 31 `docs/`:** Operational procedures live in skills (`release`, `dev`, `maintain`, `agent-browser`, `terminal-emulator`, `metrics-graphana`, `sessions`, `control-flow`, `office-hours`), while architecture specs live in `docs/` (`encryption.md`, `protocol.md`, `realtime-sync-and-rpc.md`, `chat-list-scrolling.md`, `permission-resolution.md`, `analytics-catalog.json`).
 
 ## 2. Mechanical Gates & Quality Control
-- **Only 1 GitHub Actions workflow (`release-happy-cli.yml`) in the entire repo:** The most extreme anti-CI-bloat stance in the 24-repo study (contrast `cmux`'s 231 workflows and `openclaw`'s 133). There is **no automated PR test/lint workflow** in `slopus/happy`; quality relies on local developer/agent verification, release skills, and tight two-maintainer ownership.
+- **Only 1 GitHub Actions workflow (`release-happy-cli.yml`) in the entire repo:** The most extreme anti-CI-bloat stance in the 35-repo study (contrast `cmux`'s 231 workflows and `openclaw`'s 133). There is **no automated PR test/lint workflow** in `slopus/happy`; quality relies on local developer/agent verification, release skills, and tight two-maintainer ownership.
 - **Isolated local dev-environment harness (`package.json`):** Ships a first-class `packages/dev-environments` CLI (`pnpm env:new`, `env:up`, `env:up:authenticated`, `env:seed`, `env:server`, `env:cli`, `env:tailscale`, `env:down`) so agents and engineers spin up reproducible, authenticated local server+CLI stacks without touching production state.
 - **Supply-chain hygiene:** Uses pnpm 10 `onlyBuiltDependencies` (`@prisma/client`, `better-sqlite3`, `esbuild`, `sharp`, `workerd`), explicit `pnpm.overrides`, and a small `Lean` formalization (23.5 KB) in the repo.
 

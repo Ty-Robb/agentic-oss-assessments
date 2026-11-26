@@ -5,7 +5,7 @@
 - **Data source:** [`data/chunk-06/bmad-code-org__BMAD-METHOD.json`](../../data/chunk-06/bmad-code-org__BMAD-METHOD.json)
 
 ## 1. Agent Instruction & Docs Hygiene
-- **One of the sharpest 35-line `AGENTS.md` files (2.2 KB) in the entire 34-repo study:**
+- **One of the sharpest 35-line `AGENTS.md` files (2.2 KB) in the entire 35-repo study:**
   - **Self-verifying managed block:** Opens with `<!-- Verified 2026-10-04 against 3cae711e. Managed by bmad-project-context; ... Keep anything you want preserved outside the markers. -->` so freshness is auditable against a real commit SHA.
   - **Best prompt-economics rule in Chunk 6:**
     > *"Skills, workflows, tasks, and agent definitions are prompt text an agent reads in full on every run. Length and ambiguity are paid on every run; a corner case is paid only when it occurs. So do not add instructions for exotic cases — the model usually handles them from context, and the reviewing human can correct it when it does not."*

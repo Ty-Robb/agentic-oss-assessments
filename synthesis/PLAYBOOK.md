@@ -8,13 +8,13 @@ Every recommendation below is backed by real configuration files, YAML CI workfl
 
 ## Executive Summary: 6 Observed Patterns (With Counter-Examples & Caveats)
 
-1. **Mechanical invariants outperform prose instructions — though large instruction files still ship.**
+1. **The highest-throughput TypeScript repos in the cohort encode recurring bugs in lint rules — though large instruction files still ship.**
    - Most high-velocity TypeScript codebases in the cohort (`t3code`, `orca`, `Paradev`, `emdash`, `opencode`, `openclaw`, `paseo`, `sandcastle`) encode recurring failure modes directly into **`oxlint` / Biome custom plugins, `ast-grep` rules, or static ratchets** rather than relying solely on `AGENTS.md`.
    - *Counter-examples & caveats:* Large instruction files do not automatically stall a repo — `oh-my-openagent` carries a 70.8 KB `AGENTS.md` (with a 3-month-stale header) and still landed 50 commits in 19.2 hrs at 71.1k★, and `gstack` splits 54 KB across `AGENTS.md`/`CLAUDE.md` at 142.6k★. Rust-first `codex` has no root `AGENTS.md` and ships every 14.7 hrs. Mechanical rules prevent silent regressions; prose still helps as a lean router.
 
 2. **Contributor gating controls open backlog size, at a discoverability trade-off.**
    - GitHub's `open_issues_count` combines **open issues and open pull requests**. In an era of 90-second AI PRs, open trackers accumulate massive queues, while default-closed gates stay small by construction:
-     - `openai/codex` (136.4k★, open tracker + paid user base): **28,619** open issues + PRs
+     - `openai/codex` (136.4k★, open issue & PR tracker): **28,619** open issues + PRs
      - `manaflow-ai/cmux` (29.0k★, autonomous agent factory): **11,218**
      - `stablyai/orca` (137.8k★, 50 commits / 3.2 hrs, `Fixes #` gate for outsiders): **9,918**
      - `openclaw/openclaw` (395.2k★, 20-PR cap + bot sweepers): **9,182**
@@ -28,7 +28,7 @@ Every recommendation below is backed by real configuration files, YAML CI workfl
 3. **Match CI workflow count to team size — avoid both zero PR CI and unstaffed CI factories.**
    - Across our 35 repos, most lean high-signal codebases run **~8–30 YAML workflows** (`sandcastle`: 8, `paseo`: 12, `pi`: 16, `spec-kit`: 19, `opencode`: 21, `Paradev`: 22, `OpenHands`: 25, `t3code`: 29; `emdash` runs 6).
    - **Under-gated (`0–1` workflows):** `1code` (0 public workflows; one-way mirror) stopped receiving pushes after 7 weeks. `slopus/happy` (1 workflow) explicitly bans adding Actions for cost reasons and works because a tight 2-person core pushes directly to `main`. `superpowers` (0 workflows) relies on an external CLI eval repo.
-   - **Heavy CI stacks (`38–231` workflows):** Large multi-engineer or company-backed teams sustain heavier CI (`gstack`: 38, `gemini-cli`: 47, `orca`: 67 with 6 cache-warmup/runner workflows, `openclaw`: 133). At the extreme (`cmux`: **231** YAML workflows), **17 of 20 stored Nov 25 commit subjects** (~85%, authored by `teamleaderleo` on a single day) touched CI, runner pools, or release automation — a vivid warning of how automation overhead can dominate a small team's day.
+   - **Heavy CI stacks (`38–231` workflows):** Large multi-engineer or company-backed teams sustain heavier CI (`gstack`: 38, `gemini-cli`: 47, `orca`: 67 with 6 cache-warmup/runner workflows, `openclaw`: 133). At the extreme (`cmux`: **231** YAML workflows), **~17 of 20 stored Nov 25 commit subjects** (~85%; 19 of the 20 commits authored by `teamleaderleo` and 1 CI `pr-media` commit by `austinywang`) touched CI, runner pools, or release automation — a vivid operational snapshot rather than a multi-month org average.
 
 4. **Commit tests only for costly invariants, verify them independently, and disclose honestly.**
    - Agents game soft checks in two opposite ways: flooding PRs with brittle mock/UI unit tests, or weakening tests and treating skipped CI jobs as coverage.
@@ -100,7 +100,7 @@ Every recommendation below is backed by real configuration files, YAML CI workfl
 | C6 | [`gsd-build/get-shit-done`](../chunks/chunk-06-skill-stacks/get-shit-done.md) | 64.1k | 0 | **Archived** | 7.3 MB CJS + 2.6 MB TS SDK, `node:test` | 20 | Archived May '26 | `prompt-injection-scan.sh`, ADRs (archived after *"appears compromised"* warning → `open-gsd`) |
 | C6 | [`bmad-code-org/BMAD-METHOD`](../chunks/chunk-06-skill-stacks/bmad-method.md) | 55.7k | 116 | Active | Python (1.8 MB, `uv`, Jinja2, Ruff) + Astro | 5 | 50 / **27 days** | *"Length and ambiguity are paid on every run... Prefer deleting an instruction to hedging it"*, PEP 723 |
 | C6 | [`backnotprop/pstack`](../chunks/chunk-06-skill-stacks/pstack.md) | 5.2k | 2 | Active | Agent Skills + TLA+ (48.8 KB) + Lean (52 KB) | 0 | 7 / **27.9 days** | Port of Lauren Tan's (`poteto`) Cursor `pstack`: `/create-formal-verification-skill` (TLA+/Lean) |
-| C6 | [`michael-denyer/pstack-claude`](../chunks/chunk-06-skill-stacks/pstack.md) | 4.9k | 16 | Active | 1.8 MB TS/JS multi-harness `pstack` port + TLA+/Lean | 6 | 50 / **6.5 days** | `tools/forks.json` CI check, `--check-rules`, `watch-pr` prompt-injection hardening |
+| C6 | [`michael-denyer/pstack-claude`](../chunks/chunk-06-skill-stacks/pstack-claude.md) | 4.9k | 16 | Active | 1.8 MB TS/JS multi-harness `pstack` port + TLA+/Lean | 6 | 50 / **6.5 days** | `tools/forks.json` CI check, `--check-rules`, `watch-pr` prompt-injection hardening |
 
 ---
 

@@ -11,7 +11,7 @@
 - **Two-PR feature workflow:** Features split into PR 1 (**Proposal**: `openspec/changes/<name>/` only, `Part of #123`) and PR 2 (**Implementation**: code + checked-off `tasks.md` after proposal merges, `Closes #123`).
 
 ## 2. Mechanical Gates & Quality Control
-- **Ultra-lean 5-workflow CI (`ci.yml`, `binaries.yml`, `release-prepare.yml`, `security.yml`):**
+- **Ultra-lean 4-workflow YAML CI (`ci.yml`, `binaries.yml`, `release-prepare.yml`, `security.yml`):**
   1. **CLI startup module-count regression test (`test/cli-e2e/startup-modules.test.ts`):** After discovering `openspec --version` loaded **485 modules (~0.5s on Windows)**, OpenSpec enforced lazy `await import()` inside command actions and wrote a test that **fails CI** if any command definition starts eagerly importing heavy modules (`zod`, `yaml`, `ora`, `tinyglobby`).
   2. **CI docs-only path parity test (`test/ci-docs-only.test.ts`):** Verifies that the docs-only `dorny/paths-filter` ignore list stays identical across `ci.yml` and `binaries.yml`.
   3. **Cross-OS + oldest-supported-Node matrix:** Tests Ubuntu, macOS, and Windows PowerShell on exact floor `Node 22.20.0` plus current Node 22 & 24 LTS, with SHA-pinned GitHub Actions (`actions/checkout`, `pnpm/action-setup`, `setup-node`).

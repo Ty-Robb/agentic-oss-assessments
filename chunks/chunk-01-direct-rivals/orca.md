@@ -28,7 +28,7 @@ One of the deepest **performance-first static analysis & CI verification** rigs 
   - Runs `run-main-blocking-ratchets.mjs` + `check-main-sync-spawn-ratchet.mjs` over the full tree on every push to `main` so Electron main-process blocking calls and sync spawns cannot regress.
 - **Cross-OS performance & survival CI (`67` workflows):**
   - `performance-contracts.yml`: Runs `*.performance.test.*` contracts across Linux, macOS, and Windows.
-  - `pr-test-loc.yml` (on free `ubuntu-slim`, **zero repo checkout**, fetching trusted scripts from `default_branch` via `gh api`!): Posts a **test LoC vs. non-test LoC breakdown** on every PR without exposing `pull-requests: write` to untrusted fork code.
+  - `pr-test-loc.yml` (on `ubuntu-slim`, **zero repo checkout**, fetching trusted scripts from `default_branch` via `gh api`!): Computes a **test LoC vs. non-test LoC breakdown** on PRs and posts a PR comment when the token has write access (gracefully skipping the write on read-only fork 403s so untrusted fork code never gets `pull-requests: write`).
   - `pr-description.yml`: Sparsely checks out `.github/scripts/check-pr-performance-section.mjs` and enforces that every PR body fills out a mandatory **`## Performance`** section (`"None, because ..."` or concrete measurements).
   - `unit-selection-evidence.yml`: Runs diff-based unit test selection in **shadow mode** alongside the full 24-shard unit test suite and compares recall against full results to empirically prove safety before trusting selective test runs.
   - Native Windows/OS survival suites: `win-crash-survival-e2e.yml`, `win-update-survival-e2e.yml`, `win-orcad-serve-switch-e2e.yml`, `windows-wsl-e2e.yml`, `linux-wayland-gpu-sandbox.yml`, and 3-OS `journal-file-lock.yml`.

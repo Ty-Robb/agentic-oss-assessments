@@ -21,7 +21,7 @@
 
 2. **OpenHands introduced two of the strongest anti-hallucination quality gates in this entire study:**
    - **Verification Skill Independence (`verify-skill-isolation.yml`):** Mechanically prevents an implementor PR from modifying its own verification specs/skills — eliminating the classic agent shortcut of weakening a test to turn CI green.
-   - **Diff-scoped Mutation Testing (`stryker-diff.mjs`):** Verifies that newly added tests actually kill mutants on changed lines rather than merely boosting line coverage.
+   - **Diff-scoped Mutation Testing (`stryker-diff.mjs`):** Verifies that newly added tests actually kill mutants across changed production TypeScript files (`git diff --name-only`) rather than merely boosting line coverage.
 
 3. **Governance has matured beyond "please write good PRs":**
    - **OpenHands** enforces a human-only `HUMAN:` section in PR descriptions (`pr-description-check.yml`) and locks the `ready-for-dev` label to maintainers (`issue-readiness-check.yml`).

@@ -11,7 +11,7 @@
 - **Minor nit:** `CLAUDE.md` is a byte-for-byte duplicate of `AGENTS.md`.
 
 ## 2. Mechanical Gates & Quality Control
-- **Arguably the tightest, cleanest small-repo engineering straitjacket in the entire 34-repo study:**
+- **Arguably the tightest, cleanest small-repo engineering straitjacket in the entire 35-repo study:**
   1. **All-5-category type-aware `.oxlintrc.json` ("The straitjacket"):** Enables **`correctness`, `suspicious`, `pedantic`, `perf`, AND `style` all at `"error"`** with `typeAware: true` (`oxlint-tsgolint`), `reportUnusedDisableDirectives: "error"`, `eslint/complexity: max 15`, `max-statements: 20`, `import/no-cycle`, and **`eslint/no-restricted-properties` banning `Effect.runPromise`/`runSync`/`runFork`/`runCallback` everywhere except named entry points!**
   2. **Automated shrink-only ratchet bot (`lint-shrink.yml`):** Tracks 4 baselines (`lint-baseline.json`, `test-baseline.json`, `typecheck-baseline.json`, `coverage-baseline.json`). Fix PRs never need manual baseline edits; after every push to `main`, `sandcastle-agent[bot]` automatically opens/updates a PR lowering violation baselines and raising the E2E coverage floor (*"counts only fall and the floor only rises"*).
   3. **Public API boundary enforcement:** Runs `@microsoft/api-extractor` (`api-report/` diff routed via `CODEOWNERS` to Matt) AND `scripts/check-public-types-effect-free.mjs` (proving internal Effect types never leak into the public Promise API!).
@@ -24,7 +24,7 @@
 - **Dogfoods itself:** `.sandcastle/agent-workflows/` runs Sandcastle + Claude Code to implement and review PRs in its own repo.
 
 ## 4. Commit, PR & Maintenance Reality
-- **Hyper-disciplined agent-assisted velocity:** **50 commits in 6.0 days** (`2026-11-10` to `2026-11-16`), **98% conventional commits**, **8% fix/revert**, **98% AI signal** (`mattpocock` 48/50 recent; 1,725 all-time + `sandcastle-agent[bot]` 104 all-time).
+- **Hyper-disciplined agent-assisted velocity:** **50 commits in 5.9 days** (`2026-11-10` to `2026-11-16`), **98% conventional commits**, **8% fix/revert**, **98% AI signal** (`mattpocock` 48/50 recent; 1,725 all-time + `sandcastle-agent[bot]` 104 all-time).
 - The recent commit log shows the shrink-only ratchet actively working in real time: dozens of tiny, focused `chore(lint): split ... under max-lines` and `chore(lint): type-guard ...` PRs burning down baseline debt cleanly.
 
 ## 5. Steal vs. Avoid
