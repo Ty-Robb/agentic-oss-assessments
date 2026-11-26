@@ -97,7 +97,9 @@ def collect_repo(repo: str) -> dict[str, Any]:
 
     languages = gh_api(f"repos/{canonical}/languages") or {}
     top_tree = list_dir(canonical, "")
-    workflows = list_dir(canonical, ".github/workflows")
+    workflows = [
+        w for w in list_dir(canonical, ".github/workflows") if w.endswith((".yml", ".yaml"))
+    ]
     docs_dir = list_dir(canonical, "docs")
     agents_dir = list_dir(canonical, ".agents")
     agents_skills = list_dir(canonical, ".agents/skills")

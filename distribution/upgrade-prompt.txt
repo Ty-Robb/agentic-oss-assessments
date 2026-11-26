@@ -1,50 +1,44 @@
 <prompt>
 <goal>
-Audit this repository and upgrade its agentic engineering guardrails using the proven patterns from 35 top open-source AI coding repos & skill stacks (3.04M combined stars). Do not add speculative complexity; ship only the highest-ROI mechanical checks that fit this stack.
+Audit this repository and propose a scoped Week 1 patch that hardens agentic engineering guardrails. Adapt every rule to this repo's actual language, package manager, CI, and size. Skip any control that has no counterpart in this stack. Do not invent speculative machinery.
 </goal>
 
-<evidence>
-Grounded in primary-source audits of 35 repos (t3code, stablyai/orca, openclaw, opencode, pi, codex, gemini-cli, OpenHands, cline, goose, paperclip, paseo, happy, cmux, Paradev, emdash, oh-my-openagent, beads, symphony, bolt.diy, claude-squad, costrict, 1code, vibe-kanban, Roo-Code, mattpocock/skills, mattpocock/sandcastle, obra/superpowers, github/spec-kit, garrytan/gstack, Fission-AI/OpenSpec, gsd-build/get-shit-done, bmad-code-org/BMAD-METHOD, backnotprop/pstack, michael-denyer/pstack-claude):
-- Mechanical lint/CI gates beat prompt stacks 10-to-1 (gstack's own 100-bug benchmark: 58 solved with gstack vs. 61/99 without).
-- Open trackers drown (codex: 28,619; orca: 9,918) vs. gated trackers (pi: 307; superpowers: 94% PR rejection rate stated upfront).
-- CI sweet spot is 8-30 focused workflows (0 -> 1code archived in 7 wks; 231 -> cmux spends ~80% of commits fixing CI).
-- 4/35 repos archived or sunset (scope sprawl, missing gates, or supply-chain compromise in gsd-build/get-shit-done).
-</evidence>
+<workflow>
+1. Inspect the repository first (root files, AGENTS.md/CLAUDE.md, linter/formatter config, package manager/lockfile, CI workflows, PR template, and recent git/PR history if available).
+2. Report current gaps in a short table and propose a Week 1 PR plan.
+3. STOP and wait for approval before editing files unless the user explicitly told you to implement immediately.
+4. After edits, run the diff-scoped check once and report Observed vs. Not run.
+</workflow>
 
-<agents_md>
-1. Keep root AGENTS.md under 180 lines (<20 KB). Make CLAUDE.md a symlink or 1-line @AGENTS.md include.
-2. Every rule must cite a real bug, incident, or failure mode (openclaw). Prefer deleting an instruction to hedging it (BMAD).
-3. Add four compact invariants:
-   - Anti-overengineering ("Choose good compromises": prefer idempotency key + check + retry over speculative machinery).
-   - Anti-slop Doc voice (ban "It's not X, it's Y", "robust", "seamless", "and that matters"; integrate edits, don't append).
-   - Multi-agent Git safety (never git add -A, git stash, or git reset --hard; never kill processes by pattern).
-   - Fresh-context subagents (start research/review subagents in fresh context windows, never forked parent state - mattpocock/skills).
-4. Create a 1-page REVIEW.md seeded from our last 10-15 real PR review catches; instruct agents to self-audit against it pre-PR.
-</agents_md>
+<week_1_guardrails>
+1. Single-source instructions:
+   - Keep root AGENTS.md concise and open with the exact local check command. Move long reference material into docs/.
+   - Put a 1-line `@AGENTS.md` include in CLAUDE.md (safer than symlinks on Windows; never overwrite an existing CLAUDE.md without merging its unique rules first).
+   - Every new rule must cite a real bug, incident, or failure mode. Prefer deleting an instruction to hedging it.
+   - Add four compact invariants:
+     * Choose good compromises: prefer idempotency key + check + retry over speculative abstractions.
+     * Doc voice: avoid filler ("It's not X, it's Y", "robust", "seamless", "and that matters"); integrate doc edits instead of appending.
+     * Multi-agent Git safety: never run `git add -A`, `git stash`, or `git reset --hard`; never kill processes by name pattern.
+     * Tests are the exception: prove behavior by running the real app/CLI; commit automated tests only where a silent regression is expensive (parsers/codecs, security boundaries, persistence/migrations, concurrency/state machines, cross-platform paths). Delete brittle mock/UI tests you touch instead of updating them.
 
-<lint_and_supply_chain>
-1. Turn our top 3-5 recurring PR review bugs into hard lint errors (type-aware oxlint or Biome).
-2. Disallow silent eslint-disable escapes (or require justified inline reasons). Use per-file, per-API allowlists - never directory-wide disables.
-3. Add a shrink-only debt/coverage ratchet (sandcastle lint-shrink.yml style) so baselines tighten automatically on main.
-4. Add a 7-day dependency cooldown:
-   - pnpm-workspace.yaml: minimumReleaseAge: 10080, blockExoticSubdeps: true, explicit allowBuilds (put GHSA overrides in pnpm-workspace.yaml).
-   - npm: --min-release-age=7 + lockfile-lint in CI.
-5. Add dead-file/export detection (knip) and, for CLIs, a startup module-count budget test (OpenSpec).
-</lint_and_supply_chain>
+2. One cached diff-scoped local check:
+   - Wire or document one fast diff-scoped check command (e.g. `check:changed` or `verify`).
+   - State in AGENTS.md: run it once when done editing; if cached/passing, do not also re-run the full typecheck, linter, or full test suite, and never pass `--no-verify`.
 
-<verification_and_skills>
-1. Wire one fast, diff-scoped local check command (check:changed / verify) so agents never run full-repo suites locally.
-2. Pair path-filtered CI jobs with one `if: always()` `CI required` aggregator job so skipped jobs never hang branch protection.
-3. Add a PR template section `### Observed / Not run` (commands run, observed output, and what was skipped).
-4. Keep QA screenshots/logs gitignored and add a CI check failing if temporary evidence or scratch files are tracked.
-5. Protect verification skills / evals from being modified in the same PR as production code (OpenHands skill isolation).
-6. If we ship skills: validate YAML frontmatter in CI (mattpocock/skills), cap loaded skill catalog tokens (gstack), mark manual/destructive skills `disable-model-invocation: true`, and keep state-machine invariants formally testable (pstack TLA+/Lean).
-7. If stateful DB/Docker/LLM: add lock_timeout='5s' migrations, prod container health smoke test, and prompt prefix-stability test.
-</verification_and_skills>
+3. Honest PR template & review hygiene:
+   - Add three compact sections to the PR template:
+     * `### Observed / Not run` (exact commands run, observed output, and what was skipped).
+     * `## Performance` (hot-path impact; explicitly allow `None, because ...` so agents do not invent benchmarks).
+   - Keep local QA screenshots/logs gitignored and fail CI if scratch or evidence files get tracked.
+   - Only create `REVIEW.md` if you can seed it from real PR review catches in git/`gh` history; if history is unavailable, skip it rather than fabricating rules.
+</week_1_guardrails>
 
-<delivery>
-1. Inspect our repo first and report current gaps in a short table.
-2. Propose a scoped PR plan (Week 1 changes only) before editing.
-3. Implement only verified changes, run the diff-scoped check, and report what ran vs. what did not run.
-</delivery>
+<conditional_checks>
+Apply ONLY if the condition already holds in this repo:
+- Path-filtered CI exists: add one `if: always()` `CI required` aggregator job as the sole required branch-protection check. Fail on `failure` or `cancelled`; treat `skipped` as pass ONLY when caused by path filters.
+- GitHub Actions PR CI exists: consider a zero-checkout `ubuntu-slim` workflow (fetching its script from the default branch) that posts a test LoC vs. non-test LoC table on PRs.
+- Existing linter (oxlint/Biome/Ruff/golangci-lint): commit a baseline first before turning 3-5 recurring real review bugs into hard errors; use per-file allowlists, never directory-wide disables. Do not add a rising test-coverage floor that fights deleting low-value tests.
+- Repo already ships `SKILL.md` files: validate frontmatter in CI using the installer's YAML parser, cap loaded catalog tokens, and mark manual/destructive skills with BOTH `disable-model-invocation: true` (Claude) and `agents/openai.yaml` `policy.allow_implicit_invocation: false` (Codex).
+- Multi-platform optional dependencies exist (e.g. bundled platform CLIs): ignore unused host platforms with an inline comment explaining why.
+</conditional_checks>
 </prompt>
