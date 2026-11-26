@@ -10,7 +10,7 @@ Most advice on running AI coding agents comes from toy demos or vendor blogs.
 
 I pulled primary-source GitHub API snapshots across **36 public agentic coding, orchestration, and skill-stack repositories** (**3.04M combined stars** from 35 standalone repos — 34 OSI open-source after adding MIT `cursor/plugins/pstack`, plus source-available `oh-my-openagent` and BSL-hybrid `cmux`; #36 is excluded from the star sum). I inspected their actual `AGENTS.md` and `CLAUDE.md` files, custom lint plugins, YAML CI workflows, `pnpm-workspace.yaml` locks, PR templates, and commit histories.
 
-Four of the 35 have archived or begun sunsetting. Meanwhile, repos like `openclaw` (50 commits in 2.3 hrs), `stablyai/orca` (50 commits in 3.2 hrs), and `t3code` (50 commits in 7.0 hrs) are moving at extreme commit volume — and dealing with the real maintenance trade-offs that come with it (`orca`'s last 50 commits are 70% fix/revert with 9,918 open items).
+Four of the 35 standalone repos have archived or begun sunsetting. Meanwhile, repos like `openclaw` (50 commits in 2.3 hrs), `stablyai/orca` (50 commits in 3.2 hrs), and `t3code` (50 commits in 7.0 hrs) are moving at extreme commit volume — and dealing with the real maintenance trade-offs that come with it (`orca`'s last 50 commits are 70% fix/revert with 9,918 open items).
 
 Here are the patterns that held up under primary-source inspection — along with the counter-examples and caveats.
 
