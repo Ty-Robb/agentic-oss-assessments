@@ -1,7 +1,7 @@
 # pstack-claude (`michael-denyer/pstack-claude`)
 
-- **Snapshot:** `4,872★` · `452` forks · `16` open items · `MIT` · Active (pushed `2026-11-25`) — multi-harness downstream port of Lauren Tan's (`poteto`) Cursor `pstack` (see also [`backnotprop/pstack`](pstack.md)).
-- **Primary Stack:** Agent Skills (`SKILL.md`), TypeScript/JS tooling (~1.8 MB), **Lean (`52 KB`) + TLA+ (`48.8 KB`)** formal verification artifacts, Mermaid statecharts, Bun 1.4.4, `open-pstack` cross-harness CLI installer.
+- **Snapshot:** `4,872★` · `452` forks · `16` open items · `MIT` · Active (pushed `2026-11-25`) — multi-harness downstream **translation port** of Lauren Tan's (`poteto`) canonical Cursor plugin [`cursor/plugins/pstack`](pstack-upstream.md) (see also the faithful standalone mirror [`backnotprop/pstack`](pstack.md)).
+- **Primary Stack:** Agent Skills (`SKILL.md`), TypeScript/JS tooling (~1.8 MB), Mermaid statecharts, Bun 1.4.4, `open-pstack` cross-harness CLI installer, plus formal artifacts that include the upstream TLA+ statechart corpus **and port-only additions**: **`lean/Model/WatchPoll.lean` (`51,998` bytes)** and **`tla/PiScheduler.tla`**, bringing language totals to **Lean `52 KB` + TLA+ `48.8 KB`**. Neither Lean file nor `PiScheduler.tla` is present in upstream or the backnotprop mirror. The exact theorem in `WatchPoll.lean` was not fully read in this assessment (unverified beyond path and size).
 - **Data source:** [`data/chunk-06/michael-denyer__pstack-claude.json`](../../data/chunk-06/michael-denyer__pstack-claude.json)
 
 ## 1. Agent Instruction & Docs Hygiene
@@ -16,7 +16,7 @@
 4. **Windows CI & security scanning:** Warms up PowerShell `ConvertFrom-Json` before timing Windows session-hook tests, runs `worktree-audit.test.mjs` and `installer.test.mjs` on `windows-latest`, plus `hol-plugin-scanner.yml`, OpenSSF `scorecard.yml`, and `dependency-review.yml`.
 
 ## 3. Formal Verification as a Project-Local Skill
-- Invests in **`/create-formal-verification-skill`** — selecting the riskiest concurrency property or invariant in a repo, verifying it with **TLA+ (`48.8 KB`), Lean (`52 KB`), or Kani**, and leaving behind a reusable project-local verification skill that future agents rerun.
+- Invests in **`/create-formal-verification-skill`** — selecting the riskiest concurrency property or invariant in a consumer repo and leaving behind a reusable project-local verification skill. In *this* repo, formal artifacts are **`lean/Model/WatchPoll.lean` (`51,998` bytes)** and **TLA+ `48.8 KB`** (upstream statechart corpus plus port-only `tla/PiScheduler.tla`). Upstream and the backnotprop mirror do not ship the Lean model.
 
 ## 4. Velocity & Maintenance Reality
 - **50 commits in 6.5 days** (`2026-11-19` to `2026-11-25`, `v0.9.151` → `v0.9.155`), 30/50 by `michael-denyer` alongside active community contributors shipping real cross-harness fixes (Windows `cmd.exe` `%NAME%` escaping, cloud-session REST fallback when GraphQL is blocked, Codex forked-chat routing).

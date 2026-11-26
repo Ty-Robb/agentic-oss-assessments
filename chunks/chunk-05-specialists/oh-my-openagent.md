@@ -5,7 +5,7 @@
 - **Data source:** [`data/chunk-05/code-yeongyu__oh-my-openagent.json`](../../data/chunk-05/code-yeongyu__oh-my-openagent.json)
 
 ## 1. Agent Instruction & Docs Hygiene
-- **Largest and loudest `AGENTS.md` in the 35-repo study (70.8 KB / 479 lines, duplicated byte-for-byte in `CLAUDE.md`):**
+- **Largest and loudest `AGENTS.md` in the 36-repo study (70.8 KB / 479 lines, duplicated byte-for-byte in `CLAUDE.md`):**
   - Opens with an ALL-CAPS profanity alert (*"HOLD THE FUCK UP. THIS ENTIRE GODDAMN CODEBASE IS BEING RIPPED APART AND REBUILT RIGHT NOW..."*), followed by an exhaustive multi-screen `STOP. QA IS MANDATORY` directive and a 7-step `MANDATORY CHANGE-EXECUTION PROTOCOL` (Explore → Plan on disk → Ultra-detailed todos → Fresh worktree → Open PR & stay until merged → `ulw-loop` → Obsessive todo tracking).
   - **Self-inflicted token & drift penalty:** Even with a `Generated: 2026-08-24` timestamp at the top (3 months stale relative to `v5.1.83` in Nov 2026!), 70.8 KB burns massive prompt context on every turn and relies on ALL-CAPS shouting where shorter, mechanically enforced rules work better.
 - **High-craft operational patterns underneath the shouting:**

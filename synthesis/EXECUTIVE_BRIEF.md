@@ -1,14 +1,14 @@
-# Everything You Need to Know: Lessons from 35 Agentic OSS Repositories
+# Everything You Need to Know: Lessons from 36 Agentic OSS Repositories
 
-*Executive brief distilled from primary-source GitHub API audits of **35 public coding agent, harness, orchestration, and skill-stack repositories** (**3,040,947 / ~3.04M combined stars**, snapshot date: **2026-11-25**), fact-checked and red-teamed by Codex (`gpt-6.2-astra`), Claude (`claude-opus-5-5`), and Grok (`grok-4.7`). For the full 35-repo matrix, caveats, and Week 1–3 plan, see [`PLAYBOOK.md`](PLAYBOOK.md) and [`MULTI_MODEL_REVIEW.md`](MULTI_MODEL_REVIEW.md).*
+*Executive brief distilled from primary-source GitHub API audits of **36 public coding agent, harness, orchestration, and skill-stack repositories** (**3,040,947 / ~3.04M combined stars** from the 35 standalone repos, snapshot date: **2026-11-25**; path-scoped `cursor/plugins/pstack` added 2026-11-26 and excluded from the star sum), fact-checked and red-teamed by Codex (`gpt-6.2-astra`), Claude (`claude-opus-5-5`), and Grok (`grok-4.7`). For the full 36-repo matrix, caveats, and Week 1–3 plan, see [`PLAYBOOK.md`](PLAYBOOK.md) and [`MULTI_MODEL_REVIEW.md`](MULTI_MODEL_REVIEW.md).*
 
 ---
 
 ## 1. The Macro Picture: Who Thrives and Who Stalled
 
-Across all 35 public repositories, **durable velocity correlates with mechanical discipline and scope matched to team size — not launch hype.**
+Across all 36 public repositories, **durable velocity correlates with mechanical discipline and scope matched to team size — not launch hype.**
 
-- **What archived or sunset (4 / 35, for distinct reasons):**
+- **What archived or sunset (4 of the 35 star-counted repos, for distinct reasons):**
   - **`21st-dev/1code`** (5.6k★, **archived**, 7 weeks creation-to-last-push): One-way public mirror (`sync-to-public.sh`) with zero public CI/tests, dual lockfiles, and stale WIP docs.
   - **`BloopAI/vibe-kanban`** (28.8k★, **sunsetting**): Strong Rust craft (`ts-rs`, `sqlx`, `clippy -D warnings`), carrying 30 Rust crates + ElectricSQL + WebRTC relay + Tauri + Rust nightly on a small team.
   - **`RooCodeInc/Roo-Code`** (24.2k★, **archived May 2026**): Remained coupled to a VS Code extension while surviving peers (`Cline`, `OpenHands`, `Goose`) decoupled into SDKs + multi-surface ACP control planes.
@@ -67,7 +67,7 @@ When an agent makes a mistake twice, **move the rule out of prose and into a lin
 ## 6. Skill Stacks (`mattpocock/skills`, `sandcastle`, `gstack`, `pstack`, `superpowers`, `spec-kit`, `OpenSpec`, `BMAD`, `GSD`)
 
 - **Workflow discipline vs. raw fix rate:** In `garrytan/gstack`'s self-reported 100-task Opus 5.5 benchmark, the model solved **58% (58/100) with `gstack`** vs. **61.6% (61/99) without it** (29/60 each on security fixes). Use skills for alignment, review checklists, and safety workflows — rely on mechanical repo gates for code quality.
-- **Standout mechanical wins from Chunk 6:** `sandcastle`'s 5-category `oxlint` + `lint-shrink.yml` + `tests/docs-guide.test.ts`; `mattpocock/skills`'s installer-parser YAML check + dual Claude (`disable-model-invocation: true`) & Codex (`agents/openai.yaml`) parity; `gstack`'s `catalog-budget.test.ts` (`2,292` tokens) + `egress-receipt-wiring.test.ts`; `github/spec-kit`'s firewall-sandboxed `gh-aw` workflows (19 YAML workflows); `OpenSpec`'s `startup-modules.test.ts`; and `pstack-claude`'s `tools/forks.json` fork tracker + TLA+/Lean formal verification skills.
+- **Standout mechanical wins from Chunk 6:** `sandcastle`'s 5-category `oxlint` + `lint-shrink.yml` + `tests/docs-guide.test.ts`; `mattpocock/skills`'s installer-parser YAML check + dual Claude (`disable-model-invocation: true`) & Codex (`agents/openai.yaml`) parity; `gstack`'s `catalog-budget.test.ts` (`2,292` tokens) + `egress-receipt-wiring.test.ts`; `github/spec-kit`'s firewall-sandboxed `gh-aw` workflows (19 YAML workflows); `OpenSpec`'s `startup-modules.test.ts`; and `pstack-claude`'s `tools/forks.json` fork tracker plus port-only Lean `WatchPoll.lean` and extra TLA+ (`PiScheduler.tla`); upstream `cursor/plugins/pstack` ships the TLA+ corpus and formal-verification skills without Lean.
 
 ---
 

@@ -5,7 +5,7 @@
 - **Data source:** [`data/chunk-05/getpaseo__paseo.json`](../../data/chunk-05/getpaseo__paseo.json)
 
 ## 1. Agent Instruction & Docs Hygiene
-- **Best docs-governance and anti-LLM-slop writing standard in the entire 35-repo study:**
+- **Best docs-governance and anti-LLM-slop writing standard in the entire 36-repo study:**
   - `AGENTS.md` (205 lines / 24 KB) indexes **54 single-subject docs** in `docs/` and declares: *"The docs, check the docs, or check the X docs always mean this directory — not the web."*
   - **`Writing docs` rules:** *Integrate, don't append* (explicitly calls out `docs/custom-providers.md` as an anti-example of append-only drift); *Don't document logic*; *One fact, one doc*; *Respect the layers*; *One subject per doc*; *Delete obsolete sections*.
   - **`Doc voice` (explicit LLM cliché ban):** Forbids `"It's not X, it's Y"` setup-and-punchline prose, filler importance clauses (`"and that matters"`, `"this is critical"`), buzzwords (`"honest"`, `"robust"`, `"seamless"`, `"powerful"`, `"simply"`, `"just"`, `"delightful"`), hedging (`"generally"`, `"typically"`), and throat-clearing (`"It's worth noting that"`, `"In order to"`).

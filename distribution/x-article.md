@@ -1,6 +1,6 @@
 # Stop Lecturing Agents in `AGENTS.md`. Make the Linter Reject Them.
 
-*Primary-source engineering teardown of **35 public AI coding, harness, orchestration, and skill-stack repositories** (**3,040,947 / ~3.04M combined stars**, snapshot **2026-11-25**), cross-checked by Codex (`gpt-6.2-astra`), Claude (`claude-opus-5-5`), and Grok (`grok-4.7`).*
+*Primary-source engineering teardown of **36 public AI coding, harness, orchestration, and skill-stack repositories** (**3,040,947 / ~3.04M combined stars** from the 35 standalone repos, snapshot **2026-11-25**; path-scoped `cursor/plugins/pstack` added 2026-11-26 and excluded from the star sum), cross-checked by Codex (`gpt-6.2-astra`), Claude (`claude-opus-5-5`), and Grok (`grok-4.7`).*
 
 *Cohort: `t3code`, `stablyai/orca`, `openclaw`, `opencode`, `pi`, `codex`, `gemini-cli`, `OpenHands`, `cline`, `goose`, `paperclip`, `paseo`, `happy`, `cmux`, `Paradev`, `emdash`, `oh-my-openagent`, `beads`, `symphony`, `bolt.diy`, `claude-squad`, `costrict`, `1code`, `vibe-kanban`, `Roo-Code`, `mattpocock/skills`, `mattpocock/sandcastle`, `obra/superpowers`, `github/spec-kit`, `garrytan/gstack`, `Fission-AI/OpenSpec`, `gsd-build/get-shit-done`, `bmad-code-org/BMAD-METHOD`, `backnotprop/pstack`, and `michael-denyer/pstack-claude`.*
 
@@ -8,7 +8,7 @@
 
 Most advice on running AI coding agents comes from toy demos or vendor blogs.
 
-I pulled primary-source GitHub API snapshots across **35 public agentic coding, orchestration, and skill-stack repositories** (**3.04M combined stars** — 33 OSI open-source, plus source-available `oh-my-openagent` and BSL-hybrid `cmux`). I inspected their actual `AGENTS.md` and `CLAUDE.md` files, custom lint plugins, YAML CI workflows, `pnpm-workspace.yaml` locks, PR templates, and commit histories.
+I pulled primary-source GitHub API snapshots across **36 public agentic coding, orchestration, and skill-stack repositories** (**3.04M combined stars** from 35 standalone repos — 34 OSI open-source after adding MIT `cursor/plugins/pstack`, plus source-available `oh-my-openagent` and BSL-hybrid `cmux`; #36 is excluded from the star sum). I inspected their actual `AGENTS.md` and `CLAUDE.md` files, custom lint plugins, YAML CI workflows, `pnpm-workspace.yaml` locks, PR templates, and commit histories.
 
 Four of the 35 have archived or begun sunsetting. Meanwhile, repos like `openclaw` (50 commits in 2.3 hrs), `stablyai/orca` (50 commits in 3.2 hrs), and `t3code` (50 commits in 7.0 hrs) are moving at extreme commit volume — and dealing with the real maintenance trade-offs that come with it (`orca`'s last 50 commits are 70% fix/revert with 9,918 open items).
 
@@ -86,7 +86,7 @@ Combining four repos resolves both:
 
 ## 5. Match CI Workflow Count to Team Size
 
-Across the 35 repos (counting exact `.yml`/`.yaml` files in `.github/workflows/`), most lean high-velocity teams cluster around **8–30 workflows**:
+Across the 36 repos (counting exact `.yml`/`.yaml` files in `.github/workflows/`; `cursor/plugins/pstack` has 0 path-local workflows), most lean high-velocity teams cluster around **8–30 workflows**:
 
 *[Embed Image: `02-ci-goldilocks-zone.png`]*
 
@@ -149,4 +149,4 @@ That is one model and one vendor's benchmark — not proof for every skill stack
 
 ---
 
-*Not covered in this 35-repo wave (candidates for Chunk 7): Aider, Zed (originator of ACP), Kilo Code, Continue, SWE-bench/SWE-agent, and non-agent AI-governance pioneers (Ghostty, curl). All 35 raw JSON snapshots, assessments, and the 3-model review log live in `Ty-Robb/agentic-oss-assessments` (MIT) and at `https://agentic-oss-site.vercel.app`.*
+*Not covered in this 36-repo wave (candidates for Chunk 7): Aider, Zed (originator of ACP), Kilo Code, Continue, SWE-bench/SWE-agent, and non-agent AI-governance pioneers (Ghostty, curl). All 36 raw JSON snapshots, assessments, and the 3-model review log live in `Ty-Robb/agentic-oss-assessments` (MIT) and at `https://agentic-oss-site.vercel.app`.*

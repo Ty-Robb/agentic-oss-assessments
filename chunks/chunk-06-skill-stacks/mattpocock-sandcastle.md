@@ -11,7 +11,7 @@
 - **Minor nit:** `CLAUDE.md` is a byte-for-byte duplicate of `AGENTS.md`.
 
 ## 2. Mechanical Gates & Quality Control
-- **Arguably the tightest, cleanest small-repo engineering straitjacket in the entire 35-repo study:**
+- **Arguably the tightest, cleanest small-repo engineering straitjacket in the entire 36-repo study:**
   1. **All-5-category type-aware `.oxlintrc.json` ("The straitjacket"):** Enables **`correctness`, `suspicious`, `pedantic`, `perf`, AND `style` all at `"error"`** with `typeAware: true` (`oxlint-tsgolint`), `reportUnusedDisableDirectives: "error"`, `eslint/complexity: max 15`, `max-statements: 20`, `import/no-cycle`, and **`eslint/no-restricted-properties` banning `Effect.runPromise`/`runSync`/`runFork`/`runCallback` everywhere except named entry points!**
   2. **Automated shrink-only ratchet bot (`lint-shrink.yml`):** Tracks 4 baselines (`lint-baseline.json`, `test-baseline.json`, `typecheck-baseline.json`, `coverage-baseline.json`). Fix PRs never need manual baseline edits; after every push to `main`, `sandcastle-agent[bot]` automatically opens/updates a PR lowering violation baselines and raising the E2E coverage floor (*"counts only fall and the floor only rises"*).
   3. **Public API boundary enforcement:** Runs `@microsoft/api-extractor` (`api-report/` diff routed via `CODEOWNERS` to Matt) AND `scripts/check-public-types-effect-free.mjs` (proving internal Effect types never leak into the public Promise API!).

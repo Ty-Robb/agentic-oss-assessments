@@ -12,7 +12,7 @@
 - **Strong Evidence Gate (`CONTRIBUTING.md` — 519 lines):** *"A contribution is evaluated on the evidence it carries, not on how plausible its reasoning sounds. The same bar applies to everyone — human and AI-assisted contributions are judged identically."* Caps active review priority at 3 open PRs per author, mandates splitting prerequisite core changes from integration PRs, and requires per-activity AI disclosure (commits, PRs, *and* review comments).
 
 ## 2. Mechanical Gates & Quality Control
-- **19 YAML workflows (29 total entries in `.github/workflows/`, including 10 `gh-aw` `.md` sources) — first repo in the 35-repo study using GitHub Agentic Workflows (`gh-aw`) in production:**
+- **19 YAML workflows (29 total entries in `.github/workflows/`, including 10 `gh-aw` `.md` sources) — first repo in the 36-repo study using GitHub Agentic Workflows (`gh-aw`) in production:**
   - Markdown-authored workflows (`add-community-preset.md`, `add-community-extension.md`, `add-community-bundle.md`, `bug-assess.md`, `bug-fix.md`, `bug-test.md`, `feature-assess.md`, `pr-assess.md`) compiled via `gh aw compile` into locked YAML (`.lock.yml`).
   - **Defense-in-depth agent sandboxing inside CI:**
     - Runs Copilot inside **SHA-256 digest-pinned firewall containers** (`ghcr.io/github/gh-aw-firewall/{agent,api-proxy,squid}:0.28.14@sha256:...`).

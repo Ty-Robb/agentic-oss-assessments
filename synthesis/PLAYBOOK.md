@@ -1,6 +1,6 @@
 # Agentic OSS Engineering Playbook
 
-*Synthesized from primary-source GitHub API audits of **35 public agentic coding, orchestration, and skill-stack repositories** (**3,040,947 / ~3.04M combined GitHub stars**, snapshot date: **2026-11-25**). Independently audited and red-teamed by Codex (`gpt-6.2-astra`), Claude (`claude-opus-5-5`), and Grok (`grok-4.7`) — see [`MULTI_MODEL_REVIEW.md`](MULTI_MODEL_REVIEW.md).*
+*Synthesized from primary-source GitHub API audits of **36 public agentic coding, orchestration, and skill-stack repositories** (**3,040,947 / ~3.04M combined GitHub stars** from the 35 standalone repos, snapshot date: **2026-11-25**; path-scoped `cursor/plugins/pstack` added 2026-11-26 and excluded from the star sum). Independently audited and red-teamed by Codex (`gpt-6.2-astra`), Claude (`claude-opus-5-5`), and Grok (`grok-4.7`) — see [`MULTI_MODEL_REVIEW.md`](MULTI_MODEL_REVIEW.md).*
 
 Every recommendation below is backed by real configuration files, YAML CI workflows, lint plugins, and commit histories captured under [`data/`](../data/).
 
@@ -26,7 +26,7 @@ Every recommendation below is backed by real configuration files, YAML CI workfl
    - `getpaseo/paseo` still captures the real bottleneck cleanly in `CONTRIBUTING.md`: *"I can prompt an agent to write code just as you can. The bottlenecks are choosing what to build, shaping it, verifying its behavior, and taking responsibility for its maintenance."*
 
 3. **Match CI workflow count to team size — avoid both zero PR CI and unstaffed CI factories.**
-   - Across our 35 repos, most lean high-signal codebases run **~8–30 YAML workflows** (`sandcastle`: 8, `paseo`: 12, `pi`: 16, `spec-kit`: 19, `opencode`: 21, `Paradev`: 22, `OpenHands`: 25, `t3code`: 29; `emdash` runs 6).
+   - Across our 36 repos, most lean high-signal codebases run **~8–30 YAML workflows** (`sandcastle`: 8, `paseo`: 12, `pi`: 16, `spec-kit`: 19, `opencode`: 21, `Paradev`: 22, `OpenHands`: 25, `t3code`: 29; `emdash` runs 6).
    - **Under-gated (`0–1` workflows):** `1code` (0 public workflows; one-way mirror) stopped receiving pushes after 7 weeks. `slopus/happy` (1 workflow) explicitly bans adding Actions for cost reasons and works because a tight 2-person core pushes directly to `main`. `superpowers` (0 workflows) relies on an external CLI eval repo.
    - **Heavy CI stacks (`38–231` workflows):** Large multi-engineer or company-backed teams sustain heavier CI (`gstack`: 38, `gemini-cli`: 47, `orca`: 67 with 6 cache-warmup/runner workflows, `openclaw`: 133). At the extreme (`cmux`: **231** YAML workflows), **~17 of 20 stored Nov 25 commit subjects** (~85%; 19 of the 20 commits authored by `teamleaderleo` and 1 CI `pr-media` commit by `austinywang`) touched CI, runner pools, or release automation — a vivid operational snapshot rather than a multi-month org average.
 
@@ -52,15 +52,16 @@ Every recommendation below is backed by real configuration files, YAML CI workfl
 
 ## Methodology, Confounders & Not Covered
 
-- **Snapshot & selection:** All 35 JSON snapshots were collected on **2026-11-25** via `scripts/collect_chunk.py` (top high-star public repos across worktree GUIs, harnesses, orchestrators, specialists, and skill stacks). `pingdotgg/t3code` serves as the study's reference baseline (`RUBRIC.md`) and should be read with that baseline framing in mind.
+- **Repo #36 (`cursor/plugins/pstack`):** Path-scoped snapshot collected **2026-11-26** with `scripts/collect_path.py`. Host monorepo `cursor/plugins` stars, forks, and open issues are **not** pstack-only and are **excluded** from the **3,040,947** combined-star total. Workflow counts for this row are path-local (none); the host `validate-plugins.yml` covers the path.
+- **Snapshot & selection:** 35 JSON snapshots were collected on **2026-11-25** via `scripts/collect_chunk.py` (top high-star public repos across worktree GUIs, harnesses, orchestrators, specialists, and skill stacks). `pingdotgg/t3code` serves as the study's reference baseline (`RUBRIC.md`) and should be read with that baseline framing in mind.
 - **Key confounders to keep in mind when comparing rows:**
   - **Backing & team size:** OpenAI (`codex`, `symphony`), Google (`gemini-cli`), GitHub (`spec-kit`), YC/VC teams (`orca`, `Paradev`, `cmux`, `OpenHands`), foundations (`goose`), and solo/2-person maintainers (`pi`, `happy`, `mattpocock`, `obra`) operate under totally different review budgets.
   - **Metrics caveats:** `Open Issues` = GitHub `open_issues_count` (issues + PRs combined). `Workflows` = exact `.yml`/`.yaml` files in `.github/workflows/` (one file can contain many jobs). `Last-50 Velocity` = exact author-timestamp span of the latest 50 commits (47 for `symphony`) — a point-in-time snapshot, not a yearly average. `ai_coauthor_pct` is omitted from the main quality matrix because commit-trailer regexes read `0%` on teams that strip trailers (`orca`, `codex`, `Paradev`).
-- **Notable repos outside this 35-repo wave (worth auditing in a future Chunk 7):** **Aider** (publishes self-authored release share), **Zed** (originator of ACP), **Kilo Code** (thriving Cline/Roo fork countering the "trapped fork" narrative), **Continue** (IDE-extension-to-agent pivot), **SWE-agent / SWE-bench**, and non-agent OSS AI-governance pioneers (**Ghostty**, **curl**, **Gentoo/NetBSD**).
+- **Notable repos outside this 36-repo wave (worth auditing in a future Chunk 7):** **Aider** (publishes self-authored release share), **Zed** (originator of ACP), **Kilo Code** (thriving Cline/Roo fork countering the "trapped fork" narrative), **Continue** (IDE-extension-to-agent pivot), **SWE-agent / SWE-bench**, and non-agent OSS AI-governance pioneers (**Ghostty**, **curl**, **Gentoo/NetBSD**).
 
 ---
 
-## Master 35-Repository Matrix
+## Master 36-Repository Matrix
 
 *Workflow counts reflect exact `.yml`/`.yaml` files in `.github/workflows/`. `Open` reflects GitHub `open_issues_count` (open issues + open PRs).*
 
@@ -99,8 +100,9 @@ Every recommendation below is backed by real configuration files, YAML CI workfl
 | C6 | [`Fission-AI/OpenSpec`](../chunks/chunk-06-skill-stacks/openspec.md) | 75.7k | 214 | Active | TS (5.8 MB, Node 22+, pnpm 10, Vitest 5) | 4 | 50 / **25 days** | **`startup-modules.test.ts`** CLI cold-start guard, GHSA-annotated overrides, 2-PR features |
 | C6 | [`gsd-build/get-shit-done`](../chunks/chunk-06-skill-stacks/get-shit-done.md) | 64.1k | 0 | **Archived** | 7.3 MB CJS + 2.6 MB TS SDK, `node:test` | 20 | Archived May '26 | `prompt-injection-scan.sh`, ADRs (archived after *"appears compromised"* warning → `open-gsd`) |
 | C6 | [`bmad-code-org/BMAD-METHOD`](../chunks/chunk-06-skill-stacks/bmad-method.md) | 55.7k | 116 | Active | Python (1.8 MB, `uv`, Jinja2, Ruff) + Astro | 5 | 50 / **27 days** | *"Length and ambiguity are paid on every run... Prefer deleting an instruction to hedging it"*, PEP 723 |
-| C6 | [`backnotprop/pstack`](../chunks/chunk-06-skill-stacks/pstack.md) | 5.2k | 2 | Active | Agent Skills + TLA+ (48.8 KB) + Lean (52 KB) | 0 | 7 / **27.9 days** | Port of Lauren Tan's (`poteto`) Cursor `pstack`: `/create-formal-verification-skill` (TLA+/Lean) |
-| C6 | [`michael-denyer/pstack-claude`](../chunks/chunk-06-skill-stacks/pstack-claude.md) | 4.9k | 16 | Active | 1.8 MB TS/JS multi-harness `pstack` port + TLA+/Lean | 6 | 50 / **6.5 days** | `tools/forks.json` CI check, `--check-rules`, `watch-pr` prompt-injection hardening |
+| C6 | [`cursor/plugins/pstack`](../chunks/chunk-06-skill-stacks/pstack-upstream.md) | *excluded* | *n/a* | Active | Canonical Cursor plugin (59 skills, TLA+ corpus 30.6 KB; no Lean) | 0 path-local | 50 / **40.1 days** | Path-scoped #36; host `validate-plugins.yml`; monorepo stars excluded from the 3.04M total |
+| C6 | [`backnotprop/pstack`](../chunks/chunk-06-skill-stacks/pstack.md) | 5.2k | 2 | Active | Faithful standalone mirror of upstream `0.15.48` + TLA+ corpus (30.6 KB); no Lean | 0 | 50 / **27.9 days** | Daily sync of Lauren Tan's Cursor `pstack`; `/create-formal-verification-skill` |
+| C6 | [`michael-denyer/pstack-claude`](../chunks/chunk-06-skill-stacks/pstack-claude.md) | 4.9k | 16 | Active | Multi-harness port + Lean `WatchPoll.lean` (52 KB, port-only) + TLA+ (48.8 KB) | 6 | 50 / **6.5 days** | `tools/forks.json` CI check, `--check-rules`, `watch-pr` prompt-injection hardening |
 
 ---
 

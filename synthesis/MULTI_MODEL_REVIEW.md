@@ -63,3 +63,13 @@ After deploying the decoupled Next.js site, all four enabled frontier providers 
 - **Fixed factual & routing precision:** Split `pstack-claude.md` so Playbook links route to each port cleanly; corrected OpenHands `stryker-diff.mjs` to changed production TypeScript **files** (`git diff --name-only`); corrected `cmux` Nov 25 attribution (`19/20` by `teamleaderleo`, `1` CI commit by `austinywang`); corrected `superpowers` 94% rejection line reference (`line 7`); clarified `orca` `pr-test-loc.yml` skips writes on fork 403s.
 - **Rebuilt Config Studio for real-world copyability:** Added a real `oxlint` rules + allowlist tab as Tab 1 (matching the H1), turned `ci.yml` into a complete single-file workflow that requires the `changes` filter job to succeed, removed prefilled `(passed)` lines from the PR template, separated `CLAUDE.md` from `AGENTS.md`, and renamed the cooldown snippet to `pnpm Cooldown Lock` with merge instructions.
 - **Tightened disclosure, data honesty & accessibility:** Disclosed Gemini drafting and T3 Code baseline origin on `/`, replaced cherry-picked CI buckets with all-35-repo workflow distribution, rescaled heatmap scoring and legend to `Observed`, and fixed mobile overflow, WAI-ARIA tabs, dark-mode hero `alt`, per-route OG tags, and `Reference` status styling.
+
+
+---
+
+## Addendum — Repo #36 (`cursor/plugins/pstack`, 2026-11-26)
+
+The 3-model review above audited the original **35** standalone repositories. A 36th assessment was later added for Lauren Tan's canonical Cursor plugin at [`cursor/plugins/pstack`](../chunks/chunk-06-skill-stacks/pstack-upstream.md), collected with the new path-scoped script `scripts/collect_path.py`.
+
+- Combined star total remains **`3,040,947`**: host monorepo `cursor/plugins` stars, forks, and open issues are not pstack-only and are excluded from the sum.
+- Lean / TLA+ attribution was corrected: **`lean/Model/WatchPoll.lean` (`51,998` bytes) and `tla/PiScheduler.tla` belong only to `michael-denyer/pstack-claude`**. Upstream and the `backnotprop/pstack` mirror ship the TLA+ statechart corpus (`30,612` bytes) and no Lean files.

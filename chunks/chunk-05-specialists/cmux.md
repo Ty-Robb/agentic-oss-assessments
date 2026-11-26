@@ -12,7 +12,7 @@
 - **Minor flaws:** `CLAUDE.md` is a byte-for-byte duplicate of `AGENTS.md`, and root contains stray audit/report artifacts (`PR-10599-AUDIT.md`, `cx-ci-failfast.report.md`, `reports.md`, `TODO.md`) plus private `cmuxterm-hq` links that 404 for external contributors.
 
 ## 2. Mechanical Gates & Quality Control
-- **231 GitHub Actions workflows — the largest CI surface in the entire 35-repo study (nearly 2× OpenClaw's 133):**
+- **231 GitHub Actions workflows — the largest CI surface in the entire 36-repo study (nearly 2× OpenClaw's 133):**
   - Spans owned macOS Mac mini pools + GCP JIT x64 runners + Blacksmith overflow + R2 binary/cache pruning + nightly rollback drills (`nightly-next-rollback-drill.yml`) + production synthetic canaries (`cloud-journey-prod.yml`, `real-login-canaries.yml`) + `required-checks-drift.yml` + `language-boundaries.yml`.
 - **Standout mechanical innovations worth studying:**
   1. **`scripts/verify-local.py` with diff-scoped static checks + JSON `--receipt -`:** Compares against local `upstream/HEAD` without fetching, runs only touched checks (localization, Xcode/test wiring, feature flags, Swift parse), prints exact `--only` rerun commands on failure, and emits machine-readable verification receipts.
@@ -32,7 +32,7 @@
   - **50 commits in 9.7 hours** (`2026-11-25T03:26Z` to `13:10Z`), PR **`#56,611` in just 10 months**, **100% AI co-author signal**, 40% conventional, 2% fix/revert.
   - `teamleaderleo` authored **49 of the last 50 commits** (all-time top: `lawrencecchen` 7,790, `austinywang` 7,585, `teamleaderleo` 2,964, `azooz2003-bit` 1,871).
   - **Crucial observation from the commit log:** Roughly **17 of the 20 sampled commits** on `main` are **maintaining the CI/runner/nightly/autofix machinery itself** (`red-autofix`, `pr_runner_pool`, `nightly picker`, `CI attribution`, `namespace autofix`, `auto-journey.yml`, `pr-media`, `cloud-journey-prod`), rather than shipping terminal features!
-  - Meanwhile, **open items have exploded to `11,218`** (the 2nd highest open count in the 35-repo study behind `openai/codex`, despite having 1/5th the stars).
+  - Meanwhile, **open items have exploded to `11,218`** (the 2nd highest open count in the 36-repo study behind `openai/codex`, despite having 1/5th the stars).
 
 ## 5. Steal vs. Avoid
 - **Steal:**

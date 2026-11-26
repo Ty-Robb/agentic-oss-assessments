@@ -1,0 +1,528 @@
+{
+  "repo": "cursor/plugins",
+  "path": "pstack",
+  "canonical_url": "https://github.com/cursor/plugins/tree/main/pstack",
+  "collected_at": "2026-11-26T14:51:00Z",
+  "caveats": [
+    "Stars, forks, open_issues, languages, workflows, contributors, and releases in monorepo_meta are for the entire host repo, not this path.",
+    "Commit stats below are filtered to path= and are comparable to other assessments' last-50 windows."
+  ],
+  "monorepo_meta": {
+    "description": "Cursor plugin specification and official plugins",
+    "homepage": null,
+    "license": null,
+    "stars": 19691,
+    "forks": 2125,
+    "open_issues": 705,
+    "archived": false,
+    "created_at": "2026-01-23T01:57:42Z",
+    "pushed_at": "2026-11-26T09:04:53Z",
+    "default_branch": "main",
+    "topics": []
+  },
+  "plugin_meta": {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "pstack",
+    "version": "0.15.48",
+    "description": "if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
+    "author": {
+      "name": "Lauren Tan"
+    },
+    "homepage": "https://github.com/cursor/plugins/tree/main/pstack",
+    "repository": "https://github.com/cursor/plugins",
+    "license": "MIT",
+    "keywords": [
+      "pstack",
+      "poteto-mode",
+      "workflow",
+      "principles",
+      "agent-style",
+      "subagents",
+      "unslop"
+    ]
+  },
+  "structure": {
+    "root": [
+      ".cursor-plugin/",
+      ".gitignore",
+      "LICENSE",
+      "README.md",
+      "agents/",
+      "assets/",
+      "automations/",
+      "docs/",
+      "plugin.json",
+      "skills/"
+    ],
+    "skills": [
+      "architect",
+      "arena",
+      "automate-me",
+      "benchmark-checklist",
+      "blast-radius",
+      "bro",
+      "correct",
+      "create-formal-verification-skill",
+      "create-verification-skill",
+      "figure-it-out",
+      "how",
+      "in-your-own-words",
+      "interrogate",
+      "ketchup-video",
+      "ketchup",
+      "maintain-formal-verification-skill",
+      "maintain-verification-skill",
+      "make-bot-ui",
+      "no-comments",
+      "poteto-help",
+      "poteto-mode",
+      "principle-attack-the-premise",
+      "principle-boundary-discipline",
+      "principle-build-the-lever",
+      "principle-encode-lessons-in-structure",
+      "principle-exhaust-the-design-space",
+      "principle-experience-first",
+      "principle-explain-the-number",
+      "principle-fix-root-causes",
+      "principle-foundational-thinking",
+      "principle-guard-the-context-window",
+      "principle-laziness-protocol",
+      "principle-make-operations-idempotent",
+      "principle-migrate-callers-then-delete-legacy-apis",
+      "principle-minimize-reader-load",
+      "principle-model-the-domain",
+      "principle-never-block-on-the-human",
+      "principle-outcome-oriented-execution",
+      "principle-prove-it-works",
+      "principle-redesign-from-first-principles",
+      "principle-separate-before-serializing-shared-state",
+      "principle-sequence-verifiable-units",
+      "principle-subtract-before-you-add",
+      "principle-test-behavior-not-implementation",
+      "principle-type-system-discipline",
+      "recall",
+      "reflect",
+      "reframe",
+      "setup-pstack",
+      "sharpen",
+      "show-me-your-work",
+      "statechart",
+      "swarm",
+      "tdd",
+      "teach",
+      "technical-writing",
+      "typescript-best-practices",
+      "unslop",
+      "why"
+    ],
+    "skill_count": 59,
+    "file_count": 554,
+    "byte_count": 6152724,
+    "ext_counts": {
+      "json": 6,
+      "gitignore": 1,
+      "(noext)": 3,
+      "md": 149,
+      "png": 1,
+      "yaml": 1,
+      "jpg": 6,
+      "ts": 53,
+      "lock": 1,
+      "sh": 2,
+      "tsv": 1,
+      "java": 1,
+      "mmd": 36,
+      "out": 134,
+      "cfg": 34,
+      "tla": 39,
+      "dot": 33,
+      "exit": 44,
+      "mjs": 9
+    },
+    "ext_bytes": {
+      "json": 2416,
+      "gitignore": 30,
+      "(noext)": 2269,
+      "md": 467800,
+      "png": 361140,
+      "yaml": 2424,
+      "jpg": 2318912,
+      "ts": 455116,
+      "lock": 6679,
+      "sh": 7694,
+      "tsv": 38,
+      "java": 2717,
+      "mmd": 21756,
+      "out": 2337598,
+      "cfg": 2201,
+      "tla": 30612,
+      "dot": 132161,
+      "exit": 132,
+      "mjs": 1029
+    },
+    "workflows": [],
+    "host_workflows_covering_path": [
+      "validate-plugins.yml"
+    ]
+  },
+  "key_files": {
+    "plugin.json": {
+      "path": "pstack/plugin.json",
+      "size_bytes": 619,
+      "line_count": 21,
+      "truncated": false,
+      "excerpt": "{\n  \"$schema\": \"https://agent-plugins.org/schemas/1.0.0/plugin.schema.json\",\n  \"name\": \"pstack\",\n  \"version\": \"0.15.48\",\n  \"description\": \"if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.\",\n  \"author\": {\n    \"name\": \"Lauren Tan\"\n  },\n  \"homepage\": \"https://github.com/cursor/plugins/tree/main/pstack\",\n  \"repository\": \"https://github.com/cursor/plugins\",\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"pstack\",\n    \"poteto-mode\",\n    \"workflow\",\n    \"principles\",\n    \"agent-style\",\n    \"subagents\",\n    \"unslop\"\n  ]\n}\n"
+    },
+    "README.md": {
+      "path": "pstack/README.md",
+      "size_bytes": 28650,
+      "line_count": 291,
+      "truncated": true,
+      "excerpt": "# pstack\n\ni'm [poteto](https://x.com/poteto). i'm not a president or ceo, but i've worked with millions of lines of code at Meta, Netflix, and Cursor. i'm also on the react core team where i help build and maintain react compiler.\n\nthere's a growing sense that ai writes too much slop code. i agree. i don't want to ship like a team of twenty slop artists. throughput without quality is not a goal i aspire to. if you want to go fast, go deep first. \n\n**pstack is my answer.** these are the same skills i use every day to ship high quality code at Cursor. this turns cursor into a real engineering team. the goal is not to maximize loc, in fact it's the opposite. pstack helps you write less, but higher quality code.\n\n**pstack gives you fearless parallelism.** when you can go deep on one agent and trust it to write good, verifiable code, you can truly parallelize with confidence. start multiple agents up with `poteto-mode` and trust that they'll apply rigorous engineering principles to their work.\n\n**cursor gives you the best of all worlds.** every frontier model has its strengths and weaknesses. use any model with pstack. in fact, many of my skills use multi-model workflows to take advantage of each model's unique strengths.\n\nfork it. improve it. make it yours. PRs are welcome! \n\n## install\n\n```bash\n/add-plugin pstack\n```\n\nin claude code:\n\n```bash\n/plugin marketplace add cursor/plugins\n/plugin install pstack@cursor-plugins\n```\n\nclaude code leaves auto-update off for third-party marketplaces, so pstack stays on the version you installed. to turn it on, run `/plugin`, open the **marketplaces** tab, select `cursor-plugins`, and choose **enable auto-update**. to update once by hand, run `claude plugin update pstack@cursor-plugins`.\n\nclaude code prefixes plugin commands and agents, so `/poteto-mode` is `/pstack:poteto-mode`. the [claude code adapter](./docs/harness/claude-code.md) maps every other cursor name. in claude code, `/pstack:setup-pstack` writes your model choices to `~/.claude/rules/pstack-models.md`, and a step that needs a cursor-only feature, such as bugbot or automations, is skipped with a one-line note.\n\nclaude code installs a generated copy of pstack, including this readme and the guide, from [`harness/pstack/`](https://github.com/cursor/plugins/tree/main/harness/pstack) at the repository root. after you change pstack, run `node scripts/generate-pstack-harness-trees.mjs` from the repository root and commit the result. ci fails while the generated copy is out of date.\n\n## get started\n\ntwo steps:\n\n1. run [`/setup-pstack`](./skills/setup-pstack/SKILL.md), pick a reasoning budget, and choose which models you want.\n2. use [`/poteto-mode`](./skills/poteto-mode/SKILL.md) whenever you're doing anything that requires rigor.\n\nnew here? the [pstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs. stuck, or unsure which skill fits? ask [`/poteto-help`](./skills/poteto-help/SKILL.md).\n\nthat's it. the other skills are situational, and the mode skill uses them for you as needed. out of the box, code delegates (feature, refactoring, bug fix, perf, hillclimb), prose, and judgment go to opus 5.5 at xhigh, and no role runs above xhigh. outside a review panel, fable 5.2 runs only when you name it or after two opus 5.5 runs of the same brief fail. the default panel is fable 5.2 / opus 5.5 / gemini 4 neon. [`/setup-pstack`](./skills/setup-pstack/SKILL.md) changes any of it.\n\n## usage\n\nuse [`/poteto-mode`](./skills/poteto-mode/SKILL.md) at the start of a task. it reads your request, picks from a set of playbooks, and runs the other skills as the steps need them.\n\npick `/poteto-mode` from the `/` menu before you type your task, so cursor attaches the skill to the message.\n\n### just use [`/poteto-mode`](./skills/poteto-mode/SKILL.md)\n\nthis skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with twenty-two playbooks:\n\n```\n/poteto-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro\nfirst, then fix and verify.\n```\n\n```\n/poteto-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by\nmorning.\n```\n\n<details>\n<summary>the twenty-two playbooks</summary>\n\n| playbook | for |\n|---|---|\n| [investigation](./skills/poteto-mode/playbooks/investigation.md) | a read-only question. how does x work, why was y built this way, are we sure. |\n| [bug fix](./skills/poteto-mode/playbooks/bug-fix.md) | reproduce a defect, root-cause it, and fix with runtime evidence. |\n| [perf](./skills/poteto-mode/playbooks/perf-issue.md) | trace a measured slowness and improve it against a baseline. |\n| [hillclimb](./skills/poteto-mode/playbooks/hillclimb.md) | sustained, scientific improvement of one metric against a target, looping hypotheses with before/after measurement and one commit per accepted win. |\n| [runtime forensics](./skills/poteto-mode/playbooks/runtime-forensics.md) | diagnose a live symptom (leak, idle-cpu spin, glitch) from instrumentation. |\n| [trace forensics](./skills/poteto-mode/playbooks/trace-forensics.md) | diagnose a captured profiling artifact (cpuprofile, trace, spindump, heap snapshot). |\n| [feature](./skills/poteto-mode/playbooks/feature.md) | new or changed behavior, built from a named data shape. |\n| [refactoring](./skills/poteto-mode/playbooks/refactoring.md) | a behavior-preserving change to structure or shape. |\n| [prototype](./skills/poteto-mode/playbooks/prototype.md) | a throwaway sketch to make a design or behavioral decision cheaply, or to settle an empirical fork by observing it. |\n| [visual parity](./skills/poteto-mode/playbooks/visual-parity.md) | pixel-exact ui equivalence between two implementations. |\n| [authoring a skill](./skills/poteto-mode/playbooks/authoring-a-skill.md) | writing or editing a SKILL.md. |\n| [eval](./skills/poteto-mode/playbooks/eval.md) | test how a skill or prompt change affects agent behavior, blinded. |\n| [babysit](./skills/poteto-mode/playbooks/babysit.md) | drive a pr or a stack to merge-ready: conflicts, review threads, ci. |\n| [shipping](./skills/poteto-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through github by default or origin when available. |\n| [autonomous run](./skills/poteto-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |\n| [autopilot-full](./skills/poteto-mode/playbooks/autopilot-full.md) | run independent prs to merged with one owner per pr. a swarm verifies each code-ready head, and every later change to the patch gets a fresh check. |\n| [autopilot-stack](./skills/poteto-mode/playbooks/autopilot-stack.md) | autopilot-full without the merge. build and verify prs for the operator to review and land, stacking a pr only on a pr it builds on. |\n| [session pickup](./skills/poteto-mode/playbooks/session-pickup.md) | resume or take over a prior agent's in-flight work. |\n| [pause safely](./skills/poteto-mode/playbooks/pause-safely.md) | suspend in-flight work cleanly so it can be resumed later. |\n| [multi-phase plan](./skills/poteto-mode/playbooks/multi-phase-plan.md) | work that spans phases or stacked PRs. |\n| [worktree cleanup](./skills/poteto-mode/playbooks/worktree-cleanup.md) | reclaim disk by pruning merged or abandoned worktrees and stale ios simulators, safety-gated. |\n| [opening a pr](./skills/poteto-mode/playbooks/opening-a-pr.md) | open a ready pr from small ordered commits with a conventional commits title and a briefing-style body. invoked at the end of every other playbook. |\n\n</details>\n\n\n\nwhen invoked it:\n\n1. matches your task to a [playbook](./skills/poteto-mode/playbooks/) and opens a todo list whose first items are its steps, copied in verbatim.\n2. routes to the other skills as the steps fire.\n3. writes unslopped replies framed for the consumer and the maintainer.\n\nthe full rules and playbooks live in [`sk"
+    },
+    "LICENSE": {
+      "path": "pstack/LICENSE",
+      "size_bytes": 1067,
+      "line_count": 21,
+      "truncated": false,
+      "excerpt": "MIT License\n\nCopyright (c) 2026 Lauren Tan\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+    }
+  },
+  "commit_stats_last_50_path": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-24T00:41:29Z",
+      "oldest": "2026-10-14T23:11:23Z"
+    },
+    "conventional_pct": 88.0,
+    "fix_revert_pct": 32.0,
+    "ai_coauthor_pct": 56.0,
+    "top_recent_authors": [
+      [
+        "poteto",
+        50
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "9e278fe4",
+        "date": "2026-11-24T00:41:29Z",
+        "author": "poteto",
+        "subject": "feat(pstack): have /reframe list the problems a vague description could be (#1326)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2dd5c0cc",
+        "date": "2026-11-23T22:32:44Z",
+        "author": "poteto",
+        "subject": "feat(pstack): add /reframe to learn the expert words for what you're building (#1324)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0b46ec39",
+        "date": "2026-11-19T22:12:08Z",
+        "author": "poteto",
+        "subject": "fix(pstack): run /statechart on native Windows and read TLC's \\r\\n line ends (#1292)",
+        "ai_signal": false
+      },
+      {
+        "sha": "dd24b670",
+        "date": "2026-11-19T21:53:07Z",
+        "author": "poteto",
+        "subject": "chore(pstack): run the Gemini panel seat at gemini-4-neon-xhigh (#1284)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e58dd043",
+        "date": "2026-11-19T06:26:56Z",
+        "author": "poteto",
+        "subject": "chore(pstack): route the Gemini seat to Gemini 4 Neon (#1283)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2f87c854",
+        "date": "2026-11-16T21:28:16Z",
+        "author": "poteto",
+        "subject": "feat(pstack): shorter skill texts, worker.md, and Opus-first routing capped at xhigh (#1249)",
+        "ai_signal": false
+      },
+      {
+        "sha": "bf0c7cd8",
+        "date": "2026-11-15T03:36:17Z",
+        "author": "poteto",
+        "subject": "feat(pstack): new default models, one-file why and how, statechart fixes, sharpen and reflect text (#1236)",
+        "ai_signal": true
+      },
+      {
+        "sha": "c742dd61",
+        "date": "2026-10-27T23:12:40Z",
+        "author": "poteto",
+        "subject": "feat(pstack): make Orchestrate agentic and delete the orch scripts (#1043)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ab1f702c",
+        "date": "2026-10-27T18:49:18Z",
+        "author": "poteto",
+        "subject": "feat(pstack): port recent skill updates (#986)",
+        "ai_signal": true
+      },
+      {
+        "sha": "519d36aa",
+        "date": "2026-10-27T05:52:45Z",
+        "author": "poteto",
+        "subject": "test(pstack): wait for the reap in the statechart SIGKILL view test (#981)",
+        "ai_signal": false
+      },
+      {
+        "sha": "164ced10",
+        "date": "2026-10-27T04:33:31Z",
+        "author": "poteto",
+        "subject": "chore(pstack): bump to 0.15.34 (#983)",
+        "ai_signal": true
+      },
+      {
+        "sha": "740d2c07",
+        "date": "2026-10-27T04:30:22Z",
+        "author": "poteto",
+        "subject": "fix(pstack): keep qualified action names in property traces (#982)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7c7bde70",
+        "date": "2026-10-27T04:08:38Z",
+        "author": "poteto",
+        "subject": "chore(pstack): bump to 0.15.33 (#978)",
+        "ai_signal": false
+      },
+      {
+        "sha": "34b1b7c9",
+        "date": "2026-10-27T04:08:29Z",
+        "author": "poteto",
+        "subject": "feat(pstack): port the statechart compiler (#977)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e73df471",
+        "date": "2026-10-23T22:56:09Z",
+        "author": "poteto",
+        "subject": "fix(pstack): renumber swarm's Phase A and fix its dangling table reference (#807)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a0b0ad99",
+        "date": "2026-10-23T22:55:46Z",
+        "author": "poteto",
+        "subject": "docs(pstack): note Claude Code auto-update is off for third-party marketplaces (#806)",
+        "ai_signal": true
+      },
+      {
+        "sha": "f83fbe69",
+        "date": "2026-10-23T22:55:23Z",
+        "author": "poteto",
+        "subject": "fix(pstack): read transcript mtimes with GNU stat and date in worktree-audit (#805)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3c596e70",
+        "date": "2026-10-23T22:55:01Z",
+        "author": "poteto",
+        "subject": "fix(orch): prefer active PR over branch history (#804)",
+        "ai_signal": false
+      },
+      {
+        "sha": "86c2448d",
+        "date": "2026-10-23T22:54:39Z",
+        "author": "poteto",
+        "subject": "fix(pstack): recognize matching inline code delimiters (#803)",
+        "ai_signal": false
+      },
+      {
+        "sha": "fe096ef3",
+        "date": "2026-10-23T22:54:14Z",
+        "author": "poteto",
+        "subject": "fix(watch-pr): cap polling sleeps at the deadline (#802)",
+        "ai_signal": false
+      }
+    ]
+  },
+  "meta": {
+    "description": "if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
+    "homepage": "https://github.com/cursor/plugins/tree/main/pstack",
+    "license": "MIT",
+    "stars": null,
+    "forks": null,
+    "open_issues": null,
+    "archived": false,
+    "excluded_from_star_total": true,
+    "star_total_note": "Stars, forks, and open_issues on the host repo cursor/plugins are monorepo-wide and are excluded from the study's 3,040,947 combined-star total. See monorepo_meta.",
+    "created_at": null,
+    "pushed_at": "2026-11-24T00:41:29Z",
+    "default_branch": "main",
+    "topics": [
+      "pstack",
+      "path-scoped"
+    ],
+    "path": "pstack",
+    "plugin_version": "0.15.48",
+    "author": "Lauren Tan"
+  },
+  "commit_stats_last_50": {
+    "count": 50,
+    "date_span": {
+      "newest": "2026-11-24T00:41:29Z",
+      "oldest": "2026-10-14T23:11:23Z"
+    },
+    "conventional_pct": 88.0,
+    "fix_revert_pct": 32.0,
+    "ai_coauthor_pct": 56.0,
+    "top_recent_authors": [
+      [
+        "poteto",
+        50
+      ]
+    ],
+    "sample_commits": [
+      {
+        "sha": "9e278fe4",
+        "date": "2026-11-24T00:41:29Z",
+        "author": "poteto",
+        "subject": "feat(pstack): have /reframe list the problems a vague description could be (#1326)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2dd5c0cc",
+        "date": "2026-11-23T22:32:44Z",
+        "author": "poteto",
+        "subject": "feat(pstack): add /reframe to learn the expert words for what you're building (#1324)",
+        "ai_signal": false
+      },
+      {
+        "sha": "0b46ec39",
+        "date": "2026-11-19T22:12:08Z",
+        "author": "poteto",
+        "subject": "fix(pstack): run /statechart on native Windows and read TLC's \\r\\n line ends (#1292)",
+        "ai_signal": false
+      },
+      {
+        "sha": "dd24b670",
+        "date": "2026-11-19T21:53:07Z",
+        "author": "poteto",
+        "subject": "chore(pstack): run the Gemini panel seat at gemini-4-neon-xhigh (#1284)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e58dd043",
+        "date": "2026-11-19T06:26:56Z",
+        "author": "poteto",
+        "subject": "chore(pstack): route the Gemini seat to Gemini 4 Neon (#1283)",
+        "ai_signal": false
+      },
+      {
+        "sha": "2f87c854",
+        "date": "2026-11-16T21:28:16Z",
+        "author": "poteto",
+        "subject": "feat(pstack): shorter skill texts, worker.md, and Opus-first routing capped at xhigh (#1249)",
+        "ai_signal": false
+      },
+      {
+        "sha": "bf0c7cd8",
+        "date": "2026-11-15T03:36:17Z",
+        "author": "poteto",
+        "subject": "feat(pstack): new default models, one-file why and how, statechart fixes, sharpen and reflect text (#1236)",
+        "ai_signal": true
+      },
+      {
+        "sha": "c742dd61",
+        "date": "2026-10-27T23:12:40Z",
+        "author": "poteto",
+        "subject": "feat(pstack): make Orchestrate agentic and delete the orch scripts (#1043)",
+        "ai_signal": true
+      },
+      {
+        "sha": "ab1f702c",
+        "date": "2026-10-27T18:49:18Z",
+        "author": "poteto",
+        "subject": "feat(pstack): port recent skill updates (#986)",
+        "ai_signal": true
+      },
+      {
+        "sha": "519d36aa",
+        "date": "2026-10-27T05:52:45Z",
+        "author": "poteto",
+        "subject": "test(pstack): wait for the reap in the statechart SIGKILL view test (#981)",
+        "ai_signal": false
+      },
+      {
+        "sha": "164ced10",
+        "date": "2026-10-27T04:33:31Z",
+        "author": "poteto",
+        "subject": "chore(pstack): bump to 0.15.34 (#983)",
+        "ai_signal": true
+      },
+      {
+        "sha": "740d2c07",
+        "date": "2026-10-27T04:30:22Z",
+        "author": "poteto",
+        "subject": "fix(pstack): keep qualified action names in property traces (#982)",
+        "ai_signal": true
+      },
+      {
+        "sha": "7c7bde70",
+        "date": "2026-10-27T04:08:38Z",
+        "author": "poteto",
+        "subject": "chore(pstack): bump to 0.15.33 (#978)",
+        "ai_signal": false
+      },
+      {
+        "sha": "34b1b7c9",
+        "date": "2026-10-27T04:08:29Z",
+        "author": "poteto",
+        "subject": "feat(pstack): port the statechart compiler (#977)",
+        "ai_signal": false
+      },
+      {
+        "sha": "e73df471",
+        "date": "2026-10-23T22:56:09Z",
+        "author": "poteto",
+        "subject": "fix(pstack): renumber swarm's Phase A and fix its dangling table reference (#807)",
+        "ai_signal": false
+      },
+      {
+        "sha": "a0b0ad99",
+        "date": "2026-10-23T22:55:46Z",
+        "author": "poteto",
+        "subject": "docs(pstack): note Claude Code auto-update is off for third-party marketplaces (#806)",
+        "ai_signal": true
+      },
+      {
+        "sha": "f83fbe69",
+        "date": "2026-10-23T22:55:23Z",
+        "author": "poteto",
+        "subject": "fix(pstack): read transcript mtimes with GNU stat and date in worktree-audit (#805)",
+        "ai_signal": false
+      },
+      {
+        "sha": "3c596e70",
+        "date": "2026-10-23T22:55:01Z",
+        "author": "poteto",
+        "subject": "fix(orch): prefer active PR over branch history (#804)",
+        "ai_signal": false
+      },
+      {
+        "sha": "86c2448d",
+        "date": "2026-10-23T22:54:39Z",
+        "author": "poteto",
+        "subject": "fix(pstack): recognize matching inline code delimiters (#803)",
+        "ai_signal": false
+      },
+      {
+        "sha": "fe096ef3",
+        "date": "2026-10-23T22:54:14Z",
+        "author": "poteto",
+        "subject": "fix(watch-pr): cap polling sleeps at the deadline (#802)",
+        "ai_signal": false
+      }
+    ]
+  }
+}

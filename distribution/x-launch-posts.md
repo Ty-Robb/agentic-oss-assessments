@@ -3,7 +3,7 @@
 ## Why This Format Wins on X
 - **Main Post = 2 side-by-side 4:5 light-mode Research Note cards** (stands out hard against X's dark timeline, drives zoom-in dwell time + bookmarks):
   - **Image 1 (`assets/x-card-1-prompt.png`):** Stack-aware Week 1 `<prompt>` anyone can drop into T3 Code / Claude Code / Codex / OpenCode right now.
-  - **Image 2 (`assets/x-card-2-infographic.png`):** Full visual breakdown of the 35-repo audit (`3,040,947` stars, `stablyai/orca`, `mattpocock/sandcastle`, `gstack`, `superpowers`, `pi`, `codex`, `cmux`).
+  - **Image 2 (`assets/x-card-2-infographic.png`):** Full visual breakdown of the audit (`3,040,947` stars from 35 standalone repos; a 36th path-scoped assessment, `cursor/plugins/pstack`, is excluded from that total, `stablyai/orca`, `mattpocock/sandcastle`, `gstack`, `superpowers`, `pi`, `codex`, `cmux`).
 - **Reply #1:** Link to the X Article + live interactive explorer (`https://agentic-oss-site.vercel.app`) + public MIT data repo (`https://github.com/Ty-Robb/agentic-oss-assessments`).
 - **Reply #2:** Plain-text copy of [`upgrade-prompt.txt`](upgrade-prompt.txt) so readers can copy-paste without OCR.
 
@@ -11,7 +11,7 @@
 
 ## Main Post (Attach `x-card-1-prompt.png` + `x-card-2-infographic.png`)
 
-> The fastest-moving desktop agent repo in our 35-repo audit (3.04M combined stars) tells its agents to stop writing tests.
+> The fastest-moving desktop agent repo in our 36-repo audit (3.04M combined stars from 35 standalone repos; #36 excluded) tells its agents to stop writing tests.
 >
 > `stablyai/orca` (137.8k★) landed 50 commits in 3.2 hours. Line 1 of its repo rules: "Tests are the exception." Prove the change by running it. Commit a test only where a silent regression is expensive.
 >
@@ -28,11 +28,11 @@
 
 ## Reply #1 (Post Right Below Main Post — X Article + Live Site + Public Repo)
 
-> Full 35-repo teardown in my X Article (every config snippet, workflow count, and what stalled `1code`, `vibe-kanban`, `Roo-Code`, and `get-shit-done`):
+> Full 36-repo teardown in my X Article (every config snippet, workflow count, and what stalled `1code`, `vibe-kanban`, `Roo-Code`, and `get-shit-done`):
 >
 > [Paste X Article link here]
 >
-> Interactive 35-repo explorer + all 35 primary-source audits:
+> Interactive 36-repo explorer + all 36 primary-source audits:
 > https://agentic-oss-site.vercel.app
 >
 > Raw GitHub API JSONs, playbook & 3-model red-team log (MIT):

@@ -14,7 +14,7 @@
   - **Design-system guard:** Points all UI work to `docs/STYLEGUIDE.md`, `src/renderer/src/assets/main.css`, and `src/renderer/src/components/ui/`.
 
 ## 2. Mechanical Gates & Quality Control
-One of the deepest **performance-first static analysis & CI verification** rigs in the entire 35-repo study:
+One of the deepest **performance-first static analysis & CI verification** rigs in the entire 36-repo study:
 - **5 surgical custom `oxlint` plugins (`config/oxlint-plugins/`):**
   - `anti-slop-prefilter.mjs`
   - `app-store-performance.mjs`
@@ -41,9 +41,9 @@ One of the deepest **performance-first static analysis & CI verification** rigs 
 - **PR template (`pull_request_template.md`) enforces 7 disciplined checks:** `ELI5`, `What Changed`, `Why`, `Linked Issue` (*"outside contributor PR without an issue will be ignored"*), `Visual Proof` (before/after tabs, **never committed to git**), `Performance` (CI-enforced), `Risk` (`Low/Medium/High` + revertability), and external-only `AI Disclosure`.
 
 ## 4. Velocity, Governance & Scale Stress Signals
-- **Blistering velocity — 2nd fastest in the entire 35-repo study:** **50 commits in 3.2 hours** (`2026-11-25 18:17Z` → `21:28Z`), nearly **49,300 PRs/issues in 8 months** (`#49277`), `88%` conventional commits, strong multi-maintainer team (`nwparker` 8,257; `brennanb2025` 3,619; `OrcaWin` 3,085; `AmethystLiang` 2,660; `Jinwoo-H` 2,647; `AmoabaKelvin` 1,553; plus `orca-remote-automation[bot]` shipping UI polish PRs).
+- **Blistering velocity — 2nd fastest in the entire 36-repo study:** **50 commits in 3.2 hours** (`2026-11-25 18:17Z` → `21:28Z`), nearly **49,300 PRs/issues in 8 months** (`#49277`), `88%` conventional commits, strong multi-maintainer team (`nwparker` 8,257; `brennanb2025` 3,619; `OrcaWin` 3,085; `AmethystLiang` 2,660; `Jinwoo-H` 2,647; `AmoabaKelvin` 1,553; plus `orca-remote-automation[bot]` shipping UI polish PRs).
 - **Real scale stress signals to watch:**
-  - **9,918 open issues** — 3rd highest in the 35-repo study (behind only `codex` at 28,619 and `cmux` at 11,218, and slightly above `openclaw`'s 9,182), even with the `Fixes #` outside-contributor gate.
+  - **9,918 open issues** — 3rd highest in the 36-repo study (behind only `codex` at 28,619 and `cmux` at 11,218, and slightly above `openclaw`'s 9,182), even with the `Fixes #` outside-contributor gate.
   - **70% fix/revert commits** in the last 50 (heavy continuous bug-burn across i18n, Windows clipboard/WSL, mobile cards, and connectors at 3.2-hr/50-commit velocity).
   - **67 workflows** — above the 8–30 CI Goldilocks zone, with 6 dedicated CI cache-warmup/sweep/runner-demand workflows (`ci-cache-warmup*`, `ci-runner-demand.yml`, `ci-branch-cache-sweep.yml`) needed to keep 24-shard unit tests + 3-OS E2E fast.
 
